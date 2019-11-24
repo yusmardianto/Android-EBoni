@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import id.co.perhutani.sisdhbukuobor.ui.bukuobor.BukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.ui.home.HomeFragment;
+import id.co.perhutani.sisdhbukuobor.ui.profil.ProfilFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new HomeFragment();
                             break;
                         case R.id.navigation_profile:
-                            selectedFragment = new HomeFragment();
+                            selectedFragment = new ProfilFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
