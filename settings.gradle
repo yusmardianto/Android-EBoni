@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':library_sweetalert'
 rootProject.name='SISDH Buku Obor'
