@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_bukuobor"
+        android:icon="@drawable/ic_whatshot_black_24dp"
+        android:title="@string/text_bukuobor" />
+
+    <item
+        android:id="@+id/navigation_pengelolaan"
+        android:icon="@drawable/ic_icn_pengelolaanhtn"
+        android:title="@string/text_pengelolaan"/>
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/text_profile" />
+
+</menu>

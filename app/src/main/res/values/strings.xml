@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">eBot</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="text_pengelolaan">Pengelolaan Hutan</string>
+    <string name="text_tanaman">Tanaman</string>
+    <string name="text_pemeliharaan">Pemeliharaan</string>
+    <string name="text_kayu">Produksi Kayu</string>
+    <string name="text_nonkayu">Produksi Non Kayu</string>
+    <string name="text_keamanan">Keamanan</string>
+    <string name="text_bukuobor">Buku Obor</string>
+    <string name="text_gangguan">Gangguan Keamanan Hutan</string>
+    <string name="text_perubahankelas">Perubahan Kelas</string>
+    <string name="text_registerpcp">Register PCP</string>
+    <string name="text_interaksimdh">Interaksi MDH</string>
+    <string name="text_pemantauansatwa">Pemantauan Satwa</string>
+    <string name="text_laporanpal">Laporan Pal Batas</string>
+    <string name="text_tambahgangguan">Tambah Gangguan</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_logout">Logout</string>
+    <string name="text_search">Search</string>
+    <string name="text_login">Login</string>
+    <string name="text_signin">Sign in</string>
+    <string name="text_email">Email</string>
+    <string name="text_password">Password</string>
+    <string name="text_login_failed">"Login failed"</string>
+    <string name="text_username">Username</string>
+    <string name="text_submit">Submit</string>
+    <string name="text_tambah">Tambah Laporan</string>
+</resources>
