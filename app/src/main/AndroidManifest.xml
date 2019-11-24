@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:icon">
-        <activity android:name=".ProfilActivity"></activity>
+        <activity android:name=".PerubahanKelasActivity"></activity>
+        <activity android:name=".ProfilActivity" />
         <activity android:name=".SplashScreenActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".BukuOborActivity" />
