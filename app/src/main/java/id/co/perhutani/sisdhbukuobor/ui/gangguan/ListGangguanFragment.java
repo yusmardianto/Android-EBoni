@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.ui.VerticalSpaceItemDecoration;
 
 public class ListGangguanFragment extends Fragment
 {
@@ -39,16 +40,10 @@ public class ListGangguanFragment extends Fragment
         super.onCreate(savedInstanceState);
 
         lstGangguan = new ArrayList<>();
-        lstGangguan.add(new ListViewGangguan("Penebangan","Jkt","011","30/11/19"));
-        lstGangguan.add(new ListViewGangguan("Penebangan","Jkt","011","30/11/19"));
-        lstGangguan.add(new ListViewGangguan("Penebangan","Jkt","011","30/11/19"));
-        lstGangguan.add(new ListViewGangguan("Penebangan","Jkt","011","30/11/19"));
-        lstGangguan.add(new ListViewGangguan("Penebangan","Jkt","011","30/11/19"));
-
-    }
-
-    private class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
-        public VerticalSpaceItemDecoration(int verticalItemSpace) {
-        }
+        lstGangguan.add(new ListViewGangguan("Penebangan ","Jkt","011","30/11/19"));
+        lstGangguan.add(new ListViewGangguan("Penebangan ","Jkt","011","30/11/19"));
+        lstGangguan.add(new ListViewGangguan("Penebangan ","Jkt","011","30/11/19"));
+        lstGangguan.add(new ListViewGangguan("Penebangan ","Jkt","011","30/11/19"));
+        lstGangguan.add(new ListViewGangguan("Penebangan ","Jkt","011","30/11/19"));
     }
 }
