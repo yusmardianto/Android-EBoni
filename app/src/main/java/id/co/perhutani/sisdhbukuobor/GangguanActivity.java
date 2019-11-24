@@ -1,8 +1,8 @@
 package id.co.perhutani.sisdhbukuobor;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import id.co.perhutani.sisdhbukuobor.ui.gangguan.GangguanFragment;
 
