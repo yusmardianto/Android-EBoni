@@ -15,6 +15,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.ui.gangguan.GangguanFragment;
+import id.co.perhutani.sisdhbukuobor.ui.interaksimdh.InteraksiMdhFragment;
+import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.LaporanPalBatasFragment;
+import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.PemantauanSatwaFragment;
+import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.PerubahanKelasFragment;
+import id.co.perhutani.sisdhbukuobor.ui.registerpcp.RegisterPcpFragment;
 
 public class BukuOborFragment extends Fragment {
 
@@ -48,70 +53,70 @@ public class BukuOborFragment extends Fragment {
             }
         });
 
-//        LinearLayout linPerubahankelas = (LinearLayout)root.findViewById(R.id.linear_perubahankelas);
-//        linPerubahankelas.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new PerubahankelasFragment();
-//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//        LinearLayout lininteraksi = (LinearLayout)root.findViewById(R.id.linear_interaksi);
-//        lininteraksi.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new InteraksimdhFragment();
-//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//        LinearLayout linpemantauan = (LinearLayout)root.findViewById(R.id.linear_pemantauan);
-//        linpemantauan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new PemantauwansatwaFragment();
-//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//        LinearLayout linlappal = (LinearLayout)root.findViewById(R.id.linear_lappal);
-//        linlappal.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new LaporanpalFragment();
-//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//        LinearLayout linregisterpcp = (LinearLayout)root.findViewById(R.id.linear_regispcp);
-//        linregisterpcp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new RegisterpcpFragment();
-//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//            }
-//        });
+        LinearLayout linPerubahankelas = (LinearLayout)root.findViewById(R.id.linear_perubahankelas);
+        linPerubahankelas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new PerubahanKelasFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        LinearLayout lininteraksi = (LinearLayout)root.findViewById(R.id.linear_interaksi);
+        lininteraksi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new InteraksiMdhFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        LinearLayout linpemantauan = (LinearLayout)root.findViewById(R.id.linear_pemantauan);
+        linpemantauan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new PemantauanSatwaFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        LinearLayout linlappal = (LinearLayout)root.findViewById(R.id.linear_lappal);
+        linlappal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new LaporanPalBatasFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        LinearLayout linregisterpcp = (LinearLayout)root.findViewById(R.id.linear_regispcp);
+        linregisterpcp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new RegisterPcpFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return root;
     }
 
