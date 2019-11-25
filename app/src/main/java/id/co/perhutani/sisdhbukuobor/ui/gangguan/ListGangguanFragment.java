@@ -12,14 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import id.co.perhutani.sisdhbukuobor.Adapter.GangguanAdapter;
+import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
-import id.co.perhutani.sisdhbukuobor.ui.VerticalSpaceItemDecoration;
 
 public class ListGangguanFragment extends Fragment
 {
     View v ;
     private RecyclerView myrecyclerview;
-    private ArrayList<ListViewGangguan> lstGangguan;
+    private ArrayList<GangguanModel> lstGangguan;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
 
@@ -27,11 +28,12 @@ public class ListGangguanFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         v = inflater.inflate(R.layout.gangguan_fragment, container, false);
 
-        myrecyclerview = (RecyclerView) v.findViewById(R.id.gangguan_recycler);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstGangguan);
+        myrecyclerview = v.findViewById(R.id.gangguan_recycler);
+        GangguanAdapter gAdapter = new GangguanAdapter(getContext(),lstGangguan);
         myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-        myrecyclerview .setAdapter(recyclerViewAdapter);
+//        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        myrecyclerview .setAdapter(gAdapter);
+
         return v;
     }
 
@@ -40,10 +42,11 @@ public class ListGangguanFragment extends Fragment
         super.onCreate(savedInstanceState);
 
         lstGangguan = new ArrayList<>();
-        lstGangguan.add(new ListViewGangguan("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new ListViewGangguan("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new ListViewGangguan("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new ListViewGangguan("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new ListViewGangguan("Penebangan ","Jkt","011","30/11/19"));
+        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+
     }
 }

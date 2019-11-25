@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import id.co.perhutani.sisdhbukuobor.R;
-import id.co.perhutani.sisdhbukuobor.ui.gangguan.GangguanFragment;
+import id.co.perhutani.sisdhbukuobor.ui.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.ui.interaksimdh.InteraksiMdhFragment;
 import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.LaporanPalBatasFragment;
 import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.PemantauanSatwaFragment;
@@ -44,7 +44,7 @@ public class BukuOborFragment extends Fragment {
         lingangguan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new GangguanFragment();
+                Fragment fragment = new ListGangguanFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
