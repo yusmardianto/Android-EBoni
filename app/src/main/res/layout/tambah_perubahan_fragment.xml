@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_frame_login"
+    tools:context=".ui.perubahankelas.tambahperubahan.TambahPerubahanFragment">
+
+    <LinearLayout
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <android.inputmethodservice.ExtractEditText
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background"
+            android:hint="No BAPPKH"/>
+
+        <android.inputmethodservice.ExtractEditText
+            android:layout_marginTop="15dp"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background"
+            android:hint="Tahun"/>
+
+        <android.inputmethodservice.ExtractEditText
+            android:layout_marginTop="-44dp"
+            android:layout_marginLeft="185dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background"
+            android:hint="Kelas Hutan"/>
+
+        <android.inputmethodservice.ExtractEditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_background"
+            android:hint="Jenis Tanaman"/>
+
+        <android.inputmethodservice.ExtractEditText
+            android:layout_marginTop="15dp"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background"
+            android:hint="Luas"/>
+
+        <android.inputmethodservice.ExtractEditText
+            android:layout_marginTop="-44dp"
+            android:layout_marginLeft="185dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background"
+            android:hint="Perkiraan Luas"/>
+
+        <android.inputmethodservice.ExtractEditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_background"
+            android:hint="Kelas"/>
+
+        <android.inputmethodservice.ExtractEditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_background"
+            android:hint="Jenis Tanaman Baru"/>
+
+        <android.inputmethodservice.ExtractEditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/ic_background"
+            android:hint="Keterangan"/>
+
+        <android.app.MediaRouteButton
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_background"
+            android:text="@string/text_submit"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
