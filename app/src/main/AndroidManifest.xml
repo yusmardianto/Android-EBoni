@@ -17,8 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:icon">
-
-        <activity android:name=".TambahGangguanActivity"></activity>
+        <activity android:name=".LocalDatabaseActivity"></activity>
+        <activity android:name=".TambahGangguanActivity" />
         <activity android:name=".RegisterPcpActivity" />
         <activity android:name=".LaporanPalBatasActivity" />
         <activity android:name=".PemantauanSatwaActivity" />

@@ -5,16 +5,107 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_frame_login">
 
-    <TextView
-        android:id="@+id/text_home"
+    <RelativeLayout
+        android:id="@+id/linear_layout_home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="Hi, Dimas Prayogi"
+            android:textColor="#0EAE6B"
+            android:textStyle="bold"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/text_tanggal"
+            android:layout_below="@+id/text_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="Senin, 21 Oktober 2019"
+            android:textColor="#757575"
+            android:textStyle="bold"
+            android:textSize="13dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_activity"
+            android:layout_below="@id/text_tanggal"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:cardBackgroundColor="#0AA144"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/ic_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Aktifitas Terbaru"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:textSize="15dp"/>
+                    <TextView
+                        android:layout_marginLeft="33dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3 Perlu diupdate"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:textSize="13dp"/>
+
+                </LinearLayout>
+
+
+
+                <ImageView
+                    android:layout_weight="2"
+                    android:src="@drawable/ic_hometanpabg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_pemberitahuan"
+            android:layout_below="@id/card_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="Pemberitahuan"
+            android:textColor="#757575"
+            android:textStyle="bold"
+            android:textSize="13dp"/>
+
+
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
