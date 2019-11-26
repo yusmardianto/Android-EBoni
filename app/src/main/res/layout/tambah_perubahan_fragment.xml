@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tambahgangguan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_frame_login"
     tools:context=".ui.perubahankelas.tambahperubahan.TambahPerubahanFragment">
 
     <LinearLayout
@@ -84,16 +86,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/ic_background"
             android:text="@string/text_submit"/>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/linear_tambahgangguan"
-        android:scrollbars="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/gangguan_recycler">
-    </androidx.recyclerview.widget.RecyclerView>
-
-</RelativeLayout>
+</ScrollView>
