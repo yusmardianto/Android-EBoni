@@ -26,12 +26,7 @@ public class TambahPerubahanFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.tambah_perubahan_fragment, container, false);
-
-        mViewModel = ViewModelProviders.of(this).get(TambahPerubahanViewModel.class);
-        View root = inflater.inflate(R.layout.tambah_perubahan_fragment, container, false);
-
-        return root;
+        return inflater.inflate(R.layout.tambah_perubahan_fragment, container, false);
     }
 
     @Override
