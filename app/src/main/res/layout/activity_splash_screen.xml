@@ -4,6 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_frame_login"
     tools:context=".SplashScreenActivity">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:layout_marginBottom="308dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_icn_logophtobor" />
+
+        <TextView
+            android:fontFamily="@font/font_aal_default"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Selamat Datang"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="290dp" />
+        <TextView
+            android:id="@+id/txt_splash_nama"
+            android:fontFamily="@font/font_aal_default"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="[ NAMA ]"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="260dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="108dp" />
+
+        <TextView
+            android:fontFamily="@font/font_aal_default"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Powered by Perum Perhutani"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="90dp" />
+
+        <TextView
+            android:fontFamily="@font/font_aal_default"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/app_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="60dp" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

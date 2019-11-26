@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:icon">
-        <activity android:name=".ui.pemantauansatwa.tambahpemantauansatwa"></activity>
+
         <activity android:name=".TambahGangguanActivity" />
         <activity android:name=".RegisterPcpActivity" />
         <activity android:name=".LaporanPalBatasActivity" />

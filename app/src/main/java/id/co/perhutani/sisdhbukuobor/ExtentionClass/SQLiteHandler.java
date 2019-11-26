@@ -11,12 +11,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "union-agroforest-v3.db";
+    private static final String DATABASE_NAME = "union-sisdh-bukuobor-v1.db";
 
     public SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -27,8 +31,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
-//        db.execSQL(ProjekAndilSchema.SQL_CREATE_ENTRIES);
-//        db.execSQL(AktifitasProjekSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstAnakPetakSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisTanamanSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisPermasalahanSchema.SQL_CREATE_ENTRIES);
     }
 
     // Upgrading database
@@ -36,8 +42,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL(UserSchema.SQL_DELETE_ENTRIES);
-//        db.execSQL(ProjekAndilSchema.SQL_DELETE_ENTRIES);
-//        db.execSQL(AktifitasProjekSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstAnakPetakSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstKelasHutanSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstJenisTanamanSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstJenisPermasalahanSchema.SQL_DELETE_ENTRIES);
         // Create tables again
         onCreate(db);
     }

@@ -15,12 +15,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
+import id.co.perhutani.sisdhbukuobor.LocalDatabaseActivity;
 import id.co.perhutani.sisdhbukuobor.LoginActivity;
+import id.co.perhutani.sisdhbukuobor.MainActivity;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class ProfilFragment extends Fragment {
@@ -28,6 +35,9 @@ public class ProfilFragment extends Fragment {
     private ProfilViewModel mViewModel;
     private SessionManager session;
     private SQLiteHandler db;
+    int count = 0;
+    public static String getnama, getbkph;
+    private TextView nama, bkph;
 
     public static ProfilFragment newInstance() {
         return new ProfilFragment();
@@ -47,12 +57,32 @@ public class ProfilFragment extends Fragment {
             actionDeleteData();
         }
 
+        nama = profileView.findViewById(R.id.txt_nama_user);
+        bkph = profileView.findViewById(R.id.txt_lokasi_user);
+        getnama = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_NAME_DESCRIPTIONS);
+        getbkph = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.KET1);
+        nama.setText(getnama);
+        bkph.setText(getbkph);
+
         LinearLayout logout = profileView.findViewById(R.id.linear_logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Manually checking internet connection
                 function_logout();
+            }
+        });
+        LinearLayout checkdb = profileView.findViewById(R.id.linear_test);
+        checkdb.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                count++;
+                if (count == 3) {
+                    count = 0;
+                    db.altertable();
+                    Intent intent = new Intent(getActivity(), LocalDatabaseActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
             }
         });
 
@@ -109,7 +139,10 @@ public class ProfilFragment extends Fragment {
     private void actionDeleteData() {
         session.setLogin(false);
         db.deleteAllRow(UserSchema.SQL_DELETE_ALL_ROWS);
-//        db.deleteAllRow(ProjekAndilSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstAnakPetakSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstKelasHutanSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisTanamanSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisPermasalahanSchema.SQL_DELETE_ALL_ROWS);
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
         getActivity().finish();
