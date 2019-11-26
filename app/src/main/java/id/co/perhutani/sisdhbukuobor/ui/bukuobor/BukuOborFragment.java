@@ -11,19 +11,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
 
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.ui.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.ui.interaksimdh.InteraksiMdhFragment;
-import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.LaporanPalBatasFragment;
-import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.PemantauanSatwaFragment;
+import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.ListPelaporanpalFragment;
+import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ListPemantauansatwaFragment;
 import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.PerubahanKelasFragment;
 import id.co.perhutani.sisdhbukuobor.ui.registerpcp.RegisterPcpFragment;
 
 public class BukuOborFragment extends Fragment {
 
-    private BukuOborViewModel mViewModel;
 
     public static BukuOborFragment newInstance() {
         return new BukuOborFragment();
@@ -36,7 +34,6 @@ public class BukuOborFragment extends Fragment {
 //        return inflater.inflate(R.layout.buku_obor_fragment, container, false);
 
 
-        mViewModel = ViewModelProviders.of(this).get(BukuOborViewModel.class);
         View root = inflater.inflate(R.layout.buku_obor_fragment, container, false);
 
 
@@ -83,7 +80,7 @@ public class BukuOborFragment extends Fragment {
         linpemantauan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new PemantauanSatwaFragment();
+                Fragment fragment = new ListPemantauansatwaFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
@@ -96,7 +93,7 @@ public class BukuOborFragment extends Fragment {
         linlappal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new LaporanPalBatasFragment();
+                Fragment fragment = new ListPelaporanpalFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
@@ -120,11 +117,5 @@ public class BukuOborFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(BukuOborViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }

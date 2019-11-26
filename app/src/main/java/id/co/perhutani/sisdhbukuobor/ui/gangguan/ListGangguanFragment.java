@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,7 +26,6 @@ public class ListGangguanFragment extends Fragment
 //    View v ;
     private RecyclerView myrecyclerview;
     private ArrayList<GangguanModel> lstGangguan;
-    private GangguanViewModel mViewModel;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListGangguanFragment newInstance() { return new ListGangguanFragment(); }
@@ -35,8 +33,6 @@ public class ListGangguanFragment extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mViewModel = ViewModelProviders.of(this).get(GangguanViewModel.class);
-//        v = inflater.inflate(R.layout.gangguan_fragment, container, false);
 
 
         View root = inflater.inflate(R.layout.gangguan_fragment, container, false);
