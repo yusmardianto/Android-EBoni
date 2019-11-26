@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tambahgangguan"
@@ -7,14 +9,106 @@
     android:layout_height="match_parent"
     tools:context=".ui.gangguan.tambahgangguan.TambahGangguanFragment">
 
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TambahGangguanFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_background"
+                android:hint="Isi petak / Anak Petak"/>
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_background"
+                android:hint="No_ID"/>
+
+            <EditText
+                android:layout_marginTop="-44dp"
+                android:layout_marginLeft="185dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_background"
+                android:hint="Tanggal"/>
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_background"
+                android:hint="Isikan Kejadian . . . "/>
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kerugian"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_background"
+                android:hint="Luas dalam Ha . . "/>
+
+            <EditText
+                android:layout_marginTop="-44dp"
+                android:layout_marginLeft="185dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_background"
+                android:hint="Jumlah Pohon"/>
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_background"
+                android:hint="KYP dalam M3 . . . "/>
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_background"
+                android:hint="KYB dalam Sm . . . "/>
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_background"
+                android:hint="Getah dalam TON . . . "/>
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_background"
+                android:hint="Nilai kerugian dalam Rp . . . "/>
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/ic_background"
+                android:hint="Tambahkan keterangan . . . "/>
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/text_submit"/>
+        </LinearLayout>
+
+</ScrollView>
