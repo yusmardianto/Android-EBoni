@@ -19,28 +19,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_background"
-            android:hint="Petak"/>
+            android:hint="Tahun"/>
 
         <EditText
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_background"
-            android:hint="Anak Petak"/>
+            android:hint="Jenis PAL"/>
 
         <EditText
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_background"
-            android:hint="Jenis Satwa ( Dropdown )"/>
+            android:hint="Kondisi ( Dropdown )"/>
 
         <EditText
             android:layout_marginTop="15dp"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_background"
-            android:hint="Jumlah"/>
+            android:hint="Nomer"/>
 
         <EditText
             android:layout_marginTop="-44dp"
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_background"
-            android:hint="Waktu Lihat"/>
+            android:hint="Jumlah"/>
 
         <EditText
             android:layout_marginTop="15dp"
