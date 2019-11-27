@@ -39,7 +39,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 //        return inflater.inflate(R.layout.tambahpemantauansatwa_fragment, container, false);
-        View root = inflater.inflate(R.layout.tambah_gangguan_fragment, container, false);
+        View root = inflater.inflate(R.layout.tambahpemantauansatwa_fragment, container, false);
 
         db = new SQLiteHandler(getActivity());
 
@@ -69,7 +69,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
                     db.create(TrnPemantauanSatwa.TABLE_NAME, values_aktifitas);
                     Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
 
-//                    // Move to fragment gangguan
+//                    // Move to fragment pemantauan satwa
                     FragmentManager manager = (getActivity()).getSupportFragmentManager();
                     Fragment fragment = new ListPemantauansatwaFragment();
                     FragmentTransaction ft = manager.beginTransaction();

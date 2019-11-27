@@ -36,7 +36,7 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PerubahankelasAdapter.PerubahanklsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PerubahanklsViewHolder holder, int position) {
 
         holder.tv_ID.setText(mData.get(position).getID());
         holder.tv_noPetak.setText(mData.get(position).getNoPetak());

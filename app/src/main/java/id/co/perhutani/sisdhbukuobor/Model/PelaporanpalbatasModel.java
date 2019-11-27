@@ -6,8 +6,6 @@ public class PelaporanpalbatasModel {
     private String NoPal;
     private String Kondisi;
 
-    public PelaporanpalbatasModel() {
-    }
 
     public PelaporanpalbatasModel(String ID, String petak, String noPal, String kondisi) {
         this.ID = ID;

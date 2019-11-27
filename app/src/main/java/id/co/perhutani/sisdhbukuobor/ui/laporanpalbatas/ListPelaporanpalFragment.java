@@ -1,5 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,16 +17,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.Adapter.PelaporanpalbatasAdapter;
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.ui.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.ui.tambahlaporanpalbatas.TambahlaporanpalbatasFragment;
 
 public class ListPelaporanpalFragment extends Fragment
 {
     private RecyclerView myrecylcerview;
-    private ArrayList<PelaporanpalbatasModel> lstpelaporanpal;
+    private ArrayList<PelaporanpalbatasModel> DataPelaporan ;
+    private List<PelaporanpalbatasModel> lstpelaporanpal;
+    PelaporanpalbatasAdapter pAdapter;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListPelaporanpalFragment newInstance()
@@ -43,6 +51,7 @@ public class ListPelaporanpalFragment extends Fragment
         myrecylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         myrecylcerview .setAdapter(gAdapter);
+        init();
 
         ImageView imgTambahPelaporanpal = (ImageView) root.findViewById(R.id.img_tambahlaporanpal);
         imgTambahPelaporanpal.setOnClickListener(new View.OnClickListener() {
@@ -59,20 +68,63 @@ public class ListPelaporanpalFragment extends Fragment
         return root;
     }
 
+    public void init() {
+        try {
+            pAdapter = new PelaporanpalbatasAdapter(getContext(),lstpelaporanpal);
+            myrecylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+            myrecylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+            myrecylcerview .setAdapter(pAdapter);
+        } catch (Exception ex) {
+            AjnClass.showAlert(getActivity(), ex.toString());
+        }
+    }
+
+    public void def(){
+        lstpelaporanpal = new ArrayList<>();
+
+        try {
+
+            SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            final Cursor cur = db.rawQuery("SELECT " +
+                    " *" +
+//                    " DISTINCT(ID)" +
+                    " FROM TRN_LAPORAN_PAL " +
+                    " ORDER BY ID DESC", null);
+
+            cur.moveToPosition(0);
+            DataPelaporan = new ArrayList<>();
+            for (int i = 0; i < cur.getCount(); i++) {
+                lstpelaporanpal.add(new PelaporanpalbatasModel(
+                        cur.getString(0),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3)));
+                cur.moveToNext();
+            }
+
+            cur.close();
+            db.close();
+        } catch (Exception ex) {
+            AjnClass.showAlert(getActivity(), ex.toString());
+        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        def();
 
-        lstpelaporanpal = new ArrayList<>();
-        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
+//        lstpelaporanpal = new ArrayList<>();
+//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
+//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
+//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
+//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
+//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
+//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
+//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
+//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
+//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
 
 
     }

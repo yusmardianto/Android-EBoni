@@ -6,9 +6,6 @@ public class PemantauansatwaModel {
     private String Tanggal;
     private String Jenis;
 
-    public PemantauansatwaModel() {
-    }
-
     public PemantauansatwaModel(String ID, String petak, String tanggal, String jenis) {
         this.ID = ID;
         Petak = petak;

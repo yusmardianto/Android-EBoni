@@ -1,7 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
 public class TrnPemantauanSatwa {
-    public static final String TABLE_NAME = "TRN_LAPORAN_SATWA";
+    public static final String TABLE_NAME = "TRN_PEMANTAUAN_SATWA";
     public static final String _ID = "ID";
     public static final String PETAK_ID = "PETAK_ID";
     public static final String ANAK_PETAK_ID = "ANAK_PETAK_ID";
