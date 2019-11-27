@@ -16,6 +16,8 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
@@ -37,7 +39,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTanamanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
+
     }
 
     // Upgrading database
@@ -50,7 +55,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTanamanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPerubahanKelas.SQL_DELETE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
         // Create tables again
         onCreate(db);
     }
@@ -70,6 +77,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
 
 //        db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
 //        db.execSQL(ProjekAndilSchema.SQL_CREATE_ENTRIES);
