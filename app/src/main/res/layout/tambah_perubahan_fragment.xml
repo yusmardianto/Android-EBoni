@@ -129,9 +129,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_background"
-            android:hint="Jenis Kelas Definitif"/>
+            android:hint="Kelas Definitif"/>
 
         <EditText
+            android:id="@+id/perubahankls_ketperubahan"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -139,6 +140,7 @@
             android:hint="Keterangan"/>
 
         <Button
+            android:id="@+id/perubahankls_btnsubmit"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
