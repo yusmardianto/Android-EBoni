@@ -92,10 +92,10 @@ public class ListGangguanFragment extends Fragment
             dataModels = new ArrayList<>();
             for (int i = 0; i < cur.getCount(); i++) {
                 lsgangguan.add(new GangguanModel(
-                        cur.getString(0),
-                        cur.getString(0),
-                        cur.getString(0),
-                        cur.getString(0)));
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(5)));
                 cur.moveToNext();
             }
 

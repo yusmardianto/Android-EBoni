@@ -7,8 +7,6 @@ public class PerubahankelasModel {
     private String Tanggal;
     private String Kelas;
 
-    public PerubahankelasModel() {
-    }
 
     public PerubahankelasModel(String ID, String noPetak, String petak, String tanggal, String kelas) {
         this.ID = ID;
