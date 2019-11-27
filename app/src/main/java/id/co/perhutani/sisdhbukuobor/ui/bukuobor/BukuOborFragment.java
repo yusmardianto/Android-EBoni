@@ -17,7 +17,7 @@ import id.co.perhutani.sisdhbukuobor.ui.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.ui.interaksimdh.InteraksiMdhFragment;
 import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.ListPelaporanpalFragment;
 import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ListPemantauansatwaFragment;
-import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.PerubahanKelasFragment;
+import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.tambahperubahan.ListPerubahanKelasFragment;
 import id.co.perhutani.sisdhbukuobor.ui.registerpcp.RegisterPcpFragment;
 
 public class BukuOborFragment extends Fragment {
@@ -54,7 +54,7 @@ public class BukuOborFragment extends Fragment {
         linPerubahankelas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new PerubahanKelasFragment();
+                Fragment fragment = new ListPerubahanKelasFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);

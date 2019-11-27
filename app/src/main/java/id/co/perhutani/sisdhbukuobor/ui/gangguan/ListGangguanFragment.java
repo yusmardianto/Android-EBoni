@@ -1,5 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.ui.gangguan;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import id.co.perhutani.sisdhbukuobor.Adapter.GangguanAdapter;
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.ui.gangguan.tambahgangguan.TambahGangguanFragment;
@@ -25,7 +29,7 @@ public class ListGangguanFragment extends Fragment
 {
 //    View v ;
     private RecyclerView myrecyclerview;
-    private ArrayList<GangguanModel> lstGangguan;
+    private ArrayList<GangguanModel> dataModels;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListGangguanFragment newInstance() { return new ListGangguanFragment(); }
@@ -37,7 +41,7 @@ public class ListGangguanFragment extends Fragment
 
         View root = inflater.inflate(R.layout.gangguan_fragment, container, false);
         myrecyclerview = root.findViewById(R.id.gangguan_recycler);
-        GangguanAdapter gAdapter = new GangguanAdapter(getContext(),lstGangguan);
+        GangguanAdapter gAdapter = new GangguanAdapter(getContext(),dataModels);
         myrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         myrecyclerview .setAdapter(gAdapter);
@@ -60,22 +64,52 @@ public class ListGangguanFragment extends Fragment
         return root;
     }
 
+    public void def(){
+        dataModels = new ArrayList<>();
+
+        try {
+
+            SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            final Cursor cur = db.rawQuery("SELECT " +
+                    " DISTINCT(ANAKPETAK_ID)" +
+                    " FROM TRN_GANGGUAN_HUTAN " +
+                    " ORDER BY ID DESC", null);
+
+            cur.moveToPosition(0);
+            dataModels = new ArrayList<>();
+            for (int i = 0; i < cur.getCount(); i++) {
+                dataModels.add(new GangguanModel(
+                        cur.getString(0),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3)));
+                cur.moveToNext();
+            }
+
+            cur.close();
+            db.close();
+        } catch (Exception ex) {
+            AjnClass.showAlert(getActivity(), ex.toString());
+        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        lstGangguan = new ArrayList<>();
-        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
-        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
-
-
+//
+        def();
+//        lstGangguan = new ArrayList<>();
+//        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+//        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+//        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+//        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+//        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+//        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+//        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+//        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+//        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+//        lstGangguan.add(new GangguanModel("Penebangan ","Jkt","011","30/11/19"));
+//
     }
 }

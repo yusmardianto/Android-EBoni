@@ -1,33 +1,29 @@
 package id.co.perhutani.sisdhbukuobor.ui.profil;
 
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
 import id.co.perhutani.sisdhbukuobor.LocalDatabaseActivity;
 import id.co.perhutani.sisdhbukuobor.LoginActivity;
-import id.co.perhutani.sisdhbukuobor.MainActivity;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
-import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class ProfilFragment extends Fragment {
@@ -81,7 +77,7 @@ public class ProfilFragment extends Fragment {
                     db.altertable();
                     Intent intent = new Intent(getActivity(), LocalDatabaseActivity.class);
                     startActivity(intent);
-                    getActivity().finish();
+                    getActivity();
                 }
             }
         });
@@ -140,7 +136,7 @@ public class ProfilFragment extends Fragment {
         session.setLogin(false);
         db.deleteAllRow(UserSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstAnakPetakSchema.SQL_DELETE_ALL_ROWS);
-        db.deleteAllRow(MstKelasHutanSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnGangguanKeamananHutan.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisTanamanSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisPermasalahanSchema.SQL_DELETE_ALL_ROWS);
         Intent intent = new Intent(getActivity(), LoginActivity.class);

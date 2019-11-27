@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="10dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/ic_background">
+
+        <TextView
+            android:id="@+id/name_idperubahan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No_ID : 201631141"/>
+
+        <TextView
+            android:id="@+id/name_anakpetakidperubahan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No_Petak : 087797315685"/>
+
+        <TextView
+            android:id="@+id/name_petakperubahan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Petak       : KPH Semarang"/>
+
+        <TextView
+            android:id="@+id/name_tglperubahan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal    : 12-12-2012"/>
+
+        <TextView
+            android:id="@+id/name_kelasperubahan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kelas hutan : Eboni "/>
+
+        <ImageView
+            android:id="@+id/name_info_alert_perubahan"
+            android:layout_marginTop="17dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_info_outline_red_24dp"/>
+
+        <TextView
+            android:id="@+id/name_data_sinkron_perubahan"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="25dp"
+            android:textColor="#FF0000 "
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Data belum disinkronkan" />
+
+        <ImageView
+            android:id="@+id/img_detail_perubahan"
+            android:layout_marginTop="-100dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_visibility_black_24dp"
+            android:layout_gravity="right"/>
+
+        <TextView
+            android:id="@+id/name_detail_perubahan"
+            android:layout_marginTop="-7dp"
+            android:layout_marginRight="3.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail"
+            android:layout_gravity="right"/>
+    </LinearLayout>
+</LinearLayout>

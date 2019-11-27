@@ -28,6 +28,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".BukuOborActivity" />
         <activity android:name=".GangguanActivity" />
+        <activity android:name=".LocalDatabaseActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"

@@ -14,7 +14,7 @@ import android.util.Log;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
-import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
@@ -32,9 +32,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_CREATE_ENTRIES);
-        db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTanamanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
     }
 
     // Upgrading database
@@ -43,9 +44,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         // Drop older table if existed
         db.execSQL(UserSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_DELETE_ENTRIES);
-        db.execSQL(MstKelasHutanSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisTanamanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
         // Create tables again
         onCreate(db);
     }
@@ -53,7 +55,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void altertable() {
         SQLiteDatabase db = getReadableDatabase();
         //create table
-//        db.execSQL(AktifitasProjekSchema.SQL_CREATE_ENTRIES);
+//        db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
     }
 
     public void change_aktif_blandong() {
@@ -63,6 +65,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void altertable_update_aplication() {
         SQLiteDatabase db = getReadableDatabase();
+        db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
+
 //        db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
 //        db.execSQL(ProjekAndilSchema.SQL_CREATE_ENTRIES);
 //        db.execSQL(AktifitasProjekSchema.SQL_CREATE_ENTRIES);
