@@ -19,13 +19,15 @@
         android:weightSum="10">
 
         <EditText
+            android:id="@+id/perubahankls_idpetakperubahan"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_background"
-            android:hint="No BAPPKH"/>
+            android:hint="Anak Petak"/>
 
         <EditText
+            android:id="@+id/perubahankls_tahunperubahan"
             android:layout_marginTop="15dp"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
@@ -33,14 +35,16 @@
             android:hint="Tahun"/>
 
         <EditText
+            android:id="@+id/perubahankls_luasperubahan"
             android:layout_marginTop="-44dp"
             android:layout_marginLeft="185dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_background"
-            android:hint="Kelas Hutan"/>
+            android:hint="Luas"/>
 
         <EditText
+            android:id="@+id/perubahankls_jenisperubahan"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -48,33 +52,84 @@
             android:hint="Jenis Tanaman"/>
 
         <EditText
-            android:layout_marginTop="15dp"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Luas"/>
-
-        <EditText
-            android:layout_marginTop="-44dp"
-            android:layout_marginLeft="185dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Perkiraan Luas"/>
-
-        <EditText
+            android:id="@+id/perubahankls_kelasperubahan"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/ic_background"
-            android:hint="Kelas"/>
+            android:hint="Kelas Hutan"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perkiraan"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <EditText
+            android:id="@+id/perubahankls_luasperkiraan"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background"
+            android:hint="Luas Perkiraan"/>
+
+        <EditText
+            android:id="@+id/perubahankls_jenisperkiraan"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/ic_background"
-            android:hint="Jenis Tanaman Baru"/>
+            android:hint="Jenis Tanaman Perkiraan"/>
+
+        <EditText
+            android:id="@+id/perubahankls_kelasperkiraan"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_background"
+            android:hint="Kelas Hutan Perkiraan"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Definitif"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/perubahankls_nobappkh"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background"
+            android:hint="No BAPPKH"/>
+
+        <EditText
+            android:id="@+id/perubahankls_luasdefinitif"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background"
+            android:hint="Luas Definitif"/>
+
+        <EditText
+            android:id="@+id/perubahankls_jenisdefinitif"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background"
+            android:hint="Jenis Tanaman Definitif"/>
+
+        <EditText
+            android:id="@+id/perubahankls_kelasdefinitif"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background"
+            android:hint="Jenis Kelas Definitif"/>
 
         <EditText
             android:layout_marginTop="15dp"
@@ -89,5 +144,4 @@
             android:layout_height="50dp"
             android:text="@string/text_submit"/>
     </LinearLayout>
-
 </ScrollView>
