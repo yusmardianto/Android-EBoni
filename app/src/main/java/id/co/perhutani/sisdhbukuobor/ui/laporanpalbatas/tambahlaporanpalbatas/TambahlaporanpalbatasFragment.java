@@ -1,4 +1,4 @@
-package id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.ui.tambahlaporanpalbatas;
+package id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.tambahlaporanpalbatas;
 
 import android.content.ContentValues;
 import android.os.Bundle;

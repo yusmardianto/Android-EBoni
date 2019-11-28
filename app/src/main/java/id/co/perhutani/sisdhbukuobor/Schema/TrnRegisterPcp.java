@@ -10,7 +10,7 @@ public class TrnRegisterPcp {
     public static final String LUAS_BAKU = "LUAS_BAKU";
     public static final String LUAS_BLOK =  "LUAS_BLOK";
     public static final String UMUR =  "UMUR";
-    public static final String RATARATA_KELILING = "RATA-RATA_KELILING";
+    public static final String RATARATA_KELILING = "RATARATA_KELILING";
     public static final String BONITA = "BONITA";
     public static final String M_PCP = "M_PCP";
     public static final String NORMAL_PCP = "NORMAL_DALAM_PCP";
