@@ -77,11 +77,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void altertable_update_aplication() {
         SQLiteDatabase db = getReadableDatabase();
-        db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
-        db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
-        db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
-        db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
-        db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
+//        db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
+//        db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
+//        db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
+//        db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
+//        db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
 
 //        db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
 //        db.execSQL(ProjekAndilSchema.SQL_CREATE_ENTRIES);
