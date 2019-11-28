@@ -44,7 +44,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
-
     }
 
     // Upgrading database
