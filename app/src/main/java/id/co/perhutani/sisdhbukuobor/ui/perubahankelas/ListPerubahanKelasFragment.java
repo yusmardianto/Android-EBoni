@@ -1,4 +1,4 @@
-package id.co.perhutani.sisdhbukuobor.ui.perubahankelas.tambahperubahan;
+package id.co.perhutani.sisdhbukuobor.ui.perubahankelas;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,6 +25,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.ui.VerticalSpaceItemDecoration;
+import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.tambahperubahan.TambahPerubahanFragment;
 
 public class ListPerubahanKelasFragment extends Fragment
 {

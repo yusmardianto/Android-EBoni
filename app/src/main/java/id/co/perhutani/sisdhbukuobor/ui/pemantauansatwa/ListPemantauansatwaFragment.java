@@ -25,7 +25,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.ui.VerticalSpaceItemDecoration;
-import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ui.pemantauansatwa.tambahpemantauansatwa.TambahpemantauansatwaFragment;
+import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.tambahpemantauan.TambahpemantauansatwaFragment;
 
 public class ListPemantauansatwaFragment extends Fragment
 {
