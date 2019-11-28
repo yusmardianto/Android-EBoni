@@ -1,4 +1,4 @@
-package id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ui.pemantauansatwa.tambahpemantauansatwa;
+package id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.tambahpemantauan;
 
 import android.content.ContentValues;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
@@ -38,8 +37,8 @@ public class TambahpemantauansatwaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.tambahpemantauansatwa_fragment, container, false);
-        View root = inflater.inflate(R.layout.tambahpemantauansatwa_fragment, container, false);
+//        return inflater.inflate(R.layout.tambah_pemantauansatwa_fragment, container, false);
+        View root = inflater.inflate(R.layout.tambah_pemantauansatwa_fragment, container, false);
 
         db = new SQLiteHandler(getActivity());
 

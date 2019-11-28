@@ -25,7 +25,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.ui.VerticalSpaceItemDecoration;
-import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.ui.tambahlaporanpalbatas.TambahlaporanpalbatasFragment;
+import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.tambahlaporanpalbatas.TambahlaporanpalbatasFragment;
 
 public class ListPelaporanpalFragment extends Fragment
 {

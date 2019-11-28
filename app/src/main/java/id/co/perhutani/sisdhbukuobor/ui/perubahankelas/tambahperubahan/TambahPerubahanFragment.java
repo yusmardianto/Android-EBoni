@@ -19,6 +19,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
+import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.ListPerubahanKelasFragment;
 
 public class TambahPerubahanFragment extends Fragment {
 

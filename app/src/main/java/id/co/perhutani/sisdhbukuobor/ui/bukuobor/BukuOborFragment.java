@@ -17,7 +17,7 @@ import id.co.perhutani.sisdhbukuobor.ui.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.ui.interaksimdh.InteraksiMdhFragment;
 import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.ListPelaporanpalFragment;
 import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ListPemantauansatwaFragment;
-import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.tambahperubahan.ListPerubahanKelasFragment;
+import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.ListPerubahanKelasFragment;
 import id.co.perhutani.sisdhbukuobor.ui.registerpcp.ListRegisterpcpFragment;
 
 public class BukuOborFragment extends Fragment {

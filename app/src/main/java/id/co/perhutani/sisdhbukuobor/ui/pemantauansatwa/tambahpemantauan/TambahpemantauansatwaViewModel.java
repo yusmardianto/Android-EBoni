@@ -1,4 +1,4 @@
-package id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ui.pemantauansatwa.tambahpemantauansatwa;
+package id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.tambahpemantauan;
 
 import androidx.lifecycle.ViewModel;
 

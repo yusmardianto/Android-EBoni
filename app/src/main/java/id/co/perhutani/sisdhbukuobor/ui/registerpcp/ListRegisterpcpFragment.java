@@ -1,4 +1,6 @@
 package id.co.perhutani.sisdhbukuobor.ui.registerpcp;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,20 +16,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.Adapter.RegisterpcpAdapter;
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.ui.VerticalSpaceItemDecoration;
+import id.co.perhutani.sisdhbukuobor.ui.registerpcp.tambahregisterpcp.TambahRegisterpcpFragment;
 
 public class ListRegisterpcpFragment extends Fragment
 {
     //View v;
     private RecyclerView recylcerview;
-    private ArrayList<RegisterpcpModel> lstregisterpcp;
+    private ArrayList<RegisterpcpModel> DataModel;
+    private List<RegisterpcpModel>lstregisterpcp;
+    RegisterpcpAdapter rpAdapter;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
-    public static ListRegisterpcpFragment newInstance()
-    {
+    public static ListRegisterpcpFragment newInstance(){
         return new ListRegisterpcpFragment();
     }
 
@@ -38,9 +46,9 @@ public class ListRegisterpcpFragment extends Fragment
     {
         View root = inflater.inflate(R.layout.register_pcp_fragment, container, false);
         recylcerview = root.findViewById(R.id.registerpcp_recycler);
-        RegisterpcpAdapter rAdapter = new RegisterpcpAdapter(getContext(),lstregisterpcp);
         recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recylcerview .setAdapter(rAdapter);
+        recylcerview .setAdapter(rpAdapter);
+        init();
 
 
         ImageView imgRegisterpcp = (ImageView) root.findViewById(R.id.img_tambahpcp);
@@ -59,18 +67,51 @@ public class ListRegisterpcpFragment extends Fragment
         return root;
     }
 
+    public void init() {
+        try {
+            rpAdapter = new RegisterpcpAdapter(getContext(),lstregisterpcp);
+            recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+            recylcerview .setAdapter(rpAdapter);
+        } catch (Exception ex) {
+            AjnClass.showAlert(getActivity(), ex.toString());
+        }
+    }
+
+    public void def(){
+        lstregisterpcp = new ArrayList<>();
+
+        try {
+
+            SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            final Cursor cur = db.rawQuery("SELECT " +
+                    " *" +
+//                    " DISTINCT(ANAKPETAK_ID)" +
+                    " FROM TRN_REGISTER_PCP " +
+                    " ORDER BY ID DESC", null);
+
+            cur.moveToPosition(0);
+            DataModel = new ArrayList<>();
+            for (int i = 0; i < cur.getCount(); i++) {
+                lstregisterpcp.add(new RegisterpcpModel(
+                        cur.getString(0),
+                        cur.getString(0),
+                        cur.getString(0),
+                        cur.getString(0)));
+                cur.moveToNext();
+            }
+
+            cur.close();
+            db.close();
+        } catch (Exception ex) {
+            AjnClass.showAlert(getActivity(), ex.toString());
+        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        lstregisterpcp = new ArrayList<>();
-        lstregisterpcp.add(new RegisterpcpModel("201631141","Semarang","2010","Anjay"));
-        lstregisterpcp.add(new RegisterpcpModel("201631141","Semarang","2010","Anjay"));
-        lstregisterpcp.add(new RegisterpcpModel("201631141","Semarang","2010","Anjay"));
-        lstregisterpcp.add(new RegisterpcpModel("201631141","Semarang","2010","Anjay"));
-        lstregisterpcp.add(new RegisterpcpModel("201631141","Semarang","2010","Anjay"));
-        lstregisterpcp.add(new RegisterpcpModel("201631141","Semarang","2010","Anjay"));
-        lstregisterpcp.add(new RegisterpcpModel("201631141","Semarang","2010","Anjay"));
-        lstregisterpcp.add(new RegisterpcpModel("201631141","Semarang","2010","Anjay"));
+        def();
     }
 }
