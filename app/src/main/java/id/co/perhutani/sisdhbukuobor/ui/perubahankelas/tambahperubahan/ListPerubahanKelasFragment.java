@@ -32,7 +32,7 @@ public class ListPerubahanKelasFragment extends Fragment
     private RecyclerView recylcerview;
     private ArrayList<PerubahankelasModel> DataModel;
     private List<PerubahankelasModel>lstperubahankls;
-    PerubahankelasAdapter pAdapter;
+    PerubahankelasAdapter pkAdapter;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListPerubahanKelasFragment newInstance()
@@ -47,10 +47,10 @@ public class ListPerubahanKelasFragment extends Fragment
     {
         View root = inflater.inflate(R.layout.perubahan_kelas_fragment, container, false);
         recylcerview = root.findViewById(R.id.perubahankls_recycler);
-        pAdapter = new PerubahankelasAdapter(getContext(),lstperubahankls);
+        pkAdapter = new PerubahankelasAdapter(getContext(),lstperubahankls);
         recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-        recylcerview .setAdapter(pAdapter);
+        recylcerview .setAdapter(pkAdapter);
         init();
 
         ImageView imgTambahPerubahankls = (ImageView) root.findViewById(R.id.img_tambahperubahan);
@@ -71,10 +71,10 @@ public class ListPerubahanKelasFragment extends Fragment
 
     public void init() {
         try {
-            pAdapter = new PerubahankelasAdapter(getContext(),lstperubahankls);
+            pkAdapter = new PerubahankelasAdapter(getContext(),lstperubahankls);
             recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
             recylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-            recylcerview .setAdapter(pAdapter);
+            recylcerview .setAdapter(pkAdapter);
         } catch (Exception ex) {
             AjnClass.showAlert(getActivity(), ex.toString());
         }
