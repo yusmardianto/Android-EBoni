@@ -83,7 +83,7 @@ public class ListGangguanFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " *" +
+                    " ID, KEJADIAN, ANAKPETAK_ID, NOMOR_HA, TANGGAL_HA" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_GANGGUAN_HUTAN " +
                     " ORDER BY ID DESC", null);
@@ -92,11 +92,11 @@ public class ListGangguanFragment extends Fragment
             dataModels = new ArrayList<>();
             for (int i = 0; i < cur.getCount(); i++) {
                 lsgangguan.add(new GangguanModel(
+                        cur.getString(0),
                         cur.getString(1),
                         cur.getString(2),
                         cur.getString(3),
-                        cur.getString(5),
-                        cur.getString(0)));
+                        cur.getString(4)));
                 cur.moveToNext();
             }
 

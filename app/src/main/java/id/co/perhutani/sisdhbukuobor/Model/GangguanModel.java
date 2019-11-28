@@ -8,8 +8,6 @@ public class GangguanModel {
     private String No;
     private String Tanggal;
 
-    public GangguanModel() {
-    }
 
     public GangguanModel(String id, String isi, String petak, String no, String tanggal) {
         Id = id;

@@ -25,6 +25,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
     List<GangguanModel> mData;
 
     SQLiteHandler db;
+
     private AlertDialog.Builder builder;
 
     public GangguanAdapter(Context mContext, List<GangguanModel> mData) {
@@ -37,6 +38,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
     public GangguanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View vgangguan;
+        db = new SQLiteHandler(mContext);
         vgangguan = LayoutInflater.from(mContext).inflate(R.layout.gangguanitem_fragment,parent,false);
         GangguanViewHolder vHolder = new GangguanViewHolder(vgangguan);
 
@@ -45,6 +47,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
     @Override
     public void onBindViewHolder(@NonNull GangguanViewHolder holder, final int position) {
+        db = new SQLiteHandler(mContext);
 
         holder.tv_isi.setText(mData.get(position).getIsi());
         holder.tv_petak.setText(mData.get(position).getPetak());
@@ -74,6 +77,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
         private LinearLayout btn_submitgangguan;
         public GangguanViewHolder(@NonNull View itemView) {
             super(itemView);
+
             tv_isi = itemView.findViewById(R.id.name_isi);
             tv_petak = itemView.findViewById(R.id.name_petak);
             tv_no = itemView.findViewById(R.id.name_id);
@@ -84,19 +88,62 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
     public void asu (final String id){
 
+
+//        AjnClass.showAlert(mContext,id);
         try {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             final View viewas = layoutInflater.inflate(R.layout.popup_detail_ganggaunkemanan, null);
             final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
             alertDialogBuilder.setView(viewas);
 
-            String get_anakpetak = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
-            String get_tahun = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TAHUN);
-            String get_nomorha = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_HA);
-            String get_kejadian = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
+            String get_anakpetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
+            String get_tahun = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TAHUN);
+            String get_nomorha = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_HA);
+            String get_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_HA);
+            String get_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
+            String get_kerugianluas = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
+            String get_kerugianpohon = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_POHON);
+            String get_kerugiankyp = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_KYP);
+            String get_kerugiankyb = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_KYB);
+            String get_kerugiangetah = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_GETAH);
+            String get_nilaikerugian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NILAI_KERUGIAN);
+            String get_keterangan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KETERANGAN);
 
             TextView anakpetak = viewas.findViewById(R.id.gangguan_petakdetailid);
             anakpetak.setText(get_anakpetak);
+
+            TextView tahun = viewas.findViewById(R.id.gangguan_tahundetail);
+            tahun.setText(get_tahun);
+
+            TextView nomorha = viewas.findViewById(R.id.gangguan_nomorhadetail);
+            nomorha.setText(get_nomorha);
+
+            TextView tanggal = viewas.findViewById(R.id.gangguan_tanggaldetail);
+            tanggal.setText(get_tanggal);
+
+            TextView kejadian = viewas.findViewById(R.id.gangguan_kejadiandetail);
+            kejadian.setText(get_kejadian);
+
+            TextView kerugianluas = viewas.findViewById(R.id.gangguan_rugiluasdetail);
+            kerugianluas.setText(get_kerugianluas);
+
+            TextView kerugianpohon = viewas.findViewById(R.id.gangguan_rugipohondetail);
+            kerugianpohon.setText(get_kerugianpohon);
+
+            TextView kerugiankyp = viewas.findViewById(R.id.gangguan_rugikypdetail);
+            kerugiankyp.setText(get_kerugiankyp);
+
+            TextView kerugiankyb = viewas.findViewById(R.id.gangguan_rugikybdetail);
+            kerugiankyb.setText(get_kerugiankyb);
+
+            TextView kerugiangetah = viewas.findViewById(R.id.gangguan_rugigetahdetail);
+            kerugiangetah.setText(get_kerugiangetah);
+
+            TextView nilaikerugian = viewas.findViewById(R.id.gangguan_nilairugidetail);
+            nilaikerugian.setText(get_nilaikerugian);
+
+            TextView keterangan = viewas.findViewById(R.id.gangguan_keterangandetail);
+            keterangan.setText(get_keterangan);
 
 
             alertDialogBuilder.setView(viewas);

@@ -65,6 +65,7 @@
                     android:text="Tahun                     : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_tahundetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
@@ -78,6 +79,7 @@
                     android:text="Nomor HA             : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_nomorhadetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
@@ -91,6 +93,7 @@
                     android:text="Tanggal HA           : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_tanggaldetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
@@ -104,6 +107,7 @@
                     android:text="Kejadian                 : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_kejadiandetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
@@ -117,6 +121,7 @@
                     android:text="Kerugian Luas       : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_rugiluasdetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
@@ -130,6 +135,7 @@
                 android:text="Kerugian Pohon    : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_rugipohondetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
@@ -143,6 +149,7 @@
                     android:text="Kerugian KYP        : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_rugikypdetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
@@ -156,6 +163,7 @@
                     android:text="Kerugian KYB        : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_rugikybdetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
@@ -169,6 +177,7 @@
                     android:text="Kerugian Getah     : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_rugigetahdetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
@@ -182,6 +191,7 @@
                     android:text="Nilai Kerugian        : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_nilairugidetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
@@ -195,6 +205,7 @@
                     android:text="Keterangan            : "/>
 
                 <TextView
+                    android:id="@+id/gangguan_keterangandetail"
                     android:layout_marginTop="-20dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"

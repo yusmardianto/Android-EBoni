@@ -119,6 +119,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         }
         return status;
     }
+
+    public String getDataDetail(String tabel, String kolom_param, String param, String kolom) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(tabel, null, kolom_param + "=?", new String[]{param}, null, null, null);
+        if (cursor.getCount() < 1) // NPK Not Exist
+        {
+            cursor.close();
+            return null;
+        }
+        cursor.moveToFirst();
+//        String password = cursor.getString(0);
+        String password = cursor.getString(cursor.getColumnIndex(kolom));
+        cursor.close();
+        return password;
+    }
+
+
     public String getDataProfil(String tabel, String kolom) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query(tabel, null, null, null, null, null, null);
