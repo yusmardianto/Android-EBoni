@@ -2,6 +2,7 @@ package id.co.perhutani.sisdhbukuobor.Model;
 
 public class GangguanModel {
 
+    private String Id;
     private String Isi;
     private String Petak;
     private String No;
@@ -10,11 +11,20 @@ public class GangguanModel {
     public GangguanModel() {
     }
 
-    public GangguanModel(String isi, String petak, String no, String tanggal) {
+    public GangguanModel(String id, String isi, String petak, String no, String tanggal) {
+        Id = id;
         Isi = isi;
         Petak = petak;
         No = no;
         Tanggal = tanggal;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
     }
 
     public String getIsi() {

@@ -13,16 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 
 public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.GangguanViewHolder> {
 
     Context mContext;
     List<GangguanModel> mData;
 
+    SQLiteHandler db;
     private AlertDialog.Builder builder;
-    View viewasu;
 
     public GangguanAdapter(Context mContext, List<GangguanModel> mData) {
         this.mContext = mContext;
@@ -41,7 +44,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GangguanViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GangguanViewHolder holder, final int position) {
 
         holder.tv_isi.setText(mData.get(position).getIsi());
         holder.tv_petak.setText(mData.get(position).getPetak());
@@ -51,12 +54,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             @Override
             public void onClick(View v) {
 
-                builder = new AlertDialog.Builder(v.getContext());
-                LayoutInflater factory = LayoutInflater.from(mContext);
-                viewasu = factory.inflate(R.layout.popup_detail_ganggaunkemanan, null);
-
-                builder.setView(viewasu);
-                builder.show();
+                asu(mData.get(position).getId());
 
             }
         });
@@ -81,7 +79,37 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             tv_no = itemView.findViewById(R.id.name_id);
             tv_tanggal = itemView.findViewById(R.id.name_tanggal);
             btn_submitgangguan = itemView.findViewById(R.id.img_gangguandetail);
-
         }
     }
+
+    public void asu (final String id){
+
+        try {
+            final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+            final View viewas = layoutInflater.inflate(R.layout.popup_detail_ganggaunkemanan, null);
+            final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
+            alertDialogBuilder.setView(viewas);
+
+            String get_anakpetak = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
+            String get_tahun = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TAHUN);
+            String get_nomorha = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_HA);
+            String get_kejadian = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
+
+            TextView anakpetak = viewas.findViewById(R.id.gangguan_petakdetailid);
+            anakpetak.setText(get_anakpetak);
+
+
+            alertDialogBuilder.setView(viewas);
+//            alertDialogBuilder.setCancelable(false);
+
+
+            final android.app.AlertDialog alert = alertDialogBuilder.create();
+            alert.show();
+
+
+        } catch (Exception ex) {
+            AjnClass.showAlert(mContext,ex.toString());
+        }
+    }
+
 }

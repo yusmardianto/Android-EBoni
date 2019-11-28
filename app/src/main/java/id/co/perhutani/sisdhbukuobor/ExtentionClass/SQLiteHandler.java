@@ -70,7 +70,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void change_aktif_blandong() {
         SQLiteDatabase db = getReadableDatabase();
-//        db.execSQL("UPDATE MST_BLANDONG SET KET5='0'");
+//        db.execSQL("UPDATE MST_BLANDONG  SET KET5='0'");
     }
 
     public void altertable_update_aplication() {
@@ -128,6 +128,27 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         String password = cursor.getString(cursor.getColumnIndex(kolom));
         cursor.close();
         return password;
+    }
+
+    public String getDataDetail_v2(String tabel, String kolom_param, String param, String kolom) {
+        String query = "SELECT "+kolom+" FROM " + tabel +
+                " WHERE "+kolom_param +"="+param +
+                " LIMIT 1";
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = null;
+        String coba1 = null;
+        try {
+            if (db == null) {db = getReadableDatabase();}
+            cursor = db.rawQuery(query, null);
+            cursor.moveToFirst();
+            coba1 = cursor.getString(0);
+        } catch (Exception e) {
+            Log.d("TAG", "EXCEPTION! " + e);
+        } finally {
+            // Must close cursor and db now that we are done with it.
+            cursor.close();
+            return coba1;
+        }
     }
 
     @Override

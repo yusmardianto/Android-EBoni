@@ -95,7 +95,8 @@ public class ListGangguanFragment extends Fragment
                         cur.getString(1),
                         cur.getString(2),
                         cur.getString(3),
-                        cur.getString(5)));
+                        cur.getString(5),
+                        cur.getString(0)));
                 cur.moveToNext();
             }
 
