@@ -11,6 +11,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
@@ -176,5 +180,44 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
+    public List<String> getAnakPetak() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstAnakPetakSchema.ANAK_PETAK_NAME + " FROM " + MstAnakPetakSchema.TABLE_NAME +
+                " a ORDER BY a."+MstAnakPetakSchema.PETAK_NAME+", a."+MstAnakPetakSchema.ANAK_PETAK_ID+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public void delete_one_date(String nama_tabel,String kolom_id, String id) {
+        SQLiteDatabase db = getReadableDatabase();
+        db.execSQL( "DELETE FROM " + nama_tabel + " WHERE " + kolom_id + " = "+id);
+    }
+
+    public void EditDataGangguanHutan(GangguanModel b) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + b.getID_gangguan();
+        ContentValues args = new ContentValues();
+        args.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, b.getPetak());
+        args.put(TrnGangguanKeamananHutan.TANGGAL_HA, b.getTanggal());
+        args.put(TrnGangguanKeamananHutan.KEJADIAN, b.getIsi());
+        args.put(TrnGangguanKeamananHutan.KERUGIAN_LUAS, b.getLuas());
+        args.put(TrnGangguanKeamananHutan.KERUGIAN_POHON, b.getPohon());
+        args.put(TrnGangguanKeamananHutan.KERUGIAN_KYP, b.getKyp());
+        args.put(TrnGangguanKeamananHutan.KERUGIAN_KYB, b.getKyb());
+        args.put(TrnGangguanKeamananHutan.KERUGIAN_GETAH, b.getGetah());
+        args.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, b.getNilai());
+        args.put(TrnGangguanKeamananHutan.KETERANGAN, b.getKeterangan());
+        args.put(TrnGangguanKeamananHutan.KET1, b.getKet1());
+        db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
+    }
 
 }

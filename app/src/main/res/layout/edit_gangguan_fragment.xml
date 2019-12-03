@@ -1,136 +1,412 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/editgangguan"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#fff"
+tools:context=".ui.gangguan.editgangguan.EditGangguanFragment">
+
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/top_navigation"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff"
-    tools:context=".ui.gangguan.editgangguan.EditGangguanFragment">
+    android:layout_height="50dp"
+    android:background="#EAEAEA"
+    android:paddingLeft="-16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/font_aal_default"
+        android:gravity="right|center"
+        android:text="Ubah Gangguan Hutan"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="20dp" />
+
+</androidx.appcompat.widget.Toolbar>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="50dp"
+    android:layout_marginRight="10dp"
+    android:layout_weight="1"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
-
-        <EditText
-            android:id="@+id/edit_gangguan_idpetak"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Anak Petak"/>
-
-        <EditText
-            android:id="@+id/edit_gangguan_tahun"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Tahun"/>
-
-
-        <EditText
-            android:id="@+id/edit_gangguan_noha"
-            android:layout_marginTop="15dp"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="No HA"/>
-
-        <EditText
-            android:id="@+id/edit_gangguan_tanggalHA"
-            android:layout_marginTop="-44dp"
-            android:layout_marginLeft="185dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Tanggal"/>
-
-        <EditText
-            android:id="@+id/edit_gangguan_kejadian"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Isikan Kejadian . . . "/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
+            android:fontFamily="@font/font_aal_default"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kerugian"
-            android:textStyle="bold"
-            android:textSize="20dp"/>
-
-        <EditText
-            android:id="@+id/edit_gangguan_luas"
             android:layout_marginTop="5dp"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Kerugian Luas"/>
+            android:text="Kejadian"
+            android:textColor="#1F1E1E" />
 
         <EditText
-            android:id="@+id/edit_gangguan_jmlpohon"
-            android:layout_marginTop="-44dp"
-            android:layout_marginLeft="185dp"
+            android:fontFamily="@font/font_aal_default"
+            android:singleLine="true"
+            android:id="@+id/edit_gangguan_kejadian"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_background"
+            android:hint="Isikan Kejadian . . . " />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Rugi Pohon"/>
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/edit_gangguan_kerugiankyp"
-            android:layout_marginTop="15dp"
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:fontFamily="@font/font_aal_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Petak Kejadian"
+                    android:textColor="#1F1E1E" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:fontFamily="@font/font_aal_default"
+                    android:id="@+id/spinner_anak_petak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:fontFamily="@font/font_aal_default"
+                    android:visibility="gone"
+                    android:id="@+id/edit_gangguan_idpetak"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_background"
+                    android:hint="Anak Petak" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:fontFamily="@font/font_aal_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Tanggal"
+                    android:textColor="#1F1E1E" />
+
+                <EditText
+                    android:fontFamily="@font/font_aal_default"
+                    android:id="@+id/edit_gangguan_tanggalHA"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_background"
+                    android:hint="Tanggal" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Kerugian KYP"/>
-
-        <EditText
-            android:id="@+id/edit_gangguan_kerugiankyb"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Kerugian KYB"/>
-
-        <EditText
-            android:id="@+id/edit_gangguan_kerugiangetah"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Kerugian Getah"/>
-
-        <EditText
-            android:id="@+id/edit_gangguan_nilaikerugian"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Nilai kerugian"/>
-
-        <EditText
-            android:id="@+id/edit_gangguan_keterangan"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/ic_background"
-            android:hint="Tambahkan keterangan . . . "/>
-
-        <Button
-            android:id="@+id/edit_gangguan_btnsimpan"
+            android:layout_height="2dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:background="#EFEFEF" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/text_simpan"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kerugian"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
-</ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Luas"
+                                android:textColor="#1F1E1E" />
+
+                            <EditText
+                                android:fontFamily="@font/font_aal_default"
+                                android:inputType="number"
+                                android:singleLine="true"
+                                android:id="@+id/edit_gangguan_luas"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/ic_background"
+                                android:hint="Luas" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Nilai"
+                                android:textColor="#1F1E1E" />
+
+                            <EditText
+                                android:fontFamily="@font/font_aal_default"
+                                android:inputType="number"
+                                android:singleLine="true"
+                                android:id="@+id/edit_gangguan_nilaikerugian"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/ic_background"
+                                android:hint="Nilai kerugian" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Jumlah Pohon"
+                                android:textColor="#1F1E1E" />
+
+                            <EditText
+                                android:fontFamily="@font/font_aal_default"
+                                android:inputType="number"
+                                android:singleLine="true"
+                                android:id="@+id/edit_gangguan_jmlpohon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/ic_background"
+                                android:hint="Pohon" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Getah"
+                                android:textColor="#1F1E1E" />
+
+                            <EditText
+                                android:fontFamily="@font/font_aal_default"
+                                android:inputType="number"
+                                android:singleLine="true"
+                                android:id="@+id/edit_gangguan_kerugiangetah"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/ic_background"
+                                android:hint="Getah" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Kayu Bakar"
+                                android:textColor="#1F1E1E" />
+
+                            <EditText
+                                android:fontFamily="@font/font_aal_default"
+                                android:inputType="number"
+                                android:singleLine="true"
+                                android:id="@+id/edit_gangguan_kerugiankyb"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/ic_background"
+                                android:hint="Kayu Bakar" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Pap"
+                                android:textColor="#1F1E1E" />
+
+                            <EditText
+                                android:fontFamily="@font/font_aal_default"
+                                android:inputType="number"
+                                android:singleLine="true"
+                                android:id="@+id/edit_gangguan_kerugiankyp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/ic_background"
+                                android:hint="Kayu Pap" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Keterangan"
+                                android:textColor="#1F1E1E" />
+
+                            <EditText
+                                android:fontFamily="@font/font_aal_default"
+                                android:id="@+id/edit_gangguan_keterangan"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:background="@drawable/ic_background"
+                                android:hint="Tambahkan keterangan . . . " />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:textSize="20dp"
+                        android:fontFamily="@font/font_aal_bold"
+                        android:id="@+id/edit_gangguan_btnsimpan"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/shape_btnlogin"
+                        android:text="Simpan"
+                        android:textColor="#F9F9F9" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>
+</RelativeLayout>
