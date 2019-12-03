@@ -89,7 +89,7 @@ public class ListPerubahanKelasFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " *" +
+                    " ID, PETAK_ID, TAHUN, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID ,ID, ID, ID" +
 //                    " DISTINCT(ANAK_PETAK_ID_PERUBAHAN)" +
                     " FROM TRN_PERUBAHAN_KELAS " +
                     " ORDER BY ID DESC", null);
@@ -101,8 +101,17 @@ public class ListPerubahanKelasFragment extends Fragment
                         cur.getString(0),
                         cur.getString(1),
                         cur.getString(2),
+                        cur.getString(3),
                         cur.getString(4),
-                        cur.getString(9)));
+                        cur.getString(5),
+                        cur.getString(6),
+                        cur.getString(7),
+                        cur.getString(8),
+                        cur.getString(9),
+                        cur.getString(10),
+                        cur.getString(11),
+                        cur.getString(12),
+                        cur.getString(13)));
                 cur.moveToNext();
             }
 
