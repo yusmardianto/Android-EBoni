@@ -2,16 +2,22 @@ package id.co.perhutani.sisdhbukuobor.Model;
 
 public class RegisterpcpModel
 {
+    private String Id;
     private String NoPcp;
     private String PetakPcP;
     private String Tahun;
     private String Keterangan;
 
-    public RegisterpcpModel(String noPcp, String petakPcP, String tahun, String keterangan) {
+    public RegisterpcpModel(String id, String noPcp, String petakPcP, String tahun, String keterangan) {
+        Id = id;
         NoPcp = noPcp;
         PetakPcP = petakPcP;
         Tahun = tahun;
         Keterangan = keterangan;
+    }
+
+    public String getId() {
+        return Id;
     }
 
     public String getNoPcp() {

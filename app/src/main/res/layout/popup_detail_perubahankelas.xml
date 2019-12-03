@@ -46,157 +46,172 @@
                 android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Anak Petak ID       : "/>
+                android:text="Anak Petak ID                        : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_petakdetailid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="201631141"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tahun                     : "/>
+                android:text="Tahun                                      : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_tahundetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2019"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nomor HA             : "/>
+                android:text="Luas                                         : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_luasdetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="141"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tanggal HA           : "/>
+                android:text="Jenis Tanaman                     : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_jenistanamandetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15-05-1998"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kejadian                 : "/>
+                android:text="Kejadian                                 : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_kelashutandetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kebakaran Hutan"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kerugian Luas       : "/>
+                android:text="Luas Perkiraan                     : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_luasperkiraandetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100Ha"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kerugian Pohon    : "/>
+                android:text="Jenis Tanaman Perkiraan  : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_tanamanperkiraandetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100Ha"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
+
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kerugian KYP        : "/>
+                android:text="Kelas Hutan Perkiraan        : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_kelasperkiraandetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100Ha"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kerugian KYB        : "/>
+                android:text="Nomer BAP PKH                  : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_nobappkhdetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100Ha"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kerugian Getah     : "/>
+                android:text="Luas Definitif                        : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_luasdefinitifdetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100ml"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nilai Kerugian        : "/>
+                android:text="Jenis Tanaman Definitif    : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_tanamandefinitifdetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp.1.000.000"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
+
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Keterangan            : "/>
+                android:text="Kelas Hutan Definitif          : "/>
 
             <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
+                android:id="@+id/perubahankls_kelasdefinitifdetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Suatu hari di hari yang cerah, terdapat sebuah makhluk"/>
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Keterangan                          : "/>
+
+            <TextView
+                android:id="@+id/perubahankls_keterangandetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp"
+                android:layout_marginLeft="180dp"/>
 
             <LinearLayout
                 android:layout_marginTop="10dp"

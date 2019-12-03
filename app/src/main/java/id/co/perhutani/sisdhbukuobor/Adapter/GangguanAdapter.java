@@ -44,7 +44,6 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
         return vHolder;
     }
-
     @Override
     public void onBindViewHolder(@NonNull GangguanViewHolder holder, final int position) {
         db = new SQLiteHandler(mContext);
@@ -53,11 +52,11 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
         holder.tv_petak.setText(mData.get(position).getPetak());
         holder.tv_no.setText(mData.get(position).getNo());
         holder.tv_tanggal.setText(mData.get(position).getTanggal());
-        holder.btn_submitgangguan.setOnClickListener(new View.OnClickListener() {
+        holder.img_detailganggaun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                asu(mData.get(position).getId());
+                popup(mData.get(position).getId());
 
             }
         });
@@ -74,7 +73,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
         private TextView tv_petak;
         private TextView tv_no;
         private TextView tv_tanggal;
-        private LinearLayout btn_submitgangguan;
+        private LinearLayout img_detailganggaun;
         public GangguanViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -82,11 +81,11 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             tv_petak = itemView.findViewById(R.id.name_petak);
             tv_no = itemView.findViewById(R.id.name_id);
             tv_tanggal = itemView.findViewById(R.id.name_tanggal);
-            btn_submitgangguan = itemView.findViewById(R.id.img_gangguandetail);
+            img_detailganggaun = itemView.findViewById(R.id.img_gangguandetail);
         }
     }
 
-    public void asu (final String id){
+    public void popup (final String id){
 
 
 //        AjnClass.showAlert(mContext,id);
@@ -158,5 +157,4 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             AjnClass.showAlert(mContext,ex.toString());
         }
     }
-
 }
