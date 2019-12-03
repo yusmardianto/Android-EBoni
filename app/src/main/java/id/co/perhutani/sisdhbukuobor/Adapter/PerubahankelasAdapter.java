@@ -32,6 +32,8 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
     List<PerubahankelasModel> mData;
     private SQLiteHandler db;
 
+    public static final String MSG_KEY = "id";
+
     public PerubahankelasAdapter(Context mContext, List<PerubahankelasModel> mData) {
         this.mContext = mContext;
         this.mData = mData;
@@ -172,7 +174,7 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
 
                     String message = id;
                     Bundle data = new Bundle();
-                    data.putString(GangguanAdapter.MSG_KEY, message);
+                    data.putString(PerubahankelasAdapter.MSG_KEY, message);
                     FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
                     fragment.setArguments(data);
                     FragmentTransaction ft = manager.beginTransaction();
@@ -180,7 +182,6 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
                     ft.commit();
                 }
             });
-
 
         } catch (Exception ex) {
             AjnClass.showAlert(mContext,ex.toString());

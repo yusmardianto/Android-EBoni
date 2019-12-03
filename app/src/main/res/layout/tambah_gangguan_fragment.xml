@@ -34,7 +34,6 @@
                 android:background="@drawable/ic_background"
                 android:hint="Tahun"/>
 
-
             <EditText
                 android:id="@+id/gangguan_noha"
                 android:layout_marginTop="15dp"
