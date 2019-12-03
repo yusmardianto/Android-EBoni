@@ -18,15 +18,7 @@
             android:orientation="vertical"
             android:weightSum="10">
 
-<<<<<<< HEAD
-        <EditText
-            android:id="@+id/gangguan_tahun"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Tahun"/>
-=======
+
             <EditText
                 android:id="@+id/gangguan_idpetak"
                 android:layout_marginTop="15dp"
@@ -34,7 +26,6 @@
                 android:layout_height="50dp"
                 android:background="@drawable/ic_background"
                 android:hint="Anak Petak"/>
->>>>>>> 2cc80e102e89a9e4e429d2117291d231712210ae
 
             <EditText
                 android:id="@+id/gangguan_tahun"
@@ -45,7 +36,7 @@
                 android:hint="Tahun"/>
 
 
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
                 android:id="@+id/gangguan_noha"
                 android:layout_marginTop="15dp"
                 android:layout_width="180dp"
