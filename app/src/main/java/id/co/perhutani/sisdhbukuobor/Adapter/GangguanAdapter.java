@@ -1,14 +1,20 @@
 package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -18,6 +24,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
+import id.co.perhutani.sisdhbukuobor.ui.gangguan.editgangguan.EditGangguanFragment;
 
 public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.GangguanViewHolder> {
 
@@ -26,6 +33,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
     SQLiteHandler db;
 
+    public static final String MSG_KEY = "id";
     private AlertDialog.Builder builder;
 
     public GangguanAdapter(Context mContext, List<GangguanModel> mData) {
@@ -152,6 +160,23 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
 
+            ImageView edit = viewas.findViewById(R.id.detail_btneditgangguan);
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Fragment fragment = new EditGangguanFragment();
+                    alert.dismiss();
+
+                    String message = id;
+                    Bundle data = new Bundle();
+                    data.putString(GangguanAdapter.MSG_KEY, message);
+                    FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
+                    fragment.setArguments(data);
+                    FragmentTransaction ft = manager.beginTransaction();
+                    ft.replace(R.id.nav_host_fragment, fragment);
+                    ft.commit();
+                }
+            });
 
         } catch (Exception ex) {
             AjnClass.showAlert(mContext,ex.toString());

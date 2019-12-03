@@ -28,5 +28,6 @@
     <string name="text_login_failed">"Login failed"</string>
     <string name="text_username">Username</string>
     <string name="text_submit">Submit</string>
+    <string name="text_simpan">Simpan</string>
     <string name="text_tambah">Tambah Laporan</string>
 </resources>
