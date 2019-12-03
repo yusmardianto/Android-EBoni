@@ -19,28 +19,64 @@
         android:layout_marginRight="5dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No_ID             : "/>
+
+        <TextView
             android:id="@+id/name_idpal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No_ID : 201631141"/>
+            android:layout_marginTop="-19dp"
+            android:layout_marginLeft="90dp" />
 
         <TextView
-            android:id="@+id/name_petakpal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Anak Petak : KPH Semarang"/>
+            android:text="Tanggal PAL : "/>
 
         <TextView
-            android:id="@+id/name_nopal"
+            android:id="@+id/name_tanggalpal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No_PAL       : 10109090"/>
+            android:layout_marginTop="-19dp"
+            android:layout_marginLeft="90dp" />
 
         <TextView
-            android:id="@+id/name_kondisipal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kondisi        : Rusak Sebagian"/>
+            android:text="Jenis PAL      : "/>
+
+        <TextView
+            android:id="@+id/name_jenispal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-19dp"
+            android:layout_marginLeft="90dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomer PAL   : "/>
+
+        <TextView
+            android:id="@+id/name_nomerpal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-19dp"
+            android:layout_marginLeft="90dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jumlah PAL  : "/>
+
+        <TextView
+            android:id="@+id/name_jumlahpal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-19dp"
+            android:layout_marginLeft="90dp" />
 
         <ImageView
             android:id="@+id/name_info_alert_pal"

@@ -2,15 +2,25 @@ package id.co.perhutani.sisdhbukuobor.Model;
 
 public class PemantauansatwaModel {
     private String ID;
-    private String Petak;
-    private String Tanggal;
+    private String PetakId;
+    private String AnakPetakId;
     private String Jenis;
+    private String Jumlah;
+    private String Waktulihat;
+    private String Caralihat;
+    private String KeteranganSatwa;
 
-    public PemantauansatwaModel(String ID, String petak, String tanggal, String jenis) {
+    public PemantauansatwaModel(String ID, String petakId, String anakPetakId, String jenis,
+                                String jumlah, String waktulihat, String caralihat, String keteranganSatwa)
+    {
         this.ID = ID;
-        Petak = petak;
-        Tanggal = tanggal;
+        PetakId = petakId;
+        AnakPetakId = anakPetakId;
         Jenis = jenis;
+        Jumlah = jumlah;
+        Waktulihat = waktulihat;
+        Caralihat = caralihat;
+        KeteranganSatwa = keteranganSatwa;
     }
 
     public String getID() {
@@ -21,20 +31,20 @@ public class PemantauansatwaModel {
         this.ID = ID;
     }
 
-    public String getPetak() {
-        return Petak;
+    public String getPetakId() {
+        return PetakId;
     }
 
-    public void setPetak(String petak) {
-        Petak = petak;
+    public void setPetakId(String petakId) {
+        PetakId = petakId;
     }
 
-    public String getTanggal() {
-        return Tanggal;
+    public String getAnakPetakId() {
+        return AnakPetakId;
     }
 
-    public void setTanggal(String tanggal) {
-        Tanggal = tanggal;
+    public void setAnakPetakId(String anakPetakId) {
+        AnakPetakId = anakPetakId;
     }
 
     public String getJenis() {
@@ -43,5 +53,37 @@ public class PemantauansatwaModel {
 
     public void setJenis(String jenis) {
         Jenis = jenis;
+    }
+
+    public String getJumlah() {
+        return Jumlah;
+    }
+
+    public void setJumlah(String jumlah) {
+        Jumlah = jumlah;
+    }
+
+    public String getWaktulihat() {
+        return Waktulihat;
+    }
+
+    public void setWaktulihat(String waktulihat) {
+        Waktulihat = waktulihat;
+    }
+
+    public String getCaralihat() {
+        return Caralihat;
+    }
+
+    public void setCaralihat(String caralihat) {
+        Caralihat = caralihat;
+    }
+
+    public String getKeteranganSatwa() {
+        return KeteranganSatwa;
+    }
+
+    public void setKeteranganSatwa(String keteranganSatwa) {
+        KeteranganSatwa = keteranganSatwa;
     }
 }

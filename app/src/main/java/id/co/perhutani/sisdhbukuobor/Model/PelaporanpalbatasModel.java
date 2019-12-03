@@ -2,47 +2,78 @@ package id.co.perhutani.sisdhbukuobor.Model;
 
 public class PelaporanpalbatasModel {
     private String ID;
-    private String Petak;
-    private String NoPal;
-    private String Kondisi;
+    private String TanggalPal;
+    private String JenisPal;
+    private String KondisiPal;
+    private String NomerPal;
+    private String JumlahPal;
+    private String KeteranganPal;
 
-
-    public PelaporanpalbatasModel(String ID, String petak, String noPal, String kondisi) {
+    public PelaporanpalbatasModel(String ID, String tanggalPal, String jenisPal, String kondisiPal,
+                                  String nomerPal, String jumlahPal, String keteranganPal)
+    {
         this.ID = ID;
-        Petak = petak;
-        NoPal = noPal;
-        Kondisi = kondisi;
+        TanggalPal = tanggalPal;
+        JenisPal = jenisPal;
+        KondisiPal = kondisiPal;
+        NomerPal = nomerPal;
+        JumlahPal = jumlahPal;
+        KeteranganPal = keteranganPal;
     }
 
     public String getID() {
         return ID;
     }
 
-    public String getPetak() {
-        return Petak;
-    }
-
-    public String getNoPal() {
-        return NoPal;
-    }
-
-    public String getKondisi() {
-        return Kondisi;
-    }
-
     public void setID(String ID) {
         this.ID = ID;
     }
 
-    public void setPetak(String petak) {
-        Petak = petak;
+    public String getTanggalPal() {
+        return TanggalPal;
     }
 
-    public void setNoPal(String noPal) {
-        NoPal = noPal;
+    public void setTanggalPal(String tanggalPal) {
+        TanggalPal = tanggalPal;
     }
 
-    public void setKondisi(String kondisi) {
-        Kondisi = kondisi;
+    public String getJenisPal() {
+        return JenisPal;
+    }
+
+    public void setJenisPal(String jenisPal) {
+        JenisPal = jenisPal;
+    }
+
+    public String getKondisiPal() {
+        return KondisiPal;
+    }
+
+    public void setKondisiPal(String kondisiPal) {
+        KondisiPal = kondisiPal;
+    }
+
+    public String getNomerPal() {
+        return NomerPal;
+    }
+
+    public void setNomerPal(String nomerPal) {
+        NomerPal = nomerPal;
+    }
+
+    public String getJumlahPal() {
+        return JumlahPal;
+    }
+
+    public void setJumlahPal(String jumlahPal) {
+        JumlahPal = jumlahPal;
+    }
+
+    public String getKeteranganPal() {
+        return KeteranganPal;
+    }
+
+    public void setKeteranganPal(String keteranganPal) {
+        KeteranganPal = keteranganPal;
     }
 }
