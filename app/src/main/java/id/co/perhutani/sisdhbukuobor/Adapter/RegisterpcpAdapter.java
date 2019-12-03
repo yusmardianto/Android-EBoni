@@ -44,15 +44,16 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
     @Override
     public void onBindViewHolder(@NonNull RegisterpcpViewHolder holder, final int position) {
 
+        holder.tv_id.setText(mData.get(position).getID());
         holder.tv_nopcp.setText(mData.get(position).getNoPcp());
-        holder.tv_petakpcp.setText(mData.get(position).getPetakPcP());
-        holder.tv_tahun.setText(mData.get(position).getTahun());
-        holder.tv_keterangan.setText(mData.get(position).getKeterangan());
+        holder.tv_petakid.setText(mData.get(position).getPetakId());
+        holder.tv_tahunpcp.setText(mData.get(position).getTahun());
+        holder.tv_bonitapcp.setText(mData.get(position).getBonita());
         holder.img_detailregisterpcp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                popup(mData.get(position).getId());
+                popup(mData.get(position).getID());
 
             }
         });
@@ -64,19 +65,21 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
     }
 
     public static class RegisterpcpViewHolder extends RecyclerView.ViewHolder{
+        private TextView tv_id;
         private TextView tv_nopcp;
-        private TextView tv_petakpcp;
-        private TextView tv_tahun;
-        private TextView tv_keterangan;
+        private TextView tv_petakid;
+        private TextView tv_tahunpcp;
+        private TextView tv_bonitapcp;
         private LinearLayout img_detailregisterpcp;
 
         public RegisterpcpViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_nopcp = itemView.findViewById(R.id.name_nopcp);
-            tv_petakpcp = itemView.findViewById(R.id.name_petakpcp);
-            tv_tahun = itemView.findViewById(R.id.name_tahunpcp);
-            tv_keterangan = itemView.findViewById(R.id.name_ketpcp);
+            tv_id = itemView.findViewById(R.id.name_idpcp);
+            tv_nopcp = itemView.findViewById(R.id.name_nomerpcp);
+            tv_petakid = itemView.findViewById(R.id.name_petakpcp);
+            tv_tahunpcp = itemView.findViewById(R.id.name_tahunpcp);
+            tv_bonitapcp = itemView.findViewById(R.id.name_bonitapcp);
             img_detailregisterpcp = itemView.findViewById(R.id.img_registerpcpdetail);
         }
     }

@@ -49,6 +49,7 @@
                 android:text="Kejadian"
                 android:textColor="#1F1E1E" />
 
+
             <EditText
                 android:fontFamily="@font/font_aal_default"
                 android:singleLine="true"

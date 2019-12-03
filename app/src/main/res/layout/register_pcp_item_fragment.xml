@@ -18,28 +18,65 @@
         android:layout_marginRight="5dp">
 
         <TextView
-            android:id="@+id/name_nopcp"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="No_ID : 201631141"/>
+            android:text="No ID            : "/>
+
+        <TextView
+            android:id="@+id/name_idpcp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="85dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomer PCP : "/>
+
+        <TextView
+            android:id="@+id/name_nomerpcp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-19dp"
+            android:layout_marginLeft="85dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Petak ID       : " />
 
         <TextView
             android:id="@+id/name_petakpcp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Isi Kejadian : Kebakaran Hutan"/>
+            android:layout_marginTop="-19dp"
+            android:layout_marginLeft="85dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Tahun           : " />
 
         <TextView
             android:id="@+id/name_tahunpcp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Petak Kejadian : KPH Semarang" />
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="85dp" />
 
         <TextView
             android:id="@+id/name_ketpcp"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="Tanggal : 10-10-2010" />
+            android:text="Bonita          : " />
+
+        <TextView
+            android:id="@+id/name_bonitapcp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="85dp" />
 
         <ImageView
             android:id="@+id/name_info_alert"
