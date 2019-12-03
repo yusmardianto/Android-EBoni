@@ -7,7 +7,28 @@
     android:background="#fff"
     tools:context=".ui.gangguan.ListGangguanFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:paddingLeft="-16dp"
+        android:id="@+id/top_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#EAEAEA">
+
+        <TextView
+            android:layout_marginRight="15dp"
+            android:fontFamily="@font/font_aal_default"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Data Gangguan Hutan"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right|center" />
+
+    </androidx.appcompat.widget.Toolbar>
+
         <LinearLayout
+            android:layout_marginTop="50dp"
             android:orientation="horizontal"
             android:id="@+id/linear_tambahgangguan"
             android:layout_width="match_parent"
@@ -17,7 +38,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/ic_background"
                 android:hint="@string/text_search"/>
@@ -26,7 +47,7 @@
                 android:id="@+id/img_tambahgangguan"
                 android:layout_weight="4"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:src="@drawable/ic_add_black_24dp"
                 android:background="@color/colorPrimary"
@@ -34,6 +55,8 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_below="@id/linear_tambahgangguan"
             android:scrollbars="vertical"
             android:layout_width="match_parent"
