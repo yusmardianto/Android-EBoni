@@ -18,13 +18,13 @@
             android:orientation="vertical"
             android:weightSum="10">
 
-            <EditText
-                android:id="@+id/gangguan_tahun"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/ic_background"
-                android:hint="Tahun"/>
+        <EditText
+            android:id="@+id/gangguan_tahun"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_background"
+            android:hint="Tahun"/>
 
             <EditText
                 android:id="@+id/gangguan_idpetak"
@@ -34,7 +34,7 @@
                 android:background="@drawable/ic_background"
                 android:hint="Anak Petak"/>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/gangguan_noha"
                 android:layout_marginTop="15dp"
                 android:layout_width="180dp"
@@ -123,6 +123,20 @@
                 android:layout_height="100dp"
                 android:background="@drawable/ic_background"
                 android:hint="Tambahkan keterangan . . . "/>
+
+<!--            <androidx.support.design.widget.TextInputLayout-->
+<!--                android:id="@+id/name_text_input"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                >-->
+
+<!--                <android.support.design.widget.TextInputEditText-->
+<!--                    android:id="@+id/name_edit_text"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="Login" />-->
+<!--            </androidx.support.design.widget.TextInputLayout>-->
 
             <Button
                 android:id="@+id/gangguan_btnsubmit"
