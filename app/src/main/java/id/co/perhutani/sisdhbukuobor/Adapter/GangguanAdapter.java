@@ -58,7 +58,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
         holder.tv_isi.setText(mData.get(position).getIsi());
         holder.tv_petak.setText(mData.get(position).getPetak());
-        holder.tv_no.setText(mData.get(position).getNo());
+        holder.tv_no.setText(mData.get(position).getId());
         holder.tv_tanggal.setText(mData.get(position).getTanggal());
         holder.img_detailganggaun.setOnClickListener(new View.OnClickListener() {
             @Override
