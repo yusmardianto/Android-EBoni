@@ -6,34 +6,11 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="14"
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-8-->D:\ebot\library_sweetalert\src\main\AndroidManifest.xml
-=======
-<<<<<<< HEAD
-8-->C:\Users\Adhi Joyo Negoro\Documents\Nafkah\Perum Perhutani\Project Development\pht-sisdh-bukuobor\library_sweetalert\src\main\AndroidManifest.xml
-9        android:targetSdkVersion="28" />
-9-->C:\Users\Adhi Joyo Negoro\Documents\Nafkah\Perum Perhutani\Project Development\pht-sisdh-bukuobor\library_sweetalert\src\main\AndroidManifest.xml
-10
-11    <application />
-11-->C:\Users\Adhi Joyo Negoro\Documents\Nafkah\Perum Perhutani\Project Development\pht-sisdh-bukuobor\library_sweetalert\src\main\AndroidManifest.xml:6:5-20
-=======
->>>>>>> 72647b40ac5c2b0f861c646841ec6075e2ab5250
 8-->D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
->>>>>>> ac3d7257ec5a62a1f22be93a6864cc231d4876fe
 9        android:targetSdkVersion="28" />
-9-->D:\ebot\library_sweetalert\src\main\AndroidManifest.xml
+9-->D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
 10
 11    <application />
-<<<<<<< HEAD
-11-->D:\ebot\library_sweetalert\src\main\AndroidManifest.xml:6:5-20
-=======
 11-->D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:6:5-20
-<<<<<<< HEAD
-=======
->>>>>>> 4bf108041699b4f2f8d1a09e1c6b01cd312f0094
->>>>>>> ac3d7257ec5a62a1f22be93a6864cc231d4876fe
->>>>>>> 72647b40ac5c2b0f861c646841ec6075e2ab5250
 12
 13</manifest>
