@@ -1,6 +1,7 @@
 package id.co.perhutani.sisdhbukuobor;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import id.co.perhutani.sisdhbukuobor.Service.MyBackgroundService;
 import id.co.perhutani.sisdhbukuobor.ui.bukuobor.BukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.ui.home.HomeFragment;
 import id.co.perhutani.sisdhbukuobor.ui.profil.ProfilFragment;
@@ -30,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(navListener);
+
+
+        // Start service
+        Intent i = new Intent(this, MyBackgroundService.class);
+        MainActivity.this.startService(i);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
                 new HomeFragment()).commit();

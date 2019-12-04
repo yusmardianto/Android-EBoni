@@ -55,10 +55,10 @@ public class LoginActivity extends AppCompatActivity {
     // server staging
     private static final String address = "http://10.0.8.51:9393/";
     // server production
-//  private static final String address = "https://union-loket.perhutani.id/";
-// server local
-//private static final String address = "http://127.0.0.1:8000/";
-// link api
+    //  private static final String address = "https://union-loket.perhutani.id/";
+    // server local
+    //private static final String address = "http://127.0.0.1:8000/";
+    // link api
     private static final String URL_FOR_LOGIN_V1 = address + "api/v1/login";
     private static final String URL_FOR_PROFIL_V1 = address + "api/v1/get_user_details";
     private static final String URL_FOR_GET_ANAK_PETAK_V1 = address + "api/v1/getAnakPetak";
@@ -66,6 +66,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_JENIS_TANAMAN_V1 = address + "api/v1/getJenisTanaman";
     private static final String URL_FOR_GET_JENIS_PERMASALAHAN_V1 = address + "api/v1/getJenisPermasalahan";
     private static final String URL_FOR_GET_JENIS_GANGGUAN_HUTAN_V1 = address + "api/v1/getJenisGangguanHutan";
+
+    public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
 
     private ProgressDialog progressDialog;
     private SessionManager session;

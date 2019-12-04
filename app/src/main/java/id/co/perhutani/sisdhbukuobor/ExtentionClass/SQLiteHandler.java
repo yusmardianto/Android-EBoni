@@ -224,6 +224,16 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, b.getNilai());
         args.put(TrnGangguanKeamananHutan.KETERANGAN, b.getKeterangan());
         args.put(TrnGangguanKeamananHutan.KET1, b.getKet1());
+        args.put(TrnGangguanKeamananHutan.KET9, b.getKet9());
+        db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
+    }
+
+    public void EditDataGangguanHutanfroApi(GangguanModel b) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + b.getID_gangguan();
+        ContentValues args = new ContentValues();
+        args.put(TrnGangguanKeamananHutan.KET9, b.getKet9());
+        args.put(TrnGangguanKeamananHutan.KET10, b.getKet10());
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
     }
 
