@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
+import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
@@ -205,22 +206,42 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL( "DELETE FROM " + nama_tabel + " WHERE " + kolom_id + " = "+id);
     }
 
-    public void EditDataGangguanHutan(GangguanModel b) {
+    public void EditDataGangguanHutan(GangguanModel g) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_gangguan();
+        String strFilter = "ID=" + g.getID_gangguan();
         ContentValues args = new ContentValues();
-        args.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, b.getPetak());
-        args.put(TrnGangguanKeamananHutan.TANGGAL_HA, b.getTanggal());
-        args.put(TrnGangguanKeamananHutan.KEJADIAN, b.getIsi());
-        args.put(TrnGangguanKeamananHutan.KERUGIAN_LUAS, b.getLuas());
-        args.put(TrnGangguanKeamananHutan.KERUGIAN_POHON, b.getPohon());
-        args.put(TrnGangguanKeamananHutan.KERUGIAN_KYP, b.getKyp());
-        args.put(TrnGangguanKeamananHutan.KERUGIAN_KYB, b.getKyb());
-        args.put(TrnGangguanKeamananHutan.KERUGIAN_GETAH, b.getGetah());
-        args.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, b.getNilai());
-        args.put(TrnGangguanKeamananHutan.KETERANGAN, b.getKeterangan());
-        args.put(TrnGangguanKeamananHutan.KET1, b.getKet1());
+        args.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, g.getPetak());
+        args.put(TrnGangguanKeamananHutan.TANGGAL_HA, g.getTanggal());
+        args.put(TrnGangguanKeamananHutan.KEJADIAN, g.getIsi());
+        args.put(TrnGangguanKeamananHutan.KERUGIAN_LUAS, g.getLuas());
+        args.put(TrnGangguanKeamananHutan.KERUGIAN_POHON, g.getPohon());
+        args.put(TrnGangguanKeamananHutan.KERUGIAN_KYP, g.getKyp());
+        args.put(TrnGangguanKeamananHutan.KERUGIAN_KYB, g.getKyb());
+        args.put(TrnGangguanKeamananHutan.KERUGIAN_GETAH, g.getGetah());
+        args.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, g.getNilai());
+        args.put(TrnGangguanKeamananHutan.KETERANGAN, g.getKeterangan());
+        args.put(TrnGangguanKeamananHutan.KET1, g.getKet1());
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
+    }
+
+    public void EditDataPerubahanKelas(PerubahankelasModel pk) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + pk.getID_Perubahan();
+        ContentValues args = new ContentValues();
+        args.put(TrnPerubahanKelas.ANAK_PETAK_ID_PERUBAHAN, pk.getPetakID());
+        args.put(TrnPerubahanKelas.TAHUN_PERUBAHAN, pk.getTahun());
+        args.put(TrnPerubahanKelas.LUAS_PERUBAHAN, pk.getLuas());
+        args.put(TrnPerubahanKelas.JENIS_TANAMAN_PERUBAHAN, pk.getJenisTanaman());
+        args.put(TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN, pk.getKelasHutan());
+        args.put(TrnPerubahanKelas.LUAS_PERKIRAAN, pk.getLuasPerkiraan());
+        args.put(TrnPerubahanKelas.JENIS_TANAMAN_PERKIRAAN, pk.getJenisTanamanPerkiraan());
+        args.put(TrnPerubahanKelas.KELAS_HUTAN_PERKIRAAN, pk.getKelasHutanPerkiraan());
+        args.put(TrnPerubahanKelas.NO_BAPPKH, pk.getNoBappkh());
+        args.put(TrnPerubahanKelas.LUAS_DEFINITIF, pk.getLuasDefinitif());
+        args.put(TrnPerubahanKelas.JENIS_TANAMAN_DEFINITIF, pk.getJenisTanamanDefinitif());
+        args.put(TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF, pk.getKelasHutanDefinitif());
+        args.put(TrnPerubahanKelas.KETERANGAN_PERUBAHAN, pk.getKeteranganPerubahan());
+        db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
 }
