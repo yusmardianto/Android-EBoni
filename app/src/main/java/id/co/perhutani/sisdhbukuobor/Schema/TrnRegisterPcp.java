@@ -4,7 +4,6 @@ public class TrnRegisterPcp {
     public static final String TABLE_NAME = "TRN_REGISTER_PCP";
     public static final String _ID = "ID";
     public static final String NO_PCP = "NOMOR_PCP";
-    public static final String PETAK_ID = "PETAK_ID";
     public static final String ANAK_PETAK_ID = "ANAK_PETAK_ID";
     public static final String TAHUN_PCP = "TAHUN";
     public static final String LUAS_BAKU = "LUAS_BAKU";
@@ -30,7 +29,6 @@ public class TrnRegisterPcp {
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "" + NO_PCP + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + PETAK_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + ANAK_PETAK_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + TAHUN_PCP + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + LUAS_BAKU + " " + Type.VARCHAR_NULLABLE_100 + ", " +

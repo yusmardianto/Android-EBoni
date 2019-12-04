@@ -2,7 +2,6 @@ package id.co.perhutani.sisdhbukuobor.Model;
 
 public class PemantauansatwaModel {
     private String ID;
-    private String PetakId;
     private String AnakPetakId;
     private String Jenis;
     private String Jumlah;
@@ -10,11 +9,10 @@ public class PemantauansatwaModel {
     private String Caralihat;
     private String KeteranganSatwa;
 
-    public PemantauansatwaModel(String ID, String petakId, String anakPetakId, String jenis,
+    public PemantauansatwaModel(String ID, String anakPetakId, String jenis,
                                 String jumlah, String waktulihat, String caralihat, String keteranganSatwa)
     {
         this.ID = ID;
-        PetakId = petakId;
         AnakPetakId = anakPetakId;
         Jenis = jenis;
         Jumlah = jumlah;
@@ -29,14 +27,6 @@ public class PemantauansatwaModel {
 
     public void setID(String ID) {
         this.ID = ID;
-    }
-
-    public String getPetakId() {
-        return PetakId;
-    }
-
-    public void setPetakId(String petakId) {
-        PetakId = petakId;
     }
 
     public String getAnakPetakId() {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context=".ui.perubahankelas.tambahperubahan.TambahPerubahanFragment">
+    tools:context=".ui.pemantauansatwa.tambahpemantauan.TambahpemantauansatwaFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/top_navigation"
@@ -93,37 +93,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Petak"
-                        android:textColor="#1F1E1E" />
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:fontFamily="@font/font_aal_default"
-                        android:id="@+id/spinner_petak"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"/>
-
-                    <EditText
-                        android:id="@+id/pemantauan_petak"
-                        android:fontFamily="@font/font_aal_default"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/ic_background" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:fontFamily="@font/font_aal_default"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:text="Anak Petak"
                         android:textColor="#1F1E1E" />
 
@@ -141,6 +110,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/md_black_1000" />
                 </LinearLayout>
 
             </LinearLayout>

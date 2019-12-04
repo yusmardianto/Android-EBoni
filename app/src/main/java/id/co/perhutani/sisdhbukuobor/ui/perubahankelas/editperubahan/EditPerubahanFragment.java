@@ -73,7 +73,7 @@ public class EditPerubahanFragment extends Fragment {
         jenis_definitif = root.findViewById(R.id.edit_perubahankls_jenisdefinitif);
         kelas_definitif = root.findViewById(R.id.edit_perubahankls_kelasdefinitif);
         keterangan = root.findViewById(R.id.edit_perubahankls_ketperubahan);
-        btnSimpanPerubahan = root.findViewById(R.id.edit_perubahankls_btnsubmit);
+        btnSimpanPerubahan = root.findViewById(R.id.edit_perubahankls_btnsimpan);
 
         str_petak_id = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.ANAK_PETAK_ID_PERUBAHAN);
         str_tahun = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.TAHUN_PERUBAHAN);

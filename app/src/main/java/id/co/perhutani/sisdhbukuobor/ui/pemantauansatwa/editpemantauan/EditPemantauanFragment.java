@@ -1,21 +1,19 @@
 package id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.editpemantauan;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
@@ -59,7 +57,6 @@ public class EditPemantauanFragment extends Fragment {
             ex.printStackTrace();
         }
 
-        petak = root.findViewById(R.id.edit_pemantauan_petak);
         anakpetak = root.findViewById(R.id.edit_pemantauan_anakpetak);
         jenissatwa = root.findViewById(R.id.edit_pemantauan_jenissatwa);
         jumlahsatwa = root.findViewById(R.id.edit_pemantauan_jumlahsatwa);
@@ -68,7 +65,6 @@ public class EditPemantauanFragment extends Fragment {
         keterangan = root.findViewById(R.id.edit_pemantauan_keterangan);
         btnSimpanPemantauan = root.findViewById(R.id.edit_pemantauan_btnsimpan);
 
-        str_petak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.PETAK_ID);
         str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
         str_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
         str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
@@ -76,7 +72,6 @@ public class EditPemantauanFragment extends Fragment {
         str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
         str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
 
-        petak.setText(str_petak);
         anakpetak.setText(str_anakpetak);
         jenissatwa.setText(str_jenissatwa);
         jumlahsatwa.setText(str_jumlahsatwa);

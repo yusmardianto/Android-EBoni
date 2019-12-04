@@ -42,7 +42,6 @@ public class TambahpemantauansatwaFragment extends Fragment {
 
         db = new SQLiteHandler(getActivity());
 
-        petak = root.findViewById(R.id.pemantauan_petak);
         anakpetak = root.findViewById(R.id.pemantauan_anakpetak);
         jenissatwa = root.findViewById(R.id.pemantauan_jenissatwa);
         jumlahsatwa = root.findViewById(R.id.pemantauan_jumlahsatwa);
@@ -58,7 +57,6 @@ public class TambahpemantauansatwaFragment extends Fragment {
                 {
 
                     ContentValues values_aktifitas = new ContentValues();
-                    values_aktifitas.put(TrnPemantauanSatwa.PETAK_ID, petak.getText().toString());
                     values_aktifitas.put(TrnPemantauanSatwa.ANAK_PETAK_ID, anakpetak.getText().toString());
                     values_aktifitas.put(TrnPemantauanSatwa.JENIS_SATWA, jenissatwa.getText().toString());
                     values_aktifitas.put(TrnPemantauanSatwa.JUMLAH_SATWA, jumlahsatwa.getText().toString());

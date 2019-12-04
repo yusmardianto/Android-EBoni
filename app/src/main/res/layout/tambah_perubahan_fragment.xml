@@ -150,7 +150,6 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/ic_background"
                                 android:hint="Luas" />
-
                         </LinearLayout>
 
                         <LinearLayout
@@ -281,16 +280,16 @@
                 </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="vertical">
 
-                <ScrollView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    <ScrollView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
 
-                    <LinearLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="right"
@@ -462,8 +461,7 @@
                                     android:textColor="#F9F9F9" />
                             </LinearLayout>
                         </LinearLayout>
-
-                </ScrollView>
-            </LinearLayout>
-    </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
+        </LinearLayout>
 </RelativeLayout>

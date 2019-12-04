@@ -441,7 +441,7 @@
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/edit_perubahankls_btnsubmit"
+                            android:id="@+id/edit_perubahankls_btnsimpan"
                             android:textSize="20dp"
                             android:fontFamily="@font/font_aal_bold"
                             android:layout_width="150dp"
