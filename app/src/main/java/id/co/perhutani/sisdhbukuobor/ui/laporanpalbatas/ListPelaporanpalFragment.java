@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import id.co.perhutani.sisdhbukuobor.Adapter.GangguanAdapter;
 import id.co.perhutani.sisdhbukuobor.Adapter.PelaporanpalbatasAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;

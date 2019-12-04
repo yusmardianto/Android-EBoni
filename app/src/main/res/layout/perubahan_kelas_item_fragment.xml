@@ -10,88 +10,137 @@
     android:background="@drawable/ic_background">
 
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="ID :" />
-
-        <TextView
-            android:id="@+id/name_idperubahankelas"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="-20dp"
-            android:layout_marginLeft="100dp"
-            android:layout_height="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="Anak Petak ID :" />
-
-        <TextView
-            android:id="@+id/name_petakidperubahankelas"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="-20dp"
-            android:layout_marginLeft="100dp"
-            android:layout_height="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="Tahun :" />
-
-        <TextView
-            android:id="@+id/name_tahunperubahankelas"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="-20dp"
-            android:layout_marginLeft="60dp"
-            android:layout_height="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="Jenis Tanaman :" />
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/name_jenistanamanperubahankelas"
             android:layout_width="wrap_content"
-            android:layout_marginTop="-20dp"
-            android:layout_marginLeft="110dp"
-            android:layout_height="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="Kelas Hutan :" />
+            android:fontFamily="@font/font_aal_bold"
+            android:text="Jenis Tanaman : "
+            android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/name_kelashutanperubahankelas"
-            android:layout_width="12dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="90dp"
-            android:layout_marginTop="-20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="ID" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : " />
+
+            <TextView
+                android:id="@+id/name_idperubahankelas"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="10011929292" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="Anak Petak ID" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : " />
+
+            <TextView
+                android:id="@+id/name_petakidperubahankelas"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="10011929292" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="Tahun" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : " />
+
+            <TextView
+                android:id="@+id/name_tahunperubahankelas"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="10011929292" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="Kelas Hutan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : " />
+
+            <TextView
+                android:id="@+id/name_kelashutanperubahankelas"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="10011929292" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/name_info_alert_perubahan"
-            android:layout_marginTop="17dp"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_info_outline_red_24dp"/>
+            android:layout_marginTop="17dp"
+            android:src="@drawable/ic_info_outline_red_24dp" />
 
         <TextView
             android:id="@+id/name_data_sinkron_perubahan"
-            android:layout_marginTop="-20dp"
-            android:layout_marginLeft="25dp"
-            android:textColor="#FF0000 "
+            android:fontFamily="@font/font_aal_default"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="Data belum disinkronkan" />
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="-20dp"
+            android:text="Data belum disinkronkan"
+            android:textColor="#FF0000 " />
     </LinearLayout>
 
     <LinearLayout
@@ -112,6 +161,7 @@
 
         <TextView
             android:id="@+id/name_detail_perubahan"
+            android:fontFamily="@font/font_aal_default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Detail"
