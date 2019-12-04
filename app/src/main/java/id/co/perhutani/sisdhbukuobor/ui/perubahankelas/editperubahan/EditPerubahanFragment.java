@@ -1,21 +1,19 @@
 package id.co.perhutani.sisdhbukuobor.ui.perubahankelas.editperubahan;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
@@ -75,7 +73,7 @@ public class EditPerubahanFragment extends Fragment {
         jenis_definitif = root.findViewById(R.id.edit_perubahankls_jenisdefinitif);
         kelas_definitif = root.findViewById(R.id.edit_perubahankls_kelasdefinitif);
         keterangan = root.findViewById(R.id.edit_perubahankls_ketperubahan);
-        btnSimpanPerubahan = root.findViewById(R.id.edit_perubahankls_btnsimpan);
+        btnSimpanPerubahan = root.findViewById(R.id.edit_perubahankls_btnsubmit);
 
         str_petak_id = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.ANAK_PETAK_ID_PERUBAHAN);
         str_tahun = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.TAHUN_PERUBAHAN);
