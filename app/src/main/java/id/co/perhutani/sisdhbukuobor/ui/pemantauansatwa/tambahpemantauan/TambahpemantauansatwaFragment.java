@@ -25,7 +25,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
 
     private static SQLiteHandler db;
     private EditText petak, anakpetak, jenissatwa, jumlahsatwa, waktulihat, caralihat, keterangan;
-    private Button btnSimpanPemantauan;
+    private Button btnSubmitPemantauan;
 
     private TambahpemantauansatwaViewModel mViewModel;
 
@@ -49,9 +49,9 @@ public class TambahpemantauansatwaFragment extends Fragment {
         waktulihat = root.findViewById(R.id.pemantauan_waktulihat);
         caralihat = root.findViewById(R.id.pemantauan_caralihat);
         keterangan = root.findViewById(R.id.pemantauan_keterangan);
-        btnSimpanPemantauan = root.findViewById(R.id.pemantauan_btnsubmit);
+        btnSubmitPemantauan = root.findViewById(R.id.pemantauan_btnsubmit);
 
-        btnSimpanPemantauan.setOnClickListener(new View.OnClickListener() {
+        btnSubmitPemantauan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try

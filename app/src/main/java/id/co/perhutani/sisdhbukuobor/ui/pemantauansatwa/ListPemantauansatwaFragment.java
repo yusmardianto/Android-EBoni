@@ -1,5 +1,6 @@
 package id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.co.perhutani.sisdhbukuobor.Adapter.GangguanAdapter;
 import id.co.perhutani.sisdhbukuobor.Adapter.PemantauansatwaAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
@@ -30,10 +32,11 @@ import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.tambahpemantauan.Tambahp
 public class ListPemantauansatwaFragment extends Fragment
 {
     //View v;
-    private RecyclerView myrecylcerview;
-    private ArrayList<PemantauansatwaModel> DataModel;
-    private List<PemantauansatwaModel> lstpemantauan;
-    PemantauansatwaAdapter psAdapter;
+    private static RecyclerView myrecylcerview;
+    private static ArrayList<PemantauansatwaModel> DataModel;
+    private static List<PemantauansatwaModel> lstpemantauan;
+    private static PemantauansatwaAdapter psAdapter;
+    private static Context context;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListPemantauansatwaFragment newInstance()
@@ -114,10 +117,52 @@ public class ListPemantauansatwaFragment extends Fragment
         }
     }
 
+    public static void refresh_list(){
+        lstpemantauan = new ArrayList<>();
+
+        try {
+
+            SQLiteHandler DB_Helper = new SQLiteHandler(context);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            final Cursor cur = db.rawQuery("SELECT " +
+                    " ID, PETAK_ID, ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, ID" +
+//                    " DISTINCT(ANAKPETAK_ID)" +
+                    " FROM TRN_PEMANTAUAN_SATWA " +
+                    " ORDER BY ID DESC", null);
+
+            cur.moveToPosition(0);
+            DataModel = new ArrayList<>();
+            for (int i = 0; i < cur.getCount(); i++) {
+                lstpemantauan.add(new PemantauansatwaModel(
+                        cur.getString(0),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(4),
+                        cur.getString(5),
+                        cur.getString(6),
+                        cur.getString(7)));
+                cur.moveToNext();
+            }
+
+            cur.close();
+            db.close();
+        } catch (Exception ex) {
+            AjnClass.showAlert(context, ex.toString());
+        }
+
+        psAdapter = new PemantauansatwaAdapter(context,lstpemantauan);
+        myrecylcerview.setLayoutManager(new LinearLayoutManager(context));
+        myrecylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        psAdapter.notifyDataSetChanged();
+        myrecylcerview.invalidate();
+        myrecylcerview.setAdapter(psAdapter);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         def();
-
+        context=getActivity();
     }
 }

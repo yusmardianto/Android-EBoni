@@ -111,7 +111,7 @@ public class EditPerubahanFragment extends Fragment {
                 try
                 {
 
-                    Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();
 
 //                    // Move to fragment perubahan
                     FragmentManager manager = (getActivity()).getSupportFragmentManager();
