@@ -1,5 +1,6 @@
 package id.co.perhutani.sisdhbukuobor.ui.perubahankelas;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.co.perhutani.sisdhbukuobor.Adapter.PemantauansatwaAdapter;
 import id.co.perhutani.sisdhbukuobor.Adapter.PerubahankelasAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
@@ -30,10 +32,11 @@ import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.tambahperubahan.TambahPer
 public class ListPerubahanKelasFragment extends Fragment
 {
     //View v;
-    private RecyclerView recylcerview;
-    private ArrayList<PerubahankelasModel> DataModel;
-    private List<PerubahankelasModel>lstperubahankls;
-    PerubahankelasAdapter pkAdapter;
+    private static RecyclerView recylcerview;
+    private static ArrayList<PerubahankelasModel> DataModel;
+    private static List<PerubahankelasModel>lstperubahankls;
+    private static PerubahankelasAdapter pkAdapter;
+    private static Context context;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListPerubahanKelasFragment newInstance()
@@ -122,22 +125,58 @@ public class ListPerubahanKelasFragment extends Fragment
         }
     }
 
+    public static void refresh_list(){
+        lstperubahankls = new ArrayList<>();
+
+        try {
+
+            SQLiteHandler DB_Helper = new SQLiteHandler(context);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            final Cursor cur = db.rawQuery("SELECT " +
+                    " ID, PETAK_ID, TAHUN, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID ,ID, ID, ID" +
+//                    " DISTINCT(ANAK_PETAK_ID_PERUBAHAN)" +
+                    " FROM TRN_PERUBAHAN_KELAS " +
+                    " ORDER BY ID DESC", null);
+
+            cur.moveToPosition(0);
+            DataModel = new ArrayList<>();
+            for (int i = 0; i < cur.getCount(); i++) {
+                lstperubahankls.add(new PerubahankelasModel(
+                        cur.getString(0),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(4),
+                        cur.getString(5),
+                        cur.getString(6),
+                        cur.getString(7),
+                        cur.getString(8),
+                        cur.getString(9),
+                        cur.getString(10),
+                        cur.getString(11),
+                        cur.getString(12),
+                        cur.getString(13)));
+                cur.moveToNext();
+            }
+
+            cur.close();
+            db.close();
+        } catch (Exception ex) {
+            AjnClass.showAlert(context, ex.toString());
+        }
+
+        pkAdapter = new PerubahankelasAdapter(context,lstperubahankls);
+        recylcerview.setLayoutManager(new LinearLayoutManager(context));
+        recylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        pkAdapter.notifyDataSetChanged();
+        recylcerview.invalidate();
+        recylcerview.setAdapter(pkAdapter);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         def();
-
-//        lstperubahankls = new ArrayList<>();
-//        lstperubahankls.add(new PerubahankelasModel("201631141","087797315685","KPH Semarang","12-12-2012","Eboni"));
-//        lstperubahankls.add(new PerubahankelasModel("201631141","087797315685","KPH Semarang","12-12-2012","Eboni"));
-//        lstperubahankls.add(new PerubahankelasModel("201631141","087797315685","KPH Semarang","12-12-2012","Eboni"));
-//        lstperubahankls.add(new PerubahankelasModel("201631141","087797315685","KPH Semarang","12-12-2012","Eboni"));
-//        lstperubahankls.add(new PerubahankelasModel("201631141","087797315685","KPH Semarang","12-12-2012","Eboni"));
-//        lstperubahankls.add(new PerubahankelasModel("201631141","087797315685","KPH Semarang","12-12-2012","Eboni"));
-//        lstperubahankls.add(new PerubahankelasModel("201631141","087797315685","KPH Semarang","12-12-2012","Eboni"));
-//        lstperubahankls.add(new PerubahankelasModel("201631141","087797315685","KPH Semarang","12-12-2012","Eboni"));
-//        lstperubahankls.add(new PerubahankelasModel("201631141","087797315685","KPH Semarang","12-12-2012","Eboni"));
-//        lstperubahankls.add(new PerubahankelasModel("201631141","087797315685","KPH Semarang","12-12-2012","Eboni"));
-
+        context=getActivity();
     }
 }

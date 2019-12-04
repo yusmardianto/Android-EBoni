@@ -1,28 +1,40 @@
 package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
+import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.ListPelaporanpalFragment;
+import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.editlaporanpalbatas.EditLaporanpalbatasFragment;
 
 public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<PelaporanpalbatasAdapter.PelaporanViewHolder>
 {
     Context mContext;
     List<PelaporanpalbatasModel> mData;
     SQLiteHandler db;
+
+    public static final String MSG_KEY = "id";
 
     public PelaporanpalbatasAdapter(Context mContext, List<PelaporanpalbatasModel> mData) {
         this.mContext = mContext;
@@ -98,7 +110,7 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
 
             String get_tanggalpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.TANGGAL_PAL);
             String get_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JENIS_PAL);
-            String get_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KONDISI_PAL);
+            final String get_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KONDISI_PAL);
             String get_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
             String get_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
             String get_keterangnapal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KETERANGAN_PAL);
@@ -128,6 +140,80 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
 
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
+
+            ImageView edit = viewas.findViewById(R.id.detail_btneditlaporanpal);
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Fragment fragment = new EditLaporanpalbatasFragment();
+                    alert.dismiss();
+
+                    String message = id;
+                    Bundle data = new Bundle();
+                    data.putString(PelaporanpalbatasAdapter.MSG_KEY, message);
+                    FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
+                    fragment.setArguments(data);
+                    FragmentTransaction ft = manager.beginTransaction();
+                    ft.replace(R.id.nav_host_fragment, fragment);
+                    ft.commit();
+                }
+            });
+
+            ImageView delete = viewas.findViewById(R.id.detail_btndeletelaporanpal);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String str_note = "Hapus : " + get_kondisipal;
+
+                    new SweetAlertDialog(mContext, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Hapus Data ?")
+                            .setContentText(str_note)
+                            .setCancelText("Batal")
+                            .setConfirmText("Hapus")
+                            .showCancelButton(true)
+                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    // reuse previous dialog instance, keep widget user state, reset them if you need
+                                    sDialog.setTitleText("Diabatalkan!")
+                                            .setContentText("")
+                                            .setConfirmText("OK")
+                                            .showCancelButton(false)
+                                            .setCancelClickListener(null)
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                }
+                            })
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.setTitleText("Berhasil !")
+                                            .setContentText(str_note)
+                                            .setConfirmText("OK")
+                                            .showCancelButton(false)
+                                            .setCancelClickListener(null)
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                    new Handler().postDelayed(new Runnable() {
+
+                                        @Override
+                                        public void run() {
+                                            // TODO Auto-generated method stub
+                                            try {
+                                                db.delete_one_date(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id);
+                                                ListPelaporanpalFragment.refresh_list();
+                                            } catch (Exception ex) {
+                                            }
+                                            alert.dismiss();
+                                        }
+
+                                    }, 1000);
+                                }
+                            })
+                            .show();
+                }
+            });
 
 
         } catch (Exception ex) {

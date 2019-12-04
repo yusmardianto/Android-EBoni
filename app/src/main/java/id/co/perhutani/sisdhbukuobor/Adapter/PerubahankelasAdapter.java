@@ -2,6 +2,7 @@ package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
+import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ListPemantauansatwaFragment;
+import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.ListPerubahanKelasFragment;
 import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.editperubahan.EditPerubahanFragment;
 
 public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAdapter.PerubahanklsViewHolder> {
@@ -106,7 +111,7 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
             String get_tahun = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.TAHUN_PERUBAHAN);
             String get_luas = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.LUAS_PERUBAHAN);
             String get_jenistanaman = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_PERUBAHAN);
-            String get_kelashutan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN);
+            final String get_kelashutan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN);
             String get_luasperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.LUAS_PERKIRAAN);
             String get_jenisperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_PERKIRAAN);
             String get_kelasperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_PERKIRAAN);
@@ -179,6 +184,62 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
                     FragmentTransaction ft = manager.beginTransaction();
                     ft.replace(R.id.nav_host_fragment, fragment);
                     ft.commit();
+                }
+            });
+
+            ImageView delete = viewas.findViewById(R.id.detail_btndeleteperubahankelas);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String str_note = "Hapus : " + get_kelashutan;
+
+                    new SweetAlertDialog(mContext, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Hapus Data ?")
+                            .setContentText(str_note)
+                            .setCancelText("Batal")
+                            .setConfirmText("Hapus")
+                            .showCancelButton(true)
+                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    // reuse previous dialog instance, keep widget user state, reset them if you need
+                                    sDialog.setTitleText("Diabatalkan!")
+                                            .setContentText("")
+                                            .setConfirmText("OK")
+                                            .showCancelButton(false)
+                                            .setCancelClickListener(null)
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                }
+                            })
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.setTitleText("Berhasil !")
+                                            .setContentText(str_note)
+                                            .setConfirmText("OK")
+                                            .showCancelButton(false)
+                                            .setCancelClickListener(null)
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                    new Handler().postDelayed(new Runnable() {
+
+                                        @Override
+                                        public void run() {
+                                            // TODO Auto-generated method stub
+                                            try {
+                                                db.delete_one_date(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id);
+                                                ListPerubahanKelasFragment.refresh_list();
+                                            } catch (Exception ex) {
+                                            }
+                                            alert.dismiss();
+                                        }
+
+                                    }, 1000);
+                                }
+                            })
+                            .show();
                 }
             });
 
