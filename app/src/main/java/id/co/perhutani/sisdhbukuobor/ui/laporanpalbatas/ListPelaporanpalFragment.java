@@ -1,5 +1,6 @@
 package id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.co.perhutani.sisdhbukuobor.Adapter.GangguanAdapter;
 import id.co.perhutani.sisdhbukuobor.Adapter.PelaporanpalbatasAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
@@ -29,10 +31,11 @@ import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.tambahlaporanpalbatas.Ta
 
 public class ListPelaporanpalFragment extends Fragment
 {
-    private RecyclerView myrecylcerview;
-    private ArrayList<PelaporanpalbatasModel> DataPelaporan ;
-    private List<PelaporanpalbatasModel> lstpelaporanpal;
-    PelaporanpalbatasAdapter pAdapter;
+    private static RecyclerView myrecylcerview;
+    private static ArrayList<PelaporanpalbatasModel> DataPelaporan ;
+    private static List<PelaporanpalbatasModel> lstpelaporanpal;
+    private static PelaporanpalbatasAdapter pAdapter;
+    private static Context context;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListPelaporanpalFragment newInstance()
@@ -113,22 +116,51 @@ public class ListPelaporanpalFragment extends Fragment
         }
     }
 
+    public static void refresh_list(){
+        lstpelaporanpal = new ArrayList<>();
+
+        try {
+
+            SQLiteHandler DB_Helper = new SQLiteHandler(context);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            final Cursor cur = db.rawQuery("SELECT " +
+                    " ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID" +
+//                    " DISTINCT(ID)" +
+                    " FROM TRN_LAPORAN_PAL " +
+                    " ORDER BY ID DESC", null);
+
+            cur.moveToPosition(0);
+            DataPelaporan = new ArrayList<>();
+            for (int i = 0; i < cur.getCount(); i++) {
+                lstpelaporanpal.add(new PelaporanpalbatasModel(
+                        cur.getString(0),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(4),
+                        cur.getString(5),
+                        cur.getString(6)));
+                cur.moveToNext();
+            }
+
+            cur.close();
+            db.close();
+        } catch (Exception ex) {
+            AjnClass.showAlert(context, ex.toString());
+        }
+
+        pAdapter = new PelaporanpalbatasAdapter(context,lstpelaporanpal);
+        myrecylcerview.setLayoutManager(new LinearLayoutManager(context));
+        myrecylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        pAdapter.notifyDataSetChanged();
+        myrecylcerview.invalidate();
+        myrecylcerview.setAdapter(pAdapter);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         def();
-
-//        lstpelaporanpal = new ArrayList<>();
-//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-//        lstpelaporanpal.add(new PelaporanpalbatasModel("201631141","Semarang","10109090","Terbakar"));
-
-
+        context=getActivity();
     }
 }
