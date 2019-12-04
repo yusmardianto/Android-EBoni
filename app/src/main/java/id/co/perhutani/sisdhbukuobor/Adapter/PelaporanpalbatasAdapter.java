@@ -46,9 +46,10 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
 
         db = new SQLiteHandler(mContext);
         holder.tv_ID.setText(mData.get(position).getID());
-        holder.tv_petak.setText(mData.get(position).getPetak());
-        holder.tv_nopal.setText(mData.get(position).getNoPal());
-        holder.tv_kondisi.setText(mData.get(position).getKondisi());
+        holder.tv_tanggalpal.setText(mData.get(position).getTanggalPal());
+        holder.tv_jenispal.setText(mData.get(position).getJenisPal());
+        holder.tv_nomerpal.setText(mData.get(position).getNomerPal());
+        holder.tv_jumlahpal.setText(mData.get(position).getJumlahPal());
         holder.img_detaillaporan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,18 +67,20 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
 
     public static class PelaporanViewHolder extends RecyclerView.ViewHolder{
         private TextView tv_ID;
-        private TextView tv_petak;
-        private TextView tv_nopal;
-        private TextView tv_kondisi;
+        private TextView tv_tanggalpal;
+        private TextView tv_jenispal;
+        private TextView tv_nomerpal;
+        private TextView tv_jumlahpal;
         private LinearLayout img_detaillaporan;
 
         public PelaporanViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tv_ID = (TextView) itemView.findViewById(R.id.name_idpal);
-            tv_petak = (TextView) itemView.findViewById(R.id.name_petakpal);
-            tv_nopal = (TextView) itemView.findViewById(R.id.name_nopal);
-            tv_kondisi = (TextView) itemView.findViewById(R.id.name_kondisipal);
+            tv_tanggalpal = (TextView) itemView.findViewById(R.id.name_tanggalpal);
+            tv_jenispal = (TextView) itemView.findViewById(R.id.name_jenispal);
+            tv_nomerpal = (TextView) itemView.findViewById(R.id.name_nomerpal);
+            tv_jumlahpal = (TextView) itemView.findViewById(R.id.name_jumlahpal);
             img_detaillaporan = itemView.findViewById(R.id.img_laporanpaldetail);
 
         }

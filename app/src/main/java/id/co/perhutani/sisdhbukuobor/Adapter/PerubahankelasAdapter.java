@@ -23,7 +23,6 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
-import id.co.perhutani.sisdhbukuobor.ui.gangguan.editgangguan.EditGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.editperubahan.EditPerubahanFragment;
 
 public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAdapter.PerubahanklsViewHolder> {
@@ -55,10 +54,10 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
         db = new SQLiteHandler(mContext);
 
         holder.tv_ID.setText(mData.get(position).getID());
-        holder.tv_noPetak.setText(mData.get(position).getNoPetak());
-        holder.tv_petak.setText(mData.get(position).getPetak());
-        holder.tv_tanggal.setText(mData.get(position).getTanggal());
-        holder.tv_kelas.setText(mData.get(position).getKelas());
+        holder.tv_petakID.setText(mData.get(position).getPetakID());
+        holder.tv_tahun.setText(mData.get(position).getTahun());
+        holder.tv_jenistanaman.setText(mData.get(position).getJenisTanaman());
+        holder.tv_kelashutan.setText(mData.get(position).getKelasHutan());
         holder.img_detailperubahan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,20 +73,20 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
 
     public static class PerubahanklsViewHolder extends RecyclerView.ViewHolder{
         private TextView tv_ID;
-        private TextView tv_noPetak;
-        private TextView tv_petak;
-        private TextView tv_tanggal;
-        private TextView tv_kelas;
+        private TextView tv_petakID;
+        private TextView tv_tahun;
+        private TextView tv_jenistanaman;
+        private TextView tv_kelashutan;
         private LinearLayout img_detailperubahan;
 
         public PerubahanklsViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_ID = (TextView) itemView.findViewById(R.id.name_idperubahan);
-            tv_noPetak = (TextView) itemView.findViewById(R.id.name_anakpetakidperubahan);
-            tv_petak = (TextView) itemView.findViewById(R.id.name_petakperubahan);
-            tv_tanggal = (TextView) itemView.findViewById(R.id.name_tglperubahan);
-            tv_kelas = (TextView) itemView.findViewById(R.id.name_kelasperubahan);
+            tv_ID = (TextView) itemView.findViewById(R.id.name_idperubahankelas);
+            tv_petakID = (TextView) itemView.findViewById(R.id.name_petakidperubahankelas);
+            tv_tahun = (TextView) itemView.findViewById(R.id.name_tahunperubahankelas);
+            tv_jenistanaman = (TextView) itemView.findViewById(R.id.name_jenistanamanperubahankelas);
+            tv_kelashutan = (TextView) itemView.findViewById(R.id.name_kelashutanperubahankelas);
             img_detailperubahan = itemView.findViewById(R.id.img_perubahankelasdetail);
 
         }

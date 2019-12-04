@@ -1,5 +1,6 @@
 package id.co.perhutani.sisdhbukuobor.ui.gangguan;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -30,10 +31,12 @@ import id.co.perhutani.sisdhbukuobor.ui.gangguan.tambahgangguan.TambahGangguanFr
 public class ListGangguanFragment extends Fragment
 {
 //    View v ;
-    private RecyclerView myrecyclerview;
-    private ArrayList<GangguanModel> dataModels;
-    private List<GangguanModel> lsgangguan;
-    GangguanAdapter gAdapter;
+    private static RecyclerView myrecyclerview;
+    private static ArrayList<GangguanModel> dataModels;
+    private static List<GangguanModel> lsgangguan;
+    private static GangguanAdapter gAdapter;
+    private static Context context;
+
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListGangguanFragment newInstance() { return new ListGangguanFragment(); }
@@ -46,7 +49,7 @@ public class ListGangguanFragment extends Fragment
         View root = inflater.inflate(R.layout.gangguan_fragment, container, false);
         myrecyclerview = root.findViewById(R.id.gangguan_recycler);
         init();
-
+        context=getActivity();
 
 
         ImageView imgTambahGangguan = (ImageView) root.findViewById(R.id.img_tambahgangguan);
@@ -83,7 +86,7 @@ public class ListGangguanFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, KEJADIAN, ANAKPETAK_ID, NOMOR_HA, TANGGAL_HA" +
+                    " ID, KEJADIAN, KET1, NOMOR_HA, TANGGAL_HA" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_GANGGUAN_HUTAN " +
                     " ORDER BY ID DESC", null);
@@ -96,7 +99,17 @@ public class ListGangguanFragment extends Fragment
                         cur.getString(1),
                         cur.getString(2),
                         cur.getString(3),
-                        cur.getString(4)));
+                        cur.getString(4),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(4),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(4),
+                        Integer.parseInt(cur.getString(0))
+                        ));
                 cur.moveToNext();
             }
 
@@ -106,10 +119,58 @@ public class ListGangguanFragment extends Fragment
             AjnClass.showAlert(getActivity(), ex.toString());
         }
     }
+    public static void refresh_list(){
+
+        lsgangguan = new ArrayList<>();
+        try {
+
+            SQLiteHandler DB_Helper = new SQLiteHandler(context);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            final Cursor cur = db.rawQuery("SELECT " +
+                    " ID, KEJADIAN, KET1, NOMOR_HA, TANGGAL_HA" +
+                    " FROM TRN_GANGGUAN_HUTAN " +
+                    " ORDER BY ID DESC", null);
+
+            cur.moveToPosition(0);
+            dataModels = new ArrayList<>();
+            for (int i = 0; i < cur.getCount(); i++) {
+                lsgangguan.add(new GangguanModel(
+                        cur.getString(0),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(4),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(4),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(4),
+                        Integer.parseInt(cur.getString(0))
+                ));
+                cur.moveToNext();
+            }
+
+            cur.close();
+            db.close();
+        } catch (Exception ex) {
+            AjnClass.showAlert(context, ex.toString());
+        }
+
+        gAdapter = new GangguanAdapter(context,lsgangguan);
+        myrecyclerview.setLayoutManager(new LinearLayoutManager(context));
+        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        gAdapter.notifyDataSetChanged();
+        myrecyclerview.invalidate();
+        myrecyclerview.setAdapter(gAdapter);
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         def();
+        context=getActivity();
     }
 }

@@ -18,34 +18,64 @@
         android:layout_marginRight="5dp">
 
         <TextView
-            android:id="@+id/name_idperubahan"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No_ID : 201631141"/>
+            android:layout_height="20dp"
+            android:text="ID :" />
 
         <TextView
-            android:id="@+id/name_anakpetakidperubahan"
+            android:id="@+id/name_idperubahankelas"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No_Petak : 087797315685"/>
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="100dp"
+            android:layout_height="20dp" />
 
         <TextView
-            android:id="@+id/name_petakperubahan"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Petak       : KPH Semarang"/>
+            android:layout_height="20dp"
+            android:text="Anak Petak ID :" />
 
         <TextView
-            android:id="@+id/name_tglperubahan"
+            android:id="@+id/name_petakidperubahankelas"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tanggal    : 12-12-2012"/>
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="100dp"
+            android:layout_height="20dp" />
 
         <TextView
-            android:id="@+id/name_kelasperubahan"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kelas hutan : Eboni "/>
+            android:layout_height="20dp"
+            android:text="Tahun :" />
+
+        <TextView
+            android:id="@+id/name_tahunperubahankelas"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="60dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Jenis Tanaman :" />
+
+        <TextView
+            android:id="@+id/name_jenistanamanperubahankelas"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="110dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Kelas Hutan :" />
+
+        <TextView
+            android:id="@+id/name_kelashutanperubahankelas"
+            android:layout_width="12dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="-20dp" />
 
         <ImageView
             android:id="@+id/name_info_alert_perubahan"

@@ -54,9 +54,10 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
     public void onBindViewHolder(@NonNull PemantauanViewHolder holder, final int position) {
         db = new SQLiteHandler(mContext);
         holder.tv_ID.setText(mData.get(position).getID());
-        holder.tv_anakpetak.setText(mData.get(position).getPetak());
-        holder.tv_tanggal.setText(mData.get(position).getTanggal());
-        holder.tv_jenis.setText(mData.get(position).getJenis());
+        holder.tv_petakid.setText(mData.get(position).getPetakId());
+        holder.tv_jenisatwa.setText(mData.get(position).getJenis());
+        holder.tv_jumlahsatwa.setText(mData.get(position).getJumlah());
+        holder.tv_waktulihat.setText(mData.get(position).getWaktulihat());
         holder.img_pemantaundetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,18 +75,20 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
 
     public static class PemantauanViewHolder extends RecyclerView.ViewHolder{
         private TextView tv_ID;
-        private TextView tv_anakpetak;
-        private TextView tv_tanggal;
-        private TextView tv_jenis;
+        private TextView tv_petakid;
+        private TextView tv_jenisatwa;
+        private TextView tv_jumlahsatwa;
+        private TextView tv_waktulihat;
         private LinearLayout img_pemantaundetail;
 
         public PemantauanViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tv_ID = (TextView) itemView.findViewById(R.id.name_idsatwa);
-            tv_anakpetak = (TextView) itemView.findViewById(R.id.name_anakpetaksatwa);
-            tv_tanggal = (TextView) itemView.findViewById(R.id.name_tglsatwa);
-            tv_jenis = (TextView) itemView.findViewById(R.id.name_jenissatwa);
+            tv_petakid = (TextView) itemView.findViewById(R.id.name_anakpetaksatwa);
+            tv_jenisatwa = (TextView) itemView.findViewById(R.id.name_jenissatwa);
+            tv_jumlahsatwa = (TextView) itemView.findViewById(R.id.name_jumlahsatwa);
+            tv_waktulihat = (TextView) itemView.findViewById(R.id.name_waktulihatsatwa);
             img_pemantaundetail = itemView.findViewById(R.id.img_pemantauandetail);
 
         }
@@ -107,6 +110,14 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
               String get_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
               String get_caramelihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
               String get_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+
+            String get_petakid = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.PETAK_ID);
+            String get_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
+            String get_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
+            String get_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
+            String get_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
+            String get_caramelihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+            String get_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
 
             TextView petakid = viewas.findViewById(R.id.pemantauan_petakiddetail);
             petakid.setText(get_petakid);
