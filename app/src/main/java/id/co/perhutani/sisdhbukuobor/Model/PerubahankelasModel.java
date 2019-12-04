@@ -21,19 +21,19 @@ public class PerubahankelasModel {
                                String kelasHutanPerkiraan, String noBappkh, String luasDefinitif,
                                String jenisTanamanDefinitif, String kelasHutanDefinitif, String keterangan) {
         this.ID = ID;
-        PetakID = petakID;
-        Tahun = tahun;
-        Luas = luas;
-        JenisTanaman = jenisTanaman;
-        KelasHutan = kelasHutan;
-        LuasPerkiraan = luasPerkiraan;
-        JenisTanamanPerkiraan = jenisTanamanPerkiraan;
-        KelasHutanPerkiraan = kelasHutanPerkiraan;
-        NoBappkh = noBappkh;
-        LuasDefinitif = luasDefinitif;
-        JenisTanamanDefinitif = jenisTanamanDefinitif;
-        KelasHutanDefinitif = kelasHutanDefinitif;
-        KeteranganPerubahan = keterangan;
+        this.PetakID = petakID;
+        this.Tahun = tahun;
+        this.Luas = luas;
+        this.JenisTanaman = jenisTanaman;
+        this.KelasHutan = kelasHutan;
+        this.LuasPerkiraan = luasPerkiraan;
+        this.JenisTanamanPerkiraan = jenisTanamanPerkiraan;
+        this.KelasHutanPerkiraan = kelasHutanPerkiraan;
+        this.NoBappkh = noBappkh;
+        this.LuasDefinitif = luasDefinitif;
+        this.JenisTanamanDefinitif = jenisTanamanDefinitif;
+        this.KelasHutanDefinitif = kelasHutanDefinitif;
+        this.KeteranganPerubahan = keterangan;
     }
 
     public String getID() {

@@ -1,149 +1,469 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/editperubahan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
     tools:context=".ui.perubahankelas.editperubahan.EditPerubahanFragment">
 
-    <LinearLayout
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_navigation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
-
-        <EditText
-            android:id="@+id/edit_perubahankls_idpetakperubahan"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Anak Petak"/>
-
-        <EditText
-            android:id="@+id/edit_perubahankls_tahunperubahan"
-            android:layout_marginTop="15dp"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Tahun"/>
-
-        <EditText
-            android:id="@+id/edit_perubahankls_luasperubahan"
-            android:layout_marginTop="-44dp"
-            android:layout_marginLeft="185dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Luas"/>
-
-        <EditText
-            android:id="@+id/edit_perubahankls_jenisperubahan"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Jenis Tanaman"/>
-
-        <EditText
-            android:id="@+id/edit_perubahankls_kelasperubahan"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Kelas Hutan"/>
+        android:layout_height="50dp"
+        android:background="#EAEAEA"
+        android:paddingLeft="-16dp">
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Perkiraan"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:fontFamily="@font/font_aal_default"
+            android:gravity="right|center"
+            android:text="Tambah Perubahan Kelas"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/edit_perubahankls_luasperkiraan"
-            android:layout_marginTop="15dp"
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Luas Perkiraan"/>
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_perubahankls_jenisperkiraan"
-            android:layout_marginTop="15dp"
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Jenis Tanaman"
+                android:textColor="#1F1E1E" />
+
+            <EditText
+                android:id="@+id/edit_perubahankls_jenisperubahan"
+                android:fontFamily="@font/font_aal_default"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_background"
+                android:hint="Jenis Tanaman" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Petak Kejadian"
+                        android:textColor="#1F1E1E" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:fontFamily="@font/font_aal_default"
+                        android:id="@+id/spinner_anak_petak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/edit_perubahankls_idpetakperubahan"
+                        android:fontFamily="@font/font_aal_default"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Anak Petak" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Tanggal"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/edit_perubahankls_tahunperubahan"
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Tanggal" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Luas"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/edit_perubahankls_luasperubahan"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Luas" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Kelas Hutan"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/edit_perubahankls_kelasperubahan"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Kelas Hutan" />
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="#EFEFEF" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Jenis Tanaman Perkiraan"/>
-
-        <EditText
-            android:id="@+id/edit_perubahankls_kelasperkiraan"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Kelas Hutan Perkiraan"/>
-
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Definitif"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:gravity="right"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_perubahankls_nobappkh"
-            android:layout_marginTop="20dp"
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Jenis Tanaman Perkiraan"
+                android:textColor="#1F1E1E" />
+
+            <EditText
+                android:id="@+id/edit_perubahankls_jenisperkiraan"
+                android:fontFamily="@font/font_aal_default"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_background"
+                android:layout_marginBottom="5dp"
+                android:hint="Jenis Tanaman Perkiraan" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Luas Perkiraan"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/edit_perubahankls_luasperkiraan"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Luas Perki . . . " />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Kelas Hutan Perkiraan"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/edit_perubahankls_kelasperkiraan"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Kelas Hutan Perkiraan" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="#EFEFEF" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="No BAPPKH"/>
+            android:gravity="right"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_perubahankls_luasdefinitif"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Luas Definitif"/>
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
-        <EditText
-            android:id="@+id/edit_perubahankls_jenisdefinitif"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Jenis Tanaman Definitif"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_perubahankls_kelasdefinitif"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Kelas Definitif"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_perubahankls_ketperubahan"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/ic_background"
-            android:hint="Keterangan"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/edit_perubahankls_btnsimpan"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/text_simpan"/>
+                            <LinearLayout
+                                android:layout_width="300dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="No. BAP PKH"
+                                    android:textColor="#1F1E1E" />
+
+                                <EditText
+                                    android:id="@+id/edit_perubahankls_nobappkh"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:singleLine="true"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/ic_background"
+                                    android:hint="No. BAP PKH" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Jenis Tanaman Definitif"
+                                    android:textColor="#1F1E1E" />
+
+                                <EditText
+                                    android:id="@+id/edit_perubahankls_jenisdefinitif"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:singleLine="true"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/ic_background"
+                                    android:hint="Jenis Tanaman Definitif" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="300dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Luas Definitif"
+                                    android:textColor="#1F1E1E" />
+
+                                <EditText
+                                    android:id="@+id/edit_perubahankls_luasdefinitif"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:singleLine="true"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/ic_background"
+                                    android:hint="Luas Definitif" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Kelas Hutan Definitif"
+                                    android:textColor="#1F1E1E" />
+
+                                <EditText
+                                    android:id="@+id/edit_perubahankls_kelasdefinitif"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:singleLine="true"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/ic_background"
+                                    android:hint="Kelas Hutan Definitif" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Keterangan"
+                                android:textColor="#1F1E1E" />
+
+                            <EditText
+                                android:id="@+id/edit_perubahankls_ketperubahan"
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:background="@drawable/ic_background"
+                                android:hint="Tambahkan keterangan . . . " />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/edit_perubahankls_btnsimpan"
+                            android:textSize="20dp"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/shape_btnlogin"
+                            android:text="Simpan"
+                            android:textColor="#F9F9F9" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </ScrollView>
+        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</RelativeLayout>

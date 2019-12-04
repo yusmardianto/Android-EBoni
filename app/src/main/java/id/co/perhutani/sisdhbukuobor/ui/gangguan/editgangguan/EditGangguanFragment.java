@@ -48,9 +48,9 @@ public class EditGangguanFragment extends Fragment {
 
     public static final String MSG_KEY = "id";
     private static SQLiteHandler db;
-    private static String id,  str_isipetak,  str_tanggal,
-            str_isi_kejadian, str_luas_lahan, str_jumlah_pohon, str_kerugian_kyp, str_kerugian_kyb,
-            str_kerugian_getah, str_nilai_kerugian, str_keterangan;
+    private static String id,  str_isipetak,  str_tanggal, str_isi_kejadian, str_luas_lahan,
+            str_jumlah_pohon, str_kerugian_kyp, str_kerugian_kyb, str_kerugian_getah,
+            str_nilai_kerugian, str_keterangan;
     private Button btnSimpanGangguan;
 
     private Spinner spin_anak_petak;
