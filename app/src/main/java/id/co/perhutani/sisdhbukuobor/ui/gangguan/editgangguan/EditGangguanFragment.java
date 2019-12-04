@@ -253,6 +253,7 @@ public class EditGangguanFragment extends Fragment {
                                             Aktifitasnya.setNilai(nilai_kerugian.getText().toString());
                                             Aktifitasnya.setKeterangan(keterangan.getText().toString());
                                             Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKet9("3");
                                             db.EditDataGangguanHutan(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

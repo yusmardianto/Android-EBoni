@@ -160,10 +160,10 @@ public class TambahGangguanFragment extends Fragment {
             if (kejadian.equals("") || kejadian.equals("0") || kejadian.equals(" ") || kejadian.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Judul Kejadian tidak boleh kosong");
 
-            } else if(str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)){
+            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
 
-            }else {
+            } else {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
@@ -203,9 +203,7 @@ public class TambahGangguanFragment extends Fragment {
                                         try {
 
                                             ContentValues values_aktifitas = new ContentValues();
-//                    values_aktifitas.put(TrnGangguanKeamananHutan.TAHUN, tahun.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, isipetak.getText().toString());
-//                    values_aktifitas.put(TrnGangguanKeamananHutan.NOMOR_HA, no_ha.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.TANGGAL_HA, tanggal.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KEJADIAN, isi_kejadian.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KERUGIAN_LUAS, luas_lahan.getText().toString());
@@ -216,6 +214,7 @@ public class TambahGangguanFragment extends Fragment {
                                             values_aktifitas.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, nilai_kerugian.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KETERANGAN, keterangan.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KET1, spin_anak_petak.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnGangguanKeamananHutan.KET9, "0");
                                             db.create(TrnGangguanKeamananHutan.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
 

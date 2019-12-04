@@ -15,13 +15,15 @@ public class GangguanModel {
     private String Nilai;
     private String Keterangan;
     private String Ket1;
+    private String Ket9;
+    private String Ket10;
 
     public int ID_gangguan;
 
 
     public GangguanModel(String id, String isi, String petak, String no, String tanggal,
                          String luas, String pohon, String kyp, String kyb, String getah,
-                         String nilai, String keterangan, String ket1, int id_gangguan
+                         String nilai, String keterangan, String ket1, int id_gangguan, String ket9, String ket10
 
     ) {
         this.Id = id;
@@ -38,12 +40,30 @@ public class GangguanModel {
         this.Keterangan = keterangan;
         this.Ket1 = ket1;
         this.ID_gangguan= id_gangguan;
+        this.Ket9 = ket9;
+        this.Ket10 = ket10;
+
     }
 
     public GangguanModel() {
 
     }
 
+    public String getKet9() {
+        return Ket9;
+    }
+
+    public void setKet9(String ket9) {
+        Ket9 = ket9;
+    }
+
+    public String getKet10() {
+        return Ket10;
+    }
+
+    public void setKet10(String ket10) {
+        Ket10 = ket10;
+    }
 
     public int getID_gangguan() {
         return ID_gangguan;
