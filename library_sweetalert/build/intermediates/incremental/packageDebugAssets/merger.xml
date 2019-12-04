@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\PERHUTANI\PROJECT-ANDROID\ebot\library_sweetalert\src\main\assets"/><source path="D:\PERHUTANI\PROJECT-ANDROID\ebot\library_sweetalert\build\intermediates\shader_assets\debug\compileDebugShaders\out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\PERHUTANI\PROJECT-ANDROID\ebot\library_sweetalert\src\debug\assets"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\ebot\library_sweetalert\src\main\assets"/><source path="D:\ebot\library_sweetalert\build\intermediates\shader_assets\debug\compileDebugShaders\out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\ebot\library_sweetalert\src\debug\assets"/></dataSet></merger>
+>>>>>>> 380bba29e57376593280a0aabe2b9fe514cc6833

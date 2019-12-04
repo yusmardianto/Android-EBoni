@@ -18,28 +18,65 @@
         android:layout_marginRight="5dp">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No_ID            : "/>
+
+        <TextView
             android:id="@+id/name_idsatwa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No_ID : 201631141"/>
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="90dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Petak ID        : "/>
 
         <TextView
             android:id="@+id/name_anakpetaksatwa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Anak Petak : KPH Semarang"/>
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="90dp" />
 
         <TextView
-            android:id="@+id/name_tglsatwa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tanggal       : 10-10-2010"/>
+            android:text="Jenis              : "/>
 
         <TextView
             android:id="@+id/name_jenissatwa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jenis            : Satwa Cagar Alam"/>
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="90dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jumlah          : "/>
+
+        <TextView
+            android:id="@+id/name_jumlahsatwa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="90dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Waktu Lihat  : "/>
+
+        <TextView
+            android:id="@+id/name_waktulihatsatwa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="90dp" />
+
 
         <ImageView
             android:id="@+id/name_info_alert_satwa"

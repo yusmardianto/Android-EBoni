@@ -2,6 +2,7 @@ package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
+import id.co.perhutani.sisdhbukuobor.ui.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.ui.gangguan.editgangguan.EditGangguanFragment;
 
 public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.GangguanViewHolder> {
@@ -95,7 +98,6 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
     public void popup (final String id){
 
-
 //        AjnClass.showAlert(mContext,id);
         try {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
@@ -103,11 +105,9 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
             alertDialogBuilder.setView(viewas);
 
-            String get_anakpetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
-            String get_tahun = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TAHUN);
-            String get_nomorha = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_HA);
+            String get_anakpetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET1);
             String get_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_HA);
-            String get_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
+            final String get_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
             String get_kerugianluas = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
             String get_kerugianpohon = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_POHON);
             String get_kerugiankyp = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_KYP);
@@ -118,12 +118,6 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
             TextView anakpetak = viewas.findViewById(R.id.gangguan_petakdetailid);
             anakpetak.setText(get_anakpetak);
-
-            TextView tahun = viewas.findViewById(R.id.gangguan_tahundetail);
-            tahun.setText(get_tahun);
-
-            TextView nomorha = viewas.findViewById(R.id.gangguan_nomorhadetail);
-            nomorha.setText(get_nomorha);
 
             TextView tanggal = viewas.findViewById(R.id.gangguan_tanggaldetail);
             tanggal.setText(get_tanggal);
@@ -177,6 +171,65 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
                     ft.commit();
                 }
             });
+
+
+            ImageView delete = viewas.findViewById(R.id.detail_btndeletegangguan);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String str_note = "Hapus : " + get_kejadian;
+
+                    new SweetAlertDialog(mContext, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Hapus Data ?")
+                            .setContentText(str_note)
+                            .setCancelText("Batal")
+                            .setConfirmText("Hapus")
+                            .showCancelButton(true)
+                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    // reuse previous dialog instance, keep widget user state, reset them if you need
+                                    sDialog.setTitleText("Diabatalkan!")
+                                            .setContentText("")
+                                            .setConfirmText("OK")
+                                            .showCancelButton(false)
+                                            .setCancelClickListener(null)
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                }
+                            })
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.setTitleText("Berhasil !")
+                                            .setContentText(str_note)
+                                            .setConfirmText("OK")
+                                            .showCancelButton(false)
+                                            .setCancelClickListener(null)
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                    new Handler().postDelayed(new Runnable() {
+
+                                        @Override
+                                        public void run() {
+                                            // TODO Auto-generated method stub
+                                            try {
+                                                db.delete_one_date(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id);
+                                                ListGangguanFragment.refresh_list();
+                                            } catch (Exception ex) {
+                                            }
+                                            alert.dismiss();
+                                        }
+
+                                    }, 1000);
+                                }
+                            })
+                            .show();
+                }
+            });
+
+
 
         } catch (Exception ex) {
             AjnClass.showAlert(mContext,ex.toString());
