@@ -21,6 +21,7 @@ import id.co.perhutani.sisdhbukuobor.LocalDatabaseActivity;
 import id.co.perhutani.sisdhbukuobor.LoginActivity;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
@@ -145,6 +146,7 @@ public class ProfilFragment extends Fragment {
         db.deleteAllRow(TrnPerubahanKelas.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnPemantauanSatwa.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnRegisterPcp.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisGangguanHutanSchema.SQL_DELETE_ALL_ROWS);
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
         getActivity().finish();

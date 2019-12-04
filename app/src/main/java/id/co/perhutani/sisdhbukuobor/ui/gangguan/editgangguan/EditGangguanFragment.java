@@ -255,7 +255,7 @@ public class EditGangguanFragment extends Fragment {
                                             Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
                                             db.EditDataGangguanHutan(Aktifitasnya);
 
-                                            Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();
                                             FragmentManager manager = (getActivity()).getSupportFragmentManager();
                                             Fragment fragment = new ListGangguanFragment();
                                             FragmentTransaction ft = manager.beginTransaction();
