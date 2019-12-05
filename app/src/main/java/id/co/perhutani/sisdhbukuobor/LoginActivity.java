@@ -67,8 +67,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_KELAS_HUTAN_V1 = address + "api/v1/getKelasHutan";
     private static final String URL_FOR_GET_JENIS_TANAMAN_V1 = address + "api/v1/getJenisTanaman";
     private static final String URL_FOR_GET_JENIS_PERMASALAHAN_V1 = address + "api/v1/getJenisPermasalahan";
-    private static final String URL_FOR_GET_JENIS_GANGGUAN_HUTAN_V1 = address + "api/v1/getJenisGangguanHutan";
 
+    private static final String URL_FOR_GET_JENIS_GANGGUAN_HUTAN_V1 = address + "api/v1/getJenisGangguanHutan";
     private static final String URL_FOR_GET_JENIS_SATWA_V1 = address + "api/v1/getJenisSatwa";
     private static final String URL_FOR_GET_JENIS_TEMUAN_V1 = address + "api/v1/getJenisTemuan";
 
