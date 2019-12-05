@@ -11,10 +11,11 @@ public class TrnRegisterPcp {
     public static final String UMUR =  "UMUR";
     public static final String RATARATA_KELILING = "RATARATA_KELILING";
     public static final String BONITA = "BONITA";
-    public static final String M_PCP = "M_PCP";
+    public static final String N_LAPANGAN = "N_LAPANGAN";
     public static final String NORMAL_PCP = "NORMAL_DALAM_PCP";
     public static final String N_MATI = "N_MATI";
     public static final String TAHUN_JARANGAN = "TAHUN_JARANGAN";
+    public static final String PENIGGI = "PENINGGI";
     public static final String KETERANGAN = "KETERANGAN";
     public static final String KET1 = "KET1";
     public static final String KET2 = "KET2";
@@ -36,10 +37,11 @@ public class TrnRegisterPcp {
             "" + UMUR + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + RATARATA_KELILING + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + BONITA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + M_PCP + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + N_LAPANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + NORMAL_PCP + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + N_MATI + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + TAHUN_JARANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + PENIGGI + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KETERANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +

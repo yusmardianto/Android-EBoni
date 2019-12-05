@@ -1,28 +1,39 @@
 package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
+import id.co.perhutani.sisdhbukuobor.ui.registerpcp.ListRegisterpcpFragment;
+import id.co.perhutani.sisdhbukuobor.ui.registerpcp.editregisterpcp.EditRegisterpcpFragment;
 
 public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.RegisterpcpViewHolder>
 {
     Context mContext;
     List<RegisterpcpModel> mData;
     SQLiteHandler db;
+    public static final String MSG_KEY = "id";
 
     public RegisterpcpAdapter(Context mContext, List<RegisterpcpModel> mData) {
         this.mContext = mContext;
@@ -94,7 +105,7 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
             final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
             alertDialogBuilder.setView(viewas);
 
-            String get_nopcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.NO_PCP);
+            final String get_nopcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.NO_PCP);
             String get_anakpetakid = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.ANAK_PETAK_ID);
             String get_tahunpcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_PCP);
             String get_luasbaku = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.LUAS_BAKU);
@@ -102,10 +113,11 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
             String get_umur = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.UMUR);
             String get_ratarata = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.RATARATA_KELILING);
             String get_bonita = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.BONITA);
-            String get_mpcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.M_PCP);
+            String get_nlapangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.N_LAPANGAN);
             String get_normalpcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.NORMAL_PCP);
             String get_nmati = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.N_MATI);
             String get_tahunjarangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_JARANGAN);
+            String get_peninggi = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.PENIGGI);
             String get_keterangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KETERANGAN);
 
             TextView nopcp = viewas.findViewById(R.id.registerpcp_nopcpdetail);
@@ -132,8 +144,8 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
             TextView bonita = viewas.findViewById(R.id.registerpcp_bonitadetail);
             bonita.setText(get_bonita);
 
-            TextView mpcp = viewas.findViewById(R.id.registerpcp_mpcpdetail);
-            mpcp.setText(get_mpcp);
+            TextView nlapangan = viewas.findViewById(R.id.registerpcp_nlapangandetail);
+            nlapangan.setText(get_nlapangan);
 
             TextView normalpcp = viewas.findViewById(R.id.registerpcp_normalpcpndetail);
             normalpcp.setText(get_normalpcp);
@@ -144,6 +156,9 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
             TextView tahunjarangan = viewas.findViewById(R.id.registerpcp_tahunjarangandetail);
             tahunjarangan.setText(get_tahunjarangan);
 
+            TextView peninggi = viewas.findViewById(R.id.registerpcp_peninggidetail);
+            peninggi.setText(get_peninggi);
+
             TextView keterangan = viewas.findViewById(R.id.registerpcp_keterangandetail);
             keterangan.setText(get_keterangan);
 
@@ -151,9 +166,82 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
             alertDialogBuilder.setView(viewas);
 //            alertDialogBuilder.setCancelable(false);
 
-
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
+
+            ImageView edit = viewas.findViewById(R.id.detail_btneditregisterpcp);
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Fragment fragment = new EditRegisterpcpFragment();
+                    alert.dismiss();
+
+                    String message = id;
+                    Bundle data = new Bundle();
+                    data.putString(RegisterpcpAdapter.MSG_KEY, message);
+                    FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
+                    fragment.setArguments(data);
+                    FragmentTransaction ft = manager.beginTransaction();
+                    ft.replace(R.id.nav_host_fragment, fragment);
+                    ft.commit();
+                }
+            });
+
+            ImageView delete = viewas.findViewById(R.id.detail_btndeleteregisterpcp);
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String str_note = "Hapus : " + get_nopcp;
+
+                    new SweetAlertDialog(mContext, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Hapus Data ?")
+                            .setContentText(str_note)
+                            .setCancelText("Batal")
+                            .setConfirmText("Hapus")
+                            .showCancelButton(true)
+                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    // reuse previous dialog instance, keep widget user state, reset them if you need
+                                    sDialog.setTitleText("Diabatalkan!")
+                                            .setContentText("")
+                                            .setConfirmText("OK")
+                                            .showCancelButton(false)
+                                            .setCancelClickListener(null)
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                }
+                            })
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.setTitleText("Berhasil !")
+                                            .setContentText(str_note)
+                                            .setConfirmText("OK")
+                                            .showCancelButton(false)
+                                            .setCancelClickListener(null)
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                    new Handler().postDelayed(new Runnable() {
+
+                                        @Override
+                                        public void run() {
+                                            // TODO Auto-generated method stub
+                                            try {
+                                                db.delete_one_date(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id);
+                                                ListRegisterpcpFragment.refresh_list();
+                                            } catch (Exception ex) {
+                                            }
+                                            alert.dismiss();
+                                        }
+
+                                    }, 1000);
+                                }
+                            })
+                            .show();
+                }
+            });
 
 
         } catch (Exception ex) {

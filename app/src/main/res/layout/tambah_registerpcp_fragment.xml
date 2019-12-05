@@ -308,18 +308,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="M PCP"
+                        android:text="N Lapangan"
                         android:textColor="#1F1E1E" />
 
                     <EditText
-                        android:id="@+id/pcp_mpcp"
+                        android:id="@+id/pcp_nlapangan"
                         android:fontFamily="@font/font_aal_default"
                         android:inputType="number"
                         android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background"
-                        android:hint="M PCP" />
+                        android:hint="N Lapangan" />
 
                 </LinearLayout>
 
@@ -395,7 +395,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Jenis PAL"
+                        android:text="Tahun Jarangan"
                         android:textColor="#1F1E1E" />
 
                     <androidx.appcompat.widget.AppCompatSpinner
@@ -422,6 +422,24 @@
                         android:background="#000" />
                 </LinearLayout>
             </LinearLayout>
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Peninggi"
+                android:textColor="#1F1E1E" />
+
+            <EditText
+                android:id="@+id/pcp_peninggi"
+                android:fontFamily="@font/font_aal_default"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_background"
+                android:hint="Peninggi" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

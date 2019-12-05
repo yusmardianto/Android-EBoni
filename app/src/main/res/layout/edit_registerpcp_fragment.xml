@@ -21,7 +21,7 @@
             android:layout_marginRight="15dp"
             android:fontFamily="@font/font_aal_default"
             android:gravity="right|center"
-            android:text="Tambah Register PCP"
+            android:text="Edit Register PCP"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="20dp" />
 
@@ -308,18 +308,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="M PCP"
+                            android:text="N Lapangan"
                             android:textColor="#1F1E1E" />
 
                         <EditText
-                            android:id="@+id/edit_pcp_mpcp"
+                            android:id="@+id/edit_pcp_nlapangan"
                             android:fontFamily="@font/font_aal_default"
                             android:inputType="number"
                             android:singleLine="true"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/ic_background"
-                            android:hint="M PCP" />
+                            android:hint="N Lapangan" />
 
                     </LinearLayout>
 
@@ -395,7 +395,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Jenis PAL"
+                            android:text="Tahun Jarangan"
                             android:textColor="#1F1E1E" />
 
                         <androidx.appcompat.widget.AppCompatSpinner
@@ -420,6 +420,38 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="5dp"
                             android:background="#000" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:fontFamily="@font/font_aal_default"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Peninggi"
+                            android:textColor="#1F1E1E" />
+
+                        <EditText
+                            android:id="@+id/edit_pcp_peninggi"
+                            android:fontFamily="@font/font_aal_default"
+                            android:singleLine="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/ic_background"
+                            android:hint="Peninggi" />
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
