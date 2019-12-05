@@ -8,17 +8,31 @@ public class PelaporanpalbatasModel {
     private String NomerPal;
     private String JumlahPal;
     private String KeteranganPal;
+    private int ID_Laporan;
 
     public PelaporanpalbatasModel(String ID, String tanggalPal, String jenisPal, String kondisiPal,
-                                  String nomerPal, String jumlahPal, String keteranganPal)
+                                  String nomerPal, String jumlahPal, String keteranganPal, int id_laporan)
     {
         this.ID = ID;
-        TanggalPal = tanggalPal;
-        JenisPal = jenisPal;
-        KondisiPal = kondisiPal;
-        NomerPal = nomerPal;
-        JumlahPal = jumlahPal;
-        KeteranganPal = keteranganPal;
+        this.TanggalPal = tanggalPal;
+        this.JenisPal = jenisPal;
+        this.KondisiPal = kondisiPal;
+        this.NomerPal = nomerPal;
+        this.JumlahPal = jumlahPal;
+        this.KeteranganPal = keteranganPal;
+        this.ID_Laporan= id_laporan;
+    }
+
+    public PelaporanpalbatasModel(){
+
+    }
+
+    public int getID_Laporan() {
+        return ID_Laporan;
+    }
+
+    public void setID_Laporan(int ID_Laporan) {
+        this.ID_Laporan = ID_Laporan;
     }
 
     public String getID() {
