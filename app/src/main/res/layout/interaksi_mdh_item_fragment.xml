@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/font_aal_bold"
-            android:text="Nama Desa, Nama Kecamatan"
+            android:text="Nama Desa"
             android:textSize="18dp" />
 
         <LinearLayout
@@ -33,7 +33,7 @@
                 android:fontFamily="@font/font_aal_default"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Interaksi" />
+                android:text="Bentuk Interaksi" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
                 android:id="@+id/name_id"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="Positif +" />
+                android:text="Contoh bentuk" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                 android:fontFamily="@font/font_aal_default"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Tanggal" />
+                android:text="Tahun" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
                 android:id="@+id/name_tanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="[20-10-2010]" />
+                android:text="[2010]" />
         </LinearLayout>
 
         <ImageView

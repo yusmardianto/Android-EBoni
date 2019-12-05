@@ -66,7 +66,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:fontFamily="@font/font_aal_default"
-                        android:id="@+id/spinner_anak_petak"
+                        android:id="@+id/spinner_anakpetak_interaksi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -84,6 +84,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -95,19 +96,29 @@
                         android:text="Tahun"
                         android:textColor="#1F1E1E" />
 
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:fontFamily="@font/font_aal_default"
+                        android:id="@+id/spinner_tahuninteraksi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
                     <EditText
                         android:fontFamily="@font/font_aal_default"
-                        android:id="@+id/interaksimdh_tanggalHA"
+                        android:visibility="gone"
+                        android:id="@+id/interaksimdh_tahun"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background"
                         android:hint="Tahun ..." />
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -125,42 +136,23 @@
                         android:text="Nama Desa"
                         android:textColor="#1F1E1E" />
 
-                    <EditText
+                    <androidx.appcompat.widget.AppCompatSpinner
                         android:fontFamily="@font/font_aal_default"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:id="@+id/interaksimdh_desa"
+                        android:id="@+id/spinner_namadesa"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/ic_background"
-                        android:hint="Isi Nama desa ..." />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:fontFamily="@font/font_aal_default"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Nama Kecamatan"
-                        android:textColor="#1F1E1E" />
+                        android:layout_height="wrap_content"/>
 
                     <EditText
                         android:fontFamily="@font/font_aal_default"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:id="@+id/ginteraksimdh_kec"
+                        android:visibility="gone"
+                        android:id="@+id/interaksimdh_namadesa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background"
-                        android:hint="Isi Nama Kec ..." />
+                        android:hint="desa ..." />
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <View
@@ -170,30 +162,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
                 android:background="#EFEFEF" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:fontFamily="@font/font_aal_default"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bentuk Interaksi"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:fontFamily="@font/font_aal_default"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Negatif -"
-                    android:textSize="20dp"
-                    android:textStyle="normal" />
-
-            </LinearLayout>
 
 
         </LinearLayout>
@@ -240,53 +208,25 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
-                                    android:text="Perencakan"
+                                    android:text="Bentuk Interaksi"
                                     android:textColor="#1F1E1E" />
+
+                                <androidx.appcompat.widget.AppCompatSpinner
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:id="@+id/spinner_bentukinteraksi"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
 
                                 <EditText
                                     android:fontFamily="@font/font_aal_default"
-                                    android:inputType="text"
-                                    android:singleLine="true"
-                                    android:id="@+id/interaksimdh_perencakan"
+                                    android:visibility="gone"
+                                    android:id="@+id/interaksimdh_bentukinteraksi"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:background="@drawable/ic_background"
-                                    android:hint="Isi perencakan ..." />
+                                    android:hint="bentuk interaksi" />
 
                             </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="Pencurian"
-                                    android:textColor="#1F1E1E" />
-
-                                <EditText
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="number"
-                                    android:singleLine="true"
-                                    android:id="@+id/interaksimdh_pencurian"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/ic_background"
-                                    android:hint="Isi pencurian ..." />
-                            </LinearLayout>
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -300,80 +240,28 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
-                                    android:text="JPenggembalaan"
+                                    android:text="Status"
                                     android:textColor="#1F1E1E" />
+
+                                <androidx.appcompat.widget.AppCompatSpinner
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:id="@+id/spinner_statusinteraksi"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
 
                                 <EditText
                                     android:fontFamily="@font/font_aal_default"
-                                    android:inputType="text"
-                                    android:singleLine="true"
-                                    android:id="@+id/interaksimdh_penggembalaan"
+                                    android:visibility="gone"
+                                    android:id="@+id/interaksimdh_statusinteraksi"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:background="@drawable/ic_background"
-                                    android:hint="Isi penggembalaan ..." />
+                                    android:hint="jenis status" />
 
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="Garapan liar"
-                                    android:textColor="#1F1E1E" />
-
-                                <EditText
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="text"
-                                    android:singleLine="true"
-                                    android:id="@+id/interaksimdh_liar"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/ic_background"
-                                    android:hint="Isi garapan liar ..." />
-                            </LinearLayout>
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="300dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="Positif +"
-                                    android:textSize="20dp"
-                                    android:textStyle="normal" />
-
-                                <EditText
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/gangguan_keterangan"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:background="@drawable/ic_background"
-                                    android:hint="Bentuk interaksi positif . . . " />
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -397,7 +285,7 @@
 
                                 <EditText
                                     android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/gangguan_keterangan"
+                                    android:id="@+id/interaksimdh_keterangan"
                                     android:layout_width="match_parent"
                                     android:layout_height="100dp"
                                     android:background="@drawable/ic_background"
