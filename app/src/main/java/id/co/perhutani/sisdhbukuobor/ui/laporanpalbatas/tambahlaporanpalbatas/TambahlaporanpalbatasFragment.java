@@ -1,11 +1,13 @@
 package id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.tambahlaporanpalbatas;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,6 +16,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
@@ -25,6 +31,8 @@ public class TambahlaporanpalbatasFragment extends Fragment {
 
     private EditText tanggalpal, jenispal, kondisipal, nopal, jumlahpal, keteranganpal;
     private Button BtnSubmitPal;
+    final Calendar calendar = Calendar.getInstance();
+    private String str_tgl;
 
     private static SQLiteHandler db;
 
@@ -45,6 +53,34 @@ public class TambahlaporanpalbatasFragment extends Fragment {
         db = new SQLiteHandler(getActivity());
 
         tanggalpal = root.findViewById(R.id.palbatas_tanggal);
+        SimpleDateFormat sdf_tglmulai = new SimpleDateFormat("dd-MM-yyyy");
+        str_tgl = sdf_tglmulai.format(new Date());
+        tanggalpal.setFocusable(false);
+        final DatePickerDialog.OnDateSetListener date1 = new android.app.DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                SimpleDateFormat sdf_view = new SimpleDateFormat("yyyy-MM-dd");
+                str_tgl = sdf_view.format(calendar.getTime());
+
+                tanggalpal.setText(str_tgl);
+            }
+
+        };
+        tanggalpal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(getActivity(), date1, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
         jenispal = root.findViewById(R.id.palbatas_jenispal);
         kondisipal = root.findViewById(R.id.palbatas_kondisipal);
         nopal = root.findViewById(R.id.palbatas_nopal);

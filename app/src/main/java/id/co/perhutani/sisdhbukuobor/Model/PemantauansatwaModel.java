@@ -2,26 +2,40 @@ package id.co.perhutani.sisdhbukuobor.Model;
 
 public class PemantauansatwaModel {
     private String ID;
-    private String PetakId;
     private String AnakPetakId;
     private String Jenis;
     private String Jumlah;
     private String Waktulihat;
     private String Caralihat;
     private String KeteranganSatwa;
+    private int ID_Pemantauan;
 
-    public PemantauansatwaModel(String ID, String petakId, String anakPetakId, String jenis,
-                                String jumlah, String waktulihat, String caralihat, String keteranganSatwa)
+    public PemantauansatwaModel(String ID, String anakPetakId, String jenis,
+                                String jumlah, String waktulihat, String caralihat, String keteranganSatwa,
+                                int id_pemantauan)
     {
         this.ID = ID;
-        PetakId = petakId;
-        AnakPetakId = anakPetakId;
-        Jenis = jenis;
-        Jumlah = jumlah;
-        Waktulihat = waktulihat;
-        Caralihat = caralihat;
-        KeteranganSatwa = keteranganSatwa;
+        this.AnakPetakId = anakPetakId;
+        this.Jenis = jenis;
+        this.Jumlah = jumlah;
+        this.Waktulihat = waktulihat;
+        this.Caralihat = caralihat;
+        this.KeteranganSatwa = keteranganSatwa;
+        this.ID_Pemantauan= id_pemantauan;
     }
+
+    public PemantauansatwaModel(){
+
+    }
+
+    public int getID_Pemantauan() {
+        return ID_Pemantauan;
+    }
+
+    public void setID_Pemantauan(int ID_Pemantauan) {
+        this.ID_Pemantauan = ID_Pemantauan;
+    }
+
 
     public String getID() {
         return ID;
@@ -29,14 +43,6 @@ public class PemantauansatwaModel {
 
     public void setID(String ID) {
         this.ID = ID;
-    }
-
-    public String getPetakId() {
-        return PetakId;
-    }
-
-    public void setPetakId(String petakId) {
-        PetakId = petakId;
     }
 
     public String getAnakPetakId() {

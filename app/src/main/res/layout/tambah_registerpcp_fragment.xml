@@ -1,139 +1,458 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
+    android:background="#fff"
+    tools:context=".ui.registerpcp.tambahregisterpcp.TambahRegisterpcpFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#EAEAEA"
+        android:paddingLeft="-16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:fontFamily="@font/font_aal_default"
+            android:gravity="right|center"
+            android:text="Tambah Register PCP"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20dp" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/pcp_nopcp"
-            android:layout_marginTop="20dp"
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Nomer PCP"/>
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/pcp_petakpcp"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Petak"/>
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Nomer PCP"
+                android:textColor="#1F1E1E" />
 
-        <EditText
-            android:id="@+id/pcp_anakpetakpcp"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Anak Petak"/>
+            <EditText
+                android:id="@+id/pcp_nopcp"
+                android:fontFamily="@font/font_aal_default"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_background"
+                android:hint="Nomer PCP . . . " />
 
-        <EditText
-            android:id="@+id/pcp_tahunpcp"
-            android:layout_marginTop="15dp"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Tahun"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/pcp_luasbakupcp"
-            android:layout_marginTop="-44dp"
-            android:layout_marginLeft="185dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Luas Baku"/>
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/pcp_luasblockpcp"
-            android:layout_marginTop="15dp"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Luas Block"/>
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Anak Petak"
+                        android:textColor="#1F1E1E" />
 
-        <EditText
-            android:id="@+id/pcp_umurpcp"
-            android:layout_marginTop="-44dp"
-            android:layout_marginLeft="185dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Umur"/>
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:fontFamily="@font/font_aal_default"
+                        android:id="@+id/spinner_anak_petak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/pcp_rataratapcp"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Rata - Rata Keliling"/>
+                    <EditText
+                        android:id="@+id/pcp_anakpetakpcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Kondisi" />
 
-        <EditText
-            android:id="@+id/pcp_bonitapcp"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Bonita"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#000" />
+                </LinearLayout>
+            </LinearLayout>
 
-        <EditText
-            android:id="@+id/pcp_mpcp"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="M_PCP"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/pcp_normalpcp"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_background"
-            android:hint="Normal Dalam PCP"/>
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/pcp_nmatipcp"
-            android:layout_marginTop="15dp"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="N_Mati"/>
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Tahun"
+                        android:textColor="#1F1E1E" />
 
-        <EditText
-            android:id="@+id/pcp_jaranganpcp"
-            android:layout_marginTop="-44dp"
-            android:layout_marginLeft="185dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background"
-            android:hint="Tahun Jarangan"/>
+                    <EditText
+                        android:id="@+id/pcp_tahunpcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Tahun" />
 
-        <EditText
-            android:id="@+id/pcp_ketpcp"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/ic_background"
-            android:hint="Keterangan"/>
+                </LinearLayout>
 
-        <Button
-            android:id="@+id/pcp_btnsubmitpcp"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/text_submit"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Umur"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/pcp_umurpcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Umur" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Luas Block"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/pcp_luasblockpcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Tahun" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Luas Baku"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/pcp_luasbakupcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Luas Baku" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Rata-Rata Keliling"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/pcp_rataratapcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Rata-Rata Keliling" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Bonita"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/pcp_bonitapcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Bonita" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="M PCP"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/pcp_mpcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="M PCP" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="N Mati"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/pcp_nmatipcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="N Mati" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Normal dalam PCP"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/pcp_normalpcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Normal dalam PCP" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Tahun Jarangan"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/pcp_jaranganpcp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Tahun Jarangan" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:fontFamily="@font/font_aal_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Keterangan"
+                    android:textColor="#1F1E1E" />
+
+                <EditText
+                    android:id="@+id/pcp_ketpcp"
+                    android:fontFamily="@font/font_aal_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/ic_background"
+                    android:hint="Tambahkan keterangan . . . " />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="right"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/pcp_btnsubmitpcp"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/font_aal_bold"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/shape_btnlogin"
+                    android:text="Simpan"
+                    android:textColor="#F9F9F9" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
     </LinearLayout>
-</ScrollView>
+</RelativeLayout>

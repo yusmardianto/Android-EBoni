@@ -377,8 +377,6 @@
                                     android:hint="Tambahkan keterangan . . . " />
 
                             </LinearLayout>
-
-
                         </LinearLayout>
                     </LinearLayout>
 

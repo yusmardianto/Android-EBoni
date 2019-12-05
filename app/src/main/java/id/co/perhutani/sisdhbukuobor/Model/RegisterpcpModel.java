@@ -4,7 +4,6 @@ public class RegisterpcpModel
 {
     private String ID;
     private String NoPcp;
-    private String PetakId;
     private String AnakPetakId;
     private String Tahun;
     private String LuasBaku;
@@ -18,13 +17,12 @@ public class RegisterpcpModel
     private String TahunJarangan;
     private String KeteranganPcp;
 
-    public RegisterpcpModel(String ID, String noPcp, String petakId, String anakPetakId,
+    public RegisterpcpModel(String ID, String noPcp, String anakPetakId,
                             String tahun, String luasBaku, String luasBlok, String umur,
                             String rataKeliling, String bonita, String MPcp, String normalPcp,
                             String NMati, String tahunJarangan, String keteranganPcp) {
         this.ID = ID;
         NoPcp = noPcp;
-        PetakId = petakId;
         AnakPetakId = anakPetakId;
         Tahun = tahun;
         LuasBaku = luasBaku;
@@ -53,14 +51,6 @@ public class RegisterpcpModel
 
     public void setNoPcp(String noPcp) {
         NoPcp = noPcp;
-    }
-
-    public String getPetakId() {
-        return PetakId;
-    }
-
-    public void setPetakId(String petakId) {
-        PetakId = petakId;
     }
 
     public String getAnakPetakId() {
