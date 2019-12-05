@@ -89,7 +89,7 @@ public class ListPemantauansatwaFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID" +
+                    " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " ORDER BY ID DESC", null);
@@ -123,7 +123,7 @@ public class ListPemantauansatwaFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, ID" +
+                    " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " ORDER BY ID DESC", null);

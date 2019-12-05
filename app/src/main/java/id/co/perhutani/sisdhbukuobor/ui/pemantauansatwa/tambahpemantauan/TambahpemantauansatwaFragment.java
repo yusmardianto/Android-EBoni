@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,22 +18,54 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.util.List;
+
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ListPemantauansatwaFragment;
 
 public class TambahpemantauansatwaFragment extends Fragment {
 
     private static SQLiteHandler db;
-    private EditText petak, anakpetak, jenissatwa, jumlahsatwa, waktulihat, caralihat, keterangan;
+    private EditText anakpetak, jenissatwa, jumlahsatwa, waktulihat, caralihat, keterangan;
     private Button btnSubmitPemantauan;
+    private Spinner spin_anak_petak;
 
     private TambahpemantauansatwaViewModel mViewModel;
 
     public static TambahpemantauansatwaFragment newInstance() {
         return new TambahpemantauansatwaFragment();
+    }
+
+    public void load_spinner_anak_petak() {
+        List<String> listtpg = db.getAnakPetak();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_anak_petak.setAdapter(dataAdapter_tpg);
+        spin_anak_petak.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_petak = spin_anak_petak.getSelectedItem().toString();
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                anakpetak.setText(id_petak);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
     }
 
     @Nullable
@@ -49,6 +84,12 @@ public class TambahpemantauansatwaFragment extends Fragment {
         caralihat = root.findViewById(R.id.pemantauan_caralihat);
         keterangan = root.findViewById(R.id.pemantauan_keterangan);
         btnSubmitPemantauan = root.findViewById(R.id.pemantauan_btnsubmit);
+
+        spin_anak_petak = root.findViewById(R.id.spinner_anak_petak);
+        load_spinner_anak_petak();
+        String pil_petak = spin_anak_petak.getSelectedItem().toString();
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+        anakpetak.setText(id_petak);
 
         btnSubmitPemantauan.setOnClickListener(new View.OnClickListener() {
             @Override

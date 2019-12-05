@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import id.co.perhutani.sisdhbukuobor.Adapter.PemantauansatwaAdapter;
 import id.co.perhutani.sisdhbukuobor.Adapter.PerubahankelasAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
@@ -92,7 +91,7 @@ public class ListPerubahanKelasFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, TAHUN, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID ,ID, ID, ID" +
+                    " ID, PETAK_ID, TAHUN, ID, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ANAK_PETAK_ID_PERUBAHAN)" +
                     " FROM TRN_PERUBAHAN_KELAS " +
                     " ORDER BY ID DESC", null);
