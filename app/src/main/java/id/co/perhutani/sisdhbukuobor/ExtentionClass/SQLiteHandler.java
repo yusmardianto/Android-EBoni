@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
+import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
@@ -365,5 +366,18 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnRegisterPcp.PENIGGI, rp.getPeninggi());
         args.put(TrnRegisterPcp.KETERANGAN, rp.getKeteranganPcp());
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
+    }
+
+    public void EditDataLaporanPalBatas(PelaporanpalbatasModel lpb) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + lpb.getID_Laporan();
+        ContentValues args = new ContentValues();
+        args.put(TrnLaporanPalBatas.TANGGAL_PAL, lpb.getTanggalPal());
+        args.put(TrnLaporanPalBatas.JENIS_PAL, lpb.getJenisPal());
+        args.put(TrnLaporanPalBatas.KONDISI_PAL, lpb.getKondisiPal());
+        args.put(TrnLaporanPalBatas.NO_PAL, lpb.getNomerPal());
+        args.put(TrnLaporanPalBatas.JUMLAH_PAL, lpb.getJumlahPal());
+        args.put(TrnLaporanPalBatas.KETERANGAN_PAL, lpb.getKeteranganPal());
+        db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
     }
 }

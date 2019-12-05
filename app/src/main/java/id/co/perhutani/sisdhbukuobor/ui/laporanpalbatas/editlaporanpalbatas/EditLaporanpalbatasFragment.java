@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +18,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
+import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.ListPelaporanpalFragment;
+import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ListPemantauansatwaFragment;
 
 public class EditLaporanpalbatasFragment extends Fragment {
 
@@ -84,21 +89,7 @@ public class EditLaporanpalbatasFragment extends Fragment {
         btnSimpanLaporan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-
-                    Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();
-
-//                    // Move to fragment laporan pal batas
-                    FragmentManager manager = (getActivity()).getSupportFragmentManager();
-                    Fragment fragment = new ListPelaporanpalFragment();
-                    FragmentTransaction ft = manager.beginTransaction();
-                    ft.replace(R.id.nav_host_fragment, fragment);
-                    ft.commit();
-
-                } catch (Exception e) {
-                    AjnClass.showAlert(getActivity(), e.toString());
-                    e.printStackTrace();
-                }
+                act_simpan();
             }
         });
 
@@ -110,6 +101,92 @@ public class EditLaporanpalbatasFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(EditLaporanpalbatasViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+    public void act_simpan() {
+        try {
+
+            final String nomor = nopal.getText().toString();
+            final String tanggal = tanggalpal.getText().toString();
+            if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Nomor Pal tidak boleh kosong");
+
+            } else if(tanggal.equals("") || tanggal.equals("0") || tanggal.equals(" ") || tanggal.equals(null)){
+                AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+
+            }else {
+
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Simpan ?")
+                        .setContentText(nomor)
+                        .setCancelText("Batal")
+                        .setConfirmText("Simpan")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance, keep widget user state, reset them if you need
+                                sDialog.setTitleText("Dibatalkan!")
+                                        .setContentText("")
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.setTitleText("Success!")
+                                        .setContentText(nomor)
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                new Handler().postDelayed(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        // TODO Auto-generated method stub
+                                        try {
+                                            PelaporanpalbatasModel Aktifitasnya = new PelaporanpalbatasModel();
+                                            Aktifitasnya.setID_Laporan(Integer.parseInt(id));
+                                            Aktifitasnya.setTanggalPal(tanggalpal.getText().toString());
+                                            Aktifitasnya.setJenisPal(jenispal.getText().toString());
+                                            Aktifitasnya.setKondisiPal(kondisipal.getText().toString());
+                                            Aktifitasnya.setNomerPal(nopal.getText().toString());
+                                            Aktifitasnya.setJumlahPal(jumlahpal.getText().toString());
+                                            Aktifitasnya.setKeteranganPal(keteranganpal.getText().toString());
+                                            db.EditDataLaporanPalBatas(Aktifitasnya);
+
+                                            Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();
+                                            FragmentManager manager = (getActivity()).getSupportFragmentManager();
+                                            Fragment fragment = new ListPelaporanpalFragment();
+                                            FragmentTransaction ft = manager.beginTransaction();
+                                            ft.replace(R.id.nav_host_fragment, fragment);
+                                            ft.commit();
+
+
+                                        } catch (Exception e) {
+                                            AjnClass.showAlert(getActivity(), e.toString());
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                }, 1000);
+                            }
+                        })
+                        .show();
+
+            }
+
+        } catch (Exception e) {
+            AjnClass.showAlert(getActivity(), "error " + e.toString());
+//            sendMessage(e.getMessage());
+        }
     }
 
 }
