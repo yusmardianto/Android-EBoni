@@ -21,6 +21,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
@@ -52,7 +53,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
+
+
         db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
+
     }
 
     // Upgrading database
@@ -71,6 +76,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisGangguanHutanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_DELETE_ENTRIES);
+        db.execSQL(MstJenisTemuan.SQL_DELETE_ENTRIES);
         // Create tables again
         onCreate(db);
     }
@@ -80,6 +86,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         //create table
         db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
     }
 
     public void change_aktif_blandong() {
@@ -238,8 +245,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
     public List<String> getJenisSatwa() {
         List<String> labels = new ArrayList<String>();
-        String selectQuery = "SELECT a." + MstJenisSatwa.NAME+ " FROM " + MstJenisSatwa.TABLE_NAME +
-                " a ORDER BY a."+MstJenisSatwa.NAME+", a."+MstJenisSatwa.NAME+" ASC";
+        String selectQuery = "SELECT a." + MstJenisSatwa.JENIS_SATWA_NAME+ " FROM " + MstJenisSatwa.TABLE_NAME +
+                " a ORDER BY a."+MstJenisSatwa.JENIS_SATWA_NAME+", a."+MstJenisSatwa.JENIS_SATWA_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 //        labels.add("- Pilih Anak Petak -");

@@ -1,10 +1,10 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
-public class MstJenisSatwa {
+public class MstJenisTemuan {
     public static final String TABLE_NAME = "MST_JENIS_SATWA";
     public static final String _ID = "ID";
-    public static final String JENIS_SATWA_ID = "JENIS_SATWA_ID";
-    public static final String JENIS_SATWA_NAME = "JENIS_SATWA_NAME";
+    public static final String JENIS_TEMUAN_ID = "JENIS_TEMUAN_ID";
+    public static final String JENIS_TEMUAN_NAME = "JENIS_TEMUAN_NAME";
     public static final String KET1 = "KET1";
     public static final String KET2 = "KET2";
     public static final String KET3 = "KET3";
@@ -17,8 +17,8 @@ public class MstJenisSatwa {
     public static final String KET10 = "KET10";
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "" + JENIS_SATWA_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + JENIS_SATWA_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + JENIS_TEMUAN_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + JENIS_TEMUAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET3 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
