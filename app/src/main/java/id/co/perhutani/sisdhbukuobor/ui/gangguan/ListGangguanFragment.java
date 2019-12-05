@@ -1,9 +1,14 @@
 package id.co.perhutani.sisdhbukuobor.ui.gangguan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +25,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.Adapter.GangguanAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.LoginActivity;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.SplashScreenActivity;
 import id.co.perhutani.sisdhbukuobor.ui.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.ui.gangguan.tambahgangguan.TambahGangguanFragment;
 
@@ -40,6 +48,33 @@ public class ListGangguanFragment extends Fragment
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListGangguanFragment newInstance() { return new ListGangguanFragment(); }
+
+    private Handler handler = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if (isOnline()) {
+                    refresh_list();
+                }
+            } catch (Exception ex) {
+            }
+            handler.postDelayed(this, 1000);
+        }
+    };
+
+
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -50,6 +85,9 @@ public class ListGangguanFragment extends Fragment
         myrecyclerview = root.findViewById(R.id.gangguan_recycler);
         init();
         context=getActivity();
+
+        //call timer
+        handler.postDelayed(runnable, 1000);
 
 
         ImageView imgTambahGangguan = (ImageView) root.findViewById(R.id.img_tambahgangguan);

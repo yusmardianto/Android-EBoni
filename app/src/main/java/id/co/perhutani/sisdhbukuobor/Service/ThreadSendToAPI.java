@@ -229,7 +229,7 @@ public class ThreadSendToAPI extends Thread {
             Cursor cur;
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_GANGGUAN_HUTAN " +
-                    " WHERE  KET9=3 "+
+                    " WHERE  KET9=2 "+
 //                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
