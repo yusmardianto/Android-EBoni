@@ -2,9 +2,7 @@ package id.co.perhutani.sisdhbukuobor.ui.gangguan.tambahgangguan;
 
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -101,7 +99,8 @@ public class TambahGangguanFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 isipetak.setText(id_petak);
 
             }

@@ -20,11 +20,9 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
-import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ListPemantauansatwaFragment;
-import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.ListPerubahanKelasFragment;
 
 public class EditPemantauanFragment extends Fragment {
 
