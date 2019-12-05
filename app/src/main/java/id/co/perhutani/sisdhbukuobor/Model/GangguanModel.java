@@ -26,6 +26,7 @@ public class GangguanModel {
                          String nilai, String keterangan, String ket1, int id_gangguan, String ket9, String ket10
 
     ) {
+
         this.Id = id;
         this.Isi = isi;
         this.Petak = petak;
