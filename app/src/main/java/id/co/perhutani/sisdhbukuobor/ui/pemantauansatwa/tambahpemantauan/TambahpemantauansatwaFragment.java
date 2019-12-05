@@ -2,6 +2,7 @@ package id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.tambahpemantauan;
 
 import android.content.ContentValues;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
@@ -94,43 +96,97 @@ public class TambahpemantauansatwaFragment extends Fragment {
         btnSubmitPemantauan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try
-                {
-
-                    ContentValues values_aktifitas = new ContentValues();
-                    values_aktifitas.put(TrnPemantauanSatwa.ANAK_PETAK_ID, anakpetak.getText().toString());
-                    values_aktifitas.put(TrnPemantauanSatwa.JENIS_SATWA, jenissatwa.getText().toString());
-                    values_aktifitas.put(TrnPemantauanSatwa.JUMLAH_SATWA, jumlahsatwa.getText().toString());
-                    values_aktifitas.put(TrnPemantauanSatwa.WAKTU_LIHAT, waktulihat.getText().toString());
-                    values_aktifitas.put(TrnPemantauanSatwa.CARA_LIHAT, caralihat.getText().toString());
-                    values_aktifitas.put(TrnPemantauanSatwa.KETERANGAN, keterangan.getText().toString());
-                    db.create(TrnPemantauanSatwa.TABLE_NAME, values_aktifitas);
-                    Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
-
-//                    // Move to fragment pemantauan satwa
-                    FragmentManager manager = (getActivity()).getSupportFragmentManager();
-                    Fragment fragment = new ListPemantauansatwaFragment();
-                    FragmentTransaction ft = manager.beginTransaction();
-                    ft.replace(R.id.nav_host_fragment, fragment);
-                    ft.commit();
-
-
-                } catch (Exception e)
-                {
-                    AjnClass.showAlert(getActivity(),e.toString());
-                    e.printStackTrace();
-                }
+                act_simpan();
             }
         });
 
         return root;
     }
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        mViewModel = ViewModelProviders.of(this).get(TambahpemantauansatwaViewModel.class);
-//        // TODO: Use the ViewModel
-//    }
+    public void act_simpan() {
+        try {
+
+            final String jumlah = jumlahsatwa.getText().toString();
+            final String waktu = waktulihat.getText().toString();
+            if (jumlah.equals("") || jumlah.equals("0") || jumlah.equals(" ") || jumlah.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jumlah tidak boleh kosong");
+
+            } else if (waktu.equals("") || waktu.equals("0") || waktu.equals(" ") || waktu.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Waktu Lihat tidak boleh kosong");
+
+            } else {
+
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Simpan ?")
+                        .setContentText(jumlah)
+                        .setCancelText("Batal")
+                        .setConfirmText("Simpan")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance, keep widget user state, reset them if you need
+                                sDialog.setTitleText("Dibatalkan!")
+                                        .setContentText("")
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.setTitleText("Success!")
+                                        .setContentText(jumlah)
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                new Handler().postDelayed(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        // TODO Auto-generated method stub
+                                        try {
+
+                                            ContentValues values_aktifitas = new ContentValues();
+                                            values_aktifitas.put(TrnPemantauanSatwa.ANAK_PETAK_ID, anakpetak.getText().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.JENIS_SATWA, jenissatwa.getText().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.JUMLAH_SATWA, jumlahsatwa.getText().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.WAKTU_LIHAT, waktulihat.getText().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.CARA_LIHAT, caralihat.getText().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.KETERANGAN, keterangan.getText().toString());
+                                            db.create(TrnPemantauanSatwa.TABLE_NAME, values_aktifitas);
+                                            Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
+
+//                    // Move to fragment pemantauan satwa
+                                            FragmentManager manager = (getActivity()).getSupportFragmentManager();
+                                            Fragment fragment = new ListPemantauansatwaFragment();
+                                            FragmentTransaction ft = manager.beginTransaction();
+                                            ft.replace(R.id.nav_host_fragment, fragment);
+                                            ft.commit();
+
+                                        } catch (Exception e) {
+                                            AjnClass.showAlert(getActivity(), e.toString());
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                }, 1000);
+                            }
+                        })
+                        .show();
+
+            }
+
+        } catch (Exception e) {
+            AjnClass.showAlert(getActivity(), "error " + e.toString());
+//            sendMessage(e.getMessage());
+        }
+    }
 
 }

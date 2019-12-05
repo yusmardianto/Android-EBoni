@@ -3,6 +3,7 @@ package id.co.perhutani.sisdhbukuobor.ui.perubahankelas.tambahperubahan;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
@@ -143,41 +145,104 @@ public class TambahPerubahanFragment extends Fragment {
         btnSimpanPerubahan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try
-                {
-                    ContentValues values_aktifitas = new ContentValues();
-                    values_aktifitas.put(TrnPerubahanKelas.ANAK_PETAK_ID_PERUBAHAN, petak_id.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.TAHUN_PERUBAHAN, tahun.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.LUAS_PERUBAHAN, luas.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.JENIS_TANAMAN_PERUBAHAN, jenis_tanaman.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN, kelas_tanaman.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.LUAS_PERKIRAAN, luas_perkiraan.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.JENIS_TANAMAN_PERKIRAAN, jenis_perkiraan.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.KELAS_HUTAN_PERKIRAAN, kelas_perkiraan.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.NO_BAPPKH, no_bappkh.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.LUAS_DEFINITIF, luas_definitif.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.JENIS_TANAMAN_DEFINITIF, jenis_definitif.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF, kelas_definitif.getText().toString());
-                    values_aktifitas.put(TrnPerubahanKelas.KETERANGAN_PERUBAHAN, keterangan.getText().toString());
-                    db.create(TrnPerubahanKelas.TABLE_NAME, values_aktifitas);
-                    Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
-
-//                    // Move to fragment gangguan
-                    FragmentManager manager = (getActivity()).getSupportFragmentManager();
-                    Fragment fragment = new ListPerubahanKelasFragment();
-                    FragmentTransaction ft = manager.beginTransaction();
-                    ft.replace(R.id.nav_host_fragment, fragment);
-                    ft.commit();
-
-
-                } catch (Exception e)
-                {
-                    AjnClass.showAlert(getActivity(),e.toString());
-                    e.printStackTrace();
-                }
+                act_simpan();
             }
         });
 
+
         return root;
+    }
+
+    public void act_simpan() {
+        try {
+
+            final String jenistanaman = jenis_tanaman.getText().toString();
+            final String str_tanggal = tahun.getText().toString();
+            if (jenistanaman.equals("") || jenistanaman.equals("0") || jenistanaman.equals(" ") || jenistanaman.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jenis Tanaman tidak boleh kosong");
+
+            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+
+            } else {
+
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Simpan ?")
+                        .setContentText(jenistanaman)
+                        .setCancelText("Batal")
+                        .setConfirmText("Simpan")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance, keep widget user state, reset them if you need
+                                sDialog.setTitleText("Dibatalkan!")
+                                        .setContentText("")
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.setTitleText("Success!")
+                                        .setContentText(jenistanaman)
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                new Handler().postDelayed(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        // TODO Auto-generated method stub
+                                        try {
+
+                                            ContentValues values_aktifitas = new ContentValues();
+                                            values_aktifitas.put(TrnPerubahanKelas.ANAK_PETAK_ID_PERUBAHAN, petak_id.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.TAHUN_PERUBAHAN, tahun.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.LUAS_PERUBAHAN, luas.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.JENIS_TANAMAN_PERUBAHAN, jenis_tanaman.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN, kelas_tanaman.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.LUAS_PERKIRAAN, luas_perkiraan.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.JENIS_TANAMAN_PERKIRAAN, jenis_perkiraan.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.KELAS_HUTAN_PERKIRAAN, kelas_perkiraan.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.NO_BAPPKH, no_bappkh.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.LUAS_DEFINITIF, luas_definitif.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.JENIS_TANAMAN_DEFINITIF, jenis_definitif.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF, kelas_definitif.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.KETERANGAN_PERUBAHAN, keterangan.getText().toString());
+                                            db.create(TrnPerubahanKelas.TABLE_NAME, values_aktifitas);
+                                            Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
+
+//                    // Move to fragment Perubahan Kelas
+                                            FragmentManager manager = (getActivity()).getSupportFragmentManager();
+                                            Fragment fragment = new ListPerubahanKelasFragment();
+                                            FragmentTransaction ft = manager.beginTransaction();
+                                            ft.replace(R.id.nav_host_fragment, fragment);
+                                            ft.commit();
+
+                                        } catch (Exception e) {
+                                            AjnClass.showAlert(getActivity(), e.toString());
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                }, 1000);
+                            }
+                        })
+                        .show();
+
+            }
+
+        } catch (Exception e) {
+            AjnClass.showAlert(getActivity(), "error " + e.toString());
+//            sendMessage(e.getMessage());
+        }
     }
 }

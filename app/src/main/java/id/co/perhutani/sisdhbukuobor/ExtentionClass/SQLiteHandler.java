@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
+import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
@@ -277,5 +278,17 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF, pk.getKelasHutanDefinitif());
         args.put(TrnPerubahanKelas.KETERANGAN_PERUBAHAN, pk.getKeteranganPerubahan());
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
+    }
+    public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + ps.getID_Pemantauan();
+        ContentValues args = new ContentValues();
+        args.put(TrnPemantauanSatwa.ANAK_PETAK_ID, ps.getAnakPetakId());
+        args.put(TrnPemantauanSatwa.JENIS_SATWA, ps.getJenis());
+        args.put(TrnPemantauanSatwa.JUMLAH_SATWA, ps.getJumlah());
+        args.put(TrnPemantauanSatwa.WAKTU_LIHAT, ps.getWaktulihat());
+        args.put(TrnPemantauanSatwa.CARA_LIHAT, ps.getCaralihat());
+        args.put(TrnPemantauanSatwa.KETERANGAN, ps.getKeteranganSatwa());
+        db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
     }
 }
