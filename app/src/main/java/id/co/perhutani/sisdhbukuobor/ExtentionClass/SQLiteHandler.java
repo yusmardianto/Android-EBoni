@@ -260,22 +260,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnGangguanKeamananHutan.KET10, b.getKet10());
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
     }
-    public List<String> getJenisSatwa() {
-        List<String> labels = new ArrayList<String>();
-        String selectQuery = "SELECT a." + MstJenisSatwa.JENIS_SATWA_NAME+ " FROM " + MstJenisSatwa.TABLE_NAME +
-                " a ORDER BY a."+MstJenisSatwa.JENIS_SATWA_NAME+", a."+MstJenisSatwa.JENIS_SATWA_NAME+" ASC";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-//        labels.add("- Pilih Anak Petak -");
-        if (cursor.moveToFirst()) {
-            do {
-                labels.add(cursor.getString(0));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        db.close();
-        return labels;
-    }
+
     public void EditDataPerubahanKelas(PerubahankelasModel pk) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + pk.getID_Perubahan();
@@ -313,7 +298,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return labels;
     }
 
-        public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
+    public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + ps.getID_Pemantauan();
         ContentValues args = new ContentValues();
@@ -324,5 +309,39 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPemantauanSatwa.CARA_LIHAT, ps.getCaralihat());
         args.put(TrnPemantauanSatwa.KETERANGAN, ps.getKeteranganSatwa());
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
+    }
+
+    public List<String> getJenisSatwa() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstJenisSatwa.JENIS_SATWA_NAME+ " FROM " + MstJenisSatwa.TABLE_NAME +
+                " a ORDER BY a."+MstJenisSatwa.JENIS_SATWA_NAME+", a."+MstJenisSatwa.JENIS_SATWA_NAME+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getCaraMelihat() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstJenisTemuan.JENIS_TEMUAN_NAME+ " FROM " + MstJenisTemuan.TABLE_NAME +
+                " a ORDER BY a."+MstJenisTemuan.JENIS_TEMUAN_NAME+", a."+MstJenisTemuan.JENIS_TEMUAN_NAME+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
     }
 }
