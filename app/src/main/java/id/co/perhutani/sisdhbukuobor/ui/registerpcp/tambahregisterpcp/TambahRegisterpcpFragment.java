@@ -35,8 +35,8 @@ import id.co.perhutani.sisdhbukuobor.ui.registerpcp.ListRegisterpcpFragment;
 public class TambahRegisterpcpFragment extends Fragment {
 
     private static SQLiteHandler db;
-    private EditText nopcp, petak, anakpetak, tahunpcp, luasbaku, luasblok, umur, rataratakeliling,
-            bonita, mpcp, normalpcp, nmati, tahunjurangan, keterangan;
+    private EditText nopcp, anakpetak, tahunpcp, luasbaku, luasblok, umur, rataratakeliling,
+            bonita, nlapangan, normalpcp, nmati, tahunjurangan, peninggi, keterangan;
     private Button btnSimpanRegister;
 
     private TambahRegisterPcpViewModel mViewModel;
@@ -121,10 +121,11 @@ public class TambahRegisterpcpFragment extends Fragment {
         umur = root.findViewById(R.id.pcp_umurpcp);
         rataratakeliling = root.findViewById(R.id.pcp_rataratapcp);
         bonita = root.findViewById(R.id.pcp_bonitapcp);
-        mpcp = root.findViewById(R.id.pcp_mpcp);
+        nlapangan = root.findViewById(R.id.pcp_nlapangan);
         normalpcp = root.findViewById(R.id.pcp_normalpcp);
         nmati = root.findViewById(R.id.pcp_nmatipcp);
         tahunjurangan = root.findViewById(R.id.pcp_jaranganpcp);
+        peninggi = root.findViewById(R.id.pcp_peninggi);
         keterangan = root.findViewById(R.id.pcp_ketpcp);
         btnSimpanRegister = root.findViewById(R.id.pcp_btnsubmitpcp);
 
@@ -149,10 +150,11 @@ public class TambahRegisterpcpFragment extends Fragment {
                     values_aktifitas.put(TrnRegisterPcp.UMUR, umur.getText().toString());
                     values_aktifitas.put(TrnRegisterPcp.RATARATA_KELILING, rataratakeliling.getText().toString());
                     values_aktifitas.put(TrnRegisterPcp.BONITA, bonita.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.M_PCP, mpcp.getText().toString());
+                    values_aktifitas.put(TrnRegisterPcp.N_LAPANGAN, nlapangan.getText().toString());
                     values_aktifitas.put(TrnRegisterPcp.NORMAL_PCP, normalpcp.getText().toString());
                     values_aktifitas.put(TrnRegisterPcp.N_MATI, nmati.getText().toString());
                     values_aktifitas.put(TrnRegisterPcp.TAHUN_JARANGAN, tahunjurangan.getText().toString());
+                    values_aktifitas.put(TrnRegisterPcp.PENIGGI, peninggi.getText().toString());
                     values_aktifitas.put(TrnRegisterPcp.KETERANGAN, keterangan.getText().toString());
                     db.create(TrnRegisterPcp.TABLE_NAME, values_aktifitas);
                     Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();

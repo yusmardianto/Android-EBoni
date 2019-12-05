@@ -47,6 +47,7 @@ public class TambahPerubahanFragment extends Fragment {
     private static SQLiteHandler db;
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_tanaman;
+    private Spinner spin_jenis_tanaman_perkiraan;
     final Calendar calendar = Calendar.getInstance();
     private String str_tgl;
 
@@ -126,12 +127,12 @@ public class TambahPerubahanFragment extends Fragment {
             }
         };
         dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin_jenis_tanaman.setAdapter(dataAdapter_tpg);
-        spin_jenis_tanaman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spin_jenis_tanaman_perkiraan.setAdapter(dataAdapter_tpg);
+        spin_jenis_tanaman_perkiraan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
-                String pil_jenis_tanaman_perkiraan = spin_jenis_tanaman.getSelectedItem().toString();
+                String pil_jenis_tanaman_perkiraan = spin_jenis_tanaman_perkiraan.getSelectedItem().toString();
                 String id_jenis_perkiraan = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME,
                         MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_perkiraan, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
                 jenis_perkiraan.setText(id_jenis_perkiraan);
@@ -208,9 +209,9 @@ public class TambahPerubahanFragment extends Fragment {
         String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
         jenis_tanaman.setText(id_jenis);
 
-        spin_jenis_tanaman = root.findViewById(R.id.spinner_jenis_perubahan);
-        load_spinner_jenis_tanaman();
-        String pil_jenis_tanaman_perkiraan = spin_jenis_tanaman.getSelectedItem().toString();
+        spin_jenis_tanaman_perkiraan = root.findViewById(R.id.spinner_jenis_perkiraan);
+        load_spinner_jenis_tanaman_perkiraan();
+        String pil_jenis_tanaman_perkiraan = spin_jenis_tanaman_perkiraan.getSelectedItem().toString();
         String id_jenis_perkiraan = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_perkiraan, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
         jenis_perkiraan.setText(id_jenis_perkiraan);
 

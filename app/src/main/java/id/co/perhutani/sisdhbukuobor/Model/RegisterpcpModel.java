@@ -1,7 +1,6 @@
 package id.co.perhutani.sisdhbukuobor.Model;
 
-public class RegisterpcpModel
-{
+public class RegisterpcpModel {
     private String ID;
     private String NoPcp;
     private String AnakPetakId;
@@ -11,30 +10,47 @@ public class RegisterpcpModel
     private String Umur;
     private String RataKeliling;
     private String Bonita;
-    private String MPcp;
+    private String NLapangan;
     private String NormalPcp;
     private String NMati;
     private String TahunJarangan;
+    private String Peninggi;
     private String KeteranganPcp;
+    private int ID_Registerpcp;
 
-    public RegisterpcpModel(String ID, String noPcp, String anakPetakId,
-                            String tahun, String luasBaku, String luasBlok, String umur,
-                            String rataKeliling, String bonita, String MPcp, String normalPcp,
-                            String NMati, String tahunJarangan, String keteranganPcp) {
+    public RegisterpcpModel(String ID, String noPcp, String anakPetakId, String tahun,
+                            String luasBaku, String luasBlok, String umur, String rataKeliling,
+                            String bonita, String NLapangan, String normalPcp, String NMati,
+                            String tahunJarangan, String peninggi, String keteranganPcp,
+                            int id_registerpcp) {
         this.ID = ID;
-        NoPcp = noPcp;
-        AnakPetakId = anakPetakId;
-        Tahun = tahun;
-        LuasBaku = luasBaku;
-        LuasBlok = luasBlok;
-        Umur = umur;
-        RataKeliling = rataKeliling;
-        Bonita = bonita;
-        this.MPcp = MPcp;
-        NormalPcp = normalPcp;
+        this.NoPcp = noPcp;
+        this.AnakPetakId = anakPetakId;
+        this.Tahun = tahun;
+        this.LuasBaku = luasBaku;
+        this.LuasBlok = luasBlok;
+        this.Umur = umur;
+        this.RataKeliling = rataKeliling;
+        this.Bonita = bonita;
+        this.NLapangan = NLapangan;
+        this.NormalPcp = normalPcp;
         this.NMati = NMati;
-        TahunJarangan = tahunJarangan;
-        KeteranganPcp = keteranganPcp;
+        this.TahunJarangan = tahunJarangan;
+        this.Peninggi = peninggi;
+        this.KeteranganPcp = keteranganPcp;
+        this.ID_Registerpcp= id_registerpcp;
+    }
+
+    public RegisterpcpModel(){
+
+    }
+
+    public int getID_Registerpcp() {
+        return ID_Registerpcp;
+    }
+
+    public void setID_Registerpcp(int ID_Registerpcp) {
+        this.ID_Registerpcp = ID_Registerpcp;
     }
 
     public String getID() {
@@ -109,12 +125,12 @@ public class RegisterpcpModel
         Bonita = bonita;
     }
 
-    public String getMPcp() {
-        return MPcp;
+    public String getNLapangan() {
+        return NLapangan;
     }
 
-    public void setMPcp(String MPcp) {
-        this.MPcp = MPcp;
+    public void setNLapangan(String NLapangan) {
+        this.NLapangan = NLapangan;
     }
 
     public String getNormalPcp() {
@@ -141,6 +157,14 @@ public class RegisterpcpModel
         TahunJarangan = tahunJarangan;
     }
 
+    public String getPeninggi() {
+        return Peninggi;
+    }
+
+    public void setPeninggi(String peninggi) {
+        Peninggi = peninggi;
+    }
+
     public String getKeteranganPcp() {
         return KeteranganPcp;
     }
@@ -149,5 +173,3 @@ public class RegisterpcpModel
         KeteranganPcp = keteranganPcp;
     }
 }
-
-

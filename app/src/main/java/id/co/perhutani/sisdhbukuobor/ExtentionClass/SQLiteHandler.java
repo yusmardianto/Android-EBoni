@@ -18,6 +18,7 @@ import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
+import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
@@ -344,6 +345,27 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return labels;
+    }
+
+    public void EditDataRegisterPCP(RegisterpcpModel rp) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + rp.getID_Registerpcp();
+        ContentValues args = new ContentValues();
+        args.put(TrnRegisterPcp.NO_PCP, rp.getNoPcp());
+        args.put(TrnRegisterPcp.ANAK_PETAK_ID, rp.getAnakPetakId());
+        args.put(TrnRegisterPcp.TAHUN_PCP, rp.getTahun());
+        args.put(TrnRegisterPcp.UMUR, rp.getUmur());
+        args.put(TrnRegisterPcp.LUAS_BAKU, rp.getLuasBaku());
+        args.put(TrnRegisterPcp.LUAS_BLOK, rp.getLuasBlok());
+        args.put(TrnRegisterPcp.RATARATA_KELILING, rp.getRataKeliling());
+        args.put(TrnRegisterPcp.BONITA, rp.getBonita());
+        args.put(TrnRegisterPcp.N_LAPANGAN, rp.getNLapangan());
+        args.put(TrnRegisterPcp.NORMAL_PCP, rp.getNormalPcp());
+        args.put(TrnRegisterPcp.N_MATI, rp.getNMati());
+        args.put(TrnRegisterPcp.TAHUN_JARANGAN, rp.getTahunJarangan());
+        args.put(TrnRegisterPcp.PENIGGI, rp.getPeninggi());
+        args.put(TrnRegisterPcp.KETERANGAN, rp.getKeteranganPcp());
+        db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
     public void EditDataLaporanPalBatas(PelaporanpalbatasModel lpb) {

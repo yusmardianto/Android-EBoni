@@ -285,7 +285,44 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="270dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
+                            <TextView
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Kelas Hutan"
+                                android:textColor="#1F1E1E" />
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:fontFamily="@font/font_aal_default"
+                                android:id="@+id/spinner_kelas_hutan_perkiraan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+
+                            <EditText
+                                android:id="@+id/perubahankls_kelasperkiraan"
+                                android:fontFamily="@font/font_aal_default"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/ic_background"
+                                android:hint="Anak Petak" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="5dp"
+                                android:background="#000" />
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="300dp"
                             android:layout_height="wrap_content"
@@ -313,30 +350,6 @@
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:fontFamily="@font/font_aal_default"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="Kelas Hutan Perkiraan"
-                                android:textColor="#1F1E1E" />
-
-                            <EditText
-                                android:id="@+id/perubahankls_kelasperkiraan"
-                                android:fontFamily="@font/font_aal_default"
-                                android:inputType="number"
-                                android:singleLine="true"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/ic_background"
-                                android:hint="Kelas Hutan Perkiraan" />
-                        </LinearLayout>
                     </LinearLayout>
 
                     <View
