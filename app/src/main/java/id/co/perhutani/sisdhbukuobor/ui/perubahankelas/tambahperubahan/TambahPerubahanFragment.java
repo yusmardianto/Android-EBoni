@@ -159,7 +159,7 @@ public class TambahPerubahanFragment extends Fragment {
             final String jenistanaman = jenis_tanaman.getText().toString();
             final String str_tanggal = tahun.getText().toString();
             if (jenistanaman.equals("") || jenistanaman.equals("0") || jenistanaman.equals(" ") || jenistanaman.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Judul Kejadian tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jenis Tanaman tidak boleh kosong");
 
             } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
