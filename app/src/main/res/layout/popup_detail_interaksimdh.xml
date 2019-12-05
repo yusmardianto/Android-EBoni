@@ -1,6 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup_detail_interaksimdh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profil.ProfilFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/ic_background"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:textSize="20dp"
+                android:id="@+id/interaksimdh_detail"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center|top"
+                android:text="Detail Interaksi MDH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#858181"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anak Petak            : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/interaksimdh_petakdetailid"
+                android:layout_marginTop="-16dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="201631141"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tahun                     : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/interaksimdh_tanggaldetail"
+                android:layout_marginTop="-16dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1998"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desa                        : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/interaksimdh_desadetail"
+                android:layout_marginTop="-16dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desa A"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kecamatan            : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/interaksimdh_kecamatandetail"
+                android:layout_marginTop="-16dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kecamatan A"/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Negatif -"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perencekan           : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/interaksimdh_perencekandetail"
+                android:layout_marginTop="-16dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Isinya ..."/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pencurian              : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/interaksimdh_pencuriandetail"
+                android:layout_marginTop="-16dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Isinya ..."/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Penggembalaan   : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/interaksimdh_penggembalaandetail"
+                android:layout_marginTop="-16dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Isinya ..."/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Garapan liar           : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/interaksimdh_garapandetail"
+                android:layout_marginTop="-16dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Isinya ..."/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Positif +                 : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/interaksimdh_positifdetail"
+                android:layout_marginTop="-16dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suatu hari di hari yang cerah, terdapat sebuah makhluk"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Keterangan            : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/interaksimdh_keterangandetail"
+                android:layout_marginTop="-16dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suatu hari di hari yang cerah, terdapat sebuah makhluk"/>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/detail_btneditinteraksimdh"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_edit_black_24dp"/>
+                    <TextView
+                        android:fontFamily="@font/font_aal_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/detail_btndeleteinteraksimdh"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_delete_black_24dp"/>
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delete"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

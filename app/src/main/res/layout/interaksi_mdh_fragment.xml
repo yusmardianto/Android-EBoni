@@ -30,7 +30,7 @@
     <LinearLayout
         android:layout_marginTop="50dp"
         android:orientation="horizontal"
-        android:id="@+id/linear_tambahinteraksi"
+        android:id="@+id/linear_tambahinteraksimdh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.inputmethodservice.ExtractEditText
@@ -55,7 +55,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/linear_tambahinteraksi"
+        android:layout_below="@id/linear_tambahinteraksimdh"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
