@@ -21,7 +21,7 @@
             android:layout_marginRight="15dp"
             android:fontFamily="@font/font_aal_default"
             android:gravity="right|center"
-            android:text="Tambah Pemantauan Satwa"
+            android:text="Ubah Pemantauan Satwa"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="20dp" />
 
