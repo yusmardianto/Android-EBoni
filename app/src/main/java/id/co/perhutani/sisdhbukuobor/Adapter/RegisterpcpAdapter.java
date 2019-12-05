@@ -46,7 +46,7 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
 
         holder.tv_id.setText(mData.get(position).getID());
         holder.tv_nopcp.setText(mData.get(position).getNoPcp());
-        holder.tv_petakid.setText(mData.get(position).getPetakId());
+        holder.tv_anakpetakid.setText(mData.get(position).getAnakPetakId());
         holder.tv_tahunpcp.setText(mData.get(position).getTahun());
         holder.tv_bonitapcp.setText(mData.get(position).getBonita());
         holder.img_detailregisterpcp.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +67,7 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
     public static class RegisterpcpViewHolder extends RecyclerView.ViewHolder{
         private TextView tv_id;
         private TextView tv_nopcp;
-        private TextView tv_petakid;
+        private TextView tv_anakpetakid;
         private TextView tv_tahunpcp;
         private TextView tv_bonitapcp;
         private LinearLayout img_detailregisterpcp;
@@ -77,7 +77,7 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
 
             tv_id = itemView.findViewById(R.id.name_idpcp);
             tv_nopcp = itemView.findViewById(R.id.name_nomerpcp);
-            tv_petakid = itemView.findViewById(R.id.name_petakpcp);
+            tv_anakpetakid = itemView.findViewById(R.id.name_anakpetakpcp);
             tv_tahunpcp = itemView.findViewById(R.id.name_tahunpcp);
             tv_bonitapcp = itemView.findViewById(R.id.name_bonitapcp);
             img_detailregisterpcp = itemView.findViewById(R.id.img_registerpcpdetail);
@@ -95,7 +95,6 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
             alertDialogBuilder.setView(viewas);
 
             String get_nopcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.NO_PCP);
-            String get_petakid = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.PETAK_ID);
             String get_anakpetakid = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.ANAK_PETAK_ID);
             String get_tahunpcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_PCP);
             String get_luasbaku = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.LUAS_BAKU);
@@ -111,9 +110,6 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
 
             TextView nopcp = viewas.findViewById(R.id.registerpcp_nopcpdetail);
             nopcp.setText(get_nopcp);
-
-            TextView petakid = viewas.findViewById(R.id.registerpcp_petakiddetail);
-            petakid.setText(get_petakid);
 
             TextView anakpetakid = viewas.findViewById(R.id.registerpcp_anakpetakiddetail);
             anakpetakid.setText(get_anakpetakid);

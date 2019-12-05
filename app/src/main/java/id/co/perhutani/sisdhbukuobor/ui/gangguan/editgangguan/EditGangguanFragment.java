@@ -77,7 +77,8 @@ public class EditGangguanFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 isipetak.setText(id_petak);
 
             }
@@ -253,7 +254,7 @@ public class EditGangguanFragment extends Fragment {
                                             Aktifitasnya.setNilai(nilai_kerugian.getText().toString());
                                             Aktifitasnya.setKeterangan(keterangan.getText().toString());
                                             Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
-                                            Aktifitasnya.setKet9("3");
+                                            Aktifitasnya.setKet9("2");
                                             db.EditDataGangguanHutan(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

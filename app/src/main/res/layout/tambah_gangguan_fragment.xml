@@ -49,6 +49,12 @@
                 android:text="Kejadian"
                 android:textColor="#1F1E1E" />
 
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:fontFamily="@font/font_aal_default"
+                android:id="@+id/spinner_gangguan_hutan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <EditText
                 android:fontFamily="@font/font_aal_default"
                 android:singleLine="true"
@@ -377,8 +383,6 @@
                                     android:hint="Tambahkan keterangan . . . " />
 
                             </LinearLayout>
-
-
                         </LinearLayout>
                     </LinearLayout>
 

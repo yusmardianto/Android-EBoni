@@ -15,11 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
+import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
+import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
@@ -42,15 +46,18 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_CREATE_ENTRIES);
-        db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTanamanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
+
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
-        db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
+
     }
 
     // Upgrading database
@@ -68,6 +75,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisGangguanHutanSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstJenisSatwa.SQL_DELETE_ENTRIES);
+        db.execSQL(MstJenisTemuan.SQL_DELETE_ENTRIES);
         // Create tables again
         onCreate(db);
     }
@@ -76,6 +85,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         //create table
         db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
     }
 
     public void change_aktif_blandong() {
@@ -184,6 +195,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
+    public List<String> getJenisGangguan() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME + " FROM " + MstJenisGangguanHutanSchema.TABLE_NAME +
+                " a ORDER BY a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+", a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_ID+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
     public List<String> getAnakPetak() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstAnakPetakSchema.ANAK_PETAK_NAME + " FROM " + MstAnakPetakSchema.TABLE_NAME +
@@ -221,6 +249,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, g.getNilai());
         args.put(TrnGangguanKeamananHutan.KETERANGAN, g.getKeterangan());
         args.put(TrnGangguanKeamananHutan.KET1, g.getKet1());
+        args.put(TrnGangguanKeamananHutan.KET9, g.getKet9());
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
     }
 
@@ -253,4 +282,80 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
+    public List<String> getJenisTanaman() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstJenisTanamanSchema.JENIS_TANAMAN_NAME + " FROM " + MstJenisTanamanSchema.TABLE_NAME +
+                " a ORDER BY a." + MstJenisTanamanSchema.JENIS_TANAMAN_NAME + ", a." + MstJenisTanamanSchema.JENIS_TANAMAN_NAME + " ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + ps.getID_Pemantauan();
+        ContentValues args = new ContentValues();
+        args.put(TrnPemantauanSatwa.ANAK_PETAK_ID, ps.getAnakPetakId());
+        args.put(TrnPemantauanSatwa.JENIS_SATWA, ps.getJenis());
+        args.put(TrnPemantauanSatwa.JUMLAH_SATWA, ps.getJumlah());
+        args.put(TrnPemantauanSatwa.WAKTU_LIHAT, ps.getWaktulihat());
+        args.put(TrnPemantauanSatwa.CARA_LIHAT, ps.getCaralihat());
+        args.put(TrnPemantauanSatwa.KETERANGAN, ps.getKeteranganSatwa());
+        db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
+    }
+
+    public List<String> getJenisSatwa() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstJenisSatwa.JENIS_SATWA_NAME+ " FROM " + MstJenisSatwa.TABLE_NAME +
+                " a ORDER BY a."+MstJenisSatwa.JENIS_SATWA_NAME+", a."+MstJenisSatwa.JENIS_SATWA_NAME+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getCaraMelihat() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstJenisTemuan.JENIS_TEMUAN_NAME+ " FROM " + MstJenisTemuan.TABLE_NAME +
+                " a ORDER BY a."+MstJenisTemuan.JENIS_TEMUAN_NAME+", a."+MstJenisTemuan.JENIS_TEMUAN_NAME+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public void EditDataLaporanPalBatas(PelaporanpalbatasModel lpb) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + lpb.getID_Laporan();
+        ContentValues args = new ContentValues();
+        args.put(TrnLaporanPalBatas.TANGGAL_PAL, lpb.getTanggalPal());
+        args.put(TrnLaporanPalBatas.JENIS_PAL, lpb.getJenisPal());
+        args.put(TrnLaporanPalBatas.KONDISI_PAL, lpb.getKondisiPal());
+        args.put(TrnLaporanPalBatas.NO_PAL, lpb.getNomerPal());
+        args.put(TrnLaporanPalBatas.JUMLAH_PAL, lpb.getJumlahPal());
+        args.put(TrnLaporanPalBatas.KETERANGAN_PAL, lpb.getKeteranganPal());
+        db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
+    }
 }

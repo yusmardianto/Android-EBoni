@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import id.co.perhutani.sisdhbukuobor.Adapter.GangguanAdapter;
 import id.co.perhutani.sisdhbukuobor.Adapter.PemantauansatwaAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
@@ -90,7 +89,7 @@ public class ListPemantauansatwaFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, ID" +
+                    " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " ORDER BY ID DESC", null);
@@ -106,7 +105,8 @@ public class ListPemantauansatwaFragment extends Fragment
                         cur.getString(4),
                         cur.getString(5),
                         cur.getString(6),
-                        cur.getString(7)));
+                        Integer.parseInt(cur.getString(0))
+                ));
                 cur.moveToNext();
             }
 
@@ -125,7 +125,7 @@ public class ListPemantauansatwaFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, ID" +
+                    " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " ORDER BY ID DESC", null);
@@ -141,7 +141,8 @@ public class ListPemantauansatwaFragment extends Fragment
                         cur.getString(4),
                         cur.getString(5),
                         cur.getString(6),
-                        cur.getString(7)));
+                        Integer.parseInt(cur.getString(0))
+                ));
                 cur.moveToNext();
             }
 

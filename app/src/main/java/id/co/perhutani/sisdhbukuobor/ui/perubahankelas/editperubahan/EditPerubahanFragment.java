@@ -28,12 +28,10 @@ import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
-import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
-import id.co.perhutani.sisdhbukuobor.ui.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.ListPerubahanKelasFragment;
 
 public class EditPerubahanFragment extends Fragment {
@@ -265,7 +263,7 @@ public class EditPerubahanFragment extends Fragment {
                                             Aktifitasnya.setLuasDefinitif(luas_definitif.getText().toString());
                                             Aktifitasnya.setJenisTanamanDefinitif(jenis_definitif.getText().toString());
                                             Aktifitasnya.setKelasHutanDefinitif(kelas_definitif.getText().toString());
-                                            Aktifitasnya.setKeteranganPerubahan(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKeteranganPerubahan(keterangan.getText().toString());
                                             db.EditDataPerubahanKelas(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

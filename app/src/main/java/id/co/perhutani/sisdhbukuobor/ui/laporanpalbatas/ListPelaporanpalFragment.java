@@ -104,7 +104,8 @@ public class ListPelaporanpalFragment extends Fragment
                         cur.getString(3),
                         cur.getString(4),
                         cur.getString(5),
-                        cur.getString(6)));
+                        cur.getString(6),
+                        Integer.parseInt(cur.getString(0))));
                 cur.moveToNext();
             }
 
@@ -138,7 +139,8 @@ public class ListPelaporanpalFragment extends Fragment
                         cur.getString(3),
                         cur.getString(4),
                         cur.getString(5),
-                        cur.getString(6)));
+                        cur.getString(6),
+                        Integer.parseInt(cur.getString(0))));
                 cur.moveToNext();
             }
 
