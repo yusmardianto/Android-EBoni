@@ -86,7 +86,7 @@ public class ListRegisterpcpFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, NOMOR_PC, ANAK_PETAK_ID, TAHUN, ID, ID, ID, ID, BONITA, ID, ID, ID , ID , ID" +
+                    " ID, NOMOR_PCP, ANAK_PETAK_ID, TAHUN, ID, ID, ID, ID, BONITA, ID, ID, ID , ID , ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_REGISTER_PCP " +
                     " ORDER BY ID DESC", null);
