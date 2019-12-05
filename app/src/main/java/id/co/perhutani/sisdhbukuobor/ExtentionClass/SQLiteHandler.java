@@ -283,8 +283,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public List<String> getJenisTanaman() {
         List<String> labels = new ArrayList<String>();
-        String selectQuery = "SELECT a." + MstJenisTanamanSchema.JENIS_TANAMAN_NAME+ " FROM " + MstJenisTanamanSchema.TABLE_NAME +
-                " a ORDER BY a."+MstJenisTanamanSchema.JENIS_TANAMAN_NAME+", a."+MstJenisTanamanSchema.JENIS_TANAMAN_NAME+" ASC";
+        String selectQuery = "SELECT a." + MstJenisTanamanSchema.JENIS_TANAMAN_NAME + " FROM " + MstJenisTanamanSchema.TABLE_NAME +
+                " a ORDER BY a." + MstJenisTanamanSchema.JENIS_TANAMAN_NAME + ", a." + MstJenisTanamanSchema.JENIS_TANAMAN_NAME + " ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 //        labels.add("- Pilih Anak Petak -");
@@ -296,8 +296,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return labels;
+    }
 
-    public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
+        public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + ps.getID_Pemantauan();
         ContentValues args = new ContentValues();
