@@ -51,11 +51,12 @@
                 android:textColor="#1F1E1E" />
 
             <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/edit_spinner_jenissatwa"
                 android:fontFamily="@font/font_aal_default"
                 android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Jenis Tanaman" />
+                android:hint="Jenis Satwa" />
 
             <EditText
                 android:id="@+id/edit_pemantauan_jenissatwa"
@@ -191,6 +192,7 @@
                 android:textColor="#1F1E1E" />
 
             <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/edit_spinner_caramelihat"
                 android:fontFamily="@font/font_aal_default"
                 android:singleLine="true"
                 android:layout_width="match_parent"

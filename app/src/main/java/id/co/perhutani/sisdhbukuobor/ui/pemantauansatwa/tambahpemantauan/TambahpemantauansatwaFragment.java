@@ -26,6 +26,8 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ListPemantauansatwaFragment;
 
@@ -35,11 +37,42 @@ public class TambahpemantauansatwaFragment extends Fragment {
     private EditText anakpetak, jenissatwa, jumlahsatwa, waktulihat, caralihat, keterangan;
     private Button btnSubmitPemantauan;
     private Spinner spin_anak_petak;
+    private Spinner spin_jenis_satwa;
+    private Spinner spin_cara_melihat;
 
     private TambahpemantauansatwaViewModel mViewModel;
 
     public static TambahpemantauansatwaFragment newInstance() {
         return new TambahpemantauansatwaFragment();
+    }
+
+    public void load_spinner_jenis_satwa() {
+        List<String> listjenissatwa = db.getJenisSatwa();
+        final int _tpg = listjenissatwa.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listjenissatwa) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_satwa.setAdapter(dataAdapter_tpg);
+        spin_jenis_satwa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_jenis_satwa = spin_jenis_satwa.getSelectedItem().toString();
+                String id_jenissatwa = db.getDataDetail(MstJenisSatwa.TABLE_NAME,
+                        MstJenisSatwa.JENIS_SATWA_NAME, pil_jenis_satwa, MstJenisSatwa.JENIS_SATWA_ID);
+                jenissatwa.setText(id_jenissatwa);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
     }
 
     public void load_spinner_anak_petak() {
@@ -61,6 +94,34 @@ public class TambahpemantauansatwaFragment extends Fragment {
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 anakpetak.setText(id_petak);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
+    public void load_spinner_cara_melihat() {
+        List<String> listcaramelihat = db.getCaraMelihat();
+        final int _tpg = listcaramelihat.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listcaramelihat) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_cara_melihat.setAdapter(dataAdapter_tpg);
+        spin_cara_melihat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_cara_melihat = spin_cara_melihat.getSelectedItem().toString();
+                String id_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME,
+                        MstJenisTemuan.JENIS_TEMUAN_NAME, pil_cara_melihat, MstJenisTemuan.JENIS_TEMUAN_ID);
+                jenissatwa.setText(id_caramelihat);
 
             }
 
@@ -87,11 +148,23 @@ public class TambahpemantauansatwaFragment extends Fragment {
         keterangan = root.findViewById(R.id.pemantauan_keterangan);
         btnSubmitPemantauan = root.findViewById(R.id.pemantauan_btnsubmit);
 
+        spin_jenis_satwa = root.findViewById(R.id.spinner_jenis_satwa);
+        load_spinner_jenis_satwa();
+        String pil_jenis_satwa = spin_jenis_satwa.getSelectedItem().toString();
+        String id_jenis = db.getDataDetail(MstJenisSatwa.TABLE_NAME, MstJenisSatwa.JENIS_SATWA_NAME, pil_jenis_satwa, MstJenisSatwa.JENIS_SATWA_ID);
+        jenissatwa.setText(id_jenis);
+
         spin_anak_petak = root.findViewById(R.id.spinner_anak_petak);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         anakpetak.setText(id_petak);
+
+        spin_cara_melihat = root.findViewById(R.id.spinner_cara_melihat);
+        load_spinner_cara_melihat();
+        String pil_cara_melihat = spin_cara_melihat.getSelectedItem().toString();
+        String id_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME, MstJenisTemuan.JENIS_TEMUAN_NAME, pil_cara_melihat, MstJenisTemuan.JENIS_TEMUAN_ID);
+        caralihat.setText(id_caramelihat);
 
         btnSubmitPemantauan.setOnClickListener(new View.OnClickListener() {
             @Override
