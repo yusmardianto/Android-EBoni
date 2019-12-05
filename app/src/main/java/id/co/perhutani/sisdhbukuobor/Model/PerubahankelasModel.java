@@ -1,6 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Model;
 
 public class PerubahankelasModel {
+
     private String ID;
     private String PetakID;
     private String Tahun;
@@ -15,11 +16,14 @@ public class PerubahankelasModel {
     private String JenisTanamanDefinitif;
     private String KelasHutanDefinitif;
     private String KeteranganPerubahan;
+    private int ID_Perubahan;
 
     public PerubahankelasModel(String ID, String petakID, String tahun, String luas, String jenisTanaman,
                                String kelasHutan, String luasPerkiraan, String jenisTanamanPerkiraan,
                                String kelasHutanPerkiraan, String noBappkh, String luasDefinitif,
-                               String jenisTanamanDefinitif, String kelasHutanDefinitif, String keterangan) {
+                               String jenisTanamanDefinitif, String kelasHutanDefinitif, String keterangan,
+                               int id_perubahan)
+    {
         this.ID = ID;
         this.PetakID = petakID;
         this.Tahun = tahun;
@@ -34,6 +38,19 @@ public class PerubahankelasModel {
         this.JenisTanamanDefinitif = jenisTanamanDefinitif;
         this.KelasHutanDefinitif = kelasHutanDefinitif;
         this.KeteranganPerubahan = keterangan;
+        this.ID_Perubahan= id_perubahan;
+    }
+
+    public PerubahankelasModel() {
+
+    }
+
+    public int getID_Perubahan() {
+        return ID_Perubahan;
+    }
+
+    public void setID_Perubahan(int ID_Perubahan) {
+        this.ID_Perubahan = ID_Perubahan;
     }
 
     public String getID() {

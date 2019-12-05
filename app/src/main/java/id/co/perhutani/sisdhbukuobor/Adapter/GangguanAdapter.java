@@ -71,6 +71,19 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
             }
         });
+
+        String status_sync = mData.get(position).getKet9();
+        if (status_sync.equals("0")) {
+            holder.name_data_sinkron.setText("Belum terkirim keserver");
+//            holder.name_data_sinkron.setBackgroundTintList(convertView.getResources().getColorStateList(R.color.md_green_A700));
+        }  else {
+            holder.name_data_sinkron.setText("Sudah terkirim keserver");
+//            holder.name_data_sinkron.setBackgroundTintList(convertView.getResources().getColorStateList(R.color.md_red_A700));
+        }
+
+//        holder.name_data_sinkron.setText(mData.get(position).getTanggal());
+//        holder.tv_tanggal.setText(mData.get(position).getTanggal());
+
     }
 
     @Override
@@ -85,6 +98,10 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
         private TextView tv_no;
         private TextView tv_tanggal;
         private LinearLayout img_detailganggaun;
+        private TextView name_data_sinkron;
+        private ImageView name_info_alert;
+
+
         public GangguanViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -93,7 +110,11 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             tv_no = itemView.findViewById(R.id.name_id);
             tv_tanggal = itemView.findViewById(R.id.name_tanggal);
             img_detailganggaun = itemView.findViewById(R.id.img_gangguandetail);
+            name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron);
+            name_info_alert = itemView.findViewById(R.id.name_info_alert);
         }
+
+
     }
 
     public void popup (final String id){
