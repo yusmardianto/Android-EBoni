@@ -45,19 +45,17 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_CREATE_ENTRIES);
-        db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTanamanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
+
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
-        db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
-
-
-        db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
-        db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
 
     }
 
@@ -196,6 +194,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
+    public List<String> getJenisGangguan() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME + " FROM " + MstJenisGangguanHutanSchema.TABLE_NAME +
+                " a ORDER BY a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+", a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_ID+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
     public List<String> getAnakPetak() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstAnakPetakSchema.ANAK_PETAK_NAME + " FROM " + MstAnakPetakSchema.TABLE_NAME +
@@ -233,6 +248,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, g.getNilai());
         args.put(TrnGangguanKeamananHutan.KETERANGAN, g.getKeterangan());
         args.put(TrnGangguanKeamananHutan.KET1, g.getKet1());
+        args.put(TrnGangguanKeamananHutan.KET9, g.getKet9());
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
     }
 

@@ -31,6 +31,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.ui.gangguan.ListGangguanFragment;
 
@@ -41,6 +42,7 @@ public class TambahGangguanFragment extends Fragment {
             jumlah_pohon, kerugian_kyp, kerugian_kyb, kerugian_getah,
             nilai_kerugian, keterangan;
 
+    private Spinner spin_gangguan_hutan;
     private Spinner spin_anak_petak;
     private static SQLiteHandler db;
     final Calendar calendar = Calendar.getInstance();
@@ -51,6 +53,33 @@ public class TambahGangguanFragment extends Fragment {
 
     public static TambahGangguanFragment newInstance() {
         return new TambahGangguanFragment();
+    }
+
+    public void load_spinner_gangguan_hutan() {
+        List<String> listtpg = db.getJenisGangguan();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_gangguan_hutan.setAdapter(dataAdapter_tpg);
+        spin_gangguan_hutan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_gangguan = spin_gangguan_hutan.getSelectedItem().toString();
+                String id_gangguan = db.getDataDetail(MstJenisGangguanHutanSchema.TABLE_NAME, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME, pil_gangguan, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_ID);
+                isi_kejadian.setText(id_gangguan);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
     }
 
     public void load_spinner_anak_petak() {
@@ -91,9 +120,7 @@ public class TambahGangguanFragment extends Fragment {
 
         db = new SQLiteHandler(getActivity());
 
-//        tahun = root.findViewById(R.id.gangguan_tahun);
         isipetak = root.findViewById(R.id.gangguan_idpetak);
-//        no_ha = root.findViewById(R.id.gangguan_noha);
         tanggal = root.findViewById(R.id.gangguan_tanggalHA);
         SimpleDateFormat sdf_tglmulai = new SimpleDateFormat("dd-MM-yyyy");
         str_tgl = sdf_tglmulai.format(new Date());
@@ -140,6 +167,11 @@ public class TambahGangguanFragment extends Fragment {
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         isipetak.setText(id_petak);
 
+        spin_gangguan_hutan = root.findViewById(R.id.spinner_gangguan_hutan);
+        load_spinner_gangguan_hutan();
+        String pil_gangguan = spin_gangguan_hutan.getSelectedItem().toString();
+        String id_gangguan = db.getDataDetail(MstJenisGangguanHutanSchema.TABLE_NAME, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME, pil_gangguan, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_ID);
+        isi_kejadian.setText(id_gangguan);
 
         btnSimpanGangguan.setOnClickListener(new View.OnClickListener() {
             @Override
