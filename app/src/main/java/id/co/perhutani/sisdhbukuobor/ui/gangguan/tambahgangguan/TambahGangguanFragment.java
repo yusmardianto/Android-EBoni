@@ -257,6 +257,7 @@ public class TambahGangguanFragment extends Fragment {
                                             ft.commit();
 
 
+
                                         } catch (Exception e) {
                                             AjnClass.showAlert(getActivity(), e.toString());
                                             e.printStackTrace();
