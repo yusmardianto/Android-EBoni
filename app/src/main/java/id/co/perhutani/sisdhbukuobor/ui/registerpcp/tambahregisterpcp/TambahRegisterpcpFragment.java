@@ -3,6 +3,7 @@ package id.co.perhutani.sisdhbukuobor.ui.registerpcp.tambahregisterpcp;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
@@ -175,6 +177,99 @@ public class TambahRegisterpcpFragment extends Fragment {
         });
 
         return root;
+    }
+
+    public void act_simpan() {
+        try {
+
+            final String AnakPetak = anakpetak.getText().toString();
+            final String tahun = tahunpcp.getText().toString();
+            if (AnakPetak.equals("") || AnakPetak.equals("0") || AnakPetak.equals(" ") || AnakPetak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
+
+            } else if(tahun.equals("") || tahun.equals("0") || tahun.equals(" ") || tahun.equals(null)){
+                AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+
+            }else {
+
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Simpan ?")
+                        .setContentText(AnakPetak)
+                        .setCancelText("Batal")
+                        .setConfirmText("Simpan")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance, keep widget user state, reset them if you need
+                                sDialog.setTitleText("Dibatalkan!")
+                                        .setContentText("")
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.setTitleText("Success!")
+                                        .setContentText(AnakPetak)
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                new Handler().postDelayed(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        // TODO Auto-generated method stub
+                                        try {
+                                            ContentValues values_aktifitas = new ContentValues();
+                                            values_aktifitas.put(TrnRegisterPcp.NO_PCP, nopcp.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.ANAK_PETAK_ID, anakpetak.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.TAHUN_PCP, tahunpcp.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.LUAS_BAKU, luasbaku.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.LUAS_BLOK, luasblok.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.UMUR, umur.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.RATARATA_KELILING, rataratakeliling.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.BONITA, bonita.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.N_LAPANGAN, nlapangan.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.NORMAL_PCP, normalpcp.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.N_MATI, nmati.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.TAHUN_JARANGAN, tahunjurangan.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.PENIGGI, peninggi.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.KETERANGAN, keterangan.getText().toString());
+                                            db.create(TrnRegisterPcp.TABLE_NAME, values_aktifitas);
+                                            Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();
+
+                                            FragmentManager manager = (getActivity()).getSupportFragmentManager();
+                                            Fragment fragment = new ListRegisterpcpFragment();
+                                            FragmentTransaction ft = manager.beginTransaction();
+                                            ft.replace(R.id.nav_host_fragment, fragment);
+                                            ft.commit();
+
+
+                                        } catch (Exception e) {
+                                            AjnClass.showAlert(getActivity(), e.toString());
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                }, 1000);
+                            }
+                        })
+                        .show();
+
+            }
+
+        } catch (Exception e) {
+            AjnClass.showAlert(getActivity(), "error " + e.toString());
+//            sendMessage(e.getMessage());
+        }
     }
 
 //    @Override
