@@ -4,11 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#fff">
+    android:background="#fff"
+    tools:context=".ui.interaksimdh.ListInteraksimdhFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:paddingLeft="-16dp"
+        android:id="@+id/top_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#EAEAEA">
+
+        <TextView
+            android:layout_marginRight="15dp"
+            android:fontFamily="@font/font_aal_default"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Data Interaksi MDH"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right|center" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
+        android:layout_marginTop="50dp"
         android:orientation="horizontal"
-        android:id="@+id/linear_tambahinteraksi"
+        android:id="@+id/linear_tambahinteraksimdh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.inputmethodservice.ExtractEditText
@@ -33,7 +55,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/linear_tambahinteraksi"
+        android:layout_below="@id/linear_tambahinteraksimdh"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

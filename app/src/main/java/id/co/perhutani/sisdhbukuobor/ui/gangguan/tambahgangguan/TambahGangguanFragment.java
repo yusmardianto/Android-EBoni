@@ -160,7 +160,6 @@ public class TambahGangguanFragment extends Fragment {
         keterangan = root.findViewById(R.id.gangguan_keterangan);
         btnSimpanGangguan = root.findViewById(R.id.gangguan_btnsubmit);
 
-
         spin_anak_petak = root.findViewById(R.id.spinner_anak_petak);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();

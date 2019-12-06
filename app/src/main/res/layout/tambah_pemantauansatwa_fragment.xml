@@ -51,6 +51,7 @@
                 android:textColor="#1F1E1E" />
 
             <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_jenis_satwa"
                 android:fontFamily="@font/font_aal_default"
                 android:singleLine="true"
                 android:layout_width="match_parent"
@@ -191,7 +192,7 @@
                 android:textColor="#1F1E1E" />
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/perubahankls_jenisperubahan"
+                android:id="@+id/spinner_cara_melihat"
                 android:fontFamily="@font/font_aal_default"
                 android:singleLine="true"
                 android:layout_width="match_parent"

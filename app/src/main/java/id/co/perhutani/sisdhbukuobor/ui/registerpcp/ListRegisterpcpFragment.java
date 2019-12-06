@@ -1,4 +1,5 @@
 package id.co.perhutani.sisdhbukuobor.ui.registerpcp;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -29,10 +30,11 @@ import id.co.perhutani.sisdhbukuobor.ui.registerpcp.tambahregisterpcp.TambahRegi
 public class ListRegisterpcpFragment extends Fragment
 {
     //View v;
-    private RecyclerView recylcerview;
-    private ArrayList<RegisterpcpModel> DataModel;
-    private List<RegisterpcpModel>lstregisterpcp;
-    RegisterpcpAdapter rpAdapter;
+    private static RecyclerView recylcerview;
+    private static ArrayList<RegisterpcpModel> DataModel;
+    private static List<RegisterpcpModel>lstregisterpcp;
+    private static RegisterpcpAdapter rpAdapter;
+    private static Context context;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListRegisterpcpFragment newInstance(){
@@ -86,8 +88,8 @@ public class ListRegisterpcpFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, NOMOR_PCP, ANAK_PETAK_ID, TAHUN, ID, ID, ID, ID, BONITA, ID, ID, ID , ID , ID" +
-//                    " DISTINCT(ANAKPETAK_ID)" +
+                    " ID, NOMOR_PCP, ANAK_PETAK_ID, TAHUN, ID, ID, ID, ID, BONITA, ID, ID, ID , ID , ID, ID" +
+//                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_REGISTER_PCP " +
                     " ORDER BY ID DESC", null);
 
@@ -108,7 +110,9 @@ public class ListRegisterpcpFragment extends Fragment
                         cur.getString(10),
                         cur.getString(11),
                         cur.getString(12),
-                        cur.getString(13)));
+                        cur.getString(13),
+                        cur.getString(14),
+                        Integer.parseInt(cur.getString(0))));
                 cur.moveToNext();
             }
 
@@ -119,9 +123,62 @@ public class ListRegisterpcpFragment extends Fragment
         }
     }
 
+    public static void refresh_list()
+    {
+        lstregisterpcp = new ArrayList<>();
+
+        try {
+
+            SQLiteHandler DB_Helper = new SQLiteHandler(context);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            final Cursor cur = db.rawQuery("SELECT " +
+                    " ID, NOMOR_PCP, ANAK_PETAK_ID, TAHUN, ID, ID, ID, ID, BONITA, ID, ID, ID , ID , ID, ID" +
+//                    " DISTINCT(ANAK_PETAK_ID)" +
+                    " FROM TRN_REGISTER_PCP " +
+                    " ORDER BY ID DESC", null);
+
+            cur.moveToPosition(0);
+            DataModel = new ArrayList<>();
+            for (int i = 0; i < cur.getCount(); i++) {
+                lstregisterpcp.add(new RegisterpcpModel(
+                        cur.getString(0),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(4),
+                        cur.getString(5),
+                        cur.getString(6),
+                        cur.getString(7),
+                        cur.getString(8),
+                        cur.getString(9),
+                        cur.getString(10),
+                        cur.getString(11),
+                        cur.getString(12),
+                        cur.getString(13),
+                        cur.getString(14),
+                        Integer.parseInt(cur.getString(0))));
+                cur.moveToNext();
+            }
+
+            cur.close();
+            db.close();
+        } catch (Exception ex) {
+            AjnClass.showAlert(context, ex.toString());
+        }
+
+        rpAdapter = new RegisterpcpAdapter(context,lstregisterpcp);
+        recylcerview.setLayoutManager(new LinearLayoutManager(context));
+        recylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        rpAdapter.notifyDataSetChanged();
+        recylcerview.invalidate();
+        recylcerview.setAdapter(rpAdapter);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         def();
+
+        context = getActivity();
     }
 }

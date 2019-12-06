@@ -3,6 +3,7 @@ package id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.tambahlaporanpalbatas;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
@@ -91,31 +93,93 @@ public class TambahlaporanpalbatasFragment extends Fragment {
         BtnSubmitPal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    ContentValues values_aktifitas = new ContentValues();
-                    values_aktifitas.put(TrnLaporanPalBatas.TANGGAL_PAL, tanggalpal.getText().toString());
-                    values_aktifitas.put(TrnLaporanPalBatas.JENIS_PAL, jenispal.getText().toString());
-                    values_aktifitas.put(TrnLaporanPalBatas.KONDISI_PAL, kondisipal.getText().toString());
-                    values_aktifitas.put(TrnLaporanPalBatas.NO_PAL, nopal.getText().toString());
-                    values_aktifitas.put(TrnLaporanPalBatas.JUMLAH_PAL, jumlahpal.getText().toString());
-                    values_aktifitas.put(TrnLaporanPalBatas.KETERANGAN_PAL, keteranganpal.getText().toString());
-                    db.create(TrnLaporanPalBatas.TABLE_NAME, values_aktifitas);
-                    Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
-
-//                    // Move to fragment gangguan
-                    FragmentManager manager = (getActivity()).getSupportFragmentManager();
-                    Fragment fragment = new ListPelaporanpalFragment();
-                    FragmentTransaction ft = manager.beginTransaction();
-                    ft.replace(R.id.nav_host_fragment, fragment);
-                    ft.commit();
-
-
-                } catch (Exception e) {
-                    AjnClass.showAlert(getActivity(), e.toString());
-                    e.printStackTrace();
-                }
+                act_simpan();
             }
         });
         return root;
+    }
+
+    public void act_simpan() {
+        try {
+
+            final String nomor = nopal.getText().toString();
+            final String tanggal = tanggalpal.getText().toString();
+            if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Nomor Pal tidak boleh kosong");
+
+            } else if (tanggal.equals("") || tanggal.equals("0") || tanggal.equals(" ") || tanggal.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+
+            } else {
+
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Simpan ?")
+                        .setContentText(nomor)
+                        .setCancelText("Batal")
+                        .setConfirmText("Simpan")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance, keep widget user state, reset them if you need
+                                sDialog.setTitleText("Dibatalkan!")
+                                        .setContentText("")
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.setTitleText("Success!")
+                                        .setContentText(nomor)
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                new Handler().postDelayed(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        // TODO Auto-generated method stub
+                                        try {
+                                            ContentValues values_aktifitas = new ContentValues();
+                                            values_aktifitas.put(TrnLaporanPalBatas.TANGGAL_PAL, tanggalpal.getText().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.JENIS_PAL, jenispal.getText().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.KONDISI_PAL, kondisipal.getText().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.NO_PAL, nopal.getText().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.JUMLAH_PAL, jumlahpal.getText().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.KETERANGAN_PAL, keteranganpal.getText().toString());
+                                            db.create(TrnLaporanPalBatas.TABLE_NAME, values_aktifitas);
+                                            Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
+
+//                    // Move to fragment laporan pal batas
+                                            FragmentManager manager = (getActivity()).getSupportFragmentManager();
+                                            Fragment fragment = new ListPelaporanpalFragment();
+                                            FragmentTransaction ft = manager.beginTransaction();
+                                            ft.replace(R.id.nav_host_fragment, fragment);
+                                            ft.commit();
+                                        }catch (Exception e) {
+                                            AjnClass.showAlert(getActivity(), e.toString());
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                }, 1000);
+                            }
+                        })
+                        .show();
+
+            }
+
+        } catch (Exception e) {
+            AjnClass.showAlert(getActivity(), "error " + e.toString());
+//            sendMessage(e.getMessage());
+        }
     }
 }

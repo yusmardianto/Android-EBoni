@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
+import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
+import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
@@ -260,22 +262,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnGangguanKeamananHutan.KET10, b.getKet10());
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
     }
-    public List<String> getJenisSatwa() {
-        List<String> labels = new ArrayList<String>();
-        String selectQuery = "SELECT a." + MstJenisSatwa.JENIS_SATWA_NAME+ " FROM " + MstJenisSatwa.TABLE_NAME +
-                " a ORDER BY a."+MstJenisSatwa.JENIS_SATWA_NAME+", a."+MstJenisSatwa.JENIS_SATWA_NAME+" ASC";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-//        labels.add("- Pilih Anak Petak -");
-        if (cursor.moveToFirst()) {
-            do {
-                labels.add(cursor.getString(0));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        db.close();
-        return labels;
-    }
+
     public void EditDataPerubahanKelas(PerubahankelasModel pk) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + pk.getID_Perubahan();
@@ -296,7 +283,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
-
     public List<String> getJenisTanaman() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstJenisTanamanSchema.JENIS_TANAMAN_NAME + " FROM " + MstJenisTanamanSchema.TABLE_NAME +
@@ -314,7 +300,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return labels;
     }
 
-        public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
+    public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + ps.getID_Pemantauan();
         ContentValues args = new ContentValues();
@@ -325,5 +311,73 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPemantauanSatwa.CARA_LIHAT, ps.getCaralihat());
         args.put(TrnPemantauanSatwa.KETERANGAN, ps.getKeteranganSatwa());
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
+    }
+
+    public List<String> getJenisSatwa() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstJenisSatwa.JENIS_SATWA_NAME+ " FROM " + MstJenisSatwa.TABLE_NAME +
+                " a ORDER BY a."+MstJenisSatwa.JENIS_SATWA_NAME+", a."+MstJenisSatwa.JENIS_SATWA_NAME+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getCaraMelihat() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstJenisTemuan.JENIS_TEMUAN_NAME+ " FROM " + MstJenisTemuan.TABLE_NAME +
+                " a ORDER BY a."+MstJenisTemuan.JENIS_TEMUAN_NAME+", a."+MstJenisTemuan.JENIS_TEMUAN_NAME+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public void EditDataRegisterPCP(RegisterpcpModel rp) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + rp.getID_Registerpcp();
+        ContentValues args = new ContentValues();
+        args.put(TrnRegisterPcp.NO_PCP, rp.getNoPcp());
+        args.put(TrnRegisterPcp.ANAK_PETAK_ID, rp.getAnakPetakId());
+        args.put(TrnRegisterPcp.TAHUN_PCP, rp.getTahun());
+        args.put(TrnRegisterPcp.UMUR, rp.getUmur());
+        args.put(TrnRegisterPcp.LUAS_BAKU, rp.getLuasBaku());
+        args.put(TrnRegisterPcp.LUAS_BLOK, rp.getLuasBlok());
+        args.put(TrnRegisterPcp.RATARATA_KELILING, rp.getRataKeliling());
+        args.put(TrnRegisterPcp.BONITA, rp.getBonita());
+        args.put(TrnRegisterPcp.N_LAPANGAN, rp.getNLapangan());
+        args.put(TrnRegisterPcp.NORMAL_PCP, rp.getNormalPcp());
+        args.put(TrnRegisterPcp.N_MATI, rp.getNMati());
+        args.put(TrnRegisterPcp.TAHUN_JARANGAN, rp.getTahunJarangan());
+        args.put(TrnRegisterPcp.PENIGGI, rp.getPeninggi());
+        args.put(TrnRegisterPcp.KETERANGAN, rp.getKeteranganPcp());
+        db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
+    }
+
+    public void EditDataLaporanPalBatas(PelaporanpalbatasModel lpb) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + lpb.getID_Laporan();
+        ContentValues args = new ContentValues();
+        args.put(TrnLaporanPalBatas.TANGGAL_PAL, lpb.getTanggalPal());
+        args.put(TrnLaporanPalBatas.JENIS_PAL, lpb.getJenisPal());
+        args.put(TrnLaporanPalBatas.KONDISI_PAL, lpb.getKondisiPal());
+        args.put(TrnLaporanPalBatas.NO_PAL, lpb.getNomerPal());
+        args.put(TrnLaporanPalBatas.JUMLAH_PAL, lpb.getJumlahPal());
+        args.put(TrnLaporanPalBatas.KETERANGAN_PAL, lpb.getKeteranganPal());
+        db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
     }
 }

@@ -6,20 +6,11 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="14"
-<<<<<<< HEAD
-8-->C:\Users\Adhi Joyo Negoro\Documents\Nafkah\Perum Perhutani\Project Development\pht-sisdh-bukuobor\library_sweetalert\src\main\AndroidManifest.xml
+8-->D:\PERHUTANI\PROJECT-ANDROID\ebot\library_sweetalert\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="28" />
-9-->C:\Users\Adhi Joyo Negoro\Documents\Nafkah\Perum Perhutani\Project Development\pht-sisdh-bukuobor\library_sweetalert\src\main\AndroidManifest.xml
+9-->D:\PERHUTANI\PROJECT-ANDROID\ebot\library_sweetalert\src\main\AndroidManifest.xml
 10
 11    <application />
-11-->C:\Users\Adhi Joyo Negoro\Documents\Nafkah\Perum Perhutani\Project Development\pht-sisdh-bukuobor\library_sweetalert\src\main\AndroidManifest.xml:6:5-20
-=======
-8-->D:\ebot\library_sweetalert\src\main\AndroidManifest.xml
-9        android:targetSdkVersion="28" />
-9-->D:\ebot\library_sweetalert\src\main\AndroidManifest.xml
-10
-11    <application />
-11-->D:\ebot\library_sweetalert\src\main\AndroidManifest.xml:6:5-20
->>>>>>> 148a7fd710b8bce201b58a9ce3b77d601a12b770
+11-->D:\PERHUTANI\PROJECT-ANDROID\ebot\library_sweetalert\src\main\AndroidManifest.xml:6:5-20
 12
 13</manifest>
