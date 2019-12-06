@@ -141,38 +141,7 @@ public class TambahRegisterpcpFragment extends Fragment {
         btnSimpanRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try
-                {
-                    ContentValues values_aktifitas = new ContentValues();
-                    values_aktifitas.put(TrnRegisterPcp.NO_PCP, nopcp.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.ANAK_PETAK_ID, anakpetak.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.TAHUN_PCP, tahunpcp.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.LUAS_BAKU, luasbaku.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.LUAS_BLOK, luasblok.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.UMUR, umur.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.RATARATA_KELILING, rataratakeliling.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.BONITA, bonita.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.N_LAPANGAN, nlapangan.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.NORMAL_PCP, normalpcp.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.N_MATI, nmati.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.TAHUN_JARANGAN, tahunjurangan.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.PENIGGI, peninggi.getText().toString());
-                    values_aktifitas.put(TrnRegisterPcp.KETERANGAN, keterangan.getText().toString());
-                    db.create(TrnRegisterPcp.TABLE_NAME, values_aktifitas);
-                    Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
-
-//                    // Move to fragment register pcp
-                    FragmentManager manager = (getActivity()).getSupportFragmentManager();
-                    Fragment fragment = new ListRegisterpcpFragment();
-                    FragmentTransaction ft = manager.beginTransaction();
-                    ft.replace(R.id.nav_host_fragment, fragment);
-                    ft.commit();
-
-                } catch (Exception e)
-                {
-                    AjnClass.showAlert(getActivity(),e.toString());
-                    e.printStackTrace();
-                }
+                act_simpan();
             }
         });
 
