@@ -32,12 +32,13 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.ui.perubahankelas.ListPerubahanKelasFragment;
 
 public class TambahPerubahanFragment extends Fragment {
 
-    private EditText petak_id, tahun, luas, jenis_tanaman, kelas_tanaman, luas_perkiraan,
+    private EditText petak_id, tahun, luas, jenis_tanaman, kelas_hutan, luas_perkiraan,
             jenis_perkiraan, kelas_perkiraan, no_bappkh, luas_definitif, jenis_definitif,
             kelas_definitif, keterangan;
 
@@ -48,6 +49,9 @@ public class TambahPerubahanFragment extends Fragment {
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_tanaman;
     private Spinner spin_jenis_tanaman_perkiraan;
+    private Spinner spin_kelas_hutan;
+    private Spinner spin_kelas_hutan_perkiraan;
+
     final Calendar calendar = Calendar.getInstance();
     private String str_tgl;
 
@@ -145,6 +149,64 @@ public class TambahPerubahanFragment extends Fragment {
         });
     }
 
+    public void load_spinner_kelas_hutan() {
+        List<String> listjenis = db.getKelasHutan();
+        final int _tpg = listjenis.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listjenis) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_kelas_hutan.setAdapter(dataAdapter_tpg);
+        spin_kelas_hutan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_kelas_hutan = spin_kelas_hutan.getSelectedItem().toString();
+                String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
+                kelas_hutan.setText(id_kelas_hutan);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
+    public void load_spinner_kelas_hutan_perkiraan() {
+        List<String> listjenis = db.getKelasHutan();
+        final int _tpg = listjenis.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listjenis) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_kelas_hutan_perkiraan.setAdapter(dataAdapter_tpg);
+        spin_kelas_hutan_perkiraan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_kelas_hutan_perkiraan = spin_kelas_hutan_perkiraan.getSelectedItem().toString();
+                String id_kelas_hutan_perkiraan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_perkiraan, MstKelasHutanSchema.KELAS_HUTAN_ID);
+                kelas_perkiraan.setText(id_kelas_hutan_perkiraan);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -186,7 +248,7 @@ public class TambahPerubahanFragment extends Fragment {
 
         luas = root.findViewById(R.id.perubahankls_luasperubahan);
         jenis_tanaman = root.findViewById(R.id.perubahankls_jenisperubahan);
-        kelas_tanaman = root.findViewById(R.id.perubahankls_kelasperubahan);
+        kelas_hutan = root.findViewById(R.id.perubahankls_kelasperubahan);
         luas_perkiraan = root.findViewById(R.id.perubahankls_luasperkiraan);
         jenis_perkiraan = root.findViewById(R.id.perubahankls_jenisperkiraan);
         kelas_perkiraan = root.findViewById(R.id.perubahankls_kelasperkiraan);
@@ -214,6 +276,18 @@ public class TambahPerubahanFragment extends Fragment {
         String pil_jenis_tanaman_perkiraan = spin_jenis_tanaman_perkiraan.getSelectedItem().toString();
         String id_jenis_perkiraan = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_perkiraan, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
         jenis_perkiraan.setText(id_jenis_perkiraan);
+
+        spin_kelas_hutan = root.findViewById(R.id.spinner_kelas_hutan);
+        load_spinner_kelas_hutan();
+        String pil_kelas_hutan = spin_kelas_hutan.getSelectedItem().toString();
+        String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
+        kelas_hutan.setText(id_kelas_hutan);
+
+        spin_kelas_hutan_perkiraan = root.findViewById(R.id.spinner_kelas_hutan_perkiraan);
+        load_spinner_kelas_hutan_perkiraan();
+        String pil_kelas_hutan_perkiraan = spin_kelas_hutan_perkiraan.getSelectedItem().toString();
+        String id_kelas_hutan_perkiraan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_perkiraan, MstKelasHutanSchema.KELAS_HUTAN_ID);
+        kelas_perkiraan.setText(id_kelas_hutan_perkiraan);
 
         btnSimpanPerubahan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -281,7 +355,7 @@ public class TambahPerubahanFragment extends Fragment {
                                             values_aktifitas.put(TrnPerubahanKelas.TAHUN_PERUBAHAN, tahun.getText().toString());
                                             values_aktifitas.put(TrnPerubahanKelas.LUAS_PERUBAHAN, luas.getText().toString());
                                             values_aktifitas.put(TrnPerubahanKelas.JENIS_TANAMAN_PERUBAHAN, jenis_tanaman.getText().toString());
-                                            values_aktifitas.put(TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN, kelas_tanaman.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN, kelas_hutan.getText().toString());
                                             values_aktifitas.put(TrnPerubahanKelas.LUAS_PERKIRAAN, luas_perkiraan.getText().toString());
                                             values_aktifitas.put(TrnPerubahanKelas.JENIS_TANAMAN_PERKIRAAN, jenis_perkiraan.getText().toString());
                                             values_aktifitas.put(TrnPerubahanKelas.KELAS_HUTAN_PERKIRAAN, kelas_perkiraan.getText().toString());

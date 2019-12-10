@@ -306,6 +306,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return labels;
     }
 
+    public List<String> getKelasHutan() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstKelasHutanSchema.KELAS_HUTAN_NAME + " FROM " + MstKelasHutanSchema.TABLE_NAME +
+                " a ORDER BY a." + MstKelasHutanSchema.KELAS_HUTAN_NAME + ", a." + MstKelasHutanSchema.KELAS_HUTAN_NAME + " ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+//        labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
     public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + ps.getID_Pemantauan();
