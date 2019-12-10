@@ -1,13 +1,11 @@
 package id.co.perhutani.sisdhbukuobor.ui.gangguan;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,14 +23,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.Adapter.GangguanAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
-import id.co.perhutani.sisdhbukuobor.LoginActivity;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
-import id.co.perhutani.sisdhbukuobor.SplashScreenActivity;
 import id.co.perhutani.sisdhbukuobor.ui.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.ui.gangguan.tambahgangguan.TambahGangguanFragment;
 
@@ -138,6 +133,7 @@ public class ListGangguanFragment extends Fragment
                         cur.getString(2),
                         cur.getString(3),
                         cur.getString(4),
+                        cur.getString(0),
                         cur.getString(1),
                         cur.getString(2),
                         cur.getString(3),
@@ -180,6 +176,7 @@ public class ListGangguanFragment extends Fragment
                         cur.getString(2),
                         cur.getString(3),
                         cur.getString(4),
+                        cur.getString(5),
                         cur.getString(1),
                         cur.getString(2),
                         cur.getString(3),
