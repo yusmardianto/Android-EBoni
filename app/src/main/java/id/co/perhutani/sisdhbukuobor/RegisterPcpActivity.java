@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import id.co.perhutani.sisdhbukuobor.ui.registerpcp.RegisterPcpFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.registerpcp.RegisterPcpFragment;
 
 public class RegisterPcpActivity extends AppCompatActivity {
 

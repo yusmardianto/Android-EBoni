@@ -7,11 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,12 +18,9 @@ import java.net.URL;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.LoginActivity;
-import id.co.perhutani.sisdhbukuobor.MainActivity;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
-import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
-import id.co.perhutani.sisdhbukuobor.ui.gangguan.ListGangguanFragment;
 
 
 public class ThreadSendToAPI extends Thread {

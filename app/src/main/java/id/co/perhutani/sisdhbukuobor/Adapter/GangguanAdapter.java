@@ -28,8 +28,8 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
-import id.co.perhutani.sisdhbukuobor.ui.gangguan.ListGangguanFragment;
-import id.co.perhutani.sisdhbukuobor.ui.gangguan.editgangguan.EditGangguanFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.ListGangguanFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.editgangguan.EditGangguanFragment;
 
 public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.GangguanViewHolder> {
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context=".ui.perubahankelas.tambahperubahan.TambahPerubahanFragment">
+    tools:context=".FragmentUi.perubahankelas.tambahperubahan.TambahPerubahanFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/top_navigation"

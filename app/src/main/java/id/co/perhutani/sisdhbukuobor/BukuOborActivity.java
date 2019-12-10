@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import id.co.perhutani.sisdhbukuobor.ui.bukuobor.BukuOborFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.BukuOborFragment;
 
 public class BukuOborActivity extends AppCompatActivity {
 

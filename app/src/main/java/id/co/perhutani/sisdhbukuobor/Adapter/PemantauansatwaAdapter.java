@@ -28,8 +28,8 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
-import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.ListPemantauansatwaFragment;
-import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.editpemantauan.EditPemantauanFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansatwaFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.editpemantauan.EditPemantauanFragment;
 
 public class PemantauansatwaAdapter extends RecyclerView.Adapter<PemantauansatwaAdapter.PemantauanViewHolder> {
 
@@ -119,6 +119,7 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             String get_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME, MstJenisTemuan._ID, db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT), MstJenisTemuan.JENIS_TEMUAN_NAME);
 
             String get_anakpetak_detail = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, get_anakpetak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+
             TextView anakpetak = viewas.findViewById(R.id.pemantauan_anakpetakdetail);
             anakpetak.setText(get_anakpetak_detail);
 //

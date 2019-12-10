@@ -25,8 +25,8 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
-import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.ListPelaporanpalFragment;
-import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.editlaporanpalbatas.EditLaporanpalbatasFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.ListPelaporanpalFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.editlaporanpalbatas.EditLaporanpalbatasFragment;
 
 public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<PelaporanpalbatasAdapter.PelaporanViewHolder>
 {

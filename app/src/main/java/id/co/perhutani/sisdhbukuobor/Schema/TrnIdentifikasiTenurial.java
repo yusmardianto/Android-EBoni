@@ -16,7 +16,6 @@ public class TrnIdentifikasiTenurial
         public static final String AWAL_KONFLIK = "AWAL_KONFLIK";
         public static final String PIHAK_TERLIBAT = "PIHAK_TERLIBAT";
         public static final String STATUS_PENYELESAIAN = "STATUS_PENYELESAIAN";
-        public static final String KETERANGAN = "KETERANGAN";
         public static final String KET1 = "KET1";
         public static final String KET2 = "KET2";
         public static final String KET3 = "KET3";
@@ -40,7 +39,6 @@ public class TrnIdentifikasiTenurial
                 "" + AWAL_KONFLIK + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + PIHAK_TERLIBAT + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + STATUS_PENYELESAIAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + KETERANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KET3 + " " + Type.VARCHAR_NULLABLE_100 + ", " +

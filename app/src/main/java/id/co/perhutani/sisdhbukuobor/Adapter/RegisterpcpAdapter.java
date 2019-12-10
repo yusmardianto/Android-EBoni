@@ -25,8 +25,8 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
-import id.co.perhutani.sisdhbukuobor.ui.registerpcp.ListRegisterpcpFragment;
-import id.co.perhutani.sisdhbukuobor.ui.registerpcp.editregisterpcp.EditRegisterpcpFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.registerpcp.ListRegisterpcpFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.registerpcp.editregisterpcp.EditRegisterpcpFragment;
 
 public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.RegisterpcpViewHolder>
 {
