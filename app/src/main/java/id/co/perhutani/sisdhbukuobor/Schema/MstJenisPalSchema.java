@@ -2,7 +2,7 @@ package id.co.perhutani.sisdhbukuobor.Schema;
 
 public class MstJenisPalSchema {
 
-    public static final String TABLE_NAME = "MST_JENIS_SATWA";
+    public static final String TABLE_NAME = "MST_JENIS_PAL";
     public static final String _ID = "ID";
     public static final String JENIS_PAL_ID = "JENIS_PAL_ID";
     public static final String JENIS_PAL_NAME = "JENIS_PAL_NAME";
@@ -34,5 +34,4 @@ public class MstJenisPalSchema {
             "" + Type.UPDATED_AT_CURRENT_DATE + " )";
     public static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;
     public static final String SQL_DELETE_ALL_ROWS = "DELETE FROM " + TABLE_NAME + " WHERE " + _ID + " <> 0";
-
 }

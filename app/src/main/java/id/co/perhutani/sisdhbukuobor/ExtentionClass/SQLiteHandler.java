@@ -57,6 +57,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
+//        db.execSQL(MstTahunJarangan.SQL_CREATE_ENTRIES);
 
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
@@ -88,6 +89,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTemuan.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_DELETE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_DELETE_ENTRIES);
+//        db.execSQL(MstTahunJarangan.SQL_DELETE_ENTRIES);
         // Create tables again
         onCreate(db);
     }
@@ -100,8 +102,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
-
-
+//        db.execSQL(MstTahunJarangan.SQL_CREATE_ENTRIES);
     }
 
     public void change_aktif_blandong() {
