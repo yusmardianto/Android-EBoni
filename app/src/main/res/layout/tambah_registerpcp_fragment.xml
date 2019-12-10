@@ -398,28 +398,16 @@
                         android:text="Tahun Jarangan"
                         android:textColor="#1F1E1E" />
 
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:fontFamily="@font/font_aal_default"
-                        android:id="@+id/spinner_tahun_jarangan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
                     <EditText
                         android:id="@+id/pcp_jaranganpcp"
                         android:fontFamily="@font/font_aal_default"
-                        android:visibility="gone"
+                        android:inputType="number"
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background"
-                        android:hint="Anak Petak" />
+                        android:hint="Tahun Jarangan" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#000" />
                 </LinearLayout>
             </LinearLayout>
 
