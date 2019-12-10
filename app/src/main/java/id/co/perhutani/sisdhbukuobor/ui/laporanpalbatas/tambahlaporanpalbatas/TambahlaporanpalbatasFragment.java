@@ -7,9 +7,12 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,11 +24,14 @@ import androidx.fragment.app.FragmentTransaction;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.ListPelaporanpalFragment;
 
@@ -35,6 +41,7 @@ public class TambahlaporanpalbatasFragment extends Fragment {
     private Button BtnSubmitPal;
     final Calendar calendar = Calendar.getInstance();
     private String str_tgl;
+    private Spinner spin_jenis_pal;
 
     private static SQLiteHandler db;
 
@@ -42,6 +49,35 @@ public class TambahlaporanpalbatasFragment extends Fragment {
 
     public static TambahlaporanpalbatasFragment newInstance() {
         return new TambahlaporanpalbatasFragment();
+    }
+
+    public void load_spinner_jenis_pal() {
+        List<String> listtpg = db.getJenisPal();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_pal.setAdapter(dataAdapter_tpg);
+        spin_jenis_pal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_petak = spin_jenis_pal.getSelectedItem().toString();
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME,
+                        pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                jenispal.setText(id_petak);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
     }
 
     @Nullable
@@ -89,6 +125,12 @@ public class TambahlaporanpalbatasFragment extends Fragment {
         jumlahpal = root.findViewById(R.id.palbatas_jumlahpal);
         keteranganpal = root.findViewById(R.id.palbatas_ketpal);
         BtnSubmitPal = root.findViewById(R.id.palbatas_btnsubmitpal);
+
+        spin_jenis_pal = root.findViewById(R.id.spinner_jenis_pal);
+        load_spinner_jenis_pal();
+        String pil_jenis_pal = spin_jenis_pal.getSelectedItem().toString();
+        String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME, pil_jenis_pal , MstJenisPalSchema.JENIS_PAL_ID);
+        jenispal.setText(jenis_pal);
 
         BtnSubmitPal.setOnClickListener(new View.OnClickListener() {
             @Override

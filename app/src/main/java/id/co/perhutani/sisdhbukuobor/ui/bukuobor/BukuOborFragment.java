@@ -114,6 +114,19 @@ public class BukuOborFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+        LinearLayout linidentifikasi = (LinearLayout)root.findViewById(R.id.linear_identifikasitenurial);
+        linidentifikasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new ListRegisterpcpFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return root;
     }
 

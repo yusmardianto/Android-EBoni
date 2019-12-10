@@ -51,6 +51,21 @@
                     android:layout_height="wrap_content"
                     android:text="201631141"/>
 
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jenis Tanaman     : "/>
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/gangguan_jenistanamandetail"
+                android:layout_marginTop="-18dp"
+                android:layout_marginLeft="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="201631141"/>
+
                 <TextView
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
@@ -60,7 +75,7 @@
                 <TextView
                     android:fontFamily="@font/font_aal_bold"
                     android:id="@+id/gangguan_tanggaldetail"
-                    android:layout_marginTop="-16dp"
+                    android:layout_marginTop="-18dp"
                     android:layout_marginLeft="120dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
