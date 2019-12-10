@@ -142,7 +142,7 @@ public class ListGangguanFragment extends Fragment
                         cur.getString(2),
                         cur.getString(3),
                         cur.getString(4),
-                        Integer.parseInt(cur.getString(0)),
+                            Integer.parseInt(cur.getString(0)),
                         cur.getString(5),
                         cur.getString(4)
                         ));

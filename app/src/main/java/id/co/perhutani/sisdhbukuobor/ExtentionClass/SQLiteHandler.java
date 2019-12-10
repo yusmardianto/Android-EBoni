@@ -57,6 +57,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
+//        db.execSQL(MstTahunJarangan.SQL_CREATE_ENTRIES);
 
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
@@ -88,6 +89,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTemuan.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_DELETE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_DELETE_ENTRIES);
+//        db.execSQL(MstTahunJarangan.SQL_DELETE_ENTRIES);
         // Create tables again
         onCreate(db);
     }
@@ -100,8 +102,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
-
-
+//        db.execSQL(MstTahunJarangan.SQL_CREATE_ENTRIES);
     }
 
     public void change_aktif_blandong() {
@@ -385,7 +386,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 " a ORDER BY a."+MstJenisPalSchema.JENIS_PAL_NAME+", a."+MstJenisPalSchema.JENIS_PAL_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-//        labels.add("- Pilih Anak Petak -");
+        labels.add("- Pilih Jenis PAL -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));

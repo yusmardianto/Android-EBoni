@@ -49,7 +49,7 @@ public class ListPerubahanKelasFragment extends Fragment
                              @Nullable Bundle savedInstanceState)
     {
         View root = inflater.inflate(R.layout.perubahan_kelas_fragment, container, false);
-        recylcerview = root.findViewById(R.id.identifikasitenurial_recycler);
+        recylcerview = root.findViewById(R.id.perubahankls_recycler);
         pkAdapter = new PerubahankelasAdapter(getContext(),lstperubahankls);
         recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));

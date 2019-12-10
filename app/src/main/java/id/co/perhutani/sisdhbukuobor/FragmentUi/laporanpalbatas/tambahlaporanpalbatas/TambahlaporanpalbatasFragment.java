@@ -30,7 +30,6 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
-import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.ListPelaporanpalFragment;
@@ -67,10 +66,10 @@ public class TambahlaporanpalbatasFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
-                String pil_petak = spin_jenis_pal.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME,
-                        pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
-                jenispal.setText(id_petak);
+                String pil_pal = spin_jenis_pal.getSelectedItem().toString();
+                String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME,
+                        pil_pal, MstJenisPalSchema.JENIS_PAL_ID);
+                jenispal.setText(jenis_pal);
 
             }
 
@@ -128,8 +127,8 @@ public class TambahlaporanpalbatasFragment extends Fragment {
 
         spin_jenis_pal = root.findViewById(R.id.spinner_jenis_pal);
         load_spinner_jenis_pal();
-        String pil_jenis_pal = spin_jenis_pal.getSelectedItem().toString();
-        String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME, pil_jenis_pal , MstJenisPalSchema.JENIS_PAL_ID);
+        String pil_pal = spin_jenis_pal.getSelectedItem().toString();
+        String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME, pil_pal , MstJenisPalSchema.JENIS_PAL_ID);
         jenispal.setText(jenis_pal);
 
         BtnSubmitPal.setOnClickListener(new View.OnClickListener() {
