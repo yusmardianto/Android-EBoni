@@ -1,17 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.ui.gangguan.editgangguan;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.app.DatePickerDialog;
-import android.content.ContentValues;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,9 +14,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -35,6 +31,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.ui.gangguan.ListGangguanFragment;
 
@@ -42,17 +39,17 @@ public class EditGangguanFragment extends Fragment {
 
     private EditGangguanViewModel mViewModel;
 
-    private EditText isipetak, tanggal, isi_kejadian, luas_lahan,
+    private EditText isipetak, jenistanaman, tanggal, isi_kejadian, luas_lahan,
             jumlah_pohon, kerugian_kyp, kerugian_kyb, kerugian_getah,
             nilai_kerugian, keterangan;
 
     public static final String MSG_KEY = "id";
     private static SQLiteHandler db;
-    private static String id,  str_isipetak,  str_tanggal, str_isi_kejadian, str_luas_lahan,
+    private static String id,  str_isipetak, str_jenistanaman,  str_tanggal, str_isi_kejadian, str_luas_lahan,
             str_jumlah_pohon, str_kerugian_kyp, str_kerugian_kyb, str_kerugian_getah,
             str_nilai_kerugian, str_keterangan;
     private Button btnSimpanGangguan;
-
+    private Spinner spin_jenis_tanaman;
     private Spinner spin_anak_petak;
     final Calendar calendar = Calendar.getInstance();
 
@@ -88,6 +85,36 @@ public class EditGangguanFragment extends Fragment {
             }
         });
     }
+
+    public void load_spinner_jenis_tanaman() {
+        List<String> listtpg = db.getJenisTanaman();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_tanaman.setAdapter(dataAdapter_tpg);
+        spin_jenis_tanaman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_jenis = spin_jenis_tanaman.getSelectedItem().toString();
+                String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME,
+                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
+                jenistanaman.setText(id_jenis);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -109,6 +136,7 @@ public class EditGangguanFragment extends Fragment {
         }
 
         isipetak = root.findViewById(R.id.edit_gangguan_idpetak);
+        jenistanaman = root.findViewById(R.id.edit_gangguan_jenistanaman);
         tanggal = root.findViewById(R.id.edit_gangguan_tanggalHA);
         tanggal.setFocusable(false);
         final DatePickerDialog.OnDateSetListener date1 = new android.app.DatePickerDialog.OnDateSetListener() {
@@ -151,7 +179,14 @@ public class EditGangguanFragment extends Fragment {
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         isipetak.setText(id_petak);
 
+        spin_jenis_tanaman = root.findViewById(R.id.edit_spinner_jenis_tanaman);
+        load_spinner_jenis_tanaman();
+        String pil_jenis = spin_jenis_tanaman.getSelectedItem().toString();
+        String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
+        jenistanaman.setText(id_jenis);
+
         str_isipetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
+        str_jenistanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.JENIS_TANAMAN);
         str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_HA);
         str_isi_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
         str_luas_lahan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
@@ -163,6 +198,7 @@ public class EditGangguanFragment extends Fragment {
         str_keterangan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KETERANGAN);
 
         isipetak.setText(str_isipetak);
+        jenistanaman.setText(str_jenistanaman);
         tanggal.setText(str_tanggal);
         isi_kejadian.setText(str_isi_kejadian);
         luas_lahan.setText(str_luas_lahan);
@@ -244,6 +280,7 @@ public class EditGangguanFragment extends Fragment {
                                             GangguanModel Aktifitasnya = new GangguanModel();
                                             Aktifitasnya.setID_gangguan(Integer.parseInt(id));
                                             Aktifitasnya.setPetak(isipetak.getText().toString());
+                                            Aktifitasnya.setJenisTanaman(jenistanaman.getText().toString());
                                             Aktifitasnya.setTanggal(tanggal.getText().toString());
                                             Aktifitasnya.setIsi(isi_kejadian.getText().toString());
                                             Aktifitasnya.setLuas(luas_lahan.getText().toString());

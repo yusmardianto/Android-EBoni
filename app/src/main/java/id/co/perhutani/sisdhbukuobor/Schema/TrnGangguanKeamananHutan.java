@@ -5,6 +5,7 @@ public class TrnGangguanKeamananHutan {
     public static final String _ID = "ID";
     public static final String TAHUN = "TAHUN";
     public static final String ANAK_PETAK_ID = "ANAKPETAK_ID";
+    public static final String JENIS_TANAMAN = "JENIS_TANAMAN";
     public static final String NOMOR_HA = "NOMOR_HA";
     public static final String TANGGAL_HA = "TANGGAL_HA";
     public static final String KEJADIAN = "KEJADIAN";
@@ -29,6 +30,7 @@ public class TrnGangguanKeamananHutan {
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "" + ANAK_PETAK_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + TAHUN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + JENIS_TANAMAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + NOMOR_HA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + TANGGAL_HA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KEJADIAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +

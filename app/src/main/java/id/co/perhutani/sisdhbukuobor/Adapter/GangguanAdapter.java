@@ -114,8 +114,6 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron);
             name_info_alert = itemView.findViewById(R.id.name_info_alert);
         }
-
-
     }
 
     public void popup (final String id){
@@ -128,6 +126,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             alertDialogBuilder.setView(viewas);
 
             String get_anakpetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET1);
+            String get_jenistanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.JENIS_TANAMAN);
             String get_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_HA);
             final String get_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
             String get_kerugianluas = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
@@ -140,6 +139,9 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
             TextView anakpetak = viewas.findViewById(R.id.gangguan_petakdetailid);
             anakpetak.setText(get_anakpetak);
+
+            TextView jenis = viewas.findViewById(R.id.gangguan_jenistanamandetail);
+            jenis.setText(get_jenistanaman);
 
             TextView tanggal = viewas.findViewById(R.id.gangguan_tanggaldetail);
             tanggal.setText(get_tanggal);
