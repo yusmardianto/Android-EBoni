@@ -369,7 +369,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 " a ORDER BY a."+MstJenisPalSchema.JENIS_PAL_NAME+", a."+MstJenisPalSchema.JENIS_PAL_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-//        labels.add("- Pilih Anak Petak -");
+        labels.add("- Pilih Jenis PAL -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));
