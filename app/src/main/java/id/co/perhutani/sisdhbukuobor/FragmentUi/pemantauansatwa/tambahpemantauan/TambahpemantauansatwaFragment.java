@@ -27,6 +27,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansatwaFragment;
@@ -64,19 +65,10 @@ public class TambahpemantauansatwaFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
-                pil_jenis_satwa = spin_jenis_satwa.getSelectedItem().toString();
-                if (pil_jenis_satwa.equals("- Pilih Satwa -")) {
-
-                    id_jenissatwa = "0";
-
-
-                } else {
-                    id_jenissatwa = db.getDataDetail(MstJenisSatwa.TABLE_NAME,
-                            MstJenisSatwa.JENIS_SATWA_NAME, pil_jenis_satwa, MstJenisSatwa.JENIS_SATWA_ID);
-                    jenissatwa.setText(id_jenissatwa);
-
-                }
-
+                String pil_jenis_tanaman = spin_jenis_satwa.getSelectedItem().toString();
+                String id_jenis = db.getDataDetail(MstJenisSatwa.TABLE_NAME,
+                        MstJenisSatwa.JENIS_SATWA_NAME, pil_jenis_tanaman, MstJenisSatwa.JENIS_SATWA_ID);
+                jenissatwa.setText(id_jenis);
 
             }
 

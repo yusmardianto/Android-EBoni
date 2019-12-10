@@ -146,7 +146,7 @@
                                 android:textColor="#1F1E1E" />
 
                             <EditText
-                                android:id="@+id/pcp_tahunpcp"
+                                android:id="@+id/tenurial_tahun"
                                 android:fontFamily="@font/font_aal_default"
                                 android:inputType="number"
                                 android:singleLine="true"

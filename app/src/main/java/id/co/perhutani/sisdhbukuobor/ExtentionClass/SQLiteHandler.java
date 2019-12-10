@@ -217,7 +217,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 " a ORDER BY a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+", a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_ID+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-//        labels.add("- Pilih Anak Petak -");
+        labels.add("- Pilih Jenis Gangguan-");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));
@@ -305,7 +305,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 " a ORDER BY a." + MstJenisTanamanSchema.JENIS_TANAMAN_NAME + ", a." + MstJenisTanamanSchema.JENIS_TANAMAN_NAME + " ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-//        labels.add("- Pilih Anak Petak -");
+        labels.add("- Pilih Jenis Tanaman -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));
@@ -322,7 +322,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 " a ORDER BY a." + MstKelasHutanSchema.KELAS_HUTAN_NAME + ", a." + MstKelasHutanSchema.KELAS_HUTAN_NAME + " ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-//        labels.add("- Pilih Anak Petak -");
+        labels.add("- Pilih Kelas Hutan -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));
@@ -352,7 +352,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 " a ORDER BY a."+MstJenisSatwa.JENIS_SATWA_NAME+", a."+MstJenisSatwa.JENIS_SATWA_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-//        labels.add("- Pilih Anak Petak -");
+        labels.add("- Pilih Jenis Satwa -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));
@@ -369,7 +369,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 " a ORDER BY a."+MstJenisTemuan.JENIS_TEMUAN_NAME+", a."+MstJenisTemuan.JENIS_TEMUAN_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-//        labels.add("- Pilih Anak Petak -");
+        labels.add("- Pilih Jenis Temuan -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));
