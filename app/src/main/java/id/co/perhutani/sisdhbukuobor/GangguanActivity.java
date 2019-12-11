@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import id.co.perhutani.sisdhbukuobor.ui.gangguan.GangguanFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.GangguanFragment;
 
 public class GangguanActivity extends AppCompatActivity {
 

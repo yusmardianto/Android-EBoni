@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import id.co.perhutani.sisdhbukuobor.ui.pemantauansatwa.PemantauanSatwaFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.PemantauanSatwaFragment;
 
 public class PemantauanSatwaActivity extends AppCompatActivity {
 

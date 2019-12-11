@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import id.co.perhutani.sisdhbukuobor.ui.laporanpalbatas.LaporanPalBatasFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.LaporanPalBatasFragment;
 
 public class LaporanPalBatasActivity extends AppCompatActivity {
 

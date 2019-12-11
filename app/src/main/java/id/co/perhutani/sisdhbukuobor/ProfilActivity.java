@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import id.co.perhutani.sisdhbukuobor.ui.profil.ProfilFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.profil.ProfilFragment;
 
 public class ProfilActivity extends AppCompatActivity {
 

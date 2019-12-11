@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import id.co.perhutani.sisdhbukuobor.ui.interaksimdh.InteraksiMdhFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.InteraksiMdhFragment;
 
 public class InteraksiMdhActivity extends AppCompatActivity {
 

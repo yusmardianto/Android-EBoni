@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#fff"
-    tools:context=".ui.interaksimdh.ListInteraksimdhFragment">
+    tools:context=".FragmentUi.interaksimdh.ListInteraksimdhFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:paddingLeft="-16dp"

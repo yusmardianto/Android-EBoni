@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context=".ui.laporanpalbatas.editlaporanpalbatas.EditLaporanpalbatasFragment">
+    tools:context=".FragmentUi.laporanpalbatas.editlaporanpalbatas.EditLaporanpalbatasFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/top_navigation"
