@@ -40,4 +40,15 @@
         <item>Hilang</item>
         <item>Dan lain lain</item>
     </string-array>
+
+
+    //dummy item spinner
+    <string-array name="array_pihak_terlibat">
+        <item>- Pilih Pihak Terlibat -</item>
+        <item>Perhutani</item>
+        <item>Instansi Pemerintah/BUMN</item>
+        <item>Masyarakat</item>
+        <item>Pihak lain</item>
+    </string-array>
+
 </resources>

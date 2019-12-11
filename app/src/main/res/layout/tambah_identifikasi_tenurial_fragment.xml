@@ -373,6 +373,7 @@
                                 android:textColor="#1F1E1E" />
 
                             <androidx.appcompat.widget.AppCompatSpinner
+                                android:entries="@array/array_pihak_terlibat"
                                 android:fontFamily="@font/font_aal_default"
                                 android:id="@+id/spinner_tenurial_pihakterlibat"
                                 android:layout_width="match_parent"
