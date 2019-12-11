@@ -9,11 +9,6 @@
     android:layout_height="match_parent"
     tools:context=".FragmentUi.profil.ProfilFragment">
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <LinearLayout
             android:orientation="vertical"
             android:background="@drawable/ic_background"
@@ -24,143 +19,153 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_gravity="center"
-                android:layout_width="200dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_icn_logophtobor"
-                android:layout_centerHorizontal="true"/>
-
-            <TextView
-                android:id="@+id/txt_nama_user"
-                android:textSize="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center|top"
-                android:text="Pelaporan Pal Batas Detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#858181"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tanggal                  : "/>
-
-            <TextView
-                android:id="@+id/laporanpal_tanggaldetail"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jenis                       : "/>
-
-            <TextView
-                android:id="@+id/laporanpal_jenisdetail"
-                android:layout_marginTop="-19dp"
-                android:layout_marginLeft="120dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kondisi                   : "/>
-
-            <TextView
-                android:id="@+id/laporanpal_kondisidetail"
-                android:layout_marginTop="-19dp"
-                android:layout_marginLeft="120dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nomer PAL            : "/>
-
-            <TextView
-                android:id="@+id/laporanpal_nopaldetail"
-                android:layout_marginTop="-19dp"
-                android:layout_marginLeft="120dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jumlah                   : "/>
-
-            <TextView
-                android:id="@+id/laporanpal_jumlahdetail"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Keterangan            : "/>
-
-            <TextView
-                android:id="@+id/laporanpal_keterangandetail"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="120dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:layout_marginTop="10dp"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-                    <ImageView
-                        android:id="@+id/detail_btneditlaporanpal"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_edit_black_24dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Edit"/>
+                android:layout_height="match_parent">
 
-                </LinearLayout>
                 <LinearLayout
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-                    <ImageView
-                        android:id="@+id/detail_btndeletelaporanpal"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_delete_black_24dp"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_icn_logophtobor"
+                    android:layout_centerHorizontal="true"/>
 
                     <TextView
+                        android:id="@+id/txt_nama_user"
+                        android:textSize="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center|top"
+                        android:text="Pelaporan Pal Batas Detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Delete"/>
+                        android:textColor="#858181"
+                        android:textStyle="bold"/>
 
+                    <TextView
+                        android:layout_marginTop="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal                  : "/>
+
+                    <TextView
+                        android:id="@+id/laporanpal_tanggaldetail"
+                        android:layout_marginTop="-20dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jenis                       : "/>
+
+                    <TextView
+                        android:id="@+id/laporanpal_jenisdetail"
+                        android:layout_marginTop="-19dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kondisi                   : "/>
+
+                    <TextView
+                        android:id="@+id/laporanpal_kondisidetail"
+                        android:layout_marginTop="-19dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nomer PAL            : "/>
+
+                    <TextView
+                        android:id="@+id/laporanpal_nopaldetail"
+                        android:layout_marginTop="-19dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah                   : "/>
+
+                    <TextView
+                        android:id="@+id/laporanpal_jumlahdetail"
+                        android:layout_marginTop="-20dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Keterangan            : "/>
+
+                    <TextView
+                        android:id="@+id/laporanpal_keterangandetail"
+                        android:layout_marginTop="-20dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+                            <ImageView
+                                android:id="@+id/detail_btneditlaporanpal"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic_edit_black_24dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Edit"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+                            <ImageView
+                                android:id="@+id/detail_btndeletelaporanpal"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/ic_delete_black_24dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Delete"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+            </ScrollView>
         </LinearLayout>
-    </ScrollView>
 </LinearLayout>

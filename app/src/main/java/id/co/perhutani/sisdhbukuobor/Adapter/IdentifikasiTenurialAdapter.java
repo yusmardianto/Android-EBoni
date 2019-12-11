@@ -1,7 +1,6 @@
 package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -25,16 +23,10 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial.ListIdentifikasiTenurialFragment;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansatwaFragment;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.editpemantauan.EditPemantauanFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial.editidentifikasitenurial.EditIdentifikasiTenurialFragment;
 import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
-import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.R;
-import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
-import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
-import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
-import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 
 public class IdentifikasiTenurialAdapter extends RecyclerView.Adapter<IdentifikasiTenurialAdapter.IdentifikasiTenurialViewHolder> {
 
@@ -115,24 +107,50 @@ public class IdentifikasiTenurialAdapter extends RecyclerView.Adapter<Identifika
             final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
             alertDialogBuilder.setView(viewas);
 
-            String get_petakkejadian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.ANAK_PETAK_ID);
             final String get_jenispermasalahan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.JENIS_PERMASALAHAN);
-            String get_awalkonflik = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.AWAL_KONFLIK);
             String get_tanggal = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.TANGGAL);
+            String get_petakkejadian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.ANAK_PETAK_ID);
+            String get_strata = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STRATA);
+            String get_kelashutan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KELAS_HUTAN_ID);
+            String get_luasbaku = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.LUAS_BAKU);
+            String get_luastenurial = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.LUAS_TENURIAL);
+            String get_kondisipetak = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KONDISI_PETAK);
+            String get_awalkonflik = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.AWAL_KONFLIK);
+            String get_pihakterlibat = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.PIHAK_TERLIBAT);
+            String get_statuspenyelesaian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STATUS_PENYELESAIAN);
 
-            String get_petak_detail = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, get_petakkejadian, MstAnakPetakSchema.ANAK_PETAK_NAME);
-
-            TextView anakpetak = viewas.findViewById(R.id.tenurial_anakpetakdetail);
-            anakpetak.setText(get_petak_detail);
-//
             TextView jenispermasalahan = viewas.findViewById(R.id.tenurial_jenispermasalahandetail);
             jenispermasalahan.setText(get_jenispermasalahan);
+
+            TextView tanggal = viewas.findViewById(R.id.tenurial_tahundetail);
+            tanggal.setText(get_tanggal);
+
+            TextView anakpetak = viewas.findViewById(R.id.tenurial_anakpetakdetail);
+            anakpetak.setText(get_petakkejadian);
+
+            TextView strata = viewas.findViewById(R.id.tenurial_stratadetail);
+            strata.setText(get_strata);
+
+            TextView kelashutan = viewas.findViewById(R.id.tenurial_kelashutandetail);
+            kelashutan.setText(get_kelashutan);
+
+            TextView luasbaku = viewas.findViewById(R.id.tenurial_luasbakudetail);
+            luasbaku.setText(get_luasbaku);
+
+            TextView luastenurial = viewas.findViewById(R.id.tenurial_luastenurialdetail);
+            luastenurial.setText(get_luastenurial);
+
+            TextView kondisipetak = viewas.findViewById(R.id.tenurial_kondisipetakdetail);
+            kondisipetak.setText(get_kondisipetak);
 
             TextView awalkonflik = viewas.findViewById(R.id.tenurial_awalkonflikdetail);
             awalkonflik.setText(get_awalkonflik);
 
-            TextView tanggal = viewas.findViewById(R.id.tenurial_tahundetail);
-            tanggal.setText(get_tanggal);
+            TextView pihakterlibat = viewas.findViewById(R.id.tenurial_pihakterlibatdetail);
+            pihakterlibat.setText(get_pihakterlibat);
+
+            TextView statuspenyelesaian = viewas.findViewById(R.id.tenurial_statuspenyelesaiandetail);
+            statuspenyelesaian.setText(get_statuspenyelesaian);
 
             alertDialogBuilder.setView(viewas);
 //            alertDialogBuilder.setCancelable(false);
@@ -141,23 +159,23 @@ public class IdentifikasiTenurialAdapter extends RecyclerView.Adapter<Identifika
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
 
-//            ImageView edit = viewas.findViewById(R.id.detail_btneditidentifikasitenurial);
-//            edit.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Fragment fragment = new EditIdentifikasiTenurial();
-//                    alert.dismiss();
-//
-//                    String message = id;
-//                    Bundle data = new Bundle();
-//                    data.putString(IdentifikasiTenurialAdapter.MSG_KEY, message);
-//                    FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
-//                    fragment.setArguments(data);
-//                    FragmentTransaction ft = manager.beginTransaction();
-//                    ft.replace(R.id.nav_host_fragment, fragment);
-//                    ft.commit();
-//                }
-//            });
+            ImageView edit = viewas.findViewById(R.id.detail_btneditidentifikasitenurial);
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Fragment fragment = new EditIdentifikasiTenurialFragment();
+                    alert.dismiss();
+
+                    String message = id;
+                    Bundle data = new Bundle();
+                    data.putString(IdentifikasiTenurialAdapter.MSG_KEY, message);
+                    FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
+                    fragment.setArguments(data);
+                    FragmentTransaction ft = manager.beginTransaction();
+                    ft.replace(R.id.nav_host_fragment, fragment);
+                    ft.commit();
+                }
+            });
 
             ImageView delete = viewas.findViewById(R.id.detail_btndeleteidentifikasitenurial);
             delete.setOnClickListener(new View.OnClickListener() {

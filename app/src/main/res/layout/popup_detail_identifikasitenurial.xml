@@ -9,299 +9,306 @@
     android:layout_height="match_parent"
     tools:context=".FragmentUi.profil.ProfilFragment">
 
-
-    <ScrollView
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/ic_background"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:background="@drawable/ic_background"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="20dp"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_gravity="center"
-                android:layout_width="200dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_icn_logophtobor"
-                android:layout_centerHorizontal="true"/>
-
-            <TextView
-                android:id="@+id/txt_nama_user"
-                android:textSize="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center|top"
-                android:text="Identifikasi Konflik Tenurial Detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#858181"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jenis Permasalahan"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_jenispermasalahandetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="160dp"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tahun"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_tahundetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="160dp"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Anak Petak"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_anakpetakdetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="160dp"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Strata"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_stratadetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="160dp"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kelas Hutan"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_kelashutandetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="160dp"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Luas Baku"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_luasbakudetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="160dp"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Luas Tenurial"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_luastenurialdetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="160dp"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kondisi Petak"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_kondisipetakdetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="160dp"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Awal Konflik"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_awalkonflikdetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="160dp"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pihak Terlibat"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_pihakterlibatdetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="160dp"/>
-
-            <TextView
-                android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Status Penyelesaian"/>
-
-            <TextView
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="150dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"/>
-
-            <TextView
-                android:id="@+id/tenurial_statuspenyelesaiandetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginLeft="180dp"/>
-
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_icn_logophtobor"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/txt_nama_user"
+                    android:textSize="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center|top"
+                    android:text="Identifikasi Konflik Tenurial Detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#858181"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Permasalahan"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_jenispermasalahandetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tahun"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_tahundetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anak Petak"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_anakpetakdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Strata"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_stratadetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kelas Hutan"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_kelashutandetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Luas Baku"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_luasbakudetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Luas Tenurial"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_luastenurialdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kondisi Petak"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_kondisipetakdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Awal Konflik"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_awalkonflikdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pihak Terlibat"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_pihakterlibatdetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
+                <TextView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status Penyelesaian"/>
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"/>
+
+                <TextView
+                    android:id="@+id/tenurial_statuspenyelesaiandetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="160dp"/>
+
                 <LinearLayout
-                    android:gravity="center"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-                    <ImageView
-                        android:id="@+id/detail_btneditidentifikasitenurial"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_edit_black_24dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Edit"/>
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:id="@+id/detail_btneditidentifikasitenurial"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_edit_black_24dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Edit"/>
 
-                </LinearLayout>
-                <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-                    <ImageView
-                        android:id="@+id/detail_btndeleteidentifikasitenurial"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_delete_black_24dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:id="@+id/detail_btndeleteidentifikasitenurial"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_delete_black_24dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Delete"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delete"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+
+        </ScrollView>
+
+    </LinearLayout>
 </LinearLayout>
