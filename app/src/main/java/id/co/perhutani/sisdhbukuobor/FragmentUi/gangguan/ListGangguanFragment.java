@@ -7,10 +7,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,7 +58,7 @@ public class ListGangguanFragment extends Fragment
                 }
             } catch (Exception ex) {
             }
-            handler.postDelayed(this, 1000);
+            handler.postDelayed(this, 10000);
         }
     };
 
@@ -98,8 +102,76 @@ public class ListGangguanFragment extends Fragment
             }
         });
 
+
+        final EditText txt_searchgangguan = root.findViewById(R.id.txt_search_gangguan);
+        txt_searchgangguan.addTextChangedListener(new TextWatcher() {
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                init();
+                String input =txt_searchgangguan.getText().toString();
+                if (input.equals(null)||input.equals("")||input.equals(" ")) {
+                    def();
+                }else {
+                    refresh(input);
+                }
+            }
+
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+        });
+
         return root;
     }
+
+    public void refresh(String kejadian) {
+            lsgangguan = new ArrayList<>();
+            try {
+                SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
+                SQLiteDatabase db = DB_Helper.getReadableDatabase();
+                final Cursor cur = db.rawQuery("SELECT " +
+                        " ID, KEJADIAN, KET1, NOMOR_HA, TANGGAL_HA, KET9" +
+//                    " DISTINCT(ANAKPETAK_ID)" +
+                        " FROM TRN_GANGGUAN_HUTAN " +
+                        " WHERE KEJADIAN " + " LIKE  " + "'%" + kejadian + "%'" +
+                        " ORDER BY ID DESC", null);
+
+                cur.moveToPosition(0);
+                dataModels = new ArrayList<>();
+                for (int i = 0; i < cur.getCount(); i++) {
+                    lsgangguan.add(new GangguanModel(
+                            cur.getString(0),
+                            cur.getString(1),
+                            cur.getString(2),
+                            cur.getString(3),
+                            cur.getString(4),
+                            cur.getString(0),
+                            cur.getString(1),
+                            cur.getString(2),
+                            cur.getString(3),
+                            cur.getString(4),
+                            cur.getString(1),
+                            cur.getString(2),
+                            cur.getString(3),
+                            cur.getString(4),
+                            Integer.parseInt(cur.getString(0)),
+                            cur.getString(5),
+                            cur.getString(4)
+                    ));
+                    cur.moveToNext();
+                }
+
+            cur.close();
+            db.close();
+        } catch (Exception ex) {
+            AjnClass.showAlert(getActivity(), ex.toString());
+        }
+    }
+
     public void init() {
         try {
             gAdapter = new GangguanAdapter(getContext(),lsgangguan);
@@ -113,9 +185,7 @@ public class ListGangguanFragment extends Fragment
 
     public void def(){
         lsgangguan = new ArrayList<>();
-
         try {
-
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
@@ -204,6 +274,9 @@ public class ListGangguanFragment extends Fragment
         gAdapter.notifyDataSetChanged();
         myrecyclerview.invalidate();
         myrecyclerview.setAdapter(gAdapter);
+
+        Toast.makeText(context, "Sync data..!", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
