@@ -30,4 +30,14 @@
     <string name="text_submit">Submit</string>
     <string name="text_simpan">Simpan</string>
     <string name="text_tambah">Tambah Laporan</string>
+
+
+    //dummy item spinner
+    <string-array name="array_kondisi_pal_batas">
+        <item>- Pilih Kondisi -</item>
+        <item>Baik</item>
+        <item>Rusak</item>
+        <item>Hilang</item>
+        <item>Dan lain lain</item>
+    </string-array>
 </resources>
