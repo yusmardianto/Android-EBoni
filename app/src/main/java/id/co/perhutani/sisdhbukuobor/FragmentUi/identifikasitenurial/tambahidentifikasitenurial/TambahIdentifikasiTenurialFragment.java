@@ -1,17 +1,8 @@
 package id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial.tambahidentifikasitenurial;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +15,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,6 +32,8 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial.ListIdentifikasiTenurialFragment;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 
 public class TambahIdentifikasiTenurialFragment extends Fragment {
@@ -46,6 +45,8 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
 
     private static SQLiteHandler db;
     private Spinner spin_anak_petak;
+    private Spinner spin_jenis_permasalahan;
+    private Spinner spin_kelas_hutan;
 
     final Calendar calendar = Calendar.getInstance();
     private String str_tgl;
@@ -74,8 +75,66 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 petak_id.setText(id_petak);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
+    public void load_spinner_jenis_permasalahan() {
+        List<String> listtpg = db.getJenisPermasalahan();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_permasalahan.setAdapter(dataAdapter_tpg);
+        spin_jenis_permasalahan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_jenis_permasalahan = spin_jenis_permasalahan.getSelectedItem().toString();
+                String id_jenis_permasalahan = db.getDataDetail(MstJenisPermasalahanSchema.TABLE_NAME,
+                        MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME, pil_jenis_permasalahan, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME);
+                jenis_permasalahan.setText(id_jenis_permasalahan);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
+    public void load_spinner_kelas_hutan() {
+        List<String> listtpg = db.getKelasHutan();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_kelas_hutan.setAdapter(dataAdapter_tpg);
+        spin_kelas_hutan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_kelas_hutan = spin_kelas_hutan.getSelectedItem().toString();
+                String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_NAME);
+                kelas_hutan.setText(id_kelas_hutan);
 
             }
 
@@ -139,6 +198,18 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         petak_id.setText(id_petak);
+
+        spin_jenis_permasalahan = root.findViewById(R.id.spinner_jenis_permasalahan);
+        load_spinner_jenis_permasalahan();
+        String pil_jenis_permasalahan = spin_anak_petak.getSelectedItem().toString();
+        String id_jenis_permasalahan = db.getDataDetail(MstJenisPermasalahanSchema.TABLE_NAME, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME, pil_jenis_permasalahan, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_ID);
+        jenis_permasalahan.setText(id_jenis_permasalahan);
+
+        spin_kelas_hutan = root.findViewById(R.id.spinner_tenurial_kelashutan);
+        load_spinner_kelas_hutan();
+        String pil_kelas_hutan = spin_anak_petak.getSelectedItem().toString();
+        String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
+        kelas_hutan.setText(id_kelas_hutan);
 
         btnSimpanIdentifikasi.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -13,24 +13,37 @@ public class IdentifikasiTenurialModel {
     private String AwalKonflik;
     private String PihakTerlibat;
     private String StatusPenyelesaian;
+    private int ID_Tenurial;
+
+    public IdentifikasiTenurialModel() {
+    }
 
     public IdentifikasiTenurialModel(String id, String tanggal, String jenisPermasalahan,
                                      String strata, String anakPetak, String kelasHutan,
                                      String luasBaku, String luasTenurial, String kondisiPetakSaatIdentifikasi,
-                                     String awalKonflik, String pihakTerlibat, String statusPenyelesaian)
+                                     String awalKonflik, String pihakTerlibat, String statusPenyelesaian, int idtenurial)
     {
-        Id = id;
-        Tanggal = tanggal;
-        JenisPermasalahan = jenisPermasalahan;
-        Strata = strata;
-        AnakPetak = anakPetak;
-        KelasHutan = kelasHutan;
-        LuasBaku = luasBaku;
-        LuasTenurial = luasTenurial;
-        KondisiPetakSaatIdentifikasi = kondisiPetakSaatIdentifikasi;
-        AwalKonflik = awalKonflik;
-        PihakTerlibat = pihakTerlibat;
-        StatusPenyelesaian = statusPenyelesaian;
+        this.Id = id;
+        this.Tanggal = tanggal;
+        this.JenisPermasalahan = jenisPermasalahan;
+        this.Strata = strata;
+        this.AnakPetak = anakPetak;
+        this.KelasHutan = kelasHutan;
+        this.LuasBaku = luasBaku;
+        this.LuasTenurial = luasTenurial;
+        this.KondisiPetakSaatIdentifikasi = kondisiPetakSaatIdentifikasi;
+        this.AwalKonflik = awalKonflik;
+        this.PihakTerlibat = pihakTerlibat;
+        this.StatusPenyelesaian = statusPenyelesaian;
+        this.ID_Tenurial= idtenurial;
+    }
+
+    public int getID_Tenurial() {
+        return ID_Tenurial;
+    }
+
+    public void setID_Tenurial(int ID_Tenurial) {
+        this.ID_Tenurial = ID_Tenurial;
     }
 
     public String getId() {

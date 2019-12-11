@@ -89,7 +89,7 @@ public class ListIdentifikasiTenurialFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, ANAK_PETAK_ID, JENIS_PERMASALAHAN, AWAL_KONFLIK, TANGGAL " +
+                    " ID, TANGGAL, JENIS_PERMASALAHAN, ID, ANAK_PETAK_ID, ID, ID, ID, ID, AWAL_KONFLIK, ID, ID, ID  " +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_IDENTIFIKASI_KONFLIK_TENURIAL " +
                     " ORDER BY ID DESC", null);
@@ -109,8 +109,8 @@ public class ListIdentifikasiTenurialFragment extends Fragment
                         cur.getString(8),
                         cur.getString(9),
                         cur.getString(10),
-                        cur.getString(11)
-                ));
+                        cur.getString(11),
+                        Integer.parseInt(cur.getString(0))));
                 cur.moveToNext();
             }
 
@@ -129,7 +129,7 @@ public class ListIdentifikasiTenurialFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    "ID, ANAK_PETAK_ID, JENIS_PERMASALAHAN, AWAL_KONFLIK, TANGGAL " +
+                    "ID, TANGGAL, JENIS_PERMASALAHAN, ID, ANAK_PETAK_ID, ID, ID, ID, ID, AWAL_KONFLIK, ID, ID, ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_IDENTIFIKASI_KONFLIK_TENURIAL " +
                     " ORDER BY ID DESC", null);
@@ -149,8 +149,8 @@ public class ListIdentifikasiTenurialFragment extends Fragment
                         cur.getString(8),
                         cur.getString(9),
                         cur.getString(10),
-                        cur.getString(11)
-                ));
+                        cur.getString(11),
+                        Integer.parseInt(cur.getString(0))));
                 cur.moveToNext();
             }
 
