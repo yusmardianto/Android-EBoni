@@ -114,7 +114,6 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             String get_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
             String get_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
             String get_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
-
             final String get_jenissatwa = db.getDataDetail(MstJenisSatwa.TABLE_NAME, MstJenisSatwa._ID, db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA), MstJenisSatwa.JENIS_SATWA_NAME);
             String get_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME, MstJenisTemuan._ID, db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT), MstJenisTemuan.JENIS_TEMUAN_NAME);
 

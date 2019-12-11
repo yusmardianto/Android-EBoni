@@ -349,12 +349,53 @@ public class EditPerubahanFragment extends Fragment {
         try {
 
             final String jenistanaman = jenis_tanaman.getText().toString();
+            final String petak = petak_id.getText().toString();
             final String str_tanggal = tahun.getText().toString();
+            final String kelas = kelas_hutan.getText().toString();
+            final String luasperubahan = luas.getText().toString();
+            final String tanamanperkiraan = luas.getText().toString();
+            final String kelasperkiraan = luas.getText().toString();
+            final String luasperkiraan = luas.getText().toString();
+            final String nobap = luas.getText().toString();
+            final String tanamandefinitif = luas.getText().toString();
+            final String luasdefinitif = luas.getText().toString();
+            final String kelasdefinitif = luas.getText().toString();
+
             if (jenistanaman.equals("") || jenistanaman.equals("0") || jenistanaman.equals(" ") || jenistanaman.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman tidak boleh kosong");
 
-            } else if(str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)){
+            } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Petak tidak boleh kosong");
+
+            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+
+            } else if (kelas.equals("") || kelas.equals("0") || kelas.equals(" ") || kelas.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Kelas Hutan tidak boleh kosong");
+
+            } else if (luasperubahan.equals("") || luasperubahan.equals("0") || luasperubahan.equals(" ") || luasperubahan.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Luas tidak boleh kosong");
+
+            } else if (tanamanperkiraan.equals("") || tanamanperkiraan.equals("0") || tanamanperkiraan.equals(" ") || tanamanperkiraan.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jenis Tanaman Perkiraan tidak boleh kosong");
+
+            } else if (kelasperkiraan.equals("") || kelasperkiraan.equals("0") || kelasperkiraan.equals(" ") || kelasperkiraan.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Kelas Hutan Perkiraan tidak boleh kosong");
+
+            } else if (luasperkiraan.equals("") || luasperkiraan.equals("0") || luasperkiraan.equals(" ") || luasperkiraan.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Luas Perkiraan tidak boleh kosong");
+
+            } else if (nobap.equals("") || nobap.equals("0") || nobap.equals(" ") || nobap.equals(null)) {
+                AjnClass.showAlert(getActivity(), "No BAP PKH tidak boleh kosong");
+
+            } else if (tanamandefinitif.equals("") || tanamandefinitif.equals("0") || tanamandefinitif.equals(" ") || tanamandefinitif.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jenis Tanaman Definitf tidak boleh kosong");
+
+            } else if (luasdefinitif.equals("") || luasdefinitif.equals("0") || luasdefinitif.equals(" ") || luasdefinitif.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Luas Definitif tidak boleh kosong");
+
+            } else if (kelasdefinitif.equals("") || kelasdefinitif.equals("0") || kelasdefinitif.equals(" ") || kelasdefinitif.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Kelas Hutan Definitif tidak boleh kosong");
 
             }else {
 
