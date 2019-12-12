@@ -68,7 +68,7 @@ public class TambahlaporanpalbatasFragment extends Fragment {
                 // your code here
                 String pil_pal = spin_jenis_pal.getSelectedItem().toString();
                 String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME,
-                        pil_pal, MstJenisPalSchema.JENIS_PAL_ID);
+                        pil_pal, MstJenisPalSchema.JENIS_PAL_NAME);
                 jenispal.setText(jenis_pal);
 
             }

@@ -315,12 +315,10 @@
                             <EditText
                                 android:id="@+id/tenurial_kondisipetakidentifikasi"
                                 android:fontFamily="@font/font_aal_default"
-                                android:inputType="number"
-                                android:singleLine="true"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:background="@drawable/ic_background"
-                                android:hint="Kondisi" />
+                                android:hint="Tambahkan Status Penyelesaian" />
                         </LinearLayout>
                     </LinearLayout>
 
