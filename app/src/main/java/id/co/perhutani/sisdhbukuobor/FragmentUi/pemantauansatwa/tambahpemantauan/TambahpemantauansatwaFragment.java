@@ -27,7 +27,6 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
-import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansatwaFragment;
@@ -40,10 +39,6 @@ public class TambahpemantauansatwaFragment extends Fragment {
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_satwa;
     private Spinner spin_cara_melihat;
-
-    String id_jenissatwa,pil_jenis_satwa;
-
-    private TambahpemantauansatwaViewModel mViewModel;
 
     public static TambahpemantauansatwaFragment newInstance() {
         return new TambahpemantauansatwaFragment();
@@ -138,7 +133,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.tambah_pemantauansatwa_fragment, container, false);
+
         View root = inflater.inflate(R.layout.tambah_pemantauansatwa_fragment, container, false);
 
         db = new SQLiteHandler(getActivity());
@@ -182,10 +177,10 @@ public class TambahpemantauansatwaFragment extends Fragment {
     public void act_simpan() {
         try {
 
-            final String jumlah = jumlahsatwa.getText().toString();
+            final String jenis_satwa = jenissatwa.getText().toString();
             final String waktu = waktulihat.getText().toString();
-            if (jumlah.equals("") || jumlah.equals("0") || jumlah.equals(" ") || jumlah.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah tidak boleh kosong");
+            if (jenis_satwa.equals("") || jenis_satwa.equals("0") || jenis_satwa.equals(" ") || jenis_satwa.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jenis Satwa tidak boleh kosong");
 
             } else if (waktu.equals("") || waktu.equals("0") || waktu.equals(" ") || waktu.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Waktu Lihat tidak boleh kosong");
@@ -194,7 +189,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(jumlah)
+                        .setContentText(jenis_satwa)
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -203,7 +198,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText("")
+                                        .setContentText(jenis_satwa)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -215,7 +210,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(jumlah)
+                                        .setContentText(jenis_satwa)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)

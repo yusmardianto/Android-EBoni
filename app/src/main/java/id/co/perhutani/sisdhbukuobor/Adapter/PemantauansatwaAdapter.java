@@ -114,16 +114,17 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             String get_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
             String get_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
             String get_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
-            final String get_jenissatwa = db.getDataDetail(MstJenisSatwa.TABLE_NAME, MstJenisSatwa._ID, db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA), MstJenisSatwa.JENIS_SATWA_NAME);
+            String get_jenissatwa = db.getDataDetail(MstJenisSatwa.TABLE_NAME, MstJenisSatwa._ID, db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA), MstJenisSatwa.JENIS_SATWA_NAME);
             String get_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME, MstJenisTemuan._ID, db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT), MstJenisTemuan.JENIS_TEMUAN_NAME);
 
             String get_anakpetak_detail = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, get_anakpetak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+            final String get_jenissatwa_detail= db.getDataDetail(MstJenisSatwa.TABLE_NAME, MstJenisSatwa.JENIS_SATWA_ID, get_jenissatwa, MstJenisSatwa.JENIS_SATWA_NAME);
 
             TextView anakpetak = viewas.findViewById(R.id.pemantauan_anakpetakdetail);
             anakpetak.setText(get_anakpetak_detail);
 //
             TextView jenissatwa = viewas.findViewById(R.id.pemantauan_jenissatwadetail);
-            jenissatwa.setText(get_jenissatwa);
+            jenissatwa.setText(get_jenissatwa_detail);
 
             TextView jumlahsatwa = viewas.findViewById(R.id.pemantauan_jumlahsatwadetail);
             jumlahsatwa.setText(get_jumlahsatwa);
@@ -167,7 +168,7 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final String str_note = "Hapus : " + get_jenissatwa;
+                    final String str_note = "Hapus : " + get_jenissatwa_detail;
 
                     new SweetAlertDialog(mContext, SweetAlertDialog.WARNING_TYPE)
                             .setTitleText("Hapus Data ?")

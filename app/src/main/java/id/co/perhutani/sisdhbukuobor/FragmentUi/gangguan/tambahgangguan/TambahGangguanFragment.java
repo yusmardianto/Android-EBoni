@@ -251,7 +251,7 @@ public class TambahGangguanFragment extends Fragment {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman tidak boleh kosong");
 
             } else if (luas.equals("") || luas.equals(" ") || luas.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Luas Lahan tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Luas Kerugian tidak boleh kosong");
 
             } else if (nilai.equals("") || nilai.equals(" ") || nilai.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Nilai Kerugian tidak boleh kosong");
