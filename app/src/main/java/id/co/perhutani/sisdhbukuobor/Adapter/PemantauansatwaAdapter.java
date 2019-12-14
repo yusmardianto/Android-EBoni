@@ -22,14 +22,14 @@ import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansatwaFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.editpemantauan.EditPemantauanFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansatwaFragment;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.editpemantauan.EditPemantauanFragment;
 
 public class PemantauansatwaAdapter extends RecyclerView.Adapter<PemantauansatwaAdapter.PemantauanViewHolder> {
 
@@ -111,18 +111,20 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             alertDialogBuilder.setView(viewas);
 
             String get_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
+            String get_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
             String get_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
             String get_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
             String get_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
-            String get_jenissatwa = db.getDataDetail(MstJenisSatwa.TABLE_NAME, MstJenisSatwa._ID, db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA), MstJenisSatwa.JENIS_SATWA_NAME);
-            String get_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME, MstJenisTemuan._ID, db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT), MstJenisTemuan.JENIS_TEMUAN_NAME);
+            String get_caramelihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
 
             String get_anakpetak_detail = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, get_anakpetak, MstAnakPetakSchema.ANAK_PETAK_NAME);
             final String get_jenissatwa_detail= db.getDataDetail(MstJenisSatwa.TABLE_NAME, MstJenisSatwa.JENIS_SATWA_ID, get_jenissatwa, MstJenisSatwa.JENIS_SATWA_NAME);
+            String get_jenistemuan = db.getDataDetail(MstJenisTemuan.TABLE_NAME, MstJenisTemuan.JENIS_TEMUAN_ID, get_caramelihat, MstJenisTemuan.JENIS_TEMUAN_NAME);
 
-            TextView anakpetak = viewas.findViewById(R.id.pemantauan_anakpetakdetail);
+
+            TextView anakpetak = viewas.findViewById(R.id.pemantauan_petakiddetail);
             anakpetak.setText(get_anakpetak_detail);
-//
+
             TextView jenissatwa = viewas.findViewById(R.id.pemantauan_jenissatwadetail);
             jenissatwa.setText(get_jenissatwa_detail);
 
@@ -132,12 +134,11 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             TextView waktulihat = viewas.findViewById(R.id.pemantauan_waktulihatdetail);
             waktulihat.setText(get_waktulihat);
 
-            TextView caralihat = viewas.findViewById(R.id.pemantauan_caralihatdetail);
-            caralihat.setText(get_caramelihat);
+            TextView caramelihat = viewas.findViewById(R.id.pemantauan_caralihatdetail);
+            caramelihat.setText(get_jenistemuan);
 
             TextView keterangan = viewas.findViewById(R.id.pemantauan_keterangandetail);
             keterangan.setText(get_keterangan);
-
 
             alertDialogBuilder.setView(viewas);
 //            alertDialogBuilder.setCancelable(false);

@@ -69,7 +69,7 @@ public class EditPemantauanFragment extends Fragment {
                 // your code here
                 String pil_jenis_satwa = spin_jenis_satwa.getSelectedItem().toString();
                 String id_jenissatwa = db.getDataDetail(MstJenisSatwa.TABLE_NAME,
-                        MstJenisSatwa.JENIS_SATWA_NAME, pil_jenis_satwa, MstJenisSatwa.JENIS_SATWA_ID);
+                        MstJenisSatwa.JENIS_SATWA_NAME, pil_jenis_satwa, MstJenisSatwa.JENIS_SATWA_NAME);
                 jenissatwa.setText(id_jenissatwa);
 
             }
@@ -97,7 +97,7 @@ public class EditPemantauanFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 anakpetak.setText(id_petak);
             }
 
@@ -125,8 +125,8 @@ public class EditPemantauanFragment extends Fragment {
                 // your code here
                 String pil_cara_melihat = spin_cara_melihat.getSelectedItem().toString();
                 String id_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME,
-                        MstJenisTemuan.JENIS_TEMUAN_NAME, pil_cara_melihat, MstJenisTemuan.JENIS_TEMUAN_ID);
-                jenissatwa.setText(id_caramelihat);
+                        MstJenisTemuan.JENIS_TEMUAN_NAME, pil_cara_melihat, MstJenisTemuan.JENIS_TEMUAN_NAME);
+                caralihat.setText(id_caramelihat);
 
             }
 

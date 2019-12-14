@@ -56,11 +56,12 @@
                 <EditText
                     android:id="@+id/pcp_nopcp"
                     android:fontFamily="@font/font_aal_default"
+                    android:inputType="number"
                     android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/ic_background"
-                    android:hint="Nomer PCP . . . " />
+                    android:hint="Nomer PCP" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -51,6 +51,8 @@ public class TambahPerubahanFragment extends Fragment {
     private Spinner spin_jenis_tanaman_perkiraan;
     private Spinner spin_kelas_hutan;
     private Spinner spin_kelas_hutan_perkiraan;
+    private Spinner spin_jenis_tanaman_definitif;
+    private Spinner spin_kelas_hutan_definitif;
 
     final Calendar calendar = Calendar.getInstance();
     private String str_tgl;
@@ -80,7 +82,7 @@ public class TambahPerubahanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 petak_id.setText(id_petak);
 
             }
@@ -109,37 +111,8 @@ public class TambahPerubahanFragment extends Fragment {
                 // your code here
                 String pil_jenis_tanaman = spin_jenis_tanaman.getSelectedItem().toString();
                 String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME,
-                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
+                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman, MstJenisTanamanSchema.JENIS_TANAMAN_NAME);
                 jenis_tanaman.setText(id_jenis);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-        });
-    }
-
-    public void load_spinner_jenis_tanaman_perkiraan() {
-        List<String> listjenis = db.getJenisTanaman();
-        final int _tpg = listjenis.size();
-        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listjenis) {
-            @Override
-            public int getCount() {
-                return (_tpg); // Truncate the list
-            }
-        };
-        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin_jenis_tanaman_perkiraan.setAdapter(dataAdapter_tpg);
-        spin_jenis_tanaman_perkiraan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // your code here
-                String pil_jenis_tanaman_perkiraan = spin_jenis_tanaman_perkiraan.getSelectedItem().toString();
-                String id_jenis_perkiraan = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME,
-                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_perkiraan, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
-                jenis_perkiraan.setText(id_jenis_perkiraan);
 
             }
 
@@ -167,8 +140,38 @@ public class TambahPerubahanFragment extends Fragment {
                 // your code here
                 String pil_kelas_hutan = spin_kelas_hutan.getSelectedItem().toString();
                 String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
-                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_NAME);
                 kelas_hutan.setText(id_kelas_hutan);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
+
+    public void load_spinner_jenis_tanaman_perkiraan() {
+        List<String> listjenis = db.getJenisTanaman();
+        final int _tpg = listjenis.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listjenis) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_tanaman_perkiraan.setAdapter(dataAdapter_tpg);
+        spin_jenis_tanaman_perkiraan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_jenis_tanaman_perkiraan = spin_jenis_tanaman_perkiraan.getSelectedItem().toString();
+                String id_jenis_perkiraan = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME,
+                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_perkiraan, MstJenisTanamanSchema.JENIS_TANAMAN_NAME);
+                jenis_perkiraan.setText(id_jenis_perkiraan);
 
             }
 
@@ -196,8 +199,66 @@ public class TambahPerubahanFragment extends Fragment {
                 // your code here
                 String pil_kelas_hutan_perkiraan = spin_kelas_hutan_perkiraan.getSelectedItem().toString();
                 String id_kelas_hutan_perkiraan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
-                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_perkiraan, MstKelasHutanSchema.KELAS_HUTAN_ID);
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_perkiraan, MstKelasHutanSchema.KELAS_HUTAN_NAME);
                 kelas_perkiraan.setText(id_kelas_hutan_perkiraan);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
+    public void load_spinner_jenis_tanaman_definitif() {
+        List<String> listjenis = db.getJenisTanaman();
+        final int _tpg = listjenis.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listjenis) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_tanaman_definitif.setAdapter(dataAdapter_tpg);
+        spin_jenis_tanaman_definitif.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_jenis_tanaman_definitif = spin_jenis_tanaman_definitif.getSelectedItem().toString();
+                String id_jenis_tanaman_definitif = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME,
+                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_definitif, MstJenisTanamanSchema.JENIS_TANAMAN_NAME);
+                jenis_definitif.setText(id_jenis_tanaman_definitif);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
+    public void load_spinner_kelas_hutan_definitif() {
+        List<String> listjenis = db.getKelasHutan();
+        final int _tpg = listjenis.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listjenis) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_kelas_hutan_definitif.setAdapter(dataAdapter_tpg);
+        spin_kelas_hutan_definitif.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_kelas_hutan_definitif = spin_kelas_hutan_definitif.getSelectedItem().toString();
+                String id_kelas_hutan_definitif = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_definitif, MstKelasHutanSchema.KELAS_HUTAN_NAME);
+                kelas_definitif.setText(id_kelas_hutan_definitif);
 
             }
 
@@ -288,6 +349,18 @@ public class TambahPerubahanFragment extends Fragment {
         String pil_kelas_hutan_perkiraan = spin_kelas_hutan_perkiraan.getSelectedItem().toString();
         String id_kelas_hutan_perkiraan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_perkiraan, MstKelasHutanSchema.KELAS_HUTAN_ID);
         kelas_perkiraan.setText(id_kelas_hutan_perkiraan);
+
+        spin_jenis_tanaman_definitif = root.findViewById(R.id.spinner_jenis_tanaman_definitif);
+        load_spinner_jenis_tanaman_definitif();
+        String pil_jenis_tanaman_definitif = spin_jenis_tanaman_definitif.getSelectedItem().toString();
+        String id_jenis_tanaman_definitif = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_definitif, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
+        jenis_definitif.setText(id_jenis_tanaman_definitif);
+
+        spin_kelas_hutan_definitif = root.findViewById(R.id.spinner_perubahan_kelas_definitif);
+        load_spinner_kelas_hutan_definitif();
+        String pil_kelas_hutan_definitif = spin_kelas_hutan_definitif.getSelectedItem().toString();
+        String id_kelas_hutan_definitif = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_definitif, MstKelasHutanSchema.KELAS_HUTAN_ID);
+        kelas_definitif.setText(id_kelas_hutan_definitif);
 
         btnSimpanPerubahan.setOnClickListener(new View.OnClickListener() {
             @Override

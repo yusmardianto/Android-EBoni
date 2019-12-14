@@ -60,19 +60,6 @@
                         android:layout_height="wrap_content"
                         android:text="201631141"/>
 
-                    <TextView
-                        android:layout_marginTop="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Anak Petak            : "/>
-
-                    <TextView
-                        android:id="@+id/pemantauan_anakpetakdetail"
-                        android:layout_marginTop="-20dp"
-                        android:layout_marginLeft="120dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="201631141"/>
 
                     <TextView
                         android:layout_marginTop="10dp"

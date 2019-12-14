@@ -1,34 +1,40 @@
 package id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.editlaporanpalbatas;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
+
+import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.ListPelaporanpalFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.ListPelaporanpalFragment;
 
 public class EditLaporanpalbatasFragment extends Fragment {
 
     private EditText tanggalpal, jenispal, kondisipal, nopal, jumlahpal, keteranganpal;
+    private Spinner spin_jenis_pal;
+
 
     public static final String MSG_KEY = "id";
     private static SQLiteHandler db;
@@ -40,6 +46,35 @@ public class EditLaporanpalbatasFragment extends Fragment {
 
     public static EditLaporanpalbatasFragment newInstance() {
         return new EditLaporanpalbatasFragment();
+    }
+
+    public void load_spinner_jenis_pal() {
+        List<String> listtpg = db.getJenisPal();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_pal.setAdapter(dataAdapter_tpg);
+        spin_jenis_pal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_pal = spin_jenis_pal.getSelectedItem().toString();
+                String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME,
+                        pil_pal, MstJenisPalSchema.JENIS_PAL_NAME);
+                jenispal.setText(jenis_pal);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
     }
 
     @Override
@@ -69,6 +104,12 @@ public class EditLaporanpalbatasFragment extends Fragment {
         jumlahpal = root.findViewById(R.id.edit_palbatas_jumlahpal);
         keteranganpal = root.findViewById(R.id.edit_palbatas_ketpal);
         btnSimpanLaporan = root.findViewById(R.id.edit_palbatas_btnsimpanpal);
+
+        spin_jenis_pal = root.findViewById(R.id.edit_spinner_jenis_pal);
+        load_spinner_jenis_pal();
+        String pil_pal = spin_jenis_pal.getSelectedItem().toString();
+        String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME, pil_pal , MstJenisPalSchema.JENIS_PAL_ID);
+        jenispal.setText(jenis_pal);
 
         str_tanggalpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.TANGGAL_PAL);
         str_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JENIS_PAL);
