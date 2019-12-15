@@ -40,11 +40,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
     private Spinner spin_jenis_satwa;
     private Spinner spin_cara_melihat;
 
-<<<<<<< HEAD
     private TambahpemantauansatwaViewModel mViewModel;
-
-=======
->>>>>>> 140f935bab054e81cb5929bd90c967ffb3db53b9
     public static TambahpemantauansatwaFragment newInstance() {
         return new TambahpemantauansatwaFragment();
     }
