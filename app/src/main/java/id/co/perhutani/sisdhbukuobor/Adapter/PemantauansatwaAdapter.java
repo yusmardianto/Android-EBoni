@@ -26,9 +26,6 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansa
 import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.editpemantauan.EditPemantauanFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.R;
-import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
-import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
-import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 
 public class PemantauansatwaAdapter extends RecyclerView.Adapter<PemantauansatwaAdapter.PemantauanViewHolder> {
@@ -58,11 +55,10 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
     @Override
     public void onBindViewHolder(@NonNull PemantauanViewHolder holder, final int position) {
         db = new SQLiteHandler(mContext);
-        holder.tv_ID.setText(mData.get(position).getID());
-        String get_anakpetak_detail = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, mData.get(position).getAnakPetakId(), MstAnakPetakSchema.ANAK_PETAK_NAME);
-        holder.tv_anakpetakid.setText(get_anakpetak_detail);
 
         holder.tv_jenisatwa.setText(mData.get(position).getJenis());
+        holder.tv_ID.setText(mData.get(position).getID());
+        holder.tv_anakpetakid.setText(mData.get(position).getAnakPetakId());
         holder.tv_jumlahsatwa.setText(mData.get(position).getJumlah());
         holder.tv_waktulihat.setText(mData.get(position).getWaktulihat());
         holder.img_pemantaundetail.setOnClickListener(new View.OnClickListener() {
@@ -81,9 +77,10 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
     }
 
     public static class PemantauanViewHolder extends RecyclerView.ViewHolder{
+
+        private TextView tv_jenisatwa;
         private TextView tv_ID;
         private TextView tv_anakpetakid;
-        private TextView tv_jenisatwa;
         private TextView tv_jumlahsatwa;
         private TextView tv_waktulihat;
         private LinearLayout img_pemantaundetail;
@@ -91,13 +88,12 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
         public PemantauanViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            tv_jenisatwa = (TextView) itemView.findViewById(R.id.name_jenissatwa);
             tv_ID = (TextView) itemView.findViewById(R.id.name_idsatwa);
             tv_anakpetakid = (TextView) itemView.findViewById(R.id.name_anakpetaksatwa);
-            tv_jenisatwa = (TextView) itemView.findViewById(R.id.name_jenissatwa);
             tv_jumlahsatwa = (TextView) itemView.findViewById(R.id.name_jumlahsatwa);
             tv_waktulihat = (TextView) itemView.findViewById(R.id.name_waktulihatsatwa);
             img_pemantaundetail = itemView.findViewById(R.id.img_pemantauandetail);
-
         }
     }
 
@@ -111,22 +107,17 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             alertDialogBuilder.setView(viewas);
 
             String get_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
-            String get_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
+            final String get_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
             String get_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
             String get_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
-            String get_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
             String get_caramelihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
-
-            String get_anakpetak_detail = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, get_anakpetak, MstAnakPetakSchema.ANAK_PETAK_NAME);
-            final String get_jenissatwa_detail= db.getDataDetail(MstJenisSatwa.TABLE_NAME, MstJenisSatwa.JENIS_SATWA_ID, get_jenissatwa, MstJenisSatwa.JENIS_SATWA_NAME);
-            String get_jenistemuan = db.getDataDetail(MstJenisTemuan.TABLE_NAME, MstJenisTemuan.JENIS_TEMUAN_ID, get_caramelihat, MstJenisTemuan.JENIS_TEMUAN_NAME);
-
+            String get_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
 
             TextView anakpetak = viewas.findViewById(R.id.pemantauan_petakiddetail);
-            anakpetak.setText(get_anakpetak_detail);
+            anakpetak.setText(get_anakpetak);
 
             TextView jenissatwa = viewas.findViewById(R.id.pemantauan_jenissatwadetail);
-            jenissatwa.setText(get_jenissatwa_detail);
+            jenissatwa.setText(get_jenissatwa);
 
             TextView jumlahsatwa = viewas.findViewById(R.id.pemantauan_jumlahsatwadetail);
             jumlahsatwa.setText(get_jumlahsatwa);
@@ -135,7 +126,7 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             waktulihat.setText(get_waktulihat);
 
             TextView caramelihat = viewas.findViewById(R.id.pemantauan_caralihatdetail);
-            caramelihat.setText(get_jenistemuan);
+            caramelihat.setText(get_caramelihat);
 
             TextView keterangan = viewas.findViewById(R.id.pemantauan_keterangandetail);
             keterangan.setText(get_keterangan);
@@ -169,7 +160,7 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final String str_note = "Hapus : " + get_jenissatwa_detail;
+                    final String str_note = "Hapus : " + get_jenissatwa;
 
                     new SweetAlertDialog(mContext, SweetAlertDialog.WARNING_TYPE)
                             .setTitleText("Hapus Data ?")
