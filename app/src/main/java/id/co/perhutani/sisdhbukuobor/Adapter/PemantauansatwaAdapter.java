@@ -59,7 +59,8 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
         String getAnakPetakId = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, mData.get(position).getAnakPetakId(), MstAnakPetakSchema.ANAK_PETAK_NAME);
         holder.tv_anakpetakid.setText(mData.get(position).getAnakPetakId());
 
-        holder.tv_jenisatwa.setText(mData.get(position).getJenis());
+        holder.tv_jenisatwa.setText(mData.get(position).getJenis());;
+        holder.tv_anakpetakid.setText(mData.get(position).getAnakPetakId());
         holder.tv_jumlahsatwa.setText(mData.get(position).getJumlah());
         holder.tv_waktulihat.setText(mData.get(position).getWaktulihat());
         holder.img_pemantaundetail.setOnClickListener(new View.OnClickListener() {
@@ -78,20 +79,21 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
     }
 
     public static class PemantauanViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_anakpetakid;
+
         private TextView tv_jenisatwa;
+        private TextView tv_anakpetakid;
         private TextView tv_jumlahsatwa;
         private TextView tv_waktulihat;
         private LinearLayout img_pemantaundetail;
 
         public PemantauanViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv_anakpetakid = (TextView) itemView.findViewById(R.id.name_anakpetaksatwa);
+
             tv_jenisatwa = (TextView) itemView.findViewById(R.id.name_jenissatwa);
+            tv_anakpetakid = (TextView) itemView.findViewById(R.id.name_anakpetaksatwa);
             tv_jumlahsatwa = (TextView) itemView.findViewById(R.id.name_jumlahsatwa);
             tv_waktulihat = (TextView) itemView.findViewById(R.id.name_waktulihatsatwa);
             img_pemantaundetail = itemView.findViewById(R.id.img_pemantauandetail);
-
         }
     }
 
@@ -123,8 +125,8 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             TextView waktulihat = viewas.findViewById(R.id.pemantauan_waktulihatdetail);
             waktulihat.setText(get_waktulihat);
 
-            TextView caralihat = viewas.findViewById(R.id.pemantauan_caralihatdetail);
-            caralihat.setText(get_caramelihat);
+            TextView caramelihat = viewas.findViewById(R.id.pemantauan_caralihatdetail);
+            caramelihat.setText(get_caramelihat);
 
             TextView keterangan = viewas.findViewById(R.id.pemantauan_keterangandetail);
             keterangan.setText(get_keterangan);

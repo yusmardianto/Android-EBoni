@@ -10,16 +10,17 @@
     android:background="@drawable/ic_background">
 
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/name_jenissatwa"
             android:layout_width="wrap_content"
+<<<<<<< HEAD
             android:layout_height="wrap_content"
             android:fontFamily="@font/font_aal_bold"
             android:text="Jenis Permasalahan"
@@ -36,10 +37,54 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="Petak ID" />
+=======
+            android:layout_height="20dp"
+            android:fontFamily="@font/font_aal_bold"
+            android:text="Jenis Satwa : "
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="ID" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text=" : " />
+
+            <TextView
+                android:id="@+id/name_idsatwa"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="10011929292" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="Anak Petak ID" />
+>>>>>>> 140f935bab054e81cb5929bd90c967ffb3db53b9
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginLeft="5dp"
                 android:text=" : " />
 
@@ -77,6 +122,16 @@
                 android:layout_height="20dp"
                 android:layout_marginLeft="5dp"
                 android:text="Baku Hantamn" />
+=======
+                android:text=" : " />
+
+            <TextView
+                android:id="@+id/name_anakpetaksatwa"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="10011929292" />
+>>>>>>> 140f935bab054e81cb5929bd90c967ffb3db53b9
         </LinearLayout>
 
         <LinearLayout
@@ -86,14 +141,22 @@
             android:orientation="horizontal">
 
             <TextView
+<<<<<<< HEAD
                 android:fontFamily="@font/font_aal_default"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="Waktu Lihat" />
+=======
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="Jumlah Satwa" />
+>>>>>>> 140f935bab054e81cb5929bd90c967ffb3db53b9
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginLeft="5dp"
                 android:text=" : " />
 
@@ -104,24 +167,64 @@
                 android:layout_height="20dp"
                 android:layout_marginLeft="5dp"
                 android:text="Baku Hantamn" />
+=======
+                android:text=" : " />
+
+            <TextView
+                android:id="@+id/name_jumlahsatwa"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="10011929292" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="Waktu Melihat" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : " />
+
+            <TextView
+                android:id="@+id/name_waktulihatsatwa"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="10011929292" />
+>>>>>>> 140f935bab054e81cb5929bd90c967ffb3db53b9
         </LinearLayout>
 
         <ImageView
             android:id="@+id/name_info_alert_satwa"
+<<<<<<< HEAD
             android:layout_marginTop="7dp"
+=======
+>>>>>>> 140f935bab054e81cb5929bd90c967ffb3db53b9
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_info_outline_red_24dp"/>
+            android:layout_marginTop="17dp"
+            android:src="@drawable/ic_info_outline_red_24dp" />
 
         <TextView
             android:fontFamily="@font/font_aal_default"
             android:id="@+id/name_data_sinkron_satwa"
-            android:layout_marginTop="-20dp"
-            android:layout_marginLeft="25dp"
-            android:textColor="#FF0000 "
+            android:fontFamily="@font/font_aal_default"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="Data belum disinkronkan" />
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="-20dp"
+            android:text="Data belum disinkronkan"
+            android:textColor="#FF0000 " />
     </LinearLayout>
 
     <LinearLayout
@@ -140,11 +243,137 @@
             android:layout_gravity="right"/>
 
         <TextView
+<<<<<<< HEAD
             android:fontFamily="@font/font_aal_default"
             android:id="@+id/name_detail"
+=======
+            android:id="@+id/name_detail_pemantauan"
+            android:fontFamily="@font/font_aal_default"
+>>>>>>> 140f935bab054e81cb5929bd90c967ffb3db53b9
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Detail"
             android:layout_gravity="right"/>
     </LinearLayout>
 </LinearLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout-->
+<!--    android:layout_margin="15dp"-->
+<!--    android:padding="10dp"-->
+<!--    android:orientation="horizontal"-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:background="@drawable/ic_background">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_weight="1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_marginLeft="5dp"-->
+<!--        android:layout_marginRight="5dp">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="No_ID            : "/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/name_idsatwa"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="-20dp"-->
+<!--            android:layout_marginLeft="90dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Petak ID        : "/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/name_anakpetaksatwa"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="-20dp"-->
+<!--            android:layout_marginLeft="90dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Jenis              : "/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/name_jenissatwa"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="-20dp"-->
+<!--            android:layout_marginLeft="90dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Jumlah          : "/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/name_jumlahsatwa"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="-20dp"-->
+<!--            android:layout_marginLeft="90dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Waktu Lihat  : "/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/name_waktulihatsatwa"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="-20dp"-->
+<!--            android:layout_marginLeft="90dp" />-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/name_info_alert_satwa"-->
+<!--            android:layout_marginTop="17dp"-->
+<!--            android:layout_width="20dp"-->
+<!--            android:layout_height="20dp"-->
+<!--            android:src="@drawable/ic_info_outline_red_24dp"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/name_data_sinkron_satwa"-->
+<!--            android:layout_marginTop="-20dp"-->
+<!--            android:layout_marginLeft="25dp"-->
+<!--            android:textColor="#FF0000 "-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="20dp"-->
+<!--            android:text="Data belum disinkronkan" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/img_pemantauandetail"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_weight="5"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:src="@drawable/ic_visibility_black_24dp"-->
+<!--            android:layout_gravity="right"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/name_detail"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Detail"-->
+<!--            android:layout_gravity="right"/>-->
+<!--    </LinearLayout>-->
+<!--</LinearLayout>-->
