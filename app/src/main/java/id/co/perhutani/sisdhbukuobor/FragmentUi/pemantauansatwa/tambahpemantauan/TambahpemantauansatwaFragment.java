@@ -40,8 +40,6 @@ public class TambahpemantauansatwaFragment extends Fragment {
     private Spinner spin_jenis_satwa;
     private Spinner spin_cara_melihat;
 
-    String id_jenissatwa,pil_jenis_satwa;
-
     private TambahpemantauansatwaViewModel mViewModel;
 
     public static TambahpemantauansatwaFragment newInstance() {
@@ -255,7 +253,6 @@ public class TambahpemantauansatwaFragment extends Fragment {
                             }
                         })
                         .show();
-
             }
 
         } catch (Exception e) {

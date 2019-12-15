@@ -57,7 +57,6 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
     public void onBindViewHolder(@NonNull PelaporanpalbatasAdapter.PelaporanViewHolder holder, final int position) {
 
         db = new SQLiteHandler(mContext);
-        holder.tv_ID.setText(mData.get(position).getID());
         holder.tv_tanggalpal.setText(mData.get(position).getTanggalPal());
         holder.tv_jenispal.setText(mData.get(position).getJenisPal());
         holder.tv_nomerpal.setText(mData.get(position).getNomerPal());
@@ -78,7 +77,6 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
     }
 
     public static class PelaporanViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_ID;
         private TextView tv_tanggalpal;
         private TextView tv_jenispal;
         private TextView tv_nomerpal;
@@ -88,7 +86,6 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
         public PelaporanViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_ID = (TextView) itemView.findViewById(R.id.name_idpal);
             tv_tanggalpal = (TextView) itemView.findViewById(R.id.name_tanggalpal);
             tv_jenispal = (TextView) itemView.findViewById(R.id.name_jenispal);
             tv_nomerpal = (TextView) itemView.findViewById(R.id.name_nomerpal);

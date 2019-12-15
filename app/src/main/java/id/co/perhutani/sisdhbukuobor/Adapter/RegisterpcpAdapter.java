@@ -54,8 +54,6 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull RegisterpcpViewHolder holder, final int position) {
-
-        holder.tv_id.setText(mData.get(position).getID());
         holder.tv_nopcp.setText(mData.get(position).getNoPcp());
         holder.tv_anakpetakid.setText(mData.get(position).getAnakPetakId());
         holder.tv_tahunpcp.setText(mData.get(position).getTahun());
@@ -76,7 +74,6 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
     }
 
     public static class RegisterpcpViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_id;
         private TextView tv_nopcp;
         private TextView tv_anakpetakid;
         private TextView tv_tahunpcp;
@@ -85,8 +82,6 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
 
         public RegisterpcpViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            tv_id = itemView.findViewById(R.id.name_idpcp);
             tv_nopcp = itemView.findViewById(R.id.name_nomerpcp);
             tv_anakpetakid = itemView.findViewById(R.id.name_anakpetakpcp);
             tv_tahunpcp = itemView.findViewById(R.id.name_tahunpcp);

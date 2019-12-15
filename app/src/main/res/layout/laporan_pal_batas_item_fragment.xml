@@ -19,73 +19,103 @@
         android:layout_marginRight="5dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No_ID             : "/>
-
-        <TextView
-            android:id="@+id/name_idpal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-19dp"
-            android:layout_marginLeft="90dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tanggal PAL : "/>
-
-        <TextView
-            android:id="@+id/name_tanggalpal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-19dp"
-            android:layout_marginLeft="90dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Jenis PAL      : "/>
-
-        <TextView
             android:id="@+id/name_jenispal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-19dp"
-            android:layout_marginLeft="90dp" />
+            android:fontFamily="@font/font_aal_bold"
+            android:text="Jenis PAL"
+            android:textSize="18dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nomer PAL   : "/>
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/name_nomerpal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-19dp"
-            android:layout_marginLeft="90dp" />
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Tanggal PAL" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Jumlah PAL  : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text=" : " />
 
-        <TextView
-            android:id="@+id/name_jumlahpal"
-            android:layout_width="wrap_content"
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/name_tanggalpal"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:text="Baku Hantamn" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-19dp"
-            android:layout_marginLeft="90dp" />
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Nomer PAL" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text=" : " />
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/name_nomerpal"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:text="Baku Hantamn" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Jumlah PAL" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text=" : " />
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/name_jumlahpal"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:text="Baku Hantamn" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/name_info_alert_pal"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="10dp"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_info_outline_red_24dp"/>
 
         <TextView
+            android:fontFamily="@font/font_aal_default"
             android:id="@+id/name_data_sinkron_pal"
             android:layout_marginTop="-20dp"
             android:layout_marginLeft="25dp"
@@ -112,6 +142,7 @@
             android:layout_gravity="right"/>
 
         <TextView
+            android:fontFamily="@font/font_aal_default"
             android:id="@+id/name_detail_pal"
             android:layout_marginRight="3.5dp"
             android:layout_width="wrap_content"
