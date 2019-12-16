@@ -34,13 +34,15 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 public class TambahpemantauansatwaFragment extends Fragment {
 
     private static SQLiteHandler db;
-    private EditText anakpetak, jenissatwa, jumlahsatwa, waktulihat, caralihat, keterangan;
+    private EditText anakpetak, jenissatwa, jumlahsatwa, caralihat, keterangan;
     private Button btnSubmitPemantauan;
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_satwa;
     private Spinner spin_cara_melihat;
+    private Spinner spin_waktu_lihat;
 
     private TambahpemantauansatwaViewModel mViewModel;
+
     public static TambahpemantauansatwaFragment newInstance() {
         return new TambahpemantauansatwaFragment();
     }
@@ -139,10 +141,9 @@ public class TambahpemantauansatwaFragment extends Fragment {
 
         db = new SQLiteHandler(getActivity());
 
-        anakpetak = root.findViewById(R.id.pemantauan_anakpetak);
         jenissatwa = root.findViewById(R.id.pemantauan_jenissatwa);
+        anakpetak = root.findViewById(R.id.pemantauan_anakpetak);
         jumlahsatwa = root.findViewById(R.id.pemantauan_jumlahsatwa);
-        waktulihat = root.findViewById(R.id.pemantauan_waktulihat);
         caralihat = root.findViewById(R.id.pemantauan_caralihat);
         keterangan = root.findViewById(R.id.pemantauan_keterangan);
         btnSubmitPemantauan = root.findViewById(R.id.pemantauan_btnsubmit);
@@ -158,6 +159,8 @@ public class TambahpemantauansatwaFragment extends Fragment {
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         anakpetak.setText(id_petak);
+
+        spin_waktu_lihat = root.findViewById(R.id.spinner_waktu_lihat);
 
         spin_cara_melihat = root.findViewById(R.id.spinner_cara_melihat);
         load_spinner_cara_melihat();
@@ -179,9 +182,22 @@ public class TambahpemantauansatwaFragment extends Fragment {
         try {
 
             final String jenis_satwa = jenissatwa.getText().toString();
+            final String anak_petak = anakpetak.getText().toString();
+            final String jumlah_satwa = jumlahsatwa.getText().toString();
+            final String waktu_lihat = spin_waktu_lihat.getSelectedItem().toString();
             final String cara_lihat = caralihat.getText().toString();
+
             if (jenis_satwa.equals("") || jenis_satwa.equals("0") || jenis_satwa.equals(" ") || jenis_satwa.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Satwa tidak boleh kosong");
+
+            } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
+
+            } else if (jumlah_satwa.equals("") || jumlah_satwa.equals("0") || jumlah_satwa.equals(" ") || jumlah_satwa.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jumlah Satwa tidak boleh kosong");
+
+            } else if (waktu_lihat.equals("") || waktu_lihat.equals("- Pilih Waktu Terlihat -") || waktu_lihat.equals(" ") || waktu_lihat.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Waktu Lihat tidak boleh kosong");
 
             } else if (cara_lihat.equals("") || cara_lihat.equals("0") || cara_lihat.equals(" ") || cara_lihat.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Cara Lihat tidak boleh kosong");
@@ -226,10 +242,10 @@ public class TambahpemantauansatwaFragment extends Fragment {
                                         try {
 
                                             ContentValues values_aktifitas = new ContentValues();
-                                            values_aktifitas.put(TrnPemantauanSatwa.ANAK_PETAK_ID, anakpetak.getText().toString());
                                             values_aktifitas.put(TrnPemantauanSatwa.JENIS_SATWA, jenissatwa.getText().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.ANAK_PETAK_ID, anakpetak.getText().toString());
                                             values_aktifitas.put(TrnPemantauanSatwa.JUMLAH_SATWA, jumlahsatwa.getText().toString());
-                                            values_aktifitas.put(TrnPemantauanSatwa.WAKTU_LIHAT, waktulihat.getText().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.WAKTU_LIHAT, spin_waktu_lihat.getSelectedItem().toString());
                                             values_aktifitas.put(TrnPemantauanSatwa.CARA_LIHAT, caralihat.getText().toString());
                                             values_aktifitas.put(TrnPemantauanSatwa.KETERANGAN, keterangan.getText().toString());
                                             db.create(TrnPemantauanSatwa.TABLE_NAME, values_aktifitas);

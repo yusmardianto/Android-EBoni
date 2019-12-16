@@ -34,16 +34,17 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansa
 
 public class EditPemantauanFragment extends Fragment {
 
-    private EditText petak, anakpetak, jenissatwa, jumlahsatwa, waktulihat, caralihat, keterangan;
+    private EditText anakpetak, jenissatwa, jumlahsatwa, caralihat, keterangan;
 
     public static final String MSG_KEY = "id";
     private static SQLiteHandler db;
-    private static String id, str_petak, str_anakpetak, str_jenissatwa, str_jumlahsatwa, str_waktulihat,
+    private static String id, str_anakpetak, str_jenissatwa, str_jumlahsatwa,
             str_caralihat, str_keterangan;
     private Button btnSimpanPemantauan;
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_satwa;
     private Spinner spin_cara_melihat;
+    private Spinner spin_waktu_lihat;
 
     private EditPemantauanViewModel mViewModel;
 
@@ -159,7 +160,6 @@ public class EditPemantauanFragment extends Fragment {
         anakpetak = root.findViewById(R.id.edit_pemantauan_anakpetak);
         jenissatwa = root.findViewById(R.id.edit_pemantauan_jenissatwa);
         jumlahsatwa = root.findViewById(R.id.edit_pemantauan_jumlahsatwa);
-        waktulihat = root.findViewById(R.id.edit_pemantauan_waktulihat);
         caralihat = root.findViewById(R.id.edit_pemantauan_caralihat);
         keterangan = root.findViewById(R.id.edit_pemantauan_keterangan);
         btnSimpanPemantauan = root.findViewById(R.id.edit_pemantauan_btnsimpan);
@@ -176,23 +176,23 @@ public class EditPemantauanFragment extends Fragment {
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         anakpetak.setText(id_petak);
 
+        spin_waktu_lihat = root.findViewById(R.id.edit_spinner_waktu_lihat);
+
         spin_cara_melihat = root.findViewById(R.id.edit_spinner_caramelihat);
         load_spinner_cara_melihat();
         String pil_cara_melihat = spin_cara_melihat.getSelectedItem().toString();
         String id_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME, MstJenisTemuan.JENIS_TEMUAN_NAME, pil_cara_melihat, MstJenisTemuan.JENIS_TEMUAN_ID);
         caralihat.setText(id_caramelihat);
 
-        str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
         str_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
+        str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
         str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
-        str_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
         str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
         str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
 
-        anakpetak.setText(str_anakpetak);
         jenissatwa.setText(str_jenissatwa);
+        anakpetak.setText(str_anakpetak);
         jumlahsatwa.setText(str_jumlahsatwa);
-        waktulihat.setText(str_waktulihat);
         caralihat.setText(str_caralihat);
         keterangan.setText(str_keterangan);
 
@@ -216,19 +216,31 @@ public class EditPemantauanFragment extends Fragment {
     public void act_simpan() {
         try {
 
-            final String jumlah = jumlahsatwa.getText().toString();
-            final String waktu = waktulihat.getText().toString();
-            if (jumlah.equals("") || jumlah.equals("0") || jumlah.equals(" ") || jumlah.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah tidak boleh kosong");
+            final String jenis_satwa = jenissatwa.getText().toString();
+            final String anak_petak = anakpetak.getText().toString();
+            final String jumlah_satwa = jumlahsatwa.getText().toString();
+            final String waktu_lihat = spin_waktu_lihat.getSelectedItem().toString();
+            final String cara_lihat = caralihat.getText().toString();
+            if (jenis_satwa.equals("") || jenis_satwa.equals("0") || jenis_satwa.equals(" ") || jenis_satwa.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jenis Satwa tidak boleh kosong");
 
-            } else if(waktu.equals("") || waktu.equals("0") || waktu.equals(" ") || waktu.equals(null)){
+            } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
+
+            } else if (jumlah_satwa.equals("") || jumlah_satwa.equals("0") || jumlah_satwa.equals(" ") || jumlah_satwa.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jumlah Satwa tidak boleh kosong");
+
+            } else if (waktu_lihat.equals("") || waktu_lihat.equals("- Pilih Waktu Terlihat -") || waktu_lihat.equals(" ") || waktu_lihat.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Waktu Lihat tidak boleh kosong");
 
-            }else {
+            } else if (cara_lihat.equals("") || cara_lihat.equals("0") || cara_lihat.equals(" ") || cara_lihat.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Cara Lihat tidak boleh kosong");
+
+            } else {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(jumlah)
+                        .setContentText(jenis_satwa)
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -237,7 +249,7 @@ public class EditPemantauanFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText("")
+                                        .setContentText(jenis_satwa)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -249,7 +261,7 @@ public class EditPemantauanFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(jumlah)
+                                        .setContentText(jenis_satwa)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -267,7 +279,7 @@ public class EditPemantauanFragment extends Fragment {
                                             Aktifitasnya.setAnakPetakId(anakpetak.getText().toString());
                                             Aktifitasnya.setJenis(jenissatwa.getText().toString());
                                             Aktifitasnya.setJumlah(jumlahsatwa.getText().toString());
-                                            Aktifitasnya.setWaktulihat(waktulihat.getText().toString());
+                                            Aktifitasnya.setWaktulihat(spin_waktu_lihat.getSelectedItem().toString());
                                             Aktifitasnya.setCaralihat(caralihat.getText().toString());
                                             Aktifitasnya.setKeteranganSatwa(keterangan.getText().toString());
                                             db.EditDataPemantauanSatwa(Aktifitasnya);
@@ -279,7 +291,6 @@ public class EditPemantauanFragment extends Fragment {
                                             ft.replace(R.id.nav_host_fragment, fragment);
                                             ft.commit();
 
-
                                         } catch (Exception e) {
                                             AjnClass.showAlert(getActivity(), e.toString());
                                             e.printStackTrace();
@@ -290,7 +301,6 @@ public class EditPemantauanFragment extends Fragment {
                             }
                         })
                         .show();
-
             }
 
         } catch (Exception e) {

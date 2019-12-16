@@ -157,7 +157,7 @@ public class TambahlaporanpalbatasFragment extends Fragment {
             } else if (jenis.equals("") || jenis.equals("0") || jenis.equals(" ") || jenis.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Pal tidak boleh kosong");
 
-            } else if (kondisi.equals("") || kondisi.equals("0") || kondisi.equals(" ") || kondisi.equals(null)) {
+            } else if (kondisi.equals("") || kondisi.equals("- Pilih Kondisi -") || kondisi.equals(" ") || kondisi.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Kondisi Pal tidak boleh kosong");
 
             } else if (tanggal.equals("") || tanggal.equals("0") || tanggal.equals(" ") || tanggal.equals(null)) {
