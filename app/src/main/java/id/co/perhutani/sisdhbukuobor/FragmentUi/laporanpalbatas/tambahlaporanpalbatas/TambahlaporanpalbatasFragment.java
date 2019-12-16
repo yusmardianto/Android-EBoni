@@ -36,11 +36,12 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.ListPelaporanpal
 
 public class TambahlaporanpalbatasFragment extends Fragment {
 
-    private EditText tanggalpal, jenispal, kondisipal, nopal, jumlahpal, keteranganpal;
+    private EditText tanggalpal, jenispal, nopal, jumlahpal, keteranganpal;
     private Button BtnSubmitPal;
     final Calendar calendar = Calendar.getInstance();
     private String str_tgl;
     private Spinner spin_jenis_pal;
+    private Spinner spin_kondisi;
 
     private static SQLiteHandler db;
 
@@ -119,7 +120,6 @@ public class TambahlaporanpalbatasFragment extends Fragment {
         });
 
         jenispal = root.findViewById(R.id.palbatas_jenispal);
-        kondisipal = root.findViewById(R.id.palbatas_kondisipal);
         nopal = root.findViewById(R.id.palbatas_nopal);
         jumlahpal = root.findViewById(R.id.palbatas_jumlahpal);
         keteranganpal = root.findViewById(R.id.palbatas_ketpal);
@@ -130,6 +130,8 @@ public class TambahlaporanpalbatasFragment extends Fragment {
         String pil_pal = spin_jenis_pal.getSelectedItem().toString();
         String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME, pil_pal , MstJenisPalSchema.JENIS_PAL_ID);
         jenispal.setText(jenis_pal);
+
+        spin_kondisi = root.findViewById(R.id.spinner_kondisi);
 
         BtnSubmitPal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,18 +146,31 @@ public class TambahlaporanpalbatasFragment extends Fragment {
         try {
 
             final String nomor = nopal.getText().toString();
+            final String jenis = jenispal.getText().toString();
+            final String kondisi = spin_kondisi.getSelectedItem().toString();
             final String tanggal = tanggalpal.getText().toString();
+            final String jumlah = jumlahpal.getText().toString();
+
             if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Nomor Pal tidak boleh kosong");
 
+            } else if (jenis.equals("") || jenis.equals("0") || jenis.equals(" ") || jenis.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jenis Pal tidak boleh kosong");
+
+            } else if (kondisi.equals("") || kondisi.equals("0") || kondisi.equals(" ") || kondisi.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Kondisi Pal tidak boleh kosong");
+
             } else if (tanggal.equals("") || tanggal.equals("0") || tanggal.equals(" ") || tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+
+            } else if (jumlah.equals("") || jumlah.equals("0") || jumlah.equals(" ") || jumlah.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jumlah Pal tidak boleh kosong");
 
             } else {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(nomor)
+                        .setContentText(jenis)
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -164,7 +179,7 @@ public class TambahlaporanpalbatasFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText("")
+                                        .setContentText(jenis)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -176,7 +191,7 @@ public class TambahlaporanpalbatasFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(nomor)
+                                        .setContentText(jenis)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -190,10 +205,10 @@ public class TambahlaporanpalbatasFragment extends Fragment {
                                         // TODO Auto-generated method stub
                                         try {
                                             ContentValues values_aktifitas = new ContentValues();
-                                            values_aktifitas.put(TrnLaporanPalBatas.TANGGAL_PAL, tanggalpal.getText().toString());
-                                            values_aktifitas.put(TrnLaporanPalBatas.JENIS_PAL, jenispal.getText().toString());
-                                            values_aktifitas.put(TrnLaporanPalBatas.KONDISI_PAL, kondisipal.getText().toString());
                                             values_aktifitas.put(TrnLaporanPalBatas.NO_PAL, nopal.getText().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.JENIS_PAL, jenispal.getText().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.KONDISI_PAL, spin_kondisi.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.TANGGAL_PAL, tanggalpal.getText().toString());
                                             values_aktifitas.put(TrnLaporanPalBatas.JUMLAH_PAL, jumlahpal.getText().toString());
                                             values_aktifitas.put(TrnLaporanPalBatas.KETERANGAN_PAL, keteranganpal.getText().toString());
                                             db.create(TrnLaporanPalBatas.TABLE_NAME, values_aktifitas);
