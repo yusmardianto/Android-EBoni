@@ -105,6 +105,7 @@ public class ListPemantauansatwaFragment extends Fragment
                         cur.getString(4),
                         cur.getString(5),
                         cur.getString(6),
+                        cur.getString(7),
                         Integer.parseInt(cur.getString(0))
                 ));
                 cur.moveToNext();
@@ -141,6 +142,7 @@ public class ListPemantauansatwaFragment extends Fragment
                         cur.getString(4),
                         cur.getString(5),
                         cur.getString(6),
+                        cur.getString(7),
                         Integer.parseInt(cur.getString(0))
                 ));
                 cur.moveToNext();
