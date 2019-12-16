@@ -276,6 +276,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPemantauanSatwa.JUMLAH_SATWA, ps.getJumlah());
         args.put(TrnPemantauanSatwa.WAKTU_LIHAT, ps.getWaktulihat());
         args.put(TrnPemantauanSatwa.CARA_LIHAT, ps.getCaralihat());
+        args.put(TrnPemantauanSatwa.TANGGAL_PEMANTAUAN, ps.getTanggal());
         args.put(TrnPemantauanSatwa.KETERANGAN, ps.getKeteranganSatwa());
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
     }

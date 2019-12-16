@@ -438,7 +438,7 @@ public class TambahPerubahanFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText("")
+                                        .setContentText(jenistanaman)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)

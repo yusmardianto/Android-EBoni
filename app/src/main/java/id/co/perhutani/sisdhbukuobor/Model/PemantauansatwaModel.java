@@ -12,8 +12,8 @@ public class PemantauansatwaModel {
     private int ID_Pemantauan;
 
     public PemantauansatwaModel(String ID, String anakPetakId, String jenis,
-                                String jumlah, String waktulihat, String caralihat, String tanggal, String keteranganSatwa,
-                                int id_pemantauan)
+                                String jumlah, String waktulihat, String caralihat, String tanggal,
+                                String keteranganSatwa, int id_pemantauan)
     {
         this.ID = ID;
         this.AnakPetakId = anakPetakId;

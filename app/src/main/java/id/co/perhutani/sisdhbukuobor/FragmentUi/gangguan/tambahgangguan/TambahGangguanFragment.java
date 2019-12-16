@@ -47,8 +47,8 @@ public class TambahGangguanFragment extends Fragment {
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_tanaman;
     private static SQLiteHandler db;
-    final Calendar calendar = Calendar.getInstance();
 
+    final Calendar calendar = Calendar.getInstance();
     private String str_tgl;
 
     private Button btnSimpanGangguan;

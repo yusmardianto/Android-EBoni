@@ -57,8 +57,8 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
     public void onBindViewHolder(@NonNull PelaporanpalbatasAdapter.PelaporanViewHolder holder, final int position) {
 
         db = new SQLiteHandler(mContext);
-        holder.tv_tanggalpal.setText(mData.get(position).getTanggalPal());
         holder.tv_jenispal.setText(mData.get(position).getJenisPal());
+        holder.tv_tanggalpal.setText(mData.get(position).getTanggalPal());
         holder.tv_nomerpal.setText(mData.get(position).getNomerPal());
         holder.tv_jumlahpal.setText(mData.get(position).getJumlahPal());
         holder.img_detaillaporan.setOnClickListener(new View.OnClickListener() {
@@ -77,8 +77,9 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
     }
 
     public static class PelaporanViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv_tanggalpal;
+
         private TextView tv_jenispal;
+        private TextView tv_tanggalpal;
         private TextView tv_nomerpal;
         private TextView tv_jumlahpal;
         private LinearLayout img_detaillaporan;
@@ -86,8 +87,8 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
         public PelaporanViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_tanggalpal = (TextView) itemView.findViewById(R.id.name_tanggalpal);
             tv_jenispal = (TextView) itemView.findViewById(R.id.name_jenispal);
+            tv_tanggalpal = (TextView) itemView.findViewById(R.id.name_tanggalpal);
             tv_nomerpal = (TextView) itemView.findViewById(R.id.name_nomerpal);
             tv_jumlahpal = (TextView) itemView.findViewById(R.id.name_jumlahpal);
             img_detaillaporan = itemView.findViewById(R.id.img_laporanpaldetail);
@@ -106,11 +107,14 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
             alertDialogBuilder.setView(viewas);
 
             String get_tanggalpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.TANGGAL_PAL);
-            String get_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JENIS_PAL);
+            final String get_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JENIS_PAL);
             final String get_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KONDISI_PAL);
             String get_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
             String get_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
             String get_keterangnapal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KETERANGAN_PAL);
+
+            TextView nopal = viewas.findViewById(R.id.laporanpal_nopaldetail);
+            nopal.setText(get_nopal);
 
             TextView tanggalpal = viewas.findViewById(R.id.laporanpal_tanggaldetail);
             tanggalpal.setText(get_tanggalpal);
@@ -121,15 +125,11 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
             TextView kondisipal = viewas.findViewById(R.id.laporanpal_kondisidetail);
             kondisipal.setText(get_kondisipal);
 
-            TextView nopal = viewas.findViewById(R.id.laporanpal_nopaldetail);
-            nopal.setText(get_nopal);
-
             TextView jumlahpal = viewas.findViewById(R.id.laporanpal_jumlahdetail);
             jumlahpal.setText(get_jumlahpal);
 
             TextView keteranganpal = viewas.findViewById(R.id.laporanpal_keterangandetail);
             keteranganpal.setText(get_keterangnapal);
-
 
             alertDialogBuilder.setView(viewas);
 //            alertDialogBuilder.setCancelable(false);
@@ -160,7 +160,7 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final String str_note = "Hapus : " + get_kondisipal;
+                    final String str_note = "Hapus : " + get_jenispal;
 
                     new SweetAlertDialog(mContext, SweetAlertDialog.WARNING_TYPE)
                             .setTitleText("Hapus Data ?")

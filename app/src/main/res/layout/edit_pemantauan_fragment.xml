@@ -247,7 +247,7 @@
                         android:textColor="#1F1E1E" />
 
                     <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/edit_spinner_cara_melihat"
+                        android:id="@+id/edit_spinner_caramelihat"
                         android:fontFamily="@font/font_aal_default"
                         android:singleLine="true"
                         android:layout_width="match_parent"

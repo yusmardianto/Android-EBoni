@@ -56,7 +56,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Anak Petak ID" />
 
@@ -83,7 +83,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Tahun" />
 
@@ -110,7 +110,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Luas" />
 
@@ -137,7 +137,7 @@
 
                 <TextView
                     android:fontFamily="@font/font_aal_default"
-                    android:layout_width="165dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Jenis Tanaman" />
 
@@ -164,7 +164,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Kelas Hutan" />
 
@@ -191,7 +191,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Luas Perkiraan" />
 
@@ -218,7 +218,7 @@
 
                 <TextView
                     android:fontFamily="@font/font_aal_default"
-                    android:layout_width="165dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Jenis Tanaman Perkiraan" />
 
@@ -245,7 +245,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Kelas Hutan Perkiraan" />
 
@@ -272,7 +272,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Nomer BAP PKH" />
 
@@ -299,7 +299,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Luas Definitif" />
 
@@ -326,7 +326,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Jenis Tanaman Definitif" />
 
@@ -353,7 +353,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Kelas Hutan Definitif" />
 
@@ -380,7 +380,7 @@
 
                     <TextView
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="165dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Keterangan" />
 
