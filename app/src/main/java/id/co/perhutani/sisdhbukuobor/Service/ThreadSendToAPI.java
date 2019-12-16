@@ -128,7 +128,8 @@ public class ThreadSendToAPI extends Thread {
                     JSONObject jsonParam = new JSONObject();
                     try {
                         final String str_isipetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
-                        final String str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_HA);
+                        final String str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL);
+                        final String str_nomorA = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_A);
                         final String str_isi_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
                         final String str_luas_lahan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
                         final String str_jumlah_pohon = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_POHON);
@@ -148,10 +149,9 @@ public class ThreadSendToAPI extends Thread {
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
-                        jsonParam.put("tahun", "1111");
                         jsonParam.put("anakpetak_id", str_isipetak);
-                        jsonParam.put("nomor_ha", "11111");
-                        jsonParam.put("tanggal_ha", str_tanggal);
+                        jsonParam.put("tanggal", str_tanggal);
+                        jsonParam.put("nomorA", str_nomorA);
                         jsonParam.put("kejadian", str_isi_kejadian);
                         jsonParam.put("kerugian_luas", str_luas_lahan);
                         jsonParam.put("kerugian_pohon", str_jumlah_pohon);
@@ -265,7 +265,8 @@ public class ThreadSendToAPI extends Thread {
                     JSONObject jsonParam = new JSONObject();
                     try {
                         final String str_isipetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
-                        final String str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_HA);
+                        final String str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL);
+                        final String str_nomorA = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_A);
                         final String str_isi_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
                         final String str_luas_lahan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
                         final String str_jumlah_pohon = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_POHON);
@@ -278,10 +279,9 @@ public class ThreadSendToAPI extends Thread {
 
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
-                        jsonParam.put("tahun", "1111");
                         jsonParam.put("anakpetak_id", str_isipetak);
-                        jsonParam.put("nomor_ha", "11111");
-                        jsonParam.put("tanggal_ha", str_tanggal);
+                        jsonParam.put("tanggal", str_tanggal);
+                        jsonParam.put("nomorA", str_nomorA);
                         jsonParam.put("kejadian", str_isi_kejadian);
                         jsonParam.put("kerugian_luas", str_luas_lahan);
                         jsonParam.put("kerugian_pohon", str_jumlah_pohon);

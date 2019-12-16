@@ -57,7 +57,7 @@
                         android:fontFamily="@font/font_aal_default"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="Jenis Permasalahan" />
+                        android:text="Anak Petak" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -149,6 +149,33 @@
                     <TextView
                         android:fontFamily="@font/font_aal_bold"
                         android:id="@+id/gangguan_tanggaldetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Nomor A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text=" : " />
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_bold"
+                        android:id="@+id/gangguan_nomorAdetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"/>

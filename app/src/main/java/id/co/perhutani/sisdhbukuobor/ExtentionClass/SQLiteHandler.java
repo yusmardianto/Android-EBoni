@@ -219,7 +219,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         ContentValues args = new ContentValues();
         args.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, g.getPetak());
         args.put(TrnGangguanKeamananHutan.JENIS_TANAMAN, g.getJenisTanaman());
-        args.put(TrnGangguanKeamananHutan.TANGGAL_HA, g.getTanggal());
+        args.put(TrnGangguanKeamananHutan.TANGGAL, g.getTanggal());
+        args.put(TrnGangguanKeamananHutan.NOMOR_A, g.getNoA());
         args.put(TrnGangguanKeamananHutan.KEJADIAN, g.getIsi());
         args.put(TrnGangguanKeamananHutan.KERUGIAN_LUAS, g.getLuas());
         args.put(TrnGangguanKeamananHutan.KERUGIAN_POHON, g.getPohon());

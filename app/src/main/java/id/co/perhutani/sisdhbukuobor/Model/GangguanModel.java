@@ -6,7 +6,7 @@ public class GangguanModel {
     private String Isi;
     private String Petak;
     private String JenisTanaman;
-    private String No;
+    private String NoA;
     private String Tanggal;
     private String Luas;
     private String Pohon;
@@ -22,7 +22,7 @@ public class GangguanModel {
     public int ID_gangguan;
 
 
-    public GangguanModel(String id, String isi, String petak, String jenistanaman, String no, String tanggal,
+    public GangguanModel(String id, String isi, String petak, String jenistanaman, String noA, String tanggal,
                          String luas, String pohon, String kyp, String kyb, String getah,
                          String nilai, String keterangan, String ket1, int id_gangguan, String ket9, String ket10
 
@@ -32,7 +32,7 @@ public class GangguanModel {
         this.Isi = isi;
         this.Petak = petak;
         this.JenisTanaman = jenistanaman;
-        this.No = no;
+        this.NoA = noA;
         this.Tanggal = tanggal;
         this.Luas = luas;
         this.Pohon = pohon;
@@ -108,12 +108,12 @@ public class GangguanModel {
         Petak = petak;
     }
 
-    public String getNo() {
-        return No;
+    public String getNoA() {
+        return NoA;
     }
 
-    public void setNo(String no) {
-        No = no;
+    public void setNoA(String noA) {
+        NoA = noA;
     }
 
     public String getTanggal() {

@@ -90,7 +90,7 @@
 
             <TextView
                 android:fontFamily="@font/font_aal_bold"
-                android:id="@+id/name_tanggal"
+                android:id="@+id/name_tanggalgangguan"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="[10-10-2010]" />
