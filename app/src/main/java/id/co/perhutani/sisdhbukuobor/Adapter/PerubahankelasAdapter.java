@@ -57,7 +57,6 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
         db = new SQLiteHandler(mContext);
 
         holder.tv_jenistanaman.setText(mData.get(position).getJenisTanaman());
-        holder.tv_ID.setText(mData.get(position).getID());
         holder.tv_petakID.setText(mData.get(position).getPetakID());
         holder.tv_tahun.setText(mData.get(position).getTahun());
         holder.tv_kelashutan.setText(mData.get(position).getKelasHutan());
@@ -77,7 +76,6 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
     public static class PerubahanklsViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tv_jenistanaman;
-        private TextView tv_ID;
         private TextView tv_petakID;
         private TextView tv_tahun;
         private TextView tv_kelashutan;
@@ -87,7 +85,6 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
             super(itemView);
 
             tv_jenistanaman = (TextView) itemView.findViewById(R.id.name_jenistanamanperubahankelas);
-            tv_ID = (TextView) itemView.findViewById(R.id.name_idperubahankelas);
             tv_petakID = (TextView) itemView.findViewById(R.id.name_petakidperubahankelas);
             tv_tahun = (TextView) itemView.findViewById(R.id.name_tahunperubahankelas);
             tv_kelashutan = (TextView) itemView.findViewById(R.id.name_kelashutanperubahankelas);
@@ -106,11 +103,12 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
             final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
             alertDialogBuilder.setView(viewas);
 
+            String get_id = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME,TrnPerubahanKelas._ID, id, TrnPerubahanKelas._ID);
             String get_petakdetailid = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.ANAK_PETAK_ID_PERUBAHAN);
             String get_tahun = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.TAHUN_PERUBAHAN);
             String get_luas = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.LUAS_PERUBAHAN);
             final String get_jenistanaman = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_PERUBAHAN);
-            final String get_kelashutan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN);
+            String get_kelashutan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN);
             String get_luasperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.LUAS_PERKIRAAN);
             String get_jenisperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_PERKIRAAN);
             String get_kelasperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_PERKIRAAN);
@@ -163,10 +161,8 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
             alertDialogBuilder.setView(viewas);
 //            alertDialogBuilder.setCancelable(false);
 
-
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
-
 
             ImageView edit = viewas.findViewById(R.id.detail_btneditperubahankelas);
             edit.setOnClickListener(new View.OnClickListener() {
