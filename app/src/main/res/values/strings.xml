@@ -51,4 +51,13 @@
         <item>Pihak lain</item>
     </string-array>
 
+    //dummy item spinner
+    <string-array name="array_waktu_lihat">
+        <item>- Pilih Waktu Terlihat -</item>
+        <item>Pagi</item>
+        <item>Siang</item>
+        <item>Sore</item>
+        <item>Malam</item>
+    </string-array>
+
 </resources>

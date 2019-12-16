@@ -171,15 +171,29 @@
                         android:text="Waktu Lihat"
                         android:textColor="#1F1E1E" />
 
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:entries="@array/array_waktu_lihat"
+                        android:fontFamily="@font/font_aal_default"
+                        android:id="@+id/edit_spinner_waktu_lihat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
+
                     <EditText
                         android:id="@+id/edit_pemantauan_waktulihat"
                         android:fontFamily="@font/font_aal_default"
-                        android:inputType="number"
-                        android:singleLine="true"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/ic_background"
-                        android:hint="Waktu Lihat" />
+                        android:background="@drawable/ic_background" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/md_black_1000" />
                 </LinearLayout>
             </LinearLayout>
 

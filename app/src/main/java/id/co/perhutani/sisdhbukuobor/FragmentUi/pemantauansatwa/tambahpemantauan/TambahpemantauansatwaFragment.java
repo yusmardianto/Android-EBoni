@@ -179,12 +179,12 @@ public class TambahpemantauansatwaFragment extends Fragment {
         try {
 
             final String jenis_satwa = jenissatwa.getText().toString();
-            final String waktu = waktulihat.getText().toString();
+            final String cara_lihat = caralihat.getText().toString();
             if (jenis_satwa.equals("") || jenis_satwa.equals("0") || jenis_satwa.equals(" ") || jenis_satwa.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Satwa tidak boleh kosong");
 
-            } else if (waktu.equals("") || waktu.equals("0") || waktu.equals(" ") || waktu.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Waktu Lihat tidak boleh kosong");
+            } else if (cara_lihat.equals("") || cara_lihat.equals("0") || cara_lihat.equals(" ") || cara_lihat.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Cara Lihat tidak boleh kosong");
 
             } else {
 
