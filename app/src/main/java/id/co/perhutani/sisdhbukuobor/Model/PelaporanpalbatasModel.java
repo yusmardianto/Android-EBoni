@@ -8,10 +8,13 @@ public class PelaporanpalbatasModel {
     private String NomerPal;
     private String JumlahPal;
     private String KeteranganPal;
+    private String Ket1;
+    private String Ket9;
+    private String Ket10;
     private int ID_Laporan;
 
     public PelaporanpalbatasModel(String ID, String tanggalPal, String jenisPal, String kondisiPal,
-                                  String nomerPal, String jumlahPal, String keteranganPal, int id_laporan)
+                                  String nomerPal, String jumlahPal, String keteranganPal, String ket1, int id_laporan, String ket9, String ket10)
     {
         this.ID = ID;
         this.TanggalPal = tanggalPal;
@@ -20,11 +23,38 @@ public class PelaporanpalbatasModel {
         this.NomerPal = nomerPal;
         this.JumlahPal = jumlahPal;
         this.KeteranganPal = keteranganPal;
+        this.Ket1 = ket1;
         this.ID_Laporan= id_laporan;
+        this.Ket9 = ket9;
+        this.Ket10 = ket10;
     }
 
     public PelaporanpalbatasModel(){
 
+    }
+
+    public String getKet1() {
+        return Ket1;
+    }
+
+    public void setKet1(String ket1) {
+        Ket1 = ket1;
+    }
+
+    public String getKet9() {
+        return Ket9;
+    }
+
+    public void setKet9(String ket9) {
+        Ket9 = ket9;
+    }
+
+    public String getKet10() {
+        return Ket10;
+    }
+
+    public void setKet10(String ket10) {
+        Ket10 = ket10;
     }
 
     public int getID_Laporan() {

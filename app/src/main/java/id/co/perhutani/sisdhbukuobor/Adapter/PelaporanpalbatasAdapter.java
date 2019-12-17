@@ -1,6 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -69,6 +71,17 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
 
             }
         });
+
+        String status_sync = mData.get(position).getKet9();
+        if (status_sync.equals("0")||status_sync.equals("2")) {
+            holder.name_data_sinkron.setText("Belum terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
+        }  else {
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
+            holder.name_data_sinkron.setText("Sudah terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
+        }
     }
 
     @Override
@@ -83,6 +96,8 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
         private TextView tv_nomerpal;
         private TextView tv_jumlahpal;
         private LinearLayout img_detaillaporan;
+        private TextView name_data_sinkron;
+        private ImageView name_info_alert;
 
         public PelaporanViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -92,6 +107,8 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
             tv_nomerpal = (TextView) itemView.findViewById(R.id.name_nomerpal);
             tv_jumlahpal = (TextView) itemView.findViewById(R.id.name_jumlahpal);
             img_detaillaporan = itemView.findViewById(R.id.img_laporanpaldetail);
+            name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_pal);
+            name_info_alert = itemView.findViewById(R.id.name_info_alert_pal);
 
         }
     }

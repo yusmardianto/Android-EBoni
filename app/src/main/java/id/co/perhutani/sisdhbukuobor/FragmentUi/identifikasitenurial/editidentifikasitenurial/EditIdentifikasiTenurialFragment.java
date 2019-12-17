@@ -203,6 +203,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         str_luas_tenurial = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.LUAS_TENURIAL);
         str_kondisi_petak = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KONDISI_PETAK);
         str_awal_konflik = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.AWAL_KONFLIK);
+        str_pihak_terlibat = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.PIHAK_TERLIBAT);
         str_status_penyelesaian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STATUS_PENYELESAIAN);
 
         jenis_permasalahan.setText(str_jenis_permasalahan);
@@ -214,6 +215,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         luas_tenurial.setText(str_luas_tenurial);
         kondisi_petak.setText(str_kondisi_petak);
         awal_konflik.setText(str_awal_konflik);
+        pihak_terlibat.setText(str_pihak_terlibat);
         status_penyelesaian.setText(str_status_penyelesaian);
 
         btnSimpanTenurial.setOnClickListener(new View.OnClickListener() {
