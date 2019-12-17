@@ -212,6 +212,8 @@ public class EditLaporanpalbatasFragment extends Fragment {
                                             Aktifitasnya.setTanggalPal(tanggalpal.getText().toString());
                                             Aktifitasnya.setJumlahPal(jumlahpal.getText().toString());
                                             Aktifitasnya.setKeteranganPal(keteranganpal.getText().toString());
+                                            Aktifitasnya.setKet1(spin_jenis_pal.getSelectedItem().toString());
+                                            Aktifitasnya.setKet9("2");
                                             db.EditDataLaporanPalBatas(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

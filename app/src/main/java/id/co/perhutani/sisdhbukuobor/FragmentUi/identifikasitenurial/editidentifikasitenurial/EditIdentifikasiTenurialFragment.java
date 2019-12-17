@@ -334,6 +334,8 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                                             Aktifitasnya.setAwalKonflik(awal_konflik.getText().toString());
                                             Aktifitasnya.setPihakTerlibat(spin_pihak_terlibat.getSelectedItem().toString());
                                             Aktifitasnya.setStatusPenyelesaian(status_penyelesaian.getText().toString());
+                                            Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKet9("2");
 
                                             db.EditDataIdentifikasiTenurial(Aktifitasnya);
 
