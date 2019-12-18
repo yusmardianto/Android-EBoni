@@ -1,5 +1,6 @@
 -- Merging decision tree log ---
 manifest
+<<<<<<< HEAD
 ADDED from D:\Perhutani\ProjectAndroid\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:1-8:12
 INJECTED from D:\Perhutani\ProjectAndroid\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:1-8:12
 INJECTED from D:\Perhutani\ProjectAndroid\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:1-8:12
@@ -37,3 +38,42 @@ INJECTED from D:\Perhutani\ProjectAndroid\ebot\library_sweetalert\src\main\Andro
 		INJECTED from D:\Perhutani\ProjectAndroid\ebot\library_sweetalert\src\main\AndroidManifest.xml
 		ADDED from D:\Perhutani\ProjectAndroid\ebot\library_sweetalert\src\main\AndroidManifest.xml
 		INJECTED from D:\Perhutani\ProjectAndroid\ebot\library_sweetalert\src\main\AndroidManifest.xml
+=======
+ADDED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:1-8:12
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:1-8:12
+	package
+		ADDED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:2:1-31
+		INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+		INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:4:1-26
+		INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+		INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:1:11-69
+	android:versionCode
+		ADDED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:3:1-24
+		INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+		INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+application
+ADDED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml:6:5-20
+uses-sdk
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+		ADDED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+		INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+		ADDED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+		INJECTED from D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\src\main\AndroidManifest.xml
+>>>>>>> a5862de7ca34eb910a6d511e2ef6b7a1265a69f3

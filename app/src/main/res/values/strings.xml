@@ -20,7 +20,10 @@
     <string name="text_tambahgangguan">Tambah Gangguan</string>
     <string name="text_profile">Profile</string>
     <string name="text_logout">Logout</string>
-    <string name="text_search">Search</string>
+    <string name="text_cari_kejadian">Cari Kejadian</string>
+    <string name="text_cari_anak_petak">Cari Anak Petak</string>
+    <string name="text_cari_nomor_pal">Cari Nomor PAL</string>
+    <string name="text_cari_nomor_pcp">Cari Nomor PCP</string>
     <string name="text_login">Login</string>
     <string name="text_signin">Sign in</string>
     <string name="text_email">Email</string>
