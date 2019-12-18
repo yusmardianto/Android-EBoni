@@ -55,7 +55,7 @@ public class ListPerubahanKelasFragment extends Fragment
         recylcerview = root.findViewById(R.id.perubahankls_recycler);
         pkAdapter = new PerubahankelasAdapter(getContext(),lstperubahankls);
         recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+//      myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         recylcerview .setAdapter(pkAdapter);
         init();
 

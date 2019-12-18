@@ -6,17 +6,29 @@ public class InteraksimdhModel {
     private String Anakpetakid;
     private String Desaid;
     private String Bentukinteraksi;
+    private String Tahun;
     private String Status;
     private String Keterangan;
+    private int ID_IMDH;
 
-    public InteraksimdhModel(String id, String anakpetakid, String desaid, String bentukinteraksi, String status, String keterangan) {
-        Id = id;
-        Anakpetakid = anakpetakid;
-        Desaid = desaid;
-        Bentukinteraksi = bentukinteraksi;
-        Status = status;
-        Keterangan = keterangan;
+    public InteraksimdhModel(String id, String anakpetakid, String desaid, String bentukinteraksi,
+                             String tahun, String status, String keterangan, int id_imdh)
+
+    {
+        this.Id = id;
+        this.Anakpetakid = anakpetakid;
+        this.Desaid = desaid;
+        this.Bentukinteraksi = bentukinteraksi;
+        this.Tahun = tahun;
+        this.Status = status;
+        this.Keterangan = keterangan;
+        this.ID_IMDH = id_imdh;
     }
+
+    public InteraksimdhModel() {
+
+    }
+
 
     public String getId() {
         return Id;
@@ -48,6 +60,14 @@ public class InteraksimdhModel {
 
     public void setBentukinteraksi(String bentukinteraksi) {
         Bentukinteraksi = bentukinteraksi;
+    }
+
+    public String getTahun() {
+        return Tahun;
+    }
+
+    public void setTahun(String tahun) {
+        Tahun = tahun;
     }
 
     public String getStatus() {

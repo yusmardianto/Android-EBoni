@@ -306,7 +306,7 @@
                         <Button
                             android:textSize="20dp"
                             android:fontFamily="@font/font_aal_bold"
-                            android:id="@+id/gangguan_btnsubmit"
+                            android:id="@+id/interaksimdh_btnsubmit"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"

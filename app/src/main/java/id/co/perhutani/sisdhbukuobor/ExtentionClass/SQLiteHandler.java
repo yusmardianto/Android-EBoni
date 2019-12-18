@@ -33,6 +33,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
@@ -72,6 +73,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnInteraksimdh.SQL_CREATE_ENTRIES);
 
     }
 
@@ -99,6 +101,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstDesaSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnInteraksimdh.SQL_DELETE_ENTRIES);
 //        db.execSQL(MstTahunJarangan.SQL_DELETE_ENTRIES);
         // Create tables again
         onCreate(db);
@@ -516,4 +519,56 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close();
         return labels;
     }
+
+    public List<String> getNamaDesa() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstDesaSchema.NAMA_DESA + " FROM " + MstDesaSchema.TABLE_NAME +
+                " a ORDER BY a."+MstDesaSchema.NAMA_DESA+", a."+MstDesaSchema.ID_DESA+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        labels.add("- Pilih Nama Desa -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getBentukInteraksi() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstBentukInteraksiSchema.NAMA_INTERAKSI + " FROM " + MstBentukInteraksiSchema.TABLE_NAME +
+                " a ORDER BY a."+MstBentukInteraksiSchema.NAMA_INTERAKSI+", a."+MstBentukInteraksiSchema.ID_INTERAKSI+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        labels.add("- Pilih Bentuk Interaksi -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getStatusInteraksi() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstStatusInteraksiSchema.NAMA_STATUS + " FROM " + MstStatusInteraksiSchema.TABLE_NAME +
+                " a ORDER BY a."+MstStatusInteraksiSchema.NAMA_STATUS+", a."+MstStatusInteraksiSchema.ID_STATUS+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        labels.add("- Pilih Status Interaksi -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
 }

@@ -60,4 +60,12 @@
         <item>Malam</item>
     </string-array>
 
+    //dummy item spinner
+    <string-array name="array_tahun_interaksi">
+        <item>- Pilih Tahun -</item>
+        <item>2019</item>
+        <item>2018</item>
+        <item>2017</item>
+    </string-array>
+
 </resources>

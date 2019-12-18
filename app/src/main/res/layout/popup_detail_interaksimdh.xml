@@ -59,7 +59,7 @@
 
             <TextView
                 android:fontFamily="@font/font_aal_bold"
-                android:id="@+id/interaksimdh_tanggaldetail"
+                android:id="@+id/interaksimdh_tahundetail"
                 android:layout_marginTop="-16dp"
                 android:layout_marginLeft="120dp"
                 android:layout_width="wrap_content"
