@@ -275,7 +275,7 @@ public class ListGangguanFragment extends Fragment
         myrecyclerview.invalidate();
         myrecyclerview.setAdapter(gAdapter);
 
-        Toast.makeText(context, "Sync data..!", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "Sync data..!", Toast.LENGTH_SHORT).show();
 
     }
 

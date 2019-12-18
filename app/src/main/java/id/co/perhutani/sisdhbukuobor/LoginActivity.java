@@ -152,8 +152,8 @@ public class LoginActivity extends AppCompatActivity {
         };
         background.start();
 
-        username.setText("adhi_ganteng");
-        password.setText("perhutani");
+//        username.setText("adhi_ganteng");
+//        password.setText("perhutani");
 
         // Progress dialog
         progressDialog = new ProgressDialog(this);
