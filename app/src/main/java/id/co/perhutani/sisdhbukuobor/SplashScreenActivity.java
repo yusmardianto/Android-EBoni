@@ -27,7 +27,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         db = new SQLiteHandler(SplashScreenActivity.this.getApplicationContext());
-        db.altertable_update_aplication();
+//        db.altertable_update_aplication();
 
         nama = findViewById(R.id.txt_splash_nama);
         getnama = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_NAME_DESCRIPTIONS);

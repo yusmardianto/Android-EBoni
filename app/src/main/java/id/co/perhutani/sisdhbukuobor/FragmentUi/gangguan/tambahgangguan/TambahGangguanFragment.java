@@ -75,7 +75,7 @@ public class TambahGangguanFragment extends Fragment {
                 // your code here
                 String pil_gangguan = spin_gangguan_hutan.getSelectedItem().toString();
                 String id_gangguan = db.getDataDetail(MstJenisGangguanHutanSchema.TABLE_NAME,
-                        MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME, pil_gangguan, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME);
+                        MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME, pil_gangguan, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_ID);
                 isi_kejadian.setText(id_gangguan);
             }
 
@@ -103,7 +103,7 @@ public class TambahGangguanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 isipetak.setText(id_petak);
 
             }
@@ -132,7 +132,7 @@ public class TambahGangguanFragment extends Fragment {
                 // your code here
                 String pil_jenis = spin_jenis_tanaman.getSelectedItem().toString();
                 String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME,
-                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis, MstJenisTanamanSchema.JENIS_TANAMAN_NAME);
+                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
                 jenis_tanaman.setText(id_jenis);
 
             }
@@ -326,18 +326,18 @@ public class TambahGangguanFragment extends Fragment {
                                             values_aktifitas.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, nilai_kerugian.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KETERANGAN, keterangan.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KET1, spin_anak_petak.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnGangguanKeamananHutan.KET2, spin_jenis_tanaman.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnGangguanKeamananHutan.KET3, spin_gangguan_hutan.getSelectedItem().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KET9, "0");
                                             db.create(TrnGangguanKeamananHutan.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
 
-//                    // Move to fragment gangguan
+//                                          // Move to fragment gangguan
                                             FragmentManager manager = (getActivity()).getSupportFragmentManager();
                                             Fragment fragment = new ListGangguanFragment();
                                             FragmentTransaction ft = manager.beginTransaction();
                                             ft.replace(R.id.nav_host_fragment, fragment);
                                             ft.commit();
-
-
 
                                         } catch (Exception e) {
                                             AjnClass.showAlert(getActivity(), e.toString());
