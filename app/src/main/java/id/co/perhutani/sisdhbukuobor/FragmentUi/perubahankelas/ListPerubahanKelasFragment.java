@@ -127,8 +127,8 @@ public class ListPerubahanKelasFragment extends Fragment
                         cur.getString(11),
                         cur.getString(12),
                         cur.getString(13),
-                        Integer.parseInt(cur.getString(0)),
                         cur.getString(14),
+                        Integer.parseInt(cur.getString(0)),
                         cur.getString(15),
                         cur.getString(16)
                 ));
@@ -184,8 +184,8 @@ public class ListPerubahanKelasFragment extends Fragment
                         cur.getString(11),
                         cur.getString(12),
                         cur.getString(13),
-                        Integer.parseInt(cur.getString(0)),
                         cur.getString(14),
+                        Integer.parseInt(cur.getString(0)),
                         cur.getString(15),
                         cur.getString(16)
                 ));
@@ -230,8 +230,8 @@ public class ListPerubahanKelasFragment extends Fragment
                         cur.getString(11),
                         cur.getString(12),
                         cur.getString(13),
-                        Integer.parseInt(cur.getString(0)),
                         cur.getString(14),
+                        Integer.parseInt(cur.getString(0)),
                         cur.getString(15),
                         cur.getString(16)
                 ));

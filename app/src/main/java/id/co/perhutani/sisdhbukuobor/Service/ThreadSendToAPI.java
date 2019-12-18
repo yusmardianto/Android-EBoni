@@ -19,15 +19,7 @@ import java.net.URL;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.LoginActivity;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
-import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
-import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
-import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
-import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
-import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
-import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
-import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
-import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 
