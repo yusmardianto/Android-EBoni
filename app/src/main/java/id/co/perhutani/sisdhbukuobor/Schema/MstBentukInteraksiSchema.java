@@ -1,7 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
 public class MstBentukInteraksiSchema {
-    public static final String TABLE_NAME = "MST_DESA";
+    public static final String TABLE_NAME = "MST_BENTUK_INTERAKSI";
     public static final String _ID = "ID";
     public static final String ID_INTERAKSI = "ID_INTERAKSI";
     public static final String NAMA_INTERAKSI = "NAMA_INTERAKSI";
