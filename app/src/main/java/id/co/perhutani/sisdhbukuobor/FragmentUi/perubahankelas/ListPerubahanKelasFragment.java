@@ -4,9 +4,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -69,7 +72,71 @@ public class ListPerubahanKelasFragment extends Fragment
             }
         });
 
+        final EditText txt_searchperubahan = root.findViewById(R.id.txt_search_perubahan);
+        txt_searchperubahan.addTextChangedListener(new TextWatcher() {
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                init();
+                String input =txt_searchperubahan.getText().toString();
+                if (input.equals(null)||input.equals("")||input.equals(" ")) {
+                    def();
+                }else {
+                    refresh(input);
+                }
+            }
+
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+            }
+        });
+
         return root;
+    }
+
+    public void refresh(String perubahan) {
+        lstperubahankls = new ArrayList<>();
+        try {
+            SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            final Cursor cur = db.rawQuery("SELECT " +
+                    " ID, PETAK_ID, TAHUN, ID, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID, ID, ID" +
+//                    " DISTINCT(ANAK_PETAK_ID_PERUBAHAN)" +
+                    " FROM TRN_PERUBAHAN_KELAS  " +
+                    " WHERE PETAK_ID " + " LIKE  " + "'%" + perubahan + "%'" +
+                    " ORDER BY ID DESC", null);
+
+            cur.moveToPosition(0);
+            DataModel = new ArrayList<>();
+            for (int i = 0; i < cur.getCount(); i++) {
+                lstperubahankls.add(new PerubahankelasModel(
+                        cur.getString(0),
+                        cur.getString(1),
+                        cur.getString(2),
+                        cur.getString(3),
+                        cur.getString(4),
+                        cur.getString(5),
+                        cur.getString(6),
+                        cur.getString(7),
+                        cur.getString(8),
+                        cur.getString(9),
+                        cur.getString(10),
+                        cur.getString(11),
+                        cur.getString(12),
+                        cur.getString(13),
+                        Integer.parseInt(cur.getString(0))
+                ));
+                cur.moveToNext();
+            }
+
+            cur.close();
+            db.close();
+        } catch (Exception ex) {
+            AjnClass.showAlert(getActivity(), ex.toString());
+        }
     }
 
     public void init() {
