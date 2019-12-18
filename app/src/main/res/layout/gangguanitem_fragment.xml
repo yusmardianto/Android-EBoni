@@ -32,7 +32,7 @@
                 android:fontFamily="@font/font_aal_default"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Kode" />
+                android:text="Tanaman" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
                 android:id="@+id/name_id"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="10011929292" />
+                android:text="Damar" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

@@ -48,19 +48,10 @@ public class ThreadSendToAPI extends Thread {
                 } else {
                     Log.i("JSON_BACKGROUND_SERVICE", "Ada koneksi internet joshh " );
                     // sync tambah
-                    sendToServer();
-
+                    sendToServerTambah();
                     // sync tambah
                     sendToServerEdit();
-//                    sendToServerEditPAL();
-//                    sendToServerEditPCP();
-//                    sendToServerEditTenurial();
-//
-//                    FragmentManager manager = myContext.getSupportFragmentManager();
-//                    Fragment fragment = new ListGangguanFragment();
-//                    FragmentTransaction ft = manager.beginTransaction();
-//                    ft.replace(R.id.nav_host_fragment, fragment);
-//                    ft.commit();
+
                 }
                 //pause thread every 10 seconds
                 Thread.sleep(10000);
@@ -80,7 +71,7 @@ public class ThreadSendToAPI extends Thread {
             return false;
         }
     }
-    private void sendToServer() {
+    private void sendToServerTambah() {
         try {
             Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
             SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
@@ -96,13 +87,7 @@ public class ThreadSendToAPI extends Thread {
             for (int i = 0; i < cur.getCount(); i++) {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-                    sync_data_gangguanhutan_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_data_laporanlpalbatas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_data_registerpcp_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_data_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
-
+                    sync_tambah_data_gangguanhutan_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
                 }
@@ -117,7 +102,7 @@ public class ThreadSendToAPI extends Thread {
     }
 
     // Gukambut
-    public void sync_data_gangguanhutan_v1(final String id) {
+    public void sync_tambah_data_gangguanhutan_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -140,6 +125,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_nomorA = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_A);
                         final String str_isi_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
                         final String str_luas_lahan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
+                        final String str_jenis_tanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.JENIS_TANAMAN);
                         final String str_jumlah_pohon = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_POHON);
                         final String str_kerugian_kyp = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_KYP);
                         final String str_kerugian_kyb = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_KYB);
@@ -147,19 +133,13 @@ public class ThreadSendToAPI extends Thread {
                         final String str_nilai_kerugian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NILAI_KERUGIAN);
                         final String str_keterangan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KETERANGAN);
                         final String str_ket10 = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET10);
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("anakpetak_id", str_isipetak);
-                        jsonParam.put("tanggal", str_tanggal);
-                        jsonParam.put("nomorA", str_nomorA);
+                        jsonParam.put("nomor_ha", str_nomorA);
+                        jsonParam.put("tanggal_ha", str_tanggal);
+                        jsonParam.put("jenistanaman", str_jenis_tanaman);
                         jsonParam.put("kejadian", str_isi_kejadian);
                         jsonParam.put("kerugian_luas", str_luas_lahan);
                         jsonParam.put("kerugian_pohon", str_jumlah_pohon);
@@ -209,8 +189,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_GANGGUAN_HUTAN_V1);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -273,6 +251,7 @@ public class ThreadSendToAPI extends Thread {
                     try {
                         final String str_isipetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
                         final String str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL);
+                        final String str_jenis_tanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.JENIS_TANAMAN);
                         final String str_nomorA = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_A);
                         final String str_isi_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
                         final String str_luas_lahan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
@@ -287,8 +266,9 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("anakpetak_id", str_isipetak);
-                        jsonParam.put("tanggal", str_tanggal);
-                        jsonParam.put("nomorA", str_nomorA);
+                        jsonParam.put("nomor_ha", str_nomorA);
+                        jsonParam.put("tanggal_ha", str_tanggal);
+                        jsonParam.put("jenistanaman", str_jenis_tanaman);
                         jsonParam.put("kejadian", str_isi_kejadian);
                         jsonParam.put("kerugian_luas", str_luas_lahan);
                         jsonParam.put("kerugian_pohon", str_jumlah_pohon);

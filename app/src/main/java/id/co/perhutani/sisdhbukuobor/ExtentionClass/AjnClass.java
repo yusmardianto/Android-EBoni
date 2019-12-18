@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.UUID;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import io.sentry.Sentry;
+import io.sentry.android.AndroidSentryClientFactory;
 
 
 public class AjnClass {
@@ -25,10 +27,10 @@ public class AjnClass {
     public static void pasang_sentry(Context activity) {
         Context ctx = activity.getApplicationContext();
         // server Sentry.perhutani
-        String sentryDsn = "https://335b0796dffb495cb28c3e7dd139e678:10ba2040cc494d76a464524600c612a9@sentry.perhutani.id/10";
+        String sentryDsn = "https://2c0591081bb440978d7e3185ddd12967:50ac952338344407802242365f21bc3b@sentry.perhutani.id/16";
         // server Sentry.io
 //        String sentryDsn = "https://a4a8d7d748d345259c4fc37c7d22fcbd:3135365d037a45c893317eb8621e5f98@sentry.io/1807961";
-//        Sentry.init(sentryDsn, new AndroidSentryClientFactory(ctx));
+        Sentry.init(sentryDsn, new AndroidSentryClientFactory(ctx));
     }
 
     public static void test_fungsi_sentry() {
