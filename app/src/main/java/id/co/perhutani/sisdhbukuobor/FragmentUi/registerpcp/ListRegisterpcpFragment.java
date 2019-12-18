@@ -88,7 +88,7 @@ public class ListRegisterpcpFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, NOMOR_PCP, ANAK_PETAK_ID, TAHUN, ID, ID, ID, ID, BONITA, ID, ID, ID , ID , ID, ID" +
+                    " ID, NOMOR_PCP, ANAK_PETAK_ID, TAHUN, ID, ID, ID, ID, BONITA, ID, ID, ID , ID , ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_REGISTER_PCP " +
                     " ORDER BY ID DESC", null);
@@ -112,6 +112,9 @@ public class ListRegisterpcpFragment extends Fragment
                         cur.getString(12),
                         cur.getString(13),
                         cur.getString(14),
+                        cur.getString(15),
+                        cur.getString(16),
+                        cur.getString(17),
                         Integer.parseInt(cur.getString(0))));
                 cur.moveToNext();
             }
@@ -132,7 +135,7 @@ public class ListRegisterpcpFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, NOMOR_PCP, ANAK_PETAK_ID, TAHUN, ID, ID, ID, ID, BONITA, ID, ID, ID , ID , ID, ID" +
+                    " ID, NOMOR_PCP, ANAK_PETAK_ID, TAHUN, ID, ID, ID, ID, BONITA, ID, ID, ID , ID , ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_REGISTER_PCP " +
                     " ORDER BY ID DESC", null);
@@ -156,6 +159,9 @@ public class ListRegisterpcpFragment extends Fragment
                         cur.getString(12),
                         cur.getString(13),
                         cur.getString(14),
+                        cur.getString(15),
+                        cur.getString(16),
+                        cur.getString(17),
                         Integer.parseInt(cur.getString(0))));
                 cur.moveToNext();
             }

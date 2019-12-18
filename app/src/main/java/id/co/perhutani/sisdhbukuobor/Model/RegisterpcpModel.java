@@ -17,12 +17,16 @@ public class RegisterpcpModel {
     private String Peninggi;
     private String KeteranganPcp;
     private int ID_Registerpcp;
+    private String Ket1;
+    private String Ket9;
+    private String Ket10;
 
     public RegisterpcpModel(String ID, String noPcp, String anakPetakId, String tahun,
                             String luasBaku, String luasBlok, String umur, String rataKeliling,
                             String bonita, String NLapangan, String normalPcp, String NMati,
-                            String tahunJarangan, String peninggi, String keteranganPcp,
-                            int id_registerpcp) {
+                            String tahunJarangan, String peninggi, String keteranganPcp,  String ket1
+                            , String ket9, String ket10, int id_registerpcp )
+    {
         this.ID = ID;
         this.NoPcp = noPcp;
         this.AnakPetakId = anakPetakId;
@@ -39,10 +43,29 @@ public class RegisterpcpModel {
         this.Peninggi = peninggi;
         this.KeteranganPcp = keteranganPcp;
         this.ID_Registerpcp= id_registerpcp;
+        this.Ket1 = ket1;
+        this.Ket9 = ket9;
+        this.Ket10 = ket10;
     }
 
     public RegisterpcpModel(){
 
+    }
+
+    public String getKet9() {
+        return Ket9;
+    }
+
+    public void setKet9(String ket9) {
+        Ket9 = ket9;
+    }
+
+    public String getKet10() {
+        return Ket10;
+    }
+
+    public void setKet10(String ket10) {
+        Ket10 = ket10;
     }
 
     public int getID_Registerpcp() {
@@ -171,5 +194,13 @@ public class RegisterpcpModel {
 
     public void setKeteranganPcp(String keteranganPcp) {
         KeteranganPcp = keteranganPcp;
+    }
+
+    public String getKet1() {
+        return Ket1;
+    }
+
+    public void setKet1(String ket1) {
+        Ket1 = ket1;
     }
 }

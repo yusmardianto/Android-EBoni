@@ -211,6 +211,7 @@ public class TambahlaporanpalbatasFragment extends Fragment {
                                             values_aktifitas.put(TrnLaporanPalBatas.TANGGAL_PAL, tanggalpal.getText().toString());
                                             values_aktifitas.put(TrnLaporanPalBatas.JUMLAH_PAL, jumlahpal.getText().toString());
                                             values_aktifitas.put(TrnLaporanPalBatas.KETERANGAN_PAL, keteranganpal.getText().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.KET9, "0");
                                             db.create(TrnLaporanPalBatas.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
 

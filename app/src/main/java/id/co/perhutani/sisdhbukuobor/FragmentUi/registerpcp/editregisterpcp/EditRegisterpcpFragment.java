@@ -266,6 +266,8 @@ public class EditRegisterpcpFragment extends Fragment {
                                             Aktifitasnya.setPeninggi(tahunjarangan.getText().toString());
                                             Aktifitasnya.setTahunJarangan(peninggi.getText().toString());
                                             Aktifitasnya.setKeteranganPcp(keterangan.getText().toString());
+                                            Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKet9("2");
                                             db.EditDataRegisterPCP(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

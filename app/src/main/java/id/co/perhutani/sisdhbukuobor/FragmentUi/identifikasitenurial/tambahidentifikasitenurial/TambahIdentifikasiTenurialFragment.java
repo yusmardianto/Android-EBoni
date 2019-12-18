@@ -320,6 +320,7 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
                                             values_aktifitas.put(TrnIdentifikasiTenurial.AWAL_KONFLIK, awal_konflik.getText().toString());
                                             values_aktifitas.put(TrnIdentifikasiTenurial.PIHAK_TERLIBAT, spin_pihak_terlibat.getSelectedItem().toString());
                                             values_aktifitas.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, status_penyelesaian.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.KET9, "0");
                                             db.create(TrnIdentifikasiTenurial.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
 

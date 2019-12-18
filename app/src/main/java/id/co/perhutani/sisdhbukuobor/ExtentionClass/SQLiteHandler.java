@@ -295,6 +295,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
     }
 
+    public void EditDataLaporanPalfroApi(PelaporanpalbatasModel b) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + b.getID_Laporan();
+        ContentValues args = new ContentValues();
+        args.put(TrnLaporanPalBatas.KET9, b.getKet9());
+        args.put(TrnLaporanPalBatas.KET10, b.getKet10());
+        db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
+    }
+
     // Register PCP
     public void EditDataRegisterPCP(RegisterpcpModel rp) {
         SQLiteDatabase db = getReadableDatabase();
@@ -317,6 +326,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
+    public void EditDataLaporanPCPfroApi(RegisterpcpModel b) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + b.getID_Registerpcp();
+        ContentValues args = new ContentValues();
+        args.put(TrnRegisterPcp.KET9, b.getKet9());
+        args.put(TrnRegisterPcp.KET10, b.getKet10());
+        db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
+    }
+
     // Identifikasi Tenurial
     public void EditDataIdentifikasiTenurial(IdentifikasiTenurialModel rp) {
         SQLiteDatabase db = getReadableDatabase();
@@ -334,6 +352,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnIdentifikasiTenurial.PIHAK_TERLIBAT, rp.getPihakTerlibat());
         args.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, rp.getStatusPenyelesaian());
         db.update(TrnIdentifikasiTenurial.TABLE_NAME, args, strFilter, null);
+    }
+
+    public void EditDataIdentifikasiTenurialfroApi(IdentifikasiTenurialModel b) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + b.getID_Tenurial();
+        ContentValues args = new ContentValues();
+        args.put(TrnRegisterPcp.KET9, b.getKet9());
+        args.put(TrnRegisterPcp.KET10, b.getKet10());
+        db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
     // Get Data
