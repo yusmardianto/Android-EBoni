@@ -1,6 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.FragmentUi.profil;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -143,6 +144,7 @@ public class ProfilFragment extends Fragment {
     }
     private void actionDeleteData() {
         session.setLogin(false);
+<<<<<<< HEAD
         db.deleteAllRow(UserSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstAnakPetakSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisTanamanSchema.SQL_DELETE_ALL_ROWS);
@@ -157,6 +159,10 @@ public class ProfilFragment extends Fragment {
         db.deleteAllRow(MstKelasHutanSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisPalSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnInteraksimdh.SQL_DELETE_ALL_ROWS);
+=======
+        db.clear_database(db.getReadableDatabase());
+
+>>>>>>> 784380d5400314fec7f9aa96993b2c1e58f301e1
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);
         getActivity().finish();

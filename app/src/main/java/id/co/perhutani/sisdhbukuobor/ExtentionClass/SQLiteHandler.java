@@ -60,13 +60,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
-        db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstDesaSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_CREATE_ENTRIES);
-//        db.execSQL(MstTahunJarangan.SQL_CREATE_ENTRIES);
-
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
@@ -80,63 +78,70 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     // Upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        clear_database(db);
+    }
+
+
+    public void clear_database(SQLiteDatabase db){
         // Drop older table if existed
         db.execSQL(UserSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_DELETE_ENTRIES);
-        db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_DELETE_ENTRIES);
-
-        db.execSQL(MstJenisTanamanSchema.SQL_DELETE_ENTRIES);
-        db.execSQL(MstJenisPermasalahanSchema.SQL_DELETE_ENTRIES);
-        db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
-        db.execSQL(TrnPerubahanKelas.SQL_DELETE_ENTRIES);
-        db.execSQL(TrnLaporanPalBatas.SQL_DELETE_ENTRIES);
-        db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
-        db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisGangguanHutanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisTemuan.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_DELETE_ENTRIES);
-        db.execSQL(TrnIdentifikasiTenurial.SQL_DELETE_ENTRIES);
+        db.execSQL(MstJenisTanamanSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstJenisPermasalahanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstDesaSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_DELETE_ENTRIES);
+<<<<<<< HEAD
         db.execSQL(TrnInteraksimdh.SQL_DELETE_ENTRIES);
 //        db.execSQL(MstTahunJarangan.SQL_DELETE_ENTRIES);
+=======
+        db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnIdentifikasiTenurial.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPerubahanKelas.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnLaporanPalBatas.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
+>>>>>>> 784380d5400314fec7f9aa96993b2c1e58f301e1
         // Create tables again
         onCreate(db);
     }
 
+
     public void altertable() {
         SQLiteDatabase db = getReadableDatabase();
         //create table
+        db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstAnakPetakSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisTanamanSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstJenisPermasalahanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
-        db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstDesaSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_CREATE_ENTRIES);
-//        db.execSQL(MstTahunJarangan.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
     }
 
-    public void change_aktif_blandong() {
+    public void query_builder() {
         SQLiteDatabase db = getReadableDatabase();
 //        db.execSQL("UPDATE MST_BLANDONG  SET KET5='0'");
     }
 
     public void altertable_update_aplication() {
-        SQLiteDatabase db = getReadableDatabase();
-//        db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
-//        db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
-//        db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
-//        db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
-//        db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
-
-//        db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
-//        db.execSQL(ProjekAndilSchema.SQL_CREATE_ENTRIES);
-//        db.execSQL(AktifitasProjekSchema.SQL_CREATE_ENTRIES);
+//        SQLiteDatabase db = getReadableDatabase();
 
     }
 
@@ -154,6 +159,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 //            db.close();
         }
         return insertedId;
+    }
+
+    public int cek_jumlah_data( String tabel) {
+        String countQuery = "SELECT * FROM "+tabel+";";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int cnt = cursor.getCount();
+        cursor.close();
+        return cnt;
     }
 
     public boolean deleteAllRow(String Sql) {

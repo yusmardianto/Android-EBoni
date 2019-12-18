@@ -61,9 +61,13 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
     public void onBindViewHolder(@NonNull GangguanViewHolder holder, final int position) {
         db = new SQLiteHandler(mContext);
 
-        holder.tv_isi.setText(mData.get(position).getIsi());
-        holder.tv_petak.setText(mData.get(position).getPetak());
-        holder.tv_no.setText(mData.get(position).getId());
+        String get_anakpetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, mData.get(position).getId(), TrnGangguanKeamananHutan.KET1);
+        String get_tanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, mData.get(position).getId(), TrnGangguanKeamananHutan.KET2);
+        String get_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, mData.get(position).getId(), TrnGangguanKeamananHutan.KET3);
+
+        holder.tv_isi.setText(get_kejadian);
+        holder.tv_petak.setText(get_anakpetak);
+        holder.tv_no.setText(get_tanaman);
         holder.tv_tanggal.setText(mData.get(position).getTanggal());
         holder.img_detailganggaun.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,16 +77,15 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
             }
         });
-
-        String status_sync = mData.get(position).getKet9();
-        if (status_sync.equals("0")||status_sync.equals("2")) {
-            holder.name_data_sinkron.setText("Belum terkirim keserver");
-            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
-            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
-        }  else {
+        String status_sync = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, mData.get(position).getId(), TrnGangguanKeamananHutan.KET9);
+        if (status_sync.equals("1")) {
             holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
             holder.name_data_sinkron.setText("Sudah terkirim keserver");
             holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
+        }  else {
+            holder.name_data_sinkron.setText("Belum terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
         }
 
     }
@@ -126,10 +129,10 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             alertDialogBuilder.setView(viewas);
 
             String get_anakpetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET1);
-            String get_jenistanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.JENIS_TANAMAN);
+            String get_jenistanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET2);
             String get_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL);
             String get_nomera = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_A);
-            final String get_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
+            final String get_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET3);
             String get_kerugianluas = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
             String get_kerugianpohon = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_POHON);
             String get_kerugiankyp = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_KYP);

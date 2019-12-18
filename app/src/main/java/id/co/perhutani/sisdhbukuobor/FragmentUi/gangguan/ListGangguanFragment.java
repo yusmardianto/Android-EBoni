@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.tambahgangguan.TambahGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 
 public class ListGangguanFragment extends Fragment
 {
@@ -43,6 +45,7 @@ public class ListGangguanFragment extends Fragment
     private static List<GangguanModel> lsgangguan;
     private static GangguanAdapter gAdapter;
     private static Context context;
+    private SQLiteHandler db;
 
 
     private static final int VERTICAL_ITEM_SPACE = 0;
@@ -84,6 +87,7 @@ public class ListGangguanFragment extends Fragment
         myrecyclerview = root.findViewById(R.id.gangguan_recycler);
         init();
         context=getActivity();
+        db = new SQLiteHandler(getActivity());
 
         //call timer
         handler.postDelayed(runnable, 1000);
@@ -125,6 +129,19 @@ public class ListGangguanFragment extends Fragment
             }
         });
 
+        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadata);
+        final RecyclerView dataada = root.findViewById(R.id.gangguan_recycler);
+
+        final int ceksampling = db.cek_jumlah_data(TrnGangguanKeamananHutan.TABLE_NAME);
+        if(String.valueOf(ceksampling).equals("0"))
+        {
+            datakosong.setVisibility(View.VISIBLE);
+            dataada.setVisibility(View.GONE);
+        }else {
+            datakosong.setVisibility(View.GONE);
+            dataada.setVisibility(View.VISIBLE);
+        }
+
         return root;
     }
 
@@ -137,7 +154,7 @@ public class ListGangguanFragment extends Fragment
                         "ID, KEJADIAN, ANAKPETAK_ID, ID, ID , TANGGAL, ID, ID, ID, ID, ID, ID, ID, KET1, ID, KET9, ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                         " FROM TRN_GANGGUAN_HUTAN " +
-                        " WHERE KEJADIAN " + " LIKE  " + "'%" + kejadian + "%'" +
+                        " WHERE KET3 " + " LIKE  " + "'%" + kejadian + "%'" +
                         " ORDER BY ID DESC", null);
 
                 cur.moveToPosition(0);

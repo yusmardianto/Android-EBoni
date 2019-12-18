@@ -163,6 +163,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
         background.start();
+        AjnClass.pasang_sentry(this.getApplicationContext());
+
 
         username.setText("adhi_ganteng");
         password.setText("perhutani");
