@@ -56,6 +56,7 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull RegisterpcpViewHolder holder, final int position) {
+        db = new SQLiteHandler(mContext);
         holder.tv_nopcp.setText(mData.get(position).getNoPcp());
         holder.tv_anakpetakid.setText(mData.get(position).getAnakPetakId());
         holder.tv_tahunpcp.setText(mData.get(position).getTahun());

@@ -54,6 +54,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/linear_gangguan"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,6 +72,7 @@
                     android:text="Gangguan Kemanaan Hutan"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/linear_perubahankelas"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,6 +90,7 @@
                     android:text="Perubahan Kelas"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/linear_interaksi"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,6 +122,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/linear_pemantauan"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,6 +140,7 @@
                     android:text="Pemantauan Satwa"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/linear_lappal"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -153,6 +158,7 @@
                     android:text="Laporan Pal Batas"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/linear_regispcp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
