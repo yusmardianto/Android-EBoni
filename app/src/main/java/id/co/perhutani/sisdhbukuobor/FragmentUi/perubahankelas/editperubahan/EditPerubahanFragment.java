@@ -523,6 +523,8 @@ public class EditPerubahanFragment extends Fragment {
                                             Aktifitasnya.setJenisTanamanDefinitif(jenis_definitif.getText().toString());
                                             Aktifitasnya.setKelasHutanDefinitif(kelas_definitif.getText().toString());
                                             Aktifitasnya.setKeteranganPerubahan(keterangan.getText().toString());
+                                            Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKet9("2");
                                             db.EditDataPerubahanKelas(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

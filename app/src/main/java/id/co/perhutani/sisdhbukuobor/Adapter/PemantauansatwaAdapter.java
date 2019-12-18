@@ -1,6 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -68,6 +70,17 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
                 popup(mData.get(position).getID());
             }
         });
+
+        String status_sync = mData.get(position).getKet9();
+        if (status_sync.equals("0")||status_sync.equals("2")) {
+            holder.name_data_sinkron.setText("Belum terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
+        }  else {
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
+            holder.name_data_sinkron.setText("Sudah terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
+        }
     }
 
     @Override
@@ -83,6 +96,8 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
         private TextView tv_waktulihat;
         private TextView tv_tanggal;
         private LinearLayout img_pemantaundetail;
+        private TextView name_data_sinkron;
+        private ImageView name_info_alert;
 
         public PemantauanViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,6 +108,8 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             tv_waktulihat = (TextView) itemView.findViewById(R.id.name_waktulihatsatwa);
             tv_tanggal = (TextView) itemView.findViewById(R.id.name_tanggalsatwa);
             img_pemantaundetail = itemView.findViewById(R.id.img_pemantauandetail);
+            name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_satwa);
+            name_info_alert = itemView.findViewById(R.id.name_info_alert_satwa);
         }
     }
 

@@ -320,6 +320,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
     }
 
+    public void EditDataPemantauanSatwafroApi(PemantauansatwaModel b) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + b.getID_Pemantauan();
+        ContentValues args = new ContentValues();
+        args.put(TrnPemantauanSatwa.KET9, b.getKet9());
+        args.put(TrnPemantauanSatwa.KET10, b.getKet10());
+        db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
+    }
+
     // Laporan Pal Batas
     public void EditDataLaporanPalBatas(PelaporanpalbatasModel lpb) {
         SQLiteDatabase db = getReadableDatabase();
@@ -365,7 +374,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataLaporanPCPfroApi(RegisterpcpModel b) {
+    public void EditDataRegisterPCPfroApi(RegisterpcpModel b) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + b.getID_Registerpcp();
         ContentValues args = new ContentValues();

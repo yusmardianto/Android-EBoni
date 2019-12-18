@@ -327,6 +327,8 @@ public class EditPemantauanFragment extends Fragment {
                                             Aktifitasnya.setCaralihat(caralihat.getText().toString());
                                             Aktifitasnya.setTanggal(tanggal.getText().toString());
                                             Aktifitasnya.setKeteranganSatwa(keterangan.getText().toString());
+                                            Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKet9("2");
                                             db.EditDataPemantauanSatwa(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

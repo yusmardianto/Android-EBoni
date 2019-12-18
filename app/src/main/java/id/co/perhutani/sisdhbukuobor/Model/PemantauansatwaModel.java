@@ -10,10 +10,13 @@ public class PemantauansatwaModel {
     private String Tanggal;
     private String KeteranganSatwa;
     private int ID_Pemantauan;
+    private String Ket1;
+    private String Ket9;
+    private String Ket10;
 
     public PemantauansatwaModel(String ID, String anakPetakId, String jenis,
                                 String jumlah, String waktulihat, String caralihat, String tanggal,
-                                String keteranganSatwa, int id_pemantauan)
+                                String keteranganSatwa, String ket1, String ket9, String ket10, int id_pemantauan)
     {
         this.ID = ID;
         this.AnakPetakId = anakPetakId;
@@ -24,10 +27,30 @@ public class PemantauansatwaModel {
         this.Tanggal = tanggal;
         this.KeteranganSatwa = keteranganSatwa;
         this.ID_Pemantauan= id_pemantauan;
+        this.Ket1 = ket1;
+        this.Ket9 = ket9;
+        this.Ket10 = ket10;
+
     }
 
     public PemantauansatwaModel(){
 
+    }
+
+    public String getKet9() {
+        return Ket9;
+    }
+
+    public void setKet9(String ket9) {
+        Ket9 = ket9;
+    }
+
+    public String getKet10() {
+        return Ket10;
+    }
+
+    public void setKet10(String ket10) {
+        Ket10 = ket10;
     }
 
     public int getID_Pemantauan() {
@@ -101,5 +124,13 @@ public class PemantauansatwaModel {
 
     public void setKeteranganSatwa(String keteranganSatwa) {
         KeteranganSatwa = keteranganSatwa;
+    }
+
+    public String getKet1() {
+        return Ket1;
+    }
+
+    public void setKet1(String ket1) {
+        Ket1 = ket1;
     }
 }

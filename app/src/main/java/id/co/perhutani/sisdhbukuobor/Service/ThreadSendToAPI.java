@@ -48,10 +48,29 @@ public class ThreadSendToAPI extends Thread {
                 } else {
                     Log.i("JSON_BACKGROUND_SERVICE", "Ada koneksi internet joshh " );
                     // sync tambah
+                    sendToServer();
+//                    sendToServerPerubahanKelas();
+//                    sendToServerPemantauanSatwa();
+//                    sendToServerPAL();
+//                    sendToServerPCP();
+//                    sendToServerTenurial();
+
+                    // sync tambah
+                    sendToServerEdit();
+//                    sendToServerEditPerubahanKelas();
+//                    sendToServerEditPemantauanSatwa();
+//                    sendToServerEditPAL();
+//                    sendToServerEditPCP();
+//                    sendToServerEditTenurial();
+//
+//                    FragmentManager manager = myContext.getSupportFragmentManager();
+//                    Fragment fragment = new ListGangguanFragment();
+//                    FragmentTransaction ft = manager.beginTransaction();
+//                    ft.replace(R.id.nav_host_fragment, fragment);
+//                    ft.commit();
                     sendToServerTambah();
                     // sync tambah
                     sendToServerEdit();
-
                 }
                 //pause thread every 10 seconds
                 Thread.sleep(10000);
@@ -70,6 +89,10 @@ public class ThreadSendToAPI extends Thread {
         } else {
             return false;
         }
+    }
+
+    private void sendToServer() {
+
     }
     private void sendToServerTambah() {
         try {
@@ -100,6 +123,174 @@ public class ThreadSendToAPI extends Thread {
             Log.i("JSON_ERROR", ex.toString());
         }
     }
+
+//    private void sendToServerPerubahanKelas() {
+//        try {
+//            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+//            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+//            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+//            Cursor cur;
+//            cur = db.rawQuery("SELECT *" +
+//                    " FROM TRN_PEMANTAUAN_SATWA " +
+//                    " WHERE  KET9=0 "+
+////                    " WHERE  CREATE_BY=\"" + username + "\"" +
+//                    " ORDER BY ID ASC", null);
+//
+//            cur.moveToPosition(0);
+//            for (int i = 0; i < cur.getCount(); i++) {
+//                try {
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//                    sync_data_pemantauansatwa_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+////                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//
+//
+//                } catch (Exception ex) {
+//                    Log.i("JSON_ERROR", ex.toString());
+//                }
+//                cur.moveToNext();
+//            }
+//            cur.close();
+//            db.close();
+//
+//        } catch (Exception ex) {
+//            Log.i("JSON_ERROR", ex.toString());
+//        }
+//    }
+//
+//    private void sendToServerPemantauanSatwa() {
+//        try {
+//            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+//            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+//            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+//            Cursor cur;
+//            cur = db.rawQuery("SELECT *" +
+//                    " FROM TRN_PEMANTAUAN_SATWA " +
+//                    " WHERE  KET9=0 "+
+////                    " WHERE  CREATE_BY=\"" + username + "\"" +
+//                    " ORDER BY ID ASC", null);
+//
+//            cur.moveToPosition(0);
+//            for (int i = 0; i < cur.getCount(); i++) {
+//                try {
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//                    sync_data_pemantauansatwa_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+////                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//
+//
+//                } catch (Exception ex) {
+//                    Log.i("JSON_ERROR", ex.toString());
+//                }
+//                cur.moveToNext();
+//            }
+//            cur.close();
+//            db.close();
+//
+//        } catch (Exception ex) {
+//            Log.i("JSON_ERROR", ex.toString());
+//        }
+//    }
+//
+//    private void sendToServerPAL() {
+//        try {
+//            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+//            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+//            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+//            Cursor cur;
+//            cur = db.rawQuery("SELECT *" +
+//                    " FROM TRN_LAPORAN_PAL " +
+//                    " WHERE  KET9=0 "+
+////                    " WHERE  CREATE_BY=\"" + username + "\"" +
+//                    " ORDER BY ID ASC", null);
+//
+//            cur.moveToPosition(0);
+//            for (int i = 0; i < cur.getCount(); i++) {
+//                try {
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//                    sync_data_laporanlpalbatas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+////                    sync_data_registerpcp_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+////                    sync_data_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+////                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//
+//
+//                } catch (Exception ex) {
+//                    Log.i("JSON_ERROR", ex.toString());
+//                }
+//                cur.moveToNext();
+//            }
+//            cur.close();
+//            db.close();
+//
+//        } catch (Exception ex) {
+//            Log.i("JSON_ERROR", ex.toString());
+//        }
+//    }
+//
+//    private void sendToServerPCP() {
+//        try {
+//            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+//            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+//            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+//            Cursor cur;
+//            cur = db.rawQuery("SELECT *" +
+//                    " FROM TRN_REGISTER_PCP " +
+//                    " WHERE  KET9=0 "+
+////                    " WHERE  CREATE_BY=\"" + username + "\"" +
+//                    " ORDER BY ID ASC", null);
+//
+//            cur.moveToPosition(0);
+//            for (int i = 0; i < cur.getCount(); i++) {
+//                try {
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//                    sync_data_registerpcp_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+////                    sync_data_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+////                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//
+//
+//                } catch (Exception ex) {
+//                    Log.i("JSON_ERROR", ex.toString());
+//                }
+//                cur.moveToNext();
+//            }
+//            cur.close();
+//            db.close();
+//
+//        } catch (Exception ex) {
+//            Log.i("JSON_ERROR", ex.toString());
+//        }
+//    }
+//
+//    private void sendToServerTenurial() {
+//        try {
+//            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+//            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+//            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+//            Cursor cur;
+//            cur = db.rawQuery("SELECT *" +
+//                    " FROM TRN_IDENTIFIKASI_KONFLIK_TENURIAL " +
+//                    " WHERE  KET9=0 "+
+////                    " WHERE  CREATE_BY=\"" + username + "\"" +
+//                    " ORDER BY ID ASC", null);
+//
+//            cur.moveToPosition(0);
+//            for (int i = 0; i < cur.getCount(); i++) {
+//                try {
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//                    sync_data_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+////                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//
+//
+//                } catch (Exception ex) {
+//                    Log.i("JSON_ERROR", ex.toString());
+//                }
+//                cur.moveToNext();
+//            }
+//            cur.close();
+//            db.close();
+//
+//        } catch (Exception ex) {
+//            Log.i("JSON_ERROR", ex.toString());
+//        }
+//    }
 
     // Gukambut
     public void sync_tambah_data_gangguanhutan_v1(final String id) {
@@ -327,13 +518,429 @@ public class ThreadSendToAPI extends Thread {
 
     }
 
-    // Perubahan Kelas
-
-    // Interaksi MDH
-
-    // Pemantauan Satwa
-
-//     Laporan PAL
+//    // Perubahan Kelas
+//    public void sync_data_pemantauansatwa_v1(final String id) {
+//
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                String str_tes_data = "";
+//                try {
+//                    URL url = new URL(LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                    conn.setRequestMethod("POST");
+//                    conn.setRequestProperty("Authorization", "Bearer " + db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+//                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+//                    conn.setRequestProperty("Accept", "application/json");
+//                    conn.setDoOutput(true);
+//                    conn.setDoInput(true);
+//
+//                    JSONObject jsonParam = new JSONObject();
+//                    try {
+//                        final String str_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
+//                        final String str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
+//                        final String str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
+//                        final String str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+//                        final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
+//                        final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+//                        final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
+////                        String aksi;
+////                            aksi = "tambah";
+////                        if ("tambah".equalsIgnoreCase(str_ket10)) {
+////                            aksi = "tambah";
+////                        }else {
+////                            aksi = "ubah";
+////                        }
+//
+//                        jsonParam.put("aksi", "tambah");
+//                        jsonParam.put("id", str_ket10);
+//                        jsonParam.put("jenissatwa", str_jenissatwa);
+//                        jsonParam.put("anakpetak", str_anakpetak);
+//                        jsonParam.put("jumlahsatwa", str_jumlahsatwa);
+//                        jsonParam.put("caralihat", str_caralihat);
+//                        jsonParam.put("tanggal", str_tanggal);
+//                        jsonParam.put("keterangan", str_keterangan);
+//
+//                    } catch (JSONException ex) {
+//                        Log.i("JSON_ERROR", ex.toString());
+//                        ex.printStackTrace();
+//                    }
+//
+//                    Log.i("JSON_SEND", jsonParam.toString());
+//
+//                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+//                    os.writeBytes(jsonParam.toString());
+//
+//                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//                    String inputLine;
+//                    StringBuffer response = new StringBuffer();
+//                    while ((inputLine = in.readLine()) != null) {
+//                        response.append(inputLine);
+//                    }
+//                    in.close();
+//                    JSONObject myResponse = new JSONObject(response.toString());
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Sync to : " + LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    Log.i("JSON_FEEDBACK", myResponse.getString("status"));
+//
+//                    os.flush();
+//                    os.close();
+//                    conn.disconnect();
+//
+//                    if (myResponse.getString("status").equals("success")) {
+//                        PemantauansatwaModel Aktifitasnya = new PemantauansatwaModel();
+//                        Aktifitasnya.setID_Pemantauan(Integer.parseInt(id));
+//                        Aktifitasnya.setKet9("1");
+//                        Aktifitasnya.setKet10(myResponse.getString("id"));
+//                        db.EditDataPemantauanSatwafroApi(Aktifitasnya);
+//                    }
+//
+//                    cek_feedback_api = true;
+//
+//                } catch (Exception e) {
+//                    cek_feedback_api = false;
+//                    Log.i("JSON_MESSAGE", e.toString());
+//                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    Log.i("JSON_ID", id);
+////                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
+////                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+//                    e.printStackTrace();
+//                }
+//                Log.i("JSON_TES", str_tes_data);
+//            }
+//        });
+//        thread.start();
+//
+//    }
+//
+//    private void sendToServerEditPerubahanKelas() {
+//        try {
+//            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+//            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+//            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+//            Cursor cur;
+//            cur = db.rawQuery("SELECT *" +
+//                    " FROM TRN_PEMANTAUAN_SATWA " +
+//                    " WHERE  KET9=2 "+
+////                    " WHERE  CREATE_BY=\"" + username + "\"" +
+//                    " ORDER BY ID ASC", null);
+//
+//            cur.moveToPosition(0);
+//            for (int i = 0; i < cur.getCount(); i++) {
+//                try {
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//                    sync_data_edit_pemantauansatwa_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+////                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//
+//
+//                } catch (Exception ex) {
+//                    Log.i("JSON_ERROR", ex.toString());
+//                }
+//                cur.moveToNext();
+//            }
+//            cur.close();
+//            db.close();
+//
+//        } catch (Exception ex) {
+//            Log.i("JSON_ERROR", ex.toString());
+//        }
+//    }
+//
+//    public void sync_data_edit_pemantauansatwa_v1(final String id) {
+//
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                String str_tes_data = "";
+//                try {
+//                    URL url = new URL(LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                    conn.setRequestMethod("POST");
+//                    conn.setRequestProperty("Authorization", "Bearer " + db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+//                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+//                    conn.setRequestProperty("Accept", "application/json");
+//                    conn.setDoOutput(true);
+//                    conn.setDoInput(true);
+//
+//                    JSONObject jsonParam = new JSONObject();
+//                    try {
+//                        final String str_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
+//                        final String str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
+//                        final String str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
+//                        final String str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+//                        final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
+//                        final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+//                        final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
+//
+//                        jsonParam.put("aksi", "ubah");
+//                        jsonParam.put("id", str_ket10);
+//                        jsonParam.put("jenissatwa", str_jenissatwa);
+//                        jsonParam.put("anakpetak", str_anakpetak);
+//                        jsonParam.put("jumlahsatwa", str_jumlahsatwa);
+//                        jsonParam.put("caralihat", str_caralihat);
+//                        jsonParam.put("tanggal", str_tanggal);
+//                        jsonParam.put("keterangan", str_keterangan);
+//
+//                    } catch (JSONException ex) {
+//                        Log.i("JSON_ERROR", ex.toString());
+//                        ex.printStackTrace();
+//                    }
+//
+//                    Log.i("JSON_SEND", jsonParam.toString());
+//
+//                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+//                    os.writeBytes(jsonParam.toString());
+//
+//                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//                    String inputLine;
+//                    StringBuffer response = new StringBuffer();
+//                    while ((inputLine = in.readLine()) != null) {
+//                        response.append(inputLine);
+//                    }
+//                    in.close();
+//                    JSONObject myResponse = new JSONObject(response.toString());
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Sync to : " + LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    Log.i("JSON_FEEDBACK", myResponse.getString("status"));
+//
+//                    os.flush();
+//                    os.close();
+//                    conn.disconnect();
+//
+//                    if (myResponse.getString("status").equals("success")) {
+//                        PemantauansatwaModel Aktifitasnya = new PemantauansatwaModel();
+//                        Aktifitasnya.setID_Pemantauan(Integer.parseInt(id));
+//                        Aktifitasnya.setKet9("1");
+//                        Aktifitasnya.setKet10(myResponse.getString("id"));
+//                        db.EditDataPemantauanSatwa(Aktifitasnya);
+//                    }
+//
+//                    cek_feedback_api = true;
+//
+//                } catch (Exception e) {
+//                    cek_feedback_api = false;
+//                    Log.i("JSON_MESSAGE", e.toString());
+//                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    Log.i("JSON_ID", id);
+//                    e.printStackTrace();
+//                }
+//                Log.i("JSON_TES", str_tes_data);
+//            }
+//        });
+//        thread.start();
+//    }
+//
+//    // Interaksi MDH
+//
+//    // Pemantauan Satwa
+//    public void sync_data_pemantauansatwa_v1(final String id) {
+//
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                String str_tes_data = "";
+//                try {
+//                    URL url = new URL(LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                    conn.setRequestMethod("POST");
+//                    conn.setRequestProperty("Authorization", "Bearer " + db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+//                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+//                    conn.setRequestProperty("Accept", "application/json");
+//                    conn.setDoOutput(true);
+//                    conn.setDoInput(true);
+//
+//                    JSONObject jsonParam = new JSONObject();
+//                    try {
+//                        final String str_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
+//                        final String str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
+//                        final String str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
+//                        final String str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+//                        final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
+//                        final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+//                        final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
+////                        String aksi;
+////                            aksi = "tambah";
+////                        if ("tambah".equalsIgnoreCase(str_ket10)) {
+////                            aksi = "tambah";
+////                        }else {
+////                            aksi = "ubah";
+////                        }
+//
+//                        jsonParam.put("aksi", "tambah");
+//                        jsonParam.put("id", str_ket10);
+//                        jsonParam.put("jenissatwa", str_jenissatwa);
+//                        jsonParam.put("anakpetak", str_anakpetak);
+//                        jsonParam.put("jumlahsatwa", str_jumlahsatwa);
+//                        jsonParam.put("caralihat", str_caralihat);
+//                        jsonParam.put("tanggal", str_tanggal);
+//                        jsonParam.put("keterangan", str_keterangan);
+//
+//                    } catch (JSONException ex) {
+//                        Log.i("JSON_ERROR", ex.toString());
+//                        ex.printStackTrace();
+//                    }
+//
+//                    Log.i("JSON_SEND", jsonParam.toString());
+//
+//                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+//                    os.writeBytes(jsonParam.toString());
+//
+//                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//                    String inputLine;
+//                    StringBuffer response = new StringBuffer();
+//                    while ((inputLine = in.readLine()) != null) {
+//                        response.append(inputLine);
+//                    }
+//                    in.close();
+//                    JSONObject myResponse = new JSONObject(response.toString());
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Sync to : " + LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    Log.i("JSON_FEEDBACK", myResponse.getString("status"));
+//
+//                    os.flush();
+//                    os.close();
+//                    conn.disconnect();
+//
+//                    if (myResponse.getString("status").equals("success")) {
+//                        PemantauansatwaModel Aktifitasnya = new PemantauansatwaModel();
+//                        Aktifitasnya.setID_Pemantauan(Integer.parseInt(id));
+//                        Aktifitasnya.setKet9("1");
+//                        Aktifitasnya.setKet10(myResponse.getString("id"));
+//                        db.EditDataPemantauanSatwafroApi(Aktifitasnya);
+//                    }
+//
+//                    cek_feedback_api = true;
+//
+//                } catch (Exception e) {
+//                    cek_feedback_api = false;
+//                    Log.i("JSON_MESSAGE", e.toString());
+//                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    Log.i("JSON_ID", id);
+////                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
+////                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+//                    e.printStackTrace();
+//                }
+//                Log.i("JSON_TES", str_tes_data);
+//            }
+//        });
+//        thread.start();
+//
+//    }
+//
+//    private void sendToServerEditPemantauanSatwa() {
+//        try {
+//            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+//            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+//            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+//            Cursor cur;
+//            cur = db.rawQuery("SELECT *" +
+//                    " FROM TRN_PEMANTAUAN_SATWA " +
+//                    " WHERE  KET9=2 "+
+////                    " WHERE  CREATE_BY=\"" + username + "\"" +
+//                    " ORDER BY ID ASC", null);
+//
+//            cur.moveToPosition(0);
+//            for (int i = 0; i < cur.getCount(); i++) {
+//                try {
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//                    sync_data_edit_pemantauansatwa_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+////                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//
+//
+//                } catch (Exception ex) {
+//                    Log.i("JSON_ERROR", ex.toString());
+//                }
+//                cur.moveToNext();
+//            }
+//            cur.close();
+//            db.close();
+//
+//        } catch (Exception ex) {
+//            Log.i("JSON_ERROR", ex.toString());
+//        }
+//    }
+//
+//    public void sync_data_edit_pemantauansatwa_v1(final String id) {
+//
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                String str_tes_data = "";
+//                try {
+//                    URL url = new URL(LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                    conn.setRequestMethod("POST");
+//                    conn.setRequestProperty("Authorization", "Bearer " + db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+//                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+//                    conn.setRequestProperty("Accept", "application/json");
+//                    conn.setDoOutput(true);
+//                    conn.setDoInput(true);
+//
+//                    JSONObject jsonParam = new JSONObject();
+//                    try {
+//                        final String str_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
+//                        final String str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
+//                        final String str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
+//                        final String str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+//                        final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
+//                        final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+//                        final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
+//
+//                        jsonParam.put("aksi", "ubah");
+//                        jsonParam.put("id", str_ket10);
+//                        jsonParam.put("jenissatwa", str_jenissatwa);
+//                        jsonParam.put("anakpetak", str_anakpetak);
+//                        jsonParam.put("jumlahsatwa", str_jumlahsatwa);
+//                        jsonParam.put("caralihat", str_caralihat);
+//                        jsonParam.put("tanggal", str_tanggal);
+//                        jsonParam.put("keterangan", str_keterangan);
+//
+//                    } catch (JSONException ex) {
+//                        Log.i("JSON_ERROR", ex.toString());
+//                        ex.printStackTrace();
+//                    }
+//
+//                    Log.i("JSON_SEND", jsonParam.toString());
+//
+//                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+//                    os.writeBytes(jsonParam.toString());
+//
+//                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//                    String inputLine;
+//                    StringBuffer response = new StringBuffer();
+//                    while ((inputLine = in.readLine()) != null) {
+//                        response.append(inputLine);
+//                    }
+//                    in.close();
+//                    JSONObject myResponse = new JSONObject(response.toString());
+//                    Log.i("JSON_BACKGROUND_SERVICE", "Sync to : " + LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    Log.i("JSON_FEEDBACK", myResponse.getString("status"));
+//
+//                    os.flush();
+//                    os.close();
+//                    conn.disconnect();
+//
+//                    if (myResponse.getString("status").equals("success")) {
+//                        PemantauansatwaModel Aktifitasnya = new PemantauansatwaModel();
+//                        Aktifitasnya.setID_Pemantauan(Integer.parseInt(id));
+//                        Aktifitasnya.setKet9("1");
+//                        Aktifitasnya.setKet10(myResponse.getString("id"));
+//                        db.EditDataPemantauanSatwa(Aktifitasnya);
+//                    }
+//
+//                    cek_feedback_api = true;
+//
+//                } catch (Exception e) {
+//                    cek_feedback_api = false;
+//                    Log.i("JSON_MESSAGE", e.toString());
+//                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
+//                    Log.i("JSON_ID", id);
+//                    e.printStackTrace();
+//                }
+//                Log.i("JSON_TES", str_tes_data);
+//            }
+//        });
+//        thread.start();
+//    }
+//
+//    // Laporan PAL
 //    public void sync_data_laporanlpalbatas_v1(final String id) {
 //
 //        Thread thread = new Thread(new Runnable() {
@@ -525,7 +1132,7 @@ public class ThreadSendToAPI extends Thread {
 //                        Aktifitasnya.setID_Laporan(Integer.parseInt(id));
 //                        Aktifitasnya.setKet9("1");
 //                        Aktifitasnya.setKet10(myResponse.getString("id"));
-//                        db.EditDataLaporanPalBatas(Aktifitasnya);
+//                        db.EditDataLaporanPalfroApi(Aktifitasnya);
 //                    }
 //
 //                    cek_feedback_api = true;
@@ -632,7 +1239,7 @@ public class ThreadSendToAPI extends Thread {
 //                        Aktifitasnya.setID_Registerpcp(Integer.parseInt(id));
 //                        Aktifitasnya.setKet9("1");
 //                        Aktifitasnya.setKet10(myResponse.getString("id"));
-//                        db.EditDataLaporanPCPfroApi(Aktifitasnya);
+//                        db.EditDataRegisterPCPfroApi(Aktifitasnya);
 //                    }
 //
 //                    cek_feedback_api = true;
@@ -767,7 +1374,7 @@ public class ThreadSendToAPI extends Thread {
 //                        Aktifitasnya.setID_Registerpcp(Integer.parseInt(id));
 //                        Aktifitasnya.setKet9("1");
 //                        Aktifitasnya.setKet10(myResponse.getString("id"));
-//                        db.EditDataRegisterPCP(Aktifitasnya);
+//                        db.EditDataRegisterPCPfroApi(Aktifitasnya);
 //                    }
 //
 //                    cek_feedback_api = true;
