@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.inputmethodservice.ExtractEditText
+            android:id="@+id/txt_search_register"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -41,7 +42,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/ic_background"
-            android:hint="@string/text_search"/>
+            android:hint="@string/text_cari_nomor_pcp"/>
         <ImageView
             android:clickable="true"
             android:id="@+id/img_tambahpcp"
