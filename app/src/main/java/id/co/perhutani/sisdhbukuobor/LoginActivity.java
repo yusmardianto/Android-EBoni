@@ -45,6 +45,8 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstDesaSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
@@ -52,6 +54,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class LoginActivity extends AppCompatActivity {
@@ -64,28 +67,27 @@ public class LoginActivity extends AppCompatActivity {
     // link api
     private static final String URL_FOR_LOGIN_V1 = address + "api/v1/login";
     private static final String URL_FOR_PROFIL_V1 = address + "api/v1/get_user_details";
+
     private static final String URL_FOR_GET_ANAK_PETAK_V1 = address + "api/v1/getAnakPetak";
     private static final String URL_FOR_GET_KELAS_HUTAN_V1 = address + "api/v1/getKelasHutan";
     private static final String URL_FOR_GET_JENIS_TANAMAN_V1 = address + "api/v1/getJenisTanaman";
     private static final String URL_FOR_GET_JENIS_PERMASALAHAN_V1 = address + "api/v1/getJenisPermasalahan";
     private static final String URL_FOR_GET_JENIS_PALL_V1 = address + "api/v1/getJenisPal";
-    private static final String URL_FOR_GET_DESA_V1 = address + "api/v1/getDesa";
-    private static final String URL_FOR_GET_BENTUK_INTERAKSI_V1 = address + "api/v1/getBentukInteraksi";
-    private static final String URL_FOR_GET_STATUS_INTERAKSI_V1 = address + "api/v1/getStatusInteraksi";
-
     private static final String URL_FOR_GET_JENIS_GANGGUAN_HUTAN_V1 = address + "api/v1/getJenisGangguanHutan";
     private static final String URL_FOR_GET_JENIS_SATWA_V1 = address + "api/v1/getJenisSatwa";
     private static final String URL_FOR_GET_JENIS_TEMUAN_V1 = address + "api/v1/getJenisTemuan";
-
+    private static final String URL_FOR_GET_DESA_V1 = address + "api/v1/get_master_desa";
+    private static final String URL_FOR_GET_BENTUK_INTERAKSI_V1 = address + "api/v1/get_master_interaksi";
+    private static final String URL_FOR_GET_STATUS_INTERAKSI_V1 = address + "api/v1/get_master_status_interaksi";
 
 
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
-    public static final String URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1 = address + "api/v1/postPerubahanKelas";
-    public static final String URL_FOR_POST_INTERAKSI_MDH_V1 = address + "api/v1/postInteraksiMDH";
-    public static final String URL_FOR_POST_PEMANTAUAN_SATWA = address + "api/v1/postPemantauanSatwa";
-    public static final String URL_FOR_POST_LAPORAN_PAL_V1 = address + "api/v1/postLaporanPal";
-    public static final String URL_FOR_POST_REGISTER_PCP_V1 = address + "api/v1/postRegisterPCP";
-    public static final String URL_FOR_POST_IDENTIFIKASI_TENURIAL_V1 = address + "api/v1/postIdentifikasiTenurial";
+//    public static final String URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1 = address + "api/v1/postPerubahanKelas";
+//    public static final String URL_FOR_POST_INTERAKSI_MDH_V1 = address + "api/v1/postInteraksiMDH";
+//    public static final String URL_FOR_POST_PEMANTAUAN_SATWA = address + "api/v1/postPemantauanSatwa";
+//    public static final String URL_FOR_POST_LAPORAN_PAL_V1 = address + "api/v1/postLaporanPal";
+//    public static final String URL_FOR_POST_REGISTER_PCP_V1 = address + "api/v1/postRegisterPCP";
+//    public static final String URL_FOR_POST_IDENTIFIKASI_TENURIAL_V1 = address + "api/v1/postIdentifikasiTenurial";
 
 
     private ProgressDialog progressDialog;
@@ -351,13 +353,15 @@ public class LoginActivity extends AppCompatActivity {
                     sync_get_jenis_gangguan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
                     // get data jenis pal
                     sync_get_jenis_pal_v1(myResponse.getString("access_token"), username.getText().toString());
-
-
-
                     // get data anak petak
                     sync_get_jenis_satwa_v1(myResponse.getString("access_token"), username.getText().toString());
                     // get data anak petak
                     sync_get_jenis_temuan_v1(myResponse.getString("access_token"), username.getText().toString());
+
+                    sync_get_master_desa(myResponse.getString("access_token"), username.getText().toString());
+                    sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
+                    sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
+
 
                     session.setLogin(true);
 
@@ -786,7 +790,130 @@ public class LoginActivity extends AppCompatActivity {
         thread.start();
     }
 
+    public void sync_get_master_desa(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
 
+                try {
+                    URL url = new URL(URL_FOR_GET_DESA_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET MASTER DESA ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstDesaSchema._ID, i + 1);
+                        values.put(MstDesaSchema.ID_DESA, json_projek.getString("id"));
+                        values.put(MstDesaSchema.KODE_DESA, json_projek.getString("kode"));
+                        values.put(MstDesaSchema.KECAMATAN_ID, json_projek.getString("kecamatan_id"));
+                        values.put(MstDesaSchema.NAMA_DESA, json_projek.getString("name"));
+                        db.create(MstDesaSchema.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_master_interaksi(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_BENTUK_INTERAKSI_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET MASTER BENTUK INTERAKSI ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstBentukInteraksiSchema._ID, i + 1);
+                        values.put(MstBentukInteraksiSchema.ID_INTERAKSI, json_projek.getString("id"));
+                        values.put(MstBentukInteraksiSchema.NAMA_INTERAKSI, json_projek.getString("name"));
+                        db.create(MstBentukInteraksiSchema.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_master_status_interaksi(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_STATUS_INTERAKSI_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET MASTER STATUS INTERAKSI ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstStatusInteraksiSchema._ID, i + 1);
+                        values.put(MstStatusInteraksiSchema.ID_STATUS, json_projek.getString("id"));
+                        values.put(MstStatusInteraksiSchema.NAMA_STATUS, json_projek.getString("name"));
+                        db.create(MstStatusInteraksiSchema.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
 
 
 }
