@@ -39,13 +39,13 @@ public class EditGangguanFragment extends Fragment {
 
     private EditGangguanViewModel mViewModel;
 
-    private EditText isipetak, jenistanaman, tanggal, isi_kejadian, luas_lahan,
+    private EditText isipetak, jenistanaman, tanggal, nomora, isi_kejadian, luas_lahan,
             jumlah_pohon, kerugian_kyp, kerugian_kyb, kerugian_getah,
             nilai_kerugian, keterangan;
 
     public static final String MSG_KEY = "id";
     private static SQLiteHandler db;
-    private static String id,  str_isipetak, str_jenistanaman,  str_tanggal, str_isi_kejadian, str_luas_lahan,
+    private static String id,  str_isipetak, str_jenistanaman,  str_tanggal, str_nomora, str_isi_kejadian, str_luas_lahan,
             str_jumlah_pohon, str_kerugian_kyp, str_kerugian_kyb, str_kerugian_getah,
             str_nilai_kerugian, str_keterangan;
     private Button btnSimpanGangguan;
@@ -163,6 +163,7 @@ public class EditGangguanFragment extends Fragment {
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+        nomora = root.findViewById(R.id.edit_gangguan_nomora);
         isi_kejadian = root.findViewById(R.id.edit_gangguan_kejadian);
         luas_lahan = root.findViewById(R.id.edit_gangguan_luas);
         jumlah_pohon = root.findViewById(R.id.edit_gangguan_jmlpohon);
@@ -187,7 +188,8 @@ public class EditGangguanFragment extends Fragment {
 
         str_isipetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
         str_jenistanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.JENIS_TANAMAN);
-        str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_HA);
+        str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL);
+        str_nomora = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_A);
         str_isi_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
         str_luas_lahan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
         str_jumlah_pohon = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_POHON);
@@ -200,6 +202,7 @@ public class EditGangguanFragment extends Fragment {
         isipetak.setText(str_isipetak);
         jenistanaman.setText(str_jenistanaman);
         tanggal.setText(str_tanggal);
+        nomora.setText(str_nomora);
         isi_kejadian.setText(str_isi_kejadian);
         luas_lahan.setText(str_luas_lahan);
         jumlah_pohon.setText(str_jumlah_pohon);
@@ -233,6 +236,7 @@ public class EditGangguanFragment extends Fragment {
             final String kejadian = isi_kejadian.getText().toString();
             final String petak = isipetak.getText().toString();
             final String str_tanggal = tanggal.getText().toString();
+            final String nomorA = nomora.getText().toString();
             final String jenis_tanaman = jenistanaman.getText().toString();
             final String luas = luas_lahan.getText().toString();
             final String nilai = nilai_kerugian.getText().toString();
@@ -249,6 +253,9 @@ public class EditGangguanFragment extends Fragment {
 
             } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+
+            } else if (nomorA.equals("") || nomorA.equals("0") || nomorA.equals(" ") || nomorA.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Nomor A tidak boleh kosong");
 
             } else if (jenis_tanaman.equals("") || jenis_tanaman.equals("0") || jenis_tanaman.equals(" ") || jenis_tanaman.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman tidak boleh kosong");
@@ -315,6 +322,7 @@ public class EditGangguanFragment extends Fragment {
                                             Aktifitasnya.setPetak(isipetak.getText().toString());
                                             Aktifitasnya.setJenisTanaman(jenistanaman.getText().toString());
                                             Aktifitasnya.setTanggal(tanggal.getText().toString());
+                                            Aktifitasnya.setNoA(nomora.getText().toString());
                                             Aktifitasnya.setIsi(isi_kejadian.getText().toString());
                                             Aktifitasnya.setLuas(luas_lahan.getText().toString());
                                             Aktifitasnya.setPohon(jumlah_pohon.getText().toString());

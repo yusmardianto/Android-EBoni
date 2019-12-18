@@ -171,49 +171,107 @@
                         android:text="Waktu Lihat"
                         android:textColor="#1F1E1E" />
 
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:entries="@array/array_waktu_lihat"
+                        android:fontFamily="@font/font_aal_default"
+                        android:id="@+id/spinner_waktu_lihat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
+
                     <EditText
                         android:id="@+id/pemantauan_waktulihat"
+                        android:fontFamily="@font/font_aal_default"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/md_black_1000" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Tanggal"
+                        android:textColor="#1F1E1E" />
+
+                    <EditText
+                        android:id="@+id/pemantauan_tanggal"
                         android:fontFamily="@font/font_aal_default"
                         android:inputType="number"
                         android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background"
-                        android:hint="Waktu Lihat" />
+                        android:hint="Tanggal" />
+
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Cara Melihat"
+                        android:textColor="#1F1E1E" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinner_cara_melihat"
+                        android:fontFamily="@font/font_aal_default"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <EditText
+                        android:id="@+id/pemantauan_caralihat"
+                        android:fontFamily="@font/font_aal_default"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Anak Petak" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/md_black_1000" />
+                </LinearLayout>
+
             </LinearLayout>
-
-            <TextView
-                android:fontFamily="@font/font_aal_default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Cara Melihat"
-                android:textColor="#1F1E1E" />
-
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spinner_cara_melihat"
-                android:fontFamily="@font/font_aal_default"
-                android:singleLine="true"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <EditText
-                android:id="@+id/pemantauan_caralihat"
-                android:fontFamily="@font/font_aal_default"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/ic_background"
-                android:hint="Anak Petak" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="5dp"
-                android:background="@color/md_black_1000" />
 
         </LinearLayout>
 

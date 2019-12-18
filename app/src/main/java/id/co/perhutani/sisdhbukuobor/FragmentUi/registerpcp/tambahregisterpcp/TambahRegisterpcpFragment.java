@@ -212,6 +212,7 @@ public class TambahRegisterpcpFragment extends Fragment {
                                             values_aktifitas.put(TrnRegisterPcp.TAHUN_JARANGAN, tahunjurangan.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.PENIGGI, peninggi.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.KETERANGAN, keterangan.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.KET9, "0");
                                             db.create(TrnRegisterPcp.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();
 

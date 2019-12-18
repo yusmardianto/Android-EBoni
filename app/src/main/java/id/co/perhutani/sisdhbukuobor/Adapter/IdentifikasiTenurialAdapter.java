@@ -1,6 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -68,6 +70,17 @@ public class IdentifikasiTenurialAdapter extends RecyclerView.Adapter<Identifika
 
             }
         });
+
+        String status_sync = mData.get(position).getKet9();
+        if (status_sync.equals("0")||status_sync.equals("2")) {
+            holder.name_data_sinkron.setText("Belum terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
+        }  else {
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
+            holder.name_data_sinkron.setText("Sudah terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
+        }
     }
 
     @Override

@@ -109,7 +109,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             tv_isi = itemView.findViewById(R.id.name_isi);
             tv_petak = itemView.findViewById(R.id.name_petak);
             tv_no = itemView.findViewById(R.id.name_id);
-            tv_tanggal = itemView.findViewById(R.id.name_tanggal);
+            tv_tanggal = itemView.findViewById(R.id.name_tanggalgangguan);
             img_detailganggaun = itemView.findViewById(R.id.img_gangguandetail);
             name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron);
             name_info_alert = itemView.findViewById(R.id.name_info_alert);
@@ -127,7 +127,8 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
             String get_anakpetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET1);
             String get_jenistanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.JENIS_TANAMAN);
-            String get_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_HA);
+            String get_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL);
+            String get_nomera = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_A);
             final String get_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
             String get_kerugianluas = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
             String get_kerugianpohon = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_POHON);
@@ -145,6 +146,9 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
             TextView tanggal = viewas.findViewById(R.id.gangguan_tanggaldetail);
             tanggal.setText(get_tanggal);
+
+            TextView nomerA = viewas.findViewById(R.id.gangguan_nomorAdetail);
+            nomerA.setText(get_nomera);
 
             TextView kejadian = viewas.findViewById(R.id.gangguan_kejadiandetail);
             kejadian.setText(get_kejadian);

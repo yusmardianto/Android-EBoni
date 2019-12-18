@@ -3,11 +3,10 @@ package id.co.perhutani.sisdhbukuobor.Schema;
 public class TrnGangguanKeamananHutan {
     public static final String TABLE_NAME = "TRN_GANGGUAN_HUTAN";
     public static final String _ID = "ID";
-    public static final String TAHUN = "TAHUN";
     public static final String ANAK_PETAK_ID = "ANAKPETAK_ID";
     public static final String JENIS_TANAMAN = "JENIS_TANAMAN";
-    public static final String NOMOR_HA = "NOMOR_HA";
-    public static final String TANGGAL_HA = "TANGGAL_HA";
+    public static final String NOMOR_A = "NOMOR_A";
+    public static final String TANGGAL = "TANGGAL";
     public static final String KEJADIAN = "KEJADIAN";
     public static final String KERUGIAN_LUAS = "KERUGIAN_LUAS";
     public static final String KERUGIAN_POHON = "KERUGIAN_POHON";
@@ -29,10 +28,9 @@ public class TrnGangguanKeamananHutan {
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "" + ANAK_PETAK_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + TAHUN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + JENIS_TANAMAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + NOMOR_HA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + TANGGAL_HA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + NOMOR_A + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + TANGGAL + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KEJADIAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KERUGIAN_LUAS + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KERUGIAN_POHON + " " + Type.VARCHAR_NULLABLE_100 + ", " +

@@ -7,12 +7,13 @@ public class PemantauansatwaModel {
     private String Jumlah;
     private String Waktulihat;
     private String Caralihat;
+    private String Tanggal;
     private String KeteranganSatwa;
     private int ID_Pemantauan;
 
     public PemantauansatwaModel(String ID, String anakPetakId, String jenis,
-                                String jumlah, String waktulihat, String caralihat, String keteranganSatwa,
-                                int id_pemantauan)
+                                String jumlah, String waktulihat, String caralihat, String tanggal,
+                                String keteranganSatwa, int id_pemantauan)
     {
         this.ID = ID;
         this.AnakPetakId = anakPetakId;
@@ -20,6 +21,7 @@ public class PemantauansatwaModel {
         this.Jumlah = jumlah;
         this.Waktulihat = waktulihat;
         this.Caralihat = caralihat;
+        this.Tanggal = tanggal;
         this.KeteranganSatwa = keteranganSatwa;
         this.ID_Pemantauan= id_pemantauan;
     }
@@ -83,6 +85,14 @@ public class PemantauansatwaModel {
 
     public void setCaralihat(String caralihat) {
         Caralihat = caralihat;
+    }
+
+    public String getTanggal() {
+        return Tanggal;
+    }
+
+    public void setTanggal(String tanggal) {
+        Tanggal = tanggal;
     }
 
     public String getKeteranganSatwa() {

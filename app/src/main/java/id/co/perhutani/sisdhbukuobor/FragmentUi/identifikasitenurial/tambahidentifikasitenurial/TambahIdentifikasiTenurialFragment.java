@@ -39,7 +39,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 public class TambahIdentifikasiTenurialFragment extends Fragment {
 
     private EditText petak_id, jenis_permasalahan, tanggal, kelas_hutan, strata, luas_baku,
-            luas_tenurial, kondisi_petak, awal_konflik, pihak_terlibat, status_penyelesaian;
+            luas_tenurial, kondisi_petak, awal_konflik, status_penyelesaian;
 
     private TambahIdentifikasiTenurialViewModel mViewModel;
 
@@ -47,6 +47,7 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_permasalahan;
     private Spinner spin_kelas_hutan;
+    private Spinner spin_pihak_terlibat;
 
     final Calendar calendar = Calendar.getInstance();
     private String str_tgl;
@@ -189,7 +190,6 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
         luas_tenurial = root.findViewById(R.id.tenurial_luastenurial);
         kondisi_petak = root.findViewById(R.id.tenurial_kondisipetakidentifikasi);
         awal_konflik = root.findViewById(R.id.tenurial_awalkonflik);
-        pihak_terlibat = root.findViewById(R.id.tenurial_pihakterlibat);
         status_penyelesaian = root.findViewById(R.id.tenurial_statuspenyelesaian);
         btnSimpanIdentifikasi = root.findViewById(R.id.tenurial_btnsubmit);
 
@@ -211,6 +211,8 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
         String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
         kelas_hutan.setText(id_kelas_hutan);
 
+        spin_pihak_terlibat = root.findViewById(R.id.spinner_tenurial_pihakterlibat);
+
         btnSimpanIdentifikasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -224,77 +226,124 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
     public void act_simpan() {
         try {
             final String jenispermasalahan = jenis_permasalahan.getText().toString();
+            final String anak_petak = petak_id.getText().toString();
+            final String tahun = tanggal.getText().toString();
+            final String kelashutan = kelas_hutan.getText().toString();
+            final String stratatenurial = strata.getText().toString();
+            final String luasbaku = luas_baku.getText().toString();
+            final String luastenurial = luas_tenurial.getText().toString();
+            final String kondisiidentifikasi = kondisi_petak.getText().toString();
+            final String awalkonflik = awal_konflik.getText().toString();
+            final String pihakterlibat = spin_pihak_terlibat.getSelectedItem().toString();
+            final String status = status_penyelesaian.getText().toString();
 
-            new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                    .setTitleText("Simpan ?")
-                    .setContentText(jenispermasalahan)
-                    .setCancelText("Batal")
-                    .setConfirmText("Simpan")
-                    .showCancelButton(true)
-                    .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            // reuse previous dialog instance, keep widget user state, reset them if you need
-                            sDialog.setTitleText("Dibatalkan!")
-                                    .setContentText("")
-                                    .setConfirmText("OK")
-                                    .showCancelButton(false)
-                                    .setCancelClickListener(null)
-                                    .setConfirmClickListener(null)
-                                    .changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                        }
-                    })
-                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            sDialog.setTitleText("Success!")
-                                    .setContentText(jenispermasalahan)
-                                    .setConfirmText("OK")
-                                    .showCancelButton(false)
-                                    .setCancelClickListener(null)
-                                    .setConfirmClickListener(null)
-                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+            if (jenispermasalahan.equals("") || jenispermasalahan.equals("0") || jenispermasalahan.equals(" ") || jenispermasalahan.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jenis Permasalahan tidak boleh kosong");
 
-                            new Handler().postDelayed(new Runnable() {
+            } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
 
-                                @Override
-                                public void run() {
-                                    // TODO Auto-generated method stub
-                                    try {
-                                        ContentValues values_aktifitas = new ContentValues();
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.ANAK_PETAK_ID, petak_id.getText().toString());
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.JENIS_PERMASALAHAN, jenis_permasalahan.getText().toString());
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.TANGGAL, tanggal.getText().toString());
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.KELAS_HUTAN_ID, kelas_hutan.getText().toString());
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.STRATA, strata.getText().toString());
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.LUAS_BAKU, luas_baku.getText().toString());
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.LUAS_TENURIAL, luas_tenurial.getText().toString());
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.KONDISI_PETAK, kondisi_petak.getText().toString());
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.AWAL_KONFLIK, awal_konflik.getText().toString());
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.PIHAK_TERLIBAT, pihak_terlibat.getText().toString());
-                                        values_aktifitas.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, status_penyelesaian.getText().toString());
-                                        db.create(TrnIdentifikasiTenurial.TABLE_NAME, values_aktifitas);
-                                        Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
+            } else if (tahun.equals("") || tahun.equals("0") || tahun.equals(" ") || tahun.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Tahun tidak boleh kosong");
+
+            } else if (kelashutan.equals("") || kelashutan.equals("0") || kelashutan.equals(" ") || kelashutan.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Kelas Hutan tidak boleh kosong");
+
+            } else if (stratatenurial.equals("") || stratatenurial.equals("0") || stratatenurial.equals(" ") || stratatenurial.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Strata tidak boleh kosong");
+
+            } else if (luasbaku.equals("") || luasbaku.equals("0") || luasbaku.equals(" ") || luasbaku.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Luas Baku tidak boleh kosong");
+
+            } else if (luastenurial.equals("") || luastenurial.equals("0") || luastenurial.equals(" ") || luastenurial.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Luas Tenurial tidak boleh kosong");
+
+            } else if (kondisiidentifikasi.equals("") || kondisiidentifikasi.equals("0") || kondisiidentifikasi.equals(" ") || kondisiidentifikasi.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Kondisi Identifikasi tidak boleh kosong");
+
+            } else if (awalkonflik.equals("") || awalkonflik.equals("0") || awalkonflik.equals(" ") || awalkonflik.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Awal Konflik tidak boleh kosong");
+
+            } else if (pihakterlibat.equals("") || pihakterlibat.equals("- Pilih Pihak Terlibat -") || pihakterlibat.equals(" ") || pihakterlibat.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Pihak Terlibat tidak boleh kosong");
+
+            } else if (status.equals("") || status.equals("0") || status.equals(" ") || status.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Status Penyelesaian tidak boleh kosong");
+
+            } else {
+
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Simpan ?")
+                        .setContentText(jenispermasalahan)
+                        .setCancelText("Batal")
+                        .setConfirmText("Simpan")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance, keep widget user state, reset them if you need
+                                sDialog.setTitleText("Dibatalkan!")
+                                        .setContentText("")
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.setTitleText("Success!")
+                                        .setContentText(jenispermasalahan)
+                                        .setConfirmText("OK")
+                                        .showCancelButton(false)
+                                        .setCancelClickListener(null)
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                new Handler().postDelayed(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        // TODO Auto-generated method stub
+                                        try {
+                                            ContentValues values_aktifitas = new ContentValues();
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.ANAK_PETAK_ID, petak_id.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.JENIS_PERMASALAHAN, jenis_permasalahan.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.TANGGAL, tanggal.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.KELAS_HUTAN_ID, kelas_hutan.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.STRATA, strata.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.LUAS_BAKU, luas_baku.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.LUAS_TENURIAL, luas_tenurial.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.KONDISI_PETAK, kondisi_petak.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.AWAL_KONFLIK, awal_konflik.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.PIHAK_TERLIBAT, spin_pihak_terlibat.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, status_penyelesaian.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.KET9, "0");
+                                            db.create(TrnIdentifikasiTenurial.TABLE_NAME, values_aktifitas);
+                                            Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
 
 //                    // Move to fragment Identifikasi Konflik Tenurial
-                                        FragmentManager manager = (getActivity()).getSupportFragmentManager();
-                                        Fragment fragment = new ListIdentifikasiTenurialFragment();
-                                        FragmentTransaction ft = manager.beginTransaction();
-                                        ft.replace(R.id.nav_host_fragment, fragment);
-                                        ft.commit();
+                                            FragmentManager manager = (getActivity()).getSupportFragmentManager();
+                                            Fragment fragment = new ListIdentifikasiTenurialFragment();
+                                            FragmentTransaction ft = manager.beginTransaction();
+                                            ft.replace(R.id.nav_host_fragment, fragment);
+                                            ft.commit();
 
-                                    } catch (Exception e) {
-                                        AjnClass.showAlert(getActivity(), e.toString());
-                                        e.printStackTrace();
+                                        } catch (Exception e) {
+                                            AjnClass.showAlert(getActivity(), e.toString());
+                                            e.printStackTrace();
+                                        }
                                     }
-                                }
 
-                            }, 1000);
-                        }
-                    })
-                    .show();
+                                }, 1000);
+                            }
+                        })
+                        .show();
+            }
 
-            } catch (Exception e) {
+        } catch(Exception e) {
                 AjnClass.showAlert(getActivity(), "error " + e.toString());
 //                sendMessage(e.getMessage());
         }

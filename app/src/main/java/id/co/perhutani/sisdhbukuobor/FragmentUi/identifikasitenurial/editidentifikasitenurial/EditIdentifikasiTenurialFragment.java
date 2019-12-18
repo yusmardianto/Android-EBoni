@@ -47,6 +47,8 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_permasalahan;
     private Spinner spin_kelas_hutan;
+    private Spinner spin_pihak_terlibat;
+
     private EditIdentifikasiTenurialViewModel mViewModel;
 
     public static EditIdentifikasiTenurialFragment newInstance() {
@@ -190,6 +192,8 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
         kelas_hutan.setText(id_kelas_hutan);
 
+        spin_pihak_terlibat = root.findViewById(R.id.edit_spinner_tenurial_pihakterlibat);
+
         str_jenis_permasalahan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.JENIS_PERMASALAHAN);
         str_tahun = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.TANGGAL);
         str_petak = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.ANAK_PETAK_ID);
@@ -234,18 +238,56 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
     public void act_simpan() {
         try {
 
-            final String jenis = jenis_permasalahan.getText().toString();
-            if (jenis.equals("") || jenis.equals("0") || jenis.equals(" ") || jenis.equals(null)) {
+            final String jenispermasalahan = jenis_permasalahan.getText().toString();
+            final String anak_petak = petak.getText().toString();
+            final String tahuntenurial = tahun.getText().toString();
+            final String kelashutan = kelas_hutan.getText().toString();
+            final String stratatenurial = strata.getText().toString();
+            final String luasbaku = luas_baku.getText().toString();
+            final String luastenurial = luas_tenurial.getText().toString();
+            final String kondisiidentifikasi = kondisi_petak.getText().toString();
+            final String awalkonflik = awal_konflik.getText().toString();
+            final String pihakterlibat = spin_pihak_terlibat.getSelectedItem().toString();
+            final String status = status_penyelesaian.getText().toString();
+
+            if (jenispermasalahan.equals("") || jenispermasalahan.equals("0") || jenispermasalahan.equals(" ") || jenispermasalahan.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Permasalahan tidak boleh kosong");
 
-            } else if(jenis.equals("") || jenis.equals("0") || jenis.equals(" ") || jenis.equals(null)){
-                AjnClass.showAlert(getActivity(), "Jenis Permasalahan tidak boleh kosong");
+            } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
 
-            }else {
+            } else if (tahuntenurial.equals("") || tahuntenurial.equals("0") || tahuntenurial.equals(" ") || tahuntenurial.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Tahun tidak boleh kosong");
+
+            } else if (kelashutan.equals("") || kelashutan.equals("0") || kelashutan.equals(" ") || kelashutan.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Kelas Hutan tidak boleh kosong");
+
+            } else if (stratatenurial.equals("") || stratatenurial.equals("0") || stratatenurial.equals(" ") || stratatenurial.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Strata tidak boleh kosong");
+
+            } else if (luasbaku.equals("") || luasbaku.equals("0") || luasbaku.equals(" ") || luasbaku.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Luas Baku tidak boleh kosong");
+
+            } else if (luastenurial.equals("") || luastenurial.equals("0") || luastenurial.equals(" ") || luastenurial.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Luas Tenurial tidak boleh kosong");
+
+            } else if (kondisiidentifikasi.equals("") || kondisiidentifikasi.equals("0") || kondisiidentifikasi.equals(" ") || kondisiidentifikasi.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Kondisi Identifikasi tidak boleh kosong");
+
+            } else if (awalkonflik.equals("") || awalkonflik.equals("0") || awalkonflik.equals(" ") || awalkonflik.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Awal Konflik tidak boleh kosong");
+
+            } else if (pihakterlibat.equals("") || pihakterlibat.equals("- Pilih Pihak Terlibat -") || pihakterlibat.equals(" ") || pihakterlibat.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Pihak Terlibat tidak boleh kosong");
+
+            } else if (status.equals("") || status.equals("0") || status.equals(" ") || status.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Status Penyelesaian tidak boleh kosong");
+
+            } else {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(jenis)
+                        .setContentText(jenispermasalahan)
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -254,7 +296,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText("")
+                                        .setContentText(jenispermasalahan)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -266,7 +308,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(jenis)
+                                        .setContentText(jenispermasalahan)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -290,8 +332,10 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                                             Aktifitasnya.setLuasTenurial(luas_tenurial.getText().toString());
                                             Aktifitasnya.setKondisiPetakSaatIdentifikasi(kondisi_petak.getText().toString());
                                             Aktifitasnya.setAwalKonflik(awal_konflik.getText().toString());
-                                            Aktifitasnya.setPihakTerlibat(pihak_terlibat.getText().toString());
+                                            Aktifitasnya.setPihakTerlibat(spin_pihak_terlibat.getSelectedItem().toString());
                                             Aktifitasnya.setStatusPenyelesaian(status_penyelesaian.getText().toString());
+                                            Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKet9("2");
 
                                             db.EditDataIdentifikasiTenurial(Aktifitasnya);
 

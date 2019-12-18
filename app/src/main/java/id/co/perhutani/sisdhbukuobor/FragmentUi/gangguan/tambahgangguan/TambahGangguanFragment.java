@@ -39,7 +39,7 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.ListGangguanFragment;
 
 public class TambahGangguanFragment extends Fragment {
 
-    private EditText isipetak, jenis_tanaman, tanggal, isi_kejadian, luas_lahan,
+    private EditText isipetak, jenis_tanaman, tanggal, nomora, isi_kejadian, luas_lahan,
             jumlah_pohon, kerugian_kyp, kerugian_kyb, kerugian_getah,
             nilai_kerugian, keterangan;
 
@@ -47,8 +47,8 @@ public class TambahGangguanFragment extends Fragment {
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_tanaman;
     private static SQLiteHandler db;
-    final Calendar calendar = Calendar.getInstance();
 
+    final Calendar calendar = Calendar.getInstance();
     private String str_tgl;
 
     private Button btnSimpanGangguan;
@@ -182,7 +182,7 @@ public class TambahGangguanFragment extends Fragment {
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
+        nomora = root.findViewById(R.id.gangguan_nomora);
         isi_kejadian = root.findViewById(R.id.gangguan_kejadian);
         luas_lahan = root.findViewById(R.id.gangguan_luas);
         jumlah_pohon = root.findViewById(R.id.gangguan_jmlpohon);
@@ -231,6 +231,7 @@ public class TambahGangguanFragment extends Fragment {
             final String kejadian = isi_kejadian.getText().toString();
             final String petak = isipetak.getText().toString();
             final String str_tanggal = tanggal.getText().toString();
+            final String nomorA = nomora.getText().toString();
             final String jenistanaman = jenis_tanaman.getText().toString();
             final String luas = luas_lahan.getText().toString();
             final String nilai = nilai_kerugian.getText().toString();
@@ -247,6 +248,9 @@ public class TambahGangguanFragment extends Fragment {
 
             } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+
+            } else if (nomorA.equals("") || nomorA.equals("0") || nomorA.equals(" ") || nomorA.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Nomer A tidak boleh kosong");
 
             } else if (jenistanaman.equals("") || jenistanaman.equals("0") || jenistanaman.equals(" ") || jenistanaman.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman tidak boleh kosong");
@@ -311,7 +315,8 @@ public class TambahGangguanFragment extends Fragment {
                                             ContentValues values_aktifitas = new ContentValues();
                                             values_aktifitas.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, isipetak.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.JENIS_TANAMAN, jenis_tanaman.getText().toString());
-                                            values_aktifitas.put(TrnGangguanKeamananHutan.TANGGAL_HA, tanggal.getText().toString());
+                                            values_aktifitas.put(TrnGangguanKeamananHutan.TANGGAL, tanggal.getText().toString());
+                                            values_aktifitas.put(TrnGangguanKeamananHutan.NOMOR_A, nomora.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KEJADIAN, isi_kejadian.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KERUGIAN_LUAS, luas_lahan.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KERUGIAN_POHON, jumlah_pohon.getText().toString());

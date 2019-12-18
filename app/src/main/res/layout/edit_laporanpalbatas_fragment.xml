@@ -122,7 +122,7 @@
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:entries="@array/array_kondisi_pal_batas"
                         android:fontFamily="@font/font_aal_default"
-                        android:id="@+id/spinner_kondisi"
+                        android:id="@+id/edit_spinner_kondisi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 

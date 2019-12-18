@@ -32,8 +32,9 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 
 public class EditLaporanpalbatasFragment extends Fragment {
 
-    private EditText tanggalpal, jenispal, kondisipal, nopal, jumlahpal, keteranganpal;
+    private EditText tanggalpal, jenispal, nopal, jumlahpal, keteranganpal;
     private Spinner spin_jenis_pal;
+    private Spinner spin_kondisi;
 
 
     public static final String MSG_KEY = "id";
@@ -99,7 +100,6 @@ public class EditLaporanpalbatasFragment extends Fragment {
 
         tanggalpal = root.findViewById(R.id.edit_palbatas_tanggal);
         jenispal = root.findViewById(R.id.edit_palbatas_jenispal);
-        kondisipal = root.findViewById(R.id.edit_palbatas_kondisipal);
         nopal = root.findViewById(R.id.edit_palbatas_nopal);
         jumlahpal = root.findViewById(R.id.edit_palbatas_jumlahpal);
         keteranganpal = root.findViewById(R.id.edit_palbatas_ketpal);
@@ -111,16 +111,16 @@ public class EditLaporanpalbatasFragment extends Fragment {
         String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME, pil_pal , MstJenisPalSchema.JENIS_PAL_ID);
         jenispal.setText(jenis_pal);
 
+        spin_kondisi = root.findViewById(R.id.edit_spinner_kondisi);
+
         str_tanggalpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.TANGGAL_PAL);
         str_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JENIS_PAL);
-        str_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KONDISI_PAL);
         str_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
         str_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
         str_keteranganpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KETERANGAN_PAL);
 
         tanggalpal.setText(str_tanggalpal);
         jenispal.setText(str_jenispal);
-        kondisipal.setText(str_kondisipal);
         nopal.setText(str_nopal);
         jumlahpal.setText(str_jumlahpal);
         keteranganpal.setText(str_keteranganpal);
@@ -146,18 +146,31 @@ public class EditLaporanpalbatasFragment extends Fragment {
         try {
 
             final String nomor = nopal.getText().toString();
+            final String jenis = jenispal.getText().toString();
+            final String kondisi = spin_kondisi.getSelectedItem().toString();
             final String tanggal = tanggalpal.getText().toString();
+            final String jumlah = jumlahpal.getText().toString();
+
             if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Nomor Pal tidak boleh kosong");
 
-            } else if(tanggal.equals("") || tanggal.equals("0") || tanggal.equals(" ") || tanggal.equals(null)){
+            } else if (jenis.equals("") || jenis.equals("0") || jenis.equals(" ") || jenis.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jenis Pal tidak boleh kosong");
+
+            } else if (kondisi.equals("") || kondisi.equals("- Pilih Kondisi -") || kondisi.equals(" ") || kondisi.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Kondisi Pal tidak boleh kosong");
+
+            } else if (tanggal.equals("") || tanggal.equals("0") || tanggal.equals(" ") || tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
 
-            }else {
+            } else if (jumlah.equals("") || jumlah.equals("0") || jumlah.equals(" ") || jumlah.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jumlah Pal tidak boleh kosong");
+
+            } else {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(nomor)
+                        .setContentText(jenis)
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -166,7 +179,7 @@ public class EditLaporanpalbatasFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText("")
+                                        .setContentText(jenis)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -178,7 +191,7 @@ public class EditLaporanpalbatasFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(nomor)
+                                        .setContentText(jenis)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -193,12 +206,14 @@ public class EditLaporanpalbatasFragment extends Fragment {
                                         try {
                                             PelaporanpalbatasModel Aktifitasnya = new PelaporanpalbatasModel();
                                             Aktifitasnya.setID_Laporan(Integer.parseInt(id));
-                                            Aktifitasnya.setTanggalPal(tanggalpal.getText().toString());
-                                            Aktifitasnya.setJenisPal(jenispal.getText().toString());
-                                            Aktifitasnya.setKondisiPal(kondisipal.getText().toString());
                                             Aktifitasnya.setNomerPal(nopal.getText().toString());
+                                            Aktifitasnya.setJenisPal(jenispal.getText().toString());
+                                            Aktifitasnya.setKondisiPal(spin_kondisi.getSelectedItem().toString());
+                                            Aktifitasnya.setTanggalPal(tanggalpal.getText().toString());
                                             Aktifitasnya.setJumlahPal(jumlahpal.getText().toString());
                                             Aktifitasnya.setKeteranganPal(keteranganpal.getText().toString());
+                                            Aktifitasnya.setKet1(spin_jenis_pal.getSelectedItem().toString());
+                                            Aktifitasnya.setKet9("2");
                                             db.EditDataLaporanPalBatas(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();
@@ -207,7 +222,6 @@ public class EditLaporanpalbatasFragment extends Fragment {
                                             FragmentTransaction ft = manager.beginTransaction();
                                             ft.replace(R.id.nav_host_fragment, fragment);
                                             ft.commit();
-
 
                                         } catch (Exception e) {
                                             AjnClass.showAlert(getActivity(), e.toString());

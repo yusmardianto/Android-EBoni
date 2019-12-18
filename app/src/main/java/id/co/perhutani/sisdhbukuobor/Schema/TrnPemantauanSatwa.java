@@ -8,6 +8,7 @@ public class TrnPemantauanSatwa {
     public static final String JUMLAH_SATWA = "JUMLAH_SATWA";
     public static final String WAKTU_LIHAT =  "WAKTU_LIHAT";
     public static final String CARA_LIHAT = "CARA_LIHAT";
+    public static final String TANGGAL_PEMANTAUAN = "TANGGAL";
     public static final String KETERANGAN = "KETERANGAN";
     public static final String KET1 = "KET1";
     public static final String KET2 = "KET2";
@@ -26,6 +27,7 @@ public class TrnPemantauanSatwa {
             "" + JUMLAH_SATWA+ " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + WAKTU_LIHAT + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + CARA_LIHAT + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + TANGGAL_PEMANTAUAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KETERANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
