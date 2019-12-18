@@ -2,24 +2,30 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/ic_frame_login">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/linear_layout_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_logohome"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_icn_logophtobor"/>
 
         <TextView
+            android:layout_below="@id/img_logohome"
             android:id="@+id/text_nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:text="Hi, Dimas Prayogi"
-            android:textColor="#0EAE6B"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             android:textSize="15dp"/>
 
@@ -29,83 +35,205 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:text="Senin, 21 Oktober 2019"
             android:textColor="#757575"
             android:textStyle="bold"
             android:textSize="13dp"/>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_activity"
-            android:layout_below="@id/text_tanggal"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            app:cardBackgroundColor="#0AA144"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="30dp"
-            app:cardCornerRadius="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp">
-
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:drawablePadding="10dp"
-                        android:drawableLeft="@drawable/ic_info"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Aktifitas Terbaru"
-                        android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:textSize="15dp"/>
-                    <TextView
-                        android:layout_marginLeft="33dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="3 Perlu diupdate"
-                        android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:textSize="13dp"/>
-
-                </LinearLayout>
-
-
-
-                <ImageView
-                    android:layout_weight="2"
-                    android:src="@drawable/ic_hometanpabg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/text_pemberitahuan"
-            android:layout_below="@id/card_activity"
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:id="@+id/linear_menuatas"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:text="Pemberitahuan"
-            android:textColor="#757575"
-            android:textStyle="bold"
-            android:textSize="13dp"/>
+            android:layout_below="@id/text_tanggal"
+            android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_icn_keamananhtn"/>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gangguan Kemanaan Hutan"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_icn_perubahankelashtn"/>
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Perubahan Kelas"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_marginTop="-8dp"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_icn_interaksimdh"/>
+                <TextView
+                    android:layout_marginTop="13dp"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Interaksi MDH"/>
+            </LinearLayout>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_menuatengah"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear_menuatas"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_icn_pemantauansatwa"/>
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pemantauan Satwa"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_icn_palbatas"/>
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Laporan Pal Batas"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_icn_registerpcp"/>
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Register PCP"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear_menuatengah"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_icn_palbatas"/>
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Identifikasi Konflik Tenurial"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_icn_palbatas"/>
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Laporan Pal Batas"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_icn_registerpcp"/>
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Register PCP"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
