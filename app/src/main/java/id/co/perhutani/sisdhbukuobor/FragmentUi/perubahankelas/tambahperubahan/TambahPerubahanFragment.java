@@ -477,6 +477,8 @@ public class TambahPerubahanFragment extends Fragment {
                                             values_aktifitas.put(TrnPerubahanKelas.LUAS_DEFINITIF, luas_definitif.getText().toString());
                                             values_aktifitas.put(TrnPerubahanKelas.JENIS_TANAMAN_DEFINITIF, jenis_definitif.getText().toString());
                                             values_aktifitas.put(TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF, kelas_definitif.getText().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.KET1, spin_anak_petak.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnPerubahanKelas.KET9, "0");
                                             values_aktifitas.put(TrnPerubahanKelas.KETERANGAN_PERUBAHAN, keterangan.getText().toString());
                                             db.create(TrnPerubahanKelas.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();

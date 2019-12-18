@@ -289,6 +289,8 @@ public class TambahpemantauansatwaFragment extends Fragment {
                                             values_aktifitas.put(TrnPemantauanSatwa.CARA_LIHAT, caralihat.getText().toString());
                                             values_aktifitas.put(TrnPemantauanSatwa.TANGGAL_PEMANTAUAN, tanggal.getText().toString());
                                             values_aktifitas.put(TrnPemantauanSatwa.KETERANGAN, keterangan.getText().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.KET1, spin_anak_petak.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.KET9, "0");
                                             db.create(TrnPemantauanSatwa.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
 

@@ -6,20 +6,11 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="14"
-<<<<<<< HEAD
 8-->D:\ebot\library_sweetalert\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="28" />
 9-->D:\ebot\library_sweetalert\src\main\AndroidManifest.xml
 10
 11    <application />
 11-->D:\ebot\library_sweetalert\src\main\AndroidManifest.xml:6:5-20
-=======
-8-->D:\Perhutani\ProjectAndroid\ebot\library_sweetalert\src\main\AndroidManifest.xml
-9        android:targetSdkVersion="28" />
-9-->D:\Perhutani\ProjectAndroid\ebot\library_sweetalert\src\main\AndroidManifest.xml
-10
-11    <application />
-11-->D:\Perhutani\ProjectAndroid\ebot\library_sweetalert\src\main\AndroidManifest.xml:6:5-20
->>>>>>> bc7535e11295648954698d3235ad3038eb065c6e
 12
 13</manifest>
