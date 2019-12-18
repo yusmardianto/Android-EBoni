@@ -151,13 +151,58 @@ public class TambahRegisterpcpFragment extends Fragment {
     public void act_simpan() {
         try {
 
+            final String nomor = nopcp.getText().toString();
             final String AnakPetak = anakpetak.getText().toString();
             final String tahun = tahunpcp.getText().toString();
-            if (AnakPetak.equals("") || AnakPetak.equals("0") || AnakPetak.equals(" ") || AnakPetak.equals(null)) {
+            final String umurpcp = umur.getText().toString();
+            final String luasblokpcp = luasblok.getText().toString();
+            final String luasbakupcp = luasbaku.getText().toString();
+            final String ratakeliling = rataratakeliling.getText().toString();
+            final String bonitapcp = bonita.getText().toString();
+            final String nlapanganpcp = nlapangan.getText().toString();
+            final String nmatipcp = nmati.getText().toString();
+            final String normal = normalpcp.getText().toString();
+            final String jarangan = tahunjurangan.getText().toString();
+            final String peninggipcp = peninggi.getText().toString();
+
+            if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Nomor PCP tidak boleh kosong");
+
+            } else if (AnakPetak.equals("") || AnakPetak.equals("0") || AnakPetak.equals(" ") || AnakPetak.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
 
             } else if(tahun.equals("") || tahun.equals("0") || tahun.equals(" ") || tahun.equals(null)){
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+
+            } else if(umurpcp.equals("") || umurpcp.equals("0") || umurpcp.equals(" ") || umurpcp.equals(null)){
+                AjnClass.showAlert(getActivity(), "Umur tidak boleh kosong");
+
+            } else if(luasblokpcp.equals("") || luasblokpcp.equals("0") || luasblokpcp.equals(" ") || luasblokpcp.equals(null)){
+                AjnClass.showAlert(getActivity(), "Luas Blok tidak boleh kosong");
+
+            } else if(luasbakupcp.equals("") || luasbakupcp.equals("0") || luasbakupcp.equals(" ") || luasbakupcp.equals(null)){
+                AjnClass.showAlert(getActivity(), "Luas Baku tidak boleh kosong");
+
+            } else if(ratakeliling.equals("") || ratakeliling.equals("0") || ratakeliling.equals(" ") || ratakeliling.equals(null)){
+                AjnClass.showAlert(getActivity(), "Rata-rata Keliling tidak boleh kosong");
+
+            } else if(bonitapcp.equals("") || bonitapcp.equals("0") || bonitapcp.equals(" ") || bonitapcp.equals(null)){
+                AjnClass.showAlert(getActivity(), "Bonita tidak boleh kosong");
+
+            } else if(nlapanganpcp.equals("") || nlapanganpcp.equals("0") || nlapanganpcp.equals(" ") || nlapanganpcp.equals(null)){
+                AjnClass.showAlert(getActivity(), "N Lapangan tidak boleh kosong");
+
+            } else if(nmatipcp.equals("") || nmatipcp.equals("0") || nmatipcp.equals(" ") || nmatipcp.equals(null)){
+                AjnClass.showAlert(getActivity(), "N Mati tidak boleh kosong");
+
+            } else if(normal.equals("") || normal.equals("0") || normal.equals(" ") || normal.equals(null)){
+                AjnClass.showAlert(getActivity(), "Normal dalam PCP tidak boleh kosong");
+
+            } else if(jarangan.equals("") || jarangan.equals("0") || jarangan.equals(" ") || jarangan.equals(null)){
+                AjnClass.showAlert(getActivity(), "Tahun Jarangan tidak boleh kosong");
+
+            } else if(peninggipcp.equals("") || peninggipcp.equals("0") || peninggipcp.equals(" ") || peninggipcp.equals(null)){
+                AjnClass.showAlert(getActivity(), "Peninggi tidak boleh kosong");
 
             }else {
 
