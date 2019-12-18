@@ -4,13 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +13,14 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,47 +28,48 @@ import id.co.perhutani.sisdhbukuobor.Adapter.InteraksimdhAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.tambahinteraksimdh.TambahInteraksimdhFragment;
 import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.R;
 
-public class ListInteraksimdhFragment extends Fragment
-{
-        //View v;
-    private static RecyclerView recylcerview;
+
+public class ListInteraksiMDHFragment extends Fragment {
+
+    private static RecyclerView myrecylcerview;
     private static ArrayList<InteraksimdhModel> DataModel;
     private static List<InteraksimdhModel> lstinteraksi;
     private static InteraksimdhAdapter imdhAdapter;
     private static Context context;
-
     private static final int VERTICAL_ITEM_SPACE = 0;
-    public static ListInteraksimdhFragment newInstance()
-    {
-        return new ListInteraksimdhFragment();
+
+    public static ListInteraksiMDHFragment newInstance() {
+
+        return new ListInteraksiMDHFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState)
-    {
+                             @Nullable Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.interaksi_mdh_fragment, container, false);
-        recylcerview = root.findViewById(R.id.interaksimdh_recycler);
-        recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-//      myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        myrecylcerview = root.findViewById(R.id.interaksimdh_recycler);
+        myrecylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         init();
 
-//        ImageView imgTambahInteraksi = (ImageView) root.findViewById(R.id.img_tambahinteraksi);
-//        imgTambahInteraksi.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new TambahInteraksimdhFragment();
-//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//            }
-//        });
+        ImageView imgTambahInteraksi = root.findViewById(R.id.tambah_interaksimdh);
+        imgTambahInteraksi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new TambahInteraksimdhFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
         final EditText txt_searchinteraksi = root.findViewById(R.id.txt_search_interaksi);
         txt_searchinteraksi.addTextChangedListener(new TextWatcher() {
@@ -94,16 +96,17 @@ public class ListInteraksimdhFragment extends Fragment
         return root;
     }
 
-    public void refresh(String imdh) {
+    public void refresh(String interaksi) {
         lstinteraksi = new ArrayList<>();
+
         try {
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, NAMA_DESA, BENTUK_INTERAKSI, TAHUN, STATUS, KETERANGAN" +
-//                  " DISTINCT(ANAK_PETAK_ID)" +
-                    " FROM TRN_INTERAKSI_MDH  " +
-                    " WHERE PETAK_ID " + " LIKE  " + "'%" + imdh + "%'" +
+                    " ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID " +
+//                    " DISTINCT(ANAK_PETAK_ID)" +
+                    " FROM TRN_INTERAKSI_MDH " +
+                    " WHERE ANAK_PETAK_ID " + " LIKE  " + "'%" + interaksi + "%'" +
                     " ORDER BY ID DESC", null);
 
             cur.moveToPosition(0);
@@ -131,25 +134,24 @@ public class ListInteraksimdhFragment extends Fragment
 
     public void init() {
         try {
-            imdhAdapter = new InteraksimdhAdapter(getContext(),lstinteraksi);
-            recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-            recylcerview .setAdapter(imdhAdapter);
+            imdhAdapter = new InteraksimdhAdapter(getContext(), lstinteraksi);
+            myrecylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+            myrecylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+            myrecylcerview.setAdapter(imdhAdapter);
         } catch (Exception ex) {
             AjnClass.showAlert(getActivity(), ex.toString());
         }
     }
 
-    public void def(){
+    public void def() {
         lstinteraksi = new ArrayList<>();
 
         try {
-
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, NAMA_DESA, BENTUK_INTERAKSI, TAHUN, STATUS, KETERANGAN" +
-//                  " DISTINCT(ANAK_PETAK_ID)" +
+                    " ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID " +
+//                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_INTERAKSI_MDH " +
                     " ORDER BY ID DESC", null);
 
@@ -176,16 +178,15 @@ public class ListInteraksimdhFragment extends Fragment
         }
     }
 
-    public static void refresh_list(){
+    public static void refresh_list() {
         lstinteraksi = new ArrayList<>();
 
         try {
-
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, NAMA_DESA, BENTUK_INTERAKSI, TAHUN, STATUS, KETERANGAN" +
-//                  " DISTINCT(ANAK_PETAK_ID)" +
+                    " ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID " +
+//                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_INTERAKSI_MDH " +
                     " ORDER BY ID DESC", null);
 
@@ -204,7 +205,6 @@ public class ListInteraksimdhFragment extends Fragment
                 ));
                 cur.moveToNext();
             }
-
             cur.close();
             db.close();
         } catch (Exception ex) {
@@ -212,11 +212,11 @@ public class ListInteraksimdhFragment extends Fragment
         }
 
         imdhAdapter = new InteraksimdhAdapter(context,lstinteraksi);
-        recylcerview.setLayoutManager(new LinearLayoutManager(context));
-        recylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        myrecylcerview.setLayoutManager(new LinearLayoutManager(context));
+        myrecylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         imdhAdapter.notifyDataSetChanged();
-        recylcerview.invalidate();
-        recylcerview.setAdapter(imdhAdapter);
+        myrecylcerview.invalidate();
+        myrecylcerview.setAdapter(imdhAdapter);
     }
 
     @Override

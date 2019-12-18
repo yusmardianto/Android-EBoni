@@ -27,7 +27,6 @@ import id.co.perhutani.sisdhbukuobor.Adapter.PemantauansatwaAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
-import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.tambahpemantauan.TambahpemantauansatwaFragment;
@@ -98,12 +97,13 @@ public class ListPemantauansatwaFragment extends Fragment
 
     public void refresh(String pemantauan) {
         lstpemantauan = new ArrayList<>();
+
         try {
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
                     " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, TANGGAL, ID" +
-//                    " DISTINCT(ANAKPETAK_ID)" +
+//                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " WHERE ANAK_PETAK_ID " + " LIKE  " + "'%" + pemantauan + "%'" +
                     " ORDER BY ID DESC", null);
@@ -148,7 +148,6 @@ public class ListPemantauansatwaFragment extends Fragment
         lstpemantauan = new ArrayList<>();
 
         try {
-
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
@@ -185,7 +184,6 @@ public class ListPemantauansatwaFragment extends Fragment
         lstpemantauan = new ArrayList<>();
 
         try {
-
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +

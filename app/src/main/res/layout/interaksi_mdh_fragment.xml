@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#fff"
-    tools:context=".FragmentUi.interaksimdh.ListInteraksimdhFragment">
+    tools:context=".FragmentUi.interaksimdh.ListInteraksiMDHFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:paddingLeft="-16dp"
@@ -30,7 +30,7 @@
     <LinearLayout
         android:layout_marginTop="50dp"
         android:orientation="horizontal"
-        android:id="@+id/linear_tambahinteraksimdh"
+        android:id="@+id/linear_interaksimdh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.inputmethodservice.ExtractEditText
@@ -45,7 +45,7 @@
             android:hint="@string/text_cari_anak_petak"/>
         <ImageView
             android:clickable="true"
-            android:id="@+id/img_tambahinteraksi"
+            android:id="@+id/tambah_interaksimdh"
             android:layout_weight="4"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
@@ -56,24 +56,12 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/linear_tambahinteraksimdh"
+        android:layout_below="@id/linear_interaksimdh"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/interaksimdh_recycler">
 
     </androidx.recyclerview.widget.RecyclerView>
-
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="100dp"-->
-<!--        android:background="@drawable/ic_background">-->
-
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="Login" />-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
 </RelativeLayout>

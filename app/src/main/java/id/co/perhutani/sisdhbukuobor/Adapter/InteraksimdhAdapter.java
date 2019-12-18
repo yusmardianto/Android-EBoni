@@ -22,7 +22,7 @@ import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.ListInteraksimdhFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.ListInteraksiMDHFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.editinteraksimdh.EditInteraksimdhFragment;
 import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.R;
@@ -197,7 +197,7 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
                                             // TODO Auto-generated method stub
                                             try {
                                                 db.delete_one_date(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id);
-                                                ListInteraksimdhFragment.refresh_list();
+                                                ListInteraksiMDHFragment.refresh_list();
                                             } catch (Exception ex) {
                                             }
                                             alert.dismiss();

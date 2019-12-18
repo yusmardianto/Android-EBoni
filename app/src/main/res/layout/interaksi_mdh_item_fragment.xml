@@ -116,6 +116,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/img_interaksimdhdetail"
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_weight="5"
@@ -123,7 +124,6 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_interaksimdhdetail"
             android:layout_marginRight="10dp"
             android:layout_width="30dp"
             android:layout_height="40dp"

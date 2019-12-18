@@ -63,7 +63,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:fontFamily="@font/font_aal_default"
-                        android:id="@+id/spinner_anakpetak_interaksi"
+                        android:id="@+id/edit_spinner_anakpetak_interaksi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -95,7 +95,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:fontFamily="@font/font_aal_default"
-                        android:id="@+id/spinner_tahuninteraksi"
+                        android:id="@+id/edit_spinner_tahuninteraksi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -210,7 +210,7 @@
 
                                 <androidx.appcompat.widget.AppCompatSpinner
                                     android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_bentukinteraksi"
+                                    android:id="@+id/edit_spinner_bentukinteraksi"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
 
@@ -242,7 +242,7 @@
 
                                 <androidx.appcompat.widget.AppCompatSpinner
                                     android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_statusinteraksi"
+                                    android:id="@+id/edit_spinner_statusinteraksi"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
 

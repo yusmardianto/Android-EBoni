@@ -213,7 +213,6 @@ public class EditPemantauanFragment extends Fragment {
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         anakpetak.setText(id_petak);
 
-        spin_cara_melihat = root.findViewById(R.id.edit_spinner_caramelihat);
         spin_waktu_lihat = root.findViewById(R.id.edit_spinner_waktu_lihat);
 
         spin_cara_melihat = root.findViewById(R.id.edit_spinner_caramelihat);
