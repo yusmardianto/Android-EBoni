@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".FragmentUi.interaksimdh.editinteraksimdh.EditInteraksimdhFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -19,7 +22,7 @@
             android:layout_marginRight="15dp"
             android:fontFamily="@font/font_aal_default"
             android:gravity="right|center"
-            android:text="Edit Interaksi MDH"
+            android:text="Ubah Interaksi MDH"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="20dp" />
 
@@ -94,6 +97,7 @@
                         android:textColor="#1F1E1E" />
 
                     <androidx.appcompat.widget.AppCompatSpinner
+                        android:entries="@array/array_tahun_interaksi"
                         android:fontFamily="@font/font_aal_default"
                         android:id="@+id/edit_spinner_tahuninteraksi"
                         android:layout_width="match_parent"
@@ -102,7 +106,7 @@
                     <EditText
                         android:fontFamily="@font/font_aal_default"
                         android:visibility="gone"
-                        android:id="@+id/edit_interaksimdh_tahun"
+                        android:id="@+id/interaksimdh_tahun"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background"
@@ -303,7 +307,7 @@
                         <Button
                             android:textSize="20dp"
                             android:fontFamily="@font/font_aal_bold"
-                            android:id="@+id/gangguan_btnsubmit"
+                            android:id="@+id/edit_interaksimdh_btnsimpan"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -319,5 +323,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
-</FrameLayout>
+</RelativeLayout>

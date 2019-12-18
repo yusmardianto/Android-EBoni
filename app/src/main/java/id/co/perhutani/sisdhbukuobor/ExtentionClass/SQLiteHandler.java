@@ -16,6 +16,7 @@ import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
+import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
@@ -96,17 +97,14 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstDesaSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_DELETE_ENTRIES);
-<<<<<<< HEAD
         db.execSQL(TrnInteraksimdh.SQL_DELETE_ENTRIES);
 //        db.execSQL(MstTahunJarangan.SQL_DELETE_ENTRIES);
-=======
         db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_DELETE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
->>>>>>> 784380d5400314fec7f9aa96993b2c1e58f301e1
         // Create tables again
         onCreate(db);
     }
@@ -294,6 +292,18 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     // Interaksi MDH
+    public void EditDataInteraksiMDH(InteraksimdhModel imdh) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + imdh.getID_IMDH();
+        ContentValues args = new ContentValues();
+        args.put(TrnInteraksimdh.ANAK_PETAK_ID, imdh.getAnakpetakid());
+        args.put(TrnInteraksimdh.TAHUN, imdh.getTahun());
+        args.put(TrnInteraksimdh.NAMA_DESA, imdh.getDesaid());
+        args.put(TrnInteraksimdh.BENTUK_INTERAKSI, imdh.getBentukinteraksi());
+        args.put(TrnInteraksimdh.STATUS, imdh.getStatus());
+        args.put(TrnInteraksimdh.KETERANGAN, imdh.getKeterangan());
+        db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
+    }
 
     // Pemantauan Satwa
     public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {

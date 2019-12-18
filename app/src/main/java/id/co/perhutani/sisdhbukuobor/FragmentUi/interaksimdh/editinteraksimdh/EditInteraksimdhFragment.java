@@ -26,6 +26,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.ListInteraksiMDHFragment;
+import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
@@ -182,12 +183,12 @@ public class EditInteraksimdhFragment extends Fragment {
             ex.printStackTrace();
         }
 
-        anakpetak = root.findViewById(R.id.interaksimdh_idpetak);
-        namadesa = root.findViewById(R.id.interaksimdh_namadesa);
-        bentukinteraksi = root.findViewById(R.id.interaksimdh_bentukinteraksi);
-        status = root.findViewById(R.id.interaksimdh_statusinteraksi);
-        keterangan = root.findViewById(R.id.interaksimdh_keterangan);
-        btnSimpanInteraksi = root.findViewById(R.id.interaksimdh_btnsubmit);
+        anakpetak = root.findViewById(R.id.edit_interaksimdh_idpetak);
+        namadesa = root.findViewById(R.id.edit_interaksimdh_namadesa);
+        bentukinteraksi = root.findViewById(R.id.edit_interaksimdh_bentukinteraksi);
+        status = root.findViewById(R.id.edit_interaksimdh_statusinteraksi);
+        keterangan = root.findViewById(R.id.edit_interaksimdh_keterangan);
+        btnSimpanInteraksi = root.findViewById(R.id.edit_interaksimdh_btnsimpan);
 
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anakpetak_interaksi);
         load_spinner_anak_petak();
@@ -306,18 +307,17 @@ public class EditInteraksimdhFragment extends Fragment {
                                     public void run() {
                                         // TODO Auto-generated method stub
                                         try {
+                                            InteraksimdhModel Aktifitasnya = new InteraksimdhModel();
+                                            Aktifitasnya.setID_IMDH(Integer.parseInt(id));
+                                            Aktifitasnya.setAnakpetakid(anakpetak.getText().toString());
+                                            Aktifitasnya.setTahun(spin_tahun.getSelectedItem().toString());
+                                            Aktifitasnya.setDesaid(namadesa.getText().toString());
+                                            Aktifitasnya.setBentukinteraksi(bentukinteraksi.getText().toString());
+                                            Aktifitasnya.setStatus(status.getText().toString());
+                                            Aktifitasnya.setKeterangan(keterangan.getText().toString());
+                                            db.EditDataInteraksiMDH(Aktifitasnya);
 
-                                            ContentValues values_aktifitas = new ContentValues();
-                                            values_aktifitas.put(TrnInteraksimdh.ANAK_PETAK_ID, anakpetak.getText().toString());
-                                            values_aktifitas.put(TrnInteraksimdh.TAHUN, spin_tahun.getSelectedItem().toString());
-                                            values_aktifitas.put(TrnInteraksimdh.NAMA_DESA, namadesa.getText().toString());
-                                            values_aktifitas.put(TrnInteraksimdh.BENTUK_INTERAKSI, bentukinteraksi.getText().toString());
-                                            values_aktifitas.put(TrnInteraksimdh.STATUS, status.getText().toString());
-                                            values_aktifitas.put(TrnInteraksimdh.KETERANGAN, keterangan.getText().toString());
-                                            db.create(TrnInteraksimdh.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();
-
-//                    // Move to fragment interaksi mdh
                                             FragmentManager manager = (getActivity()).getSupportFragmentManager();
                                             Fragment fragment = new ListInteraksiMDHFragment();
                                             FragmentTransaction ft = manager.beginTransaction();

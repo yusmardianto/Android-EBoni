@@ -29,6 +29,14 @@ public class InteraksimdhModel {
 
     }
 
+    public int getID_IMDH() {
+        return ID_IMDH;
+    }
+
+    public void setID_IMDH(int ID_IMDH) {
+        this.ID_IMDH = ID_IMDH;
+    }
+
 
     public String getId() {
         return Id;
