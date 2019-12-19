@@ -291,6 +291,16 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
+    public void EditDataPerubahanKelasroApi(PerubahankelasModel b) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + b.getID_Perubahan();
+        ContentValues args = new ContentValues();
+        args.put(TrnRegisterPcp.KET9, b.getKet9());
+        args.put(TrnRegisterPcp.KET10, b.getKet10());
+        db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
+    }
+
+
     // Interaksi MDH
     public void EditDataInteraksiMDH(InteraksimdhModel imdh) {
         SQLiteDatabase db = getReadableDatabase();

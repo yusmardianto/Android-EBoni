@@ -1,6 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -22,11 +24,11 @@ import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas.ListPerubahanKelasFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas.editperubahan.EditPerubahanFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas.ListPerubahanKelasFragment;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas.editperubahan.EditPerubahanFragment;
 
 public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAdapter.PerubahanklsViewHolder> {
 
@@ -66,6 +68,18 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
                 popup(mData.get(position).getID());
             }
         });
+
+        String status_sync = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, mData.get(position).getID(), TrnPerubahanKelas.KET9);
+        if (status_sync.equals("1")) {
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
+            holder.name_data_sinkron.setText("Sudah terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
+        }  else {
+            holder.name_data_sinkron.setText("Belum terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
+        }
+
     }
 
     @Override
@@ -80,6 +94,8 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
         private TextView tv_tahun;
         private TextView tv_kelashutan;
         private LinearLayout img_detailperubahan;
+        private TextView name_data_sinkron;
+        private ImageView name_info_alert;
 
         public PerubahanklsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,6 +105,8 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
             tv_tahun = (TextView) itemView.findViewById(R.id.name_tahunperubahankelas);
             tv_kelashutan = (TextView) itemView.findViewById(R.id.name_kelashutanperubahankelas);
             img_detailperubahan = itemView.findViewById(R.id.img_perubahankelasdetail);
+            name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_perubahan);
+            name_info_alert = itemView.findViewById(R.id.name_info_alert_perubahan);
 
         }
     }
