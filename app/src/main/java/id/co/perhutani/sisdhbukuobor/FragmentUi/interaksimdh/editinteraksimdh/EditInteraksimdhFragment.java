@@ -1,6 +1,5 @@
 package id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.editinteraksimdh;
 
-import android.content.ContentValues;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -100,7 +99,7 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_desa = spin_nama_desa.getSelectedItem().toString();
-                String id_desa = db.getDataDetail(MstDesaSchema.TABLE_NAME, MstDesaSchema.NAMA_DESA, pil_desa, MstDesaSchema.NAMA_DESA);
+                String id_desa = db.getDataDetail(MstDesaSchema.TABLE_NAME, MstDesaSchema.NAMA_DESA, pil_desa, MstDesaSchema.ID_DESA);
                 namadesa.setText(id_desa);
             }
 
@@ -127,7 +126,7 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_interaksi = spin_bentuk_interaksi.getSelectedItem().toString();
-                String id_interaksi = db.getDataDetail(MstBentukInteraksiSchema.TABLE_NAME, MstBentukInteraksiSchema.NAMA_INTERAKSI, pil_interaksi, MstBentukInteraksiSchema.NAMA_INTERAKSI);
+                String id_interaksi = db.getDataDetail(MstBentukInteraksiSchema.TABLE_NAME, MstBentukInteraksiSchema.NAMA_INTERAKSI, pil_interaksi, MstBentukInteraksiSchema.ID_INTERAKSI);
                 bentukinteraksi.setText(id_interaksi);
             }
 
@@ -154,7 +153,7 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_status = spin_status.getSelectedItem().toString();
-                String id_status = db.getDataDetail(MstStatusInteraksiSchema.TABLE_NAME, MstStatusInteraksiSchema.NAMA_STATUS, pil_status, MstStatusInteraksiSchema.NAMA_STATUS);
+                String id_status = db.getDataDetail(MstStatusInteraksiSchema.TABLE_NAME, MstStatusInteraksiSchema.NAMA_STATUS, pil_status, MstStatusInteraksiSchema.ID_STATUS);
                 status.setText(id_status);
             }
 

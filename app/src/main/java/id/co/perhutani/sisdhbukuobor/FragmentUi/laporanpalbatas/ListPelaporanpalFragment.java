@@ -30,7 +30,6 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.tambahlaporanpalbatas.TambahlaporanpalbatasFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
-import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.R;
 
 public class ListPelaporanpalFragment extends Fragment
@@ -40,6 +39,7 @@ public class ListPelaporanpalFragment extends Fragment
     private static List<PelaporanpalbatasModel> lstpelaporanpal;
     private static PelaporanpalbatasAdapter pAdapter;
     private static Context context;
+    private SQLiteHandler db;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListPelaporanpalFragment newInstance()
@@ -94,6 +94,19 @@ public class ListPelaporanpalFragment extends Fragment
                 // TODO Auto-generated method stub
             }
         });
+
+//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatalaporanpal);
+//        final RecyclerView dataada = root.findViewById(R.id.pelaporanpal_recycler);
+//
+//        final int ceksampling = db.cek_jumlah_data(TrnLaporanPalBatas.TABLE_NAME);
+//        if(String.valueOf(ceksampling).equals("0"))
+//        {
+//            datakosong.setVisibility(View.VISIBLE);
+//            dataada.setVisibility(View.GONE);
+//        }else {
+//            datakosong.setVisibility(View.GONE);
+//            dataada.setVisibility(View.VISIBLE);
+//        }
 
         return root;
     }

@@ -59,7 +59,10 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
     public void onBindViewHolder(@NonNull PelaporanpalbatasAdapter.PelaporanViewHolder holder, final int position) {
 
         db = new SQLiteHandler(mContext);
-        holder.tv_jenispal.setText(mData.get(position).getJenisPal());
+
+        String getJenisPal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, mData.get(position).getID(), TrnLaporanPalBatas.KET1);
+
+        holder.tv_jenispal.setText(getJenisPal);
         holder.tv_tanggalpal.setText(mData.get(position).getTanggalPal());
         holder.tv_nomerpal.setText(mData.get(position).getNomerPal());
         holder.tv_jumlahpal.setText(mData.get(position).getJumlahPal());
@@ -124,8 +127,8 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
             alertDialogBuilder.setView(viewas);
 
             String get_tanggalpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.TANGGAL_PAL);
-            final String get_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JENIS_PAL);
-            final String get_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KONDISI_PAL);
+            final String get_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET1);
+            final String get_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET2);
             String get_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
             String get_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
             String get_keterangnapal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KETERANGAN_PAL);

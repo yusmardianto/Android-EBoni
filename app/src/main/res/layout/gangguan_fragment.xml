@@ -55,7 +55,7 @@
                 android:layout_height="45dp" />
         </LinearLayout>
     <LinearLayout
-        android:id="@+id/layout_tidakadadata"
+        android:id="@+id/layout_tidakadadatagangguan"
         android:layout_marginTop="200dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"

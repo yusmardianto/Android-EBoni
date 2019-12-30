@@ -1,15 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.tambahinteraksimdh;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.ContentValues;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.List;
 
@@ -70,7 +68,7 @@ public class TambahInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 anakpetak.setText(id_petak);
             }
 
@@ -97,7 +95,7 @@ public class TambahInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_desa = spin_nama_desa.getSelectedItem().toString();
-                String id_desa = db.getDataDetail(MstDesaSchema.TABLE_NAME, MstDesaSchema.NAMA_DESA, pil_desa, MstDesaSchema.NAMA_DESA);
+                String id_desa = db.getDataDetail(MstDesaSchema.TABLE_NAME, MstDesaSchema.NAMA_DESA, pil_desa, MstDesaSchema.ID_DESA);
                 namadesa.setText(id_desa);
             }
 
@@ -124,7 +122,7 @@ public class TambahInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_interaksi = spin_bentuk_interaksi.getSelectedItem().toString();
-                String id_interaksi = db.getDataDetail(MstBentukInteraksiSchema.TABLE_NAME, MstBentukInteraksiSchema.NAMA_INTERAKSI, pil_interaksi, MstBentukInteraksiSchema.NAMA_INTERAKSI);
+                String id_interaksi = db.getDataDetail(MstBentukInteraksiSchema.TABLE_NAME, MstBentukInteraksiSchema.NAMA_INTERAKSI, pil_interaksi, MstBentukInteraksiSchema.ID_INTERAKSI);
                 bentukinteraksi.setText(id_interaksi);
             }
 
@@ -151,7 +149,7 @@ public class TambahInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_status = spin_status.getSelectedItem().toString();
-                String id_status = db.getDataDetail(MstStatusInteraksiSchema.TABLE_NAME, MstStatusInteraksiSchema.NAMA_STATUS, pil_status, MstStatusInteraksiSchema.NAMA_STATUS);
+                String id_status = db.getDataDetail(MstStatusInteraksiSchema.TABLE_NAME, MstStatusInteraksiSchema.NAMA_STATUS, pil_status, MstStatusInteraksiSchema.ID_STATUS);
                 status.setText(id_status);
             }
 
@@ -285,6 +283,11 @@ public class TambahInteraksimdhFragment extends Fragment {
                                             values_aktifitas.put(TrnInteraksimdh.NAMA_DESA, namadesa.getText().toString());
                                             values_aktifitas.put(TrnInteraksimdh.BENTUK_INTERAKSI, bentukinteraksi.getText().toString());
                                             values_aktifitas.put(TrnInteraksimdh.STATUS, status.getText().toString());
+                                            values_aktifitas.put(TrnInteraksimdh.KET1, spin_anak_petak.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnInteraksimdh.KET2, spin_tahun.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnInteraksimdh.KET3, spin_nama_desa.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnInteraksimdh.KET4, spin_bentuk_interaksi.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnInteraksimdh.KET5, spin_status.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KETERANGAN, keterangan.getText().toString());
                                             db.create(TrnInteraksimdh.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();

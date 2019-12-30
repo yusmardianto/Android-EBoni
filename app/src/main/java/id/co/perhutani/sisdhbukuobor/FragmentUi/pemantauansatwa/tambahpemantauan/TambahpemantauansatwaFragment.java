@@ -73,7 +73,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
                 // your code here
                 String pil_jenis_tanaman = spin_jenis_satwa.getSelectedItem().toString();
                 String id_jenis = db.getDataDetail(MstJenisSatwa.TABLE_NAME,
-                        MstJenisSatwa.JENIS_SATWA_NAME, pil_jenis_tanaman, MstJenisSatwa.JENIS_SATWA_NAME);
+                        MstJenisSatwa.JENIS_SATWA_NAME, pil_jenis_tanaman, MstJenisSatwa.JENIS_SATWA_ID);
                 jenissatwa.setText(id_jenis);
 
             }
@@ -101,7 +101,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 anakpetak.setText(id_petak);
             }
 
@@ -129,7 +129,7 @@ public class TambahpemantauansatwaFragment extends Fragment {
                 // your code here
                 String pil_cara_melihat = spin_cara_melihat.getSelectedItem().toString();
                 String id_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME,
-                        MstJenisTemuan.JENIS_TEMUAN_NAME, pil_cara_melihat, MstJenisTemuan.JENIS_TEMUAN_NAME);
+                        MstJenisTemuan.JENIS_TEMUAN_NAME, pil_cara_melihat, MstJenisTemuan.JENIS_TEMUAN_ID);
                 caralihat.setText(id_caramelihat);
 
             }
@@ -290,6 +290,9 @@ public class TambahpemantauansatwaFragment extends Fragment {
                                             values_aktifitas.put(TrnPemantauanSatwa.TANGGAL_PEMANTAUAN, tanggal.getText().toString());
                                             values_aktifitas.put(TrnPemantauanSatwa.KETERANGAN, keterangan.getText().toString());
                                             values_aktifitas.put(TrnPemantauanSatwa.KET1, spin_anak_petak.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.KET2, spin_jenis_satwa.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.KET3, spin_waktu_lihat.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnPemantauanSatwa.KET4, spin_cara_melihat.getSelectedItem().toString());
                                             values_aktifitas.put(TrnPemantauanSatwa.KET9, "0");
                                             db.create(TrnPemantauanSatwa.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();

@@ -1,4 +1,5 @@
 package id.co.perhutani.sisdhbukuobor.FragmentUi.registerpcp;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,11 +26,10 @@ import java.util.List;
 import id.co.perhutani.sisdhbukuobor.Adapter.RegisterpcpAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
-import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
-import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
-import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.registerpcp.tambahregisterpcp.TambahRegisterpcpFragment;
+import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
+import id.co.perhutani.sisdhbukuobor.R;
 
 public class ListRegisterpcpFragment extends Fragment
 {
@@ -39,6 +39,7 @@ public class ListRegisterpcpFragment extends Fragment
     private static List<RegisterpcpModel>lstregisterpcp;
     private static RegisterpcpAdapter rpAdapter;
     private static Context context;
+    private SQLiteHandler db;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListRegisterpcpFragment newInstance(){
@@ -91,6 +92,19 @@ public class ListRegisterpcpFragment extends Fragment
                 // TODO Auto-generated method stub
             }
         });
+
+//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadataregisterpcp);
+//        final RecyclerView dataada = root.findViewById(R.id.registerpcp_recycler);
+//
+//        final int ceksampling = db.cek_jumlah_data(TrnRegisterPcp.TABLE_NAME);
+//        if(String.valueOf(ceksampling).equals("0"))
+//        {
+//            datakosong.setVisibility(View.VISIBLE);
+//            dataada.setVisibility(View.GONE);
+//        }else {
+//            datakosong.setVisibility(View.GONE);
+//            dataada.setVisibility(View.VISIBLE);
+//        }
 
         return root;
     }

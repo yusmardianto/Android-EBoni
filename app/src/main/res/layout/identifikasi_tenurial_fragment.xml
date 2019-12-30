@@ -56,6 +56,25 @@
             android:layout_height="50dp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layout_tidakadadataidentifikasitenurial"
+        android:layout_marginTop="200dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/font_aal_default"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Tidak ada data"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"

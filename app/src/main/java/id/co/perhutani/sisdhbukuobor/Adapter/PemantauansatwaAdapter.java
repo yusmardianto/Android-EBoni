@@ -59,10 +59,14 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
     public void onBindViewHolder(@NonNull PemantauanViewHolder holder, final int position) {
         db = new SQLiteHandler(mContext);
 
-        holder.tv_jenisatwa.setText(mData.get(position).getJenis());
-        holder.tv_anakpetakid.setText(mData.get(position).getAnakPetakId());
+        String getAnakPetakId = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.KET1);
+        String getJenis = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.KET2);
+        String getWaktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.KET3);
+
+        holder.tv_jenisatwa.setText(getJenis);
+        holder.tv_anakpetakid.setText(getAnakPetakId);
         holder.tv_jumlahsatwa.setText(mData.get(position).getJumlah());
-        holder.tv_waktulihat.setText(mData.get(position).getWaktulihat());
+        holder.tv_waktulihat.setText(getWaktulihat);
         holder.tv_tanggal.setText(mData.get(position).getTanggal());
         holder.img_pemantaundetail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,11 +126,11 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
             alertDialogBuilder.setView(viewas);
 
-            String get_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
-            final String get_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
+            String get_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET1);
+            final String get_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET2);
             String get_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
-            String get_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
-            String get_caramelihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+            String get_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET3);
+            String get_caramelihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET4);
             String get_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
             String get_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
 

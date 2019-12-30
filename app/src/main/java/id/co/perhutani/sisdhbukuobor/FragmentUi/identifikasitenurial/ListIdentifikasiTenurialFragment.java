@@ -29,7 +29,6 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial.tambahidentifikasitenurial.TambahIdentifikasiTenurialFragment;
 import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
-import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.R;
 
 public class ListIdentifikasiTenurialFragment extends Fragment
@@ -41,6 +40,7 @@ public class ListIdentifikasiTenurialFragment extends Fragment
     private static IdentifikasiTenurialAdapter itAdapter;
     private static Context context;
     private static final int VERTICAL_ITEM_SPACE = 0;
+    private SQLiteHandler db;
 
     public static ListIdentifikasiTenurialFragment newInstance()
     {
@@ -92,6 +92,19 @@ public class ListIdentifikasiTenurialFragment extends Fragment
                 // TODO Auto-generated method stub
             }
         });
+
+//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadataidentifikasitenurial);
+//        final RecyclerView dataada = root.findViewById(R.id.identifikasitenurial_recycler);
+//
+//        final int ceksampling = db.cek_jumlah_data(TrnIdentifikasiTenurial.TABLE_NAME);
+//        if(String.valueOf(ceksampling).equals("0"))
+//        {
+//            datakosong.setVisibility(View.VISIBLE);
+//            dataada.setVisibility(View.GONE);
+//        }else {
+//            datakosong.setVisibility(View.GONE);
+//            dataada.setVisibility(View.VISIBLE);
+//        }
 
         return root;
     }

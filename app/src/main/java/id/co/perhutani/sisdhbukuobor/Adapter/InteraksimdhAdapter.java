@@ -56,10 +56,15 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
     public void onBindViewHolder(@NonNull InteraksimdhViewHolder holder, final int position) {
         db = new SQLiteHandler(mContext);
 
-        holder.tv_namadesa.setText(mData.get(position).getDesaid());
-        holder.tv_bentukinteraksi.setText(mData.get(position).getBentukinteraksi());
-        holder.tv_petakID.setText(mData.get(position).getAnakpetakid());
-        holder.tv_tahun.setText(mData.get(position).getTahun());
+        String getAnakpetakid = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, mData.get(position).getId(), TrnInteraksimdh.KET1);
+        String getTahun = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, mData.get(position).getId(), TrnInteraksimdh.KET2);
+        String getDesaid = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, mData.get(position).getId(), TrnInteraksimdh.KET3);
+        String getBentukinteraksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, mData.get(position).getId(), TrnInteraksimdh.KET4);
+
+        holder.tv_namadesa.setText(getDesaid);
+        holder.tv_bentukinteraksi.setText(getBentukinteraksi);
+        holder.tv_petakID.setText(getAnakpetakid);
+        holder.tv_tahun.setText(getTahun);
         holder.img_detailimdh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,11 +109,11 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
             alertDialogBuilder.setView(viewas);
 
             String get_id = db.getDataDetail(TrnInteraksimdh.TABLE_NAME,TrnInteraksimdh._ID, id, TrnInteraksimdh._ID);
-            String get_anakpetakdetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.ANAK_PETAK_ID);
-            String get_tahundetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.TAHUN);
-            final String get_namadesadetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.NAMA_DESA);
-            String get_bentukinteraksidetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.BENTUK_INTERAKSI);
-            String get_statusdetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.STATUS);
+            String get_anakpetakdetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET1);
+            String get_tahundetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET2);
+            final String get_namadesadetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET3);
+            String get_bentukinteraksidetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET4);
+            String get_statusdetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET5);
             String get_keterangandetail = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KETERANGAN);
 
             TextView anakpetak = viewas.findViewById(R.id.interaksimdh_petakdetailid);

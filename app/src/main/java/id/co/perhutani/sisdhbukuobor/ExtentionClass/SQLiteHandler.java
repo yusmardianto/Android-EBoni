@@ -510,7 +510,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getJenisGangguan() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME + " FROM " + MstJenisGangguanHutanSchema.TABLE_NAME +
-                " a ORDER BY a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+", a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_ID+" ASC";
+                " a ORDER BY a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+", a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Jenis Gangguan-");
@@ -527,7 +527,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getAnakPetak() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstAnakPetakSchema.ANAK_PETAK_NAME + " FROM " + MstAnakPetakSchema.TABLE_NAME +
-                " a ORDER BY a."+MstAnakPetakSchema.PETAK_NAME+", a."+MstAnakPetakSchema.ANAK_PETAK_ID+" ASC";
+                " a ORDER BY a."+MstAnakPetakSchema.PETAK_NAME+", a."+MstAnakPetakSchema.PETAK_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Anak Petak -");
@@ -549,7 +549,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getJenisPermasalahan() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME + " FROM " + MstJenisPermasalahanSchema.TABLE_NAME +
-                " a ORDER BY a."+MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME+", a."+MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_ID+" ASC";
+                " a ORDER BY a."+MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME+", a."+MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Jenis Permasalahan -");
@@ -583,7 +583,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getBentukInteraksi() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstBentukInteraksiSchema.NAMA_INTERAKSI + " FROM " + MstBentukInteraksiSchema.TABLE_NAME +
-                " a ORDER BY a."+MstBentukInteraksiSchema.NAMA_INTERAKSI+", a."+MstBentukInteraksiSchema.ID_INTERAKSI+" ASC";
+                " a ORDER BY a."+MstBentukInteraksiSchema.NAMA_INTERAKSI+", a."+MstBentukInteraksiSchema.NAMA_INTERAKSI+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Bentuk Interaksi -");
@@ -600,7 +600,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getStatusInteraksi() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstStatusInteraksiSchema.NAMA_STATUS + " FROM " + MstStatusInteraksiSchema.TABLE_NAME +
-                " a ORDER BY a."+MstStatusInteraksiSchema.NAMA_STATUS+", a."+MstStatusInteraksiSchema.ID_STATUS+" ASC";
+                " a ORDER BY a."+MstStatusInteraksiSchema.NAMA_STATUS+", a."+MstStatusInteraksiSchema.NAMA_STATUS+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Status Interaksi -");

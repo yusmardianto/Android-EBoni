@@ -40,6 +40,7 @@ public class ListInteraksiMDHFragment extends Fragment {
     private static InteraksimdhAdapter imdhAdapter;
     private static Context context;
     private static final int VERTICAL_ITEM_SPACE = 0;
+    private SQLiteHandler db;
 
     public static ListInteraksiMDHFragment newInstance() {
 
@@ -91,6 +92,19 @@ public class ListInteraksiMDHFragment extends Fragment {
                 // TODO Auto-generated method stub
             }
         });
+
+//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatainteraksimdh);
+//        final RecyclerView dataada = root.findViewById(R.id.interaksimdh_recycler);
+//
+//        final int ceksampling = db.cek_jumlah_data(TrnInteraksimdh.TABLE_NAME);
+//        if(String.valueOf(ceksampling).equals("0"))
+//        {
+//            datakosong.setVisibility(View.VISIBLE);
+//            dataada.setVisibility(View.GONE);
+//        }else {
+//            datakosong.setVisibility(View.GONE);
+//            dataada.setVisibility(View.VISIBLE);
+//        }
 
         return root;
     }

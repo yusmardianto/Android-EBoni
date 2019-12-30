@@ -83,7 +83,7 @@ public class EditPerubahanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 petak_id.setText(id_petak);
 
             }
@@ -112,7 +112,7 @@ public class EditPerubahanFragment extends Fragment {
                 // your code here
                 String pil_jenis_tanaman = spin_jenis_tanaman.getSelectedItem().toString();
                 String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME,
-                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman, MstJenisTanamanSchema.JENIS_TANAMAN_NAME);
+                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
                 jenis_tanaman.setText(id_jenis);
 
             }
@@ -141,7 +141,7 @@ public class EditPerubahanFragment extends Fragment {
                 // your code here
                 String pil_kelas_hutan = spin_kelas_hutan.getSelectedItem().toString();
                 String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
-                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_NAME);
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
                 kelas_hutan.setText(id_kelas_hutan);
 
             }
@@ -170,7 +170,7 @@ public class EditPerubahanFragment extends Fragment {
                 // your code here
                 String pil_jenis_tanaman_perkiraan = spin_jenis_tanaman_perkiraan.getSelectedItem().toString();
                 String id_jenis_perkiraan = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME,
-                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_perkiraan, MstJenisTanamanSchema.JENIS_TANAMAN_NAME);
+                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_perkiraan, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
                 jenis_perkiraan.setText(id_jenis_perkiraan);
 
             }
@@ -199,7 +199,7 @@ public class EditPerubahanFragment extends Fragment {
                 // your code here
                 String pil_kelas_hutan_perkiraan = spin_kelas_hutan_perkiraan.getSelectedItem().toString();
                 String id_kelas_hutan_perkiraan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
-                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_perkiraan, MstKelasHutanSchema.KELAS_HUTAN_NAME);
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_perkiraan, MstKelasHutanSchema.KELAS_HUTAN_ID);
                 kelas_perkiraan.setText(id_kelas_hutan_perkiraan);
 
             }
@@ -228,7 +228,7 @@ public class EditPerubahanFragment extends Fragment {
                 // your code here
                 String pil_jenis_tanaman_definitif = spin_jenis_tanaman_definitif.getSelectedItem().toString();
                 String id_jenis_tanaman_definitif = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME,
-                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_definitif, MstJenisTanamanSchema.JENIS_TANAMAN_NAME);
+                        MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_definitif, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
                 jenis_definitif.setText(id_jenis_tanaman_definitif);
 
             }
@@ -257,7 +257,7 @@ public class EditPerubahanFragment extends Fragment {
                 // your code here
                 String pil_kelas_hutan_definitif = spin_kelas_hutan_definitif.getSelectedItem().toString();
                 String id_kelas_hutan_definitif = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
-                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_definitif, MstKelasHutanSchema.KELAS_HUTAN_NAME);
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_definitif, MstKelasHutanSchema.KELAS_HUTAN_ID);
                 kelas_definitif.setText(id_kelas_hutan_definitif);
 
             }
