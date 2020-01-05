@@ -34,7 +34,7 @@ import id.co.perhutani.sisdhbukuobor.R;
 public class ListRegisterpcpFragment extends Fragment
 {
     //View v;
-    private static RecyclerView recylcerview;
+    private static RecyclerView recyclerview;
     private static ArrayList<RegisterpcpModel> DataModel;
     private static List<RegisterpcpModel>lstregisterpcp;
     private static RegisterpcpAdapter rpAdapter;
@@ -52,9 +52,9 @@ public class ListRegisterpcpFragment extends Fragment
                              @Nullable Bundle savedInstanceState)
     {
         View root = inflater.inflate(R.layout.register_pcp_fragment, container, false);
-        recylcerview = root.findViewById(R.id.registerpcp_recycler);
-        recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recylcerview .setAdapter(rpAdapter);
+        recyclerview = root.findViewById(R.id.registerpcp_recycler);
+        recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerview .setAdapter(rpAdapter);
         init();
 
 
@@ -157,9 +157,9 @@ public class ListRegisterpcpFragment extends Fragment
     public void init() {
         try {
             rpAdapter = new RegisterpcpAdapter(getContext(),lstregisterpcp);
-            recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-            recylcerview .setAdapter(rpAdapter);
+            recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+            recyclerview .setAdapter(rpAdapter);
         } catch (Exception ex) {
             AjnClass.showAlert(getActivity(), ex.toString());
         }
@@ -258,11 +258,11 @@ public class ListRegisterpcpFragment extends Fragment
         }
 
         rpAdapter = new RegisterpcpAdapter(context,lstregisterpcp);
-        recylcerview.setLayoutManager(new LinearLayoutManager(context));
-        recylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        recyclerview.setLayoutManager(new LinearLayoutManager(context));
+        recyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         rpAdapter.notifyDataSetChanged();
-        recylcerview.invalidate();
-        recylcerview.setAdapter(rpAdapter);
+        recyclerview.invalidate();
+        recyclerview.setAdapter(rpAdapter);
     }
 
     @Override

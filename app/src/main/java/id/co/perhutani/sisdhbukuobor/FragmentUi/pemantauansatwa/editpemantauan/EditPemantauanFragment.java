@@ -39,11 +39,11 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansa
 
 public class EditPemantauanFragment extends Fragment {
 
-    private EditText anakpetak, jenissatwa, jumlahsatwa, caralihat, tanggal, keterangan;
+    private EditText anakpetak, jenissatwa, jumlahsatwa, caralihat, waktulihat, tanggal, keterangan;
 
     public static final String MSG_KEY = "id";
     private static SQLiteHandler db;
-    private static String id, str_anakpetak, str_jenissatwa, str_jumlahsatwa,
+    private static String id, str_anakpetak, str_jenissatwa, str_jumlahsatwa, str_waktulihat,
             str_caralihat, str_tanggal, str_keterangan;
     private Button btnSimpanPemantauan;
     private Spinner spin_anak_petak;
@@ -169,6 +169,7 @@ public class EditPemantauanFragment extends Fragment {
         anakpetak = root.findViewById(R.id.edit_pemantauan_anakpetak);
         jenissatwa = root.findViewById(R.id.edit_pemantauan_jenissatwa);
         jumlahsatwa = root.findViewById(R.id.edit_pemantauan_jumlahsatwa);
+        waktulihat = root.findViewById(R.id.edit_pemantauan_waktulihat);
         caralihat = root.findViewById(R.id.edit_pemantauan_caralihat);
         tanggal = root.findViewById(R.id.edit_pemantauan_tanggal);
         SimpleDateFormat sdf_tglmulai = new SimpleDateFormat("dd-MM-yyyy");
@@ -221,16 +222,18 @@ public class EditPemantauanFragment extends Fragment {
         String id_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME, MstJenisTemuan.JENIS_TEMUAN_NAME, pil_cara_melihat, MstJenisTemuan.JENIS_TEMUAN_ID);
         caralihat.setText(id_caramelihat);
 
-        str_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JENIS_SATWA);
-        str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
+        str_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET2);
+        str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET1);
         str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
-        str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+        str_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET3);
+        str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET4);
         str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
         str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
 
         jenissatwa.setText(str_jenissatwa);
         anakpetak.setText(str_anakpetak);
         jumlahsatwa.setText(str_jumlahsatwa);
+        waktulihat.setText(str_waktulihat);
         caralihat.setText(str_caralihat);
         tanggal.setText(str_tanggal);
         keterangan.setText(str_keterangan);
@@ -328,6 +331,9 @@ public class EditPemantauanFragment extends Fragment {
                                             Aktifitasnya.setTanggal(tanggal.getText().toString());
                                             Aktifitasnya.setKeteranganSatwa(keterangan.getText().toString());
                                             Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKet2(spin_jenis_satwa.getSelectedItem().toString());
+                                            Aktifitasnya.setKet3(spin_waktu_lihat.getSelectedItem().toString());
+                                            Aktifitasnya.setKet4(spin_cara_melihat.getSelectedItem().toString());
                                             Aktifitasnya.setKet9("2");
                                             db.EditDataPemantauanSatwa(Aktifitasnya);
 

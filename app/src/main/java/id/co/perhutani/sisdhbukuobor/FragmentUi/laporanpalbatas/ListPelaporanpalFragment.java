@@ -117,7 +117,7 @@ public class ListPelaporanpalFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID" +
+                    " ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ID)" +
                     " FROM TRN_LAPORAN_PAL " +
                     " WHERE NO_PAL " + " LIKE  " + "'%" + laporanpal + "%'" +
@@ -134,10 +134,11 @@ public class ListPelaporanpalFragment extends Fragment
                         cur.getString(4),
                         cur.getString(5),
                         cur.getString(6),
-                        cur.getString(0),
+                        cur.getString(7),
+                        cur.getString(8),
                         Integer.parseInt(cur.getString(0)),
-                        cur.getString(0),
-                        cur.getString(0)));
+                        cur.getString(9),
+                        cur.getString(10)));
                 cur.moveToNext();
             }
 
@@ -167,7 +168,7 @@ public class ListPelaporanpalFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID" +
+                    " ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ID)" +
                     " FROM TRN_LAPORAN_PAL " +
                     " ORDER BY ID DESC", null);
@@ -183,10 +184,11 @@ public class ListPelaporanpalFragment extends Fragment
                         cur.getString(4),
                         cur.getString(5),
                         cur.getString(6),
-                        cur.getString(0),
+                        cur.getString(7),
+                        cur.getString(8),
                         Integer.parseInt(cur.getString(0)),
-                        cur.getString(0),
-                        cur.getString(0)));
+                        cur.getString(9),
+                        cur.getString(10)));
                 cur.moveToNext();
             }
 
@@ -205,7 +207,7 @@ public class ListPelaporanpalFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    "ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID" +
+                    "ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ID)" +
                     " FROM TRN_LAPORAN_PAL " +
                     " ORDER BY ID DESC", null);
@@ -221,10 +223,11 @@ public class ListPelaporanpalFragment extends Fragment
                         cur.getString(4),
                         cur.getString(5),
                         cur.getString(6),
-                        cur.getString(0),
+                        cur.getString(7),
+                        cur.getString(8),
                         Integer.parseInt(cur.getString(0)),
-                        cur.getString(0),
-                        cur.getString(0)));
+                        cur.getString(9),
+                        cur.getString(10)));
                 cur.moveToNext();
             }
 

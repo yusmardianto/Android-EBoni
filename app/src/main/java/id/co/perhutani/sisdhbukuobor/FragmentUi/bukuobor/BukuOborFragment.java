@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,17 +13,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial.ListIdentifikasiTenurialFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.ListInteraksiMDHFragment;
-import id.co.perhutani.sisdhbukuobor.R;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.ListPelaporanpalFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansatwaFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas.ListPerubahanKelasFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.registerpcp.ListRegisterpcpFragment;
+import id.co.perhutani.sisdhbukuobor.R;
 
 public class BukuOborFragment extends Fragment {
 
+
+    private SQLiteHandler db;
 
     public static BukuOborFragment newInstance() {
         return new BukuOborFragment();
@@ -30,18 +35,22 @@ public class BukuOborFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container,
+                             @Nullable Bundle savedInstanceState)
+    {
 //        return inflater.inflate(R.layout.buku_obor_fragment, container, false);
 
 
         View root = inflater.inflate(R.layout.buku_obor_fragment, container, false);
 
 
-        LinearLayout lingangguan = root.findViewById(R.id.linear_gangguan);
+        final LinearLayout lingangguan = root.findViewById(R.id.linear_gangguan);
         lingangguan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                View gangguan = inflater.inflate(R.layout.gangguan_fragment, container, false);
+
                 Fragment fragment = new ListGangguanFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -128,6 +137,7 @@ public class BukuOborFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
         return root;
     }
 
