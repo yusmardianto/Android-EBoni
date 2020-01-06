@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -129,7 +128,7 @@ public class ListGangguanFragment extends Fragment
             }
         });
 
-        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadata);
+        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatagangguan);
         final RecyclerView dataada = root.findViewById(R.id.gangguan_recycler);
 
         final int ceksampling = db.cek_jumlah_data(TrnGangguanKeamananHutan.TABLE_NAME);
@@ -295,6 +294,7 @@ public class ListGangguanFragment extends Fragment
 //        Toast.makeText(context, "Sync data..!", Toast.LENGTH_SHORT).show();
 
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

@@ -4,6 +4,7 @@
 4
 5    <uses-sdk
 <<<<<<< HEAD
+<<<<<<< HEAD
 5-->D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6765651452181601827.xml:5:5-74
 6        android:minSdkVersion="14"
 6-->D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6765651452181601827.xml:5:15-41
@@ -27,42 +28,54 @@
 16-->D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6765651452181601827.xml:7:5-9:19
 =======
 5-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:5:5-74
+=======
+5-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:5:5-74
+>>>>>>> 24fdeafaa96e6943b67b1edcba8a24bdae27d749
 6        android:minSdkVersion="14"
-6-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:5:15-41
+6-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:5:15-41
 7        android:targetSdkVersion="28" />
-7-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:5:42-71
+7-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:5:42-71
 8
 9    <instrumentation
-9-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:11:5-15:75
+9-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:11:5-15:75
 10        android:name="android.test.InstrumentationTestRunner"
-10-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:11:22-75
+10-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:11:22-75
 11        android:functionalTest="false"
-11-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:14:22-52
+11-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:14:22-52
 12        android:handleProfiling="false"
-12-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:13:22-53
+12-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:13:22-53
 13        android:label="Tests for cn.pedant.SweetAlert.test"
-13-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:15:22-73
+13-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:15:22-73
 14        android:targetPackage="cn.pedant.SweetAlert.test" />
-14-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:12:22-71
+14-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:12:22-71
 15
 16    <application
+<<<<<<< HEAD
 16-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:7:5-9:19
 >>>>>>> d26ffbbe599ebb4169cbaabf38bf2d00e455ecda
+=======
+16-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:7:5-9:19
+>>>>>>> 24fdeafaa96e6943b67b1edcba8a24bdae27d749
 17        android:allowBackup="true"
 17-->[com.pnikosis:materialish-progress:1.0] C:\Users\Yusmardianto\.gradle\caches\transforms-2\files-2.1\38146e36c7ddcd1e31b6eaa1108813b0\materialish-progress-1.0\AndroidManifest.xml:12:9-35
 18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 18-->[androidx.core:core:1.0.0] C:\Users\Yusmardianto\.gradle\caches\transforms-2\files-2.1\246153fc0686d4ff78c8961ca91329b7\core-1.0.0\AndroidManifest.xml:22:18-86
 19        android:debuggable="true"
 <<<<<<< HEAD
+<<<<<<< HEAD
 19-->D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6765651452181601827.xml:7:18-43
 =======
 19-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:7:18-43
 >>>>>>> d26ffbbe599ebb4169cbaabf38bf2d00e455ecda
+=======
+19-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:7:18-43
+>>>>>>> 24fdeafaa96e6943b67b1edcba8a24bdae27d749
 20        android:icon="@drawable/ic_launcher"
 20-->[com.pnikosis:materialish-progress:1.0] C:\Users\Yusmardianto\.gradle\caches\transforms-2\files-2.1\38146e36c7ddcd1e31b6eaa1108813b0\materialish-progress-1.0\AndroidManifest.xml:13:9-45
 21        android:label="@string/app_name" >
 21-->[com.pnikosis:materialish-progress:1.0] C:\Users\Yusmardianto\.gradle\caches\transforms-2\files-2.1\38146e36c7ddcd1e31b6eaa1108813b0\materialish-progress-1.0\AndroidManifest.xml:14:9-41
 22        <uses-library android:name="android.test.runner" />
+<<<<<<< HEAD
 <<<<<<< HEAD
 22-->D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6765651452181601827.xml:8:9-60
 22-->D:\Bagus Nurcahyo Putra\PERHUTANI\PROJECT MOBILE\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6765651452181601827.xml:8:23-57
@@ -70,6 +83,10 @@
 22-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:8:9-60
 22-->D:\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger4051547143136598197.xml:8:23-57
 >>>>>>> d26ffbbe599ebb4169cbaabf38bf2d00e455ecda
+=======
+22-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:8:9-60
+22-->D:\Project Magang Perhutani\Buku obor\ebot\library_sweetalert\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger1641138395551337125.xml:8:23-57
+>>>>>>> 24fdeafaa96e6943b67b1edcba8a24bdae27d749
 23    </application>
 24
 25</manifest>

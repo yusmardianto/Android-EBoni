@@ -69,7 +69,7 @@ public class TambahlaporanpalbatasFragment extends Fragment {
                 // your code here
                 String pil_pal = spin_jenis_pal.getSelectedItem().toString();
                 String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME,
-                        pil_pal, MstJenisPalSchema.JENIS_PAL_NAME);
+                        pil_pal, MstJenisPalSchema.JENIS_PAL_ID);
                 jenispal.setText(jenis_pal);
 
             }
@@ -210,6 +210,8 @@ public class TambahlaporanpalbatasFragment extends Fragment {
                                             values_aktifitas.put(TrnLaporanPalBatas.KONDISI_PAL, spin_kondisi.getSelectedItem().toString());
                                             values_aktifitas.put(TrnLaporanPalBatas.TANGGAL_PAL, tanggalpal.getText().toString());
                                             values_aktifitas.put(TrnLaporanPalBatas.JUMLAH_PAL, jumlahpal.getText().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.KET1, spin_jenis_pal.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnLaporanPalBatas.KET2, spin_kondisi.getSelectedItem().toString());
                                             values_aktifitas.put(TrnLaporanPalBatas.KETERANGAN_PAL, keteranganpal.getText().toString());
                                             values_aktifitas.put(TrnLaporanPalBatas.KET9, "0");
                                             db.create(TrnLaporanPalBatas.TABLE_NAME, values_aktifitas);

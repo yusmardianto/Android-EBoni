@@ -26,10 +26,10 @@ import java.util.List;
 import id.co.perhutani.sisdhbukuobor.Adapter.PerubahankelasAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
-import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
-import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas.tambahperubahan.TambahPerubahanFragment;
+import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
+import id.co.perhutani.sisdhbukuobor.R;
 
 public class ListPerubahanKelasFragment extends Fragment
 {
@@ -39,6 +39,7 @@ public class ListPerubahanKelasFragment extends Fragment
     private static List<PerubahankelasModel>lstperubahankls;
     private static PerubahankelasAdapter pkAdapter;
     private static Context context;
+    private SQLiteHandler db;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListPerubahanKelasFragment newInstance()
@@ -94,6 +95,20 @@ public class ListPerubahanKelasFragment extends Fragment
             }
         });
 
+//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadataperubahankelas);
+//        final RecyclerView dataada = root.findViewById(R.id.perubahankls_recycler);
+//
+//        final int ceksampling = db.cek_jumlah_data(TrnPerubahanKelas.TABLE_NAME);
+//        if(String.valueOf(ceksampling).equals("0"))
+//        {
+//            datakosong.setVisibility(View.VISIBLE);
+//            dataada.setVisibility(View.GONE);
+//        }else {
+//            datakosong.setVisibility(View.GONE);
+//            dataada.setVisibility(View.VISIBLE);
+//        }
+
+
         return root;
     }
 
@@ -103,7 +118,7 @@ public class ListPerubahanKelasFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, TAHUN, ID, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID" +
+                    "ID, PETAK_ID, TAHUN, ID, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID, ID, KET1, KET2, KET3, KET4, KET5, KET6, KET7, ID, KET9, KET10" +
 //                    " DISTINCT(ANAK_PETAK_ID_PERUBAHAN)" +
                     " FROM TRN_PERUBAHAN_KELAS  " +
                     " WHERE PETAK_ID " + " LIKE  " + "'%" + perubahan + "%'" +
@@ -128,9 +143,15 @@ public class ListPerubahanKelasFragment extends Fragment
                         cur.getString(12),
                         cur.getString(13),
                         cur.getString(14),
-                        Integer.parseInt(cur.getString(0)),
                         cur.getString(15),
-                        cur.getString(16)
+                        cur.getString(16),
+                        cur.getString(17),
+                        cur.getString(18),
+                        cur.getString(19),
+                        cur.getString(20),
+                        Integer.parseInt(cur.getString(0)),
+                        cur.getString(21),
+                        cur.getString(22)
                 ));
                 cur.moveToNext();
             }
@@ -161,7 +182,7 @@ public class ListPerubahanKelasFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, TAHUN, ID, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID" +
+                    "ID, PETAK_ID, TAHUN, ID, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID, ID, KET1, KET2, KET3, KET4, KET5, KET6, KET7, ID, KET9, KET10" +
 //                    " DISTINCT(ANAK_PETAK_ID_PERUBAHAN)" +
                     " FROM TRN_PERUBAHAN_KELAS " +
                     " ORDER BY ID DESC", null);
@@ -185,9 +206,15 @@ public class ListPerubahanKelasFragment extends Fragment
                         cur.getString(12),
                         cur.getString(13),
                         cur.getString(14),
-                        Integer.parseInt(cur.getString(0)),
                         cur.getString(15),
-                        cur.getString(16)
+                        cur.getString(16),
+                        cur.getString(17),
+                        cur.getString(18),
+                        cur.getString(19),
+                        cur.getString(20),
+                        Integer.parseInt(cur.getString(0)),
+                        cur.getString(21),
+                        cur.getString(22)
                 ));
                 cur.moveToNext();
             }
@@ -207,7 +234,7 @@ public class ListPerubahanKelasFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, PETAK_ID, TAHUN, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID ,ID, ID, ID, ID, ID, ID" +
+                    "ID, PETAK_ID, TAHUN, ID, JENIS_TANAMAN, KELAS_HUTAN, ID, ID, ID, ID, ID, ID, ID, KET1, KET2, KET3, KET4, KET5, KET6, KET7, ID, KET9, KET10" +
 //                    " DISTINCT(ANAK_PETAK_ID_PERUBAHAN)" +
                     " FROM TRN_PERUBAHAN_KELAS " +
                     " ORDER BY ID DESC", null);
@@ -231,9 +258,15 @@ public class ListPerubahanKelasFragment extends Fragment
                         cur.getString(12),
                         cur.getString(13),
                         cur.getString(14),
-                        Integer.parseInt(cur.getString(0)),
                         cur.getString(15),
-                        cur.getString(16)
+                        cur.getString(16),
+                        cur.getString(17),
+                        cur.getString(18),
+                        cur.getString(19),
+                        cur.getString(20),
+                        Integer.parseInt(cur.getString(0)),
+                        cur.getString(21),
+                        cur.getString(22)
                 ));
                 cur.moveToNext();
             }

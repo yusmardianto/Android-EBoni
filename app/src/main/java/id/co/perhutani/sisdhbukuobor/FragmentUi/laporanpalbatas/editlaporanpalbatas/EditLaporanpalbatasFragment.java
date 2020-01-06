@@ -32,7 +32,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 
 public class EditLaporanpalbatasFragment extends Fragment {
 
-    private EditText tanggalpal, jenispal, nopal, jumlahpal, keteranganpal;
+    private EditText tanggalpal, jenispal, kondisipal, nopal, jumlahpal, keteranganpal;
     private Spinner spin_jenis_pal;
     private Spinner spin_kondisi;
 
@@ -67,7 +67,7 @@ public class EditLaporanpalbatasFragment extends Fragment {
                 // your code here
                 String pil_pal = spin_jenis_pal.getSelectedItem().toString();
                 String jenis_pal = db.getDataDetail(MstJenisPalSchema.TABLE_NAME, MstJenisPalSchema.JENIS_PAL_NAME,
-                        pil_pal, MstJenisPalSchema.JENIS_PAL_NAME);
+                        pil_pal, MstJenisPalSchema.JENIS_PAL_ID);
                 jenispal.setText(jenis_pal);
 
             }
@@ -100,6 +100,7 @@ public class EditLaporanpalbatasFragment extends Fragment {
 
         tanggalpal = root.findViewById(R.id.edit_palbatas_tanggal);
         jenispal = root.findViewById(R.id.edit_palbatas_jenispal);
+        kondisipal = root.findViewById(R.id.edit_palbatas_kondisipal);
         nopal = root.findViewById(R.id.edit_palbatas_nopal);
         jumlahpal = root.findViewById(R.id.edit_palbatas_jumlahpal);
         keteranganpal = root.findViewById(R.id.edit_palbatas_ketpal);
@@ -114,13 +115,15 @@ public class EditLaporanpalbatasFragment extends Fragment {
         spin_kondisi = root.findViewById(R.id.edit_spinner_kondisi);
 
         str_tanggalpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.TANGGAL_PAL);
-        str_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JENIS_PAL);
+        str_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET1);
+        str_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET2);
         str_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
         str_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
         str_keteranganpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KETERANGAN_PAL);
 
         tanggalpal.setText(str_tanggalpal);
         jenispal.setText(str_jenispal);
+        kondisipal.setText(str_kondisipal);
         nopal.setText(str_nopal);
         jumlahpal.setText(str_jumlahpal);
         keteranganpal.setText(str_keteranganpal);
@@ -209,6 +212,7 @@ public class EditLaporanpalbatasFragment extends Fragment {
                                             Aktifitasnya.setNomerPal(nopal.getText().toString());
                                             Aktifitasnya.setJenisPal(jenispal.getText().toString());
                                             Aktifitasnya.setKondisiPal(spin_kondisi.getSelectedItem().toString());
+                                            Aktifitasnya.setKet2(spin_kondisi.getSelectedItem().toString());
                                             Aktifitasnya.setTanggalPal(tanggalpal.getText().toString());
                                             Aktifitasnya.setJumlahPal(jumlahpal.getText().toString());
                                             Aktifitasnya.setKeteranganPal(keteranganpal.getText().toString());

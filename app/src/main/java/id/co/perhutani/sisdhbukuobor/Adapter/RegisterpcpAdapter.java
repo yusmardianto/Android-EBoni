@@ -57,8 +57,11 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
     @Override
     public void onBindViewHolder(@NonNull RegisterpcpViewHolder holder, final int position) {
         db = new SQLiteHandler(mContext);
+
+        String getAnakPetakId = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, mData.get(position).getID(), TrnRegisterPcp.KET1);
+
         holder.tv_nopcp.setText(mData.get(position).getNoPcp());
-        holder.tv_anakpetakid.setText(mData.get(position).getAnakPetakId());
+        holder.tv_anakpetakid.setText(getAnakPetakId);
         holder.tv_tahunpcp.setText(mData.get(position).getTahun());
         holder.tv_bonitapcp.setText(mData.get(position).getBonita());
         holder.img_detailregisterpcp.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +122,7 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
             alertDialogBuilder.setView(viewas);
 
             final String get_nopcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.NO_PCP);
-            String get_anakpetakid = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.ANAK_PETAK_ID);
+            String get_anakpetakid = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KET1);
             String get_tahunpcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_PCP);
             String get_luasbaku = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.LUAS_BAKU);
             String get_luasblok = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.LUAS_BLOK);

@@ -26,11 +26,10 @@ import java.util.List;
 import id.co.perhutani.sisdhbukuobor.Adapter.PemantauansatwaAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
-import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
-import id.co.perhutani.sisdhbukuobor.R;
-
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.tambahpemantauan.TambahpemantauansatwaFragment;
+import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
+import id.co.perhutani.sisdhbukuobor.R;
 
 public class ListPemantauansatwaFragment extends Fragment
 {
@@ -41,6 +40,7 @@ public class ListPemantauansatwaFragment extends Fragment
     private static PemantauansatwaAdapter psAdapter;
     private static Context context;
     private static final int VERTICAL_ITEM_SPACE = 0;
+    private SQLiteHandler db;
 
     public static ListPemantauansatwaFragment newInstance()
     {
@@ -93,6 +93,19 @@ public class ListPemantauansatwaFragment extends Fragment
             }
         });
 
+//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatapemantauansatwa);
+//        final RecyclerView dataada = root.findViewById(R.id.pemantauan_recycler);
+//
+//        final int ceksampling = db.cek_jumlah_data(TrnPemantauanSatwa.TABLE_NAME);
+//        if(String.valueOf(ceksampling).equals("0"))
+//        {
+//            datakosong.setVisibility(View.VISIBLE);
+//            dataada.setVisibility(View.GONE);
+//        }else {
+//            datakosong.setVisibility(View.GONE);
+//            dataada.setVisibility(View.VISIBLE);
+//        }
+
         return root;
     }
 
@@ -103,7 +116,7 @@ public class ListPemantauansatwaFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, TANGGAL, ID, ID, ID, ID" +
+                    " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, TANGGAL, ID, ID, ID, ID, ID, ID, ID" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " WHERE ANAK_PETAK_ID " + " LIKE  " + "'%" + pemantauan + "%'" +
                     " ORDER BY ID DESC", null);
@@ -123,6 +136,9 @@ public class ListPemantauansatwaFragment extends Fragment
                         cur.getString(8),
                         cur.getString(9),
                         cur.getString(10),
+                        cur.getString(11),
+                        cur.getString(12),
+                        cur.getString(13),
                         Integer.parseInt(cur.getString(0))
                 ));
                 cur.moveToNext();
@@ -154,7 +170,7 @@ public class ListPemantauansatwaFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, TANGGAL, ID, ID, ID, ID" +
+                    " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, TANGGAL, ID, ID, ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " ORDER BY ID DESC", null);
@@ -174,6 +190,9 @@ public class ListPemantauansatwaFragment extends Fragment
                         cur.getString(8),
                         cur.getString(9),
                         cur.getString(10),
+                        cur.getString(11),
+                        cur.getString(12),
+                        cur.getString(13),
                         Integer.parseInt(cur.getString(0))
                 ));
                 cur.moveToNext();
@@ -193,7 +212,7 @@ public class ListPemantauansatwaFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, TANGGAL, ID, ID, ID, ID" +
+                    " ID, ANAK_PETAK_ID, JENIS_SATWA, JUMLAH_SATWA, WAKTU_LIHAT, ID, TANGGAL, ID, ID, ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " ORDER BY ID DESC", null);
@@ -213,6 +232,9 @@ public class ListPemantauansatwaFragment extends Fragment
                         cur.getString(8),
                         cur.getString(9),
                         cur.getString(10),
+                        cur.getString(11),
+                        cur.getString(12),
+                        cur.getString(13),
                         Integer.parseInt(cur.getString(0))
                 ));
                 cur.moveToNext();

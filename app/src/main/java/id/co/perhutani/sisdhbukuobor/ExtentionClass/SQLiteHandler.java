@@ -275,18 +275,25 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + pk.getID_Perubahan();
         ContentValues args = new ContentValues();
+        args.put(TrnPerubahanKelas.KET1, pk.getKet1());
         args.put(TrnPerubahanKelas.ANAK_PETAK_ID_PERUBAHAN, pk.getPetakID());
         args.put(TrnPerubahanKelas.TAHUN_PERUBAHAN, pk.getTahun());
         args.put(TrnPerubahanKelas.LUAS_PERUBAHAN, pk.getLuas());
         args.put(TrnPerubahanKelas.JENIS_TANAMAN_PERUBAHAN, pk.getJenisTanaman());
+        args.put(TrnPerubahanKelas.KET2, pk.getKet2());
         args.put(TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN, pk.getKelasHutan());
+        args.put(TrnPerubahanKelas.KET3, pk.getKet3());
         args.put(TrnPerubahanKelas.LUAS_PERKIRAAN, pk.getLuasPerkiraan());
         args.put(TrnPerubahanKelas.JENIS_TANAMAN_PERKIRAAN, pk.getJenisTanamanPerkiraan());
+        args.put(TrnPerubahanKelas.KET4, pk.getKet4());
         args.put(TrnPerubahanKelas.KELAS_HUTAN_PERKIRAAN, pk.getKelasHutanPerkiraan());
+        args.put(TrnPerubahanKelas.KET5, pk.getKet5());
         args.put(TrnPerubahanKelas.NO_BAPPKH, pk.getNoBappkh());
         args.put(TrnPerubahanKelas.LUAS_DEFINITIF, pk.getLuasDefinitif());
         args.put(TrnPerubahanKelas.JENIS_TANAMAN_DEFINITIF, pk.getJenisTanamanDefinitif());
+        args.put(TrnPerubahanKelas.KET6, pk.getKet6());
         args.put(TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF, pk.getKelasHutanDefinitif());
+        args.put(TrnPerubahanKelas.KET7, pk.getKet7());
         args.put(TrnPerubahanKelas.KETERANGAN_PERUBAHAN, pk.getKeteranganPerubahan());
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
@@ -307,10 +314,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         String strFilter = "ID=" + imdh.getID_IMDH();
         ContentValues args = new ContentValues();
         args.put(TrnInteraksimdh.ANAK_PETAK_ID, imdh.getAnakpetakid());
+        args.put(TrnInteraksimdh.KET1, imdh.getKet1());
         args.put(TrnInteraksimdh.TAHUN, imdh.getTahun());
+        args.put(TrnInteraksimdh.KET2, imdh.getKet2());
         args.put(TrnInteraksimdh.NAMA_DESA, imdh.getDesaid());
+        args.put(TrnInteraksimdh.KET3, imdh.getKet3());
         args.put(TrnInteraksimdh.BENTUK_INTERAKSI, imdh.getBentukinteraksi());
+        args.put(TrnInteraksimdh.KET4, imdh.getKet4());
         args.put(TrnInteraksimdh.STATUS, imdh.getStatus());
+        args.put(TrnInteraksimdh.KET5, imdh.getKet5());
         args.put(TrnInteraksimdh.KETERANGAN, imdh.getKeterangan());
         db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
     }
@@ -321,10 +333,14 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         String strFilter = "ID=" + ps.getID_Pemantauan();
         ContentValues args = new ContentValues();
         args.put(TrnPemantauanSatwa.ANAK_PETAK_ID, ps.getAnakPetakId());
+        args.put(TrnPemantauanSatwa.KET1, ps.getKet1());
         args.put(TrnPemantauanSatwa.JENIS_SATWA, ps.getJenis());
+        args.put(TrnPemantauanSatwa.KET2, ps.getKet2());
         args.put(TrnPemantauanSatwa.JUMLAH_SATWA, ps.getJumlah());
         args.put(TrnPemantauanSatwa.WAKTU_LIHAT, ps.getWaktulihat());
+        args.put(TrnPemantauanSatwa.KET3, ps.getKet3());
         args.put(TrnPemantauanSatwa.CARA_LIHAT, ps.getCaralihat());
+        args.put(TrnPemantauanSatwa.KET4, ps.getKet4());
         args.put(TrnPemantauanSatwa.TANGGAL_PEMANTAUAN, ps.getTanggal());
         args.put(TrnPemantauanSatwa.KETERANGAN, ps.getKeteranganSatwa());
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
@@ -346,7 +362,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         ContentValues args = new ContentValues();
         args.put(TrnLaporanPalBatas.TANGGAL_PAL, lpb.getTanggalPal());
         args.put(TrnLaporanPalBatas.JENIS_PAL, lpb.getJenisPal());
+        args.put(TrnLaporanPalBatas.KET1, lpb.getKet1());
         args.put(TrnLaporanPalBatas.KONDISI_PAL, lpb.getKondisiPal());
+        args.put(TrnLaporanPalBatas.KET2, lpb.getKet2());
         args.put(TrnLaporanPalBatas.NO_PAL, lpb.getNomerPal());
         args.put(TrnLaporanPalBatas.JUMLAH_PAL, lpb.getJumlahPal());
         args.put(TrnLaporanPalBatas.KETERANGAN_PAL, lpb.getKeteranganPal());
@@ -369,6 +387,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         ContentValues args = new ContentValues();
         args.put(TrnRegisterPcp.NO_PCP, rp.getNoPcp());
         args.put(TrnRegisterPcp.ANAK_PETAK_ID, rp.getAnakPetakId());
+        args.put(TrnRegisterPcp.KET1, rp.getKet1());
         args.put(TrnRegisterPcp.TAHUN_PCP, rp.getTahun());
         args.put(TrnRegisterPcp.UMUR, rp.getUmur());
         args.put(TrnRegisterPcp.LUAS_BAKU, rp.getLuasBaku());
@@ -510,7 +529,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getJenisGangguan() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME + " FROM " + MstJenisGangguanHutanSchema.TABLE_NAME +
-                " a ORDER BY a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+", a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_ID+" ASC";
+                " a ORDER BY a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+", a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Jenis Gangguan-");
@@ -527,7 +546,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getAnakPetak() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstAnakPetakSchema.ANAK_PETAK_NAME + " FROM " + MstAnakPetakSchema.TABLE_NAME +
-                " a ORDER BY a."+MstAnakPetakSchema.PETAK_NAME+", a."+MstAnakPetakSchema.ANAK_PETAK_ID+" ASC";
+                " a ORDER BY a."+MstAnakPetakSchema.PETAK_NAME+", a."+MstAnakPetakSchema.PETAK_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Anak Petak -");
@@ -549,7 +568,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getJenisPermasalahan() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME + " FROM " + MstJenisPermasalahanSchema.TABLE_NAME +
-                " a ORDER BY a."+MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME+", a."+MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_ID+" ASC";
+                " a ORDER BY a."+MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME+", a."+MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Jenis Permasalahan -");
@@ -583,7 +602,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getBentukInteraksi() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstBentukInteraksiSchema.NAMA_INTERAKSI + " FROM " + MstBentukInteraksiSchema.TABLE_NAME +
-                " a ORDER BY a."+MstBentukInteraksiSchema.NAMA_INTERAKSI+", a."+MstBentukInteraksiSchema.ID_INTERAKSI+" ASC";
+                " a ORDER BY a."+MstBentukInteraksiSchema.NAMA_INTERAKSI+", a."+MstBentukInteraksiSchema.NAMA_INTERAKSI+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Bentuk Interaksi -");
@@ -600,7 +619,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getStatusInteraksi() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstStatusInteraksiSchema.NAMA_STATUS + " FROM " + MstStatusInteraksiSchema.TABLE_NAME +
-                " a ORDER BY a."+MstStatusInteraksiSchema.NAMA_STATUS+", a."+MstStatusInteraksiSchema.ID_STATUS+" ASC";
+                " a ORDER BY a."+MstStatusInteraksiSchema.NAMA_STATUS+", a."+MstStatusInteraksiSchema.NAMA_STATUS+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Status Interaksi -");

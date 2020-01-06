@@ -76,7 +76,7 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 petak_id.setText(id_petak);
 
             }
@@ -105,7 +105,7 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
                 // your code here
                 String pil_jenis_permasalahan = spin_jenis_permasalahan.getSelectedItem().toString();
                 String id_jenis_permasalahan = db.getDataDetail(MstJenisPermasalahanSchema.TABLE_NAME,
-                        MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME, pil_jenis_permasalahan, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME);
+                        MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME, pil_jenis_permasalahan, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_ID);
                 jenis_permasalahan.setText(id_jenis_permasalahan);
 
             }
@@ -134,7 +134,7 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
                 // your code here
                 String pil_kelas_hutan = spin_kelas_hutan.getSelectedItem().toString();
                 String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
-                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_NAME);
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
                 kelas_hutan.setText(id_kelas_hutan);
 
             }
@@ -320,6 +320,10 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
                                             values_aktifitas.put(TrnIdentifikasiTenurial.AWAL_KONFLIK, awal_konflik.getText().toString());
                                             values_aktifitas.put(TrnIdentifikasiTenurial.PIHAK_TERLIBAT, spin_pihak_terlibat.getSelectedItem().toString());
                                             values_aktifitas.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, status_penyelesaian.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.KET1, spin_anak_petak.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.KET2, spin_jenis_permasalahan.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.KET3, spin_kelas_hutan.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.KET4, spin_pihak_terlibat.getSelectedItem().toString());
                                             values_aktifitas.put(TrnIdentifikasiTenurial.KET9, "0");
                                             db.create(TrnIdentifikasiTenurial.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();

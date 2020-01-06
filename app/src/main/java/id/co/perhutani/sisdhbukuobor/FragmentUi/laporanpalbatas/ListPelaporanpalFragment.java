@@ -30,7 +30,6 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.tambahlaporanpalbatas.TambahlaporanpalbatasFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
-import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.R;
 
 public class ListPelaporanpalFragment extends Fragment
@@ -40,6 +39,7 @@ public class ListPelaporanpalFragment extends Fragment
     private static List<PelaporanpalbatasModel> lstpelaporanpal;
     private static PelaporanpalbatasAdapter pAdapter;
     private static Context context;
+    private SQLiteHandler db;
 
     private static final int VERTICAL_ITEM_SPACE = 0;
     public static ListPelaporanpalFragment newInstance()
@@ -95,6 +95,19 @@ public class ListPelaporanpalFragment extends Fragment
             }
         });
 
+//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatalaporanpal);
+//        final RecyclerView dataada = root.findViewById(R.id.pelaporanpal_recycler);
+//
+//        final int ceksampling = db.cek_jumlah_data(TrnLaporanPalBatas.TABLE_NAME);
+//        if(String.valueOf(ceksampling).equals("0"))
+//        {
+//            datakosong.setVisibility(View.VISIBLE);
+//            dataada.setVisibility(View.GONE);
+//        }else {
+//            datakosong.setVisibility(View.GONE);
+//            dataada.setVisibility(View.VISIBLE);
+//        }
+
         return root;
     }
 
@@ -104,7 +117,7 @@ public class ListPelaporanpalFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID" +
+                    " ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ID)" +
                     " FROM TRN_LAPORAN_PAL " +
                     " WHERE NO_PAL " + " LIKE  " + "'%" + laporanpal + "%'" +
@@ -121,10 +134,11 @@ public class ListPelaporanpalFragment extends Fragment
                         cur.getString(4),
                         cur.getString(5),
                         cur.getString(6),
-                        cur.getString(0),
+                        cur.getString(7),
+                        cur.getString(8),
                         Integer.parseInt(cur.getString(0)),
-                        cur.getString(0),
-                        cur.getString(0)));
+                        cur.getString(9),
+                        cur.getString(10)));
                 cur.moveToNext();
             }
 
@@ -154,7 +168,7 @@ public class ListPelaporanpalFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID" +
+                    " ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ID)" +
                     " FROM TRN_LAPORAN_PAL " +
                     " ORDER BY ID DESC", null);
@@ -170,10 +184,11 @@ public class ListPelaporanpalFragment extends Fragment
                         cur.getString(4),
                         cur.getString(5),
                         cur.getString(6),
-                        cur.getString(0),
+                        cur.getString(7),
+                        cur.getString(8),
                         Integer.parseInt(cur.getString(0)),
-                        cur.getString(0),
-                        cur.getString(0)));
+                        cur.getString(9),
+                        cur.getString(10)));
                 cur.moveToNext();
             }
 
@@ -192,7 +207,7 @@ public class ListPelaporanpalFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    "ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID" +
+                    "ID, TANGGAL, JENIS_PAL, ID, NO_PAL, JUMLAH_PAL, ID, ID, ID, ID, ID" +
 //                    " DISTINCT(ID)" +
                     " FROM TRN_LAPORAN_PAL " +
                     " ORDER BY ID DESC", null);
@@ -208,10 +223,11 @@ public class ListPelaporanpalFragment extends Fragment
                         cur.getString(4),
                         cur.getString(5),
                         cur.getString(6),
-                        cur.getString(0),
+                        cur.getString(7),
+                        cur.getString(8),
                         Integer.parseInt(cur.getString(0)),
-                        cur.getString(0),
-                        cur.getString(0)));
+                        cur.getString(9),
+                        cur.getString(10)));
                 cur.moveToNext();
             }
 

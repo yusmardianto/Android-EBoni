@@ -10,9 +10,15 @@ public class InteraksimdhModel {
     private String Status;
     private String Keterangan;
     private int ID_IMDH;
+    private String Ket1;
+    private String Ket2;
+    private String Ket3;
+    private String Ket4;
+    private String Ket5;
 
     public InteraksimdhModel(String id, String anakpetakid, String desaid, String bentukinteraksi,
-                             String tahun, String status, String keterangan, int id_imdh)
+                             String tahun, String status, String keterangan, String ket1, String ket2, String ket3,
+                             String ket4, String ket5, int id_imdh)
 
     {
         this.Id = id;
@@ -22,6 +28,11 @@ public class InteraksimdhModel {
         this.Tahun = tahun;
         this.Status = status;
         this.Keterangan = keterangan;
+        this.Ket1 = ket1;
+        this.Ket2 = ket2;
+        this.Ket3 = ket3;
+        this.Ket4 = ket4;
+        this.Ket5 = ket5;
         this.ID_IMDH = id_imdh;
     }
 
@@ -92,5 +103,45 @@ public class InteraksimdhModel {
 
     public void setKeterangan(String keterangan) {
         Keterangan = keterangan;
+    }
+
+    public String getKet1() {
+        return Ket1;
+    }
+
+    public void setKet1(String ket1) {
+        Ket1 = ket1;
+    }
+
+    public String getKet2() {
+        return Ket2;
+    }
+
+    public void setKet2(String ket2) {
+        Ket2 = ket2;
+    }
+
+    public String getKet3() {
+        return Ket3;
+    }
+
+    public void setKet3(String ket3) {
+        Ket3 = ket3;
+    }
+
+    public String getKet4() {
+        return Ket4;
+    }
+
+    public void setKet4(String ket4) {
+        Ket4 = ket4;
+    }
+
+    public String getKet5() {
+        return Ket5;
+    }
+
+    public void setKet5(String ket5) {
+        Ket5 = ket5;
     }
 }

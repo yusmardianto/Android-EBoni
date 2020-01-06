@@ -58,9 +58,12 @@ public class IdentifikasiTenurialAdapter extends RecyclerView.Adapter<Identifika
     public void onBindViewHolder(@NonNull IdentifikasiTenurialAdapter.IdentifikasiTenurialViewHolder holder, final int position) {
         db = new SQLiteHandler(mContext);
 
-        holder.tv_jenispermasalahan.setText(mData.get(position).getJenisPermasalahan());
+        String getAnakPetak = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, mData.get(position).getId(), TrnIdentifikasiTenurial.KET1);
+        String getJenisPermasalahan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, mData.get(position).getId(), TrnIdentifikasiTenurial.KET2);
+
+        holder.tv_jenispermasalahan.setText(getJenisPermasalahan);
         holder.tv_awalkonflik.setText(mData.get(position).getAwalKonflik());
-        holder.tv_petakkejadian.setText(mData.get(position).getAnakPetak());
+        holder.tv_petakkejadian.setText(getAnakPetak);
         holder.tv_tanggal.setText(mData.get(position).getTanggal());
         holder.img_detailtenurial.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -120,16 +123,16 @@ public class IdentifikasiTenurialAdapter extends RecyclerView.Adapter<Identifika
             final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
             alertDialogBuilder.setView(viewas);
 
-            final String get_jenispermasalahan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.JENIS_PERMASALAHAN);
+            final String get_jenispermasalahan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET2);
             String get_tanggal = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.TANGGAL);
-            String get_petakkejadian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.ANAK_PETAK_ID);
+            String get_petakkejadian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET1);
             String get_strata = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STRATA);
-            String get_kelashutan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KELAS_HUTAN_ID);
+            String get_kelashutan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET3);
             String get_luasbaku = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.LUAS_BAKU);
             String get_luastenurial = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.LUAS_TENURIAL);
             String get_kondisipetak = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KONDISI_PETAK);
             String get_awalkonflik = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.AWAL_KONFLIK);
-            String get_pihakterlibat = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.PIHAK_TERLIBAT);
+            String get_pihakterlibat = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET4);
             String get_statuspenyelesaian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STATUS_PENYELESAIAN);
 
             TextView jenispermasalahan = viewas.findViewById(R.id.tenurial_jenispermasalahandetail);

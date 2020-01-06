@@ -58,10 +58,15 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
     public void onBindViewHolder(@NonNull PerubahanklsViewHolder holder, final int position) {
         db = new SQLiteHandler(mContext);
 
-        holder.tv_jenistanaman.setText(mData.get(position).getJenisTanaman());
-        holder.tv_petakID.setText(mData.get(position).getPetakID());
+        String getJenisTanaman = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, mData.get(position).getID(), TrnPerubahanKelas.KET2);
+        String getPetakID = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, mData.get(position).getID(), TrnPerubahanKelas.KET1);
+        String getKelasHutan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, mData.get(position).getID(), TrnPerubahanKelas.KET3);
+
+
+        holder.tv_jenistanaman.setText(getJenisTanaman);
+        holder.tv_petakID.setText(getPetakID);
         holder.tv_tahun.setText(mData.get(position).getTahun());
-        holder.tv_kelashutan.setText(mData.get(position).getKelasHutan());
+        holder.tv_kelashutan.setText(getKelasHutan);
         holder.img_detailperubahan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,18 +127,18 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
             alertDialogBuilder.setView(viewas);
 
             String get_id = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME,TrnPerubahanKelas._ID, id, TrnPerubahanKelas._ID);
-            String get_petakdetailid = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.ANAK_PETAK_ID_PERUBAHAN);
+            String get_petakdetailid = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET1);
             String get_tahun = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.TAHUN_PERUBAHAN);
             String get_luas = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.LUAS_PERUBAHAN);
-            final String get_jenistanaman = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_PERUBAHAN);
-            String get_kelashutan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_PERUBAHAN);
+            final String get_jenistanaman = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET2);
+            String get_kelashutan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET3);
             String get_luasperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.LUAS_PERKIRAAN);
-            String get_jenisperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_PERKIRAAN);
-            String get_kelasperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_PERKIRAAN);
+            String get_jenisperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET4);
+            String get_kelasperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET5);
             String get_bappkh = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.NO_BAPPKH);
             String get_luasdefinitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.LUAS_DEFINITIF);
-            String get_jenisdefinitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_DEFINITIF);
-            String get_kelasdefinitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF);
+            String get_jenisdefinitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET6);
+            String get_kelasdefinitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET7);
             String get_keterangandetail = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KETERANGAN_PERUBAHAN);
 
             TextView anakpetak = viewas.findViewById(R.id.perubahankls_petakdetailid);

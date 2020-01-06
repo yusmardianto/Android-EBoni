@@ -73,7 +73,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 petak.setText(id_petak);
 
             }
@@ -102,7 +102,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                 // your code here
                 String pil_jenis_permasalahan = spin_jenis_permasalahan.getSelectedItem().toString();
                 String id_jenis_permasalahan = db.getDataDetail(MstJenisPermasalahanSchema.TABLE_NAME,
-                        MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME, pil_jenis_permasalahan, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME);
+                        MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME, pil_jenis_permasalahan, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_ID);
                 jenis_permasalahan.setText(id_jenis_permasalahan);
 
             }
@@ -131,7 +131,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                 // your code here
                 String pil_kelas_hutan = spin_kelas_hutan.getSelectedItem().toString();
                 String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME,
-                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_NAME);
+                        MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
                 kelas_hutan.setText(id_kelas_hutan);
 
             }
