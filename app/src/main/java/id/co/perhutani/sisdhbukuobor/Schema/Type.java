@@ -15,6 +15,8 @@ public class Type {
     public static final String UPDATED_AT_CURRENT_DATE = "UPDATED_AT DATETIME NULL DEFAULT (datetime('now','localtime'))";
     public static final String DOUBLE = "DOUBLE";
     public static final String DECIMAL = "DECIMAL";
+    public static final String CREATED_BY = "CREATED_BY VARCHAR(100) NULL";
+    public static final String UPDATED_BY = "UPDATED_BY VARCHAR(100) NULL";
     public static final String INTEGER = "INTEGER";
     public static final String DATE = "DATE";
 

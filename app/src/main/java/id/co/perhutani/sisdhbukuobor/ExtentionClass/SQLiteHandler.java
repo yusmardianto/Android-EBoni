@@ -298,13 +298,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataPerubahanKelasroApi(PerubahankelasModel b) {
+    public void EditDataPerubahanKelasroApi(PerubahankelasModel c) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_Perubahan();
+        String strFilter = "ID=" + c.getID_Perubahan();
         ContentValues args = new ContentValues();
-        args.put(TrnRegisterPcp.KET9, b.getKet9());
-        args.put(TrnRegisterPcp.KET10, b.getKet10());
-        db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
+        args.put(TrnPerubahanKelas.KET9, c.getKet9());
+        args.put(TrnPerubahanKelas.KET10, c.getKet10());
+        db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
 
@@ -346,12 +346,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataPemantauanSatwafroApi(PemantauansatwaModel b) {
+    public void EditDataPemantauanSatwafroApi(PemantauansatwaModel e) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_Pemantauan();
+        String strFilter = "ID=" + e.getID_Pemantauan();
         ContentValues args = new ContentValues();
-        args.put(TrnPemantauanSatwa.KET9, b.getKet9());
-        args.put(TrnPemantauanSatwa.KET10, b.getKet10());
+        args.put(TrnPemantauanSatwa.KET9, e.getKet9());
+        args.put(TrnPemantauanSatwa.KET10, e.getKet10());
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
     }
 
@@ -371,12 +371,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataLaporanPalfroApi(PelaporanpalbatasModel b) {
+    public void EditDataLaporanPalfroApi(PelaporanpalbatasModel f) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_Laporan();
+        String strFilter = "ID=" + f.getID_Laporan();
         ContentValues args = new ContentValues();
-        args.put(TrnLaporanPalBatas.KET9, b.getKet9());
-        args.put(TrnLaporanPalBatas.KET10, b.getKet10());
+        args.put(TrnLaporanPalBatas.KET9, f.getKet9());
+        args.put(TrnLaporanPalBatas.KET10, f.getKet10());
         db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
     }
 
@@ -403,12 +403,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataRegisterPCPfroApi(RegisterpcpModel b) {
+    public void EditDataRegisterPCPfroApi(RegisterpcpModel g) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_Registerpcp();
+        String strFilter = "ID=" + g.getID_Registerpcp();
         ContentValues args = new ContentValues();
-        args.put(TrnRegisterPcp.KET9, b.getKet9());
-        args.put(TrnRegisterPcp.KET10, b.getKet10());
+        args.put(TrnRegisterPcp.KET9, g.getKet9());
+        args.put(TrnRegisterPcp.KET10, g.getKet10());
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
@@ -431,12 +431,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnIdentifikasiTenurial.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataIdentifikasiTenurialfroApi(IdentifikasiTenurialModel b) {
+    public void EditDataIdentifikasiTenurialfroApi(IdentifikasiTenurialModel h) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_Tenurial();
+        String strFilter = "ID=" + h.getID_Tenurial();
         ContentValues args = new ContentValues();
-        args.put(TrnRegisterPcp.KET9, b.getKet9());
-        args.put(TrnRegisterPcp.KET10, b.getKet10());
+        args.put(TrnRegisterPcp.KET9, h.getKet9());
+        args.put(TrnRegisterPcp.KET10, h.getKet10());
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
