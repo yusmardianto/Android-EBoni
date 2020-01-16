@@ -833,13 +833,6 @@ public class ThreadSendToAPI extends Thread {
                         final String str_created_at = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET10);
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
