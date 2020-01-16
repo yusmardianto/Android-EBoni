@@ -322,6 +322,7 @@ public class EditInteraksimdhFragment extends Fragment {
                                             Aktifitasnya.setKet3(spin_nama_desa.getSelectedItem().toString());
                                             Aktifitasnya.setKet4(spin_bentuk_interaksi.getSelectedItem().toString());
                                             Aktifitasnya.setKet5(spin_status.getSelectedItem().toString());
+                                            Aktifitasnya.setKet9("2");
                                             db.EditDataInteraksiMDH(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

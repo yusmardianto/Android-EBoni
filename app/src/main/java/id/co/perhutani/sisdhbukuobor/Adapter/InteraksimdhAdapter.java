@@ -29,7 +29,6 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.editinteraksimdh.Ed
 import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
-import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 
 public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapter.InteraksimdhViewHolder> {
 

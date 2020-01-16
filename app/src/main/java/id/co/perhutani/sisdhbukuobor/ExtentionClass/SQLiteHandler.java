@@ -323,15 +323,17 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnInteraksimdh.STATUS, imdh.getStatus());
         args.put(TrnInteraksimdh.KET5, imdh.getKet5());
         args.put(TrnInteraksimdh.KETERANGAN, imdh.getKeterangan());
+        args.put(TrnGangguanKeamananHutan.KET9, imdh.getKet9());
+        args.put(TrnGangguanKeamananHutan.KET9, imdh.getKet10());
         db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataInteraksimdhforApi(InteraksimdhModel d) {
+    public void EditDataInteraksimdhfroApi(GangguanModel i) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + d.getID_IMDH();
+        String strFilter = "ID=" + i.getID_gangguan();
         ContentValues args = new ContentValues();
-        args.put(TrnInteraksimdh.KET9, d.getKet9());
-        args.put(TrnInteraksimdh.KET10, d.getKet10());
+        args.put(TrnInteraksimdh.KET9, i.getKet9());
+        args.put(TrnInteraksimdh.KET10, i.getKet10());
         db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
     }
 

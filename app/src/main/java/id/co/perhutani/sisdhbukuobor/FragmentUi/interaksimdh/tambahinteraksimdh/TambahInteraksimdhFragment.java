@@ -289,6 +289,7 @@ public class TambahInteraksimdhFragment extends Fragment {
                                             values_aktifitas.put(TrnInteraksimdh.KET4, spin_bentuk_interaksi.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KET5, spin_status.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KETERANGAN, keterangan.getText().toString());
+                                            values_aktifitas.put(TrnInteraksimdh.KET9, "0");
                                             db.create(TrnInteraksimdh.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
 
