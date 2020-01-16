@@ -20,6 +20,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.LoginActivity;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
+import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
@@ -62,8 +63,8 @@ public class ThreadSendToAPI extends Thread {
                     sendToServerTambah();
                     sendToServerPerubahanKelas();
                     sendToServerInteraksimdh();
-                    sendToServerPemantauanSatwa();
-                    sendToServerPAL();
+//                    sendToServerPemantauanSatwa();
+//                    sendToServerPAL();
                     sendToServerPCP();
                     sendToServerTenurial();
 
@@ -71,8 +72,8 @@ public class ThreadSendToAPI extends Thread {
                     sendToServerEdit();
                     sendToServerEditPerubahanKelas();
                     sendToServerEditInteraksiMdh();
-                    sendToServerEditPemantauanSatwa();
-                    sendToServerEditPAL();
+//                    sendToServerEditPemantauanSatwa();
+//                    sendToServerEditPAL();
                     sendToServerEditPCP();
                     sendToServerEditTenurial();
 //
@@ -831,7 +832,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_created_by = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET10);
 
-                        jsonParam.put("aksi", "ubah");
+                        jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("anakpetak", str_anakpetak);
                         jsonParam.put("tahun", str_tahun);
@@ -868,8 +869,8 @@ public class ThreadSendToAPI extends Thread {
                     conn.disconnect();
 
                     if (myResponse.getString("status").equals("success")) {
-                        GangguanModel Aktifitasnya = new GangguanModel();
-                        Aktifitasnya.setID_gangguan(Integer.parseInt(id));
+                        InteraksimdhModel Aktifitasnya = new InteraksimdhModel();
+                        Aktifitasnya.setID_IMDH(Integer.parseInt(id));
                         Aktifitasnya.setKet9("1");
                         Aktifitasnya.setKet10(myResponse.getString("id"));
                         db.EditDataInteraksimdhfroApi(Aktifitasnya);
@@ -880,7 +881,7 @@ public class ThreadSendToAPI extends Thread {
                 } catch (Exception e) {
                     cek_feedback_api = false;
                     Log.i("JSON_MESSAGE", e.toString());
-                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_GANGGUAN_HUTAN_V1);
+                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_INTERAKSI_MDH_V1);
                     Log.i("JSON_ID", id);
                     e.printStackTrace();
                 }
@@ -987,8 +988,8 @@ public class ThreadSendToAPI extends Thread {
                     conn.disconnect();
 
                     if (myResponse.getString("status").equals("success")) {
-                        GangguanModel Aktifitasnya = new GangguanModel();
-                        Aktifitasnya.setID_gangguan(Integer.parseInt(id));
+                        InteraksimdhModel Aktifitasnya = new InteraksimdhModel();
+                        Aktifitasnya.setID_IMDH(Integer.parseInt(id));
                         Aktifitasnya.setKet9("1");
                         Aktifitasnya.setKet10(myResponse.getString("id"));
                         db.EditDataInteraksimdhfroApi(Aktifitasnya);
