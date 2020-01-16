@@ -445,9 +445,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + h.getID_Tenurial();
         ContentValues args = new ContentValues();
-        args.put(TrnRegisterPcp.KET9, h.getKet9());
-        args.put(TrnRegisterPcp.KET10, h.getKet10());
-        db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
+        args.put(TrnIdentifikasiTenurial.KET9, h.getKet9());
+        args.put(TrnIdentifikasiTenurial.KET10, h.getKet10());
+        db.update(TrnIdentifikasiTenurial.TABLE_NAME, args, strFilter, null);
     }
 
     // Get Data

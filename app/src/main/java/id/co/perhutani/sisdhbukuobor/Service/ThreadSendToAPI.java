@@ -282,9 +282,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_registerpcp_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_data_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -1474,16 +1471,9 @@ public class ThreadSendToAPI extends Thread {
                         final String str_tahunjarangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_JARANGAN);
                         final String str_peninggi = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.PENIGGI);
                         final String str_keterangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KETERANGAN);
-                        final String str_created_at = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_BY);
+                        final String str_updated_by = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KET10);
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -1501,8 +1491,8 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("tahunjarangan", str_tahunjarangan);
                         jsonParam.put("peninggi", str_peninggi);
                         jsonParam.put("keterangan", str_keterangan);
-                        jsonParam.put("created_at", str_created_at);
                         jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -1620,6 +1610,8 @@ public class ThreadSendToAPI extends Thread {
                         final String str_tahunjarangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_JARANGAN);
                         final String str_peninggi = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.PENIGGI);
                         final String str_keterangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KETERANGAN);
+                        final String str_created_by = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_BY);
+                        final String str_updated_by = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KET10);
 
                         jsonParam.put("aksi", "ubah");
@@ -1638,6 +1630,8 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("tahunjarangan", str_tahunjarangan);
                         jsonParam.put("peninggi", str_peninggi);
                         jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -1720,6 +1714,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_status_penyelesaian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STATUS_PENYELESAIAN);
                         final String str_created_at = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.CREATED_BY);
+                        final String str_updated_by = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET10);
 
 //                        String aksi;
@@ -1745,6 +1740,7 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("statuspenyelesaian", str_status_penyelesaian);
                         jsonParam.put("created_at", str_created_at);
                         jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
