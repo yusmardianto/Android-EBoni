@@ -307,7 +307,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
-
     // Interaksi MDH
     public void EditDataInteraksiMDH(InteraksimdhModel imdh) {
         SQLiteDatabase db = getReadableDatabase();
@@ -324,6 +323,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnInteraksimdh.STATUS, imdh.getStatus());
         args.put(TrnInteraksimdh.KET5, imdh.getKet5());
         args.put(TrnInteraksimdh.KETERANGAN, imdh.getKeterangan());
+        db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
+    }
+
+    public void EditDataInteraksimdhfroApi(InteraksimdhModel i) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + i.getID_IMDH();
+        ContentValues args = new ContentValues();
+        args.put(TrnInteraksimdh.KET9, i.getKet9());
+        args.put(TrnInteraksimdh.KET10, i.getKet10());
         db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
     }
 

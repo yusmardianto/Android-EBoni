@@ -1,6 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -71,6 +73,18 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
                 popup(mData.get(position).getId());
             }
         });
+
+        String status_sync = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, mData.get(position).getId(), TrnInteraksimdh.KET9);
+        if (status_sync.equals("1")) {
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
+            holder.name_data_sinkron.setText("Sudah terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
+        }  else {
+            holder.name_data_sinkron.setText("Belum terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
+        }
+
     }
 
     @Override
@@ -85,6 +99,8 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
         private TextView tv_petakID;
         private TextView tv_tahun;
         private LinearLayout img_detailimdh;
+        private TextView name_data_sinkron;
+        private ImageView name_info_alert;
 
         public InteraksimdhViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -94,6 +110,8 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
             tv_petakID = (TextView) itemView.findViewById(R.id.name_interaksi_petak);
             tv_tahun = (TextView) itemView.findViewById(R.id.name_interaksi_tahun);
             img_detailimdh = itemView.findViewById(R.id.img_interaksimdhdetail);
+            name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_imdh);
+            name_info_alert = itemView.findViewById(R.id.name_info_alert_imdh);
 
         }
     }
