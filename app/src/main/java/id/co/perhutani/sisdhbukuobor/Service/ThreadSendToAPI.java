@@ -20,12 +20,14 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.LoginActivity;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
+import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
@@ -60,6 +62,7 @@ public class ThreadSendToAPI extends Thread {
                     // sync tambah
                     sendToServerTambah();
                     sendToServerPerubahanKelas();
+                    sendToServerInteraksimdh();
                     sendToServerPemantauanSatwa();
                     sendToServerPAL();
                     sendToServerPCP();
@@ -68,6 +71,7 @@ public class ThreadSendToAPI extends Thread {
                     // sync edit
                     sendToServerEdit();
                     sendToServerEditPerubahanKelas();
+                    sendToServerEditInteraksimdh();
                     sendToServerEditPemantauanSatwa();
                     sendToServerEditPAL();
                     sendToServerEditPCP();
@@ -148,6 +152,39 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_perubahankelas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+
+
+                } catch (Exception ex) {
+                    Log.i("JSON_ERROR", ex.toString());
+                }
+                cur.moveToNext();
+            }
+            cur.close();
+            db.close();
+
+        } catch (Exception ex) {
+            Log.i("JSON_ERROR", ex.toString());
+        }
+    }
+
+    private void sendToServerInteraksimdh() {
+        try {
+            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            Cursor cur;
+            cur = db.rawQuery("SELECT *" +
+                    " FROM TRN_INTERAKSI_MDH " +
+                    " WHERE  KET9=0 "+
+//                    " WHERE  CREATE_BY=\"" + username + "\"" +
+                    " ORDER BY ID ASC", null);
+
+            cur.moveToPosition(0);
+            for (int i = 0; i < cur.getCount(); i++) {
+                try {
+                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+                    sync_data_interaksimdh_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
 //                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
 
 
@@ -773,6 +810,214 @@ public class ThreadSendToAPI extends Thread {
     }
 
     // Interaksi MDH
+    public void sync_data_interaksimdh_v1(final String id) {
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String str_tes_data = "";
+                try {
+                    URL url = new URL(LoginActivity.URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Authorization", "Bearer " + db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept", "application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    try {
+                        final String str_anakpetak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.ANAK_PETAK_ID);
+                        final String str_tahun = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.TAHUN);
+                        final String str_namadesa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.NAMA_DESA);
+                        final String str_bentukinteraksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.BENTUK_INTERAKSI);
+                        final String str_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.STATUS);
+                        final String str_keterangan = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KETERANGAN);
+                        final String str_ket10 = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET10);
+//                        String aksi;
+//                            aksi = "tambah";
+//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
+//                            aksi = "tambah";
+//                        }else {
+//                            aksi = "ubah";
+//                        }
+
+                        jsonParam.put("aksi", "ubah");
+                        jsonParam.put("id", str_ket10);
+                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("tahun", str_tahun);
+                        jsonParam.put("namadesa", str_namadesa);
+                        jsonParam.put("bentukinteraksi", str_bentukinteraksi);
+                        jsonParam.put("status", str_status);
+                        jsonParam.put("kelasdefinitif", str_keterangan);
+
+                    } catch (JSONException ex) {
+                        Log.i("JSON_ERROR", ex.toString());
+                        ex.printStackTrace();
+                    }
+
+                    Log.i("JSON_SEND", jsonParam.toString());
+
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    os.writeBytes(jsonParam.toString());
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    JSONObject myResponse = new JSONObject(response.toString());
+                    Log.i("JSON_BACKGROUND_SERVICE", "Sync to : " + LoginActivity.URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1);
+                    Log.i("JSON_FEEDBACK", myResponse.getString("status"));
+
+                    os.flush();
+                    os.close();
+                    conn.disconnect();
+
+                    if (myResponse.getString("status").equals("success")) {
+                        InteraksimdhModel Aktifitasnya = new InteraksimdhModel();
+                        Aktifitasnya.setID_IMDH(Integer.parseInt(id));
+                        Aktifitasnya.setKet9("1");
+                        Aktifitasnya.setKet10(myResponse.getString("id"));
+                        db.EditDataInteraksimdhforApi(Aktifitasnya);
+                    }
+
+                    cek_feedback_api = true;
+
+                } catch (Exception e) {
+                    cek_feedback_api = false;
+                    Log.i("JSON_MESSAGE", e.toString());
+                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1);
+                    Log.i("JSON_ID", id);
+//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
+//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+                    e.printStackTrace();
+                }
+                Log.i("JSON_TES", str_tes_data);
+            }
+        });
+        thread.start();
+
+    }
+
+    private void sendToServerEditInteraksimdh() {
+        try {
+            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            Cursor cur;
+            cur = db.rawQuery("SELECT *" +
+                    " FROM TRN_PERUBAHAN_KELAS " +
+                    " WHERE  KET9=2 "+
+//                    " WHERE  CREATE_BY=\"" + username + "\"" +
+                    " ORDER BY ID ASC", null);
+
+            cur.moveToPosition(0);
+            for (int i = 0; i < cur.getCount(); i++) {
+                try {
+                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+                    sync_data_edit_interaksimdh_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+
+
+                } catch (Exception ex) {
+                    Log.i("JSON_ERROR", ex.toString());
+                }
+                cur.moveToNext();
+            }
+            cur.close();
+            db.close();
+
+        } catch (Exception ex) {
+            Log.i("JSON_ERROR", ex.toString());
+        }
+    }
+
+    public void sync_data_edit_interaksimdh_v1(final String id) {
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String str_tes_data = "";
+                try {
+                    URL url = new URL(LoginActivity.URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Authorization", "Bearer " + db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept", "application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    try {
+                        final String str_anakpetak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.ANAK_PETAK_ID);
+                        final String str_tahun = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.TAHUN);
+                        final String str_namadesa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.NAMA_DESA);
+                        final String str_bentukinteraksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.BENTUK_INTERAKSI);
+                        final String str_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.STATUS);
+                        final String str_keterangan = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KETERANGAN);
+                        final String str_ket10 = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET10);
+
+                        jsonParam.put("aksi", "ubah");
+                        jsonParam.put("id", str_ket10);
+                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("tahun", str_tahun);
+                        jsonParam.put("namadesa", str_namadesa);
+                        jsonParam.put("bentukinteraksi", str_bentukinteraksi);
+                        jsonParam.put("status", str_status);
+                        jsonParam.put("kelasdefinitif", str_keterangan);
+
+                    } catch (JSONException ex) {
+                        Log.i("JSON_ERROR", ex.toString());
+                        ex.printStackTrace();
+                    }
+
+                    Log.i("JSON_SEND", jsonParam.toString());
+
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    os.writeBytes(jsonParam.toString());
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    JSONObject myResponse = new JSONObject(response.toString());
+                    Log.i("JSON_BACKGROUND_SERVICE", "Sync to : " + LoginActivity.URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1);
+                    Log.i("JSON_FEEDBACK", myResponse.getString("status"));
+
+                    os.flush();
+                    os.close();
+                    conn.disconnect();
+
+                    if (myResponse.getString("status").equals("success")) {
+                        InteraksimdhModel Aktifitasnya = new InteraksimdhModel();
+                        Aktifitasnya.setID_IMDH(Integer.parseInt(id));
+                        Aktifitasnya.setKet9("1");
+                        Aktifitasnya.setKet10(myResponse.getString("id"));
+                        db.EditDataInteraksimdhforApi(Aktifitasnya);
+                    }
+
+                    cek_feedback_api = true;
+
+                } catch (Exception e) {
+                    cek_feedback_api = false;
+                    Log.i("JSON_MESSAGE", e.toString());
+                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1);
+                    Log.i("JSON_ID", id);
+                    e.printStackTrace();
+                }
+                Log.i("JSON_TES", str_tes_data);
+            }
+        });
+        thread.start();
+    }
 
     // Pemantauan Satwa
     public void sync_data_pemantauansatwa_v1(final String id) {

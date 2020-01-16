@@ -101,7 +101,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/name_info_alert"
+            android:id="@+id/name_info_alert_imdh"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="7dp"
@@ -109,7 +109,7 @@
 
         <TextView
             android:fontFamily="@font/font_aal_default"
-            android:id="@+id/name_data_sinkron"
+            android:id="@+id/name_data_sinkron_imdh"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginLeft="25dp"
