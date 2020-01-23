@@ -424,6 +424,7 @@
                     android:id="@+id/pcp_peninggi"
                     android:fontFamily="@font/font_aal_default"
                     android:singleLine="true"
+                    android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/ic_background"
