@@ -72,7 +72,7 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 anakpetak.setText(id_petak);
             }
 
@@ -322,6 +322,7 @@ public class EditInteraksimdhFragment extends Fragment {
                                             Aktifitasnya.setKet3(spin_nama_desa.getSelectedItem().toString());
                                             Aktifitasnya.setKet4(spin_bentuk_interaksi.getSelectedItem().toString());
                                             Aktifitasnya.setKet5(spin_status.getSelectedItem().toString());
+//                                            Aktifitasnya.s(spin_status.getSelectedItem().toString());
                                             Aktifitasnya.setKet9("2");
                                             db.EditDataInteraksiMDH(Aktifitasnya);
 

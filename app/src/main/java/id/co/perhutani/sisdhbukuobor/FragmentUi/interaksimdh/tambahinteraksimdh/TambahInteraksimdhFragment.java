@@ -31,6 +31,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstDesaSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
+import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class TambahInteraksimdhFragment extends Fragment {
 
@@ -289,6 +290,7 @@ public class TambahInteraksimdhFragment extends Fragment {
                                             values_aktifitas.put(TrnInteraksimdh.KET4, spin_bentuk_interaksi.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KET5, spin_status.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KETERANGAN, keterangan.getText().toString());
+                                            values_aktifitas.put(TrnInteraksimdh.CREATED_BY, db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_ID));
                                             values_aktifitas.put(TrnInteraksimdh.KET9, "0");
                                             db.create(TrnInteraksimdh.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();

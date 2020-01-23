@@ -909,6 +909,8 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_interaksimdh_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());

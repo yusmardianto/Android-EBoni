@@ -98,7 +98,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstBentukInteraksiSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_DELETE_ENTRIES);
         db.execSQL(TrnInteraksimdh.SQL_DELETE_ENTRIES);
-//        db.execSQL(MstTahunJarangan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_DELETE_ENTRIES);
@@ -323,6 +322,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnInteraksimdh.STATUS, imdh.getStatus());
         args.put(TrnInteraksimdh.KET5, imdh.getKet5());
         args.put(TrnInteraksimdh.KETERANGAN, imdh.getKeterangan());
+        args.put(TrnInteraksimdh.KET9, imdh.getKet9());
         db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
     }
 
