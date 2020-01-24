@@ -155,7 +155,7 @@ public class EditRegisterpcpFragment extends Fragment {
 
 
         str_nopcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.NO_PCP);
-        str_anakpetak = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.ANAK_PETAK_ID);
+        str_anakpetak = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KET1);
         str_tahunpcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_PCP);
         str_luasbaku = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.LUAS_BAKU);
         str_luasblok = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.LUAS_BLOK);
@@ -304,12 +304,12 @@ public class EditRegisterpcpFragment extends Fragment {
                                             Aktifitasnya.setLuasBlok(luasblok.getText().toString());
                                             Aktifitasnya.setUmur(umur.getText().toString());
                                             Aktifitasnya.setRataKeliling(rataratakeliling.getText().toString());
-                                            Aktifitasnya.setLuasBlok(bonita.getText().toString());
+                                            Aktifitasnya.setBonita(bonita.getText().toString());
                                             Aktifitasnya.setNLapangan(nlapangan.getText().toString());
                                             Aktifitasnya.setNormalPcp(normalpcp.getText().toString());
                                             Aktifitasnya.setNMati(nmati.getText().toString());
-                                            Aktifitasnya.setPeninggi(tahunjarangan.getText().toString());
-                                            Aktifitasnya.setTahunJarangan(peninggi.getText().toString());
+                                            Aktifitasnya.setPeninggi(peninggi.getText().toString());
+                                            Aktifitasnya.setTahunJarangan(tahunjarangan.getText().toString());
                                             Aktifitasnya.setKeteranganPcp(keterangan.getText().toString());
                                             Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
                                             Aktifitasnya.setKet9("2");

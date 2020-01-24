@@ -425,13 +425,13 @@ public class EditPerubahanFragment extends Fragment {
             final String str_tanggal = tahun.getText().toString();
             final String kelas = kelas_hutan.getText().toString();
             final String luasperubahan = luas.getText().toString();
-            final String tanamanperkiraan = luas.getText().toString();
-            final String kelasperkiraan = luas.getText().toString();
-            final String luasperkiraan = luas.getText().toString();
-            final String nobap = luas.getText().toString();
-            final String tanamandefinitif = luas.getText().toString();
-            final String luasdefinitif = luas.getText().toString();
-            final String kelasdefinitif = luas.getText().toString();
+            final String tanamanperkiraan = jenis_perkiraan.getText().toString();
+            final String kelasperkiraan = kelas_perkiraan.getText().toString();
+            final String luasperkiraan = luas_perkiraan.getText().toString();
+            final String nobappkh = no_bappkh.getText().toString();
+            final String tanamandefinitif = jenis_definitif.getText().toString();
+            final String luasdefinitif = luas_definitif.getText().toString();
+            final String kelasdefinitif = kelas_definitif.getText().toString();
 
             if (jenistanaman.equals("") || jenistanaman.equals("0") || jenistanaman.equals(" ") || jenistanaman.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman tidak boleh kosong");
@@ -457,7 +457,7 @@ public class EditPerubahanFragment extends Fragment {
             } else if (luasperkiraan.equals("") || luasperkiraan.equals("0") || luasperkiraan.equals(" ") || luasperkiraan.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Luas Perkiraan tidak boleh kosong");
 
-            } else if (nobap.equals("") || nobap.equals("0") || nobap.equals(" ") || nobap.equals(null)) {
+            } else if (nobappkh.equals("") || nobappkh.equals("0") || nobappkh.equals(" ") || nobappkh.equals(null)) {
                 AjnClass.showAlert(getActivity(), "No BAP PKH tidak boleh kosong");
 
             } else if (tanamandefinitif.equals("") || tanamandefinitif.equals("0") || tanamandefinitif.equals(" ") || tanamandefinitif.equals(null)) {
