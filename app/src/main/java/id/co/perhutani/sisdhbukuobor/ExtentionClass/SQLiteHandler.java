@@ -294,6 +294,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF, pk.getKelasHutanDefinitif());
         args.put(TrnPerubahanKelas.KET7, pk.getKet7());
         args.put(TrnPerubahanKelas.KETERANGAN_PERUBAHAN, pk.getKeteranganPerubahan());
+        args.put(TrnPerubahanKelas.KET9, pk.getKet9());
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
@@ -395,7 +396,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         ContentValues args = new ContentValues();
         args.put(TrnRegisterPcp.NO_PCP, rp.getNoPcp());
         args.put(TrnRegisterPcp.ANAK_PETAK_ID, rp.getAnakPetakId());
-        args.put(TrnRegisterPcp.KET1, rp.getKet1());
         args.put(TrnRegisterPcp.TAHUN_PCP, rp.getTahun());
         args.put(TrnRegisterPcp.UMUR, rp.getUmur());
         args.put(TrnRegisterPcp.LUAS_BAKU, rp.getLuasBaku());
@@ -408,6 +408,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnRegisterPcp.TAHUN_JARANGAN, rp.getTahunJarangan());
         args.put(TrnRegisterPcp.PENIGGI, rp.getPeninggi());
         args.put(TrnRegisterPcp.KETERANGAN, rp.getKeteranganPcp());
+        args.put(TrnRegisterPcp.KET9, rp.getKet9());
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
@@ -421,21 +422,22 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     // Identifikasi Tenurial
-    public void EditDataIdentifikasiTenurial(IdentifikasiTenurialModel rp) {
+    public void EditDataIdentifikasiTenurial(IdentifikasiTenurialModel it) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + rp.getID_Tenurial();
+        String strFilter = "ID=" + it.getID_Tenurial();
         ContentValues args = new ContentValues();
-        args.put(TrnIdentifikasiTenurial.JENIS_PERMASALAHAN, rp.getJenisPermasalahan());
-        args.put(TrnIdentifikasiTenurial.TANGGAL, rp.getTanggal());
-        args.put(TrnIdentifikasiTenurial.ANAK_PETAK_ID, rp.getAnakPetak());
-        args.put(TrnIdentifikasiTenurial.STRATA, rp.getStrata());
-        args.put(TrnIdentifikasiTenurial.KELAS_HUTAN_ID, rp.getKelasHutan());
-        args.put(TrnIdentifikasiTenurial.LUAS_BAKU, rp.getLuasBaku());
-        args.put(TrnIdentifikasiTenurial.LUAS_TENURIAL, rp.getLuasTenurial());
-        args.put(TrnIdentifikasiTenurial.KONDISI_PETAK, rp.getKondisiPetakSaatIdentifikasi());
-        args.put(TrnIdentifikasiTenurial.AWAL_KONFLIK, rp.getAwalKonflik());
-        args.put(TrnIdentifikasiTenurial.PIHAK_TERLIBAT, rp.getPihakTerlibat());
-        args.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, rp.getStatusPenyelesaian());
+        args.put(TrnIdentifikasiTenurial.JENIS_PERMASALAHAN, it.getJenisPermasalahan());
+        args.put(TrnIdentifikasiTenurial.TANGGAL, it.getTanggal());
+        args.put(TrnIdentifikasiTenurial.ANAK_PETAK_ID, it.getAnakPetak());
+        args.put(TrnIdentifikasiTenurial.STRATA, it.getStrata());
+        args.put(TrnIdentifikasiTenurial.KELAS_HUTAN_ID, it.getKelasHutan());
+        args.put(TrnIdentifikasiTenurial.LUAS_BAKU, it.getLuasBaku());
+        args.put(TrnIdentifikasiTenurial.LUAS_TENURIAL, it.getLuasTenurial());
+        args.put(TrnIdentifikasiTenurial.KONDISI_PETAK, it.getKondisiPetakSaatIdentifikasi());
+        args.put(TrnIdentifikasiTenurial.AWAL_KONFLIK, it.getAwalKonflik());
+        args.put(TrnIdentifikasiTenurial.PIHAK_TERLIBAT, it.getPihakTerlibat());
+        args.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, it.getStatusPenyelesaian());
+        args.put(TrnIdentifikasiTenurial.KET9, it.getKet9());
         db.update(TrnIdentifikasiTenurial.TABLE_NAME, args, strFilter, null);
     }
 

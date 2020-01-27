@@ -38,7 +38,7 @@ public class TambahRegisterpcpFragment extends Fragment {
 
     private static SQLiteHandler db;
     private EditText nopcp, anakpetak, tahunpcp, luasbaku, luasblok, umur, rataratakeliling,
-            bonita, nlapangan, normalpcp, nmati, tahunjurangan, peninggi, keterangan;
+            bonita, nlapangan, normalpcp, nmati, tahunjarangan, peninggi, keterangan;
     private Button btnSimpanRegister;
 
     private TambahRegisterPcpViewModel mViewModel;
@@ -126,7 +126,7 @@ public class TambahRegisterpcpFragment extends Fragment {
         nlapangan = root.findViewById(R.id.pcp_nlapangan);
         normalpcp = root.findViewById(R.id.pcp_normalpcp);
         nmati = root.findViewById(R.id.pcp_nmatipcp);
-        tahunjurangan = root.findViewById(R.id.pcp_jaranganpcp);
+        tahunjarangan = root.findViewById(R.id.pcp_jaranganpcp);
         peninggi = root.findViewById(R.id.pcp_peninggi);
         keterangan = root.findViewById(R.id.pcp_ketpcp);
         btnSimpanRegister = root.findViewById(R.id.pcp_btnsubmitpcp);
@@ -162,7 +162,7 @@ public class TambahRegisterpcpFragment extends Fragment {
             final String nlapanganpcp = nlapangan.getText().toString();
             final String nmatipcp = nmati.getText().toString();
             final String normal = normalpcp.getText().toString();
-            final String jarangan = tahunjurangan.getText().toString();
+            final String jarangan = tahunjarangan.getText().toString();
             final String peninggipcp = peninggi.getText().toString();
 
             if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
@@ -254,7 +254,7 @@ public class TambahRegisterpcpFragment extends Fragment {
                                             values_aktifitas.put(TrnRegisterPcp.N_LAPANGAN, nlapangan.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.NORMAL_PCP, normalpcp.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.N_MATI, nmati.getText().toString());
-                                            values_aktifitas.put(TrnRegisterPcp.TAHUN_JARANGAN, tahunjurangan.getText().toString());
+                                            values_aktifitas.put(TrnRegisterPcp.TAHUN_JARANGAN, tahunjarangan.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.PENIGGI, peninggi.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.KETERANGAN, keterangan.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.KET1, spin_anak_petak.getSelectedItem().toString());
