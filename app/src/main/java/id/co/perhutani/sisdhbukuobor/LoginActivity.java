@@ -166,7 +166,7 @@ public class LoginActivity extends AppCompatActivity {
         AjnClass.pasang_sentry(this.getApplicationContext());
 
 
-        username.setText("adhijoyonegoro");
+        username.setText("adhi_ganteng");
         password.setText("perhutani");
 
         // Progress dialog
