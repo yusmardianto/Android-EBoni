@@ -268,8 +268,8 @@ public class EditPemantauanFragment extends Fragment {
             if (jenis_satwa.equals("") || jenis_satwa.equals("0") || jenis_satwa.equals(" ") || jenis_satwa.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Satwa tidak boleh kosong");
 
-            } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
+//            } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
+//                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
 
             } else if (jumlah_satwa.equals("") || jumlah_satwa.equals("0") || jumlah_satwa.equals(" ") || jumlah_satwa.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jumlah Satwa tidak boleh kosong");

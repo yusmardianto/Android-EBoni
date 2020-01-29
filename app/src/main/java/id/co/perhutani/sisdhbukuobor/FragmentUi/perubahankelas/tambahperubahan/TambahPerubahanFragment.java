@@ -392,8 +392,8 @@ public class TambahPerubahanFragment extends Fragment {
             if (jenistanaman.equals("") || jenistanaman.equals("0") || jenistanaman.equals(" ") || jenistanaman.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman tidak boleh kosong");
 
-            } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Petak tidak boleh kosong");
+//            } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
+//                AjnClass.showAlert(getActivity(), "Petak tidak boleh kosong");
 
             } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
