@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -37,6 +38,7 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
     SQLiteHandler db;
 
     public static final String MSG_KEY = "id";
+    private AlertDialog.Builder builder;
 
     public PemantauansatwaAdapter(Context mContext, List<PemantauansatwaModel> mData) {
         this.mContext = mContext;
@@ -75,8 +77,8 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             }
         });
 
-        String status_sync = mData.get(position).getKet9();
-        if (status_sync.equals("0")||status_sync.equals("2")) {
+        String status_sync = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.KET9);
+        if (status_sync.equals("1")) {
             holder.name_data_sinkron.setText("Belum terkirim keserver");
             holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
             holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
@@ -106,11 +108,11 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
         public PemantauanViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_jenisatwa = (TextView) itemView.findViewById(R.id.name_jenissatwa);
-            tv_anakpetakid = (TextView) itemView.findViewById(R.id.name_anakpetaksatwa);
-            tv_jumlahsatwa = (TextView) itemView.findViewById(R.id.name_jumlahsatwa);
-            tv_waktulihat = (TextView) itemView.findViewById(R.id.name_waktulihatsatwa);
-            tv_tanggal = (TextView) itemView.findViewById(R.id.name_tanggalsatwa);
+            tv_jenisatwa = itemView.findViewById(R.id.name_jenissatwa);
+            tv_anakpetakid = itemView.findViewById(R.id.name_anakpetaksatwa);
+            tv_jumlahsatwa = itemView.findViewById(R.id.name_jumlahsatwa);
+            tv_waktulihat = itemView.findViewById(R.id.name_waktulihatsatwa);
+            tv_tanggal = itemView.findViewById(R.id.name_tanggalsatwa);
             img_pemantaundetail = itemView.findViewById(R.id.img_pemantauandetail);
             name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_satwa);
             name_info_alert = itemView.findViewById(R.id.name_info_alert_satwa);
@@ -119,7 +121,6 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
 
     public void popup (final String id){
 
-//        AjnClass.showAlert(mContext,id);
         try {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             final View viewas = layoutInflater.inflate(R.layout.popup_detail_pemantauansatwa, null);
@@ -156,8 +157,6 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             keterangan.setText(get_keterangan);
 
             alertDialogBuilder.setView(viewas);
-//            alertDialogBuilder.setCancelable(false);
-
 
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
@@ -195,7 +194,6 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
                             .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
-                                    // reuse previous dialog instance, keep widget user state, reset them if you need
                                     sDialog.setTitleText("Diabatalkan!")
                                             .setContentText("")
                                             .setConfirmText("OK")
@@ -235,8 +233,6 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
                             .show();
                 }
             });
-
-
         } catch (Exception ex) {
             AjnClass.showAlert(mContext,ex.toString());
         }

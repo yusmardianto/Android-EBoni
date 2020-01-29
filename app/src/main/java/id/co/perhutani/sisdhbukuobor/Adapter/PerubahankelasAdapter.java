@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -37,6 +38,7 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
     private SQLiteHandler db;
 
     public static final String MSG_KEY = "id";
+    private AlertDialog.Builder builder;
 
     public PerubahankelasAdapter(Context mContext, List<PerubahankelasModel> mData) {
         this.mContext = mContext;
@@ -105,10 +107,10 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
         public PerubahanklsViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_jenistanaman = (TextView) itemView.findViewById(R.id.name_jenistanamanperubahankelas);
-            tv_petakID = (TextView) itemView.findViewById(R.id.name_petakidperubahankelas);
-            tv_tahun = (TextView) itemView.findViewById(R.id.name_tahunperubahankelas);
-            tv_kelashutan = (TextView) itemView.findViewById(R.id.name_kelashutanperubahankelas);
+            tv_jenistanaman = itemView.findViewById(R.id.name_jenistanamanperubahankelas);
+            tv_petakID = itemView.findViewById(R.id.name_petakidperubahankelas);
+            tv_tahun = itemView.findViewById(R.id.name_tahunperubahankelas);
+            tv_kelashutan = itemView.findViewById(R.id.name_kelashutanperubahankelas);
             img_detailperubahan = itemView.findViewById(R.id.img_perubahankelasdetail);
             name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_perubahan);
             name_info_alert = itemView.findViewById(R.id.name_info_alert_perubahan);
@@ -117,9 +119,6 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
     }
 
     public void popup (final String id){
-
-
-//        AjnClass.showAlert(mContext,id);
         try {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             final View viewas = layoutInflater.inflate(R.layout.popup_detail_perubahankelas, null);
@@ -182,7 +181,6 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
 
 
             alertDialogBuilder.setView(viewas);
-//            alertDialogBuilder.setCancelable(false);
 
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
@@ -220,7 +218,6 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
                             .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
-                                    // reuse previous dialog instance, keep widget user state, reset them if you need
                                     sDialog.setTitleText("Diabatalkan!")
                                             .setContentText("")
                                             .setConfirmText("OK")
@@ -260,7 +257,6 @@ public class PerubahankelasAdapter extends RecyclerView.Adapter<PerubahankelasAd
                             .show();
                 }
             });
-
         } catch (Exception ex) {
             AjnClass.showAlert(mContext,ex.toString());
         }
