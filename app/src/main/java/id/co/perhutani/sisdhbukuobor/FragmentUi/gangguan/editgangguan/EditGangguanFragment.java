@@ -284,8 +284,8 @@ public class EditGangguanFragment extends Fragment {
             if (kejadian.equals("") || kejadian.equals("0") || kejadian.equals(" ") || kejadian.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Judul Kejadian tidak boleh kosong");
 
-            } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Petak tidak boleh kosong");
+//            } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
+//                AjnClass.showAlert(getActivity(), "Petak tidak boleh kosong");
 
             } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");

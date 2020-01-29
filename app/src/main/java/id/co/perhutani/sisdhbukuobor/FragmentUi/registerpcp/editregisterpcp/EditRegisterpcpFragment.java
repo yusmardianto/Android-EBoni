@@ -221,8 +221,8 @@ public class EditRegisterpcpFragment extends Fragment {
             if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Nomor PCP tidak boleh kosong");
 
-            } else if (AnakPetak.equals("") || AnakPetak.equals("0") || AnakPetak.equals(" ") || AnakPetak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
+//            } else if (AnakPetak.equals("") || AnakPetak.equals("0") || AnakPetak.equals(" ") || AnakPetak.equals(null)) {
+//                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
 
             } else if(tahun.equals("") || tahun.equals("0") || tahun.equals(" ") || tahun.equals(null)){
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
