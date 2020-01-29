@@ -53,13 +53,12 @@ public class ThreadSendToAPI extends Thread {
     public void run() {
         while (true) {
             result_api = "";
-            try {
-//                Log.i("JSON_BACKGROUND_SERVICE", "Start loop service");
+            try { ;
                 if (!isOnline()) {
                     Log.i("JSON_BACKGROUND_SERVICE", "Tidak ada koneksi internet yeeeeee");
                 } else {
                     Log.i("JSON_BACKGROUND_SERVICE", "Ada koneksi internet joshh " );
-                    // sync tambah
+
                     sendToServerTambah();
                     sendToServerPerubahanKelas();
                     sendToServerInteraksimdh();
@@ -68,7 +67,6 @@ public class ThreadSendToAPI extends Thread {
                     sendToServerPCP();
                     sendToServerTenurial();
 
-                    // sync edit
                     sendToServerEdit();
                     sendToServerEditPerubahanKelas();
                     sendToServerEditInteraksiMdh();
@@ -76,17 +74,8 @@ public class ThreadSendToAPI extends Thread {
 //                    sendToServerEditPAL();
                     sendToServerEditPCP();
                     sendToServerEditTenurial();
-//
-//                    FragmentManager manager = myContext.getSupportFragmentManager();
-//                    Fragment fragment = new ListGangguanFragment();
-//                    FragmentTransaction ft = manager.beginTransaction();
-//                    ft.replace(R.id.nav_host_fragment, fragment);
-//                    ft.commit();
-
-                    // sync tambah
 
                 }
-                //pause thread every 10 seconds
                 Thread.sleep(10000);
             } catch (InterruptedException e) {
                 Log.i("JSON_ERROR", e.toString());
@@ -114,7 +103,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_GANGGUAN_HUTAN " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -144,7 +132,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_PERUBAHAN_KELAS " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -152,8 +139,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_perubahankelas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -177,7 +162,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_INTERAKSI_MDH " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -207,7 +191,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -215,8 +198,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_pemantauansatwa_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -240,7 +221,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_LAPORAN_PAL " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -248,10 +228,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_laporanlpalbatas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_data_registerpcp_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_data_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -275,7 +251,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_REGISTER_PCP " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -306,7 +281,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_IDENTIFIKASI_KONFLIK_TENURIAL " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -314,7 +288,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
 
 
                 } catch (Exception ex) {
@@ -330,7 +303,6 @@ public class ThreadSendToAPI extends Thread {
         }
     }
 
-    // Gukambut
     public void sync_tambah_data_gangguanhutan_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -445,7 +417,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_GANGGUAN_HUTAN " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -453,8 +424,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_gangguanhutan_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -573,7 +542,6 @@ public class ThreadSendToAPI extends Thread {
 
     }
 
-    // Perubahan Kelas
     public void sync_data_perubahankelas_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -610,13 +578,6 @@ public class ThreadSendToAPI extends Thread {
                         final String str_updated_at = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.UPDATED_AT);
                         final String str_updated_by = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET10);
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -678,8 +639,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -698,7 +657,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_PERUBAHAN_KELAS " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -706,8 +664,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_perubahankelas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -827,9 +783,7 @@ public class ThreadSendToAPI extends Thread {
         thread.start();
     }
 
-    // Interaksi MDH
-    public void sync_tambah_data_interaksimdh_v1(final String id)
-    {
+    public void sync_tambah_data_interaksimdh_v1(final String id) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -925,7 +879,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_INTERAKSI_MDH " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -933,8 +886,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_interaksimdh_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -949,8 +900,7 @@ public class ThreadSendToAPI extends Thread {
         }
     }
 
-    public void sync_data_edit_interaksimdh_v1(final String id)
-    {
+    public void sync_data_edit_interaksimdh_v1(final String id) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -1037,7 +987,6 @@ public class ThreadSendToAPI extends Thread {
 
     }
 
-    // Pemantauan Satwa
     public void sync_data_pemantauansatwa_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -1065,13 +1014,6 @@ public class ThreadSendToAPI extends Thread {
                         final String str_created_at = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -1124,8 +1066,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -1144,7 +1084,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -1152,8 +1091,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_pemantauansatwa_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -1251,7 +1188,6 @@ public class ThreadSendToAPI extends Thread {
         thread.start();
     }
 
-    // Laporan PAL
     public void sync_data_laporanlpalbatas_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -1279,13 +1215,6 @@ public class ThreadSendToAPI extends Thread {
                         final String str_created_at = db.getDataDetail_v2(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET10);
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -1338,8 +1267,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_LAPORAN_PAL_V1);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -1358,7 +1285,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_LAPORAN_PAL " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -1366,8 +1292,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_laporanlpalbatas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -1465,7 +1389,6 @@ public class ThreadSendToAPI extends Thread {
         thread.start();
     }
 
-    // Register PCP
     public void sync_data_registerpcp_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -1565,8 +1488,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_REGISTER_PCP_V1);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -1585,7 +1506,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_REGISTER_PCP " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -1593,8 +1513,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_registerpcp_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -1716,8 +1634,6 @@ public class ThreadSendToAPI extends Thread {
         thread.start();
     }
 
-    // Identifikasi Konflik Tenurial
-
     public void sync_data_identifikasitenurial_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -1752,14 +1668,6 @@ public class ThreadSendToAPI extends Thread {
                         final String str_updated_at = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.UPDATED_AT);
                         final String str_updated_by = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET10);
-
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -1819,8 +1727,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_IDENTIFIKASI_TENURIAL_V1);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -1839,7 +1745,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_IDENTIFIKASI_KONFLIK_TENURIAL " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -1847,8 +1752,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
