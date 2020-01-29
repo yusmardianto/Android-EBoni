@@ -105,10 +105,10 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
         public InteraksimdhViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_namadesa = (TextView) itemView.findViewById(R.id.name_interaksi_namadesa);
-            tv_bentukinteraksi = (TextView) itemView.findViewById(R.id.name_interaksi_bentukinteraksi);
-            tv_petakID = (TextView) itemView.findViewById(R.id.name_interaksi_petak);
-            tv_tahun = (TextView) itemView.findViewById(R.id.name_interaksi_tahun);
+            tv_namadesa = itemView.findViewById(R.id.name_interaksi_namadesa);
+            tv_bentukinteraksi = itemView.findViewById(R.id.name_interaksi_bentukinteraksi);
+            tv_petakID = itemView.findViewById(R.id.name_interaksi_petak);
+            tv_tahun = itemView.findViewById(R.id.name_interaksi_tahun);
             img_detailimdh = itemView.findViewById(R.id.img_interaksimdhdetail);
             name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_imdh);
             name_info_alert = itemView.findViewById(R.id.name_info_alert_imdh);
@@ -117,9 +117,6 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
     }
 
     public void popup (final String id){
-
-
-//        AjnClass.showAlert(mContext,id);
         try {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             final View viewas = layoutInflater.inflate(R.layout.popup_detail_interaksimdh, null);
@@ -154,7 +151,6 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
 
 
             alertDialogBuilder.setView(viewas);
-//            alertDialogBuilder.setCancelable(false);
 
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
@@ -192,7 +188,6 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
                             .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
-                                    // reuse previous dialog instance, keep widget user state, reset them if you need
                                     sDialog.setTitleText("Diabatalkan!")
                                             .setContentText("")
                                             .setConfirmText("OK")
@@ -232,7 +227,6 @@ public class InteraksimdhAdapter extends RecyclerView.Adapter<InteraksimdhAdapte
                             .show();
                 }
             });
-
         } catch (Exception ex) {
             AjnClass.showAlert(mContext,ex.toString());
         }

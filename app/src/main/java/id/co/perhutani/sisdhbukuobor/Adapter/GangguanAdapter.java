@@ -120,8 +120,6 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
     }
 
     public void popup (final String id){
-
-//        AjnClass.showAlert(mContext,id);
         try {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             final View viewas = layoutInflater.inflate(R.layout.popup_detail_ganggaunkemanan, null);
@@ -177,10 +175,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             TextView keterangan = viewas.findViewById(R.id.gangguan_keterangandetail);
             keterangan.setText(get_keterangan);
 
-
             alertDialogBuilder.setView(viewas);
-//            alertDialogBuilder.setCancelable(false);
-
 
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
@@ -219,7 +214,6 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
                             .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
-                                    // reuse previous dialog instance, keep widget user state, reset them if you need
                                     sDialog.setTitleText("Diabatalkan!")
                                             .setContentText("")
                                             .setConfirmText("OK")
@@ -259,8 +253,6 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
                             .show();
                 }
             });
-
-
 
         } catch (Exception ex) {
             AjnClass.showAlert(mContext,ex.toString());
