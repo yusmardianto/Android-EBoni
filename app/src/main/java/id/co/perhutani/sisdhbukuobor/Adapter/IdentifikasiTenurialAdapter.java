@@ -78,14 +78,14 @@ public class IdentifikasiTenurialAdapter extends RecyclerView.Adapter<Identifika
 
         String status_sync = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, mData.get(position).getId(), TrnIdentifikasiTenurial.KET9);
         if (status_sync.equals("1")){
-        holder.name_data_sinkron.setText("Belum terkirim keserver");
-        holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
-        holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
-    }  else {
-        holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
-        holder.name_data_sinkron.setText("Sudah terkirim keserver");
-        holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
-    }
+            holder.name_data_sinkron.setText("Sudah terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
+        }  else {
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
+            holder.name_data_sinkron.setText("Belum terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
+        }
 }
 
     @Override
