@@ -50,7 +50,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -76,7 +75,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     }
 
-    // Upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         clear_database(db);
@@ -84,7 +82,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
 
     public void clear_database(SQLiteDatabase db){
-        // Drop older table if existed
         db.execSQL(UserSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_DELETE_ENTRIES);
@@ -104,14 +101,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnLaporanPalBatas.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
-        // Create tables again
         onCreate(db);
     }
 
 
     public void altertable() {
         SQLiteDatabase db = getReadableDatabase();
-        //create table
         db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTanamanSchema.SQL_CREATE_ENTRIES);
@@ -238,7 +233,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    // Gangguan Keamanan Hutan
     public void EditDataGangguanHutan(GangguanModel g) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + g.getID_gangguan();
@@ -269,7 +263,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
     }
 
-    // Perubahan Kelas
     public void EditDataPerubahanKelas(PerubahankelasModel pk) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + pk.getID_Perubahan();
@@ -307,7 +300,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
-    // Interaksi MDH
     public void EditDataInteraksiMDH(InteraksimdhModel imdh) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + imdh.getID_IMDH();
@@ -336,7 +328,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
     }
 
-    // Pemantauan Satwa
     public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + ps.getID_Pemantauan();
@@ -364,7 +355,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
     }
 
-    // Laporan Pal Batas
     public void EditDataLaporanPalBatas(PelaporanpalbatasModel lpb) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + lpb.getID_Laporan();
@@ -389,7 +379,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
     }
 
-    // Register PCP
     public void EditDataRegisterPCP(RegisterpcpModel rp) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + rp.getID_Registerpcp();
@@ -421,7 +410,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
-    // Identifikasi Tenurial
     public void EditDataIdentifikasiTenurial(IdentifikasiTenurialModel it) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + it.getID_Tenurial();
@@ -450,7 +438,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnIdentifikasiTenurial.TABLE_NAME, args, strFilter, null);
     }
 
-    // Get Data
     public List<String> getJenisPal() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstJenisPalSchema.JENIS_PAL_NAME + " FROM " + MstJenisPalSchema.TABLE_NAME +
@@ -642,5 +629,4 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close();
         return labels;
     }
-
 }
