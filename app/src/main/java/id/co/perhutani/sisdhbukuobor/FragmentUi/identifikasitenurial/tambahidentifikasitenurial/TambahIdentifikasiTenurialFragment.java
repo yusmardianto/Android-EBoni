@@ -240,8 +240,8 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
             if (jenispermasalahan.equals("") || jenispermasalahan.equals("0") || jenispermasalahan.equals(" ") || jenispermasalahan.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Permasalahan tidak boleh kosong");
 
-//            } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
-//                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
+            } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
 
             } else if (tahun.equals("") || tahun.equals("0") || tahun.equals(" ") || tahun.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tahun tidak boleh kosong");

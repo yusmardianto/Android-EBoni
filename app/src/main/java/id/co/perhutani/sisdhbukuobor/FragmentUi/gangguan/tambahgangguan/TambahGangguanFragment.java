@@ -197,7 +197,7 @@ public class TambahGangguanFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.spinner_anak_petak);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         isipetak.setText(id_petak);
         } catch (Exception e) {
             AjnClass.showAlert(getActivity(), "Master anak petak tidak ditemukan " + e.toString());
@@ -243,8 +243,8 @@ public class TambahGangguanFragment extends Fragment {
             if (kejadian.equals("") || kejadian.equals("0") || kejadian.equals(" ") || kejadian.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Judul Kejadian tidak boleh kosong");
 
-//            } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
-//                AjnClass.showAlert(getActivity(), "Petak tidak boleh kosong");
+            } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Petak tidak boleh kosong");
 
             } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");

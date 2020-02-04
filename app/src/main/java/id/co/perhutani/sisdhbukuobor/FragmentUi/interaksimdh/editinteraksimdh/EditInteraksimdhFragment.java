@@ -256,10 +256,10 @@ public class EditInteraksimdhFragment extends Fragment {
             final String bentuk_interaksi = bentukinteraksi.getText().toString();
             final String status_interaksi = status.getText().toString();
 
-//            if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
-//                AjnClass.showAlert(getActivity(), "Petak Kejadian tidak boleh kosong");
+            if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Petak Kejadian tidak boleh kosong");
 
-            if (tahun_interaksi.equals("") || tahun_interaksi.equals("- Pilih Tahun -") || tahun_interaksi.equals(" ") || tahun_interaksi.equals(null)) {
+            } else if (tahun_interaksi.equals("") || tahun_interaksi.equals("- Pilih Tahun -") || tahun_interaksi.equals(" ") || tahun_interaksi.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tahun tidak boleh kosong");
 
             } else if (nama_desa.equals("") || nama_desa.equals("0") || nama_desa.equals(" ") || nama_desa.equals(null)) {
