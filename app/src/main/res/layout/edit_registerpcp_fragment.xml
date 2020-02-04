@@ -1,493 +1,434 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff"
-    tools:context=".FragmentUi.registerpcp.tambahregisterpcp.TambahRegisterpcpFragment">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/top_navigation"
+    <RelativeLayout
+        android:id="@+id/linear_layout_home"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#EAEAEA"
-        android:paddingLeft="-16dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="15dp"
-            android:fontFamily="@font/font_aal_default"
-            android:gravity="right|center"
-            android:text="Edit Register PCP"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="20dp" />
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
         android:layout_marginRight="10dp"
-        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/colorOrange"
+            app:cardCornerRadius="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
-                    android:fontFamily="@font/font_aal_default"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Nomer PCP"
-                    android:textColor="#1F1E1E" />
-
-                <EditText
-                    android:id="@+id/edit_pcp_nopcp"
-                    android:fontFamily="@font/font_aal_default"
-                    android:inputType="number"
-                    android:singleLine="true"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/ic_background"
-                    android:hint="Nomer PCP" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Anak Petak"
-                            android:textColor="#1F1E1E" />
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:fontFamily="@font/font_aal_default"
-                            android:id="@+id/spinner_anak_petak"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-
-                        <EditText
-                            android:id="@+id/edit_pcp_anakpetakpcp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:visibility="gone"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="Kondisi" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="5dp"
-                            android:background="#000" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="350dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Tahun"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_tahunpcp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="Tahun" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Umur"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_umurpcp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="Umur" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="350dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Luas Block"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_luasblockpcp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="Tahun" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Luas Baku"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_luasbakupcp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="Luas Baku" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="350dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Rata-Rata Keliling"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_rataratapcp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="Rata-Rata Keliling" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Bonita"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_bonitapcp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="Bonita" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="350dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="N Lapangan"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_nlapangan"
-                            android:fontFamily="@font/font_aal_default"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="N Lapangan" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="N Mati"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_nmatipcp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="N Mati" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="350dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Normal dalam PCP"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_normalpcp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="Normal dalam PCP" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Tahun Jarangan"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_jaranganpcp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="Tahun Jarangan" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="350dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:fontFamily="@font/font_aal_default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Peninggi"
-                            android:textColor="#1F1E1E" />
-
-                        <EditText
-                            android:id="@+id/edit_pcp_peninggi"
-                            android:fontFamily="@font/font_aal_default"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_background"
-                            android:hint="Peninggi" />
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="30"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
-                        android:fontFamily="@font/font_aal_default"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Keterangan"
-                        android:textColor="#1F1E1E" />
-
-                    <EditText
-                        android:id="@+id/edit_pcp_ketpcp"
+                        android:layout_gravity="center"
                         android:fontFamily="@font/font_aal_default"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:background="@drawable/ic_background"
-                        android:hint="Tambahkan keterangan . . . " />
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="Edit Register PCP"
+                        android:textColor="#fff"
+                        android:textSize="20dp" />
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_gravity="right"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:background="@drawable/ic_background">
 
-                    <Button
-                        android:id="@+id/edit_pcp_btnsubmitpcp"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/font_aal_bold"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                    <ScrollView
                         android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/shape_btnlogin"
-                        android:text="Simpan"
-                        android:textColor="#F9F9F9" />
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nomer PCP"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_nopcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Anak Petak"
+                                    android:textColor="#424242"/>
+
+                                <androidx.appcompat.widget.AppCompatSpinner
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:id="@+id/edit_spinner_anak_petak"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_anakpetakpcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/ic_background"
+                                    android:hint="Anak Petak" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="5dp"
+                                    android:background="#EFEFEF" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tahun"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_tahunpcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Umur"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_umurpcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Luas Blok"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_luasblockpcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Luas Baku"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_luasbakupcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rata-Rata Keliling"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_rataratapcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:inputType="number"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bonita"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_bonitapcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="N Lapangan"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_nlapangan"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="N Mati"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_nmatipcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Normal dalam PCP"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_normalpcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tahun Jarangan"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_jaranganpcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Peninggi"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_peninggi"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Keterangan"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/edit_pcp_ketpcp"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/edit_pcp_btnsubmitpcp"
+                                    android:textSize="20dp"
+                                    android:fontFamily="@font/font_aal_bold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/shape_btnlogin"
+                                    android:text="Simpan"
+                                    android:textColor="#F9F9F9" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
                 </LinearLayout>
+
             </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
-</RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
