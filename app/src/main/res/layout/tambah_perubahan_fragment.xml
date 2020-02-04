@@ -11,7 +11,7 @@
         android:id="@+id/top_navigation"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#EAEAEA"
+        android:background="#ECECEC"
         android:paddingLeft="-16dp">
 
         <TextView
@@ -34,6 +34,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="10dp"
         android:layout_weight="1"
+        android:background="#fff"
         android:orientation="vertical">
 
         <ScrollView
@@ -578,11 +579,7 @@
                                 </LinearLayout>
                             </LinearLayout>
                     </LinearLayout>
-
             </LinearLayout>
-
         </ScrollView>
-
     </LinearLayout>
-
 </RelativeLayout>
