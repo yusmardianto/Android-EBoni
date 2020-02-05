@@ -128,18 +128,18 @@ public class ListGangguanFragment extends Fragment
             }
         });
 
-        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatagangguan);
-        final RecyclerView dataada = root.findViewById(R.id.gangguan_recycler);
-
-        final int ceksampling = db.cek_jumlah_data(TrnGangguanKeamananHutan.TABLE_NAME);
-        if(String.valueOf(ceksampling).equals("0"))
-        {
-            datakosong.setVisibility(View.VISIBLE);
-            dataada.setVisibility(View.GONE);
-        }else {
-            datakosong.setVisibility(View.GONE);
-            dataada.setVisibility(View.VISIBLE);
-        }
+//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatagangguan);
+//        final RecyclerView dataada = root.findViewById(R.id.gangguan_recycler);
+//
+//        final int ceksampling = db.cek_jumlah_data(TrnGangguanKeamananHutan.TABLE_NAME);
+//        if(String.valueOf(ceksampling).equals("0"))
+//        {
+//            datakosong.setVisibility(View.VISIBLE);
+//            dataada.setVisibility(View.GONE);
+//        }else {
+//            datakosong.setVisibility(View.GONE);
+//            dataada.setVisibility(View.VISIBLE);
+//        }
 
         return root;
     }

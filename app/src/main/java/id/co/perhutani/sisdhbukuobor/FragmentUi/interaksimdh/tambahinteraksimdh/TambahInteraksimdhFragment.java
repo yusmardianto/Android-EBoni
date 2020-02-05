@@ -69,7 +69,8 @@ public class TambahInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 anakpetak.setText(id_petak);
             }
 
@@ -179,16 +180,11 @@ public class TambahInteraksimdhFragment extends Fragment {
         keterangan = root.findViewById(R.id.interaksimdh_keterangan);
         btnSubmitInteraksi = root.findViewById(R.id.interaksimdh_btnsubmit);
 
-        try{
-        anakpetak = root.findViewById(R.id.spinner_anakpetak_interaksi);
+        spin_anak_petak = root.findViewById(R.id.spinner_anakpetak_interaksi);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         anakpetak.setText(id_petak);
-        } catch (Exception e) {
-        AjnClass.showAlert(getActivity(), "Master anak petak tidak ditemukan " + e.toString());
-//            sendMessage(e.getMessage());
-    }
 
         spin_tahun = root.findViewById(R.id.spinner_tahuninteraksi);
 

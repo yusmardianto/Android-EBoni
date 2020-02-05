@@ -208,7 +208,7 @@ public class EditPemantauanFragment extends Fragment {
         String id_jenis = db.getDataDetail(MstJenisSatwa.TABLE_NAME, MstJenisSatwa.JENIS_SATWA_NAME, pil_jenis_satwa, MstJenisSatwa.JENIS_SATWA_ID);
         jenissatwa.setText(id_jenis);
 
-        spin_anak_petak = root.findViewById(R.id.spinner_anak_petak);
+        spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_satwa);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
@@ -268,8 +268,8 @@ public class EditPemantauanFragment extends Fragment {
             if (jenis_satwa.equals("") || jenis_satwa.equals("0") || jenis_satwa.equals(" ") || jenis_satwa.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Satwa tidak boleh kosong");
 
-//            } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
-//                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
+            } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
 
             } else if (jumlah_satwa.equals("") || jumlah_satwa.equals("0") || jumlah_satwa.equals(" ") || jumlah_satwa.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jumlah Satwa tidak boleh kosong");

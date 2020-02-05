@@ -131,7 +131,7 @@ public class TambahRegisterpcpFragment extends Fragment {
         keterangan = root.findViewById(R.id.pcp_ketpcp);
         btnSimpanRegister = root.findViewById(R.id.pcp_btnsubmitpcp);
 
-        spin_anak_petak = root.findViewById(R.id.spinner_anak_petak);
+        spin_anak_petak = root.findViewById(R.id.spinner_anak_petak_pcp);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
@@ -168,8 +168,8 @@ public class TambahRegisterpcpFragment extends Fragment {
             if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Nomor PCP tidak boleh kosong");
 
-//            } else if (AnakPetak.equals("") || AnakPetak.equals("0") || AnakPetak.equals(" ") || AnakPetak.equals(null)) {
-//                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
+            } else if (AnakPetak.equals("") || AnakPetak.equals("0") || AnakPetak.equals(" ") || AnakPetak.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
 
             } else if(tahun.equals("") || tahun.equals("0") || tahun.equals(" ") || tahun.equals(null)){
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");

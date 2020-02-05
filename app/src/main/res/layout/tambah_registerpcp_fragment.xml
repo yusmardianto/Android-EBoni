@@ -102,7 +102,7 @@
 
                                 <androidx.appcompat.widget.AppCompatSpinner
                                     android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_anak_petak"
+                                    android:id="@+id/spinner_anak_petak_pcp"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
 

@@ -194,7 +194,7 @@ public class TambahGangguanFragment extends Fragment {
         btnSimpanGangguan = root.findViewById(R.id.gangguan_btnsubmit);
 
         try{
-        spin_anak_petak = root.findViewById(R.id.spinner_anak_petak);
+        spin_anak_petak = root.findViewById(R.id.spinner_anak_petak_gukamhut);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
@@ -203,6 +203,7 @@ public class TambahGangguanFragment extends Fragment {
             AjnClass.showAlert(getActivity(), "Master anak petak tidak ditemukan " + e.toString());
 //            sendMessage(e.getMessage());
         }
+
         spin_gangguan_hutan = root.findViewById(R.id.spinner_gangguan_hutan);
         load_spinner_gangguan_hutan();
         String pil_gangguan = spin_gangguan_hutan.getSelectedItem().toString();

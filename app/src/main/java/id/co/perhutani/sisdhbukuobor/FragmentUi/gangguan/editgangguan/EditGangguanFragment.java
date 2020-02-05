@@ -202,7 +202,7 @@ public class EditGangguanFragment extends Fragment {
         kerugian_getah = root.findViewById(R.id.edit_gangguan_kerugiangetah);
         nilai_kerugian = root.findViewById(R.id.edit_gangguan_nilaikerugian);
         keterangan = root.findViewById(R.id.edit_gangguan_keterangan);
-        btnSimpanGangguan = root.findViewById(R.id.edit_gangguan_btnsimpan);
+        btnSimpanGangguan = root.findViewById(R.id.edit_gangguan_btnsubmit);
 
         spin_gangguan_hutan = root.findViewById(R.id.edit_spinner_gangguan_hutan);
         load_spinner_gangguan_hutan();
@@ -210,7 +210,7 @@ public class EditGangguanFragment extends Fragment {
         String id_gangguan = db.getDataDetail(MstJenisGangguanHutanSchema.TABLE_NAME, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME, pil_gangguan, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME);
         isi_kejadian.setText(id_gangguan);
 
-        spin_anak_petak = root.findViewById(R.id.spinner_anak_petak);
+        spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_gukamhut);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
