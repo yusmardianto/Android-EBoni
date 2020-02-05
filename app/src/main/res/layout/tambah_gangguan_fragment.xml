@@ -197,6 +197,7 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
+                                    android:inputType="number"
                                     android:background="@drawable/ic_background_grey"/>
                             </LinearLayout>
 
@@ -219,31 +220,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="5dp"
-                                android:background="#EFEFEF" />
-
-                            <LinearLayout
-                                android:layout_marginTop="20dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Kerugian"
-                                    android:textSize="20dp"
-                                    android:textStyle="bold"
-                                    android:textColor="#424242"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -377,14 +353,6 @@
                                     android:layout_height="50dp"
                                     android:background="@drawable/ic_background_grey"/>
                             </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="5dp"
-                                android:background="#EFEFEF" />
 
                             <LinearLayout
                                 android:layout_marginTop="15dp"

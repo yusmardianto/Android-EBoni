@@ -157,7 +157,7 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Umur"
+                                    android:text="Umur ( Thn )"
                                     android:textColor="#424242" />
 
                                 <EditText

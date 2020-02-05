@@ -221,14 +221,6 @@
                                     android:background="@drawable/ic_background_grey"/>
                             </LinearLayout>
 
-                            <View
-                                android:layout_width="wrap_content"
-                                android:layout_height="2dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="5dp"
-                                android:background="#EFEFEF" />
-
                             <LinearLayout
                                 android:layout_marginTop="15dp"
                                 android:layout_width="match_parent"
@@ -325,14 +317,6 @@
                                     android:layout_height="50dp"
                                     android:background="@drawable/ic_background_grey"/>
                             </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="5dp"
-                                android:background="#EFEFEF" />
 
                             <LinearLayout
                                 android:layout_marginTop="15dp"
@@ -451,14 +435,6 @@
                                     android:layout_height="50dp"
                                     android:background="@drawable/ic_background_grey"/>
                             </LinearLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="5dp"
-                                android:background="#EFEFEF" />
 
                             <LinearLayout
                                 android:layout_marginTop="15dp"
