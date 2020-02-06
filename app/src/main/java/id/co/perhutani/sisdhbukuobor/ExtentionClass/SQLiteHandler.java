@@ -238,10 +238,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         String strFilter = "ID=" + g.getID_gangguan();
         ContentValues args = new ContentValues();
         args.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, g.getPetak());
+        args.put(TrnGangguanKeamananHutan.KET1, g.getKet1());
         args.put(TrnGangguanKeamananHutan.JENIS_TANAMAN, g.getJenisTanaman());
+        args.put(TrnGangguanKeamananHutan.KET2, g.getKet2());
         args.put(TrnGangguanKeamananHutan.TANGGAL, g.getTanggal());
         args.put(TrnGangguanKeamananHutan.NOMOR_A, g.getNoA());
         args.put(TrnGangguanKeamananHutan.KEJADIAN, g.getIsi());
+        args.put(TrnGangguanKeamananHutan.KET3, g.getKet3());
         args.put(TrnGangguanKeamananHutan.KERUGIAN_LUAS, g.getLuas());
         args.put(TrnGangguanKeamananHutan.KERUGIAN_POHON, g.getPohon());
         args.put(TrnGangguanKeamananHutan.KERUGIAN_KYP, g.getKyp());
@@ -249,7 +252,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnGangguanKeamananHutan.KERUGIAN_GETAH, g.getGetah());
         args.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, g.getNilai());
         args.put(TrnGangguanKeamananHutan.KETERANGAN, g.getKeterangan());
-        args.put(TrnGangguanKeamananHutan.KET1, g.getKet1());
         args.put(TrnGangguanKeamananHutan.KET9, g.getKet9());
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
     }

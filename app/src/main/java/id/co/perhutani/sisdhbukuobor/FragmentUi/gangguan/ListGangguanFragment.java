@@ -128,18 +128,18 @@ public class ListGangguanFragment extends Fragment
             }
         });
 
-//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatagangguan);
-//        final RecyclerView dataada = root.findViewById(R.id.gangguan_recycler);
-//
-//        final int ceksampling = db.cek_jumlah_data(TrnGangguanKeamananHutan.TABLE_NAME);
-//        if(String.valueOf(ceksampling).equals("0"))
-//        {
-//            datakosong.setVisibility(View.VISIBLE);
-//            dataada.setVisibility(View.GONE);
-//        }else {
-//            datakosong.setVisibility(View.GONE);
-//            dataada.setVisibility(View.VISIBLE);
-//        }
+        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatagangguan);
+        final RecyclerView dataada = root.findViewById(R.id.gangguan_recycler);
+
+        final int ceksampling = db.cek_jumlah_data(TrnGangguanKeamananHutan.TABLE_NAME);
+        if(String.valueOf(ceksampling).equals("0"))
+        {
+            datakosong.setVisibility(View.VISIBLE);
+            dataada.setVisibility(View.GONE);
+        }else {
+            datakosong.setVisibility(View.GONE);
+            dataada.setVisibility(View.VISIBLE);
+        }
 
         return root;
     }
@@ -150,7 +150,7 @@ public class ListGangguanFragment extends Fragment
                 SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
                 SQLiteDatabase db = DB_Helper.getReadableDatabase();
                 final Cursor cur = db.rawQuery("SELECT " +
-                        "ID, KEJADIAN, ANAKPETAK_ID, ID, ID , TANGGAL, ID, ID, ID, ID, ID, ID, ID, KET1, ID, KET9, ID" +
+                        "ID, KEJADIAN, ANAKPETAK_ID, ID, ID , TANGGAL, ID, ID, ID, ID, ID, ID, ID, KET1, KET2, KET3, ID, KET9, ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                         " FROM TRN_GANGGUAN_HUTAN " +
                         " WHERE KET3 " + " LIKE  " + "'%" + kejadian + "%'" +
@@ -174,9 +174,11 @@ public class ListGangguanFragment extends Fragment
                             cur.getString(11),
                             cur.getString(12),
                             cur.getString(13),
-                            Integer.parseInt(cur.getString(0)),
                             cur.getString(14),
-                            cur.getString(15)
+                            cur.getString(15),
+                            Integer.parseInt(cur.getString(0)),
+                            cur.getString(16),
+                            cur.getString(17)
                     ));
                     cur.moveToNext();
                 }
@@ -205,7 +207,7 @@ public class ListGangguanFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    "ID, KEJADIAN, ANAKPETAK_ID, ID, ID , TANGGAL, ID, ID, ID, ID, ID, ID, ID, KET1, ID, KET9, ID" +
+                    "ID, KEJADIAN, ANAKPETAK_ID, ID, ID , TANGGAL, ID, ID, ID, ID, ID, ID, ID, KET1, KET2, KET3, ID, KET9, ID" +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_GANGGUAN_HUTAN " +
                     " ORDER BY ID DESC", null);
@@ -228,9 +230,11 @@ public class ListGangguanFragment extends Fragment
                         cur.getString(11),
                         cur.getString(12),
                         cur.getString(13),
-                        Integer.parseInt(cur.getString(0)),
                         cur.getString(14),
-                        cur.getString(15)
+                        cur.getString(15),
+                        Integer.parseInt(cur.getString(0)),
+                        cur.getString(16),
+                        cur.getString(17)
                         ));
                 cur.moveToNext();
             }
@@ -249,7 +253,7 @@ public class ListGangguanFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    "ID, KEJADIAN, ANAKPETAK_ID, ID, ID , TANGGAL, ID, ID, ID, ID, ID, ID, ID, KET1, ID, KET9, ID" +
+                    "ID, KEJADIAN, ANAKPETAK_ID, ID, ID , TANGGAL, ID, ID, ID, ID, ID, ID, ID, KET1, KET2, KET3, ID, KET9, ID" +
                     " FROM TRN_GANGGUAN_HUTAN " +
                     " ORDER BY ID DESC", null);
 
@@ -271,9 +275,11 @@ public class ListGangguanFragment extends Fragment
                         cur.getString(11),
                         cur.getString(12),
                         cur.getString(13),
-                        Integer.parseInt(cur.getString(0)),
                         cur.getString(14),
-                        cur.getString(15)
+                        cur.getString(15),
+                        Integer.parseInt(cur.getString(0)),
+                        cur.getString(16),
+                        cur.getString(17)
                 ));
                 cur.moveToNext();
             }
