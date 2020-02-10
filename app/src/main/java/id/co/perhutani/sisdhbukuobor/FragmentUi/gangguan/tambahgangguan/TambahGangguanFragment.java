@@ -242,10 +242,10 @@ public class TambahGangguanFragment extends Fragment {
             final String kayupap = kerugian_kyp.getText().toString();
 
             if (kejadian.equals("") || kejadian.equals("0") || kejadian.equals(" ") || kejadian.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Judul Kejadian tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jenis Kejadian tidak boleh kosong");
 
             } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Petak tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Anak petak tidak boleh kosong");
 
             } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
