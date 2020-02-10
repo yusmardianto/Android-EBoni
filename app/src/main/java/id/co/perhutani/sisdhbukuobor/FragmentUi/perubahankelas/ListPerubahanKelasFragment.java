@@ -3,7 +3,10 @@ package id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +34,7 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas.tambahperubahan.TambahPerubahanFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 
 public class ListPerubahanKelasFragment extends Fragment
 {
@@ -47,6 +52,31 @@ public class ListPerubahanKelasFragment extends Fragment
         return new ListPerubahanKelasFragment();
     }
 
+    private Handler handler = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if (isOnline()) {
+                    refresh_list();
+                }
+            } catch (Exception ex) {
+            }
+            handler.postDelayed(this, 10000);
+        }
+    };
+
+
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -56,9 +86,13 @@ public class ListPerubahanKelasFragment extends Fragment
         recylcerview = root.findViewById(R.id.perubahankls_recycler);
         pkAdapter = new PerubahankelasAdapter(getContext(),lstperubahankls);
         recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-//      myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         recylcerview .setAdapter(pkAdapter);
+
+        context=getActivity();
+        db = new SQLiteHandler(getActivity());
         init();
+
+        handler.postDelayed(runnable, 1000);
 
         ImageView imgTambahPerubahankls = (ImageView) root.findViewById(R.id.img_tambahperubahan);
         imgTambahPerubahankls.setOnClickListener(new View.OnClickListener() {
@@ -95,18 +129,18 @@ public class ListPerubahanKelasFragment extends Fragment
             }
         });
 
-//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadataperubahankelas);
-//        final RecyclerView dataada = root.findViewById(R.id.perubahankls_recycler);
-//
-//        final int ceksampling = db.cek_jumlah_data(TrnPerubahanKelas.TABLE_NAME);
-//        if(String.valueOf(ceksampling).equals("0"))
-//        {
-//            datakosong.setVisibility(View.VISIBLE);
-//            dataada.setVisibility(View.GONE);
-//        }else {
-//            datakosong.setVisibility(View.GONE);
-//            dataada.setVisibility(View.VISIBLE);
-//        }
+        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadataperubahan);
+        final RecyclerView dataada = root.findViewById(R.id.perubahankls_recycler);
+
+        final int cekdata = db.cek_jumlah_data(TrnPerubahanKelas.TABLE_NAME);
+        if(String.valueOf(cekdata).equals("0"))
+        {
+            datakosong.setVisibility(View.VISIBLE);
+            dataada.setVisibility(View.GONE);
+        }else {
+            datakosong.setVisibility(View.GONE);
+            dataada.setVisibility(View.VISIBLE);
+        }
 
 
         return root;
