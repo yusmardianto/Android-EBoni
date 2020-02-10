@@ -276,7 +276,7 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Jumlah Pohon"
+                                    android:text="Jumlah Kerugian Pohon"
                                     android:textColor="#424242" />
 
                                 <EditText
@@ -298,7 +298,7 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Jumlah Getah"
+                                    android:text="Jumlah Kerugian Getah"
                                     android:textColor="#424242" />
 
                                 <EditText
@@ -320,7 +320,7 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Jumlah Kayu Bakar"
+                                    android:text="Jumlah Kerugian Kayu Bakar"
                                     android:textColor="#424242" />
 
                                 <EditText
@@ -342,7 +342,7 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Jumlah Kayu Pap"
+                                    android:text="Jumlah Kerugian Kayu Pap"
                                     android:textColor="#424242" />
 
                                 <EditText
