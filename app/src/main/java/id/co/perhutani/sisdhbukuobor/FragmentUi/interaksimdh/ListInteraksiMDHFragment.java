@@ -144,7 +144,6 @@ public class ListInteraksiMDHFragment extends Fragment
             dataada.setVisibility(View.VISIBLE);
         }
 
-
         return root;
     }
 
