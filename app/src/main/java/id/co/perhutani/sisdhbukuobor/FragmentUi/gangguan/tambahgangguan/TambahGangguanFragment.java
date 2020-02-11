@@ -247,14 +247,14 @@ public class TambahGangguanFragment extends Fragment {
             } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Anak petak harus diisi");
 
-            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
+            } else if (jenistanaman.equals("") || jenistanaman.equals("0") || jenistanaman.equals(" ") || jenistanaman.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jenis Tanaman harus diisi");
 
             } else if (nomorA.equals("") || nomorA.equals("0") || nomorA.equals(" ") || nomorA.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Nomer A harus diisi");
 
-            } else if (jenistanaman.equals("") || jenistanaman.equals("0") || jenistanaman.equals(" ") || jenistanaman.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jenis Tanaman harus diisi");
+            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
 
             } else if (luas.equals("") || luas.equals(" ") || luas.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Luas Kerugian harus diisi");

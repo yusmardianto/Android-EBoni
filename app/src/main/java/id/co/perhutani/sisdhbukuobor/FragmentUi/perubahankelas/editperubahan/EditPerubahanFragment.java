@@ -439,14 +439,14 @@ public class EditPerubahanFragment extends Fragment {
             } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Anak Petak harus diisi");
 
-            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
-
             } else if (kelas.equals("") || kelas.equals("0") || kelas.equals(" ") || kelas.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Kelas Hutan harus diisi");
 
             } else if (luasperubahan.equals("") || luasperubahan.equals("0") || luasperubahan.equals(" ") || luasperubahan.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Luas harus diisi");
+
+            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
 
             } else if (tanamanperkiraan.equals("") || tanamanperkiraan.equals("0") || tanamanperkiraan.equals(" ") || tanamanperkiraan.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman Perkiraan harus diisi");
@@ -463,11 +463,11 @@ public class EditPerubahanFragment extends Fragment {
             } else if (tanamandefinitif.equals("") || tanamandefinitif.equals("0") || tanamandefinitif.equals(" ") || tanamandefinitif.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman Definitf harus diisi");
 
-            } else if (luasdefinitif.equals("") || luasdefinitif.equals("0") || luasdefinitif.equals(" ") || luasdefinitif.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Luas Definitif harus diisi");
-
             } else if (kelasdefinitif.equals("") || kelasdefinitif.equals("0") || kelasdefinitif.equals(" ") || kelasdefinitif.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Kelas Hutan Definitif harus diisi");
+
+            } else if (luasdefinitif.equals("") || luasdefinitif.equals("0") || luasdefinitif.equals(" ") || luasdefinitif.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Luas Definitif harus diisi");
 
             }else {
 

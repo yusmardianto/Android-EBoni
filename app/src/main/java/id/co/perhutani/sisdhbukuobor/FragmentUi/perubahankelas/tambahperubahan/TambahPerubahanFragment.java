@@ -381,13 +381,13 @@ public class TambahPerubahanFragment extends Fragment {
             final String str_tanggal = tahun.getText().toString();
             final String kelas = kelas_hutan.getText().toString();
             final String luasperubahan = luas.getText().toString();
-            final String tanamanperkiraan = luas.getText().toString();
-            final String kelasperkiraan = luas.getText().toString();
-            final String luasperkiraan = luas.getText().toString();
-            final String nobap = luas.getText().toString();
-            final String tanamandefinitif = luas.getText().toString();
-            final String luasdefinitif = luas.getText().toString();
-            final String kelasdefinitif = luas.getText().toString();
+            final String tanamanperkiraan = jenis_perkiraan.getText().toString();
+            final String kelasperkiraan = kelas_perkiraan.getText().toString();
+            final String luasperkiraan = luas_perkiraan.getText().toString();
+            final String nobap = no_bappkh.getText().toString();
+            final String tanamandefinitif = jenis_definitif.getText().toString();
+            final String luasdefinitif = luas_definitif.getText().toString();
+            final String kelasdefinitif = kelas_definitif.getText().toString();
 
             if (jenistanaman.equals("") || jenistanaman.equals("0") || jenistanaman.equals(" ") || jenistanaman.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman harus diisi");
@@ -395,14 +395,14 @@ public class TambahPerubahanFragment extends Fragment {
             } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Anak Petak harus diisi");
 
-            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
-
             } else if (kelas.equals("") || kelas.equals("0") || kelas.equals(" ") || kelas.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Kelas Hutan harus diisi");
 
             } else if (luasperubahan.equals("") || luasperubahan.equals("0") || luasperubahan.equals(" ") || luasperubahan.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Luas harus diisi");
+
+            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
 
             } else if (tanamanperkiraan.equals("") || tanamanperkiraan.equals("0") || tanamanperkiraan.equals(" ") || tanamanperkiraan.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman Perkiraan harus diisi");
@@ -419,11 +419,11 @@ public class TambahPerubahanFragment extends Fragment {
             } else if (tanamandefinitif.equals("") || tanamandefinitif.equals("0") || tanamandefinitif.equals(" ") || tanamandefinitif.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman Definitf harus diisi");
 
-            } else if (luasdefinitif.equals("") || luasdefinitif.equals("0") || luasdefinitif.equals(" ") || luasdefinitif.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Luas Definitif harus diisi");
-
             } else if (kelasdefinitif.equals("") || kelasdefinitif.equals("0") || kelasdefinitif.equals(" ") || kelasdefinitif.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Kelas Hutan Definitif harus diisi");
+
+            } else if (luasdefinitif.equals("") || luasdefinitif.equals("0") || luasdefinitif.equals(" ") || luasdefinitif.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Luas Definitif harus diisi");
 
             } else {
 

@@ -66,7 +66,6 @@ public class ListPelaporanpalFragment extends Fragment
         }
     };
 
-
     protected boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
@@ -93,7 +92,7 @@ public class ListPelaporanpalFragment extends Fragment
         db = new SQLiteHandler(getActivity());
 
         //call timer
-        handler.postDelayed(runnable, 1000);
+//        handler.postDelayed(runnable, 1000);
 
         ImageView imgTambahPelaporanpal = (ImageView) root.findViewById(R.id.img_tambahlaporanpal);
         imgTambahPelaporanpal.setOnClickListener(new View.OnClickListener() {

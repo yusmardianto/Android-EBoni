@@ -281,7 +281,8 @@
                                     android:inputType="number"
                                     android:layout_width="match_parent"
                                     android:layout_height="100dp"
-                                    android:background="@drawable/ic_background_grey"/>
+                                    android:background="@drawable/ic_background_grey"
+                                    android:hint="Tambahkan Keterangan (Optional)"/>
 
                             </LinearLayout>
 
