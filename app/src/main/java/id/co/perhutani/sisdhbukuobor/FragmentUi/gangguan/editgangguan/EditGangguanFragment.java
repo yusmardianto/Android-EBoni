@@ -282,37 +282,37 @@ public class EditGangguanFragment extends Fragment {
             final String kayupap = kerugian_kyp.getText().toString();
 
             if (kejadian.equals("") || kejadian.equals("0") || kejadian.equals(" ") || kejadian.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Judul Kejadian tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jenis Gangguan harus diisi");
 
             } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Petak tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Anak petak harus diisi");
 
             } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
 
             } else if (nomorA.equals("") || nomorA.equals("0") || nomorA.equals(" ") || nomorA.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nomor A tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Nomer A harus diisi");
 
             } else if (jenis_tanaman.equals("") || jenis_tanaman.equals("0") || jenis_tanaman.equals(" ") || jenis_tanaman.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jenis Tanaman tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jenis Tanaman harus diisi");
 
             } else if (luas.equals("") || luas.equals(" ") || luas.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Luas Lahan tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Luas Kerugian harus diisi");
 
             } else if (nilai.equals("") || nilai.equals(" ") || nilai.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nilai Kerugian tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Nilai Kerugian harus diisi");
 
             } else if (pohon.equals("") || pohon.equals(" ") || pohon.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Pohon tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jumlah Kerugian Pohon harus diisi");
 
             } else if (getah.equals("") || getah.equals(" ") || getah.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Getah tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jumlah Kerugian Getah harus diisi");
 
             } else if (kayubakar.equals("") || kayubakar.equals(" ") || kayubakar.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Kayu Bakar tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jumlah Kerugian Kayu Bakar harus diisi");
 
             } else if (kayupap.equals("") || kayupap.equals(" ") || kayupap.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Kayu PAP tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jumlah Kerugian Kayu PAP harus diisi");
 
             }else {
 

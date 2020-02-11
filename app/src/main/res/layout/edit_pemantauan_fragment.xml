@@ -189,7 +189,7 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Cara Lihat"
+                                    android:text="Jenis Temuan"
                                     android:textColor="#424242"/>
 
                                 <androidx.appcompat.widget.AppCompatSpinner
@@ -205,7 +205,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:background="@drawable/ic_background"
-                                    android:hint="Anak Petak" />
+                                    android:hint="Jenis Temuan" />
 
                                 <View
                                     android:layout_width="match_parent"

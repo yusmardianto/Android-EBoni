@@ -226,19 +226,19 @@ public class TambahInteraksimdhFragment extends Fragment {
             final String status_interaksi = status.getText().toString();
 
             if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Petak Kejadian tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Anak Petak harus diisi");
 
             } else if (tahun_interaksi.equals("") || tahun_interaksi.equals("- Pilih Tahun -") || tahun_interaksi.equals(" ") || tahun_interaksi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tahun tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Tahun harus diisi");
 
             } else if (nama_desa.equals("") || nama_desa.equals("0") || nama_desa.equals(" ") || nama_desa.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nama Desa tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Nama Desa harus diisi");
 
             } else if (bentuk_interaksi.equals("") || bentuk_interaksi.equals("0") || bentuk_interaksi.equals(" ") || bentuk_interaksi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Bentuk Interaksi tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Bentuk Interaksi harus diisi");
 
             } else if (status_interaksi.equals("") || status_interaksi.equals("0") || status_interaksi.equals(" ") || status_interaksi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Status Interaksi tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Status Interaksi harus diisi");
 
             } else {
 

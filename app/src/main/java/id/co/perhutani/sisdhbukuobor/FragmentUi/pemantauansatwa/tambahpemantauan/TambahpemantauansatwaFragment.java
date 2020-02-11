@@ -225,22 +225,22 @@ public class TambahpemantauansatwaFragment extends Fragment {
             final String tanggal_lihat = tanggal.getText().toString();
 
             if (jenis_satwa.equals("") || jenis_satwa.equals("0") || jenis_satwa.equals(" ") || jenis_satwa.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jenis Satwa tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jenis Satwa harus diisi");
 
             } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Anak Petak harus diisi");
 
             } else if (jumlah_satwa.equals("") || jumlah_satwa.equals("0") || jumlah_satwa.equals(" ") || jumlah_satwa.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Satwa tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jumlah Satwa harus diisi");
 
             } else if (waktu_lihat.equals("") || waktu_lihat.equals("- Pilih Waktu Terlihat -") || waktu_lihat.equals(" ") || waktu_lihat.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Waktu Lihat tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Waktu Lihat harus diisi");
 
             } else if (tanggal_lihat.equals("") || tanggal_lihat.equals("0") || tanggal_lihat.equals(" ") || tanggal_lihat.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
 
             } else if (cara_lihat.equals("") || cara_lihat.equals("0") || cara_lihat.equals(" ") || cara_lihat.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Cara Lihat tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jenis Temuan harus diisi");
 
             } else {
 
