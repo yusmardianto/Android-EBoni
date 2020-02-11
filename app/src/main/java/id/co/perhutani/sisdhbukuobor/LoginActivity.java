@@ -59,7 +59,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class LoginActivity extends AppCompatActivity {
     // server staging
-    // private static final String address = "http://10.0.8.51:9393/";
+//     private static final String address = "http://10.0.8.51:9393/";
     // server production
     private static final String address = "https://stg.sisdh.perhutani.id/";
     // server local
@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
     public static final String URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1 = address + "api/v1/postPerubahan";
     public static final String URL_FOR_POST_INTERAKSI_MDH_V1 = address + "api/v1/postInteraksi";
-    public static final String URL_FOR_POST_PEMANTAUAN_SATWA = address + "api/v1/postPemantauanSatwa";
+    public static final String URL_FOR_POST_PEMANTAUAN_SATWA = address + "api/v1/postSatwa";
     public static final String URL_FOR_POST_LAPORAN_PAL_V1 = address + "api/v1/postLaporanPal";
     public static final String URL_FOR_POST_REGISTER_PCP_V1 = address + "api/v1/postPcp";
     public static final String URL_FOR_POST_IDENTIFIKASI_TENURIAL_V1 = address + "api/v1/postTenurial";

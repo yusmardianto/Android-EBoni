@@ -62,7 +62,7 @@ public class ThreadSendToAPI extends Thread {
                     sendToServerTambah();
                     sendToServerPerubahanKelas();
                     sendToServerInteraksimdh();
-//                    sendToServerPemantauanSatwa();
+                    sendToServerPemantauanSatwa();
 //                    sendToServerPAL();
                     sendToServerPCP();
                     sendToServerTenurial();
@@ -70,7 +70,7 @@ public class ThreadSendToAPI extends Thread {
                     sendToServerEdit();
                     sendToServerEditPerubahanKelas();
                     sendToServerEditInteraksiMdh();
-//                    sendToServerEditPemantauanSatwa();
+                    sendToServerEditPemantauanSatwa();
 //                    sendToServerEditPAL();
                     sendToServerEditPCP();
                     sendToServerEditTenurial();
@@ -1009,6 +1009,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
                         final String str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
                         final String str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+                        final String str_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
                         final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
                         final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
                         final String str_created_at = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_AT);
@@ -1021,6 +1022,7 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("anakpetak", str_anakpetak);
                         jsonParam.put("jumlahsatwa", str_jumlahsatwa);
                         jsonParam.put("caralihat", str_caralihat);
+                        jsonParam.put("waktulihat", str_waktulihat);
                         jsonParam.put("tanggal", str_tanggal);
                         jsonParam.put("keterangan", str_keterangan);
                         jsonParam.put("created_at", str_created_at);
@@ -1127,6 +1129,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
                         final String str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
                         final String str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+                        final String str_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
                         final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
                         final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
                         final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
@@ -1137,6 +1140,7 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("anakpetak", str_anakpetak);
                         jsonParam.put("jumlahsatwa", str_jumlahsatwa);
                         jsonParam.put("caralihat", str_caralihat);
+                        jsonParam.put("waktulihat", str_waktulihat);
                         jsonParam.put("tanggal", str_tanggal);
                         jsonParam.put("keterangan", str_keterangan);
 
