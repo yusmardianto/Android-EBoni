@@ -32,6 +32,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
@@ -60,6 +61,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
+        db.execSQL(MstWaktuLihatSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstDesaSchema.SQL_CREATE_ENTRIES);
@@ -88,6 +90,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisGangguanHutanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisTemuan.SQL_DELETE_ENTRIES);
+        db.execSQL(MstWaktuLihatSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisTanamanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_DELETE_ENTRIES);
@@ -114,6 +117,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
+        db.execSQL(MstWaktuLihatSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstDesaSchema.SQL_CREATE_ENTRIES);
@@ -345,6 +349,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPemantauanSatwa.KET4, ps.getKet4());
         args.put(TrnPemantauanSatwa.TANGGAL_PEMANTAUAN, ps.getTanggal());
         args.put(TrnPemantauanSatwa.KETERANGAN, ps.getKeteranganSatwa());
+        args.put(TrnPemantauanSatwa.KET9, ps.getKet9());
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
     }
 
@@ -481,6 +486,22 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Jenis Temuan -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getWaktuLihat() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT " + MstWaktuLihatSchema.WAKTU_LIHAT_NAME+ " FROM " + MstWaktuLihatSchema.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        labels.add("- Pilih Waktu Lihat -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));

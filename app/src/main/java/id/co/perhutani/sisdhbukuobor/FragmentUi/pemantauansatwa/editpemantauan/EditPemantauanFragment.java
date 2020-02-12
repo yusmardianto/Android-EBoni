@@ -34,6 +34,7 @@ import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
+import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansatwaFragment;
 
@@ -116,6 +117,35 @@ public class EditPemantauanFragment extends Fragment {
             }
         });
     }
+
+    public void load_spinner_waktu_lihat() {
+        List<String> listwaktulihat = db.getWaktuLihat();
+        final int _tpg = listwaktulihat.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listwaktulihat) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_waktu_lihat.setAdapter(dataAdapter_tpg);
+        spin_waktu_lihat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_waktu_lihat = spin_waktu_lihat.getSelectedItem().toString();
+                String id_waktu_lihat = db.getDataDetail(MstWaktuLihatSchema.TABLE_NAME,
+                        MstWaktuLihatSchema.WAKTU_LIHAT_NAME, pil_waktu_lihat, MstWaktuLihatSchema.WAKTU_LIHAT_ID);
+                waktulihat.setText(id_waktu_lihat);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
 
     public void load_spinner_cara_melihat() {
         List<String> listcaramelihat = db.getCaraMelihat();
@@ -215,6 +245,10 @@ public class EditPemantauanFragment extends Fragment {
         anakpetak.setText(id_petak);
 
         spin_waktu_lihat = root.findViewById(R.id.edit_spinner_waktu_lihat);
+        load_spinner_waktu_lihat();
+        String pil_waktu_lihat = spin_waktu_lihat.getSelectedItem().toString();
+        String id_waktu_lihat = db.getDataDetail(MstWaktuLihatSchema.TABLE_NAME, MstWaktuLihatSchema.WAKTU_LIHAT_NAME, pil_waktu_lihat, MstWaktuLihatSchema.WAKTU_LIHAT_ID);
+        waktulihat.setText(id_waktu_lihat);
 
         spin_cara_melihat = root.findViewById(R.id.edit_spinner_caramelihat);
         load_spinner_cara_melihat();
@@ -261,7 +295,7 @@ public class EditPemantauanFragment extends Fragment {
             final String jenis_satwa = jenissatwa.getText().toString();
             final String anak_petak = anakpetak.getText().toString();
             final String jumlah_satwa = jumlahsatwa.getText().toString();
-            final String waktu_lihat = spin_waktu_lihat.getSelectedItem().toString();
+            final String waktu_lihat = waktulihat.getText().toString();
             final String cara_lihat = caralihat.getText().toString();
             final String tanggal_lihat = tanggal.getText().toString();
 
@@ -274,7 +308,7 @@ public class EditPemantauanFragment extends Fragment {
             } else if (jumlah_satwa.equals("") || jumlah_satwa.equals("0") || jumlah_satwa.equals(" ") || jumlah_satwa.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Jumlah Satwa harus diisi");
 
-            } else if (waktu_lihat.equals("") || waktu_lihat.equals("- Pilih Waktu Terlihat -") || waktu_lihat.equals(" ") || waktu_lihat.equals(null)) {
+            } else if (waktu_lihat.equals("") || waktu_lihat.equals("0") || waktu_lihat.equals(" ") || waktu_lihat.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Waktu Lihat harus diisi");
 
             } else if (tanggal_lihat.equals("") || tanggal_lihat.equals("0") || tanggal_lihat.equals(" ") || tanggal_lihat.equals(null)) {
@@ -326,7 +360,7 @@ public class EditPemantauanFragment extends Fragment {
                                             Aktifitasnya.setAnakPetakId(anakpetak.getText().toString());
                                             Aktifitasnya.setJenis(jenissatwa.getText().toString());
                                             Aktifitasnya.setJumlah(jumlahsatwa.getText().toString());
-                                            Aktifitasnya.setWaktulihat(spin_waktu_lihat.getSelectedItem().toString());
+                                            Aktifitasnya.setWaktulihat(waktulihat.getText().toString());
                                             Aktifitasnya.setCaralihat(caralihat.getText().toString());
                                             Aktifitasnya.setTanggal(tanggal.getText().toString());
                                             Aktifitasnya.setKeteranganSatwa(keterangan.getText().toString());

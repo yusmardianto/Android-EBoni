@@ -1,11 +1,11 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
-public class MstJenisGangguanHutanSchema {
+public class MstWaktuLihatSchema {
 
-    public static final String TABLE_NAME = "MST_JENIS_GANGGUAN_HUTAN";
+    public static final String TABLE_NAME = "MST_WAKTU_LIHAT";
     public static final String _ID = "ID";
-    public static final String JENIS_GANGGUAN_HUTAN_ID = "JENIS_GANGGUAN_HUTAN_ID";
-    public static final String JENIS_GANGGUAN_HUTAN_NAME = "JENIS_GANGGUAN_HUTAN_NAME";
+    public static final String WAKTU_LIHAT_ID = "WAKTU_LIHAT_ID";
+    public static final String WAKTU_LIHAT_NAME = "WAKTU_LIHAT_NAME";
     public static final String KET1 = "KET1";
     public static final String KET2 = "KET2";
     public static final String KET3 = "KET3";
@@ -18,8 +18,8 @@ public class MstJenisGangguanHutanSchema {
     public static final String KET10 = "KET10";
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "" + JENIS_GANGGUAN_HUTAN_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + JENIS_GANGGUAN_HUTAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + WAKTU_LIHAT_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + WAKTU_LIHAT_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET3 + " " + Type.VARCHAR_NULLABLE_100 + ", " +

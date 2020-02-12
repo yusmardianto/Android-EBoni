@@ -278,7 +278,7 @@ public class ListPelaporanpalFragment extends Fragment
         myrecylcerview.invalidate();
         myrecylcerview.setAdapter(pAdapter);
 
-        Toast.makeText(context, "Sync data..!", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "Sync data..!", Toast.LENGTH_SHORT).show();
     }
 
     @Override

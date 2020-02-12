@@ -53,14 +53,6 @@
     </string-array>
 
     //dummy item spinner
-    <string-array name="array_waktu_lihat">
-        <item>- Pilih Waktu Terlihat -</item>
-        <item>Pagi</item>
-        <item>Siang/Sore</item>
-        <item>Malam</item>
-    </string-array>
-
-    //dummy item spinner
     <string-array name="array_tahun_interaksi">
         <item>- Pilih Tahun -</item>
         <item>2019</item>

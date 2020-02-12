@@ -763,7 +763,7 @@ public class ThreadSendToAPI extends Thread {
                     if (myResponse.getString("status").equals("success")) {
                         PerubahankelasModel Aktifitasnya = new PerubahankelasModel();
                         Aktifitasnya.setID_Perubahan(Integer.parseInt(id));
-                        Aktifitasnya.setKet9("2");
+                        Aktifitasnya.setKet9("1");
                         Aktifitasnya.setKet10(myResponse.getString("id"));
                         db.EditDataPerubahanKelasroApi(Aktifitasnya);
                     }
@@ -1132,6 +1132,8 @@ public class ThreadSendToAPI extends Thread {
                         final String str_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
                         final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
                         final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
 
                         jsonParam.put("aksi", "ubah");
@@ -1143,6 +1145,8 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("waktulihat", str_waktulihat);
                         jsonParam.put("tanggal", str_tanggal);
                         jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -1174,7 +1178,7 @@ public class ThreadSendToAPI extends Thread {
                         Aktifitasnya.setID_Pemantauan(Integer.parseInt(id));
                         Aktifitasnya.setKet9("1");
                         Aktifitasnya.setKet10(myResponse.getString("id"));
-                        db.EditDataPemantauanSatwa(Aktifitasnya);
+                        db.EditDataPemantauanSatwafroApi(Aktifitasnya);
                     }
 
                     cek_feedback_api = true;
@@ -1190,6 +1194,7 @@ public class ThreadSendToAPI extends Thread {
             }
         });
         thread.start();
+
     }
 
     public void sync_data_laporanlpalbatas_v1(final String id) {

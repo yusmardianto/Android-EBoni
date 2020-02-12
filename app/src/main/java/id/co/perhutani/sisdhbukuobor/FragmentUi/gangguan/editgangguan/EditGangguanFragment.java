@@ -291,7 +291,7 @@ public class EditGangguanFragment extends Fragment {
                 AjnClass.showAlert(getActivity(), "Jenis Tanaman harus diisi");
 
             } else if (nomorA.equals("") || nomorA.equals("0") || nomorA.equals(" ") || nomorA.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nomer A harus diisi");
+                AjnClass.showAlert(getActivity(), "Nomor A harus diisi");
 
             } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
