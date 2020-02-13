@@ -72,7 +72,7 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 anakpetak.setText(id_petak);
             }
 
@@ -216,11 +216,11 @@ public class EditInteraksimdhFragment extends Fragment {
         String id_status = db.getDataDetail(MstStatusInteraksiSchema.TABLE_NAME, MstStatusInteraksiSchema.NAMA_STATUS, pil_status, MstStatusInteraksiSchema.ID_STATUS);
         status.setText(id_status);
 
-        str_anakpetak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET1);
-        str_tahun = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET2);
-        str_namadesa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET3);
-        str_bentukinteraksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET4);
-        str_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET5);
+        str_anakpetak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.ANAK_PETAK_ID);
+        str_tahun = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.TAHUN);
+        str_namadesa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.NAMA_DESA);
+        str_bentukinteraksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.BENTUK_INTERAKSI);
+        str_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.STATUS);
         str_keterangan = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KETERANGAN);
 
         anakpetak.setText(str_anakpetak);
@@ -257,19 +257,19 @@ public class EditInteraksimdhFragment extends Fragment {
             final String status_interaksi = status.getText().toString();
 
             if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Petak Kejadian tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Anak Petak harus diisi");
 
             } else if (tahun_interaksi.equals("") || tahun_interaksi.equals("- Pilih Tahun -") || tahun_interaksi.equals(" ") || tahun_interaksi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tahun tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Tahun harus diisi");
 
             } else if (nama_desa.equals("") || nama_desa.equals("0") || nama_desa.equals(" ") || nama_desa.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nama Desa tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Nama Desa harus diisi");
 
             } else if (bentuk_interaksi.equals("") || bentuk_interaksi.equals("0") || bentuk_interaksi.equals(" ") || bentuk_interaksi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Bentuk Interaksi tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Bentuk Interaksi harus diisi");
 
             } else if (status_interaksi.equals("") || status_interaksi.equals("0") || status_interaksi.equals(" ") || status_interaksi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Status Interaksi tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Status Interaksi harus diisi");
 
             } else {
 
@@ -322,6 +322,8 @@ public class EditInteraksimdhFragment extends Fragment {
                                             Aktifitasnya.setKet3(spin_nama_desa.getSelectedItem().toString());
                                             Aktifitasnya.setKet4(spin_bentuk_interaksi.getSelectedItem().toString());
                                             Aktifitasnya.setKet5(spin_status.getSelectedItem().toString());
+//                                            Aktifitasnya.s(spin_status.getSelectedItem().toString());
+                                            Aktifitasnya.setKet9("2");
                                             db.EditDataInteraksiMDH(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

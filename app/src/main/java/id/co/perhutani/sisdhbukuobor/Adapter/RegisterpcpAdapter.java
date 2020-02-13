@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -36,6 +37,7 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
     List<RegisterpcpModel> mData;
     SQLiteHandler db;
     public static final String MSG_KEY = "id";
+    private AlertDialog.Builder builder;
 
     public RegisterpcpAdapter(Context mContext, List<RegisterpcpModel> mData) {
         this.mContext = mContext;
@@ -73,15 +75,15 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
             }
         });
 
-        String status_sync = mData.get(position).getKet9();
-        if (status_sync.equals("0")||status_sync.equals("2")) {
-            holder.name_data_sinkron.setText("Belum terkirim keserver");
-            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
-            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
-        }  else {
-            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
+        String status_sync = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, mData.get(position).getID(), TrnRegisterPcp.KET9);
+        if (status_sync.equals("1")){
             holder.name_data_sinkron.setText("Sudah terkirim keserver");
             holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
+        }  else {
+            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
+            holder.name_data_sinkron.setText("Belum terkirim keserver");
+            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
         }
     }
 
@@ -112,9 +114,6 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
     }
 
     public void popup (final String id){
-
-
-//        AjnClass.showAlert(mContext,id);
         try {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             final View viewas = layoutInflater.inflate(R.layout.popup_detail_registerpcp, null);
@@ -180,7 +179,6 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
 
 
             alertDialogBuilder.setView(viewas);
-//            alertDialogBuilder.setCancelable(false);
 
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
@@ -218,7 +216,6 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
                             .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
-                                    // reuse previous dialog instance, keep widget user state, reset them if you need
                                     sDialog.setTitleText("Diabatalkan!")
                                             .setContentText("")
                                             .setConfirmText("OK")
@@ -258,8 +255,6 @@ public class RegisterpcpAdapter extends RecyclerView.Adapter<RegisterpcpAdapter.
                             .show();
                 }
             });
-
-
         } catch (Exception ex) {
             AjnClass.showAlert(mContext,ex.toString());
         }

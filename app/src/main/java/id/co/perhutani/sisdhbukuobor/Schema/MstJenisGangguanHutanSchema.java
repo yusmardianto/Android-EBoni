@@ -1,6 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
 public class MstJenisGangguanHutanSchema {
+
     public static final String TABLE_NAME = "MST_JENIS_GANGGUAN_HUTAN";
     public static final String _ID = "ID";
     public static final String JENIS_GANGGUAN_HUTAN_ID = "JENIS_GANGGUAN_HUTAN_ID";

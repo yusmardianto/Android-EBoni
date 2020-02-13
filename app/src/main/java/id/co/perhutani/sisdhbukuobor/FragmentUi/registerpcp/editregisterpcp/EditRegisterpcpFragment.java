@@ -147,7 +147,7 @@ public class EditRegisterpcpFragment extends Fragment {
         keterangan = root.findViewById(R.id.edit_pcp_ketpcp);
         btnSimpanRegisterpcp = root.findViewById(R.id.edit_pcp_btnsubmitpcp);
 
-        spin_anak_petak = root.findViewById(R.id.spinner_anak_petak);
+        spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_pcp);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
@@ -155,7 +155,7 @@ public class EditRegisterpcpFragment extends Fragment {
 
 
         str_nopcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.NO_PCP);
-        str_anakpetak = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.ANAK_PETAK_ID);
+        str_anakpetak = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KET1);
         str_tahunpcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_PCP);
         str_luasbaku = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.LUAS_BAKU);
         str_luasblok = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.LUAS_BLOK);
@@ -219,43 +219,43 @@ public class EditRegisterpcpFragment extends Fragment {
             final String peninggipcp = peninggi.getText().toString();
 
             if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nomor PCP tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Nomor PCP harus diisi");
 
             } else if (AnakPetak.equals("") || AnakPetak.equals("0") || AnakPetak.equals(" ") || AnakPetak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Anak Petak harus diisi");
 
             } else if(tahun.equals("") || tahun.equals("0") || tahun.equals(" ") || tahun.equals(null)){
-                AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Tahun harus diisi");
 
             } else if(umurpcp.equals("") || umurpcp.equals("0") || umurpcp.equals(" ") || umurpcp.equals(null)){
-                AjnClass.showAlert(getActivity(), "Umur tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Umur harus diisi");
 
             } else if(luasblokpcp.equals("") || luasblokpcp.equals("0") || luasblokpcp.equals(" ") || luasblokpcp.equals(null)){
-                AjnClass.showAlert(getActivity(), "Luas Blok tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Luas Blok harus diisi");
 
             } else if(luasbakupcp.equals("") || luasbakupcp.equals("0") || luasbakupcp.equals(" ") || luasbakupcp.equals(null)){
-                AjnClass.showAlert(getActivity(), "Luas Baku tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Luas Baku harus diisi");
 
             } else if(ratakeliling.equals("") || ratakeliling.equals("0") || ratakeliling.equals(" ") || ratakeliling.equals(null)){
-                AjnClass.showAlert(getActivity(), "Rata-rata Keliling tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Rata-rata Keliling harus diisi");
 
             } else if(bonitapcp.equals("") || bonitapcp.equals("0") || bonitapcp.equals(" ") || bonitapcp.equals(null)){
-                AjnClass.showAlert(getActivity(), "Bonita tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Bonita harus diisi");
 
             } else if(nlapanganpcp.equals("") || nlapanganpcp.equals("0") || nlapanganpcp.equals(" ") || nlapanganpcp.equals(null)){
-                AjnClass.showAlert(getActivity(), "N Lapangan tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "N Lapangan harus diisi");
 
             } else if(nmatipcp.equals("") || nmatipcp.equals("0") || nmatipcp.equals(" ") || nmatipcp.equals(null)){
-                AjnClass.showAlert(getActivity(), "N Mati tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "N Mati harus diisi");
 
             } else if(normal.equals("") || normal.equals("0") || normal.equals(" ") || normal.equals(null)){
-                AjnClass.showAlert(getActivity(), "Normal dalam PCP tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Normal dalam PCP harus diisi");
 
             } else if(jarangan.equals("") || jarangan.equals("0") || jarangan.equals(" ") || jarangan.equals(null)){
-                AjnClass.showAlert(getActivity(), "Tahun Jarangan tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Tahun Jarangan harus diisi");
 
             } else if(peninggipcp.equals("") || peninggipcp.equals("0") || peninggipcp.equals(" ") || peninggipcp.equals(null)){
-                AjnClass.showAlert(getActivity(), "Peninggi tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Peninggi harus diisi");
 
             }else {
 
@@ -304,12 +304,12 @@ public class EditRegisterpcpFragment extends Fragment {
                                             Aktifitasnya.setLuasBlok(luasblok.getText().toString());
                                             Aktifitasnya.setUmur(umur.getText().toString());
                                             Aktifitasnya.setRataKeliling(rataratakeliling.getText().toString());
-                                            Aktifitasnya.setLuasBlok(bonita.getText().toString());
+                                            Aktifitasnya.setBonita(bonita.getText().toString());
                                             Aktifitasnya.setNLapangan(nlapangan.getText().toString());
                                             Aktifitasnya.setNormalPcp(normalpcp.getText().toString());
                                             Aktifitasnya.setNMati(nmati.getText().toString());
-                                            Aktifitasnya.setPeninggi(tahunjarangan.getText().toString());
-                                            Aktifitasnya.setTahunJarangan(peninggi.getText().toString());
+                                            Aktifitasnya.setPeninggi(peninggi.getText().toString());
+                                            Aktifitasnya.setTahunJarangan(tahunjarangan.getText().toString());
                                             Aktifitasnya.setKeteranganPcp(keterangan.getText().toString());
                                             Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
                                             Aktifitasnya.setKet9("2");

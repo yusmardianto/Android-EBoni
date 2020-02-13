@@ -3,7 +3,10 @@ package id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +34,7 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial.tambahidentifikasitenurial.TambahIdentifikasiTenurialFragment;
 import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 
 public class ListIdentifikasiTenurialFragment extends Fragment
 {
@@ -47,6 +52,31 @@ public class ListIdentifikasiTenurialFragment extends Fragment
         return new ListIdentifikasiTenurialFragment();
     }
 
+    private Handler handler = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if (isOnline()) {
+                    refresh_list();
+                }
+            } catch (Exception ex) {
+            }
+            handler.postDelayed(this, 10000);
+        }
+    };
+
+
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -55,8 +85,13 @@ public class ListIdentifikasiTenurialFragment extends Fragment
         View root = inflater.inflate(R.layout.identifikasi_tenurial_fragment, container, false);
         myrecylcerview = root.findViewById(R.id.identifikasitenurial_recycler);
         myrecylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         init();
+
+        context=getActivity();
+        db = new SQLiteHandler(getActivity());
+
+        //call timer
+        handler.postDelayed(runnable, 1000);
 
         ImageView imgTambahTenurial = (ImageView) root.findViewById(R.id.img_tambahtenurial);
         imgTambahTenurial.setOnClickListener(new View.OnClickListener() {
@@ -93,18 +128,18 @@ public class ListIdentifikasiTenurialFragment extends Fragment
             }
         });
 
-//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadataidentifikasitenurial);
-//        final RecyclerView dataada = root.findViewById(R.id.identifikasitenurial_recycler);
-//
-//        final int ceksampling = db.cek_jumlah_data(TrnIdentifikasiTenurial.TABLE_NAME);
-//        if(String.valueOf(ceksampling).equals("0"))
-//        {
-//            datakosong.setVisibility(View.VISIBLE);
-//            dataada.setVisibility(View.GONE);
-//        }else {
-//            datakosong.setVisibility(View.GONE);
-//            dataada.setVisibility(View.VISIBLE);
-//        }
+        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadataidentifikasitenurial);
+        final RecyclerView dataada = root.findViewById(R.id.identifikasitenurial_recycler);
+
+        final int ceksampling = db.cek_jumlah_data(TrnIdentifikasiTenurial.TABLE_NAME);
+        if(String.valueOf(ceksampling).equals("0"))
+        {
+            datakosong.setVisibility(View.VISIBLE);
+            dataada.setVisibility(View.GONE);
+        }else {
+            datakosong.setVisibility(View.GONE);
+            dataada.setVisibility(View.VISIBLE);
+        }
 
         return root;
     }

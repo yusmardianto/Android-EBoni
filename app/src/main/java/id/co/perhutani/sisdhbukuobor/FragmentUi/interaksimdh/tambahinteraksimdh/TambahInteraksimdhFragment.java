@@ -31,6 +31,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstDesaSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
+import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class TambahInteraksimdhFragment extends Fragment {
 
@@ -68,7 +69,8 @@ public class TambahInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 anakpetak.setText(id_petak);
             }
 
@@ -224,19 +226,19 @@ public class TambahInteraksimdhFragment extends Fragment {
             final String status_interaksi = status.getText().toString();
 
             if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Petak Kejadian tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Anak Petak harus diisi");
 
             } else if (tahun_interaksi.equals("") || tahun_interaksi.equals("- Pilih Tahun -") || tahun_interaksi.equals(" ") || tahun_interaksi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tahun tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Tahun harus diisi");
 
             } else if (nama_desa.equals("") || nama_desa.equals("0") || nama_desa.equals(" ") || nama_desa.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nama Desa tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Nama Desa harus diisi");
 
             } else if (bentuk_interaksi.equals("") || bentuk_interaksi.equals("0") || bentuk_interaksi.equals(" ") || bentuk_interaksi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Bentuk Interaksi tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Bentuk Interaksi harus diisi");
 
             } else if (status_interaksi.equals("") || status_interaksi.equals("0") || status_interaksi.equals(" ") || status_interaksi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Status Interaksi tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Status Interaksi harus diisi");
 
             } else {
 
@@ -283,12 +285,14 @@ public class TambahInteraksimdhFragment extends Fragment {
                                             values_aktifitas.put(TrnInteraksimdh.NAMA_DESA, namadesa.getText().toString());
                                             values_aktifitas.put(TrnInteraksimdh.BENTUK_INTERAKSI, bentukinteraksi.getText().toString());
                                             values_aktifitas.put(TrnInteraksimdh.STATUS, status.getText().toString());
-                                            values_aktifitas.put(TrnInteraksimdh.KET1, spin_anak_petak.getSelectedItem().toString());
+                                            values_aktifitas.put(TrnInteraksimdh.KET1, anakpetak.getText().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KET2, spin_tahun.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KET3, spin_nama_desa.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KET4, spin_bentuk_interaksi.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KET5, spin_status.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KETERANGAN, keterangan.getText().toString());
+                                            values_aktifitas.put(TrnInteraksimdh.CREATED_BY, db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_ID));
+                                            values_aktifitas.put(TrnInteraksimdh.KET9, "0");
                                             db.create(TrnInteraksimdh.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
 

@@ -14,7 +14,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 public class SplashScreenActivity extends AppCompatActivity {
 
     //Set waktu lama splashscreen
-    private static int splashInterval = 3000;
+    private static int splashInterval = 10000;
     private SessionManager session;
     private SQLiteHandler db;
     int count = 0;

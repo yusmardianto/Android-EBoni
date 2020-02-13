@@ -3,7 +3,10 @@ package id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,36 +34,70 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.tambahinteraksimdh.TambahInteraksimdhFragment;
 import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 
 
-public class ListInteraksiMDHFragment extends Fragment {
-
-    private static RecyclerView myrecylcerview;
+public class ListInteraksiMDHFragment extends Fragment
+{
+    //View v;
+    private static RecyclerView recylcerview;
     private static ArrayList<InteraksimdhModel> DataModel;
-    private static List<InteraksimdhModel> lstinteraksi;
+    private static List<InteraksimdhModel>lstinteraksi;
     private static InteraksimdhAdapter imdhAdapter;
     private static Context context;
-    private static final int VERTICAL_ITEM_SPACE = 0;
     private SQLiteHandler db;
 
-    public static ListInteraksiMDHFragment newInstance() {
-
+    private static final int VERTICAL_ITEM_SPACE = 0;
+    public static ListInteraksiMDHFragment newInstance()
+    {
         return new ListInteraksiMDHFragment();
+    }
+
+    private Handler handler = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if (isOnline()) {
+                    refresh_list();
+                }
+            } catch (Exception ex) {
+            }
+            handler.postDelayed(this, 10000);
+        }
+    };
+
+
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+                             @Nullable Bundle savedInstanceState)
+    {
         View root = inflater.inflate(R.layout.interaksi_mdh_fragment, container, false);
-        myrecylcerview = root.findViewById(R.id.interaksimdh_recycler);
-        myrecylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        myrecyclerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        recylcerview = root.findViewById(R.id.interaksimdh_recycler);
+        imdhAdapter = new InteraksimdhAdapter(getContext(),lstinteraksi);
+        recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recylcerview .setAdapter(imdhAdapter);
         init();
 
-        ImageView imgTambahInteraksi = root.findViewById(R.id.tambah_interaksimdh);
-        imgTambahInteraksi.setOnClickListener(new View.OnClickListener() {
+        context=getActivity();
+        db = new SQLiteHandler(getActivity());
+
+        //call timer
+        handler.postDelayed(runnable, 1000);
+
+        ImageView imgTambahimdh = (ImageView) root.findViewById(R.id.tambah_interaksimdh);
+        imgTambahimdh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new TambahInteraksimdhFragment();
@@ -93,33 +131,32 @@ public class ListInteraksiMDHFragment extends Fragment {
             }
         });
 
-//        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatainteraksimdh);
-//        final RecyclerView dataada = root.findViewById(R.id.interaksimdh_recycler);
-//
-//        final int ceksampling = db.cek_jumlah_data(TrnInteraksimdh.TABLE_NAME);
-//        if(String.valueOf(ceksampling).equals("0"))
-//        {
-//            datakosong.setVisibility(View.VISIBLE);
-//            dataada.setVisibility(View.GONE);
-//        }else {
-//            datakosong.setVisibility(View.GONE);
-//            dataada.setVisibility(View.VISIBLE);
-//        }
+        final LinearLayout datakosong = root.findViewById(R.id.layout_tidakadadatainteraksimdh);
+        final RecyclerView dataada = root.findViewById(R.id.interaksimdh_recycler);
+
+        final int ceksampling = db.cek_jumlah_data(TrnInteraksimdh.TABLE_NAME);
+        if(String.valueOf(ceksampling).equals("0"))
+        {
+            datakosong.setVisibility(View.VISIBLE);
+            dataada.setVisibility(View.GONE);
+        }else {
+            datakosong.setVisibility(View.GONE);
+            dataada.setVisibility(View.VISIBLE);
+        }
 
         return root;
     }
 
-    public void refresh(String interaksi) {
+    public void refresh(String imdh) {
         lstinteraksi = new ArrayList<>();
-
         try {
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, ANAK_PETAK_ID, NAMA_DESA, BENTUK_INTERAKSI, TAHUN, STATUS, ID, ID, ID, ID, ID, ID " +
+                    "ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID, KET1, KET2, KET3, KET4, KET5, ID, KET9, KET10" +
 //                    " DISTINCT(ANAK_PETAK_ID)" +
-                    " FROM TRN_INTERAKSI_MDH " +
-                    " WHERE ANAK_PETAK_ID " + " LIKE  " + "'%" + interaksi + "%'" +
+                    " FROM TRN_INTERAKSI_MDH  " +
+                    " WHERE PETAK_ID " + " LIKE  " + "'%" + imdh + "%'" +
                     " ORDER BY ID DESC", null);
 
             cur.moveToPosition(0);
@@ -138,7 +175,9 @@ public class ListInteraksiMDHFragment extends Fragment {
                         cur.getString(9),
                         cur.getString(10),
                         cur.getString(11),
-                        Integer.parseInt(cur.getString(0))
+                        Integer.parseInt(cur.getString(0)),
+                        cur.getString(12),
+                        cur.getString(13)
                 ));
                 cur.moveToNext();
             }
@@ -152,23 +191,24 @@ public class ListInteraksiMDHFragment extends Fragment {
 
     public void init() {
         try {
-            imdhAdapter = new InteraksimdhAdapter(getContext(), lstinteraksi);
-            myrecylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
-            myrecylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-            myrecylcerview.setAdapter(imdhAdapter);
+            imdhAdapter = new InteraksimdhAdapter(getContext(),lstinteraksi);
+            recylcerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+            recylcerview .setAdapter(imdhAdapter);
         } catch (Exception ex) {
             AjnClass.showAlert(getActivity(), ex.toString());
         }
     }
 
-    public void def() {
+    public void def(){
         lstinteraksi = new ArrayList<>();
 
         try {
+
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, ANAK_PETAK_ID, NAMA_DESA, BENTUK_INTERAKSI, TAHUN, STATUS, ID, ID, ID, ID, ID, ID " +
+                    "ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID, KET1, KET2, KET3, KET4, KET5, ID, KET9, KET10" +
 //                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_INTERAKSI_MDH " +
                     " ORDER BY ID DESC", null);
@@ -189,7 +229,9 @@ public class ListInteraksiMDHFragment extends Fragment {
                         cur.getString(9),
                         cur.getString(10),
                         cur.getString(11),
-                        Integer.parseInt(cur.getString(0))
+                        Integer.parseInt(cur.getString(0)),
+                        cur.getString(12),
+                        cur.getString(13)
                 ));
                 cur.moveToNext();
             }
@@ -201,14 +243,15 @@ public class ListInteraksiMDHFragment extends Fragment {
         }
     }
 
-    public static void refresh_list() {
+    public static void refresh_list(){
         lstinteraksi = new ArrayList<>();
 
         try {
+
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, ANAK_PETAK_ID, NAMA_DESA, BENTUK_INTERAKSI, TAHUN, STATUS, ID, ID, ID, ID, ID, ID " +
+                    "ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID, KET1, KET2, KET3, KET4, KET5, ID, KET9, KET10" +
 //                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_INTERAKSI_MDH " +
                     " ORDER BY ID DESC", null);
@@ -229,10 +272,13 @@ public class ListInteraksiMDHFragment extends Fragment {
                         cur.getString(9),
                         cur.getString(10),
                         cur.getString(11),
-                        Integer.parseInt(cur.getString(0))
+                        Integer.parseInt(cur.getString(0)),
+                        cur.getString(12),
+                        cur.getString(13)
                 ));
                 cur.moveToNext();
             }
+
             cur.close();
             db.close();
         } catch (Exception ex) {
@@ -240,11 +286,11 @@ public class ListInteraksiMDHFragment extends Fragment {
         }
 
         imdhAdapter = new InteraksimdhAdapter(context,lstinteraksi);
-        myrecylcerview.setLayoutManager(new LinearLayoutManager(context));
-        myrecylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+        recylcerview.setLayoutManager(new LinearLayoutManager(context));
+        recylcerview.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         imdhAdapter.notifyDataSetChanged();
-        myrecylcerview.invalidate();
-        myrecylcerview.setAdapter(imdhAdapter);
+        recylcerview.invalidate();
+        recylcerview.setAdapter(imdhAdapter);
     }
 
     @Override

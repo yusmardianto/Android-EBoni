@@ -20,6 +20,8 @@ public class TrnPemantauanSatwa {
     public static final String KET8 = "KET8";
     public static final String KET9 = "KET9";
     public static final String KET10 = "KET10";
+    public static final String CREATED_AT = "CREATED_AT";
+    public static final String CREATED_BY = "CREATED_BY";
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "" + ANAK_PETAK_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
@@ -39,6 +41,8 @@ public class TrnPemantauanSatwa {
             "" + KET8 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET9 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET10 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + Type.CREATED_BY + ", " +
+            "" + Type.UPDATED_BY + ", " +
             "" + Type.CREATED_AT_CURRENT_DATE + ", " +
             "" + Type.UPDATED_AT_CURRENT_DATE + " )";
     public static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;

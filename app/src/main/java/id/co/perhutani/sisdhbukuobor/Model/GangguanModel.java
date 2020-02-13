@@ -16,6 +16,8 @@ public class GangguanModel {
     private String Nilai;
     private String Keterangan;
     private String Ket1;
+    private String Ket2;
+    private String Ket3;
     private String Ket9;
     private String Ket10;
 
@@ -24,7 +26,7 @@ public class GangguanModel {
 
     public GangguanModel(String id, String isi, String petak, String jenistanaman, String noA, String tanggal,
                          String luas, String pohon, String kyp, String kyb, String getah,
-                         String nilai, String keterangan, String ket1, int id_gangguan, String ket9, String ket10
+                         String nilai, String keterangan, String ket1, String ket2, String ket3, int id_gangguan, String ket9, String ket10
 
     ) {
 
@@ -42,6 +44,8 @@ public class GangguanModel {
         this.Nilai = nilai;
         this.Keterangan = keterangan;
         this.Ket1 = ket1;
+        this.Ket2 = ket2;
+        this.Ket3 = ket2;
         this.ID_gangguan= id_gangguan;
         this.Ket9 = ket9;
         this.Ket10 = ket10;
@@ -187,5 +191,21 @@ public class GangguanModel {
 
     public void setKet1(String ket1) {
         Ket1 = ket1;
+    }
+
+    public String getKet2() {
+        return Ket2;
+    }
+
+    public void setKet2(String ket2) {
+        Ket2 = ket2;
+    }
+
+    public String getKet3() {
+        return Ket3;
+    }
+
+    public void setKet3(String ket3) {
+        Ket3 = ket3;
     }
 }

@@ -56,13 +56,17 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class LoginActivity extends AppCompatActivity {
     // server staging
-    private static final String address = "http://10.0.8.51:9393/";
+     private static final String address = "http://10.0.8.51:9393/";
     // server production
     //  private static final String address = "https://union-loket.perhutani.id/";
+//    private static final String address = "https://stg.sisdh.perhutani.id/";
+    // server local
+    //private static final String address = "http://127.0.0.1:8000/";
     // link api
     private static final String URL_FOR_LOGIN_V1 = address + "api/v1/login";
     private static final String URL_FOR_PROFIL_V1 = address + "api/v1/get_user_details";
@@ -76,18 +80,19 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_JENIS_GANGGUAN_HUTAN_V1 = address + "api/v1/getJenisGangguanHutan";
     private static final String URL_FOR_GET_JENIS_SATWA_V1 = address + "api/v1/getJenisSatwa";
     private static final String URL_FOR_GET_JENIS_TEMUAN_V1 = address + "api/v1/getJenisTemuan";
+    private static final String URL_FOR_GET_WAKTU_LIHAT_V1 = address + "api/v1/getWaktuTerlihat";
     private static final String URL_FOR_GET_DESA_V1 = address + "api/v1/get_master_desa";
     private static final String URL_FOR_GET_BENTUK_INTERAKSI_V1 = address + "api/v1/get_master_interaksi";
     private static final String URL_FOR_GET_STATUS_INTERAKSI_V1 = address + "api/v1/get_master_status_interaksi";
 
 
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
-    public static final String URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1 = address + "api/v1/postPerubahanKelas";
-    public static final String URL_FOR_POST_INTERAKSI_MDH_V1 = address + "api/v1/postInteraksiMDH";
-    public static final String URL_FOR_POST_PEMANTAUAN_SATWA = address + "api/v1/postPemantauanSatwa";
+    public static final String URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1 = address + "api/v1/postPerubahan";
+    public static final String URL_FOR_POST_INTERAKSI_MDH_V1 = address + "api/v1/postInteraksi";
+    public static final String URL_FOR_POST_PEMANTAUAN_SATWA = address + "api/v1/postSatwa";
     public static final String URL_FOR_POST_LAPORAN_PAL_V1 = address + "api/v1/postLaporanPal";
-    public static final String URL_FOR_POST_REGISTER_PCP_V1 = address + "api/v1/postRegisterPCP";
-    public static final String URL_FOR_POST_IDENTIFIKASI_TENURIAL_V1 = address + "api/v1/postIdentifikasiTenurial";
+    public static final String URL_FOR_POST_REGISTER_PCP_V1 = address + "api/v1/postPcp";
+    public static final String URL_FOR_POST_IDENTIFIKASI_TENURIAL_V1 = address + "api/v1/postTenurial";
 
 
     private ProgressDialog progressDialog;
@@ -345,29 +350,29 @@ public class LoginActivity extends AppCompatActivity {
                     sync_profil_v1(myResponse.getString("access_token"), username.getText().toString());
                     // get data anak petak
                     sync_get_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data anak petak
+                    // get data kelas hutan
                     sync_get_kelas_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data anak petak
+                    // get data jenis tanaman
                     sync_get_jenis_tanaman_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data anak petak
+                    // get data jenis permasalahan
                     sync_get_jenis_permasalahan_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data anak petak
+                    // get data jenis gangguan
                     sync_get_jenis_gangguan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
                     // get data jenis pal
                     sync_get_jenis_pal_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data anak petak
+                    // get data jenis satwa
                     sync_get_jenis_satwa_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data anak petak
+                    // get data jenis temuan
                     sync_get_jenis_temuan_v1(myResponse.getString("access_token"), username.getText().toString());
-
                     // get data bagian hutan
                     sync_get_bagian_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-
-
-
-
+                    //get data waktu lihat
+                    sync_get_waktu_terlihat_v1(myResponse.getString("access_token"), username.getText().toString());
+                    //get data desa
                     sync_get_master_desa(myResponse.getString("access_token"), username.getText().toString());
+                    //get data interaksi
                     sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
+                    //get data status interaksi
                     sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
 
 
@@ -831,6 +836,47 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(MstJenisTemuan.JENIS_TEMUAN_ID, json_projek.getString("id"));
                         values.put(MstJenisTemuan.JENIS_TEMUAN_NAME, json_projek.getString("name"));
                         db.create(MstJenisTemuan.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_waktu_terlihat_v1(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_WAKTU_LIHAT_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET WAKTU LIHAT ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstWaktuLihatSchema._ID, i + 1);
+                        values.put(MstWaktuLihatSchema.WAKTU_LIHAT_ID, json_projek.getString("id"));
+                        values.put(MstWaktuLihatSchema.WAKTU_LIHAT_NAME, json_projek.getString("name"));
+                        db.create(MstWaktuLihatSchema.TABLE_NAME, values);
                     }
                     conn.disconnect();
                 } catch (Exception e) {

@@ -155,19 +155,19 @@ public class EditLaporanpalbatasFragment extends Fragment {
             final String jumlah = jumlahpal.getText().toString();
 
             if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nomor Pal tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Nomor Pal harus diisi");
 
             } else if (jenis.equals("") || jenis.equals("0") || jenis.equals(" ") || jenis.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jenis Pal tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jenis Pal harus diisi");
 
             } else if (kondisi.equals("") || kondisi.equals("- Pilih Kondisi -") || kondisi.equals(" ") || kondisi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Kondisi Pal tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Kondisi Pal harus diisi");
 
             } else if (tanggal.equals("") || tanggal.equals("0") || tanggal.equals(" ") || tanggal.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
 
             } else if (jumlah.equals("") || jumlah.equals("0") || jumlah.equals(" ") || jumlah.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Pal tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jumlah Pal harus diisi");
 
             } else {
 

@@ -1,270 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff"
-    tools:context=".FragmentUi.laporanpalbatas.tambahlaporanpalbatas.TambahlaporanpalbatasFragment">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/top_navigation"
+    <RelativeLayout
+        android:id="@+id/linear_layout_home"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#EAEAEA"
-        android:paddingLeft="-16dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="15dp"
-            android:fontFamily="@font/font_aal_default"
-            android:gravity="right|center"
-            android:text="Tambah Pelaporan PAL Batas"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="20dp" />
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
         android:layout_marginRight="10dp"
-        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/colorOrange"
+            app:cardCornerRadius="20dp">
 
-            <TextView
-                android:fontFamily="@font/font_aal_default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Nomer PAL"
-                android:textColor="#1F1E1E" />
-
-            <EditText
-                android:id="@+id/palbatas_nopal"
-                android:fontFamily="@font/font_aal_default"
-                android:inputType="number"
-                android:singleLine="true"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/ic_background"
-                android:hint="Nomer PAL" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="30"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
-                        android:fontFamily="@font/font_aal_default"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Jenis PAL"
-                        android:textColor="#1F1E1E" />
-
-                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:layout_gravity="center"
                         android:fontFamily="@font/font_aal_default"
-                        android:id="@+id/spinner_jenis_pal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-                    <EditText
-                        android:id="@+id/palbatas_jenispal"
-                        android:fontFamily="@font/font_aal_default"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/ic_background"
-                        android:hint="Anak Petak" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#000" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:fontFamily="@font/font_aal_default"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Kondisi"
-                        android:textColor="#1F1E1E" />
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:entries="@array/array_kondisi_pal_batas"
-                        android:fontFamily="@font/font_aal_default"
-                        android:id="@+id/spinner_kondisi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-                    <EditText
-                        android:id="@+id/palbatas_kondisipal"
-                        android:fontFamily="@font/font_aal_default"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/ic_background"
-                        android:hint="Kondisi" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#000" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:fontFamily="@font/font_aal_default"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Tanggal"
-                        android:textColor="#1F1E1E" />
-
-                    <EditText
-                        android:id="@+id/palbatas_tanggal"
-                        android:fontFamily="@font/font_aal_default"
-                        android:inputType="number"
-                        android:singleLine="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/ic_background"
-                        android:hint="Tanggal" />
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="Tambah Laporan PAL Batas"
+                        android:textColor="#fff"
+                        android:textSize="20dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:background="@drawable/ic_background">
 
-                    <TextView
-                        android:fontFamily="@font/font_aal_default"
+                    <ScrollView
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Jumlah"
-                        android:textColor="#1F1E1E" />
+                        android:layout_height="match_parent">
 
-                    <EditText
-                        android:id="@+id/palbatas_jumlahpal"
-                        android:fontFamily="@font/font_aal_default"
-                        android:inputType="number"
-                        android:singleLine="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/ic_background"
-                        android:hint="Jumlah" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nomor PAL"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/palbatas_nopal"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Jenis PAL"
+                                    android:textColor="#424242"/>
+
+                                <androidx.appcompat.widget.AppCompatSpinner
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:id="@+id/spinner_jenis_pal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+
+                                <EditText
+                                    android:id="@+id/palbatas_jenispal"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/ic_background"
+                                    android:hint="Anak Petak" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="5dp"
+                                    android:background="#EFEFEF" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Kondisi PAL"
+                                    android:textColor="#424242"/>
+
+                                <androidx.appcompat.widget.AppCompatSpinner
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:entries="@array/array_kondisi_pal_batas"
+                                    android:id="@+id/spinner_kondisi"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+
+                                <EditText
+                                    android:id="@+id/palbatas_kondisipal"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/ic_background"
+                                    android:hint="Anak Petak" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="5dp"
+                                    android:background="#EFEFEF" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tanggal"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/palbatas_tanggal"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Jumlah"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/palbatas_jumlahpal"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Keterangan"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/palbatas_ketpal"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:background="@drawable/ic_background_grey"
+                                    android:hint="Tambahkan Keterangan (Optional)"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/palbatas_btnsubmitpal"
+                                    android:textSize="20dp"
+                                    android:fontFamily="@font/font_aal_bold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/shape_btnlogin"
+                                    android:text="Simpan"
+                                    android:textColor="#F9F9F9" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
                 </LinearLayout>
+
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+        </androidx.cardview.widget.CardView>
 
-                <LinearLayout
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+    </RelativeLayout>
 
-                    <TextView
-                        android:fontFamily="@font/font_aal_default"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Keterangan"
-                        android:textColor="#1F1E1E" />
-
-                    <EditText
-                        android:id="@+id/palbatas_ketpal"
-                        android:fontFamily="@font/font_aal_default"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:background="@drawable/ic_background"
-                        android:hint="Tambahkan keterangan . . . " />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="right"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/palbatas_btnsubmitpal"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/font_aal_bold"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/shape_btnlogin"
-                    android:text="Simpan"
-                    android:textColor="#F9F9F9" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -238,37 +238,37 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
             final String status = status_penyelesaian.getText().toString();
 
             if (jenispermasalahan.equals("") || jenispermasalahan.equals("0") || jenispermasalahan.equals(" ") || jenispermasalahan.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jenis Permasalahan tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jenis Permasalahan harus diisi");
 
             } else if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Anak Petak tidak boleh kosong");
-
-            } else if (tahun.equals("") || tahun.equals("0") || tahun.equals(" ") || tahun.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tahun tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Anak Petak harus diisi");
 
             } else if (kelashutan.equals("") || kelashutan.equals("0") || kelashutan.equals(" ") || kelashutan.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Kelas Hutan tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Kelas Hutan harus diisi");
+
+            } else if (tahun.equals("") || tahun.equals("0") || tahun.equals(" ") || tahun.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
 
             } else if (stratatenurial.equals("") || stratatenurial.equals("0") || stratatenurial.equals(" ") || stratatenurial.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Strata tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Strata harus diisi");
 
             } else if (luasbaku.equals("") || luasbaku.equals("0") || luasbaku.equals(" ") || luasbaku.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Luas Baku tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Luas Baku harus diisi");
 
             } else if (luastenurial.equals("") || luastenurial.equals("0") || luastenurial.equals(" ") || luastenurial.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Luas Tenurial tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Luas Tenurial harus diisi");
 
             } else if (kondisiidentifikasi.equals("") || kondisiidentifikasi.equals("0") || kondisiidentifikasi.equals(" ") || kondisiidentifikasi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Kondisi Identifikasi tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Kondisi Petak Saat Identifikasi harus diisi");
 
             } else if (awalkonflik.equals("") || awalkonflik.equals("0") || awalkonflik.equals(" ") || awalkonflik.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Awal Konflik tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Awal Konflik harus diisi");
 
             } else if (pihakterlibat.equals("") || pihakterlibat.equals("- Pilih Pihak Terlibat -") || pihakterlibat.equals(" ") || pihakterlibat.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Pihak Terlibat tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Pihak Terlibat harus diisi");
 
             } else if (status.equals("") || status.equals("0") || status.equals(" ") || status.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Status Penyelesaian tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Status Penyelesaian harus diisi");
 
             } else {
 

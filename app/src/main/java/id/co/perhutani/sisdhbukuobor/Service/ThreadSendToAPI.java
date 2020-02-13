@@ -20,12 +20,14 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.LoginActivity;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
+import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
@@ -51,38 +53,29 @@ public class ThreadSendToAPI extends Thread {
     public void run() {
         while (true) {
             result_api = "";
-            try {
-//                Log.i("JSON_BACKGROUND_SERVICE", "Start loop service");
+            try { ;
                 if (!isOnline()) {
                     Log.i("JSON_BACKGROUND_SERVICE", "Tidak ada koneksi internet yeeeeee");
                 } else {
                     Log.i("JSON_BACKGROUND_SERVICE", "Ada koneksi internet joshh " );
-                    // sync tambah
+
                     sendToServerTambah();
                     sendToServerPerubahanKelas();
+                    sendToServerInteraksimdh();
                     sendToServerPemantauanSatwa();
-                    sendToServerPAL();
+//                    sendToServerPAL();
                     sendToServerPCP();
                     sendToServerTenurial();
 
-                    // sync edit
                     sendToServerEdit();
                     sendToServerEditPerubahanKelas();
+                    sendToServerEditInteraksiMdh();
                     sendToServerEditPemantauanSatwa();
-                    sendToServerEditPAL();
+//                    sendToServerEditPAL();
                     sendToServerEditPCP();
                     sendToServerEditTenurial();
-//
-//                    FragmentManager manager = myContext.getSupportFragmentManager();
-//                    Fragment fragment = new ListGangguanFragment();
-//                    FragmentTransaction ft = manager.beginTransaction();
-//                    ft.replace(R.id.nav_host_fragment, fragment);
-//                    ft.commit();
-
-                    // sync tambah
 
                 }
-                //pause thread every 10 seconds
                 Thread.sleep(10000);
             } catch (InterruptedException e) {
                 Log.i("JSON_ERROR", e.toString());
@@ -110,7 +103,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_GANGGUAN_HUTAN " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -138,9 +130,8 @@ public class ThreadSendToAPI extends Thread {
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             Cursor cur;
             cur = db.rawQuery("SELECT *" +
-                    " FROM TRN_PEMANTAUAN_SATWA " +
+                    " FROM TRN_PERUBAHAN_KELAS " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -148,9 +139,36 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_perubahankelas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
 
+                } catch (Exception ex) {
+                    Log.i("JSON_ERROR", ex.toString());
+                }
+                cur.moveToNext();
+            }
+            cur.close();
+            db.close();
 
+        } catch (Exception ex) {
+            Log.i("JSON_ERROR", ex.toString());
+        }
+    }
+
+    private void sendToServerInteraksimdh() {
+        try {
+            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            Cursor cur;
+            cur = db.rawQuery("SELECT *" +
+                    " FROM TRN_INTERAKSI_MDH " +
+                    " WHERE  KET9=0 "+
+                    " ORDER BY ID ASC", null);
+
+            cur.moveToPosition(0);
+            for (int i = 0; i < cur.getCount(); i++) {
+                try {
+                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+                    sync_tambah_data_interaksimdh_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
                 }
@@ -173,7 +191,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -181,8 +198,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_pemantauansatwa_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -206,7 +221,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_LAPORAN_PAL " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -214,10 +228,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_laporanlpalbatas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_data_registerpcp_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_data_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -241,7 +251,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_REGISTER_PCP " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -249,9 +258,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_registerpcp_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_data_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -275,7 +281,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_IDENTIFIKASI_KONFLIK_TENURIAL " +
                     " WHERE  KET9=0 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -283,7 +288,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
 
 
                 } catch (Exception ex) {
@@ -299,7 +303,6 @@ public class ThreadSendToAPI extends Thread {
         }
     }
 
-    // Gukambut
     public void sync_tambah_data_gangguanhutan_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -330,7 +333,12 @@ public class ThreadSendToAPI extends Thread {
                         final String str_kerugian_getah = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_GETAH);
                         final String str_nilai_kerugian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NILAI_KERUGIAN);
                         final String str_keterangan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KETERANGAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.CREATED_BY);
+                        final String str_updated_at = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.UPDATED_AT);
+                        final String str_updated_by = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET10);
+
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -346,6 +354,10 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("kerugian_getah", str_kerugian_getah);
                         jsonParam.put("nilai_kerugian", str_nilai_kerugian);
                         jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_at", str_updated_at);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -405,7 +417,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_GANGGUAN_HUTAN " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -413,8 +424,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_gangguanhutan_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -459,6 +468,10 @@ public class ThreadSendToAPI extends Thread {
                         final String str_kerugian_getah = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_GETAH);
                         final String str_nilai_kerugian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NILAI_KERUGIAN);
                         final String str_keterangan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KETERANGAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.CREATED_BY);
+                        final String str_updated_at = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.UPDATED_AT);
+                        final String str_updated_by = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET10);
 
                         jsonParam.put("aksi", "ubah");
@@ -475,6 +488,10 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("kerugian_getah", str_kerugian_getah);
                         jsonParam.put("nilai_kerugian", str_nilai_kerugian);
                         jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_at", str_updated_at);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -525,7 +542,6 @@ public class ThreadSendToAPI extends Thread {
 
     }
 
-    // Perubahan Kelas
     public void sync_data_perubahankelas_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -557,14 +573,11 @@ public class ThreadSendToAPI extends Thread {
                         final String str_jenis_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_DEFINITIF);
                         final String str_kelas_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF);
                         final String str_keterangan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KETERANGAN_PERUBAHAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.CREATED_BY);
+                        final String str_updated_at = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.UPDATED_AT);
+                        final String str_updated_by = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET10);
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -580,7 +593,11 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("luasdefinitif", str_luas_definitif);
                         jsonParam.put("jenisdefinitif", str_jenis_definitif);
                         jsonParam.put("kelasdefinitif", str_kelas_definitif);
-                        jsonParam.put("kelasdefinitif", str_keterangan);
+                        jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_at", str_updated_at);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -622,8 +639,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -642,7 +657,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_PERUBAHAN_KELAS " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -650,8 +664,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_perubahankelas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -697,6 +709,10 @@ public class ThreadSendToAPI extends Thread {
                         final String str_jenis_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_DEFINITIF);
                         final String str_kelas_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF);
                         final String str_keterangan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KETERANGAN_PERUBAHAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.CREATED_BY);
+                        final String str_updated_at = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.UPDATED_AT);
+                        final String str_updated_by = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET10);
 
                         jsonParam.put("aksi", "ubah");
@@ -713,7 +729,11 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("luasdefinitif", str_luas_definitif);
                         jsonParam.put("jenisdefinitif", str_jenis_definitif);
                         jsonParam.put("kelasdefinitif", str_kelas_definitif);
-                        jsonParam.put("kelasdefinitif", str_keterangan);
+                        jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_at", str_updated_at);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -763,9 +783,210 @@ public class ThreadSendToAPI extends Thread {
         thread.start();
     }
 
-    // Interaksi MDH
+    public void sync_tambah_data_interaksimdh_v1(final String id) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String str_tes_data = "";
+                try {
+                    URL url = new URL(LoginActivity.URL_FOR_POST_INTERAKSI_MDH_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Authorization", "Bearer " + db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept", "application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
 
-    // Pemantauan Satwa
+                    JSONObject jsonParam = new JSONObject();
+                    try {
+                        final String str_anakpetak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.ANAK_PETAK_ID);
+                        final String str_tahun = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.TAHUN);
+                        final String str_namadesa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.NAMA_DESA);
+                        final String str_bentukinteraksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.BENTUK_INTERAKSI);
+                        final String str_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.STATUS);
+                        final String str_keterangan = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KETERANGAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_BY);
+                        final String str_ket10 = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET10);
+
+                        jsonParam.put("aksi", "tambah");
+                        jsonParam.put("id", str_ket10);
+                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("tahun", str_tahun);
+                        jsonParam.put("namadesa", str_namadesa);
+                        jsonParam.put("bentukinteraksi", str_bentukinteraksi);
+                        jsonParam.put("status", str_status);
+                        jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
+
+                    } catch (JSONException ex) {
+                        Log.i("JSON_ERROR", ex.toString());
+                        ex.printStackTrace();
+                    }
+
+                    Log.i("JSON_SEND", jsonParam.toString());
+
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    os.writeBytes(jsonParam.toString());
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    JSONObject myResponse = new JSONObject(response.toString());
+                    Log.i("JSON_BACKGROUND_SERVICE", "Sync to : " + LoginActivity.URL_FOR_POST_INTERAKSI_MDH_V1);
+                    Log.i("JSON_FEEDBACK", myResponse.getString("status"));
+
+                    os.flush();
+                    os.close();
+                    conn.disconnect();
+
+                    if (myResponse.getString("status").equals("success")) {
+                        InteraksimdhModel Aktifitasnya = new InteraksimdhModel();
+                        Aktifitasnya.setID_IMDH(Integer.parseInt(id));
+                        Aktifitasnya.setKet9("1");
+                        Aktifitasnya.setKet10(myResponse.getString("id"));
+                        db.EditDataInteraksimdhfroApi(Aktifitasnya);
+                    }
+
+                    cek_feedback_api = true;
+
+                } catch (Exception e) {
+                    cek_feedback_api = false;
+                    Log.i("JSON_MESSAGE", e.toString());
+                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_INTERAKSI_MDH_V1);
+                    Log.i("JSON_ID", id);
+                    e.printStackTrace();
+                }
+                Log.i("JSON_TES", str_tes_data);
+            }
+        });
+        thread.start();
+
+    }
+
+    private void sendToServerEditInteraksiMdh() {
+        try {
+            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            Cursor cur;
+            cur = db.rawQuery("SELECT *" +
+                    " FROM TRN_INTERAKSI_MDH " +
+                    " WHERE  KET9=2 "+
+                    " ORDER BY ID ASC", null);
+
+            cur.moveToPosition(0);
+            for (int i = 0; i < cur.getCount(); i++) {
+                try {
+                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+                    sync_data_edit_interaksimdh_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+
+                } catch (Exception ex) {
+                    Log.i("JSON_ERROR", ex.toString());
+                }
+                cur.moveToNext();
+            }
+            cur.close();
+            db.close();
+
+        } catch (Exception ex) {
+            Log.i("JSON_ERROR", ex.toString());
+        }
+    }
+
+    public void sync_data_edit_interaksimdh_v1(final String id) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String str_tes_data = "";
+                try {
+                    URL url = new URL(LoginActivity.URL_FOR_POST_INTERAKSI_MDH_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Authorization", "Bearer " + db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept", "application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    try {
+                        final String str_anakpetak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.ANAK_PETAK_ID);
+                        final String str_tahun = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.TAHUN);
+                        final String str_namadesa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.NAMA_DESA);
+                        final String str_bentukinteraksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.BENTUK_INTERAKSI);
+                        final String str_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.STATUS);
+                        final String str_keterangan = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KETERANGAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_BY);
+                        final String str_ket10 = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET10);
+
+                        jsonParam.put("aksi", "ubah");
+                        jsonParam.put("id", str_ket10);
+                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("tahun", str_tahun);
+                        jsonParam.put("namadesa", str_namadesa);
+                        jsonParam.put("bentukinteraksi", str_bentukinteraksi);
+                        jsonParam.put("status", str_status);
+                        jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
+
+                    } catch (JSONException ex) {
+                        Log.i("JSON_ERROR", ex.toString());
+                        ex.printStackTrace();
+                    }
+
+                    Log.i("JSON_SEND", jsonParam.toString());
+
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    os.writeBytes(jsonParam.toString());
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    JSONObject myResponse = new JSONObject(response.toString());
+                    Log.i("JSON_BACKGROUND_SERVICE", "Sync to : " + LoginActivity.URL_FOR_POST_INTERAKSI_MDH_V1);
+                    Log.i("JSON_FEEDBACK", myResponse.getString("status"));
+
+                    os.flush();
+                    os.close();
+                    conn.disconnect();
+
+                    if (myResponse.getString("status").equals("success")) {
+                        InteraksimdhModel Aktifitasnya = new InteraksimdhModel();
+                        Aktifitasnya.setID_IMDH(Integer.parseInt(id));
+                        Aktifitasnya.setKet9("1");
+                        Aktifitasnya.setKet10(myResponse.getString("id"));
+                        db.EditDataInteraksimdhfroApi(Aktifitasnya);
+                    }
+
+                    cek_feedback_api = true;
+
+                } catch (Exception e) {
+                    cek_feedback_api = false;
+                    Log.i("JSON_MESSAGE", e.toString());
+                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_INTERAKSI_MDH_V1);
+                    Log.i("JSON_ID", id);
+                    e.printStackTrace();
+                }
+                Log.i("JSON_TES", str_tes_data);
+            }
+        });
+        thread.start();
+
+    }
+
     public void sync_data_pemantauansatwa_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -788,16 +1009,12 @@ public class ThreadSendToAPI extends Thread {
                         final String str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
                         final String str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
                         final String str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+                        final String str_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
                         final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
                         final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -805,8 +1022,11 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("anakpetak", str_anakpetak);
                         jsonParam.put("jumlahsatwa", str_jumlahsatwa);
                         jsonParam.put("caralihat", str_caralihat);
+                        jsonParam.put("waktulihat", str_waktulihat);
                         jsonParam.put("tanggal", str_tanggal);
                         jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -848,8 +1068,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_PEMANTAUAN_SATWA);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -868,7 +1086,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_PEMANTAUAN_SATWA " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -876,8 +1093,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_pemantauansatwa_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -914,8 +1129,11 @@ public class ThreadSendToAPI extends Thread {
                         final String str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
                         final String str_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
                         final String str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CARA_LIHAT);
+                        final String str_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
                         final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
                         final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
 
                         jsonParam.put("aksi", "ubah");
@@ -924,8 +1142,11 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("anakpetak", str_anakpetak);
                         jsonParam.put("jumlahsatwa", str_jumlahsatwa);
                         jsonParam.put("caralihat", str_caralihat);
+                        jsonParam.put("waktulihat", str_waktulihat);
                         jsonParam.put("tanggal", str_tanggal);
                         jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -957,7 +1178,7 @@ public class ThreadSendToAPI extends Thread {
                         Aktifitasnya.setID_Pemantauan(Integer.parseInt(id));
                         Aktifitasnya.setKet9("1");
                         Aktifitasnya.setKet10(myResponse.getString("id"));
-                        db.EditDataPemantauanSatwa(Aktifitasnya);
+                        db.EditDataPemantauanSatwafroApi(Aktifitasnya);
                     }
 
                     cek_feedback_api = true;
@@ -973,9 +1194,9 @@ public class ThreadSendToAPI extends Thread {
             }
         });
         thread.start();
+
     }
 
-    // Laporan PAL
     public void sync_data_laporanlpalbatas_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -1000,14 +1221,9 @@ public class ThreadSendToAPI extends Thread {
                         final String str_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KONDISI_PAL);
                         final String str_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
                         final String str_keteranganpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KETERANGAN_PAL);
+                        final String str_created_at = db.getDataDetail_v2(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET10);
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -1017,6 +1233,8 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("kondisipal", str_kondisipal);
                         jsonParam.put("jumlahpal", str_jumlahpal);
                         jsonParam.put("keteranganpal", str_keteranganpal);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -1058,8 +1276,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_LAPORAN_PAL_V1);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -1078,7 +1294,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_LAPORAN_PAL " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -1086,8 +1301,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_laporanlpalbatas_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -1185,7 +1398,6 @@ public class ThreadSendToAPI extends Thread {
         thread.start();
     }
 
-    // Register PCP
     public void sync_data_registerpcp_v1(final String id) {
 
         Thread thread = new Thread(new Runnable() {
@@ -1218,14 +1430,11 @@ public class ThreadSendToAPI extends Thread {
                         final String str_tahunjarangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_JARANGAN);
                         final String str_peninggi = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.PENIGGI);
                         final String str_keterangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KETERANGAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_BY);
+                        final String str_updated_at = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.UPDATED_AT);
+                        final String str_updated_by = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KET10);
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -1243,6 +1452,10 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("tahunjarangan", str_tahunjarangan);
                         jsonParam.put("peninggi", str_peninggi);
                         jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_at", str_updated_at);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -1284,8 +1497,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_REGISTER_PCP_V1);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -1304,7 +1515,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_REGISTER_PCP " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -1312,8 +1522,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_registerpcp_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -1360,6 +1568,10 @@ public class ThreadSendToAPI extends Thread {
                         final String str_tahunjarangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_JARANGAN);
                         final String str_peninggi = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.PENIGGI);
                         final String str_keterangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KETERANGAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_BY);
+                        final String str_updated_at = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.UPDATED_AT);
+                        final String str_updated_by = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KET10);
 
                         jsonParam.put("aksi", "ubah");
@@ -1378,6 +1590,10 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("tahunjarangan", str_tahunjarangan);
                         jsonParam.put("peninggi", str_peninggi);
                         jsonParam.put("keterangan", str_keterangan);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_at", str_updated_at);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -1407,7 +1623,7 @@ public class ThreadSendToAPI extends Thread {
                     if (myResponse.getString("status").equals("success")) {
                         RegisterpcpModel Aktifitasnya = new RegisterpcpModel();
                         Aktifitasnya.setID_Registerpcp(Integer.parseInt(id));
-                        Aktifitasnya.setKet9("1");
+                        Aktifitasnya.setKet9("2");
                         Aktifitasnya.setKet10(myResponse.getString("id"));
                         db.EditDataRegisterPCPfroApi(Aktifitasnya);
                     }
@@ -1426,8 +1642,6 @@ public class ThreadSendToAPI extends Thread {
         });
         thread.start();
     }
-
-    // Identifikasi Konflik Tenurial
 
     public void sync_data_identifikasitenurial_v1(final String id) {
 
@@ -1458,15 +1672,11 @@ public class ThreadSendToAPI extends Thread {
                         final String str_awal_konflik = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.AWAL_KONFLIK);
                         final String str_pihak_terlibat = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.PIHAK_TERLIBAT);
                         final String str_status_penyelesaian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STATUS_PENYELESAIAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.CREATED_BY);
+                        final String str_updated_at = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.UPDATED_AT);
+                        final String str_updated_by = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET10);
-
-//                        String aksi;
-//                            aksi = "tambah";
-//                        if ("tambah".equalsIgnoreCase(str_ket10)) {
-//                            aksi = "tambah";
-//                        }else {
-//                            aksi = "ubah";
-//                        }
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -1481,6 +1691,10 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("awalkonflik", str_awal_konflik);
                         jsonParam.put("pihakterlibat", str_pihak_terlibat);
                         jsonParam.put("statuspenyelesaian", str_status_penyelesaian);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_at", str_updated_at);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -1522,8 +1736,6 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_IDENTIFIKASI_TENURIAL_V1);
                     Log.i("JSON_ID", id);
-//                    Log.i("JSON_UPDATE_FLAG", str_isi_kejadian+" gagal ");
-//                    Log.i("JSON_TOKET", db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
                     e.printStackTrace();
                 }
                 Log.i("JSON_TES", str_tes_data);
@@ -1542,7 +1754,6 @@ public class ThreadSendToAPI extends Thread {
             cur = db.rawQuery("SELECT *" +
                     " FROM TRN_IDENTIFIKASI_KONFLIK_TENURIAL " +
                     " WHERE  KET9=2 "+
-//                    " WHERE  CREATE_BY=\"" + username + "\"" +
                     " ORDER BY ID ASC", null);
 
             cur.moveToPosition(0);
@@ -1550,8 +1761,6 @@ public class ThreadSendToAPI extends Thread {
                 try {
                     Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_identifikasitenurial_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-//                    sync_persediaan_v3(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
-
 
                 } catch (Exception ex) {
                     Log.i("JSON_ERROR", ex.toString());
@@ -1595,6 +1804,10 @@ public class ThreadSendToAPI extends Thread {
                         final String str_awal_konflik = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.AWAL_KONFLIK);
                         final String str_pihak_terlibat = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.PIHAK_TERLIBAT);
                         final String str_status_penyelesaian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STATUS_PENYELESAIAN);
+                        final String str_created_at = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.CREATED_BY);
+                        final String str_updated_at = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.UPDATED_AT);
+                        final String str_updated_by = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.UPDATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET10);
 
                         jsonParam.put("aksi", "ubah");
@@ -1610,6 +1823,10 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("awalkonflik", str_awal_konflik);
                         jsonParam.put("pihakterlibat", str_pihak_terlibat);
                         jsonParam.put("statuspenyelesaian", str_status_penyelesaian);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("updated_at", str_updated_at);
+                        jsonParam.put("updated_by", str_updated_by);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -1639,7 +1856,7 @@ public class ThreadSendToAPI extends Thread {
                     if (myResponse.getString("status").equals("success")) {
                         IdentifikasiTenurialModel Aktifitasnya = new IdentifikasiTenurialModel();
                         Aktifitasnya.setID_Tenurial(Integer.parseInt(id));
-                        Aktifitasnya.setKet9("1");
+                        Aktifitasnya.setKet9("2");
                         Aktifitasnya.setKet10(myResponse.getString("id"));
                         db.EditDataIdentifikasiTenurial(Aktifitasnya);
                     }

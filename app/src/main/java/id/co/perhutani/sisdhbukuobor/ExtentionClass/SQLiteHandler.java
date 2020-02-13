@@ -33,6 +33,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
@@ -51,7 +52,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -63,6 +63,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
+        db.execSQL(MstWaktuLihatSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstDesaSchema.SQL_CREATE_ENTRIES);
@@ -78,7 +79,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     }
 
-    // Upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         clear_database(db);
@@ -86,7 +86,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
 
     public void clear_database(SQLiteDatabase db){
-        // Drop older table if existed
         db.execSQL(UserSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstBagianHutan.SQL_DELETE_ENTRIES);
@@ -94,6 +93,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisGangguanHutanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisTemuan.SQL_DELETE_ENTRIES);
+        db.execSQL(MstWaktuLihatSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisTanamanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_DELETE_ENTRIES);
@@ -101,21 +101,18 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstBentukInteraksiSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_DELETE_ENTRIES);
         db.execSQL(TrnInteraksimdh.SQL_DELETE_ENTRIES);
-//        db.execSQL(MstTahunJarangan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_DELETE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
-        // Create tables again
         onCreate(db);
     }
 
 
     public void altertable() {
         SQLiteDatabase db = getReadableDatabase();
-        //create table
         db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstBagianHutan.SQL_CREATE_ENTRIES);
@@ -124,6 +121,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisGangguanHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
+        db.execSQL(MstWaktuLihatSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstDesaSchema.SQL_CREATE_ENTRIES);
@@ -243,16 +241,18 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    // Gangguan Keamanan Hutan
     public void EditDataGangguanHutan(GangguanModel g) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + g.getID_gangguan();
         ContentValues args = new ContentValues();
         args.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, g.getPetak());
+        args.put(TrnGangguanKeamananHutan.KET1, g.getKet1());
         args.put(TrnGangguanKeamananHutan.JENIS_TANAMAN, g.getJenisTanaman());
+        args.put(TrnGangguanKeamananHutan.KET2, g.getKet2());
         args.put(TrnGangguanKeamananHutan.TANGGAL, g.getTanggal());
         args.put(TrnGangguanKeamananHutan.NOMOR_A, g.getNoA());
         args.put(TrnGangguanKeamananHutan.KEJADIAN, g.getIsi());
+        args.put(TrnGangguanKeamananHutan.KET3, g.getKet3());
         args.put(TrnGangguanKeamananHutan.KERUGIAN_LUAS, g.getLuas());
         args.put(TrnGangguanKeamananHutan.KERUGIAN_POHON, g.getPohon());
         args.put(TrnGangguanKeamananHutan.KERUGIAN_KYP, g.getKyp());
@@ -260,7 +260,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnGangguanKeamananHutan.KERUGIAN_GETAH, g.getGetah());
         args.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, g.getNilai());
         args.put(TrnGangguanKeamananHutan.KETERANGAN, g.getKeterangan());
-        args.put(TrnGangguanKeamananHutan.KET1, g.getKet1());
         args.put(TrnGangguanKeamananHutan.KET9, g.getKet9());
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
     }
@@ -274,7 +273,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
     }
 
-    // Perubahan Kelas
     public void EditDataPerubahanKelas(PerubahankelasModel pk) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + pk.getID_Perubahan();
@@ -299,20 +297,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF, pk.getKelasHutanDefinitif());
         args.put(TrnPerubahanKelas.KET7, pk.getKet7());
         args.put(TrnPerubahanKelas.KETERANGAN_PERUBAHAN, pk.getKeteranganPerubahan());
+        args.put(TrnPerubahanKelas.KET9, pk.getKet9());
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataPerubahanKelasroApi(PerubahankelasModel b) {
+    public void EditDataPerubahanKelasroApi(PerubahankelasModel c) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_Perubahan();
+        String strFilter = "ID=" + c.getID_Perubahan();
         ContentValues args = new ContentValues();
-        args.put(TrnRegisterPcp.KET9, b.getKet9());
-        args.put(TrnRegisterPcp.KET10, b.getKet10());
-        db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
+        args.put(TrnPerubahanKelas.KET9, c.getKet9());
+        args.put(TrnPerubahanKelas.KET10, c.getKet10());
+        db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
-
-    // Interaksi MDH
     public void EditDataInteraksiMDH(InteraksimdhModel imdh) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + imdh.getID_IMDH();
@@ -328,10 +325,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnInteraksimdh.STATUS, imdh.getStatus());
         args.put(TrnInteraksimdh.KET5, imdh.getKet5());
         args.put(TrnInteraksimdh.KETERANGAN, imdh.getKeterangan());
+        args.put(TrnInteraksimdh.KET9, imdh.getKet9());
         db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
     }
 
-    // Pemantauan Satwa
+    public void EditDataInteraksimdhfroApi(InteraksimdhModel i) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + i.getID_IMDH();
+        ContentValues args = new ContentValues();
+        args.put(TrnInteraksimdh.KET9, i.getKet9());
+        args.put(TrnInteraksimdh.KET10, i.getKet10());
+        db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
+    }
+
     public void EditDataPemantauanSatwa(PemantauansatwaModel ps) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + ps.getID_Pemantauan();
@@ -347,19 +353,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPemantauanSatwa.KET4, ps.getKet4());
         args.put(TrnPemantauanSatwa.TANGGAL_PEMANTAUAN, ps.getTanggal());
         args.put(TrnPemantauanSatwa.KETERANGAN, ps.getKeteranganSatwa());
+        args.put(TrnPemantauanSatwa.KET9, ps.getKet9());
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataPemantauanSatwafroApi(PemantauansatwaModel b) {
+    public void EditDataPemantauanSatwafroApi(PemantauansatwaModel e) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_Pemantauan();
+        String strFilter = "ID=" + e.getID_Pemantauan();
         ContentValues args = new ContentValues();
-        args.put(TrnPemantauanSatwa.KET9, b.getKet9());
-        args.put(TrnPemantauanSatwa.KET10, b.getKet10());
+        args.put(TrnPemantauanSatwa.KET9, e.getKet9());
+        args.put(TrnPemantauanSatwa.KET10, e.getKet10());
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
     }
 
-    // Laporan Pal Batas
     public void EditDataLaporanPalBatas(PelaporanpalbatasModel lpb) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + lpb.getID_Laporan();
@@ -375,23 +381,21 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataLaporanPalfroApi(PelaporanpalbatasModel b) {
+    public void EditDataLaporanPalfroApi(PelaporanpalbatasModel f) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_Laporan();
+        String strFilter = "ID=" + f.getID_Laporan();
         ContentValues args = new ContentValues();
-        args.put(TrnLaporanPalBatas.KET9, b.getKet9());
-        args.put(TrnLaporanPalBatas.KET10, b.getKet10());
+        args.put(TrnLaporanPalBatas.KET9, f.getKet9());
+        args.put(TrnLaporanPalBatas.KET10, f.getKet10());
         db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
     }
 
-    // Register PCP
     public void EditDataRegisterPCP(RegisterpcpModel rp) {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + rp.getID_Registerpcp();
         ContentValues args = new ContentValues();
         args.put(TrnRegisterPcp.NO_PCP, rp.getNoPcp());
         args.put(TrnRegisterPcp.ANAK_PETAK_ID, rp.getAnakPetakId());
-        args.put(TrnRegisterPcp.KET1, rp.getKet1());
         args.put(TrnRegisterPcp.TAHUN_PCP, rp.getTahun());
         args.put(TrnRegisterPcp.UMUR, rp.getUmur());
         args.put(TrnRegisterPcp.LUAS_BAKU, rp.getLuasBaku());
@@ -404,47 +408,47 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnRegisterPcp.TAHUN_JARANGAN, rp.getTahunJarangan());
         args.put(TrnRegisterPcp.PENIGGI, rp.getPeninggi());
         args.put(TrnRegisterPcp.KETERANGAN, rp.getKeteranganPcp());
+        args.put(TrnRegisterPcp.KET9, rp.getKet9());
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataRegisterPCPfroApi(RegisterpcpModel b) {
+    public void EditDataRegisterPCPfroApi(RegisterpcpModel g) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_Registerpcp();
+        String strFilter = "ID=" + g.getID_Registerpcp();
         ContentValues args = new ContentValues();
-        args.put(TrnRegisterPcp.KET9, b.getKet9());
-        args.put(TrnRegisterPcp.KET10, b.getKet10());
+        args.put(TrnRegisterPcp.KET9, g.getKet9());
+        args.put(TrnRegisterPcp.KET10, g.getKet10());
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
-    // Identifikasi Tenurial
-    public void EditDataIdentifikasiTenurial(IdentifikasiTenurialModel rp) {
+    public void EditDataIdentifikasiTenurial(IdentifikasiTenurialModel it) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + rp.getID_Tenurial();
+        String strFilter = "ID=" + it.getID_Tenurial();
         ContentValues args = new ContentValues();
-        args.put(TrnIdentifikasiTenurial.JENIS_PERMASALAHAN, rp.getJenisPermasalahan());
-        args.put(TrnIdentifikasiTenurial.TANGGAL, rp.getTanggal());
-        args.put(TrnIdentifikasiTenurial.ANAK_PETAK_ID, rp.getAnakPetak());
-        args.put(TrnIdentifikasiTenurial.STRATA, rp.getStrata());
-        args.put(TrnIdentifikasiTenurial.KELAS_HUTAN_ID, rp.getKelasHutan());
-        args.put(TrnIdentifikasiTenurial.LUAS_BAKU, rp.getLuasBaku());
-        args.put(TrnIdentifikasiTenurial.LUAS_TENURIAL, rp.getLuasTenurial());
-        args.put(TrnIdentifikasiTenurial.KONDISI_PETAK, rp.getKondisiPetakSaatIdentifikasi());
-        args.put(TrnIdentifikasiTenurial.AWAL_KONFLIK, rp.getAwalKonflik());
-        args.put(TrnIdentifikasiTenurial.PIHAK_TERLIBAT, rp.getPihakTerlibat());
-        args.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, rp.getStatusPenyelesaian());
+        args.put(TrnIdentifikasiTenurial.JENIS_PERMASALAHAN, it.getJenisPermasalahan());
+        args.put(TrnIdentifikasiTenurial.TANGGAL, it.getTanggal());
+        args.put(TrnIdentifikasiTenurial.ANAK_PETAK_ID, it.getAnakPetak());
+        args.put(TrnIdentifikasiTenurial.STRATA, it.getStrata());
+        args.put(TrnIdentifikasiTenurial.KELAS_HUTAN_ID, it.getKelasHutan());
+        args.put(TrnIdentifikasiTenurial.LUAS_BAKU, it.getLuasBaku());
+        args.put(TrnIdentifikasiTenurial.LUAS_TENURIAL, it.getLuasTenurial());
+        args.put(TrnIdentifikasiTenurial.KONDISI_PETAK, it.getKondisiPetakSaatIdentifikasi());
+        args.put(TrnIdentifikasiTenurial.AWAL_KONFLIK, it.getAwalKonflik());
+        args.put(TrnIdentifikasiTenurial.PIHAK_TERLIBAT, it.getPihakTerlibat());
+        args.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, it.getStatusPenyelesaian());
+        args.put(TrnIdentifikasiTenurial.KET9, it.getKet9());
         db.update(TrnIdentifikasiTenurial.TABLE_NAME, args, strFilter, null);
     }
 
-    public void EditDataIdentifikasiTenurialfroApi(IdentifikasiTenurialModel b) {
+    public void EditDataIdentifikasiTenurialfroApi(IdentifikasiTenurialModel h) {
         SQLiteDatabase db = getReadableDatabase();
-        String strFilter = "ID=" + b.getID_Tenurial();
+        String strFilter = "ID=" + h.getID_Tenurial();
         ContentValues args = new ContentValues();
-        args.put(TrnRegisterPcp.KET9, b.getKet9());
-        args.put(TrnRegisterPcp.KET10, b.getKet10());
-        db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
+        args.put(TrnIdentifikasiTenurial.KET9, h.getKet9());
+        args.put(TrnIdentifikasiTenurial.KET10, h.getKet10());
+        db.update(TrnIdentifikasiTenurial.TABLE_NAME, args, strFilter, null);
     }
 
-    // Get Data
     public List<String> getJenisPal() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstJenisPalSchema.JENIS_PAL_NAME + " FROM " + MstJenisPalSchema.TABLE_NAME +
@@ -486,6 +490,22 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Jenis Temuan -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getWaktuLihat() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT " + MstWaktuLihatSchema.WAKTU_LIHAT_NAME+ " FROM " + MstWaktuLihatSchema.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        labels.add("- Pilih Waktu Lihat -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));
@@ -636,5 +656,4 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close();
         return labels;
     }
-
 }

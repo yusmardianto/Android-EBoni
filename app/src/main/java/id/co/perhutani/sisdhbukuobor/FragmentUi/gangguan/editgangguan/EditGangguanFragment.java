@@ -202,7 +202,7 @@ public class EditGangguanFragment extends Fragment {
         kerugian_getah = root.findViewById(R.id.edit_gangguan_kerugiangetah);
         nilai_kerugian = root.findViewById(R.id.edit_gangguan_nilaikerugian);
         keterangan = root.findViewById(R.id.edit_gangguan_keterangan);
-        btnSimpanGangguan = root.findViewById(R.id.edit_gangguan_btnsimpan);
+        btnSimpanGangguan = root.findViewById(R.id.edit_gangguan_btnsubmit);
 
         spin_gangguan_hutan = root.findViewById(R.id.edit_spinner_gangguan_hutan);
         load_spinner_gangguan_hutan();
@@ -210,7 +210,7 @@ public class EditGangguanFragment extends Fragment {
         String id_gangguan = db.getDataDetail(MstJenisGangguanHutanSchema.TABLE_NAME, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME, pil_gangguan, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME);
         isi_kejadian.setText(id_gangguan);
 
-        spin_anak_petak = root.findViewById(R.id.spinner_anak_petak);
+        spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_gukamhut);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
@@ -222,11 +222,11 @@ public class EditGangguanFragment extends Fragment {
         String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
         jenistanaman.setText(id_jenis);
 
-        str_isipetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
-        str_jenistanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.JENIS_TANAMAN);
+        str_isipetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET1);
+        str_jenistanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET2);
         str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL);
         str_nomora = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_A);
-        str_isi_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KEJADIAN);
+        str_isi_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET3);
         str_luas_lahan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_LUAS);
         str_jumlah_pohon = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_POHON);
         str_kerugian_kyp = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_KYP);
@@ -282,37 +282,37 @@ public class EditGangguanFragment extends Fragment {
             final String kayupap = kerugian_kyp.getText().toString();
 
             if (kejadian.equals("") || kejadian.equals("0") || kejadian.equals(" ") || kejadian.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Judul Kejadian tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jenis Gangguan harus diisi");
 
             } else if (petak.equals("") || petak.equals("0") || petak.equals(" ") || petak.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Petak tidak boleh kosong");
-
-            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Tanggal tidak boleh kosong");
-
-            } else if (nomorA.equals("") || nomorA.equals("0") || nomorA.equals(" ") || nomorA.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nomor A tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Anak petak harus diisi");
 
             } else if (jenis_tanaman.equals("") || jenis_tanaman.equals("0") || jenis_tanaman.equals(" ") || jenis_tanaman.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jenis Tanaman tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jenis Tanaman harus diisi");
+
+            } else if (nomorA.equals("") || nomorA.equals("0") || nomorA.equals(" ") || nomorA.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Nomor A harus diisi");
+
+            } else if (str_tanggal.equals("") || str_tanggal.equals("0") || str_tanggal.equals(" ") || str_tanggal.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
 
             } else if (luas.equals("") || luas.equals(" ") || luas.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Luas Lahan tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Luas Kerugian harus diisi");
 
             } else if (nilai.equals("") || nilai.equals(" ") || nilai.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nilai Kerugian tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Nilai Kerugian harus diisi");
 
             } else if (pohon.equals("") || pohon.equals(" ") || pohon.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Pohon tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jumlah Kerugian Pohon harus diisi");
 
             } else if (getah.equals("") || getah.equals(" ") || getah.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Getah tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jumlah Kerugian Getah harus diisi");
 
             } else if (kayubakar.equals("") || kayubakar.equals(" ") || kayubakar.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Kayu Bakar tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jumlah Kerugian Kayu Bakar harus diisi");
 
             } else if (kayupap.equals("") || kayupap.equals(" ") || kayupap.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Kayu PAP tidak boleh kosong");
+                AjnClass.showAlert(getActivity(), "Jumlah Kerugian Kayu PAP harus diisi");
 
             }else {
 
@@ -368,6 +368,8 @@ public class EditGangguanFragment extends Fragment {
                                             Aktifitasnya.setNilai(nilai_kerugian.getText().toString());
                                             Aktifitasnya.setKeterangan(keterangan.getText().toString());
                                             Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKet2(spin_jenis_tanaman.getSelectedItem().toString());
+                                            Aktifitasnya.setKet3(spin_gangguan_hutan.getSelectedItem().toString());
                                             Aktifitasnya.setKet9("2");
                                             db.EditDataGangguanHutan(Aktifitasnya);
 

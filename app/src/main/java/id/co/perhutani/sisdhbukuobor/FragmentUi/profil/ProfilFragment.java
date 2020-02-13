@@ -28,8 +28,11 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
@@ -145,18 +148,21 @@ public class ProfilFragment extends Fragment {
         session.setLogin(false);
         db.deleteAllRow(UserSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstAnakPetakSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisGangguanHutanSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisSatwa.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisTemuan.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstWaktuLihatSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisPalSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisTanamanSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisPermasalahanSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnGangguanKeamananHutan.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnPerubahanKelas.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnPemantauanSatwa.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnRegisterPcp.SQL_DELETE_ALL_ROWS);
-        db.deleteAllRow(MstJenisGangguanHutanSchema.SQL_DELETE_ALL_ROWS);
-        db.deleteAllRow(MstJenisSatwa.SQL_DELETE_ALL_ROWS);
-        db.deleteAllRow(MstJenisTemuan.SQL_DELETE_ALL_ROWS);
-        db.deleteAllRow(MstKelasHutanSchema.SQL_DELETE_ALL_ROWS);
-        db.deleteAllRow(MstJenisPalSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnInteraksimdh.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnIdentifikasiTenurial.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnLaporanPalBatas.SQL_DELETE_ALL_ROWS);
+
         db.clear_database(db.getReadableDatabase());
 
         Intent intent = new Intent(getActivity(), LoginActivity.class);
