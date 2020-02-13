@@ -45,6 +45,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstBagianHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstDesaSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
@@ -62,13 +63,12 @@ public class LoginActivity extends AppCompatActivity {
     private static final String address = "http://10.0.8.51:9393/";
     // server production
     //  private static final String address = "https://union-loket.perhutani.id/";
-    // server local
-    //private static final String address = "http://127.0.0.1:8000/";
     // link api
     private static final String URL_FOR_LOGIN_V1 = address + "api/v1/login";
     private static final String URL_FOR_PROFIL_V1 = address + "api/v1/get_user_details";
 
     private static final String URL_FOR_GET_ANAK_PETAK_V1 = address + "api/v1/getAnakPetak";
+    private static final String URL_FOR_GET_BAGIAN_HUTAN_V1 = address + "api/v1/get_bagian_hutan";
     private static final String URL_FOR_GET_KELAS_HUTAN_V1 = address + "api/v1/getKelasHutan";
     private static final String URL_FOR_GET_JENIS_TANAMAN_V1 = address + "api/v1/getJenisTanaman";
     private static final String URL_FOR_GET_JENIS_PERMASALAHAN_V1 = address + "api/v1/getJenisPermasalahan";
@@ -360,6 +360,12 @@ public class LoginActivity extends AppCompatActivity {
                     // get data anak petak
                     sync_get_jenis_temuan_v1(myResponse.getString("access_token"), username.getText().toString());
 
+                    // get data bagian hutan
+                    sync_get_bagian_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+
+
+
+
                     sync_get_master_desa(myResponse.getString("access_token"), username.getText().toString());
                     sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
                     sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
@@ -485,6 +491,51 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
 
+                    conn.disconnect();
+
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_bagian_hutan_v1(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_BAGIAN_HUTAN_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET BAGIAN HUTAN ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstBagianHutan._ID, i + 1);
+                        values.put(MstBagianHutan.BAGIAN_HUTAN_ID, json_projek.getString("id"));
+                        values.put(MstBagianHutan.BAGIAN_HUTAN_KODE, json_projek.getString("kode"));
+                        values.put(MstBagianHutan.BAGIAN_HUTAN_KPH_ID, json_projek.getString("kph_id"));
+                        values.put(MstBagianHutan.BAGIAN_HUTAN_NAME, json_projek.getString("name"));
+                        db.create(MstBagianHutan.TABLE_NAME, values);
+
+                    }
                     conn.disconnect();
 
                 } catch (Exception e) {
