@@ -62,8 +62,10 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
 
         db = new SQLiteHandler(mContext);
 
-        String getJenisPal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, mData.get(position).getID(), TrnLaporanPalBatas.KET1);
+        String getBagianHutan = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, mData.get(position).getID(), TrnLaporanPalBatas.KET1);
+        String getJenisPal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, mData.get(position).getID(), TrnLaporanPalBatas.KET2);
 
+        holder.tv_bagianhutanpal.setText(getBagianHutan);
         holder.tv_jenispal.setText(getJenisPal);
         holder.tv_tanggalpal.setText(mData.get(position).getTanggalPal());
         holder.tv_nomerpal.setText(mData.get(position).getNomerPal());
@@ -97,6 +99,7 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
     public static class PelaporanViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tv_jenispal;
+        private TextView tv_bagianhutanpal;
         private TextView tv_tanggalpal;
         private TextView tv_nomerpal;
         private TextView tv_jumlahpal;
@@ -107,6 +110,7 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
         public PelaporanViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            tv_bagianhutanpal = itemView.findViewById(R.id.name_bagianhutanpal);
             tv_jenispal = itemView.findViewById(R.id.name_jenispal);
             tv_tanggalpal = itemView.findViewById(R.id.name_tanggalpal);
             tv_nomerpal = itemView.findViewById(R.id.name_nomerpal);
@@ -125,21 +129,25 @@ public class PelaporanpalbatasAdapter extends RecyclerView.Adapter<Pelaporanpalb
             final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
             alertDialogBuilder.setView(viewas);
 
+            String get_bagianhutanpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET1);
             String get_tanggalpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.TANGGAL_PAL);
-            final String get_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET1);
-            final String get_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET2);
+            final String get_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET2);
+            final String get_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET3);
             String get_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
             String get_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
             String get_keterangnapal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KETERANGAN_PAL);
 
-            TextView nopal = viewas.findViewById(R.id.laporanpal_nopaldetail);
-            nopal.setText(get_nopal);
+            TextView bagianhutanpal = viewas.findViewById(R.id.laporanpal_bagianhutandetail);
+            bagianhutanpal.setText(get_bagianhutanpal);
+
+            TextView jenispal = viewas.findViewById(R.id.laporanpal_jenisdetail);
+            jenispal.setText(get_jenispal);
 
             TextView tanggalpal = viewas.findViewById(R.id.laporanpal_tanggaldetail);
             tanggalpal.setText(get_tanggalpal);
 
-            TextView jenispal = viewas.findViewById(R.id.laporanpal_jenisdetail);
-            jenispal.setText(get_jenispal);
+            TextView nopal = viewas.findViewById(R.id.laporanpal_nopaldetail);
+            nopal.setText(get_nopal);
 
             TextView kondisipal = viewas.findViewById(R.id.laporanpal_kondisidetail);
             kondisipal.setText(get_kondisipal);

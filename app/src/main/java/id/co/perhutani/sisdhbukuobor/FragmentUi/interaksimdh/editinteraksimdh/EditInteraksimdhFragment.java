@@ -1,5 +1,6 @@
 package id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.editinteraksimdh;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -19,6 +21,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -37,12 +42,14 @@ public class EditInteraksimdhFragment extends Fragment {
 
     private EditText anakpetak, namadesa, tahun, bentukinteraksi, status, keterangan;
 
+    final Calendar calendar = Calendar.getInstance();
+    private String str_tgl;
+
     public static final String MSG_KEY = "id";
     private static SQLiteHandler db;
     private static String id, str_anakpetak, str_tahun, str_namadesa, str_bentukinteraksi, str_status,
             str_keterangan;
     private Spinner spin_anak_petak;
-    private Spinner spin_tahun;
     private Spinner spin_nama_desa;
     private Spinner spin_bentuk_interaksi;
     private Spinner spin_status;
@@ -183,7 +190,36 @@ public class EditInteraksimdhFragment extends Fragment {
         }
 
         anakpetak = root.findViewById(R.id.edit_interaksimdh_idpetak);
+
         tahun = root.findViewById(R.id.edit_interaksimdh_tahun);
+        SimpleDateFormat sdf_tglmulai = new SimpleDateFormat("dd-MM-yyyy");
+        str_tgl = sdf_tglmulai.format(new Date());
+        tahun.setFocusable(false);
+        final DatePickerDialog.OnDateSetListener date1 = new android.app.DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                SimpleDateFormat sdf_view = new SimpleDateFormat("yyyy-MM-dd");
+                str_tgl = sdf_view.format(calendar.getTime());
+
+                tahun.setText(str_tgl);
+            }
+
+        };
+        tahun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(getActivity(), date1, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
         namadesa = root.findViewById(R.id.edit_interaksimdh_namadesa);
         bentukinteraksi = root.findViewById(R.id.edit_interaksimdh_bentukinteraksi);
         status = root.findViewById(R.id.edit_interaksimdh_statusinteraksi);
@@ -195,8 +231,6 @@ public class EditInteraksimdhFragment extends Fragment {
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         anakpetak.setText(id_petak);
-
-        spin_tahun = root.findViewById(R.id.edit_spinner_tahuninteraksi);
 
         spin_nama_desa = root.findViewById(R.id.edit_spinner_namadesa);
         load_spinner_nama_desa();
@@ -251,7 +285,7 @@ public class EditInteraksimdhFragment extends Fragment {
         try {
 
             final String anak_petak = anakpetak.getText().toString();
-            final String tahun_interaksi = spin_tahun.getSelectedItem().toString();
+            final String tahun_interaksi = tahun.getText().toString();
             final String nama_desa = namadesa.getText().toString();
             final String bentuk_interaksi = bentukinteraksi.getText().toString();
             final String status_interaksi = status.getText().toString();
@@ -259,7 +293,7 @@ public class EditInteraksimdhFragment extends Fragment {
             if (anak_petak.equals("") || anak_petak.equals("0") || anak_petak.equals(" ") || anak_petak.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Anak Petak harus diisi");
 
-            } else if (tahun_interaksi.equals("") || tahun_interaksi.equals("- Pilih Tahun -") || tahun_interaksi.equals(" ") || tahun_interaksi.equals(null)) {
+            } else if (tahun_interaksi.equals("") || tahun_interaksi.equals("0") || tahun_interaksi.equals(" ") || tahun_interaksi.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tahun harus diisi");
 
             } else if (nama_desa.equals("") || nama_desa.equals("0") || nama_desa.equals(" ") || nama_desa.equals(null)) {
@@ -312,8 +346,8 @@ public class EditInteraksimdhFragment extends Fragment {
                                             InteraksimdhModel Aktifitasnya = new InteraksimdhModel();
                                             Aktifitasnya.setID_IMDH(Integer.parseInt(id));
                                             Aktifitasnya.setAnakpetakid(anakpetak.getText().toString());
-                                            Aktifitasnya.setTahun(spin_tahun.getSelectedItem().toString());
-                                            Aktifitasnya.setKet2(spin_tahun.getSelectedItem().toString());
+                                            Aktifitasnya.setTahun(tahun.getText().toString());
+                                            Aktifitasnya.setKet2(tahun.getText().toString());
                                             Aktifitasnya.setDesaid(namadesa.getText().toString());
                                             Aktifitasnya.setBentukinteraksi(bentukinteraksi.getText().toString());
                                             Aktifitasnya.setStatus(status.getText().toString());

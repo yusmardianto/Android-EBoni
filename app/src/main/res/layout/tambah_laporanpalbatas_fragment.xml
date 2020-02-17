@@ -74,6 +74,66 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Bagian Hutan"
+                                    android:textColor="#424242" />
+
+                                <androidx.appcompat.widget.AppCompatSpinner
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:id="@+id/spinner_bagian_hutan_pal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+
+                                <EditText
+                                    android:id="@+id/palbatas_bagianhutan"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/ic_background"
+                                    android:hint="Bagian Hutan" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="5dp"
+                                    android:background="#EFEFEF" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tanggal"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/palbatas_tanggal"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:text="Nomor PAL"
                                     android:textColor="#424242" />
 
@@ -140,7 +200,6 @@
 
                                 <androidx.appcompat.widget.AppCompatSpinner
                                     android:fontFamily="@font/font_aal_default"
-                                    android:entries="@array/array_kondisi_pal_batas"
                                     android:id="@+id/spinner_kondisi"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
@@ -162,28 +221,6 @@
                                     android:layout_marginRight="5dp"
                                     android:background="#EFEFEF" />
 
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Tanggal"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/palbatas_tanggal"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="number"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
                             </LinearLayout>
 
                             <LinearLayout

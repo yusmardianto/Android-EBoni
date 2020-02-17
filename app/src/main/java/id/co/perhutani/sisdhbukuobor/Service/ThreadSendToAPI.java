@@ -1215,8 +1215,9 @@ public class ThreadSendToAPI extends Thread {
 
                     JSONObject jsonParam = new JSONObject();
                     try {
-                        final String str_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
+                        final String str_bagianhutanpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.BAGIAN_HUTAN);
                         final String str_tanggalpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.TANGGAL_PAL);
+                        final String str_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
                         final String str_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JENIS_PAL);
                         final String str_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KONDISI_PAL);
                         final String str_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
@@ -1227,6 +1228,7 @@ public class ThreadSendToAPI extends Thread {
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
+                        jsonParam.put("bagianhutanpal", str_bagianhutanpal);
                         jsonParam.put("nopal", str_nopal);
                         jsonParam.put("tanggalpal", str_tanggalpal);
                         jsonParam.put("jenispal", str_jenispal);
@@ -1333,8 +1335,9 @@ public class ThreadSendToAPI extends Thread {
 
                     JSONObject jsonParam = new JSONObject();
                     try {
-                        final String str_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
+                        final String str_bagianhutanpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.BAGIAN_HUTAN);
                         final String str_tanggalpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.TANGGAL_PAL);
+                        final String str_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
                         final String str_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JENIS_PAL);
                         final String str_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KONDISI_PAL);
                         final String str_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
@@ -1343,6 +1346,7 @@ public class ThreadSendToAPI extends Thread {
 
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
+                        jsonParam.put("bagianhutanpal", str_bagianhutanpal);
                         jsonParam.put("nopal", str_nopal);
                         jsonParam.put("tanggalpal", str_tanggalpal);
                         jsonParam.put("jenispal", str_jenispal);

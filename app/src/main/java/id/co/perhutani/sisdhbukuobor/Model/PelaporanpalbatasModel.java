@@ -2,31 +2,35 @@ package id.co.perhutani.sisdhbukuobor.Model;
 
 public class PelaporanpalbatasModel {
     private String ID;
+    private String BagianHutanPal;
     private String TanggalPal;
+    private String NomerPal;
     private String JenisPal;
     private String KondisiPal;
-    private String NomerPal;
     private String JumlahPal;
     private String KeteranganPal;
     private String Ket1;
     private String Ket2;
+    private String Ket3;
     private String Ket9;
     private String Ket10;
     private int ID_Laporan;
 
-    public PelaporanpalbatasModel(String ID, String tanggalPal, String jenisPal, String kondisiPal,
-                                  String nomerPal, String jumlahPal, String keteranganPal, String ket1, String ket2,
-                                  int id_laporan, String ket9, String ket10)
+    public PelaporanpalbatasModel(String ID, String bagianhutanPal, String tanggalPal, String nomerPal,
+                                  String jenisPal, String kondisiPal, String jumlahPal, String keteranganPal,
+                                  String ket1, String ket2, String ket3, int id_laporan, String ket9, String ket10)
     {
         this.ID = ID;
+        this.BagianHutanPal = bagianhutanPal;
         this.TanggalPal = tanggalPal;
+        this.NomerPal = nomerPal;
         this.JenisPal = jenisPal;
         this.KondisiPal = kondisiPal;
-        this.NomerPal = nomerPal;
         this.JumlahPal = jumlahPal;
         this.KeteranganPal = keteranganPal;
         this.Ket1 = ket1;
         this.Ket2 = ket2;
+        this.Ket3 = ket3;
         this.ID_Laporan= id_laporan;
         this.Ket9 = ket9;
         this.Ket10 = ket10;
@@ -47,6 +51,14 @@ public class PelaporanpalbatasModel {
     public String getKet2() { return Ket2; }
 
     public void setKet2(String ket2) { Ket2 = ket2; }
+
+    public String getKet3() {
+        return Ket3;
+    }
+
+    public void setKet3(String ket3) {
+        Ket3 = ket3;
+    }
 
     public String getKet9() {
         return Ket9;
@@ -78,6 +90,14 @@ public class PelaporanpalbatasModel {
 
     public void setID(String ID) {
         this.ID = ID;
+    }
+
+    public String getBagianHutanPal() {
+        return BagianHutanPal;
+    }
+
+    public void setBagianHutanPal(String bagianhutanPal) {
+        BagianHutanPal = bagianhutanPal ;
     }
 
     public String getTanggalPal() {

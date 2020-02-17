@@ -32,6 +32,8 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
@@ -65,10 +67,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
         db.execSQL(MstWaktuLihatSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstKondisiPalSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstDesaSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstPihakTerlibatSchema.SQL_CREATE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
@@ -95,11 +99,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTemuan.SQL_DELETE_ENTRIES);
         db.execSQL(MstWaktuLihatSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstKondisiPalSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisTanamanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstDesaSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstPihakTerlibatSchema.SQL_DELETE_ENTRIES);
         db.execSQL(TrnInteraksimdh.SQL_DELETE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_DELETE_ENTRIES);
@@ -123,10 +129,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstJenisTemuan.SQL_CREATE_ENTRIES);
         db.execSQL(MstWaktuLihatSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPalSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstKondisiPalSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstDesaSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstPihakTerlibatSchema.SQL_CREATE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
@@ -370,11 +378,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + lpb.getID_Laporan();
         ContentValues args = new ContentValues();
+        args.put(TrnLaporanPalBatas.BAGIAN_HUTAN, lpb.getBagianHutanPal());
+        args.put(TrnLaporanPalBatas.KET1, lpb.getKet1());
         args.put(TrnLaporanPalBatas.TANGGAL_PAL, lpb.getTanggalPal());
         args.put(TrnLaporanPalBatas.JENIS_PAL, lpb.getJenisPal());
-        args.put(TrnLaporanPalBatas.KET1, lpb.getKet1());
-        args.put(TrnLaporanPalBatas.KONDISI_PAL, lpb.getKondisiPal());
         args.put(TrnLaporanPalBatas.KET2, lpb.getKet2());
+        args.put(TrnLaporanPalBatas.KONDISI_PAL, lpb.getKondisiPal());
+        args.put(TrnLaporanPalBatas.KET3, lpb.getKet3());
         args.put(TrnLaporanPalBatas.NO_PAL, lpb.getNomerPal());
         args.put(TrnLaporanPalBatas.JUMLAH_PAL, lpb.getJumlahPal());
         args.put(TrnLaporanPalBatas.KETERANGAN_PAL, lpb.getKeteranganPal());
@@ -574,6 +584,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Anak Petak -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getBagianHutan() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstBagianHutan.BAGIAN_HUTAN_NAME + " FROM " + MstBagianHutan.TABLE_NAME +
+                " a ORDER BY a."+MstBagianHutan.BAGIAN_HUTAN_NAME+", a."+MstBagianHutan.BAGIAN_HUTAN_NAME+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        labels.add("- Pilih Bagian Hutan -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));

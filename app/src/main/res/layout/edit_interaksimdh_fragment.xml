@@ -103,6 +103,7 @@
                             </LinearLayout>
 
                             <LinearLayout
+                                android:layout_marginTop="10dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
@@ -111,34 +112,15 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="Tahun"
+                                    android:text="Tanggal"
                                     android:textColor="#424242" />
-
-                                <androidx.appcompat.widget.AppCompatSpinner
-                                    android:entries="@array/array_tahun_interaksi"
-                                    android:id="@+id/edit_spinner_tahuninteraksi"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"/>
 
                                 <EditText
                                     android:id="@+id/edit_interaksimdh_tahun"
                                     android:fontFamily="@font/font_aal_default"
-                                    android:visibility="gone"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/ic_background"
-                                    android:hint="Tahun" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="5dp"
-                                    android:background="#EFEFEF" />
-
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
                             </LinearLayout>
 
                             <LinearLayout

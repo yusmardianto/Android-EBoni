@@ -55,16 +55,18 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class LoginActivity extends AppCompatActivity {
     // server staging
-     private static final String address = "http://10.0.8.51:9393/";
+//     private static final String address = "http://10.0.8.51:9393/";
     // server production
     //  private static final String address = "https://union-loket.perhutani.id/";
-//    private static final String address = "https://stg.sisdh.perhutani.id/";
+    private static final String address = "https://stg.sisdh.perhutani.id/";
     // server local
     //private static final String address = "http://127.0.0.1:8000/";
     // link api
@@ -77,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_JENIS_TANAMAN_V1 = address + "api/v1/getJenisTanaman";
     private static final String URL_FOR_GET_JENIS_PERMASALAHAN_V1 = address + "api/v1/getJenisPermasalahan";
     private static final String URL_FOR_GET_JENIS_PALL_V1 = address + "api/v1/getJenisPal";
+    private static final String URL_FOR_GET_KONDISI_PAL_V1 = address + "api/v1/getKondisiPal";
     private static final String URL_FOR_GET_JENIS_GANGGUAN_HUTAN_V1 = address + "api/v1/getJenisGangguanHutan";
     private static final String URL_FOR_GET_JENIS_SATWA_V1 = address + "api/v1/getJenisSatwa";
     private static final String URL_FOR_GET_JENIS_TEMUAN_V1 = address + "api/v1/getJenisTemuan";
@@ -84,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_DESA_V1 = address + "api/v1/get_master_desa";
     private static final String URL_FOR_GET_BENTUK_INTERAKSI_V1 = address + "api/v1/get_master_interaksi";
     private static final String URL_FOR_GET_STATUS_INTERAKSI_V1 = address + "api/v1/get_master_status_interaksi";
+    private static final String URL_FOR_GET_PIHAK_TERLIBAT_V1 = address + "api/v1/getPihakTerlibat";
 
 
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
@@ -360,6 +364,8 @@ public class LoginActivity extends AppCompatActivity {
                     sync_get_jenis_gangguan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
                     // get data jenis pal
                     sync_get_jenis_pal_v1(myResponse.getString("access_token"), username.getText().toString());
+                    //get data kondisi pal
+                    sync_get_kondisi_pal_v1(myResponse.getString("access_token"), username.getText().toString());
                     // get data jenis satwa
                     sync_get_jenis_satwa_v1(myResponse.getString("access_token"), username.getText().toString());
                     // get data jenis temuan
@@ -374,6 +380,8 @@ public class LoginActivity extends AppCompatActivity {
                     sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
                     //get data status interaksi
                     sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
+                    //get data pihak terlibat
+                    sync_get_pihak_terlibat(myResponse.getString("access_token"), username.getText().toString());
 
 
                     session.setLogin(true);
@@ -724,6 +732,46 @@ public class LoginActivity extends AppCompatActivity {
         thread.start();
     }
 
+    public void sync_get_kondisi_pal_v1(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_KONDISI_PAL_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET KONDISI PAL ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstKondisiPalSchema._ID, i + 1);
+                        values.put(MstKondisiPalSchema.KONDISI_PAL_ID, json_projek.getString("id"));
+                        values.put(MstKondisiPalSchema.KONDISI_PAL_NAME, json_projek.getString("name"));
+                        db.create(MstKondisiPalSchema.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
 
     public void sync_get_jenis_gangguan_hutan_v1(final String token, final String username) {
         Thread thread = new Thread(new Runnable() {
@@ -1002,6 +1050,47 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(MstStatusInteraksiSchema.ID_STATUS, json_projek.getString("id"));
                         values.put(MstStatusInteraksiSchema.NAMA_STATUS, json_projek.getString("name"));
                         db.create(MstStatusInteraksiSchema.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_pihak_terlibat(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_PIHAK_TERLIBAT_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET MASTER PIHAK TERLIBAT ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstPihakTerlibatSchema._ID, i + 1);
+                        values.put(MstPihakTerlibatSchema.PIHAK_TERLIBAT_ID, json_projek.getString("id"));
+                        values.put(MstPihakTerlibatSchema.PIHAK_TERLIBAT_NAME, json_projek.getString("name"));
+                        db.create(MstPihakTerlibatSchema.TABLE_NAME, values);
                     }
                     conn.disconnect();
                 } catch (Exception e) {
