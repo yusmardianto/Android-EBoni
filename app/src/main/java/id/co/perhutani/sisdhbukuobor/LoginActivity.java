@@ -63,10 +63,10 @@ import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class LoginActivity extends AppCompatActivity {
     // server staging
-//     private static final String address = "http://10.0.8.51:9393/";
+     private static final String address = "http://10.0.8.51:9393/";
     // server production
     //  private static final String address = "https://union-loket.perhutani.id/";
-    private static final String address = "https://stg.sisdh.perhutani.id/";
+//    private static final String address = "https://stg.sisdh.perhutani.id/";
     // server local
     //private static final String address = "http://127.0.0.1:8000/";
     // link api

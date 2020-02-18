@@ -476,6 +476,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return labels;
     }
 
+    public List<String> getKondisiPal() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstKondisiPalSchema.KONDISI_PAL_NAME + " FROM " + MstKondisiPalSchema.TABLE_NAME +
+                " a ORDER BY a."+MstKondisiPalSchema.KONDISI_PAL_NAME+", a."+MstKondisiPalSchema.KONDISI_PAL_NAME+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        labels.add("- Pilih Kondisi PAL -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
     public List<String> getJenisSatwa() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstJenisSatwa.JENIS_SATWA_NAME+ " FROM " + MstJenisSatwa.TABLE_NAME +

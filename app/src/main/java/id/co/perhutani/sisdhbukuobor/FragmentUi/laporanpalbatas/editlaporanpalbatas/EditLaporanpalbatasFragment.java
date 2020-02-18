@@ -27,19 +27,22 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.laporanpalbatas.ListPelaporanpalFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.MstBagianHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPalSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 
 public class EditLaporanpalbatasFragment extends Fragment {
 
-    private EditText tanggalpal, jenispal, kondisipal, nopal, jumlahpal, keteranganpal;
+    private EditText bagianhutanpal, tanggalpal, jenispal, kondisipal, nopal, jumlahpal, keteranganpal;
+    private Spinner spin_bagianhutan;
     private Spinner spin_jenis_pal;
     private Spinner spin_kondisi;
 
 
     public static final String MSG_KEY = "id";
     private static SQLiteHandler db;
-    private static String id, str_tanggalpal, str_jenispal, str_kondisipal, str_nopal,
+    private static String id, str_bagianhutan, str_tanggalpal, str_jenispal, str_kondisipal, str_nopal,
             str_jumlahpal, str_keteranganpal;
     private Button btnSimpanLaporan;
 
@@ -47,6 +50,35 @@ public class EditLaporanpalbatasFragment extends Fragment {
 
     public static EditLaporanpalbatasFragment newInstance() {
         return new EditLaporanpalbatasFragment();
+    }
+
+    public void load_spinner_bagian_hutan_pal() {
+        List<String> listtpg = db.getBagianHutan();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_bagianhutan.setAdapter(dataAdapter_tpg);
+        spin_bagianhutan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_bh = spin_bagianhutan.getSelectedItem().toString();
+                String bagian_hutan = db.getDataDetail(MstBagianHutan.TABLE_NAME, MstBagianHutan.BAGIAN_HUTAN_NAME,
+                        pil_bh, MstBagianHutan.BAGIAN_HUTAN_ID);
+                bagianhutanpal.setText(bagian_hutan);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
     }
 
     public void load_spinner_jenis_pal() {
@@ -78,6 +110,34 @@ public class EditLaporanpalbatasFragment extends Fragment {
         });
     }
 
+    public void load_spinner_kondisi_pal() {
+        List<String> listtpg = db.getKondisiPal();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_kondisi.setAdapter(dataAdapter_tpg);
+        spin_kondisi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_kondisi = spin_kondisi.getSelectedItem().toString();
+                String kondisi_pal = db.getDataDetail(MstKondisiPalSchema.TABLE_NAME, MstKondisiPalSchema.KONDISI_PAL_NAME,
+                        pil_kondisi, MstKondisiPalSchema.KONDISI_PAL_ID);
+                kondisipal.setText(kondisi_pal);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -98,6 +158,7 @@ public class EditLaporanpalbatasFragment extends Fragment {
             ex.printStackTrace();
         }
 
+        bagianhutanpal = root.findViewById(R.id.edit_palbatas_bagianhutan);
         tanggalpal = root.findViewById(R.id.edit_palbatas_tanggal);
         jenispal = root.findViewById(R.id.edit_palbatas_jenispal);
         kondisipal = root.findViewById(R.id.edit_palbatas_kondisipal);
@@ -106,6 +167,12 @@ public class EditLaporanpalbatasFragment extends Fragment {
         keteranganpal = root.findViewById(R.id.edit_palbatas_ketpal);
         btnSimpanLaporan = root.findViewById(R.id.edit_palbatas_btnsimpanpal);
 
+        spin_bagianhutan = root.findViewById(R.id.edit_spinner_bagian_hutan_pal);
+        load_spinner_bagian_hutan_pal();
+        String pil_bh = spin_bagianhutan.getSelectedItem().toString();
+        String bagian_hutan = db.getDataDetail(MstBagianHutan.TABLE_NAME, MstBagianHutan.BAGIAN_HUTAN_NAME, pil_bh, MstBagianHutan.BAGIAN_HUTAN_ID);
+        bagianhutanpal.setText(bagian_hutan);
+
         spin_jenis_pal = root.findViewById(R.id.edit_spinner_jenis_pal);
         load_spinner_jenis_pal();
         String pil_pal = spin_jenis_pal.getSelectedItem().toString();
@@ -113,14 +180,20 @@ public class EditLaporanpalbatasFragment extends Fragment {
         jenispal.setText(jenis_pal);
 
         spin_kondisi = root.findViewById(R.id.edit_spinner_kondisi);
+        load_spinner_kondisi_pal();
+        String pil_kondisi = spin_kondisi.getSelectedItem().toString();
+        String kondisi_pal = db.getDataDetail(MstKondisiPalSchema.TABLE_NAME, MstKondisiPalSchema.KONDISI_PAL_NAME, pil_kondisi, MstKondisiPalSchema.KONDISI_PAL_ID);
+        kondisipal.setText(kondisi_pal);
 
+        str_bagianhutan = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET1);
         str_tanggalpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.TANGGAL_PAL);
-        str_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET1);
-        str_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET2);
+        str_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET2);
+        str_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET3);
         str_nopal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.NO_PAL);
         str_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
         str_keteranganpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KETERANGAN_PAL);
 
+        bagianhutanpal.setText(str_bagianhutan);
         tanggalpal.setText(str_tanggalpal);
         jenispal.setText(str_jenispal);
         kondisipal.setText(str_kondisipal);
@@ -148,26 +221,30 @@ public class EditLaporanpalbatasFragment extends Fragment {
     public void act_simpan() {
         try {
 
+            final String bagianhutan = bagianhutanpal.getText().toString();
             final String nomor = nopal.getText().toString();
             final String jenis = jenispal.getText().toString();
-            final String kondisi = spin_kondisi.getSelectedItem().toString();
+            final String kondisi = kondisipal.getText().toString();
             final String tanggal = tanggalpal.getText().toString();
             final String jumlah = jumlahpal.getText().toString();
 
-            if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Nomor Pal harus diisi");
-
-            } else if (jenis.equals("") || jenis.equals("0") || jenis.equals(" ") || jenis.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jenis Pal harus diisi");
-
-            } else if (kondisi.equals("") || kondisi.equals("- Pilih Kondisi -") || kondisi.equals(" ") || kondisi.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Kondisi Pal harus diisi");
+            if (bagianhutan.equals("") || bagianhutan.equals("0") || bagianhutan.equals(" ") || bagianhutan.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Bagian Hutan harus diisi");
 
             } else if (tanggal.equals("") || tanggal.equals("0") || tanggal.equals(" ") || tanggal.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Tanggal harus diisi");
 
+            } else if (nomor.equals("") || nomor.equals("0") || nomor.equals(" ") || nomor.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Nomor PAL harus diisi");
+
+            } else if (jenis.equals("") || jenis.equals("0") || jenis.equals(" ") || jenis.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Jenis PAL harus diisi");
+
+            } else if (kondisi.equals("") || kondisi.equals("0") || kondisi.equals(" ") || kondisi.equals(null)) {
+                AjnClass.showAlert(getActivity(), "Kondisi PAL harus diisi");
+
             } else if (jumlah.equals("") || jumlah.equals("0") || jumlah.equals(" ") || jumlah.equals(null)) {
-                AjnClass.showAlert(getActivity(), "Jumlah Pal harus diisi");
+                AjnClass.showAlert(getActivity(), "Jumlah harus diisi");
 
             } else {
 
@@ -209,14 +286,16 @@ public class EditLaporanpalbatasFragment extends Fragment {
                                         try {
                                             PelaporanpalbatasModel Aktifitasnya = new PelaporanpalbatasModel();
                                             Aktifitasnya.setID_Laporan(Integer.parseInt(id));
+                                            Aktifitasnya.setBagianHutanPal(bagianhutanpal.getText().toString());
+                                            Aktifitasnya.setKet1(spin_bagianhutan.getSelectedItem().toString());
+                                            Aktifitasnya.setTanggalPal(tanggalpal.getText().toString());
                                             Aktifitasnya.setNomerPal(nopal.getText().toString());
                                             Aktifitasnya.setJenisPal(jenispal.getText().toString());
-                                            Aktifitasnya.setKondisiPal(spin_kondisi.getSelectedItem().toString());
-                                            Aktifitasnya.setKet2(spin_kondisi.getSelectedItem().toString());
-                                            Aktifitasnya.setTanggalPal(tanggalpal.getText().toString());
+                                            Aktifitasnya.setKet2(spin_jenis_pal.getSelectedItem().toString());
+                                            Aktifitasnya.setKondisiPal(kondisipal.getText().toString());
+                                            Aktifitasnya.setKet3(spin_kondisi.getSelectedItem().toString());
                                             Aktifitasnya.setJumlahPal(jumlahpal.getText().toString());
                                             Aktifitasnya.setKeteranganPal(keteranganpal.getText().toString());
-                                            Aktifitasnya.setKet1(spin_jenis_pal.getSelectedItem().toString());
                                             Aktifitasnya.setKet9("2");
                                             db.EditDataLaporanPalBatas(Aktifitasnya);
 
