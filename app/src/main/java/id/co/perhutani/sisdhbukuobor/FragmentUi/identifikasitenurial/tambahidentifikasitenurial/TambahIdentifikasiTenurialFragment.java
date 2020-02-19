@@ -34,12 +34,13 @@ import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 
 public class TambahIdentifikasiTenurialFragment extends Fragment {
 
     private EditText petak_id, jenis_permasalahan, tanggal, kelas_hutan, strata, luas_baku,
-            luas_tenurial, kondisi_petak, awal_konflik, status_penyelesaian;
+            luas_tenurial, kondisi_petak, awal_konflik, pihakterlibat, status_penyelesaian;
 
     private TambahIdentifikasiTenurialViewModel mViewModel;
 
@@ -145,6 +146,35 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
         });
     }
 
+    public void load_spinner_pihak_terlibat() {
+        List<String> listtpg = db.getPihakTerlibat();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_pihak_terlibat.setAdapter(dataAdapter_tpg);
+        spin_pihak_terlibat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_pihak_terlibat = spin_pihak_terlibat.getSelectedItem().toString();
+                String id_pihak_terlibat = db.getDataDetail(MstPihakTerlibatSchema.TABLE_NAME,
+                        MstPihakTerlibatSchema.PIHAK_TERLIBAT_NAME, pil_pihak_terlibat, MstPihakTerlibatSchema.PIHAK_TERLIBAT_ID);
+                pihakterlibat.setText(id_pihak_terlibat);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -190,6 +220,7 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
         luas_tenurial = root.findViewById(R.id.tenurial_luastenurial);
         kondisi_petak = root.findViewById(R.id.tenurial_kondisipetakidentifikasi);
         awal_konflik = root.findViewById(R.id.tenurial_awalkonflik);
+        pihakterlibat = root.findViewById(R.id.tenurial_pihakterlibat);
         status_penyelesaian = root.findViewById(R.id.tenurial_statuspenyelesaian);
         btnSimpanIdentifikasi = root.findViewById(R.id.tenurial_btnsubmit);
 
@@ -212,6 +243,10 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
         kelas_hutan.setText(id_kelas_hutan);
 
         spin_pihak_terlibat = root.findViewById(R.id.spinner_tenurial_pihakterlibat);
+        load_spinner_pihak_terlibat();
+        String pil_pihak_terlibat = spin_anak_petak.getSelectedItem().toString();
+        String id_pihak_terlibat = db.getDataDetail(MstPihakTerlibatSchema.TABLE_NAME, MstPihakTerlibatSchema.PIHAK_TERLIBAT_NAME, pil_pihak_terlibat, MstPihakTerlibatSchema.PIHAK_TERLIBAT_ID);
+        kelas_hutan.setText(id_pihak_terlibat);
 
         btnSimpanIdentifikasi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -264,7 +299,7 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
             } else if (awalkonflik.equals("") || awalkonflik.equals("0") || awalkonflik.equals(" ") || awalkonflik.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Awal Konflik harus diisi");
 
-            } else if (pihakterlibat.equals("") || pihakterlibat.equals("- Pilih Pihak Terlibat -") || pihakterlibat.equals(" ") || pihakterlibat.equals(null)) {
+            } else if (pihakterlibat.equals("") || pihakterlibat.equals("0") || pihakterlibat.equals(" ") || pihakterlibat.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Pihak Terlibat harus diisi");
 
             } else if (status.equals("") || status.equals("0") || status.equals(" ") || status.equals(null)) {
