@@ -77,6 +77,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
 
             }
         });
+
         String status_sync = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, mData.get(position).getId(), TrnGangguanKeamananHutan.KET9);
         if (status_sync.equals("1")) {
             holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));

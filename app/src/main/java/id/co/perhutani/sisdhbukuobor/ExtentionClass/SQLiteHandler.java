@@ -388,6 +388,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnLaporanPalBatas.NO_PAL, lpb.getNomerPal());
         args.put(TrnLaporanPalBatas.JUMLAH_PAL, lpb.getJumlahPal());
         args.put(TrnLaporanPalBatas.KETERANGAN_PAL, lpb.getKeteranganPal());
+        args.put(TrnLaporanPalBatas.KET9, lpb.getKet9());
         db.update(TrnLaporanPalBatas.TABLE_NAME, args, strFilter, null);
     }
 

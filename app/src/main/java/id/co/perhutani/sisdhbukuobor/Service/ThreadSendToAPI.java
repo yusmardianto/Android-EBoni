@@ -63,7 +63,7 @@ public class ThreadSendToAPI extends Thread {
                     sendToServerPerubahanKelas();
                     sendToServerInteraksimdh();
                     sendToServerPemantauanSatwa();
-//                    sendToServerPAL();
+                    sendToServerPAL();
                     sendToServerPCP();
                     sendToServerTenurial();
 
@@ -71,7 +71,7 @@ public class ThreadSendToAPI extends Thread {
                     sendToServerEditPerubahanKelas();
                     sendToServerEditInteraksiMdh();
                     sendToServerEditPemantauanSatwa();
-//                    sendToServerEditPAL();
+                    sendToServerEditPAL();
                     sendToServerEditPCP();
                     sendToServerEditTenurial();
 
@@ -1229,14 +1229,14 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("bagianhutanpal", str_bagianhutanpal);
-                        jsonParam.put("nopal", str_nopal);
                         jsonParam.put("tanggalpal", str_tanggalpal);
+                        jsonParam.put("nopal", str_nopal);
                         jsonParam.put("jenispal", str_jenispal);
                         jsonParam.put("kondisipal", str_kondisipal);
                         jsonParam.put("jumlahpal", str_jumlahpal);
                         jsonParam.put("keteranganpal", str_keteranganpal);
-                        jsonParam.put("created_at", str_created_at);
                         jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("created_at", str_created_at);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -1342,17 +1342,21 @@ public class ThreadSendToAPI extends Thread {
                         final String str_kondisipal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KONDISI_PAL);
                         final String str_jumlahpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.JUMLAH_PAL);
                         final String str_keteranganpal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KETERANGAN_PAL);
+                        final String str_created_at = db.getDataDetail_v2(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.CREATED_AT);
+                        final String str_created_by = db.getDataDetail_v2(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET10);
 
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("bagianhutanpal", str_bagianhutanpal);
-                        jsonParam.put("nopal", str_nopal);
                         jsonParam.put("tanggalpal", str_tanggalpal);
+                        jsonParam.put("nopal", str_nopal);
                         jsonParam.put("jenispal", str_jenispal);
                         jsonParam.put("kondisipal", str_kondisipal);
                         jsonParam.put("jumlahpal", str_jumlahpal);
                         jsonParam.put("keteranganpal", str_keteranganpal);
+                        jsonParam.put("created_by", str_created_by);
+                        jsonParam.put("created_at", str_created_at);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
