@@ -18,5 +18,14 @@
         @style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
     </style>
 
+    <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
+        <!-- reference our hint & error styles -->
+        <item name="colorControlActivated">@color/theme_orange</item>
+        <item name="colorControlHighlight">@color/md_orange_A100</item>
+        <item name="hintTextAppearance">@color/theme_hijau</item>
+        <item name="errorTextAppearance">@color/btn_color3</item>
+        <item name="android:textColor">@color/theme_hijau</item>
+        <item name="android:textColorHint">@color/colorPrimaryDark</item>
+    </style>
 
 </resources>
