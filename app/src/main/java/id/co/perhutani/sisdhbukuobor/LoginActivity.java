@@ -64,7 +64,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class LoginActivity extends AppCompatActivity {
     // server staging
-     private static final String address = "http://10.0.8.51:9393/";
+    private static final String address = "http://10.0.8.51:9393/";
     // server production
     //  private static final String address = "https://union-loket.perhutani.id/";
 //    private static final String address = "https://stg.sisdh.perhutani.id/";
@@ -106,8 +106,8 @@ public class LoginActivity extends AppCompatActivity {
     private SQLiteHandler db;
     private EditText username, password;
     private Button loginBtn;
-    private CheckBox ShowPass;
-
+//    private CheckBox ShowPass;
+    Boolean status_message = false;
     Boolean cek_login_api = false;
     private int i = -1;
 
@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
     String feedback_error_message = "";
 
     TextView txt_testview;
-
+    private long exitTime = 0;
 
     private void askForPermission() {
         Dexter.withActivity(this)
@@ -154,14 +154,27 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void doExitApp() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            Toast.makeText(this, R.string.press_again_exit_app, Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        doExitApp();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        ShowPass = findViewById(R.id.showPass);
+        username = findViewById(R.id.txt_input_username);
+        password = findViewById(R.id.txt_input_password);
         loginBtn = findViewById(R.id.loginBtn);
         txt_testview = findViewById(R.id.txt_testview);
 
@@ -201,18 +214,18 @@ public class LoginActivity extends AppCompatActivity {
 //        AjnClass.test_fungsi_sentry();
 
         //Set onClickListener, untuk menangani kejadian saat Checkbox diklik
-        ShowPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ShowPass.isChecked()) {
-                    //Saat Checkbox dalam keadaan Checked, maka password akan di tampilkan
-                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                } else {
-                    //Jika tidak, maka password akan di sembuyikan
-                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
-            }
-        });
+//        ShowPass.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (ShowPass.isChecked()) {
+//                    //Saat Checkbox dalam keadaan Checked, maka password akan di tampilkan
+//                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+//                } else {
+//                    //Jika tidak, maka password akan di sembuyikan
+//                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+//                }
+//            }
+//        });
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -277,36 +290,42 @@ public class LoginActivity extends AppCompatActivity {
                     public void onFinish() {
                         i = -1;
                         if (cek_login_api) {
-                            pDialog.setTitleText("Success!")
-                                    .setConfirmText("OK")
-                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            if (status_message) {
+                                pDialog.setTitleText("Success!")
+                                        .setContentText(error_message)
+                                        .setConfirmText("OK")
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                new Handler().postDelayed(new Runnable() {
 
-                            new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        // TODO Auto-generated method stub
+                                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(i);
+                                        finish();
+                                        pDialog.cancel();
+                                    }
 
-                                @Override
-                                public void run() {
-                                    // TODO Auto-generated method stub
-                                    Intent i = new Intent(LoginActivity.this, SplashScreenActivity.class);
-                                    startActivity(i);
-                                    finish();
-                                    pDialog.cancel();
-                                }
+                                }, 1000);
+                            } else {
+                                pDialog.setTitleText("Oops...!")
+                                        .setContentText(error_message)
+                                        .setConfirmText("OK!")
+                                        .changeAlertType(SweetAlertDialog.ERROR_TYPE);
 
-                            }, 1000);
-
+                            }
                         } else {
 
                             if (error_message.equals(null) || error_message.equals("")) {
                                 error_message = "Tidak bisa terhubung ke server";
                             }
-
                             txt_testview.setText(feedback_error_message);
-
                             pDialog.setTitleText("Oops...!")
                                     .setContentText(error_message)
                                     .setConfirmText("OK!")
                                     .changeAlertType(SweetAlertDialog.ERROR_TYPE);
                         }
+
                     }
                 }.start();
 
@@ -348,47 +367,60 @@ public class LoginActivity extends AppCompatActivity {
                     in.close();
                     //Read JSON response and print
                     JSONObject myResponse = new JSONObject(response.toString());
-                    Log.i("JSON_STATUS", String.valueOf(conn.getResponseCode()));
-                    Log.i("JSON_MESSAGE", conn.getResponseMessage());
-                    Log.i("JSON_TOKEN", myResponse.getString("access_token"));
+                    Log.i("JSON_STATUS", myResponse.getString("status"));
+                    Log.i("JSON_MESSAGE", myResponse.getString("message"));
+//                    Log.i("JSON_STATUS", String.valueOf(conn.getResponseCode()));
+//                    Log.i("JSON_MESSAGE", conn.getResponseMessage());
+//                    Log.i("JSON_TOKEN", myResponse.getString("access_token"));
+                    if (myResponse.getString("status").equals("Success") || myResponse.getString("status").equals("success")) {
+                        error_message = myResponse.getString("message");
+                        status_message = true;
+//                        Log.i("JSON_STATUS", String.valueOf(conn.getResponseCode()));
+//                        Log.i("JSON_MESSAGE", conn.getResponseMessage());
+                        Log.i("JSON_TOKEN", myResponse.getString("access_token"));
+                        // get data profil user
+                        sync_profil_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data anak petak
+                        sync_get_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data kelas hutan
+                        sync_get_kelas_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data jenis tanaman
+                        sync_get_jenis_tanaman_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data jenis permasalahan
+                        sync_get_jenis_permasalahan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data jenis gangguan
+                        sync_get_jenis_gangguan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data jenis pal
+                        sync_get_jenis_pal_v1(myResponse.getString("access_token"), username.getText().toString());
+                        //get data kondisi pal
+                        sync_get_kondisi_pal_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data jenis satwa
+                        sync_get_jenis_satwa_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data jenis temuan
+                        sync_get_jenis_temuan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data bagian hutan
+                        sync_get_bagian_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        //get data waktu lihat
+                        sync_get_waktu_terlihat_v1(myResponse.getString("access_token"), username.getText().toString());
+                        //get data desa
+                        sync_get_master_desa(myResponse.getString("access_token"), username.getText().toString());
+                        //get data interaksi
+                        sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
+                        //get data status interaksi
+                        sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
+                        // get data strata
+                        sync_get_strata(myResponse.getString("access_token"), username.getText().toString());
+                        //get data pihak terlibat
+                        sync_get_pihak_terlibat(myResponse.getString("access_token"), username.getText().toString());
 
-                    // get data profil user
-                    sync_profil_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data anak petak
-                    sync_get_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data kelas hutan
-                    sync_get_kelas_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data jenis tanaman
-                    sync_get_jenis_tanaman_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data jenis permasalahan
-                    sync_get_jenis_permasalahan_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data jenis gangguan
-                    sync_get_jenis_gangguan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data jenis pal
-                    sync_get_jenis_pal_v1(myResponse.getString("access_token"), username.getText().toString());
-                    //get data kondisi pal
-                    sync_get_kondisi_pal_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data jenis satwa
-                    sync_get_jenis_satwa_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data jenis temuan
-                    sync_get_jenis_temuan_v1(myResponse.getString("access_token"), username.getText().toString());
-                    // get data bagian hutan
-                    sync_get_bagian_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-                    //get data waktu lihat
-                    sync_get_waktu_terlihat_v1(myResponse.getString("access_token"), username.getText().toString());
-                    //get data desa
-                    sync_get_master_desa(myResponse.getString("access_token"), username.getText().toString());
-                    //get data interaksi
-                    sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
-                    //get data status interaksi
-                    sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
-                    // get data strata
-                    sync_get_strata(myResponse.getString("access_token"), username.getText().toString());
-                    //get data pihak terlibat
-                    sync_get_pihak_terlibat(myResponse.getString("access_token"), username.getText().toString());
-
-
-                    session.setLogin(true);
+                        session.setLogin(true);
+                    } else if (myResponse.getString("status").equals("error")) {
+//                        Log.i("JSON_STATUS", myResponse.getString("status"));
+//                        Log.i("JSON_MESSAGE", myResponse.getString("message"));
+                        error_message = myResponse.getString("message");
+                        status_message = false;
+                        cek_login_api = false;
+                    }
 
                     os.flush();
                     os.close();

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listview_row_jenis_tiket"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bgTitleRight"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <!-- RIGHT TITLE PART -->
+        <RelativeLayout
+            android:id="@+id/linear_event_day"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            android:background="@color/bgTitleRight"
+            android:paddingStart="5dp"
+            android:paddingLeft="15dp"
+            android:paddingEnd="2dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:src="@drawable/img_success_1"
+                android:id="@+id/title_from_to_dots"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="5dp"
+                android:paddingTop="5dp" />
+
+
+            <TextView
+                android:id="@+id/txt_judul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/title_from_to_dots"
+                android:layout_toEndOf="@+id/title_from_to_dots"
+                android:layout_toRightOf="@+id/title_from_to_dots"
+                android:ellipsize="marquee"
+                android:fadingEdge="horizontal"
+                android:textStyle="bold"
+                android:paddingTop="11dp"
+                android:singleLine="true"
+                android:text="Hari Pertama"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:src="@drawable/ic_right"
+                android:id="@+id/title_from_to_dotsasd"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:paddingTop="5dp" />
+
+
+            <ImageView
+                android:id="@+id/img_garis"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@id/txt_judul"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="1dp"
+                android:layout_toEndOf="@+id/title_from_to_dots"
+                android:layout_toRightOf="@+id/title_from_to_dots"
+                android:src="@color/contentDividerLine" />
+
+            <TextView
+
+                android:id="@+id/txt_keterangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_garis"
+                android:layout_toEndOf="@id/title_from_to_dots"
+                android:layout_toRightOf="@id/title_from_to_dots"
+                android:fontFamily="@font/font_aal_default"
+                android:paddingTop="2dp"
+                android:text="10-01-1994" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

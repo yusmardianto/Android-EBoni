@@ -28,11 +28,37 @@
     <string name="text_login">Login</string>
     <string name="text_signin">Sign in</string>
     <string name="text_email">Email</string>
-    <string name="text_password">Password</string>
     <string name="text_login_failed">"Login failed"</string>
-    <string name="text_username">Username</string>
+    <string name="text_username">Masukan Username</string>
+    <string name="text_password">Masukan Password</string>
     <string name="text_submit">Submit</string>
     <string name="text_simpan">Simpan</string>
     <string name="text_tambah">Tambah Laporan</string>
+    <!--exit notification-->
+    <string name="press_again_exit_app">Tekan sekali lagi untuk keluar aplikasi</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--list data untuk menu-->
+    <string-array name="groups_name">
+        <item>Persemaian</item>
+        <item>Tanaman</item>
+        <item>Pemeliharaan</item>
+        <item>Perawatan</item>
+    </string-array>
+    <string-array name="groups_date">
+        <item>Buku Hijau</item>
+        <item>Persiapan Penananam</item>
+        <item>Pemeliharaan I, II, IV, V</item>
+        <item>Penjarangan </item>
+    </string-array>
+    <integer-array name="groups_photos">
+        <item>@drawable/logo_eboni</item>
+        <item>@drawable/logo_eboni</item>
+        <item>@drawable/logo_eboni</item>
+        <item>@drawable/logo_eboni</item>
+    </integer-array>
 
 </resources>

@@ -78,12 +78,6 @@ public class HomeFragment extends Fragment {
         txt_jumlah_data_tenurial = homeView.findViewById(R.id.txt_jumlah_data_identifikasitenurial);
         txt_jumlah_data_tenurial.setText(jml_data_tenurial);
 
-        // mengaktifkan service sentry io
-//        AjnClass.pasang_sentry(this.getActivity().getApplicationContext());
-//        AjnClass.test_fungsi_sentry();
-
-
-
         TextView user_info_nama = homeView.findViewById(R.id.text_nama);
         user_info_nama.setText("Hai, "+namedesc);
         TextView str_tanggal = homeView.findViewById(R.id.text_tanggal);
