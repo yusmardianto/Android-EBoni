@@ -74,33 +74,15 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="Jenis Gangguan"
+                                    android:text="Tanggal Kejadian"
                                     android:textColor="#424242" />
 
-                                <androidx.appcompat.widget.AppCompatSpinner
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_gangguan_hutan"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"/>
-
                                 <EditText
-                                    android:id="@+id/gangguan_kejadian"
+                                    android:id="@+id/gangguan_tanggal"
                                     android:fontFamily="@font/font_aal_default"
-                                    android:visibility="gone"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/ic_background"
-                                    android:hint="Jenis Gangguan" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="5dp"
-                                    android:background="#EFEFEF" />
-
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -138,7 +120,109 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_marginRight="5dp"
                                     android:background="#EFEFEF" />
+                            </LinearLayout>
 
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nomor Laporan Huruf A"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/gangguan_nomora"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:inputType="number"
+                                    android:background="@drawable/ic_background_grey"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tanggal Laporan Huruf A"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/gangguan_tanggalHA"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Kejadian"
+                                    android:textColor="#424242" />
+
+                                <androidx.appcompat.widget.AppCompatSpinner
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:id="@+id/spinner_gangguan_hutan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+
+                                <EditText
+                                    android:id="@+id/gangguan_kejadian"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/ic_background"
+                                    android:hint="Jenis Gangguan" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginRight="5dp"
+                                    android:background="#EFEFEF" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="15dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Luas Kerugian (Ha)"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/gangguan_luas"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -176,94 +260,6 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_marginRight="5dp"
                                     android:background="#EFEFEF" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Nomor A"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_nomora"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:inputType="number"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Tanggal"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_tanggalHA"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="15dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Luas Kerugian"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_luas"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="number"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="15dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Nilai Kerugian"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_nilaikerugian"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="number"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -298,11 +294,11 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Jumlah Kerugian Getah"
+                                    android:text="Jumlah Kerugian Kayu Perkakas (m3)"
                                     android:textColor="#424242" />
 
                                 <EditText
-                                    android:id="@+id/gangguan_kerugiangetah"
+                                    android:id="@+id/gangguan_kerugiankyp"
                                     android:fontFamily="@font/font_aal_default"
                                     android:inputType="number"
                                     android:layout_width="match_parent"
@@ -320,7 +316,7 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Jumlah Kerugian Kayu Bakar"
+                                    android:text="Jumlah Kerugian Kayu Bakar (sm)"
                                     android:textColor="#424242" />
 
                                 <EditText
@@ -342,11 +338,33 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Jumlah Kerugian Kayu Pap"
+                                    android:text="Jumlah Kerugian Getah (Ton)"
                                     android:textColor="#424242" />
 
                                 <EditText
-                                    android:id="@+id/gangguan_kerugiankyp"
+                                    android:id="@+id/gangguan_kerugiangetah"
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/ic_background_grey"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="15dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:fontFamily="@font/font_aal_default"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nilai Kerugian (Rp)"
+                                    android:textColor="#424242" />
+
+                                <EditText
+                                    android:id="@+id/gangguan_nilaikerugian"
                                     android:fontFamily="@font/font_aal_default"
                                     android:inputType="number"
                                     android:layout_width="match_parent"

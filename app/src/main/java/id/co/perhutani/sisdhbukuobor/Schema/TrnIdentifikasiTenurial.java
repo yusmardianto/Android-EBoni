@@ -5,11 +5,11 @@ public class TrnIdentifikasiTenurial
 
         public static final String TABLE_NAME = "TRN_IDENTIFIKASI_KONFLIK_TENURIAL";
         public static final String _ID = "ID";
-        public static final String TANGGAL = "TANGGAL";
         public static final String JENIS_PERMASALAHAN = "JENIS_PERMASALAHAN";
-        public static final String STRATA = "STRATA";
         public static final String ANAK_PETAK_ID = "ANAK_PETAK_ID";
         public static final String KELAS_HUTAN_ID = "KELAS_HUTAN_ID";
+        public static final String TANGGAL = "TANGGAL";
+        public static final String STRATA = "STRATA";
         public static final String LUAS_BAKU = "LUAS_BAKU";
         public static final String LUAS_TENURIAL = "LUAS_TENURIAL";
         public static final String KONDISI_PETAK = "KONDISI_PETAK";
@@ -32,11 +32,11 @@ public class TrnIdentifikasiTenurial
         public static final String UPDATED_BY = "UPDATED_BY";
         public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
                 "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "" + TANGGAL + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + JENIS_PERMASALAHAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + STRATA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + ANAK_PETAK_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KELAS_HUTAN_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + TANGGAL + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + STRATA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + LUAS_BAKU + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + LUAS_TENURIAL + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KONDISI_PETAK + " " + Type.VARCHAR_NULLABLE_100 + ", " +

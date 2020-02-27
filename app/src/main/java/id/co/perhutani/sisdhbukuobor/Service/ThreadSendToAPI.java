@@ -321,6 +321,7 @@ public class ThreadSendToAPI extends Thread {
 
                     JSONObject jsonParam = new JSONObject();
                     try {
+                        final String str_tgl_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_KEJADIAN);
                         final String str_isipetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
                         final String str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL);
                         final String str_nomorA = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NOMOR_A);
@@ -342,6 +343,7 @@ public class ThreadSendToAPI extends Thread {
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
+                        jsonParam.put("tahun", str_tgl_kejadian);
                         jsonParam.put("anakpetak_id", str_isipetak);
                         jsonParam.put("nomor_ha", str_nomorA);
                         jsonParam.put("tanggal_ha", str_tanggal);
@@ -456,6 +458,7 @@ public class ThreadSendToAPI extends Thread {
 
                     JSONObject jsonParam = new JSONObject();
                     try {
+                        final String str_tgl_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_KEJADIAN);
                         final String str_isipetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.ANAK_PETAK_ID);
                         final String str_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL);
                         final String str_jenis_tanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.JENIS_TANAMAN);
@@ -476,6 +479,7 @@ public class ThreadSendToAPI extends Thread {
 
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
+                        jsonParam.put("tahun", str_tgl_kejadian);
                         jsonParam.put("anakpetak_id", str_isipetak);
                         jsonParam.put("nomor_ha", str_nomorA);
                         jsonParam.put("tanggal_ha", str_tanggal);
@@ -1631,7 +1635,7 @@ public class ThreadSendToAPI extends Thread {
                     if (myResponse.getString("status").equals("success")) {
                         RegisterpcpModel Aktifitasnya = new RegisterpcpModel();
                         Aktifitasnya.setID_Registerpcp(Integer.parseInt(id));
-                        Aktifitasnya.setKet9("2");
+                        Aktifitasnya.setKet9("1");
                         Aktifitasnya.setKet10(myResponse.getString("id"));
                         db.EditDataRegisterPCPfroApi(Aktifitasnya);
                     }
@@ -1689,10 +1693,10 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("jenispermasalahan", str_jenis_permasalahan);
-                        jsonParam.put("tahun", str_tahun);
                         jsonParam.put("petak", str_petak);
-                        jsonParam.put("strata", str_strata);
                         jsonParam.put("kelashutan", str_kelas_hutan);
+                        jsonParam.put("tahun", str_tahun);
+                        jsonParam.put("strata", str_strata);
                         jsonParam.put("luasbaku", str_luas_baku);
                         jsonParam.put("luastenurial", str_luas_tenurial);
                         jsonParam.put("kondisipetak", str_kondisi_petak);
@@ -1821,10 +1825,10 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("jenispermasalahan", str_jenis_permasalahan);
-                        jsonParam.put("tahun", str_tahun);
                         jsonParam.put("petak", str_petak);
-                        jsonParam.put("strata", str_strata);
                         jsonParam.put("kelashutan", str_kelas_hutan);
+                        jsonParam.put("tahun", str_tahun);
+                        jsonParam.put("strata", str_strata);
                         jsonParam.put("luasbaku", str_luas_baku);
                         jsonParam.put("luastenurial", str_luas_tenurial);
                         jsonParam.put("kondisipetak", str_kondisi_petak);
@@ -1864,9 +1868,9 @@ public class ThreadSendToAPI extends Thread {
                     if (myResponse.getString("status").equals("success")) {
                         IdentifikasiTenurialModel Aktifitasnya = new IdentifikasiTenurialModel();
                         Aktifitasnya.setID_Tenurial(Integer.parseInt(id));
-                        Aktifitasnya.setKet9("2");
+                        Aktifitasnya.setKet9("1");
                         Aktifitasnya.setKet10(myResponse.getString("id"));
-                        db.EditDataIdentifikasiTenurial(Aktifitasnya);
+                        db.EditDataIdentifikasiTenurialfroApi(Aktifitasnya);
                     }
 
                     cek_feedback_api = true;

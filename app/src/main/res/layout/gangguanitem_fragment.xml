@@ -30,7 +30,7 @@
 
             <TextView
                 android:fontFamily="@font/font_aal_default"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Tanaman" />
 
@@ -54,7 +54,7 @@
 
             <TextView
                 android:fontFamily="@font/font_aal_default"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Petak Kejadian" />
 
@@ -79,9 +79,9 @@
 
             <TextView
                 android:fontFamily="@font/font_aal_default"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="Tanggal" />
+                android:text="Tanggal Kejadian" />
 
             <TextView
                 android:layout_width="wrap_content"

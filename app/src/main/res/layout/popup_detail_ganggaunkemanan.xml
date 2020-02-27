@@ -57,6 +57,33 @@
                         android:fontFamily="@font/font_aal_default"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
+                        android:text="Tanggal Kejadian" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text=" : " />
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_bold"
+                        android:id="@+id/gangguan_tanggalkejadiandetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
                         android:text="Anak Petak" />
 
                     <TextView
@@ -74,31 +101,31 @@
                 </LinearLayout>
 
                 <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:fontFamily="@font/font_aal_default"
-                    android:layout_width="120dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jenis Gangguan" />
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text=" : " />
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Kejadian" />
 
-                <TextView
-                    android:fontFamily="@font/font_aal_bold"
-                    android:id="@+id/gangguan_kejadiandetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"/>
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text=" : " />
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_bold"
+                        android:id="@+id/gangguan_kejadiandetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"/>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,34 +165,7 @@
                         android:fontFamily="@font/font_aal_default"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="Tanggal" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text=" : " />
-
-                    <TextView
-                        android:fontFamily="@font/font_aal_bold"
-                        android:id="@+id/gangguan_tanggaldetail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:fontFamily="@font/font_aal_default"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="Nomor A" />
+                        android:text="No Laporan Huruf A" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -192,7 +192,34 @@
                         android:fontFamily="@font/font_aal_default"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="Luas Kerugian" />
+                        android:text="Tanggal Huruf A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text=" : " />
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_bold"
+                        android:id="@+id/gangguan_tanggaldetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Luas Kerugian (Ha)" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -246,7 +273,7 @@
                         android:fontFamily="@font/font_aal_default"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="Kerugian KYP" />
+                        android:text="Kerugian Kayu Perkakas (m3)" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -273,7 +300,7 @@
                         android:fontFamily="@font/font_aal_default"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="Kerugian KYB" />
+                        android:text="Kerugian Kayu Bakar (sm)" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -300,7 +327,7 @@
                         android:fontFamily="@font/font_aal_default"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="Kerugian Getah" />
+                        android:text="Kerugian Getah (Ton)" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -327,7 +354,7 @@
                         android:fontFamily="@font/font_aal_default"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="Nilai Kerugian" />
+                        android:text="Nilai Kerugian (Rp)" />
 
                     <TextView
                         android:layout_width="wrap_content"

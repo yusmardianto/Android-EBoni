@@ -35,6 +35,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstStrataSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
@@ -72,6 +73,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstDesaSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstStrataSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstPihakTerlibatSchema.SQL_CREATE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
@@ -105,6 +107,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstDesaSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstStrataSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstPihakTerlibatSchema.SQL_DELETE_ENTRIES);
         db.execSQL(TrnInteraksimdh.SQL_DELETE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
@@ -134,6 +137,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstDesaSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstBentukInteraksiSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstStatusInteraksiSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstStrataSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstPihakTerlibatSchema.SQL_CREATE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
@@ -253,6 +257,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String strFilter = "ID=" + g.getID_gangguan();
         ContentValues args = new ContentValues();
+        args.put(TrnGangguanKeamananHutan.TANGGAL_KEJADIAN, g.getTgl_Kejadian());
         args.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, g.getPetak());
         args.put(TrnGangguanKeamananHutan.KET1, g.getKet1());
         args.put(TrnGangguanKeamananHutan.JENIS_TANAMAN, g.getJenisTanaman());
@@ -437,15 +442,20 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         String strFilter = "ID=" + it.getID_Tenurial();
         ContentValues args = new ContentValues();
         args.put(TrnIdentifikasiTenurial.JENIS_PERMASALAHAN, it.getJenisPermasalahan());
-        args.put(TrnIdentifikasiTenurial.TANGGAL, it.getTanggal());
+        args.put(TrnIdentifikasiTenurial.KET1, it.getKet1());
         args.put(TrnIdentifikasiTenurial.ANAK_PETAK_ID, it.getAnakPetak());
-        args.put(TrnIdentifikasiTenurial.STRATA, it.getStrata());
+        args.put(TrnIdentifikasiTenurial.KET2, it.getKet2());
         args.put(TrnIdentifikasiTenurial.KELAS_HUTAN_ID, it.getKelasHutan());
+        args.put(TrnIdentifikasiTenurial.KET3, it.getKet3());
+        args.put(TrnIdentifikasiTenurial.TANGGAL, it.getTanggal());
+        args.put(TrnIdentifikasiTenurial.STRATA, it.getStrata());
+        args.put(TrnIdentifikasiTenurial.KET4, it.getKet4());
         args.put(TrnIdentifikasiTenurial.LUAS_BAKU, it.getLuasBaku());
         args.put(TrnIdentifikasiTenurial.LUAS_TENURIAL, it.getLuasTenurial());
         args.put(TrnIdentifikasiTenurial.KONDISI_PETAK, it.getKondisiPetakSaatIdentifikasi());
         args.put(TrnIdentifikasiTenurial.AWAL_KONFLIK, it.getAwalKonflik());
         args.put(TrnIdentifikasiTenurial.PIHAK_TERLIBAT, it.getPihakTerlibat());
+        args.put(TrnIdentifikasiTenurial.KET5, it.getKet5());
         args.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, it.getStatusPenyelesaian());
         args.put(TrnIdentifikasiTenurial.KET9, it.getKet9());
         db.update(TrnIdentifikasiTenurial.TABLE_NAME, args, strFilter, null);
@@ -584,7 +594,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 " a ORDER BY a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+", a."+MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        labels.add("- Pilih Jenis Gangguan-");
+        labels.add("- Pilih Kejadian -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));
@@ -692,6 +702,23 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Status Interaksi -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getStrata() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstStrataSchema.STRATA_NAME + " FROM " + MstStrataSchema.TABLE_NAME +
+                " a ORDER BY a."+MstStrataSchema.STRATA_NAME+", a."+MstStrataSchema.STRATA_NAME+" ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        labels.add("- Pilih Strata -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));
