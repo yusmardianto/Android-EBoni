@@ -58,6 +58,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstStrataSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
@@ -88,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_BENTUK_INTERAKSI_V1 = address + "api/v1/get_master_interaksi";
     private static final String URL_FOR_GET_STATUS_INTERAKSI_V1 = address + "api/v1/get_master_status_interaksi";
     private static final String URL_FOR_GET_PIHAK_TERLIBAT_V1 = address + "api/v1/getPihakTerlibat";
+    private static final String URL_FOR_GET_STRATA_V1 = address + "api/v1/getStrata";
 
 
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
@@ -406,6 +408,8 @@ public class LoginActivity extends AppCompatActivity {
                         sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
                         //get data status interaksi
                         sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
+                        // get data strata
+                        sync_get_strata(myResponse.getString("access_token"), username.getText().toString());
                         //get data pihak terlibat
                         sync_get_pihak_terlibat(myResponse.getString("access_token"), username.getText().toString());
 
@@ -417,7 +421,6 @@ public class LoginActivity extends AppCompatActivity {
                         status_message = false;
                         cek_login_api = false;
                     }
-
 
                     os.flush();
                     os.close();
@@ -1124,6 +1127,47 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(MstPihakTerlibatSchema.PIHAK_TERLIBAT_ID, json_projek.getString("id"));
                         values.put(MstPihakTerlibatSchema.PIHAK_TERLIBAT_NAME, json_projek.getString("name"));
                         db.create(MstPihakTerlibatSchema.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_strata(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_STRATA_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET MASTER STRATA ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstStrataSchema._ID, i + 1);
+                        values.put(MstStrataSchema.STRATA_ID, json_projek.getString("id"));
+                        values.put(MstStrataSchema.STRATA_NAME, json_projek.getString("name"));
+                        db.create(MstStrataSchema.TABLE_NAME, values);
                     }
                     conn.disconnect();
                 } catch (Exception e) {

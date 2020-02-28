@@ -68,7 +68,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
         holder.tv_isi.setText(get_kejadian);
         holder.tv_petak.setText(get_anakpetak);
         holder.tv_no.setText(get_tanaman);
-        holder.tv_tanggal.setText(mData.get(position).getTanggal());
+        holder.tv_tanggal.setText(mData.get(position).getTgl_Kejadian());
         holder.img_detailganggaun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,6 +127,7 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
             alertDialogBuilder.setView(viewas);
 
+            String get_tgl_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_KEJADIAN);
             String get_anakpetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET1);
             String get_jenistanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET2);
             String get_tanggal = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL);
@@ -139,6 +140,9 @@ public class GangguanAdapter extends RecyclerView.Adapter<GangguanAdapter.Ganggu
             String get_kerugiangetah = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_GETAH);
             String get_nilaikerugian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NILAI_KERUGIAN);
             String get_keterangan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KETERANGAN);
+
+            TextView tgl_kejadian = viewas.findViewById(R.id.gangguan_tanggalkejadiandetail);
+            tgl_kejadian.setText(get_tgl_kejadian);
 
             TextView anakpetak = viewas.findViewById(R.id.gangguan_petakdetailid);
             anakpetak.setText(get_anakpetak);

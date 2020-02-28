@@ -30,6 +30,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstStrataSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
@@ -158,6 +159,7 @@ public class ProfilFragment extends Fragment {
         db.deleteAllRow(MstKondisiPalSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisTanamanSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisPermasalahanSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstStrataSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstPihakTerlibatSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnGangguanKeamananHutan.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnPerubahanKelas.SQL_DELETE_ALL_ROWS);

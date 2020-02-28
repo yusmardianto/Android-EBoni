@@ -1,5 +1,6 @@
 package id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial.editidentifikasitenurial;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -19,6 +21,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -30,6 +35,8 @@ import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstStrataSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 
 public class EditIdentifikasiTenurialFragment extends Fragment {
@@ -47,7 +54,11 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_permasalahan;
     private Spinner spin_kelas_hutan;
+    private Spinner spin_strata;
     private Spinner spin_pihak_terlibat;
+
+    final Calendar calendar = Calendar.getInstance();
+    private String str_tgl;
 
     private EditIdentifikasiTenurialViewModel mViewModel;
 
@@ -142,6 +153,64 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         });
     }
 
+    public void load_spinner_strata() {
+        List<String> listtpg = db.getStrata();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_strata.setAdapter(dataAdapter_tpg);
+        spin_strata.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_strata = spin_strata.getSelectedItem().toString();
+                String id_strata = db.getDataDetail(MstStrataSchema.TABLE_NAME,
+                        MstStrataSchema.STRATA_NAME, pil_strata, MstStrataSchema.STRATA_ID);
+                strata.setText(id_strata);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
+    public void load_spinner_pihak_terlibat() {
+        List<String> listtpg = db.getPihakTerlibat();
+        final int _tpg = listtpg.size();
+        ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, listtpg) {
+            @Override
+            public int getCount() {
+                return (_tpg); // Truncate the list
+            }
+        };
+        dataAdapter_tpg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_pihak_terlibat.setAdapter(dataAdapter_tpg);
+        spin_pihak_terlibat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // your code here
+                String pil_pihak_terlibat = spin_pihak_terlibat.getSelectedItem().toString();
+                String id_pihak_terlibat = db.getDataDetail(MstPihakTerlibatSchema.TABLE_NAME,
+                        MstPihakTerlibatSchema.PIHAK_TERLIBAT_NAME, pil_pihak_terlibat, MstPihakTerlibatSchema.PIHAK_TERLIBAT_ID);
+                pihak_terlibat.setText(id_pihak_terlibat);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -162,10 +231,39 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         }
 
         jenis_permasalahan = root.findViewById(R.id.edit_tenurial_jenispermasalahan);
-        tahun = root.findViewById(R.id.edit_tenurial_tahun);
         petak = root.findViewById(R.id.edit_tenurial_anakpetak);
-        strata = root.findViewById(R.id.edit_tenurial_strata);
         kelas_hutan = root.findViewById(R.id.edit_tenurial_kelashutan);
+
+        tahun = root.findViewById(R.id.edit_tenurial_tahun);
+        SimpleDateFormat sdf_tglmulai = new SimpleDateFormat("dd-MM-yyyy");
+        str_tgl = sdf_tglmulai.format(new Date());
+        tahun.setFocusable(false);
+        final DatePickerDialog.OnDateSetListener date1 = new android.app.DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                SimpleDateFormat sdf_view = new SimpleDateFormat("yyyy-MM-dd");
+                str_tgl = sdf_view.format(calendar.getTime());
+
+                tahun.setText(str_tgl);
+            }
+
+        };
+        tahun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(getActivity(), date1, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        strata = root.findViewById(R.id.edit_tenurial_strata);
         luas_baku = root.findViewById(R.id.edit_tenurial_luasbaku);
         luas_tenurial = root.findViewById(R.id.edit_tenurial_luastenurial);
         kondisi_petak = root.findViewById(R.id.edit_tenurial_kondisipetakidentifikasi);
@@ -174,17 +272,17 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         status_penyelesaian = root.findViewById(R.id.edit_tenurial_statuspenyelesaian);
         btnSimpanTenurial = root.findViewById(R.id.edit_tenurial_btnsimpan);
 
+        spin_jenis_permasalahan = root.findViewById(R.id.edit_spinner_jenis_permasalahan);
+        load_spinner_jenis_permasalahan();
+        String pil_jenis_permasalahan = spin_jenis_permasalahan.getSelectedItem().toString();
+        String id_jenis_permasalahan = db.getDataDetail(MstJenisPermasalahanSchema.TABLE_NAME, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME, pil_jenis_permasalahan, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_ID);
+        jenis_permasalahan.setText(id_jenis_permasalahan);
+
         spin_anak_petak = root.findViewById(R.id.edit_spinner_tenurial_anakpetak);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
         String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         petak.setText(id_petak);
-
-        spin_jenis_permasalahan = root.findViewById(R.id.edit_spinner_jenis_permasalahan);
-        load_spinner_jenis_permasalahan();
-        String pil_jenis_permasalahan = spin_anak_petak.getSelectedItem().toString();
-        String id_jenis_permasalahan = db.getDataDetail(MstJenisPermasalahanSchema.TABLE_NAME, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME, pil_jenis_permasalahan, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_ID);
-        jenis_permasalahan.setText(id_jenis_permasalahan);
 
         spin_kelas_hutan = root.findViewById(R.id.edit_spinner_tenurial_kelashutan);
         load_spinner_kelas_hutan();
@@ -192,13 +290,23 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
         kelas_hutan.setText(id_kelas_hutan);
 
+        spin_strata = root.findViewById(R.id.edit_spinner_tenurial_strata);
+        load_spinner_strata();
+        String pil_strata = spin_strata.getSelectedItem().toString();
+        String id_strata = db.getDataDetail(MstStrataSchema.TABLE_NAME, MstStrataSchema.STRATA_NAME, pil_strata, MstStrataSchema.STRATA_ID);
+        strata.setText(id_strata);
+
         spin_pihak_terlibat = root.findViewById(R.id.edit_spinner_tenurial_pihakterlibat);
+        load_spinner_pihak_terlibat();
+        String pil_pihak_terlibat = spin_pihak_terlibat.getSelectedItem().toString();
+        String id_pihak_terlibat = db.getDataDetail(MstPihakTerlibatSchema.TABLE_NAME, MstPihakTerlibatSchema.PIHAK_TERLIBAT_NAME, pil_pihak_terlibat, MstPihakTerlibatSchema.PIHAK_TERLIBAT_ID);
+        pihak_terlibat.setText(id_pihak_terlibat);
 
         str_jenis_permasalahan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.JENIS_PERMASALAHAN);
-        str_tahun = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.TANGGAL);
         str_petak = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.ANAK_PETAK_ID);
-        str_strata = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STRATA);
         str_kelas_hutan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KELAS_HUTAN_ID);
+        str_tahun = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.TANGGAL);
+        str_strata = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STRATA);
         str_luas_baku = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.LUAS_BAKU);
         str_luas_tenurial = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.LUAS_TENURIAL);
         str_kondisi_petak = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KONDISI_PETAK);
@@ -207,10 +315,10 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         str_status_penyelesaian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STATUS_PENYELESAIAN);
 
         jenis_permasalahan.setText(str_jenis_permasalahan);
-        tahun.setText(str_tahun);
         petak.setText(str_petak);
-        strata.setText(str_strata);
         kelas_hutan.setText(str_kelas_hutan);
+        tahun.setText(str_tahun);
+        strata.setText(str_strata);
         luas_baku.setText(str_luas_baku);
         luas_tenurial.setText(str_luas_tenurial);
         kondisi_petak.setText(str_kondisi_petak);
@@ -240,14 +348,14 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
 
             final String jenispermasalahan = jenis_permasalahan.getText().toString();
             final String anak_petak = petak.getText().toString();
-            final String tahuntenurial = tahun.getText().toString();
             final String kelashutan = kelas_hutan.getText().toString();
+            final String tahuntenurial = tahun.getText().toString();
             final String stratatenurial = strata.getText().toString();
             final String luasbaku = luas_baku.getText().toString();
             final String luastenurial = luas_tenurial.getText().toString();
             final String kondisiidentifikasi = kondisi_petak.getText().toString();
             final String awalkonflik = awal_konflik.getText().toString();
-            final String pihakterlibat = spin_pihak_terlibat.getSelectedItem().toString();
+            final String pihakterlibat = pihak_terlibat.getText().toString();
             final String status = status_penyelesaian.getText().toString();
 
             if (jenispermasalahan.equals("") || jenispermasalahan.equals("0") || jenispermasalahan.equals(" ") || jenispermasalahan.equals(null)) {
@@ -277,7 +385,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
             } else if (awalkonflik.equals("") || awalkonflik.equals("0") || awalkonflik.equals(" ") || awalkonflik.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Awal Konflik harus diisi");
 
-            } else if (pihakterlibat.equals("") || pihakterlibat.equals("- Pilih Pihak Terlibat -") || pihakterlibat.equals(" ") || pihakterlibat.equals(null)) {
+            } else if (pihakterlibat.equals("") || pihakterlibat.equals("0") || pihakterlibat.equals(" ") || pihakterlibat.equals(null)) {
                 AjnClass.showAlert(getActivity(), "Pihak Terlibat harus diisi");
 
             } else if (status.equals("") || status.equals("0") || status.equals(" ") || status.equals(null)) {
@@ -324,17 +432,21 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                                             IdentifikasiTenurialModel Aktifitasnya = new IdentifikasiTenurialModel();
                                             Aktifitasnya.setID_Tenurial(Integer.parseInt(id));
                                             Aktifitasnya.setJenisPermasalahan(jenis_permasalahan.getText().toString());
-                                            Aktifitasnya.setTanggal(tahun.getText().toString());
                                             Aktifitasnya.setAnakPetak(petak.getText().toString());
-                                            Aktifitasnya.setStrata(strata.getText().toString());
                                             Aktifitasnya.setKelasHutan(kelas_hutan.getText().toString());
+                                            Aktifitasnya.setTanggal(tahun.getText().toString());
+                                            Aktifitasnya.setStrata(strata.getText().toString());
                                             Aktifitasnya.setLuasBaku(luas_baku.getText().toString());
                                             Aktifitasnya.setLuasTenurial(luas_tenurial.getText().toString());
                                             Aktifitasnya.setKondisiPetakSaatIdentifikasi(kondisi_petak.getText().toString());
                                             Aktifitasnya.setAwalKonflik(awal_konflik.getText().toString());
-                                            Aktifitasnya.setPihakTerlibat(spin_pihak_terlibat.getSelectedItem().toString());
+                                            Aktifitasnya.setPihakTerlibat(pihak_terlibat.getText().toString());
                                             Aktifitasnya.setStatusPenyelesaian(status_penyelesaian.getText().toString());
-                                            Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKet1(spin_jenis_permasalahan.getSelectedItem().toString());
+                                            Aktifitasnya.setKet2(spin_anak_petak.getSelectedItem().toString());
+                                            Aktifitasnya.setKet3(spin_kelas_hutan.getSelectedItem().toString());
+                                            Aktifitasnya.setKet4(spin_strata.getSelectedItem().toString());
+                                            Aktifitasnya.setKet5(spin_pihak_terlibat.getSelectedItem().toString());
                                             Aktifitasnya.setKet9("2");
 
                                             db.EditDataIdentifikasiTenurial(Aktifitasnya);

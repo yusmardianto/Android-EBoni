@@ -3,6 +3,7 @@ package id.co.perhutani.sisdhbukuobor.Model;
 public class GangguanModel {
 
     private String Id;
+    private String TanggalKejadian;
     private String Isi;
     private String Petak;
     private String JenisTanaman;
@@ -24,13 +25,15 @@ public class GangguanModel {
     public int ID_gangguan;
 
 
-    public GangguanModel(String id, String isi, String petak, String jenistanaman, String noA, String tanggal,
-                         String luas, String pohon, String kyp, String kyb, String getah,
-                         String nilai, String keterangan, String ket1, String ket2, String ket3, int id_gangguan, String ket9, String ket10
+    public GangguanModel(String id, String tgl_kejadian, String isi, String petak, String jenistanaman,
+                         String noA, String tanggal, String luas, String pohon, String kyp, String kyb,
+                         String getah, String nilai, String keterangan, String ket1, String ket2,
+                         String ket3, int id_gangguan, String ket9, String ket10
 
     ) {
 
         this.Id = id;
+        this.TanggalKejadian = tgl_kejadian;
         this.Isi = isi;
         this.Petak = petak;
         this.JenisTanaman = jenistanaman;
@@ -45,7 +48,7 @@ public class GangguanModel {
         this.Keterangan = keterangan;
         this.Ket1 = ket1;
         this.Ket2 = ket2;
-        this.Ket3 = ket2;
+        this.Ket3 = ket3;
         this.ID_gangguan= id_gangguan;
         this.Ket9 = ket9;
         this.Ket10 = ket10;
@@ -86,6 +89,14 @@ public class GangguanModel {
 
     public void setId(String id) {
         Id = id;
+    }
+
+    public String getTgl_Kejadian() {
+        return TanggalKejadian;
+    }
+
+    public void setTgl_Kejadian(String tgl_kejadian) {
+        TanggalKejadian = tgl_kejadian;
     }
 
     public String getIsi() {

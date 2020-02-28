@@ -2,11 +2,11 @@ package id.co.perhutani.sisdhbukuobor.Model;
 
 public class IdentifikasiTenurialModel {
     private String Id;
-    private String Tanggal;
     private String JenisPermasalahan;
-    private String Strata;
     private String AnakPetak;
     private String KelasHutan;
+    private String Tanggal;
+    private String Strata;
     private String LuasBaku;
     private String LuasTenurial;
     private String KondisiPetakSaatIdentifikasi;
@@ -14,6 +14,10 @@ public class IdentifikasiTenurialModel {
     private String PihakTerlibat;
     private String StatusPenyelesaian;
     private String Ket1;
+    private String Ket2;
+    private String Ket3;
+    private String Ket4;
+    private String Ket5;
     private String Ket9;
     private String Ket10;
     private int ID_Tenurial;
@@ -21,18 +25,18 @@ public class IdentifikasiTenurialModel {
     public IdentifikasiTenurialModel() {
     }
 
-    public IdentifikasiTenurialModel(String id, String tanggal, String jenisPermasalahan,
-                                     String strata, String anakPetak, String kelasHutan,
-                                     String luasBaku, String luasTenurial, String kondisiPetakSaatIdentifikasi,
-                                     String awalKonflik, String pihakTerlibat, String statusPenyelesaian, int idtenurial,
-                                     String ket1, String ket9, String ket10)
+    public IdentifikasiTenurialModel(String id, String jenisPermasalahan, String anakPetak, String kelasHutan,
+                                     String tanggal, String strata, String luasBaku, String luasTenurial,
+                                     String kondisiPetakSaatIdentifikasi, String awalKonflik, String pihakTerlibat,
+                                     String statusPenyelesaian, int idtenurial, String ket1, String ket2,
+                                     String ket3, String ket4, String ket5, String ket9, String ket10)
     {
         this.Id = id;
-        this.Tanggal = tanggal;
         this.JenisPermasalahan = jenisPermasalahan;
-        this.Strata = strata;
         this.AnakPetak = anakPetak;
         this.KelasHutan = kelasHutan;
+        this.Tanggal = tanggal;
+        this.Strata = strata;
         this.LuasBaku = luasBaku;
         this.LuasTenurial = luasTenurial;
         this.KondisiPetakSaatIdentifikasi = kondisiPetakSaatIdentifikasi;
@@ -40,6 +44,11 @@ public class IdentifikasiTenurialModel {
         this.PihakTerlibat = pihakTerlibat;
         this.StatusPenyelesaian = statusPenyelesaian;
         this.ID_Tenurial= idtenurial;
+        this.Ket1 = ket1;
+        this.Ket2 = ket2;
+        this.Ket3 = ket3;
+        this.Ket4 = ket4;
+        this.Ket5 = ket5;
         this.Ket1 = ket1;
         this.Ket9 = ket9;
         this.Ket10 = ket10;
@@ -171,5 +180,37 @@ public class IdentifikasiTenurialModel {
 
     public void setKet1(String ket1) {
         Ket1 = ket1;
+    }
+
+    public String getKet2() {
+        return Ket2;
+    }
+
+    public void setKet2(String ket2) {
+        Ket2 = ket2;
+    }
+
+    public String getKet3() {
+        return Ket3;
+    }
+
+    public void setKet3(String ket3) {
+        Ket3 = ket3;
+    }
+
+    public String getKet4() {
+        return Ket4;
+    }
+
+    public void setKet4(String ket4) {
+        Ket4 = ket4;
+    }
+
+    public String getKet5() {
+        return Ket5;
+    }
+
+    public void setKet5(String ket5) {
+        Ket5 = ket5;
     }
 }
