@@ -82,15 +82,10 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new HomeFragment();
                         break;
                         case R.id.navigation_bukuobor:
-<<<<<<< HEAD
                             selectedFragment = new BukuOborFragment();
                             break;
                         case R.id.navigation_pengelolaan:
                             selectedFragment = new DashboardBukuOborFragment();
-=======
-//                            selectedFragment = new DashboardBukuOborFragment();
-                            selectedFragment = new BukuOborFragment();
->>>>>>> e604b2a2f0b4c86b64bc65c49ef33b9745a322ed
                             break;
                         case R.id.navigation_profile:
                             selectedFragment = new ProfilFragment();

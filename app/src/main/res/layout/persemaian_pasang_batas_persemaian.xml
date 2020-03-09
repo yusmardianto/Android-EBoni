@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,6 +35,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/toolbar"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
@@ -46,7 +47,7 @@
 
     <LinearLayout
         android:id="@+id/layout_tidakadadatagangguan"
-        android:layout_marginTop="-250dp"
+        android:layout_marginTop="-350dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
@@ -59,15 +60,16 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_tambah_pasang_batas_persemaian"
-        android:layout_marginLeft="320dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:id="@+id/btn_tambahaktifitas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:elevation="0dp"
         android:src="@drawable/ic_tambah"
-        app:backgroundTint="@color/colorPrimary"/>
+        app:backgroundTint="#EF6C00" />
 
 
-</LinearLayout>
+</RelativeLayout>
