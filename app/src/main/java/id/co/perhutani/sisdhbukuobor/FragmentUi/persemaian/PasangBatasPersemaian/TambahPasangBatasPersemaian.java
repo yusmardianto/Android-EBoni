@@ -18,6 +18,6 @@ public class TambahPasangBatasPersemaian extends Fragment {
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.persemaian_tambah_pasang_batas_persemaian, container, false);
+        return inflater.inflate(R.layout.tambah_pasang_batas_persemaian, container, false);
     }
 }
