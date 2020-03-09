@@ -71,7 +71,7 @@ public class PasangBatasPersemaianFragment extends Fragment {
             {
                 builder = new AlertDialog.Builder(v.getContext());
                 LayoutInflater factory = LayoutInflater.from(getActivity());
-                viewpopup = factory.inflate(R.layout.persemaian_tambah_pasang_batas_persemaian, null);
+                viewpopup = factory.inflate(R.layout.tambah_pasang_batas_persemaian, null);
 
                 builder.setView(viewpopup);
                 builder.setCancelable(false)
@@ -80,39 +80,39 @@ public class PasangBatasPersemaianFragment extends Fragment {
                             public void onClick(DialogInterface dialog, int which)
                             {
                                 db = new SQLiteHandler(getActivity());
-                                patok_batas = viewpasang.findViewById(R.id.pasang_batas_patok_batas);
-                                tanggal = viewpasang.findViewById(R.id.pasang_batas_tanggal);
-                                SimpleDateFormat sdf_tgl_a = new SimpleDateFormat("dd-MM-yyyy");
-                                str_tgl_pasang_batas = sdf_tgl_a.format(new Date());
-                                tanggal.setFocusable(false);
-                                final DatePickerDialog.OnDateSetListener date2 = new android.app.DatePickerDialog.OnDateSetListener() {
-
-                                    @Override
-                                    public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                                          int dayOfMonth) {
-                                        // TODO Auto-generated method stub
-                                        calendar_pasang.set(Calendar.YEAR, year);
-                                        calendar_pasang.set(Calendar.MONTH, monthOfYear);
-                                        calendar_pasang.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
-                                        SimpleDateFormat sdf_view = new SimpleDateFormat("yyyy-MM-dd");
-                                        str_tgl_pasang_batas = sdf_view.format(calendar_pasang.getTime());
-
-                                        tanggal.setText(str_tgl_pasang_batas);
-                                    }
-
-                                };
-                                tanggal.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        new DatePickerDialog(getActivity(), date2, calendar_pasang.get(Calendar.YEAR), calendar_pasang.get(Calendar.MONTH),
-                                                calendar_pasang.get(Calendar.DAY_OF_MONTH)).show();
-                                    }
-                                });
-                                luas = viewpasang.findViewById(R.id.pasang_batas_luas);
-                                target = viewpasang.findViewById(R.id.pasang_batas_target);
-                                realisasi = viewpasang.findViewById(R.id.pasang_batas_realisasi);
-                                keterangan = viewpasang.findViewById(R.id.pasang_batas_keterangan);
+                                patok_batas = viewpopup.findViewById(R.id.pasang_batas_patok_batas);
+                                tanggal = viewpopup.findViewById(R.id.pasang_batas_tanggal);
+//                                SimpleDateFormat sdf_tgl_a = new SimpleDateFormat("dd-MM-yyyy");
+//                                str_tgl_pasang_batas = sdf_tgl_a.format(new Date());
+//                                tanggal.setFocusable(false);
+//                                final DatePickerDialog.OnDateSetListener date2 = new android.app.DatePickerDialog.OnDateSetListener() {
+//
+//                                    @Override
+//                                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+//                                                          int dayOfMonth) {
+//                                        // TODO Auto-generated method stub
+//                                        calendar_pasang.set(Calendar.YEAR, year);
+//                                        calendar_pasang.set(Calendar.MONTH, monthOfYear);
+//                                        calendar_pasang.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+//
+//                                        SimpleDateFormat sdf_view = new SimpleDateFormat("yyyy-MM-dd");
+//                                        str_tgl_pasang_batas = sdf_view.format(calendar_pasang.getTime());
+//
+//                                        tanggal.setText(str_tgl_pasang_batas);
+//                                    }
+//
+//                                };
+//                                tanggal.setOnClickListener(new View.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(View v) {
+//                                        new DatePickerDialog(getActivity(), date2, calendar_pasang.get(Calendar.YEAR), calendar_pasang.get(Calendar.MONTH),
+//                                                calendar_pasang.get(Calendar.DAY_OF_MONTH)).show();
+//                                    }
+//                                });
+                                luas = viewpopup.findViewById(R.id.pasang_batas_luas);
+                                target = viewpopup.findViewById(R.id.pasang_batas_target);
+                                realisasi = viewpopup.findViewById(R.id.pasang_batas_realisasi);
+                                keterangan = viewpopup.findViewById(R.id.pasang_batas_keterangan);
 
                                 try {
                                     ContentValues values_aktifitas = new ContentValues();
