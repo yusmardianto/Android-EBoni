@@ -18,6 +18,8 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ import id.co.perhutani.sisdhbukuobor.Adapter.PersemaianMenuAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.DashboardBukuOborFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.persemaian.PasangBatasPersemaian.PasangBatasPersemaianFragment;
 import id.co.perhutani.sisdhbukuobor.R;
 
 public class PersemaianFragment extends Fragment {
@@ -46,7 +49,7 @@ public class PersemaianFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         event = inflater.inflate(R.layout.persemaian_fragment, container, false);
 
@@ -129,7 +132,6 @@ public class PersemaianFragment extends Fragment {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return event;
     }
 

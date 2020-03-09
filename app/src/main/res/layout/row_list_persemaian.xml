@@ -15,7 +15,7 @@
 
         <!-- RIGHT TITLE PART -->
         <RelativeLayout
-            android:id="@+id/linear_event_day"
+            android:id="@+id/liner_event_days"
             android:layout_width="match_parent"
             android:layout_height="66dp"
             android:layout_weight="1"
@@ -36,7 +36,6 @@
                 android:layout_marginRight="5dp"
                 android:paddingTop="5dp" />
 
-
             <TextView
                 android:id="@+id/txt_judul"
                 android:layout_width="wrap_content"
@@ -49,7 +48,7 @@
                 android:textStyle="bold"
                 android:paddingTop="11dp"
                 android:singleLine="true"
-                android:text="Hari Pertama"
+                android:text="Nama Kegiatan"
                 android:textSize="15sp" />
 
             <ImageView

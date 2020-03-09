@@ -60,7 +60,8 @@ public class TambahGangguanFragment extends Fragment {
         return new TambahGangguanFragment();
     }
 
-    public void load_spinner_gangguan_hutan() {
+    public void load_spinner_gangguan_hutan()
+    {
         List<String> listtpg = db.getJenisGangguan();
         final int _tpg = listtpg.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
