@@ -1,11 +1,12 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
-public class TrnPersemaian {
+public class TrnPasangBatasPersemaian {
 
     public static final String TABLE_NAME = "TRN_PERSEMAIAN";
     public static final String _ID = "ID";
+    public static final String PATOK_BATAS = "PATOK_BATAS";
     public static final String TANGGAL = "TANGGAL";
-    public static final String JENIS_KEGIATAN_PERSEMAIAN = "JENIS_KEGIATAN_PERSEMAIAN";
+    public static final String LUAS = "LUAS";
     public static final String TARGET = "TARGET";
     public static final String REALISASI = "REALISASI";
     public static final String KETERANGAN = "KETERANGAN";
@@ -25,8 +26,9 @@ public class TrnPersemaian {
     public static final String UPDATED_BY = "UPDATED_BY";
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "" + PATOK_BATAS + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + TANGGAL + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + JENIS_KEGIATAN_PERSEMAIAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + LUAS + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + TARGET + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + REALISASI + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KETERANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
