@@ -43,6 +43,8 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPasangBatasPersemaian;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPembuatanBedengSapih;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanLahan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
@@ -84,6 +86,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
         db.execSQL(TrnInteraksimdh.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPersiapanLahan.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPembuatanBedengSapih.SQL_CREATE_ENTRIES);
 
     }
 
@@ -119,6 +123,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPersiapanLahan.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPembuatanBedengSapih.SQL_DELETE_ENTRIES);
 
         onCreate(db);
     }
@@ -150,6 +156,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPersiapanLahan.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPembuatanBedengSapih.SQL_CREATE_ENTRIES);
     }
 
     public void query_builder() {
@@ -613,7 +621,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public List<String> getAnakPetak() {
         List<String> labels = new ArrayList<String>();
         String selectQuery = "SELECT a." + MstAnakPetakSchema.ANAK_PETAK_NAME + " FROM " + MstAnakPetakSchema.TABLE_NAME +
-                " a ORDER BY a."+MstAnakPetakSchema.PETAK_NAME+", a."+MstAnakPetakSchema.PETAK_NAME+" ASC";
+                " a ORDER BY a."+MstAnakPetakSchema.PETAK_NAME+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Anak Petak -");

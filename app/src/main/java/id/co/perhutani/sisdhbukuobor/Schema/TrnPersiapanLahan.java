@@ -1,11 +1,15 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
-public class MstJenisKegiatanPersemaian {
+public class TrnPersiapanLahan {
 
-    public static final String TABLE_NAME = "MST_JENIS_KEGIATAN_PESEMAIAN";
+    public static final String TABLE_NAME = "TRN_PERSIAPAN_LAHAN";
     public static final String _ID = "ID";
-    public static final String JENIS_KEGIATAN_PERSEMAIAN_ID = "JENIS_KEGIATAN_PERSEMAIAN_ID";
-    public static final String JENIS_KEGIATAN_PERSEMAIAN_NAME = "JENIS_KEGIATAN_PERSEMAIAN_NAME";
+    public static final String TANGGAL = "TANGGAL";
+    public static final String ANAK_PETAK = "ANAK_PETAK";
+    public static final String LUAS = "LUAS";
+    public static final String TARGET = "TARGET";
+    public static final String REALISASI = "REALISASI";
+    public static final String KETERANGAN = "KETERANGAN";
     public static final String KET1 = "KET1";
     public static final String KET2 = "KET2";
     public static final String KET3 = "KET3";
@@ -16,10 +20,18 @@ public class MstJenisKegiatanPersemaian {
     public static final String KET8 = "KET8";
     public static final String KET9 = "KET9";
     public static final String KET10 = "KET10";
+    public static final String CREATED_AT = "CREATED_AT";
+    public static final String CREATED_BY = "CREATED_BY";
+    public static final String UPDATED_AT = "UPDATED_AT";
+    public static final String UPDATED_BY = "UPDATED_BY";
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "" + JENIS_KEGIATAN_PERSEMAIAN_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + JENIS_KEGIATAN_PERSEMAIAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + TANGGAL + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + ANAK_PETAK + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + LUAS + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + TARGET + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + REALISASI + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + KETERANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET3 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
@@ -30,6 +42,8 @@ public class MstJenisKegiatanPersemaian {
             "" + KET8 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET9 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET10 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + Type.CREATED_BY + ", " +
+            "" + Type.UPDATED_BY + ", " +
             "" + Type.CREATED_AT_CURRENT_DATE + ", " +
             "" + Type.UPDATED_AT_CURRENT_DATE + " )";
     public static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;

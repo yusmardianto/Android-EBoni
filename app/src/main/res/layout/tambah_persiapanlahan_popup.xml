@@ -1,0 +1,193 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:background="#fff">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimary">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="Tambah Data Persiapan Lahan"
+                android:textSize="18dp" />
+            <TextView
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="[ nomor surat perintah kerja ]"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal"
+                android:textColor="#424242" />
+
+            <EditText
+                android:id="@+id/persiapanlahan_tanggal"
+                android:fontFamily="@font/font_aal_default"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_background_grey"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Anak Petak"
+                android:textColor="#424242"/>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:fontFamily="@font/font_aal_default"
+                android:id="@+id/spinner_persiapanlahan_anakpetak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/persiapanlahan_anakpetak"
+                android:fontFamily="@font/font_aal_default"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_item_popup"
+                android:hint="Anak Petak" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="#EFEFEF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Luas (Ha)"
+                android:textColor="#424242" />
+
+            <EditText
+                android:id="@+id/persiapanlahan_luas"
+                android:fontFamily="@font/font_aal_default"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_background_grey"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Target (Ha)"
+                android:textColor="#424242" />
+
+            <EditText
+                android:id="@+id/persiapanlahan_target"
+                android:fontFamily="@font/font_aal_default"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_background_grey"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Realisasi (Ha)"
+                android:textColor="#424242" />
+
+            <EditText
+                android:id="@+id/persiapanlahan_realisasi"
+                android:fontFamily="@font/font_aal_default"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_background_grey"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keterangan"
+                android:textColor="#424242" />
+
+            <EditText
+                android:id="@+id/persiapanlahan_keterangan"
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/ic_background_grey"
+                android:hint="Tambahkan Keterangan (Optional)"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
