@@ -43,6 +43,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPasangBatasPersemaian;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanSapra;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
@@ -84,6 +85,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
         db.execSQL(TrnInteraksimdh.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPersiapanSapra.SQL_CREATE_ENTRIES);
 
     }
 
@@ -119,6 +121,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPersiapanSapra.SQL_DELETE_ENTRIES);
 
         onCreate(db);
     }
@@ -150,6 +153,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPersiapanSapra.SQL_CREATE_ENTRIES);
     }
 
     public void query_builder() {
