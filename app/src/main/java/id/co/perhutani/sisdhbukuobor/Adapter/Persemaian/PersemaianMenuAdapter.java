@@ -1,4 +1,4 @@
-package id.co.perhutani.sisdhbukuobor.Adapter;
+package id.co.perhutani.sisdhbukuobor.Adapter.Persemaian;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import id.co.perhutani.sisdhbukuobor.Adapter.TanamanMenuAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.persemaian.DistribusiBibit.ListDistribusiBibitFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.persemaian.MutasiBibit.ListMutasiBibitFragment;
@@ -74,6 +75,37 @@ public class PersemaianMenuAdapter extends RecyclerView.Adapter<PersemaianMenuAd
 
 //        setAnimation(holder.itemView, position);
         final String id_event_day = mdata.get(position).getId();
+
+        if (id_event_day.equals("1")) {
+            holder.txt_judul.setText("Pasang Patok Batas");
+        }
+        else if (id_event_day.equals("2")) {
+            holder.txt_judul.setText("Persiapan Lahan");
+        }
+        else if (id_event_day.equals("3")) {
+            holder.txt_judul.setText("Persiapan Sapra");
+        }
+        else if (id_event_day.equals("4")) {
+            holder.txt_judul.setText("Pembuatan Bedeng Sapih");
+        }
+        else if (id_event_day.equals("5")) {
+            holder.txt_judul.setText("Penaburan Benih");
+        }
+        else if (id_event_day.equals("6")) {
+            holder.txt_judul.setText("Over Spin");
+        }
+        else if (id_event_day.equals("7")) {
+            holder.txt_judul.setText("Pemeliharaan");
+        }
+        else if (id_event_day.equals("8")) {
+            holder.txt_judul.setText("Seleksi Bibit Siap Tanam");
+        }
+        else if (id_event_day.equals("9")) {
+            holder.txt_judul.setText("Mutasi Bibit");
+        }
+        else if (id_event_day.equals("10")) {
+            holder.txt_judul.setText("Distribusi Bibit");
+        }
 
         holder.liner_event_days.setOnClickListener(new View.OnClickListener() {
             @Override

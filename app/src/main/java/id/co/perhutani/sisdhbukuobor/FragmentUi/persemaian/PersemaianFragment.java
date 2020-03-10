@@ -3,7 +3,6 @@ package id.co.perhutani.sisdhbukuobor.FragmentUi.persemaian;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
@@ -18,17 +17,14 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import id.co.perhutani.sisdhbukuobor.Adapter.PersemaianMenuAdapter;
+import id.co.perhutani.sisdhbukuobor.Adapter.Persemaian.PersemaianMenuAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.DashboardBukuOborFragment;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.persemaian.PasangBatasPersemaian.PasangBatasPersemaianFragment;
 import id.co.perhutani.sisdhbukuobor.R;
 
 public class PersemaianFragment extends Fragment {
