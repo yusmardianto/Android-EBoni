@@ -33,9 +33,11 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstPekerjaan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStrataSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstSubPekerjaan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
@@ -44,6 +46,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnOverSpin;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPasangBatasPersemaian;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanSapra;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPembuatanBedengSapih;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPengelolaanHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanLahan;
@@ -80,6 +83,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstStatusInteraksiSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstStrataSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstPihakTerlibatSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstPekerjaan.SQL_CREATE_ENTRIES);
+        db.execSQL(MstSubPekerjaan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
@@ -89,10 +94,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnInteraksimdh.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPengelolaanHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPersiapanSapra.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPersiapanLahan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_CREATE_ENTRIES);
         db.execSQL(TrnOverSpin.SQL_CREATE_ENTRIES);
-
     }
 
     @Override
@@ -119,6 +124,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstStatusInteraksiSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstStrataSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstPihakTerlibatSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstPekerjaan.SQL_DELETE_ENTRIES);
+        db.execSQL(MstSubPekerjaan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnInteraksimdh.SQL_DELETE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_DELETE_ENTRIES);
@@ -128,10 +135,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPengelolaanHutan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPersiapanSapra.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPersiapanLahan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_DELETE_ENTRIES);
         db.execSQL(TrnOverSpin.SQL_DELETE_ENTRIES);
-
         onCreate(db);
     }
 
@@ -155,6 +162,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(MstStatusInteraksiSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstStrataSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstPihakTerlibatSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstPekerjaan.SQL_CREATE_ENTRIES);
+        db.execSQL(MstSubPekerjaan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnGangguanKeamananHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPerubahanKelas.SQL_CREATE_ENTRIES);
         db.execSQL(TrnLaporanPalBatas.SQL_CREATE_ENTRIES);
@@ -163,6 +172,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPengelolaanHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPersiapanSapra.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPersiapanLahan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_CREATE_ENTRIES);
         db.execSQL(TrnOverSpin.SQL_CREATE_ENTRIES);
@@ -757,6 +767,38 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Pihak Terlibat -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getPekerjaan() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstPekerjaan.PEKERJAAN_NAME + " FROM " + MstPekerjaan.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        labels.add("- Pilih Pekerjaan -");
+        if (cursor.moveToFirst()) {
+            do {
+                labels.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return labels;
+    }
+
+    public List<String> getSubPekerjaan() {
+        List<String> labels = new ArrayList<String>();
+        String selectQuery = "SELECT a." + MstSubPekerjaan.SUB_PEKERJAAN_NAME + " FROM " + MstSubPekerjaan.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        labels.add("- Pilih Sub Pekerjaan -");
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(0));

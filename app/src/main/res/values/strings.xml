@@ -68,5 +68,13 @@
         <item>@drawable/logo_eboni</item>
         <item>@drawable/logo_eboni</item>
     </integer-array>
+    <string-array name="array_jenis_sapra">
+        <item>- Pilih Jenis Sapra -</item>
+        <item>Bibit</item>
+        <item>Benih</item>
+        <item>Pupuk</item>
+        <item>Cangkul</item>
+        <item>Sekop</item>
+    </string-array>
 
 </resources>

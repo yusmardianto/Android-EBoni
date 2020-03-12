@@ -71,7 +71,7 @@ public class PersemaianMenuAdapter extends RecyclerView.Adapter<PersemaianMenuAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ScheduleViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ScheduleViewHolder holder, final int position) {
 
 //        setAnimation(holder.itemView, position);
         final String id_event_day = mdata.get(position).getId();
@@ -113,6 +113,9 @@ public class PersemaianMenuAdapter extends RecyclerView.Adapter<PersemaianMenuAd
 //                AjnClass.showAlert(mContext,id_event_day);
                 if(id_event_day.equals("1"))
                 {
+                    holder.txt_judul.setText("Pasang Batas Persemaian");
+                    holder.txt_keterangan.setText("Persiapan Pasang Batas Persemaian");
+
                     FragmentManager manager = ((MainActivity) mContext).getSupportFragmentManager();
                     Fragment fragment = new PasangBatasPersemaianFragment();
                     FragmentTransaction ft = manager.beginTransaction();
