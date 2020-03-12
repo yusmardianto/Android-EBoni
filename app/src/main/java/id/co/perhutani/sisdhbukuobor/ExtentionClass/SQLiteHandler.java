@@ -43,10 +43,12 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnOverSpin;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPasangBatasPersemaian;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanSapra;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPembuatanBedengSapih;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPengelolaanHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanLahan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
@@ -90,10 +92,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
         db.execSQL(TrnInteraksimdh.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPengelolaanHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPersiapanSapra.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPersiapanLahan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnOverSpin.SQL_CREATE_ENTRIES);
     }
 
     @Override
@@ -129,10 +133,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnLaporanPalBatas.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPengelolaanHutan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPersiapanSapra.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPersiapanLahan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnOverSpin.SQL_DELETE_ENTRIES);
         onCreate(db);
     }
 
@@ -164,10 +170,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPengelolaanHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPersiapanSapra.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPersiapanLahan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnOverSpin.SQL_CREATE_ENTRIES);
     }
 
     public void query_builder() {
@@ -771,7 +779,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public List<String> getPekerjaan() {
         List<String> labels = new ArrayList<String>();
-        String selectQuery = "SELECT a." + MstPekerjaan.PEKERJAAN_NAME + " FROM " + MstPekerjaan.TABLE_NAME;
+        String selectQuery = "SELECT a." + MstPekerjaan.PEKERJAAN_NAME + " FROM " + MstPekerjaan.TABLE_NAME +
+                " a ORDER BY a."+MstPekerjaan.PEKERJAAN_ID+", a."+MstPekerjaan.PEKERJAAN_ID+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Pekerjaan -");
@@ -787,7 +796,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public List<String> getSubPekerjaan() {
         List<String> labels = new ArrayList<String>();
-        String selectQuery = "SELECT a." + MstSubPekerjaan.SUB_PEKERJAAN_NAME + " FROM " + MstSubPekerjaan.TABLE_NAME;
+        String selectQuery = "SELECT a." + MstSubPekerjaan.SUB_PEKERJAAN_NAME + " FROM " + MstSubPekerjaan.TABLE_NAME +
+                " a ORDER BY a."+MstSubPekerjaan.SUB_PEKERJAAN_ID+", a."+MstSubPekerjaan.SUB_PEKERJAAN_ID+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Sub Pekerjaan -");
