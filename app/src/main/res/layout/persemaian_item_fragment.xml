@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/ic_background"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name_isi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_aal_bold"
+            android:text="Isi Kejadian : Kebakaran Hutan"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Tanaman" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : " />
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/name_id"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Damar" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Petak Kejadian" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : " />
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/name_petak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[ Petak Kejadian ]" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:fontFamily="@font/font_aal_default"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Kejadian" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : " />
+
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:id="@+id/name_tanggalgangguan"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="[10-10-2010]" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/name_info_alert"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="7dp" />
+
+        <TextView
+            android:fontFamily="@font/font_aal_default"
+            android:id="@+id/name_data_sinkron"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="-20dp"
+            android:text="Data belum disinkronkan"
+            android:textColor="#FF0000 " />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/img_gangguandetail"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_visibility_black_24dp" />
+
+        <TextView
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Detail" />
+    </LinearLayout>
+
+</LinearLayout>
