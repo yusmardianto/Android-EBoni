@@ -210,6 +210,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linear_pengelolaanhutan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -219,13 +220,13 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_icn_palbatas" />
+                        android:src="@drawable/ic_icn_pengelolaanhtn" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="[ menu ]"
+                        android:text="Pengelolaan Hutan"
                         android:textAlignment="center" />
                 </LinearLayout>
 

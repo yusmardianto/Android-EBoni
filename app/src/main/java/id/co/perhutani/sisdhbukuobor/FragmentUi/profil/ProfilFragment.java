@@ -36,8 +36,10 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnOverSpin;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPembuatanBedengSapih;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPengelolaanHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanLahan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
@@ -170,8 +172,10 @@ public class ProfilFragment extends Fragment {
         db.deleteAllRow(TrnInteraksimdh.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnIdentifikasiTenurial.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnLaporanPalBatas.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnPengelolaanHutan.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnPersiapanLahan.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(TrnPembuatanBedengSapih.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnOverSpin.SQL_DELETE_ALL_ROWS);
 
         db.clear_database(db.getReadableDatabase());
 

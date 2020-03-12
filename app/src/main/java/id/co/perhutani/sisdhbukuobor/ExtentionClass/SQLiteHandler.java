@@ -41,9 +41,11 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnOverSpin;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPasangBatasPersemaian;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPembuatanBedengSapih;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPengelolaanHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanLahan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
@@ -85,9 +87,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
         db.execSQL(TrnInteraksimdh.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPengelolaanHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPersiapanLahan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnOverSpin.SQL_CREATE_ENTRIES);
 
     }
 
@@ -122,9 +126,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnLaporanPalBatas.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPemantauanSatwa.SQL_DELETE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPengelolaanHutan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPersiapanLahan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnOverSpin.SQL_DELETE_ENTRIES);
 
         onCreate(db);
     }
@@ -155,9 +161,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnPemantauanSatwa.SQL_CREATE_ENTRIES);
         db.execSQL(TrnRegisterPcp.SQL_CREATE_ENTRIES);
         db.execSQL(TrnIdentifikasiTenurial.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPengelolaanHutan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPasangBatasPersemaian.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPersiapanLahan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnOverSpin.SQL_CREATE_ENTRIES);
     }
 
     public void query_builder() {

@@ -42,7 +42,7 @@
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/gangguan_recycler"/>
+        android:id="@+id/pasangbatas_recycler"/>
 
     <LinearLayout
         android:id="@+id/layout_tidakadadatagangguan"

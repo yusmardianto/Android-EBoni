@@ -21,6 +21,7 @@
     <string name="text_tambahgangguan">Tambah Gangguan</string>
     <string name="text_profile">Profile</string>
     <string name="text_logout">Logout</string>
+    <string name="text_cari">Cari disini</string>
     <string name="text_cari_kejadian">Cari Kejadian</string>
     <string name="text_cari_anak_petak">Cari Anak Petak</string>
     <string name="text_cari_nomor_pal">Cari Nomor PAL</string>
@@ -40,6 +41,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string-array name="Status_Pekerjaan">
+        <item>- Pilih Status Pekerjaan -</item>
+        <item>Belum Selesai</item>
+        <item>Selesai</item>
+    </string-array>
 
     <!--list data untuk menu-->
     <string-array name="groups_name">
@@ -48,12 +54,14 @@
         <item>Pemeliharaan</item>
         <item>Perawatan</item>
     </string-array>
+
     <string-array name="groups_date">
         <item>Buku Hijau</item>
         <item>Persiapan Penananam</item>
         <item>Pemeliharaan I, II, IV, V</item>
         <item>Penjarangan </item>
     </string-array>
+
     <integer-array name="groups_photos">
         <item>@drawable/logo_eboni</item>
         <item>@drawable/logo_eboni</item>

@@ -43,9 +43,7 @@ public class TambahGangguanFragment extends Fragment {
             jumlah_pohon, kerugian_kyp, kerugian_kyb, kerugian_getah,
             nilai_kerugian, keterangan;
 
-    private Spinner spin_gangguan_hutan;
-    private Spinner spin_anak_petak;
-    private Spinner spin_jenis_tanaman;
+    private Spinner spin_gangguan_hutan, spin_anak_petak, spin_jenis_tanaman;
     private static SQLiteHandler db;
 
     final Calendar calendar_kejadian = Calendar.getInstance();
