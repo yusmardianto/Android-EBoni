@@ -252,7 +252,7 @@
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Status"
+                                    android:text="Status Pekerjaan"
                                     android:textColor="#424242" />
 
                                 <androidx.appcompat.widget.AppCompatSpinner

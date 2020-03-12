@@ -779,7 +779,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public List<String> getPekerjaan() {
         List<String> labels = new ArrayList<String>();
-        String selectQuery = "SELECT a." + MstPekerjaan.PEKERJAAN_NAME + " FROM " + MstPekerjaan.TABLE_NAME;
+        String selectQuery = "SELECT a." + MstPekerjaan.PEKERJAAN_NAME + " FROM " + MstPekerjaan.TABLE_NAME +
+                " a ORDER BY a."+MstPekerjaan.PEKERJAAN_ID+", a."+MstPekerjaan.PEKERJAAN_ID+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Pekerjaan -");
@@ -795,7 +796,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public List<String> getSubPekerjaan() {
         List<String> labels = new ArrayList<String>();
-        String selectQuery = "SELECT a." + MstSubPekerjaan.SUB_PEKERJAAN_NAME + " FROM " + MstSubPekerjaan.TABLE_NAME;
+        String selectQuery = "SELECT a." + MstSubPekerjaan.SUB_PEKERJAAN_NAME + " FROM " + MstSubPekerjaan.TABLE_NAME +
+                " a ORDER BY a."+MstSubPekerjaan.SUB_PEKERJAAN_ID+", a."+MstSubPekerjaan.SUB_PEKERJAAN_ID+" ASC";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Sub Pekerjaan -");
