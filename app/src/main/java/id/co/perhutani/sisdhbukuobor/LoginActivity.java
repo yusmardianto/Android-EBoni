@@ -53,9 +53,11 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstPekerjaan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStrataSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstSubPekerjaan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
@@ -88,6 +90,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_PIHAK_TERLIBAT_V1 = address + "api/v1/getPihakTerlibat";
     private static final String URL_FOR_GET_JENIS_KEGIATAN_PERSEMAIAN_V1 = address + "api/v1/getJenisKegiatanPersemaian";
     private static final String URL_FOR_GET_STRATA_V1 = address + "api/v1/getStrata";
+    private static final String URL_FOR_GET_PEKERJAAN_V1 = address + "api/v1/get_master_pekerjaan";
+    private static final String URL_FOR_SUB_PEKERJAAN_V1 = address + "api/v1/get_master_sub_pekerjaan";
 
 
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
@@ -410,6 +414,10 @@ public class LoginActivity extends AppCompatActivity {
                         sync_get_strata(myResponse.getString("access_token"), username.getText().toString());
                         //get data pihak terlibat
                         sync_get_pihak_terlibat(myResponse.getString("access_token"), username.getText().toString());
+                        //get data pekerjaan
+                        sync_get_sub_pekerjaan(myResponse.getString("access_token"), username.getText().toString());
+                        //get data sub pekerjaan
+                        sync_get_pekerjaan(myResponse.getString("access_token"), username.getText().toString());
 
                         session.setLogin(true);
                     } else if (myResponse.getString("status").equals("error")) {
@@ -1166,6 +1174,89 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(MstStrataSchema.STRATA_ID, json_projek.getString("id"));
                         values.put(MstStrataSchema.STRATA_NAME, json_projek.getString("name"));
                         db.create(MstStrataSchema.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_pekerjaan(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_PEKERJAAN_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET MASTER PEKERJAAN ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstPekerjaan._ID, i + 1);
+                        values.put(MstPekerjaan.PEKERJAAN_ID, json_projek.getString("id"));
+                        values.put(MstPekerjaan.PEKERJAAN_NAME, json_projek.getString("name"));
+                        values.put(MstPekerjaan.PEKERJAAN_SATUAN, json_projek.getString("satuan"));
+                        db.create(MstPekerjaan.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_sub_pekerjaan(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_SUB_PEKERJAAN_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET MASTER SUB PEKERJAAN ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstSubPekerjaan._ID, i + 1);
+                        values.put(MstSubPekerjaan.SUB_PEKERJAAN_ID, json_projek.getString("id"));
+                        values.put(MstSubPekerjaan.SUB_PEKERJAAN_NAME, json_projek.getString("name"));
+                        db.create(MstSubPekerjaan.TABLE_NAME, values);
                     }
                     conn.disconnect();
                 } catch (Exception e) {

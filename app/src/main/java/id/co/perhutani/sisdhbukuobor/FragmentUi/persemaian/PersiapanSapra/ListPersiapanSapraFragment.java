@@ -91,10 +91,9 @@ public class ListPersiapanSapraFragment extends Fragment {
                             {
                                 db = new SQLiteHandler(getActivity());
                                 tanggal = viewpopup.findViewById(R.id.persiapan_sapra_tanggal);
-                                SimpleDateFormat sdf_tglsapra = new SimpleDateFormat("yyyy-MM-dd");
-                                str_tgl = sdf_tglsapra.format(new Date());
+                                SimpleDateFormat sdf_tglmulai = new SimpleDateFormat("yyyy-MM-dd");
+                                str_tgl = sdf_tglmulai.format(new Date());
                                 tanggal.setFocusable(false);
-
                                 final DatePickerDialog.OnDateSetListener date1 = new android.app.DatePickerDialog.OnDateSetListener() {
 
                                     @Override
@@ -119,23 +118,22 @@ public class ListPersiapanSapraFragment extends Fragment {
                                     }
                                 });
 
-                                anak_petak = viewpopup.findViewById(R.id.persiapan_sapra_anak_petak);
+//                                anakpetak = popuptambah.findViewById(R.id.persiapanlahan_anakpetak);
+//                                spin_anak_petak = popuptambah.findViewById(R.id.spinner_persiapanlahan_anakpetak);
 //                                load_spinner_anak_petak();
+//                                String pil_petak = spin_anak_petak.getSelectedItem().toString();
+//                                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+//                                anakpetak.setText(id_petak);
+
                                 sapra = viewpopup.findViewById(R.id.persiapan_sapra_spinner_jenis_sapra);
                                 target = viewpopup.findViewById(R.id.persiapan_sapra_target);
                                 realisasi = viewpopup.findViewById(R.id.persiapan_sapra_realisasi);
                                 keterangan = viewpopup.findViewById(R.id.persiapan_sapra_keterangan);
 
-//                                anak_petak = viewpopup.findViewById(R.id.persiapan_sapra_anak_petak);
-//                                load_spinner_anak_petak();
-//                                String pil_petak = spin_anak_petak.getSelectedItem().toString();
-//                                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
-//                                anak_petak.setText(id_petak);
-
                                 try {
                                     ContentValues values_aktifitas = new ContentValues();
                                     values_aktifitas.put(TrnPersiapanSapra.TANGGAL, tanggal.getText().toString());
-                                    values_aktifitas.put(TrnPersiapanSapra.ANAK_PETAK, anak_petak.getText().toString());
+//                                    values_aktifitas.put(TrnPersiapanSapra.ANAK_PETAK, anak_petak.getText().toString());
                                     values_aktifitas.put(TrnPersiapanSapra.SAPRA, sapra.getText().toString());
                                     values_aktifitas.put(TrnPersiapanSapra.TARGET, target.getText().toString());
                                     values_aktifitas.put(TrnPersiapanSapra.REALISASI, realisasi.getText().toString());
