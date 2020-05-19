@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import id.co.perhutani.sisdhbukuobor.Adapter.GenerateAESAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.ListInteraksiMDHFragment;
@@ -77,7 +78,7 @@ public class TambahInteraksimdhFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 anakpetak.setText(id_petak);
             }
 
@@ -220,7 +221,7 @@ public class TambahInteraksimdhFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.spinner_anakpetak_interaksi);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
         anakpetak.setText(id_petak);
 
         spin_nama_desa = root.findViewById(R.id.spinner_namadesa);
@@ -312,10 +313,15 @@ public class TambahInteraksimdhFragment extends Fragment {
                                     @Override
                                     public void run() {
                                         // TODO Auto-generated method stub
+                                        String ambilKunci = "perhutani";
+                                        String ambilKata = anakpetak.getText().toString();
+                                        String enKata = "";
+
                                         try {
 
                                             ContentValues values_aktifitas = new ContentValues();
-                                            values_aktifitas.put(TrnInteraksimdh.ANAK_PETAK_ID, anakpetak.getText().toString());
+                                            enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
+                                            values_aktifitas.put(TrnInteraksimdh.ANAK_PETAK_ID, enKata);
                                             values_aktifitas.put(TrnInteraksimdh.TAHUN, tanggal.getText().toString());
                                             values_aktifitas.put(TrnInteraksimdh.NAMA_DESA, namadesa.getText().toString());
                                             values_aktifitas.put(TrnInteraksimdh.BENTUK_INTERAKSI, bentukinteraksi.getText().toString());

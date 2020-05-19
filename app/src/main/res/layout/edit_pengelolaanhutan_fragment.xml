@@ -42,7 +42,7 @@
                         android:fontFamily="@font/font_aal_default"
                         android:textStyle="bold"
                         android:gravity="center"
-                        android:text="Tambah Data Pengelolaan Hutan"
+                        android:text="Edit Data Pengelolaan Hutan"
                         android:textColor="#fff"
                         android:textSize="20dp" />
 
@@ -80,12 +80,12 @@
 
                                 <androidx.appcompat.widget.AppCompatSpinner
                                     android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_jenispekerjaan"
+                                    android:id="@+id/edit_spinner_jenispekerjaan"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
 
                                 <EditText
-                                    android:id="@+id/pengelolaanhutan_jenispekerjaan"
+                                    android:id="@+id/edit_pengelolaanhutan_jenispekerjaan"
                                     android:fontFamily="@font/font_aal_default"
                                     android:visibility="gone"
                                     android:layout_width="match_parent"
@@ -117,12 +117,12 @@
 
                                 <androidx.appcompat.widget.AppCompatSpinner
                                     android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_subpekerjaan"
+                                    android:id="@+id/edit_spinner_subpekerjaan"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
 
                                 <EditText
-                                    android:id="@+id/pengelolaanhutan_subpekerjaan"
+                                    android:id="@+id/edit_pengelolaanhutan_subpekerjaan"
                                     android:fontFamily="@font/font_aal_default"
                                     android:visibility="gone"
                                     android:layout_width="match_parent"
@@ -153,7 +153,7 @@
                                     android:textColor="#424242" />
 
                                 <EditText
-                                    android:id="@+id/pengelolaanhutan_tanggal"
+                                    android:id="@+id/edit_pengelolaanhutan_tanggal"
                                     android:inputType="number"
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
@@ -176,12 +176,12 @@
 
                                 <androidx.appcompat.widget.AppCompatSpinner
                                     android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_anakpetak_pengelolaanhutan"
+                                    android:id="@+id/edit_spinner_anakpetak_pengelolaanhutan"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
 
                                 <EditText
-                                    android:id="@+id/pengelolaanhutan_anakpetak"
+                                    android:id="@+id/edit_pengelolaanhutan_anakpetak"
                                     android:fontFamily="@font/font_aal_default"
                                     android:visibility="gone"
                                     android:layout_width="match_parent"
@@ -212,7 +212,7 @@
                                     android:textColor="#424242" />
 
                                 <EditText
-                                    android:id="@+id/pengelolaanhutan_rencana"
+                                    android:id="@+id/edit_pengelolaanhutan_rencana"
                                     android:inputType="number"
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
@@ -234,7 +234,7 @@
                                     android:textColor="#424242" />
 
                                 <EditText
-                                    android:id="@+id/pengelolaanhutan_realisasi"
+                                    android:id="@+id/edit_pengelolaanhutan_realisasi"
                                     android:inputType="number"
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
@@ -257,13 +257,13 @@
 
                                 <androidx.appcompat.widget.AppCompatSpinner
                                     android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_statuspengelolaanhutan"
+                                    android:id="@+id/edit_spinner_statuspengelolaanhutan"
                                     android:entries="@array/Status_Pekerjaan"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"/>
 
                                 <EditText
-                                    android:id="@+id/pengelolaanhutan_status"
+                                    android:id="@+id/edit_pengelolaanhutan_status"
                                     android:fontFamily="@font/font_aal_default"
                                     android:visibility="gone"
                                     android:layout_width="match_parent"
@@ -294,7 +294,7 @@
                                     android:textColor="#424242" />
 
                                 <EditText
-                                    android:id="@+id/pengelolaanhutan_keterangan"
+                                    android:id="@+id/edit_pengelolaanhutan_keterangan"
                                     android:fontFamily="@font/font_aal_default"
                                     android:layout_width="match_parent"
                                     android:layout_height="100dp"
@@ -311,7 +311,7 @@
                                 android:orientation="vertical">
 
                                 <Button
-                                    android:id="@+id/pengelolaanhutan_btnsubmit"
+                                    android:id="@+id/edit_pengelolaanhutan_btnsubmit"
                                     android:textSize="20dp"
                                     android:fontFamily="@font/font_aal_bold"
                                     android:layout_width="match_parent"

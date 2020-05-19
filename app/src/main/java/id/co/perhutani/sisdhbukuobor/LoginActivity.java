@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -29,6 +30,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.event.LoggingEvent;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -63,10 +65,10 @@ import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class LoginActivity extends AppCompatActivity {
     // server staging
-    private static final String address = "http://10.0.8.51:9393/";
+//    private static final String address = "http://10.0.8.51:9393/";
     // server production
     //  private static final String address = "https://union-loket.perhutani.id/";
-//    private static final String address = "https://stg.sisdh.perhutani.id/";
+    private static final String address = "https://stg.sisdh.perhutani.id/";
     // server local
     //private static final String address = "http://127.0.0.1:8000/";
     // link api
@@ -92,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_STRATA_V1 = address + "api/v1/getStrata";
     private static final String URL_FOR_GET_PEKERJAAN_V1 = address + "api/v1/get_master_pekerjaan";
     private static final String URL_FOR_SUB_PEKERJAAN_V1 = address + "api/v1/get_master_sub_pekerjaan";
-
+    private static final String URL_FOR_GET_WORKORDER_V1 = address + "api/v1/getWorkOrder";
 
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
     public static final String URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1 = address + "api/v1/postPerubahan";
@@ -102,11 +104,12 @@ public class LoginActivity extends AppCompatActivity {
     public static final String URL_FOR_POST_REGISTER_PCP_V1 = address + "api/v1/postPcp";
     public static final String URL_FOR_POST_IDENTIFIKASI_TENURIAL_V1 = address + "api/v1/postTenurial";
 
-
+    private FirebaseAnalytics mFirebaseAnalytics;
     private ProgressDialog progressDialog;
     private SessionManager session;
     private SQLiteHandler db;
     private EditText username, password;
+    private EditText id, pass;
     private Button loginBtn;
 //    private CheckBox ShowPass;
     Boolean status_message = false;
@@ -172,6 +175,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -179,6 +183,12 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.txt_input_password);
         loginBtn = findViewById(R.id.loginBtn);
         txt_testview = findViewById(R.id.txt_testview);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(LoginActivity.this);
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, String.valueOf(id));
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, String.valueOf(pass));
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         Thread background = new Thread() {
             public void run() {
@@ -190,7 +200,6 @@ public class LoginActivity extends AppCompatActivity {
         };
         background.start();
         AjnClass.pasang_sentry(this.getApplicationContext());
-
 
         username.setText("mandor_test");
         password.setText("perhutani");
@@ -314,7 +323,6 @@ public class LoginActivity extends AppCompatActivity {
                                         .setContentText(error_message)
                                         .setConfirmText("OK!")
                                         .changeAlertType(SweetAlertDialog.ERROR_TYPE);
-
                             }
                         } else {
 
@@ -327,7 +335,6 @@ public class LoginActivity extends AppCompatActivity {
                                     .setConfirmText("OK!")
                                     .changeAlertType(SweetAlertDialog.ERROR_TYPE);
                         }
-
                     }
                 }.start();
 

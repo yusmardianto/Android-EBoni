@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import id.co.perhutani.sisdhbukuobor.Adapter.GenerateAESAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
@@ -105,7 +106,7 @@ public class TambahGangguanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 isipetak.setText(id_petak);
 
             }
@@ -230,7 +231,7 @@ public class TambahGangguanFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.spinner_anak_petak_gukamhut);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
         isipetak.setText(id_petak);
         } catch (Exception e) {
             AjnClass.showAlert(getActivity(), "Master anak petak tidak ditemukan " + e.toString());
@@ -350,9 +351,13 @@ public class TambahGangguanFragment extends Fragment {
                                         // TODO Auto-generated method stub
                                         try {
 
+                                            String ambilKunci = "perhutani";
+                                            String ambilKata = isipetak.getText().toString();
+                                            String enKata = "";
                                             ContentValues values_aktifitas = new ContentValues();
+                                            enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             values_aktifitas.put(TrnGangguanKeamananHutan.TANGGAL_KEJADIAN, tgl_kejadian.getText().toString());
-                                            values_aktifitas.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, isipetak.getText().toString());
+                                            values_aktifitas.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, enKata);
                                             values_aktifitas.put(TrnGangguanKeamananHutan.JENIS_TANAMAN, jenis_tanaman.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.TANGGAL, tanggal.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.NOMOR_A, nomora.getText().toString());

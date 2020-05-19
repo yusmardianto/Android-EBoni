@@ -19,6 +19,7 @@ import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
 import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.Model.PelaporanpalbatasModel;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
+import id.co.perhutani.sisdhbukuobor.Model.PengelolaanHutanModel;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
@@ -499,6 +500,22 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnIdentifikasiTenurial.KET9, h.getKet9());
         args.put(TrnIdentifikasiTenurial.KET10, h.getKet10());
         db.update(TrnIdentifikasiTenurial.TABLE_NAME, args, strFilter, null);
+    }
+
+    public void EditDataPengelolaanHutan(PengelolaanHutanModel ph) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + ph.getID_Pekerjaan();
+        ContentValues args = new ContentValues();
+        args.put(TrnPengelolaanHutan.KET1, ph.getKet1());
+        args.put(TrnPengelolaanHutan.KET2, ph.getKet2());
+        args.put(TrnPengelolaanHutan.KET3, ph.getKet3());
+        args.put(TrnPengelolaanHutan.TANGGAL, ph.getTanggal());
+        args.put(TrnPengelolaanHutan.RENCANA, ph.getRencana());
+        args.put(TrnPengelolaanHutan.REALISASI, ph.getRealisasi());
+        args.put(TrnPengelolaanHutan.STATUS, ph.getStatus());
+        args.put(TrnPengelolaanHutan.KETERANGAN, ph.getKeterangan());
+        args.put(TrnPengelolaanHutan.KET9, ph.getKet9());
+        db.update(TrnPengelolaanHutan.TABLE_NAME, args, strFilter, null);
     }
 
     public List<String> getJenisPal() {

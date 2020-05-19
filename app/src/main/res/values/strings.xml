@@ -35,6 +35,12 @@
     <string name="text_submit">Submit</string>
     <string name="text_simpan">Simpan</string>
     <string name="text_tambah">Tambah Laporan</string>
+
+    <string name="token">Token : %s</string>
+    <string name="news">News</string>
+    <string name="promo">Promo</string>
+    <string name="show_token">Show Token</string>
+
     <!--exit notification-->
     <string name="press_again_exit_app">Tekan sekali lagi untuk keluar aplikasi</string>
 

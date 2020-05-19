@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import id.co.perhutani.sisdhbukuobor.Adapter.GenerateAESAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.ListInteraksiMDHFragment;
@@ -79,7 +80,7 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 anakpetak.setText(id_petak);
             }
 
@@ -229,7 +230,7 @@ public class EditInteraksimdhFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anakpetak_interaksi);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
         anakpetak.setText(id_petak);
 
         spin_nama_desa = root.findViewById(R.id.edit_spinner_namadesa);
@@ -342,10 +343,14 @@ public class EditInteraksimdhFragment extends Fragment {
                                     @Override
                                     public void run() {
                                         // TODO Auto-generated method stub
+                                        String ambilKunci = "perhutani";
+                                        String ambilKata = anakpetak.getText().toString();
+                                        String enKata = "";
                                         try {
                                             InteraksimdhModel Aktifitasnya = new InteraksimdhModel();
+                                            enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             Aktifitasnya.setID_IMDH(Integer.parseInt(id));
-                                            Aktifitasnya.setAnakpetakid(anakpetak.getText().toString());
+                                            Aktifitasnya.setAnakpetakid(enKata);
                                             Aktifitasnya.setTahun(tahun.getText().toString());
                                             Aktifitasnya.setKet2(tahun.getText().toString());
                                             Aktifitasnya.setDesaid(namadesa.getText().toString());

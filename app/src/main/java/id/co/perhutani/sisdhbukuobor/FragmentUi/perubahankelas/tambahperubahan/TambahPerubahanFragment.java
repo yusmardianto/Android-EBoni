@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import id.co.perhutani.sisdhbukuobor.Adapter.GenerateAESAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
@@ -82,7 +83,7 @@ public class TambahPerubahanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 petak_id.setText(id_petak);
 
             }
@@ -462,10 +463,13 @@ public class TambahPerubahanFragment extends Fragment {
                                     @Override
                                     public void run() {
                                         // TODO Auto-generated method stub
+                                        String ambilKunci = "perhutani";
+                                        String ambilKata = petak_id.getText().toString();
+                                        String enKata = "";
                                         try {
-
                                             ContentValues values_aktifitas = new ContentValues();
-                                            values_aktifitas.put(TrnPerubahanKelas.ANAK_PETAK_ID_PERUBAHAN, petak_id.getText().toString());
+                                            enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
+                                            values_aktifitas.put(TrnPerubahanKelas.ANAK_PETAK_ID_PERUBAHAN, enKata);
                                             values_aktifitas.put(TrnPerubahanKelas.TAHUN_PERUBAHAN, tahun.getText().toString());
                                             values_aktifitas.put(TrnPerubahanKelas.LUAS_PERUBAHAN, luas.getText().toString());
                                             values_aktifitas.put(TrnPerubahanKelas.JENIS_TANAMAN_PERUBAHAN, jenis_tanaman.getText().toString());

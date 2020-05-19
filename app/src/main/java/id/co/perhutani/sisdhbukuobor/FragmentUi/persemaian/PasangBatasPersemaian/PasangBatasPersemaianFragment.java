@@ -33,7 +33,7 @@ public class PasangBatasPersemaianFragment extends Fragment {
     private Button btnSimpanPersiapanPasangBatas;
     private String str_tgl_pasang_batas;
     final Calendar calendar_pasang = Calendar.getInstance();
-//    private static String id, Patok, Tanggal, Luas, Target, Realisasi, Keterangan;
+    //    private static String id, Patok, Tanggal, Luas, Target, Realisasi, Keterangan;
     View viewpasang, viewpopup;
 
     public static PasangBatasPersemaianFragment newInstance() { return new PasangBatasPersemaianFragment(); }
@@ -131,11 +131,11 @@ public class PasangBatasPersemaianFragment extends Fragment {
                                 }
                             }
                         })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            }).show();
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).show();
             }
         });
 

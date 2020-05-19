@@ -26,6 +26,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import id.co.perhutani.sisdhbukuobor.Adapter.GenerateAESAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
@@ -106,7 +107,7 @@ public class EditGangguanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 isipetak.setText(id_petak);
 
             }
@@ -243,7 +244,7 @@ public class EditGangguanFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_gukamhut);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
         isipetak.setText(id_petak);
 
         spin_jenis_tanaman = root.findViewById(R.id.edit_spinner_jenis_tanaman);
@@ -387,12 +388,17 @@ public class EditGangguanFragment extends Fragment {
                                     @Override
                                     public void run() {
                                         // TODO Auto-generated method stub
-                                        try {
 
+                                        String ambilKunci = "perhutani";
+                                        String ambilKata = isipetak.getText().toString();
+                                        String enKata = "";
+
+                                        try {
                                             GangguanModel Aktifitasnya = new GangguanModel();
+                                            enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             Aktifitasnya.setID_gangguan(Integer.parseInt(id));
                                             Aktifitasnya.setTgl_Kejadian(tgl_kejadian.getText().toString());
-                                            Aktifitasnya.setPetak(isipetak.getText().toString());
+                                            Aktifitasnya.setPetak(enKata);
                                             Aktifitasnya.setJenisTanaman(jenistanaman.getText().toString());
                                             Aktifitasnya.setTanggal(tanggal.getText().toString());
                                             Aktifitasnya.setNoA(nomora.getText().toString());

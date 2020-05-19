@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import id.co.perhutani.sisdhbukuobor.Adapter.GenerateAESAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial.ListIdentifikasiTenurialFragment;
@@ -79,7 +80,7 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 petak_id.setText(id_petak);
 
             }
@@ -258,7 +259,7 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.spinner_tenurial_anakpetak);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
         petak_id.setText(id_petak);
 
         spin_jenis_permasalahan = root.findViewById(R.id.spinner_jenis_permasalahan);
@@ -379,10 +380,16 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
                                     @Override
                                     public void run() {
                                         // TODO Auto-generated method stub
+
+                                        String ambilKunci = "perhutani";
+                                        String ambilKata = petak_id.getText().toString();
+                                        String enKata = "";
+
                                         try {
                                             ContentValues values_aktifitas = new ContentValues();
+                                            enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             values_aktifitas.put(TrnIdentifikasiTenurial.JENIS_PERMASALAHAN, jenis_permasalahan.getText().toString());
-                                            values_aktifitas.put(TrnIdentifikasiTenurial.ANAK_PETAK_ID, petak_id.getText().toString());
+                                            values_aktifitas.put(TrnIdentifikasiTenurial.ANAK_PETAK_ID, enKata);
                                             values_aktifitas.put(TrnIdentifikasiTenurial.KELAS_HUTAN_ID, kelas_hutan.getText().toString());
                                             values_aktifitas.put(TrnIdentifikasiTenurial.TANGGAL, tanggal.getText().toString());
                                             values_aktifitas.put(TrnIdentifikasiTenurial.STRATA, strata.getText().toString());
@@ -420,8 +427,8 @@ public class TambahIdentifikasiTenurialFragment extends Fragment {
                         .show();
             }
 
-        } catch(Exception e) {
-                AjnClass.showAlert(getActivity(), "error " + e.toString());
+        } catch (Exception e) {
+            AjnClass.showAlert(getActivity(), "error " + e.toString());
 //                sendMessage(e.getMessage());
         }
     }

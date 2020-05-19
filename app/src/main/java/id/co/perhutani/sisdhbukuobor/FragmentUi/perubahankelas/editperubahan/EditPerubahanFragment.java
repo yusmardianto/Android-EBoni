@@ -26,6 +26,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import id.co.perhutani.sisdhbukuobor.Adapter.GenerateAESAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
@@ -83,7 +84,7 @@ public class EditPerubahanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 petak_id.setText(id_petak);
 
             }
@@ -333,7 +334,7 @@ public class EditPerubahanFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_perubahan);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
         petak_id.setText(id_petak);
 
         spin_jenis_tanaman = root.findViewById(R.id.edit_spinner_jenis_perubahan);
@@ -506,11 +507,14 @@ public class EditPerubahanFragment extends Fragment {
                                     @Override
                                     public void run() {
                                         // TODO Auto-generated method stub
+                                        String ambilKunci = "perhutani";
+                                        String ambilKata = petak_id.getText().toString();
+                                        String enKata = "";
                                         try {
-
                                             PerubahankelasModel Aktifitasnya = new PerubahankelasModel();
+                                            enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             Aktifitasnya.setID_Perubahan(Integer.parseInt(id));
-                                            Aktifitasnya.setPetakID(petak_id.getText().toString());
+                                            Aktifitasnya.setPetakID(enKata);
                                             Aktifitasnya.setTahun(tahun.getText().toString());
                                             Aktifitasnya.setLuas(luas.getText().toString());
                                             Aktifitasnya.setJenisTanaman(jenis_tanaman.getText().toString());

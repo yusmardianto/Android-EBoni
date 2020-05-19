@@ -1,5 +1,6 @@
 package id.co.perhutani.sisdhbukuobor.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,74 +11,72 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansatwaFragment;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.editpemantauan.EditPemantauanFragment;
-import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.pengelolaanhutan.ListPengelolaanHutanFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.pengelolaanhutan.editpengelolaanhutan.EditPengelolaanHutanFragment;
+import id.co.perhutani.sisdhbukuobor.Model.PengelolaanHutanModel;
 import id.co.perhutani.sisdhbukuobor.R;
-import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPengelolaanHutan;
 
-public class PemantauansatwaAdapter extends RecyclerView.Adapter<PemantauansatwaAdapter.PemantauanViewHolder> {
-
+public class PengelolaanHutanAdapter extends RecyclerView.Adapter<PengelolaanHutanAdapter.PengelolaanHutanViewHolder>
+{
     Context mContext;
-    List<PemantauansatwaModel> mData;
+    List<PengelolaanHutanModel> mData;
     SQLiteHandler db;
 
-    public static final String MSG_KEY = "id";
     private AlertDialog.Builder builder;
 
-    public PemantauansatwaAdapter(Context mContext, List<PemantauansatwaModel> mData) {
+    public static final String MSG_KEY = "id";
+
+    public PengelolaanHutanAdapter(Context mContext, List<PengelolaanHutanModel> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
 
     @NonNull
     @Override
-    public PemantauanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PengelolaanHutanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View vpemantauan;
+        View vpengelolaan;
         db = new SQLiteHandler(mContext);
-        vpemantauan = LayoutInflater.from(mContext).inflate(R.layout.pemantauan_satwa_item_fragment,parent,false);
-        PemantauansatwaAdapter.PemantauanViewHolder vHolder = new PemantauansatwaAdapter.PemantauanViewHolder(vpemantauan);
+        vpengelolaan = LayoutInflater.from(mContext).inflate(R.layout.gangguanitem_fragment,parent,false);
+        PengelolaanHutanViewHolder vHolder = new PengelolaanHutanViewHolder(vpengelolaan);
 
         return vHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PemantauanViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull PengelolaanHutanViewHolder holder, final int position) {
         db = new SQLiteHandler(mContext);
 
-        String getAnakPetakId = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.ANAK_PETAK_ID);
-        String getJenis = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.KET2);
-        String getWaktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.KET3);
+        String get_pekerjaan = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, mData.get(position).getId(), TrnPengelolaanHutan.KET1);
+        String get_sub_pekerjaan = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, mData.get(position).getId(), TrnPengelolaanHutan.KET2);
+        String get_anakpetak = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, mData.get(position).getId(), TrnPengelolaanHutan.KET3);
 
-        holder.tv_jenisatwa.setText(getJenis);
-        holder.tv_anakpetakid.setText(getAnakPetakId);
-        holder.tv_jumlahsatwa.setText(mData.get(position).getJumlah());
-        holder.tv_waktulihat.setText(getWaktulihat);
+        holder.tv_pekerjaan.setText(get_pekerjaan);
+        holder.tv_sub_pekerjaan.setText(get_sub_pekerjaan);
+        holder.tv_anakpetak.setText(get_anakpetak);
         holder.tv_tanggal.setText(mData.get(position).getTanggal());
-        holder.img_pemantaundetail.setOnClickListener(new View.OnClickListener() {
+        holder.img_detailpengelolaanhutan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popup(mData.get(position).getID());
+
+                popup(mData.get(position).getId());
+
             }
         });
 
-        String status_sync = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.KET9);
+        String status_sync = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, mData.get(position).getId(), TrnPengelolaanHutan.KET9);
         if (status_sync.equals("1")) {
             holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
             holder.name_data_sinkron.setText("Sudah terkirim keserver");
@@ -95,69 +94,68 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
         return mData.size();
     }
 
-    public static class PemantauanViewHolder extends RecyclerView.ViewHolder{
+    public static class PengelolaanHutanViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView tv_jenisatwa;
-        private TextView tv_anakpetakid;
-        private TextView tv_jumlahsatwa;
-        private TextView tv_waktulihat;
+        private TextView tv_pekerjaan;
+        private TextView tv_sub_pekerjaan;
+        private TextView tv_anakpetak;
         private TextView tv_tanggal;
-        private LinearLayout img_pemantaundetail;
+        private LinearLayout img_detailpengelolaanhutan;
         private TextView name_data_sinkron;
         private ImageView name_info_alert;
 
-        public PemantauanViewHolder(@NonNull View itemView) {
+
+        public PengelolaanHutanViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_jenisatwa = itemView.findViewById(R.id.name_jenissatwa);
-            tv_anakpetakid = itemView.findViewById(R.id.name_anakpetaksatwa);
-            tv_jumlahsatwa = itemView.findViewById(R.id.name_jumlahsatwa);
-            tv_waktulihat = itemView.findViewById(R.id.name_waktulihatsatwa);
-            tv_tanggal = itemView.findViewById(R.id.name_tanggalsatwa);
-            img_pemantaundetail = itemView.findViewById(R.id.img_pemantauandetail);
-            name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_satwa);
-            name_info_alert = itemView.findViewById(R.id.name_info_alert_satwa);
+            tv_pekerjaan = itemView.findViewById(R.id.name_pekerjaan);
+            tv_sub_pekerjaan = itemView.findViewById(R.id.name_sub_pekerjaan);
+            tv_anakpetak = itemView.findViewById(R.id.name_petak_pekerjaan);
+            tv_tanggal = itemView.findViewById(R.id.name_tanggalpekerjaan);
+            img_detailpengelolaanhutan = itemView.findViewById(R.id.img_pengelolaanhutandetail);
+            name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_pengelolaan_hutan);
+            name_info_alert = itemView.findViewById(R.id.name_info_alert_pengelolaanhutan);
         }
     }
 
     public void popup (final String id){
-        String ambilKunci = "Perhutani";
-        String ambilKata = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
-        String deKata = "";
         try {
-            deKata = GenerateAESAdapter.decrypt(ambilKunci, ambilKata);
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-            final View viewas = layoutInflater.inflate(R.layout.popup_detail_pemantauansatwa, null);
+            final View viewas = layoutInflater.inflate(R.layout.popup_detail_ganggaunkemanan, null);
             final android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(mContext);
             alertDialogBuilder.setView(viewas);
 
-            String get_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, deKata);
-            final String get_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET2);
-            String get_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
-            String get_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET3);
-            String get_caramelihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET4);
-            String get_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
-            String get_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+            final String get_pekerjaan = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, id, TrnPengelolaanHutan.KET1);
+            String get_sub_pekerjaan = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, id, TrnPengelolaanHutan.KET2);
+            String get_anakpetak = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, id, TrnPengelolaanHutan.KET3);
+            String get_tanggal = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, id, TrnPengelolaanHutan.TANGGAL);
+            String get_rencana = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, id, TrnPengelolaanHutan.RENCANA);
+            String get_realisasi = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, id, TrnPengelolaanHutan.REALISASI);
+            String get_status = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, id, TrnPengelolaanHutan.STATUS);
+            String get_keterangan = db.getDataDetail(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, id, TrnPengelolaanHutan.KETERANGAN);
 
-            TextView anakpetak = viewas.findViewById(R.id.pemantauan_petakiddetail);
+            TextView pekerjaan = viewas.findViewById(R.id.pengelolaanhutan_pekerjaan_detail);
+            pekerjaan.setText(get_pekerjaan);
+
+            TextView sub_pekerjaan = viewas.findViewById(R.id.pengelolaanhutan_sub_pekerjaan_detail);
+            sub_pekerjaan.setText(get_sub_pekerjaan);
+
+            TextView anakpetak = viewas.findViewById(R.id.pengelolaanhutan_anakpetak_detail);
             anakpetak.setText(get_anakpetak);
 
-            TextView jenissatwa = viewas.findViewById(R.id.pemantauan_jenissatwadetail);
-            jenissatwa.setText(get_jenissatwa);
-
-            TextView jumlahsatwa = viewas.findViewById(R.id.pemantauan_jumlahsatwadetail);
-            jumlahsatwa.setText(get_jumlahsatwa);
-
-            TextView waktulihat = viewas.findViewById(R.id.pemantauan_waktulihatdetail);
-            waktulihat.setText(get_waktulihat);
-
-            TextView caramelihat = viewas.findViewById(R.id.pemantauan_caralihatdetail);
-            caramelihat.setText(get_caramelihat);
-
-            TextView tanggal = viewas.findViewById(R.id.pemantauan_tanggaldetail);
+            TextView tanggal = viewas.findViewById(R.id.pengelolaanhutan_tanggal_detail);
             tanggal.setText(get_tanggal);
 
-            TextView keterangan = viewas.findViewById(R.id.pemantauan_keterangandetail);
+            TextView rencana = viewas.findViewById(R.id.pengelolaanhutan_rencana_detail);
+            rencana.setText(get_rencana);
+
+            TextView realisasi = viewas.findViewById(R.id.pengelolaanhutan_realisai_detail);
+            realisasi.setText(get_realisasi);
+
+            TextView status = viewas.findViewById(R.id.pengelolaanhutan_status_detail);
+            status.setText(get_status);
+
+            TextView keterangan = viewas.findViewById(R.id.pengelolaanhutan_keterangan_detail);
             keterangan.setText(get_keterangan);
 
             alertDialogBuilder.setView(viewas);
@@ -165,16 +163,16 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             final android.app.AlertDialog alert = alertDialogBuilder.create();
             alert.show();
 
-            ImageView edit = viewas.findViewById(R.id.detail_btneditpemantauan);
+            ImageView edit = viewas.findViewById(R.id.detail_btneditgangguan);
             edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Fragment fragment = new EditPemantauanFragment();
+                    Fragment fragment = new EditPengelolaanHutanFragment();
                     alert.dismiss();
 
                     String message = id;
                     Bundle data = new Bundle();
-                    data.putString(PemantauansatwaAdapter.MSG_KEY, message);
+                    data.putString(GangguanAdapter.MSG_KEY, message);
                     FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
                     fragment.setArguments(data);
                     FragmentTransaction ft = manager.beginTransaction();
@@ -183,11 +181,12 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
                 }
             });
 
-            ImageView delete = viewas.findViewById(R.id.detail_btndeletepemantauan);
+
+            ImageView delete = viewas.findViewById(R.id.detail_btndeletegangguan);
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final String str_note = "Hapus : " + get_jenissatwa;
+                    final String str_note = "Hapus : " + get_pekerjaan;
 
                     new SweetAlertDialog(mContext, SweetAlertDialog.WARNING_TYPE)
                             .setTitleText("Hapus Data ?")
@@ -224,8 +223,8 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
                                         public void run() {
                                             // TODO Auto-generated method stub
                                             try {
-                                                db.delete_one_date(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id);
-                                                ListPemantauansatwaFragment.refresh_list();
+                                                db.delete_one_date(TrnPengelolaanHutan.TABLE_NAME, TrnPengelolaanHutan._ID, id);
+                                                ListPengelolaanHutanFragment.refresh_list();
                                             } catch (Exception ex) {
                                             }
                                             alert.dismiss();
@@ -237,6 +236,7 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
                             .show();
                 }
             });
+
         } catch (Exception ex) {
             AjnClass.showAlert(mContext,ex.toString());
         }

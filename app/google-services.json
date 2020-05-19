@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "433723954966",
+    "firebase_url": "https://sisdh-eboni.firebaseio.com",
+    "project_id": "sisdh-eboni",
+    "storage_bucket": "sisdh-eboni.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433723954966:android:8fb8e84c1ff18b88d5e237",
+        "android_client_info": {
+          "package_name": "id.co.perhutani.sisdhbukuobor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433723954966-i1tlp3dkj1d29g9otl0cm2pilfuuqafc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.co.perhutani.sisdhbukuobor",
+            "certificate_hash": "94dea1e75b7c3391283fbbbc0242ff0ef33cfb89"
+          }
+        },
+        {
+          "client_id": "433723954966-k22ku1vu79l4c82jlqhnga8ise4ma6kd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2P1p8C2EkAHiNiYZYR2hrVYyQPl4dHuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433723954966-k22ku1vu79l4c82jlqhnga8ise4ma6kd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
