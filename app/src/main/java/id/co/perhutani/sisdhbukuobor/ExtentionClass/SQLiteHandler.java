@@ -52,6 +52,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnPengelolaanHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanLahan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnWorkOrder;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
@@ -97,6 +98,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnPersiapanSapra.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPersiapanLahan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnWorkOrder.SQL_CREATE_ENTRIES);
         db.execSQL(TrnOverSpin.SQL_CREATE_ENTRIES);
     }
 
@@ -139,6 +141,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnPersiapanLahan.SQL_DELETE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_DELETE_ENTRIES);
         db.execSQL(TrnOverSpin.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnWorkOrder.SQL_DELETE_ENTRIES);
         onCreate(db);
     }
 
@@ -176,6 +179,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnPersiapanLahan.SQL_CREATE_ENTRIES);
         db.execSQL(TrnPembuatanBedengSapih.SQL_CREATE_ENTRIES);
         db.execSQL(TrnOverSpin.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnWorkOrder.SQL_CREATE_ENTRIES);
     }
 
     public void query_builder() {
@@ -809,5 +813,14 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return labels;
+    }
+
+    public int count_status_workorder(String status) {
+        String countQuery = "SELECT * FROM TRN_WORK_ORDER WHERE "+TrnWorkOrder.STATUS+" =\""+status+"\" ;";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int cnt = cursor.getCount();
+        cursor.close();
+        return cnt;
     }
 }

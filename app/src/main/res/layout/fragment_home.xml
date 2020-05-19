@@ -4,668 +4,834 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorOrange"
-    >
+    android:background="@color/colorOrange">
 
-    <RelativeLayout
-        android:id="@+id/linear_layout_home"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="18"
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/text_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-2dp"
+                    android:text="Hi, Dimas Prayogi"
+                    android:textColor="#fff"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_tanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_nama"
+                    android:layout_marginTop="3dp"
+
+                    android:text="Senin, 21 Oktober 2019"
+                    android:textColor="#fff"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/logo_eboni_putih" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_activity"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_below="@id/text_tanggal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:background="@drawable/ic_background"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:orientation="horizontal">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="18"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="15"
                     android:gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="10dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/text_nama"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="-2dp"
-                        android:text="Hi, Dimas Prayogi"
-                        android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:textSize="15dp"/>
+                        android:layout_marginTop="-5dp"
+                        android:text="99"
+                        android:textColor="#E46C15"
+                        android:textSize="50dp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/text_tanggal"
-                        android:layout_below="@+id/text_nama"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-
-                        android:text="Senin, 21 Oktober 2019"
-                        android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:textSize="13dp"/>
-
+                        android:layout_height="20dp"
+                        android:layout_marginTop="-15dp"
+                        android:gravity="center"
+                        android:text="Transaksi"
+                        android:textColor="#E46C15"
+                        android:textSize="10dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
-                    <ImageButton
-                        android:background="@drawable/logo_eboni_putih"
-                        android:layout_width="55dp"
-                        android:layout_height="40dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_gravity="center"
-                        />
-                </LinearLayout>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_activity"
-                    android:layout_below="@id/text_tanggal"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="85dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="15"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:text="73"
+                        android:textColor="#E46C15"
+                        android:textSize="50dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="-15dp"
+                        android:gravity="center"
+                        android:text="Terkirim ke server"
+                        android:textColor="#E46C15"
+                        android:textSize="10dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="15"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:text="16"
+                        android:textColor="#E46C15"
+                        android:textSize="50dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="-15dp"
+                        android:gravity="center"
+                        android:text="Belum terkirim"
+                        android:textColor="#E46C15"
+                        android:textSize="10dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-50dp"
+            android:background="@drawable/ic_background"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="45dp"
+                android:background="@drawable/ic_background_list_home"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_tanggal"
                     android:layout_marginBottom="5dp"
                     app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="85dp"
-                        android:orientation="horizontal"
-                        android:background="@drawable/ic_background">
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_content_workorder"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Status Work Order"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:textColor="#E46C15"
+                            android:textAlignment="center"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#E46C15"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="15"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:gravity="center"
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:textStyle="bold"
-                                    android:layout_marginTop="-5dp"
-                                    android:layout_width="wrap_content"
+                                    android:id="@+id/count_wo_open"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="99"
-                                    android:textColor="#E46C15"
-                                    android:textSize="50dp"
-                                   />
+                                    android:gravity="center"
+                                    android:textColor="#C0C0C0"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
 
                                 <TextView
-                                    android:textStyle="bold"
-                                    android:layout_marginTop="-15dp"
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
-                                    android:layout_height="20dp"
-                                    android:text="Transaksi"
-                                    android:textColor="#E46C15"
-                                    android:textSize="10dp" />
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="Open"
+                                    android:textColor="#C0C0C0"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/count_wo_pending"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="99"
+                                    android:gravity="center"
+                                    android:textColor="#FFEB3B"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="Pending"
+                                    android:textColor="#FFEB3B"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/count_wo_inprogress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="99"
+                                    android:gravity="center"
+                                    android:textColor="#03A9F4"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="In Progress"
+                                    android:textColor="#03A9F4"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/count_wo_complete"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="99"
+                                    android:gravity="center"
+                                    android:textColor="#0EF60E"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="Complete"
+                                    android:textColor="#0EF60E"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/count_wo_reject"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="99"
+                                    android:gravity="center"
+                                    android:textColor="#da3c2f"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="Reject"
+                                    android:textColor="#da3c2f"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_marginTop="-5dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="73"
-                                android:textColor="#E46C15"
-                                android:textSize="50dp"
-                                />
-
-                            <TextView
-                                android:layout_marginTop="-15dp"
-                                android:gravity="center"
-                                android:layout_width="match_parent"
-                                android:layout_height="20dp"
-                                android:text="Terkirim ke server"
-                                android:textColor="#E46C15"
-                                android:textSize="10dp"
-                                android:textStyle="bold" />
                         </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="15"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_marginTop="-5dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="16"
-                                android:textColor="#E46C15"
-                                android:textSize="50dp"
-                                />
-
-                            <TextView
-                                android:layout_marginTop="-15dp"
-                                android:gravity="center"
-                                android:layout_width="match_parent"
-                                android:layout_height="20dp"
-                                android:text="Belum terkirim"
-                                android:textColor="#E46C15"
-                                android:textSize="10dp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
                 <LinearLayout
-                    android:layout_marginTop="-50dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:orientation="vertical"
-                    android:background="@drawable/ic_background">
+                    android:orientation="vertical">
 
-                    <ScrollView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="55dp"
+                        app:cardBackgroundColor="@color/colorOrange"
+                        app:cardCornerRadius="10dp">
 
                         <LinearLayout
-                            android:layout_marginTop="35dp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical">
+                            android:gravity="center"
+                            android:orientation="horizontal">
 
-                            <androidx.cardview.widget.CardView
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="55dp"
-                                android:layout_marginTop="10dp"
-                                app:cardBackgroundColor="@color/colorOrange"
-                                app:cardCornerRadius="10dp">
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:background="@drawable/ic_background"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="horizontal">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_icn_keamananhtn" />
 
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:background="@drawable/ic_background"
-                                        android:orientation="vertical">
+                            </LinearLayout>
 
-                                        <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_icn_keamananhtn"/>
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="10"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
-                                            android:text="Gangguan Keamanan Hutan"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/txt_jumlah_data_gukamhut"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="200"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-                            <androidx.cardview.widget.CardView
-                                android:layout_marginTop="10dp"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="55dp"
-                                app:cardBackgroundColor="@color/colorOrange"
-                                app:cardCornerRadius="10dp">
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                                <LinearLayout
+                                <TextView
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="horizontal">
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Gangguan Keamanan Hutan"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
 
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:background="@drawable/ic_background"
-                                        android:orientation="vertical">
+                            </LinearLayout>
 
-                                        <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_icn_perubahankelashtn"/>
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="10"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="Perubahan Kelas"
-                                            android:layout_marginLeft="10dp"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/txt_jumlah_data_perubahankelas"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="200"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-                            <androidx.cardview.widget.CardView
-                                android:layout_marginTop="10dp"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="55dp"
-                                app:cardBackgroundColor="@color/colorOrange"
-                                app:cardCornerRadius="10dp">
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/txt_jumlah_data_gukamhut"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
 
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:background="@drawable/ic_background"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_icn_interaksimdh"/>
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="10"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="Interaksi MDH"
-                                            android:layout_marginLeft="10dp"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/txt_jumlah_data_interaksimdh"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="200"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-                            <androidx.cardview.widget.CardView
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="55dp"
-                                app:cardBackgroundColor="@color/colorOrange"
-                                app:cardCornerRadius="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="horizontal">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:background="@drawable/ic_background"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_icn_pemantauansatwa"/>
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="10"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="Pemantauan Satwa"
-                                            android:layout_marginLeft="10dp"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/txt_jumlah_data_pemantauansatwa"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="200"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-                            <androidx.cardview.widget.CardView
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="55dp"
-                                app:cardBackgroundColor="@color/colorOrange"
-                                app:cardCornerRadius="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="horizontal">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:background="@drawable/ic_background"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_icn_palbatas"/>
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="10"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="Laporan PAL Batas"
-                                            android:layout_marginLeft="10dp"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/txt_jumlah_data_laporanpalbatas"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="200"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-                            <androidx.cardview.widget.CardView
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="55dp"
-                                app:cardBackgroundColor="@color/colorOrange"
-                                app:cardCornerRadius="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="horizontal">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:background="@drawable/ic_background"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_icn_registerpcp"/>
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="10"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="Register PCP"
-                                            android:layout_marginLeft="10dp"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/txt_jumlah_data_registerpcp"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="200"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-                            <androidx.cardview.widget.CardView
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="55dp"
-                                app:cardBackgroundColor="@color/colorOrange"
-                                app:cardCornerRadius="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="horizontal">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:background="@drawable/ic_background"
-                                        android:orientation="vertical">
-
-                                        <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_icn_perubahankelashtn"/>
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="10"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="Identifikasi Konflik Tenurial"
-                                            android:layout_marginLeft="10dp"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="15"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/txt_jumlah_data_identifikasitenurial"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="200"
-                                            android:textColor="#fff"
-                                            android:textSize="15dp"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
+                            </LinearLayout>
 
                         </LinearLayout>
 
-                    </ScrollView>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="@color/colorOrange"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:background="@drawable/ic_background"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_icn_perubahankelashtn" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Perubahan Kelas"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txt_jumlah_data_perubahankelas"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="@color/colorOrange"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:background="@drawable/ic_background"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_icn_interaksimdh" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Interaksi MDH"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txt_jumlah_data_interaksimdh"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="@color/colorOrange"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:background="@drawable/ic_background"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_icn_pemantauansatwa" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Pemantauan Satwa"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txt_jumlah_data_pemantauansatwa"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="@color/colorOrange"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:background="@drawable/ic_background"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_icn_palbatas" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Laporan PAL Batas"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txt_jumlah_data_laporanpalbatas"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="@color/colorOrange"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:background="@drawable/ic_background"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_icn_registerpcp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Register PCP"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txt_jumlah_data_registerpcp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="@color/colorOrange"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:background="@drawable/ic_background"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_icn_perubahankelashtn" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Identifikasi Konflik Tenurial"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="15"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txt_jumlah_data_identifikasitenurial"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="200"
+                                    android:textColor="#fff"
+                                    android:textSize="15dp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </ScrollView>
 
+        </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

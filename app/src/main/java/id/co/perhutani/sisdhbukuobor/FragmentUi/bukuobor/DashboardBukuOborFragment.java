@@ -27,6 +27,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.Tools;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.dashboard.DashboardViewModel;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.GangguanFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.persemaian.PersemaianFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.workorder.WorkOrderFragment;
 import id.co.perhutani.sisdhbukuobor.R;
 
 public class DashboardBukuOborFragment extends Fragment {
@@ -72,7 +73,7 @@ public class DashboardBukuOborFragment extends Fragment {
                         selectedFragment = new PersemaianFragment();
                         break;
                     case "1":
-                        selectedFragment = new GangguanFragment();
+                        selectedFragment = new WorkOrderFragment();
                         break;
                     case "2":
                         selectedFragment = new GangguanFragment();
@@ -81,6 +82,7 @@ public class DashboardBukuOborFragment extends Fragment {
                         selectedFragment = new GangguanFragment();
                         break;
                 }
+
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
                         selectedFragment).commit();
 
