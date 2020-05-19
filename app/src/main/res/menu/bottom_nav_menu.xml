@@ -12,6 +12,12 @@
         android:title="@string/text_bukuobor" />
 
     <item
+        android:id="@+id/navigation_workorder"
+        android:icon="@drawable/ic_workorder"
+        android:title="@string/workorder" />
+
+
+    <item
         android:id="@+id/navigation_pengelolaan"
         android:icon="@drawable/ic_icn_pengelolaanhtn"
         android:title="@string/text_pengelolaan"/>
