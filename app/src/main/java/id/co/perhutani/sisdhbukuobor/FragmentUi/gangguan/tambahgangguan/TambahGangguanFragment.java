@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,6 +31,8 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.Adapter.GenerateAESAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.DashboardBukuOborFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.GangguanFragment;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
@@ -256,6 +259,19 @@ public class TambahGangguanFragment extends Fragment {
                 act_simpan();
             }
         });
+
+//        Toolbar toolbar = root.findViewById(R.id.toolbar_tambahgukamhut);
+//        toolbar.setNavigationIcon(R.drawable.ic_back);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Fragment fragment = new GangguanFragment();
+//                FragmentManager frgManager = getFragmentManager();
+//                FragmentTransaction ft = frgManager.beginTransaction();
+//                ft.replace(R.id.nav_host_fragment, fragment);
+//                ft.commit();
+//            }
+//        });
 
         return root;
     }

@@ -107,7 +107,7 @@ public class ListRegisterpcpFragment extends Fragment
             }
         });
 
-        final EditText txt_searchregister = root.findViewById(R.id.txt_search_register);
+        final EditText txt_searchregister = root.findViewById(R.id.text_cari_nomor_pcp);
         txt_searchregister.addTextChangedListener(new TextWatcher() {
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

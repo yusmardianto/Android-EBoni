@@ -1,116 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/md_grey_200"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/linear_layout_home"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_imdh"
+        android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimary">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="Interaksi Manusia dan Hutan"
+                android:textSize="18dp" />
+            <TextView
+                android:visibility="gone"
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="[ nomor surat perintah kerja ]"
+                android:textSize="12dp" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@id/toolbar_imdh"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_weight="1"
+            android:drawableRight="@drawable/ic_search"
+            android:id="@+id/txt_search_interaksi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapesearch"
+            android:hint="Cari Data Interaksi MDH"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textColorHint="#B4B4B4"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/tambah_interaksimdh"
+            android:layout_weight="4"
+            android:layout_width="match_parent"
+            android:src="@drawable/ic_add_black_24dp"
+            android:background="@color/colorPrimary"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/ic_background_list_home"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card1"
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:scrollbars="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardBackgroundColor="@color/colorOrange"
-            app:cardCornerRadius="20dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/font_aal_default"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:text="Data Interaksi Manusia dan Hutan"
-                        android:textColor="#fff"
-                        android:textSize="20dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:orientation="vertical"
-                    android:background="@drawable/ic_background">
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:id="@+id/linear_interaksimdh"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <android.inputmethodservice.ExtractEditText
-                            android:id="@+id/txt_search_interaksi"
-                            android:layout_weight="1"
-                            android:layout_marginTop="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/ic_background"
-                            android:hint="@string/text_cari_anak_petak"/>
-                        <ImageView
-                            android:clickable="true"
-                            android:id="@+id/tambah_interaksimdh"
-                            android:layout_weight="4"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_width="match_parent"
-                            android:src="@drawable/ic_add_black_24dp"
-                            android:background="@color/colorPrimary"
-                            android:layout_height="50dp" />
-                    </LinearLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:scrollbars="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/interaksimdh_recycler">
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_tidakadadatainteraksimdh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="25sp"
-                    android:hint="Tidak ada data"/>
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </RelativeLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:id="@+id/interaksimdh_recycler"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="-400dp"
+        android:id="@+id/layout_tidakadadatainteraksimdh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:hint="Tidak ada data"/>
+    </LinearLayout>
+</LinearLayout>

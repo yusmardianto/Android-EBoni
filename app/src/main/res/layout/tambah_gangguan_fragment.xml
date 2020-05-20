@@ -1,429 +1,410 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/md_grey_200"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/linear_layout_home"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_tambahgukamhut"
+        android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimary">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="Tambah Gangguan Keamanan Hutan"
+                android:textSize="18dp" />
+            <TextView
+                android:visibility="gone"
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="[ nomor surat perintah kerja ]"
+                android:textSize="12dp" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card1"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:background="@drawable/ic_background">
+
+        <ScrollView
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardBackgroundColor="@color/colorOrange"
-            app:cardCornerRadius="20dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"
-                    android:gravity="center"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:fontFamily="@font/font_aal_default"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:text="Tambah Gangguan Keamanan Hutan"
-                        android:textColor="#fff"
-                        android:textSize="20dp" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Kejadian"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/gangguan_tanggal"
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_background_grey"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Anak Petak"
+                        android:textColor="#424242"/>
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:fontFamily="@font/font_aal_default"
+                        android:id="@+id/spinner_anak_petak_gukamhut"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/gangguan_idpetak"
+                        android:fontFamily="@font/font_aal_default"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Anak Petak" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#EFEFEF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nomor Laporan Huruf A"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/gangguan_nomora"
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="number"
+                        android:background="@drawable/ic_background_grey"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Laporan Huruf A"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/gangguan_tanggalHA"
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_background_grey"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Kejadian"
+                        android:textColor="#424242" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:fontFamily="@font/font_aal_default"
+                        android:id="@+id/spinner_gangguan_hutan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/gangguan_kejadian"
+                        android:fontFamily="@font/font_aal_default"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Jenis Gangguan" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#EFEFEF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Luas Kerugian (Ha)"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/gangguan_luas"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_background_grey"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jenis Tanaman"
+                        android:textColor="#424242" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:fontFamily="@font/font_aal_default"
+                        android:id="@+id/spinner_jenis_tanaman"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/gangguan_jenistanaman"
+                        android:fontFamily="@font/font_aal_default"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_background"
+                        android:hint="Jenis Tanaman" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#EFEFEF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Kerugian Pohon"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/gangguan_jmlpohon"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_background_grey"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Kerugian Kayu Perkakas (m3)"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/gangguan_kerugiankyp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_background_grey"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Kerugian Kayu Bakar (sm)"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/gangguan_kerugiankyb"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_background_grey"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Kerugian Getah (Ton)"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/gangguan_kerugiangetah"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_background_grey"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nilai Kerugian (Rp)"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/gangguan_nilaikerugian"
+                        android:fontFamily="@font/font_aal_default"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_background_grey"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Keterangan"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/gangguan_keterangan"
+                        android:fontFamily="@font/font_aal_default"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@drawable/ic_background_grey"
+                        android:hint="Tambahkan Keterangan (Optional)"/>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:orientation="vertical"
-                    android:background="@drawable/ic_background">
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
-                    <ScrollView
-                        android:layout_marginTop="10dp"
+                    <Button
+                        android:id="@+id/gangguan_btnsubmit"
+                        android:textSize="20dp"
+                        android:fontFamily="@font/font_aal_bold"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Tanggal Kejadian"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_tanggal"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Anak Petak"
-                                    android:textColor="#424242"/>
-
-                                <androidx.appcompat.widget.AppCompatSpinner
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_anak_petak_gukamhut"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"/>
-
-                                <EditText
-                                    android:id="@+id/gangguan_idpetak"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:visibility="gone"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/ic_background"
-                                    android:hint="Anak Petak" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="5dp"
-                                    android:background="#EFEFEF" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Nomor Laporan Huruf A"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_nomora"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:inputType="number"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Tanggal Laporan Huruf A"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_tanggalHA"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:text="Kejadian"
-                                    android:textColor="#424242" />
-
-                                <androidx.appcompat.widget.AppCompatSpinner
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_gangguan_hutan"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"/>
-
-                                <EditText
-                                    android:id="@+id/gangguan_kejadian"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:visibility="gone"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/ic_background"
-                                    android:hint="Jenis Gangguan" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="5dp"
-                                    android:background="#EFEFEF" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="15dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Luas Kerugian (Ha)"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_luas"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="number"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Jenis Tanaman"
-                                    android:textColor="#424242" />
-
-                                <androidx.appcompat.widget.AppCompatSpinner
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:id="@+id/spinner_jenis_tanaman"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"/>
-
-                                <EditText
-                                    android:id="@+id/gangguan_jenistanaman"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:visibility="gone"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/ic_background"
-                                    android:hint="Jenis Tanaman" />
-
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="2dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="5dp"
-                                    android:background="#EFEFEF" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="15dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Jumlah Kerugian Pohon"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_jmlpohon"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="number"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="15dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Jumlah Kerugian Kayu Perkakas (m3)"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_kerugiankyp"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="number"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="15dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Jumlah Kerugian Kayu Bakar (sm)"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_kerugiankyb"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="number"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="15dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Jumlah Kerugian Getah (Ton)"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_kerugiangetah"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="number"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="15dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Nilai Kerugian (Rp)"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_nilaikerugian"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:inputType="number"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:background="@drawable/ic_background_grey"/>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_marginTop="15dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Keterangan"
-                                    android:textColor="#424242" />
-
-                                <EditText
-                                    android:id="@+id/gangguan_keterangan"
-                                    android:fontFamily="@font/font_aal_default"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:background="@drawable/ic_background_grey"
-                                    android:hint="Tambahkan Keterangan (Optional)"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical">
-
-                                <Button
-                                    android:id="@+id/gangguan_btnsubmit"
-                                    android:textSize="20dp"
-                                    android:fontFamily="@font/font_aal_bold"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:background="@drawable/shape_btnlogin"
-                                    android:text="Simpan"
-                                    android:textColor="#F9F9F9" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </ScrollView>
-
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_btnlogin"
+                        android:text="Simpan"
+                        android:textColor="#F9F9F9" />
                 </LinearLayout>
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </ScrollView>
 
-    </RelativeLayout>
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
