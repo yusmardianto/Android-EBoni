@@ -81,6 +81,12 @@ public class DashboardBukuOborFragment extends Fragment {
                     case "3":
                         selectedFragment = new GangguanFragment();
                         break;
+                    case "4":
+                        selectedFragment = new GangguanFragment();
+                        break;
+                    case "5":
+                        selectedFragment = new GangguanFragment();
+                        break;
                 }
 
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
@@ -112,6 +118,7 @@ public class DashboardBukuOborFragment extends Fragment {
         items.add(new DashboardMenuModel(1, s_date[1], s_name[1], "", drw_arr.getResourceId(1,-1)));
         items.add(new DashboardMenuModel(2, s_date[2], s_name[2], "", drw_arr.getResourceId(2,-1)));
         items.add(new DashboardMenuModel(3, s_date[3], s_name[3], "", drw_arr.getResourceId(3,-1)));
+
 
         return items;
     }

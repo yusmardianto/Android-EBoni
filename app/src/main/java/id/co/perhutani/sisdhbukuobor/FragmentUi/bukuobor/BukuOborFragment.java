@@ -45,7 +45,7 @@ public class BukuOborFragment extends Fragment {
         View root = inflater.inflate(R.layout.buku_obor_fragment, container, false);
 
 
-        final LinearLayout lingangguan = root.findViewById(R.id.linear_gangguan);
+        final LinearLayout lingangguan = root.findViewById(R.id.gukamhut);
         lingangguan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +61,7 @@ public class BukuOborFragment extends Fragment {
             }
         });
 
-        LinearLayout linPerubahankelas = (LinearLayout)root.findViewById(R.id.linear_perubahankelas);
+        LinearLayout linPerubahankelas = (LinearLayout)root.findViewById(R.id.perubahankelas);
         linPerubahankelas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +74,7 @@ public class BukuOborFragment extends Fragment {
             }
         });
 
-        LinearLayout lininteraksi = (LinearLayout)root.findViewById(R.id.linear_interaksi);
+        LinearLayout lininteraksi = (LinearLayout)root.findViewById(R.id.interaksimdh);
         lininteraksi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +87,7 @@ public class BukuOborFragment extends Fragment {
             }
         });
 
-        LinearLayout linpemantauan = (LinearLayout)root.findViewById(R.id.linear_pemantauan);
+        LinearLayout linpemantauan = (LinearLayout)root.findViewById(R.id.pemantauansatwa);
         linpemantauan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +100,7 @@ public class BukuOborFragment extends Fragment {
             }
         });
 
-        LinearLayout linlappal = (LinearLayout)root.findViewById(R.id.linear_lappal);
+        LinearLayout linlappal = (LinearLayout)root.findViewById(R.id.laporanpalbatas);
         linlappal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,7 +113,7 @@ public class BukuOborFragment extends Fragment {
             }
         });
 
-        LinearLayout linregisterpcp = (LinearLayout)root.findViewById(R.id.linear_regispcp);
+        LinearLayout linregisterpcp = (LinearLayout)root.findViewById(R.id.registerpcp);
         linregisterpcp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,7 +126,7 @@ public class BukuOborFragment extends Fragment {
             }
         });
 
-        LinearLayout linidentifikasi = (LinearLayout)root.findViewById(R.id.linear_identifikasitenurial);
+        LinearLayout linidentifikasi = (LinearLayout)root.findViewById(R.id.identifikasikonflik);
         linidentifikasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,7 +139,7 @@ public class BukuOborFragment extends Fragment {
             }
         });
 
-        LinearLayout pengelolaanhutan = (LinearLayout)root.findViewById(R.id.linear_pengelolaanhutan);
+        LinearLayout pengelolaanhutan = (LinearLayout)root.findViewById(R.id.pengelolaanhutan);
         pengelolaanhutan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

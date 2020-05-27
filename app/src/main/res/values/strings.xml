@@ -60,6 +60,8 @@
         <item>Tanaman</item>
         <item>Pemeliharaan</item>
         <item>Perawatan</item>
+        <item>Gukamhut</item>
+        <item>Perubahan Kelas</item>
     </string-array>
 
     <string-array name="groups_date">
@@ -67,9 +69,13 @@
         <item>Persiapan Penananam</item>
         <item>Pemeliharaan I, II, IV, V</item>
         <item>Penjarangan </item>
+        <item>Gangguan Keamanan Hutan </item>
+        <item>Perubahan Kelas Hutan</item>
     </string-array>
 
     <integer-array name="groups_photos">
+        <item>@drawable/logo_eboni</item>
+        <item>@drawable/logo_eboni</item>
         <item>@drawable/logo_eboni</item>
         <item>@drawable/logo_eboni</item>
         <item>@drawable/logo_eboni</item>
