@@ -12,6 +12,8 @@ public class TrnSusunRisalah {
     public static final String DKN =  "DKN";
     public static final String N_HA =  "N_HA";
     public static final String STATUS = "STATUS";
+    public static final String TAHUN_TANAM = "TAHUN_TANAM";
+    public static final String KELAS_HUTAN = "KELAS_HUTAN";
     public static final String KETERANGAN = "KETERANGAN";
     public static final String KET1 = "KET1";
     public static final String KET2 = "KET2";
@@ -38,6 +40,8 @@ public class TrnSusunRisalah {
             "" + DKN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + N_HA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + STATUS + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + TAHUN_TANAM + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + KELAS_HUTAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KETERANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +

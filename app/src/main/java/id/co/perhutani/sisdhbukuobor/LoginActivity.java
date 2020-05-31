@@ -1368,6 +1368,8 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(TrnSusunRisalah.DKN, json_projek.getString("dkn"));
                         values.put(TrnSusunRisalah.N_HA, json_projek.getString("n_ha"));
                         values.put(TrnSusunRisalah.STATUS, json_projek.getString("status"));
+                        values.put(TrnSusunRisalah.TAHUN_TANAM, json_projek.getString("tahun_tanam"));
+                        values.put(TrnSusunRisalah.KELAS_HUTAN, json_projek.getString("kelashutan_id"));
                         values.put(TrnSusunRisalah.KETERANGAN, json_projek.getString("keterangan"));
                         values.put(TrnSusunRisalah.CREATED_AT, json_projek.getString("created_at"));
                         values.put(TrnSusunRisalah.UPDATED_AT, json_projek.getString("updated_at"));

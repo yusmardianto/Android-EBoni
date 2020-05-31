@@ -95,18 +95,18 @@ public class PersemaianFragment extends Fragment {
             }
         });
 
-        Toolbar toolbar = event.findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new DashboardBukuOborFragment();
-                FragmentManager frgManager = getFragmentManager();
-                FragmentTransaction ft = frgManager.beginTransaction();
-                ft.replace(R.id.nav_host_fragment, fragment);
-                ft.commit();
-            }
-        });
+//        Toolbar toolbar = event.findViewById(R.id.toolbar);
+//        toolbar.setNavigationIcon(R.drawable.ic_back);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Fragment fragment = new DashboardBukuOborFragment();
+//                FragmentManager frgManager = getFragmentManager();
+//                FragmentTransaction ft = frgManager.beginTransaction();
+//                ft.replace(R.id.nav_host_fragment, fragment);
+//                ft.commit();
+//            }
+//        });
 
         lsschedule = new ArrayList<>();
         try {

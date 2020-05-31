@@ -92,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.navigation_workorder:
                             selectedFragment = new WorkOrderFragment();
                             break;
-                        case R.id.navigation_pengelolaan:
-                            selectedFragment = new DashboardBukuOborFragment();
-                            break;
+//                        case R.id.navigation_pengelolaan:
+//                            selectedFragment = new DashboardBukuOborFragment();
+//                            break;
                         case R.id.navigation_profile:
                             selectedFragment = new ProfilFragment();
                             break;
