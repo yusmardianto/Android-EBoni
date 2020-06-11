@@ -1,13 +1,10 @@
-package id.co.perhutani.sisdhbukuobor.FragmentUi.workorder;
+package id.co.perhutani.sisdhbukuobor.FragmentUi.susunrisalah;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -23,36 +20,42 @@ import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.List;
 
-import id.co.perhutani.sisdhbukuobor.Adapter.Persemaian.PersemaianMenuAdapter;
+import id.co.perhutani.sisdhbukuobor.Adapter.SusunRisalah.SusunRisalahAdapter;
 import id.co.perhutani.sisdhbukuobor.Adapter.WorkOrder.WorkOrderAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.DashboardBukuOborFragment;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.persemaian.PersemaianViewModel;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.workorder.WorkOrderViewModel;
 import id.co.perhutani.sisdhbukuobor.R;
 
 
-public class WorkOrderFragment extends Fragment {
+public class BelumAccFragment extends Fragment {
 
-    View view_workorder;
+    View view_risalahblmacc;
+    private RecyclerView rv_risalah_blmacc;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerView rv_workorder;
-    private WorkOrderAdapter workorderAdapter;
-    ArrayList<WorkOrderViewModel> dataModels;
+    ArrayList<SusunRisalahViewModel> dataModels;
+    private SusunRisalahAdapter susunRisalahAdapter;
     private int color = 0;
     private static final int VERTICAL_ITEM_SPACE = 0;
 
-    private List<WorkOrderViewModel> lsworkorder;
+    private List<SusunRisalahViewModel> ls_risalah_blmacc;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view_workorder = inflater.inflate(R.layout.fragment_work_order, container, false);
 
-        rv_workorder = view_workorder.findViewById(R.id.workorder_recyclerview);
-        swipeRefreshLayout = view_workorder.findViewById(R.id.swipe_refresh_layout_recycler_view_workorder);
+        view_risalahblmacc = inflater.inflate(R.layout.fragment_belum_acc, container, false);
+
+        rv_risalah_blmacc = view_risalahblmacc.findViewById(R.id.risalah_blmacc_recyclerview);
+        swipeRefreshLayout = view_risalahblmacc.findViewById(R.id.swipe_refresh_layout_recycler_view_risalah_blmacc);
         swipeRefreshLayout.setColorSchemeResources(R.color.google_blue, R.color.google_green, R.color.google_red, R.color.google_yellow);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -63,32 +66,32 @@ public class WorkOrderFragment extends Fragment {
                         if (color > 4) {
                             color = 0;
                         }
-                        lsworkorder.clear();
+                        ls_risalah_blmacc.clear();
                         try {
-                            workorderAdapter = new WorkOrderAdapter(getActivity(),lsworkorder);
-                            rv_workorder.setLayoutManager(new LinearLayoutManager(getActivity()));
-                            rv_workorder.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-                            rv_workorder.setAdapter(workorderAdapter);
+                            susunRisalahAdapter = new SusunRisalahAdapter(getActivity(),ls_risalah_blmacc);
+                            rv_risalah_blmacc.setLayoutManager(new LinearLayoutManager(getActivity()));
+                            rv_risalah_blmacc.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+                            rv_risalah_blmacc.setAdapter(susunRisalahAdapter);
 
                             try {
 
                                 SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
                                 SQLiteDatabase db = DB_Helper.getReadableDatabase();
                                 final Cursor cur = db.rawQuery("SELECT " +
-                                        " ID ,WORKORDER,JENISKEGIATAN,TANGGAL, DARI" +
-                                        " FROM TRN_WORK_ORDER " +
+                                        " ID " +
+                                        " FROM TRN_SUSUN_RISALAH " +
+                                        " WHERE STATUS" + " LIKE " + "1" +
+                                        " OR STATUS " + " LIKE " + " 2 " +
+                                        " OR STATUS " + " LIKE " + " 3 " +
+                                        " OR STATUS " + " LIKE " + " 4 " +
                                         " ORDER BY ID ASC", null);
 
                                 cur.moveToPosition(0);
                                 dataModels = new ArrayList<>();
                                 for (int i = 0; i < cur.getCount(); i++) {
-                                    lsworkorder.add(new WorkOrderViewModel(
-                                            cur.getString(0),
-                                            cur.getString(1),
-                                            cur.getString(2),
-                                            cur.getString(3),
-                                            cur.getString(4)
-                                            ));
+                                    ls_risalah_blmacc.add(new SusunRisalahViewModel(
+                                            cur.getString(0)
+                                    ));
                                     cur.moveToNext();
                                 }
 
@@ -103,7 +106,7 @@ public class WorkOrderFragment extends Fragment {
                             ex.printStackTrace();
                         }
 
-                        workorderAdapter.setColor(++color);
+                        susunRisalahAdapter.setColor(++color);
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }, 1000);
@@ -111,11 +114,8 @@ public class WorkOrderFragment extends Fragment {
             }
         });
 
-
-        dataWorkorder();
-
-        final EditText txt_searchworkorder = view_workorder.findViewById(R.id.txt_search_workorder);
-        txt_searchworkorder.addTextChangedListener(new TextWatcher() {
+        final EditText txt_searcrisalah = view_risalahblmacc.findViewById(R.id.txt_search_risalah_blmacc);
+        txt_searcrisalah.addTextChangedListener(new TextWatcher() {
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // TODO Auto-generated method stub
@@ -123,11 +123,11 @@ public class WorkOrderFragment extends Fragment {
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                String input = txt_searchworkorder.getText().toString();
+                String input = txt_searcrisalah.getText().toString();
                 if (input.equals(null) || input.equals("") || input.equals(" ")) {
-                    dataWorkorder();
+                    data_blmacc();
                 } else {
-                    search_workorder(input);
+                    search_susunrisalah(input);
                 }
             }
 
@@ -136,42 +136,38 @@ public class WorkOrderFragment extends Fragment {
             }
         });
 
-        return view_workorder;
+        data_blmacc();
+
+
+        return view_risalahblmacc;
     }
+    public void data_blmacc(){
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    public void dataWorkorder(){
-
-        lsworkorder = new ArrayList<>();
+        ls_risalah_blmacc = new ArrayList<>();
         try {
-            workorderAdapter = new WorkOrderAdapter(getActivity(),lsworkorder);
-            rv_workorder.setLayoutManager(new LinearLayoutManager(getActivity()));
-            rv_workorder.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-            rv_workorder.setAdapter(workorderAdapter);
+            susunRisalahAdapter = new SusunRisalahAdapter(getActivity(),ls_risalah_blmacc);
+            rv_risalah_blmacc.setLayoutManager(new LinearLayoutManager(getActivity()));
+            rv_risalah_blmacc.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+            rv_risalah_blmacc.setAdapter(susunRisalahAdapter);
 
             try {
 
                 SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
                 SQLiteDatabase db = DB_Helper.getReadableDatabase();
                 final Cursor cur = db.rawQuery("SELECT " +
-                        " ID ,WORKORDER,JENISKEGIATAN,TANGGAL, DARI" +
-                        " FROM TRN_WORK_ORDER " +
+                        " ID " +
+                        " FROM TRN_SUSUN_RISALAH " +
+                        " WHERE STATUS" + " LIKE " + "1" +
+                        " OR STATUS " + " LIKE " + " 2 " +
+                        " OR STATUS " + " LIKE " + " 3 " +
+                        " OR STATUS " + " LIKE " + " 4 " +
                         " ORDER BY ID ASC", null);
 
                 cur.moveToPosition(0);
                 dataModels = new ArrayList<>();
                 for (int i = 0; i < cur.getCount(); i++) {
-                    lsworkorder.add(new WorkOrderViewModel(
-                            cur.getString(0),
-                            cur.getString(1),
-                            cur.getString(2),
-                            cur.getString(3),
-                            cur.getString(4)
+                    ls_risalah_blmacc.add(new SusunRisalahViewModel(
+                            cur.getString(0)
                     ));
                     cur.moveToNext();
                 }
@@ -188,35 +184,33 @@ public class WorkOrderFragment extends Fragment {
         }
 
     }
+    public void search_susunrisalah(String kph){
 
-    public void search_workorder(String workorder){
-
-        lsworkorder = new ArrayList<>();
+        ls_risalah_blmacc = new ArrayList<>();
         try {
-            workorderAdapter = new WorkOrderAdapter(getActivity(),lsworkorder);
-            rv_workorder.setLayoutManager(new LinearLayoutManager(getActivity()));
-            rv_workorder.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-            rv_workorder.setAdapter(workorderAdapter);
+            susunRisalahAdapter = new SusunRisalahAdapter(getActivity(),ls_risalah_blmacc);
+            rv_risalah_blmacc.setLayoutManager(new LinearLayoutManager(getActivity()));
+            rv_risalah_blmacc.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+            rv_risalah_blmacc.setAdapter(susunRisalahAdapter);
 
             try {
 
                 SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
                 SQLiteDatabase db = DB_Helper.getReadableDatabase();
                 final Cursor cur = db.rawQuery("SELECT " +
-                        " ID ,WORKORDER,JENISKEGIATAN,TANGGAL, DARI" +
-                        " FROM TRN_WORK_ORDER " +
-                        " WHERE WORKORDER " + " LIKE  " + "'%" + workorder + "%'" +
-                        " ORDER BY ID ASC", null);
+                        " TRN_SUSUN_RISALAH.ID " +
+                        " FROM TRN_SUSUN_RISALAH " +
+                        " INNER JOIN MST_ANAK_PETAK" +
+                        " ON TRN_SUSUN_RISALAH.ANAK_PETAK_ID = MST_ANAK_PETAK.KODE_ANAKPETAK" +
+                        " WHERE MST_ANAK_PETAK.KPH" + " LIKE  " + "'%" + kph + "%'" +
+                        " AND TRN_SUSUN_RISALAH.STATUS " + " != " + " 5 " +
+                        " ORDER BY TRN_SUSUN_RISALAH.ID ASC", null);
 
                 cur.moveToPosition(0);
                 dataModels = new ArrayList<>();
                 for (int i = 0; i < cur.getCount(); i++) {
-                    lsworkorder.add(new WorkOrderViewModel(
-                            cur.getString(0),
-                            cur.getString(1),
-                            cur.getString(2),
-                            cur.getString(3),
-                            cur.getString(4)
+                    ls_risalah_blmacc.add(new SusunRisalahViewModel(
+                            cur.getString(0)
                     ));
                     cur.moveToNext();
                 }

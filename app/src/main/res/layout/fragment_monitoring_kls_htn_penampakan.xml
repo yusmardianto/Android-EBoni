@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".FragmentUi.MonitoringKlsHtnPenampakan.MonitoringKlsHtnPenampakanFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_perubahankls"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimary">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="Monitoring Kelas Hutan dan Penampakan"
+                android:textSize="18dp" />
+            <TextView
+                android:visibility="gone"
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="[ nomor surat perintah kerja ]"
+                android:textSize="12dp" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@id/toolbar_perubahankls"
+        android:id="@+id/search_add"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_weight="1"
+            android:drawableRight="@drawable/ic_search"
+            android:id="@+id/txt_search_monitoring"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapesearch"
+            android:hint="Cari Data Monitoring Kelas Hutan"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textColorHint="#B4B4B4"
+            android:layout_marginBottom="10dp"/>
+
+
+    </LinearLayout>
+    <include layout="@layout/content_list_monitoring_klshtn" />
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_marginTop="-400dp"
+        android:id="@+id/layout_tidakadadataperubahan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:hint="Tidak ada data"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -20,15 +20,21 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
 <!--        android:scrollbars="none">-->
+    <FrameLayout
+        android:id="@+id/nav_host_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/nav_view">
 
-        <fragment
-            android:layout_above="@id/nav_view"
-            android:id="@+id/nav_host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:labelVisibilityMode="labeled"
-            app:navGraph="@navigation/mobile_navigation" />
-<!--    </ScrollView>-->
+    </FrameLayout>
+
+<!--        <fragment-->
+<!--            android:layout_above="@id/nav_view"-->
+<!--            android:id="@+id/nav_host_fragment"-->
+<!--            android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:defaultNavHost="true"-->
+<!--            app:labelVisibilityMode="labeled"/>-->
+<!--&lt;!&ndash;    </ScrollView>&ndash;&gt;-->
 </RelativeLayout>

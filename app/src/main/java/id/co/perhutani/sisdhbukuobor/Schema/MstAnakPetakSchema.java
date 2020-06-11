@@ -3,6 +3,11 @@ package id.co.perhutani.sisdhbukuobor.Schema;
 public class MstAnakPetakSchema {
     public static final String TABLE_NAME = "MST_ANAK_PETAK";
     public static final String _ID = "ID";
+    public static final String KODE_ANAKPETAK = "KODE_ANAKPETAK";
+    public static final String DIVISI = "DIVISI";
+    public static final String KPH = "KPH";
+    public static final String BKPH = "BKPH";
+    public static final String RPH = "RPH";
     public static final String BAGIAN_HUTAN = "BAGIAN_HUTAN";
     public static final String KELAS_HUTAN = "KELAS_HUTAN";
     public static final String KELAS_PERUSAHAAN = "KELAS_PERUSAHAAN";
@@ -24,6 +29,11 @@ public class MstAnakPetakSchema {
     public static final String KET10 = "KET10";
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "" + KODE_ANAKPETAK + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + DIVISI + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + BKPH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + RPH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + KPH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + BAGIAN_HUTAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KELAS_HUTAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KELAS_PERUSAHAAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +

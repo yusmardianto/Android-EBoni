@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.MonitoringKlsHtnPenampakan.MonitoringKlsHtnPenampakanFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.identifikasitenurial.ListIdentifikasiTenurialFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.ListInteraksiMDHFragment;
@@ -24,6 +25,7 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.pengelolaanhutan.ListPengelolaan
 import id.co.perhutani.sisdhbukuobor.FragmentUi.persemaian.PersemaianFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas.ListPerubahanKelasFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.registerpcp.ListRegisterpcpFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.susunrisalah.SusunRisalahFragment;
 import id.co.perhutani.sisdhbukuobor.R;
 
 public class BukuOborFragment extends Fragment {
@@ -50,8 +52,6 @@ public class BukuOborFragment extends Fragment {
         lingangguan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                View gangguan = inflater.inflate(R.layout.gangguan_fragment, container, false);
 
                 Fragment fragment = new ListGangguanFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -158,6 +158,32 @@ public class BukuOborFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new PersemaianFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        LinearLayout susunrisalah = (LinearLayout)root.findViewById(R.id.susunrisalah);
+        susunrisalah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new SusunRisalahFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        LinearLayout monitoring_klshtn = (LinearLayout)root.findViewById(R.id.monitoring_klshtn);
+        monitoring_klshtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new MonitoringKlsHtnPenampakanFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);

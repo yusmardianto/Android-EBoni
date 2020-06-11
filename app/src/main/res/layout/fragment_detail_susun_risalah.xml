@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_navigation_detail_susunrisalah"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#EAEAEA">
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/buat_test"
+            android:fontFamily="@font/font_aal_default"
+            android:textColor="@color/judulkontrak"
+            android:text="Detail Andil"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right|center" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/layout_scrolldetail_andil"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/nama_penggarap"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Divisi"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_divisi"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Divisi Regional Jawa Timur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="RPH"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_rph"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Majenang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="KPH"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_kph"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="MAJENANG"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Petak"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_petak"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="69"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="BKPH"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_bkph"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Majenang Barat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Anak Petak"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_anakpetak"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="69B"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:background="#e0e0e0"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/jam_schedule"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:fontFamily="@font/font_aal_bold"
+                        android:text="Detail"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Luas"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_luas"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="7.30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="DKN"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_dkn"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="0.97"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Jenis Tanaman"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_jenis_tanaman"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="JPP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="N/HA"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_nha"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="850.00"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Peninggi"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_peninggi"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="345.00"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Tahun Tanam"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_tahun_tanam"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="2011"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Bonita"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_bonita"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="3.00"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kelas Hutan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_kelashutan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="KUII"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="KBD"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_kbd"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="1.09"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Tahun Tanam Rata"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_tahun_tanam_rata"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Permudaan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_permudaan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Tanaman Sela"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_tanaman_sela"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Bentuk Lapangan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_bentuk_lapangan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Risalah Tanah"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_risalahtanah"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Risalah Tegakan Tanaman Bawah"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_risalahtegakan_tanaman_bawah"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Keterangan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_risalah_keterangan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

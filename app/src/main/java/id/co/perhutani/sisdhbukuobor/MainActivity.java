@@ -52,15 +52,18 @@ public class MainActivity extends AppCompatActivity {
             token = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN);
         } catch (Exception e) {
         }
-        Sentry.getContext().recordBreadcrumb(
-                new BreadcrumbBuilder().setMessage(namedesc).build()
-        );
-        // Set the user in the current context.
-        Sentry.getContext().setUser(
-                new UserBuilder().setUsername(username)
-                        .setEmail(namedesc)
-                        .build());
-
+        try {
+            Sentry.getContext().recordBreadcrumb(
+                    new BreadcrumbBuilder().setMessage(namedesc).build()
+            );
+            // Set the user in the current context.
+            Sentry.getContext().setUser(
+                    new UserBuilder().setUsername(username)
+                            .setEmail(namedesc)
+                            .build());
+        }
+        catch (Exception e) {
+        }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
                 new HomeFragment()).commit();

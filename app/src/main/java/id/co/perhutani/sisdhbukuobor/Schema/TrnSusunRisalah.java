@@ -1,7 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
 public class TrnSusunRisalah {
-    public static final String TABLE_NAME = "TRN_SUSUSN_RISALAH";
+    public static final String TABLE_NAME = "TRN_SUSUN_RISALAH";
     public static final String _ID = "ID";
     public static final String ANAK_PETAK_ID = "ANAK_PETAK_ID";
     public static final String LUAS = "LUAS";
@@ -14,6 +14,12 @@ public class TrnSusunRisalah {
     public static final String STATUS = "STATUS";
     public static final String TAHUN_TANAM = "TAHUN_TANAM";
     public static final String KELAS_HUTAN = "KELAS_HUTAN";
+    public static final String TAHUN_TANAM_RATA = "TAHUN_TANAM_RATA";
+    public static final String PERMUDAAN = "PERMUDAAN";
+    public static final String TANAMAN_SELA = "TANAMAN_SELA";
+    public static final String BENTUK_LAPANGAN = "BENTUK_LAPANGAN";
+    public static final String RISALAH_TANAH = "RISALAH_TANAH";
+    public static final String RISALAH_TEGAKAN_TANAMAN_BAWAH = "RISALAH_TEGAKAN_TANAMAN_BAWAH";
     public static final String KETERANGAN = "KETERANGAN";
     public static final String KET1 = "KET1";
     public static final String KET2 = "KET2";
@@ -42,6 +48,12 @@ public class TrnSusunRisalah {
             "" + STATUS + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + TAHUN_TANAM + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KELAS_HUTAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + TAHUN_TANAM_RATA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + PERMUDAAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + TANAMAN_SELA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + BENTUK_LAPANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + RISALAH_TANAH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + RISALAH_TEGAKAN_TANAMAN_BAWAH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KETERANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
