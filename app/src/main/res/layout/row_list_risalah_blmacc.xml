@@ -41,7 +41,7 @@
                     android:textStyle="bold"
                     android:paddingTop="11dp"
                     android:singleLine="true"
-                    android:text="RPH"
+                    android:text="KPH"
                     android:textSize="15sp" />
                 <ImageView
                     android:id="@+id/img_gariss"
