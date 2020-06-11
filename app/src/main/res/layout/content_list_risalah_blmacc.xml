@@ -11,7 +11,7 @@
     android:layout_marginBottom="10dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="id.co.perhutani.sisdhbukuobor.FragmentUi.susunrisalah.BelumAccFragment"
-    tools:showIn="@layout/fragment_monitoring_kls_htn_penampakan">
+    tools:showIn="@layout/fragment_belum_acc">
 
     <LinearLayout
         android:layout_marginTop="45dp"
@@ -27,7 +27,7 @@
             android:scrollbars="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rv_monitoring_klshtn">
+            android:id="@+id/risalah_blmacc_recyclerview">
         </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
