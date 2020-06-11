@@ -81,7 +81,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:layout_margin="10dp"
-                                    android:src="@drawable/ic_logo_eboni" />
+                                    android:src="@drawable/ic_icn_keamananhtn" />
 
                                 <TextView
                                     android:textAlignment="center"
@@ -140,7 +140,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:layout_margin="10dp"
-                                    android:src="@drawable/ic_logo_eboni" />
+                                    android:src="@drawable/ic_icn_perubahankelashtn" />
 
                                 <TextView
                                     android:textAlignment="center"
@@ -203,7 +203,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:layout_margin="10dp"
-                                    android:src="@drawable/ic_logo_eboni" />
+                                    android:src="@drawable/ic_icn_interaksimdh" />
 
                                 <TextView
                                     android:textAlignment="center"
@@ -262,7 +262,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:layout_margin="10dp"
-                                    android:src="@drawable/ic_logo_eboni" />
+                                    android:src="@drawable/ic_icn_pemantauansatwa" />
 
                                 <TextView
                                     android:textAlignment="center"
@@ -325,7 +325,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:layout_margin="10dp"
-                                    android:src="@drawable/ic_logo_eboni" />
+                                    android:src="@drawable/ic_icn_palbatas" />
 
                                 <TextView
                                     android:textAlignment="center"
@@ -384,7 +384,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:layout_margin="10dp"
-                                    android:src="@drawable/ic_logo_eboni" />
+                                    android:src="@drawable/ic_icn_registerpcp" />
 
                                 <TextView
                                     android:fontFamily="@font/font_aal_default"
@@ -446,7 +446,7 @@
                                     android:layout_width="60dp"
                                     android:layout_height="60dp"
                                     android:layout_margin="10dp"
-                                    android:src="@drawable/ic_logo_eboni" />
+                                    android:src="@drawable/ic_icn_konfliktenurial" />
 
                                 <TextView
                                     android:textAlignment="center"
