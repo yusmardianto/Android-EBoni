@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.co.perhutani.sisdhbukuobor.Adapter.MonitoringKlsHtn.MonitoringKlsHtnAdapter;
 import id.co.perhutani.sisdhbukuobor.Adapter.SusunRisalah.SusunRisalahAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
@@ -35,13 +36,13 @@ public class MonitoringKlsHtnFragment extends Fragment {
    View view_monitoring;
     private RecyclerView rv_monitoring;
     private SwipeRefreshLayout swipeRefreshLayout;
-    ArrayList<SusunRisalahViewModel> dataModels;
-    private SusunRisalahAdapter monitoringAdapter;
+    ArrayList<MonitoringKlsHtnViewModel> dataModels;
+    private MonitoringKlsHtnAdapter monitoringAdapter;
     private int color = 0;
     private static final int VERTICAL_ITEM_SPACE = 0;
 
     private SQLiteHandler db;
-    private List<SusunRisalahViewModel> ls_monitoring;
+    private List<MonitoringKlsHtnViewModel> ls_monitoring;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class MonitoringKlsHtnFragment extends Fragment {
                         }
                         ls_monitoring.clear();
                         try {
-                            monitoringAdapter = new SusunRisalahAdapter(getActivity(),ls_monitoring);
+                            monitoringAdapter = new MonitoringKlsHtnAdapter(getActivity(),ls_monitoring);
                             rv_monitoring.setLayoutManager(new LinearLayoutManager(getActivity()));
                             rv_monitoring.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
                             rv_monitoring.setAdapter(monitoringAdapter);
@@ -89,7 +90,7 @@ public class MonitoringKlsHtnFragment extends Fragment {
                                 cur.moveToPosition(0);
                                 dataModels = new ArrayList<>();
                                 for (int i = 0; i < cur.getCount(); i++) {
-                                    ls_monitoring.add(new SusunRisalahViewModel(
+                                    ls_monitoring.add(new MonitoringKlsHtnViewModel(
                                             cur.getString(0)
                                     ));
                                     cur.moveToNext();
@@ -158,7 +159,7 @@ public class MonitoringKlsHtnFragment extends Fragment {
 
         ls_monitoring = new ArrayList<>();
         try {
-            monitoringAdapter = new SusunRisalahAdapter(getActivity(),ls_monitoring);
+            monitoringAdapter = new MonitoringKlsHtnAdapter(getActivity(),ls_monitoring);
             rv_monitoring.setLayoutManager(new LinearLayoutManager(getActivity()));
             rv_monitoring.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
             rv_monitoring.setAdapter(monitoringAdapter);
@@ -176,7 +177,7 @@ public class MonitoringKlsHtnFragment extends Fragment {
                 cur.moveToPosition(0);
                 dataModels = new ArrayList<>();
                 for (int i = 0; i < cur.getCount(); i++) {
-                    ls_monitoring.add(new SusunRisalahViewModel(
+                    ls_monitoring.add(new MonitoringKlsHtnViewModel(
                             cur.getString(0)
                     ));
                     cur.moveToNext();
@@ -198,7 +199,7 @@ public class MonitoringKlsHtnFragment extends Fragment {
 
         ls_monitoring = new ArrayList<>();
         try {
-            monitoringAdapter = new SusunRisalahAdapter(getActivity(),ls_monitoring);
+            monitoringAdapter = new MonitoringKlsHtnAdapter(getActivity(),ls_monitoring);
             rv_monitoring.setLayoutManager(new LinearLayoutManager(getActivity()));
             rv_monitoring.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
             rv_monitoring.setAdapter(monitoringAdapter);
@@ -219,7 +220,7 @@ public class MonitoringKlsHtnFragment extends Fragment {
                 cur.moveToPosition(0);
                 dataModels = new ArrayList<>();
                 for (int i = 0; i < cur.getCount(); i++) {
-                    ls_monitoring.add(new SusunRisalahViewModel(
+                    ls_monitoring.add(new MonitoringKlsHtnViewModel(
                             cur.getString(0)
                     ));
                     cur.moveToNext();

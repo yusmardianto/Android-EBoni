@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listview_row_jenis_tiket"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <!-- RIGHT TITLE PART -->
+        <LinearLayout
+            android:background="#F8F2F2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linear_row_monitoring_klshtn">
+
+            <LinearLayout
+                android:layout_weight="0"
+                android:background="@color/colorPrimary"
+                android:src="@drawable/img_success_1"
+                android:layout_width="4dp"
+                android:layout_height="65dp"
+                android:layout_marginRight="5dp"
+                android:paddingTop="5dp" />
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_weight="1"
+                        android:id="@+id/monitoring_klshtn_anakpetak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:fadingEdge="horizontal"
+                        android:textStyle="bold"
+                        android:paddingTop="11dp"
+                        android:singleLine="true"
+                        android:text="Anak Petak"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:id="@+id/monitoring_klshtn_luas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:fadingEdge="horizontal"
+                        android:textStyle="bold"
+                        android:paddingTop="11dp"
+                        android:text="Luas Petak"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_gariss"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="1dp"
+                    android:src="@color/contentDividerLine" />
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_gravity="bottom"
+                        android:id="@+id/monitoring_klshtn_jenistanaman"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/font_aal_default"
+                        android:paddingTop="2dp"
+                        android:text="Jenis Tanaman" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_weight="0"
+                android:src="@drawable/ic_right"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:paddingTop="5dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
