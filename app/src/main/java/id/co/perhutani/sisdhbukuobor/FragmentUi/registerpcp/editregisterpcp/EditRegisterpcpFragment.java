@@ -42,7 +42,7 @@ public class EditRegisterpcpFragment extends Fragment {
 
     private static String id, str_nopcp, str_anakpetak, str_tahunpcp, str_luasbaku, str_luasblok,
             str_umur, str_rataratakeliling, str_bonita, str_nlapangan, str_normalpcp, str_nmati, str_tahunjarangan,
-            str_peninggi, str_keterangan;
+            str_peninggi, str_keterangan, str_petak;
 
     private Button btnSimpanRegisterpcp;
 
@@ -75,7 +75,7 @@ public class EditRegisterpcpFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 anakpetak.setText(id_petak);
 
             }
@@ -151,7 +151,7 @@ public class EditRegisterpcpFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_pcp);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         anakpetak.setText(id_petak);
 
 
@@ -169,6 +169,7 @@ public class EditRegisterpcpFragment extends Fragment {
         str_tahunjarangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_JARANGAN);
         str_peninggi = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.PENIGGI);
         str_keterangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KETERANGAN);
+        str_petak = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.HEXA);
 
         nopcp.setText(str_nopcp);
         anakpetak.setText(str_anakpetak);
@@ -303,7 +304,7 @@ public class EditRegisterpcpFragment extends Fragment {
                                             enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             Aktifitasnya.setID_Registerpcp(Integer.parseInt(id));
                                             Aktifitasnya.setNoPcp(nopcp.getText().toString());
-                                            Aktifitasnya.setAnakPetakId(enKata);
+                                            Aktifitasnya.setAnakPetakId(anakpetak.getText().toString());
                                             Aktifitasnya.setTahun(tahunpcp.getText().toString());
                                             Aktifitasnya.setLuasBaku(luasbaku.getText().toString());
                                             Aktifitasnya.setLuasBlok(luasblok.getText().toString());
@@ -318,6 +319,7 @@ public class EditRegisterpcpFragment extends Fragment {
                                             Aktifitasnya.setKeteranganPcp(keterangan.getText().toString());
                                             Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
                                             Aktifitasnya.setKet9("2");
+                                            Aktifitasnya.setKet11(enKata);
                                             db.EditDataRegisterPCP(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

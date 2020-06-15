@@ -47,7 +47,7 @@ public class EditPerubahanFragment extends Fragment {
     private static SQLiteHandler db;
     private static String id, str_petak_id, str_tahun, str_luas, str_jenis_tanaman,
             str_kelas_tanaman, str_luas_perkiraan, str_jenis_perkiraan, str_kelas_perkiraan,
-            str_no_bappkh, str_luas_definitif, str_jenis_definitif, str_kelas_definitif, str_keterangan,
+            str_no_bappkh, str_luas_definitif, str_jenis_definitif, str_kelas_definitif, str_keterangan, str_petak,
             str_tanggal;
     private Button btnSimpanPerubahan;
 
@@ -84,7 +84,7 @@ public class EditPerubahanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 petak_id.setText(id_petak);
 
             }
@@ -334,7 +334,7 @@ public class EditPerubahanFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_perubahan);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         petak_id.setText(id_petak);
 
         spin_jenis_tanaman = root.findViewById(R.id.edit_spinner_jenis_perubahan);
@@ -386,6 +386,7 @@ public class EditPerubahanFragment extends Fragment {
         str_jenis_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET6);
         str_kelas_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET7);
         str_keterangan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KETERANGAN_PERUBAHAN);
+        str_petak = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.HEXA);
 
         petak_id.setText(str_petak_id);
         tahun.setText(str_tahun);
@@ -514,7 +515,7 @@ public class EditPerubahanFragment extends Fragment {
                                             PerubahankelasModel Aktifitasnya = new PerubahankelasModel();
                                             enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             Aktifitasnya.setID_Perubahan(Integer.parseInt(id));
-                                            Aktifitasnya.setPetakID(enKata);
+                                            Aktifitasnya.setPetakID(petak_id.getText().toString());
                                             Aktifitasnya.setTahun(tahun.getText().toString());
                                             Aktifitasnya.setLuas(luas.getText().toString());
                                             Aktifitasnya.setJenisTanaman(jenis_tanaman.getText().toString());
@@ -535,6 +536,7 @@ public class EditPerubahanFragment extends Fragment {
                                             Aktifitasnya.setKet6(spin_jenis_tanaman_definitif.getSelectedItem().toString());
                                             Aktifitasnya.setKet7(spin_kelas_hutan_definitif.getSelectedItem().toString());
                                             Aktifitasnya.setKet9("2");
+                                            Aktifitasnya.setKet11(enKata);
                                             db.EditDataPerubahanKelas(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

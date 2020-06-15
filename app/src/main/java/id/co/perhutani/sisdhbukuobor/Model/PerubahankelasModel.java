@@ -26,13 +26,14 @@ public class PerubahankelasModel {
     private String Ket7;
     private String Ket9;
     private String Ket10;
+    private String Ket11;
 
     public PerubahankelasModel(String ID, String petakID, String tahun, String luas, String jenisTanaman,
                                String kelasHutan, String luasPerkiraan, String jenisTanamanPerkiraan,
                                String kelasHutanPerkiraan, String noBappkh, String luasDefinitif,
                                String jenisTanamanDefinitif, String kelasHutanDefinitif, String keterangan,
                                String ket1, String ket2, String ket3, String ket4, String ket5,
-                               String ket6, String ket7, int id_perubahan, String ket9, String ket10)
+                               String ket6, String ket7, int id_perubahan, String ket9, String ket10, String ket11)
     {
         this.ID = ID;
         this.PetakID = petakID;
@@ -58,6 +59,7 @@ public class PerubahankelasModel {
         this.Ket7 = ket7;
         this.Ket9 = ket9;
         this.Ket10 = ket10;
+        this.Ket10 = ket11;
     }
 
     public PerubahankelasModel() {
@@ -254,5 +256,13 @@ public class PerubahankelasModel {
 
     public void setKet7(String ket7) {
         Ket7 = ket7;
+    }
+
+    public String getKet11() {
+        return Ket11;
+    }
+
+    public void setKet11(String ket11) {
+        Ket11 = ket11;
     }
 }

@@ -49,7 +49,7 @@ public class EditInteraksimdhFragment extends Fragment {
     public static final String MSG_KEY = "id";
     private static SQLiteHandler db;
     private static String id, str_anakpetak, str_tahun, str_namadesa, str_bentukinteraksi, str_status,
-            str_keterangan;
+            str_keterangan, str_petak;
     private Spinner spin_anak_petak;
     private Spinner spin_nama_desa;
     private Spinner spin_bentuk_interaksi;
@@ -80,7 +80,7 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 anakpetak.setText(id_petak);
             }
 
@@ -230,7 +230,7 @@ public class EditInteraksimdhFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anakpetak_interaksi);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         anakpetak.setText(id_petak);
 
         spin_nama_desa = root.findViewById(R.id.edit_spinner_namadesa);
@@ -257,6 +257,7 @@ public class EditInteraksimdhFragment extends Fragment {
         str_bentukinteraksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.BENTUK_INTERAKSI);
         str_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.STATUS);
         str_keterangan = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KETERANGAN);
+        str_petak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.HEXA);
 
         anakpetak.setText(str_anakpetak);
         tahun.setText(str_tahun);
@@ -350,7 +351,7 @@ public class EditInteraksimdhFragment extends Fragment {
                                             InteraksimdhModel Aktifitasnya = new InteraksimdhModel();
                                             enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             Aktifitasnya.setID_IMDH(Integer.parseInt(id));
-                                            Aktifitasnya.setAnakpetakid(enKata);
+                                            Aktifitasnya.setAnakpetakid(anakpetak.getText().toString());
                                             Aktifitasnya.setTahun(tahun.getText().toString());
                                             Aktifitasnya.setKet2(tahun.getText().toString());
                                             Aktifitasnya.setDesaid(namadesa.getText().toString());
@@ -362,6 +363,7 @@ public class EditInteraksimdhFragment extends Fragment {
                                             Aktifitasnya.setKet4(spin_bentuk_interaksi.getSelectedItem().toString());
                                             Aktifitasnya.setKet5(spin_status.getSelectedItem().toString());
 //                                            Aktifitasnya.s(spin_status.getSelectedItem().toString());
+                                            Aktifitasnya.setKet11(enKata);
                                             Aktifitasnya.setKet9("2");
                                             db.EditDataInteraksiMDH(Aktifitasnya);
 

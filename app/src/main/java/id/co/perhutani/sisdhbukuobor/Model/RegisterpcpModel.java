@@ -20,12 +20,13 @@ public class RegisterpcpModel {
     private String Ket1;
     private String Ket9;
     private String Ket10;
+    private String Ket11;
 
     public RegisterpcpModel(String ID, String noPcp, String anakPetakId, String tahun,
                             String luasBaku, String luasBlok, String umur, String rataKeliling,
                             String bonita, String NLapangan, String normalPcp, String NMati,
                             String tahunJarangan, String peninggi, String keteranganPcp,  String ket1
-                            , String ket9, String ket10, int id_registerpcp )
+                            , String ket9, String ket10, String ket11, int id_registerpcp )
     {
         this.ID = ID;
         this.NoPcp = noPcp;
@@ -46,6 +47,7 @@ public class RegisterpcpModel {
         this.Ket1 = ket1;
         this.Ket9 = ket9;
         this.Ket10 = ket10;
+        this.Ket10 = ket11;
     }
 
     public RegisterpcpModel(){
@@ -202,5 +204,13 @@ public class RegisterpcpModel {
 
     public void setKet1(String ket1) {
         Ket1 = ket1;
+    }
+
+    public String getKet11() {
+        return Ket11;
+    }
+
+    public void setKet11(String ket11) {
+        Ket11 = ket11;
     }
 }

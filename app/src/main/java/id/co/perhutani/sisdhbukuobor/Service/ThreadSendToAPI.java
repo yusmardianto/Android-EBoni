@@ -334,6 +334,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_kerugian_getah = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_GETAH);
                         final String str_nilai_kerugian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NILAI_KERUGIAN);
                         final String str_keterangan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KETERANGAN);
+                        final String str_hexa = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.CREATED_BY);
                         final String str_updated_at = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.UPDATED_AT);
@@ -345,6 +346,7 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("tahun", str_tgl_kejadian);
                         jsonParam.put("anakpetak_id", str_isipetak);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("nomor_ha", str_nomorA);
                         jsonParam.put("tanggal_ha", str_tanggal);
                         jsonParam.put("jenistanaman", str_jenis_tanaman);
@@ -471,6 +473,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_kerugian_getah = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_GETAH);
                         final String str_nilai_kerugian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NILAI_KERUGIAN);
                         final String str_keterangan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KETERANGAN);
+                        final String str_hexa = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.CREATED_BY);
                         final String str_updated_at = db.getDataDetail_v2(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.UPDATED_AT);
@@ -481,6 +484,7 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("tahun", str_tgl_kejadian);
                         jsonParam.put("anakpetak_id", str_isipetak);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("nomor_ha", str_nomorA);
                         jsonParam.put("tanggal_ha", str_tanggal);
                         jsonParam.put("jenistanaman", str_jenis_tanaman);
@@ -577,6 +581,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_jenis_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_DEFINITIF);
                         final String str_kelas_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF);
                         final String str_keterangan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KETERANGAN_PERUBAHAN);
+                        final String str_hexa = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.CREATED_BY);
                         final String str_updated_at = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.UPDATED_AT);
@@ -586,6 +591,7 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("petak", str_petak_id);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("tahun", str_tahun);
                         jsonParam.put("luas", str_luas);
                         jsonParam.put("jenistanaman", str_jenis_tanaman);
@@ -713,6 +719,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_jenis_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.JENIS_TANAMAN_DEFINITIF);
                         final String str_kelas_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KELAS_HUTAN_DEFINITIF);
                         final String str_keterangan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KETERANGAN_PERUBAHAN);
+                        final String str_hexa = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.CREATED_BY);
                         final String str_updated_at = db.getDataDetail_v2(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.UPDATED_AT);
@@ -722,6 +729,7 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("petak", str_petak_id);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("tahun", str_tahun);
                         jsonParam.put("luas", str_luas);
                         jsonParam.put("jenistanaman", str_jenis_tanaman);
@@ -810,13 +818,15 @@ public class ThreadSendToAPI extends Thread {
                         final String str_bentukinteraksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.BENTUK_INTERAKSI);
                         final String str_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.STATUS);
                         final String str_keterangan = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KETERANGAN);
+                        final String str_hexa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET10);
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
-                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("anakpetak_id", str_anakpetak);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("tahun", str_tahun);
                         jsonParam.put("namadesa", str_namadesa);
                         jsonParam.put("bentukinteraksi", str_bentukinteraksi);
@@ -927,13 +937,15 @@ public class ThreadSendToAPI extends Thread {
                         final String str_bentukinteraksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.BENTUK_INTERAKSI);
                         final String str_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.STATUS);
                         final String str_keterangan = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KETERANGAN);
+                        final String str_hexa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET10);
 
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
-                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("anakpetak_id", str_anakpetak);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("tahun", str_tahun);
                         jsonParam.put("namadesa", str_namadesa);
                         jsonParam.put("bentukinteraksi", str_bentukinteraksi);
@@ -1016,6 +1028,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
                         final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
                         final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+                        final String str_hexa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
@@ -1023,7 +1036,8 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("jenissatwa", str_jenissatwa);
-                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("anakpetak_id", str_anakpetak);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("jumlahsatwa", str_jumlahsatwa);
                         jsonParam.put("caralihat", str_caralihat);
                         jsonParam.put("waktulihat", str_waktulihat);
@@ -1136,6 +1150,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.WAKTU_LIHAT);
                         final String str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
                         final String str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+                        final String str_hexa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.CREATED_BY);
                         final String str_ket10 = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET10);
@@ -1143,7 +1158,8 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("jenissatwa", str_jenissatwa);
-                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("anakpetak_id", str_anakpetak);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("jumlahsatwa", str_jumlahsatwa);
                         jsonParam.put("caralihat", str_caralihat);
                         jsonParam.put("waktulihat", str_waktulihat);
@@ -1442,6 +1458,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_tahunjarangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_JARANGAN);
                         final String str_peninggi = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.PENIGGI);
                         final String str_keterangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KETERANGAN);
+                        final String str_hexa = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_BY);
                         final String str_updated_at = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.UPDATED_AT);
@@ -1451,7 +1468,8 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("nopcp", str_nopcp);
-                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("anakpetak_id", str_anakpetak);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("tahunpcp", str_tahunpcp);
                         jsonParam.put("luasbaku", str_luasbaku);
                         jsonParam.put("luasblok", str_luasblok);
@@ -1580,6 +1598,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_tahunjarangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_JARANGAN);
                         final String str_peninggi = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.PENIGGI);
                         final String str_keterangan = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KETERANGAN);
+                        final String str_hexa = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.CREATED_BY);
                         final String str_updated_at = db.getDataDetail_v2(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.UPDATED_AT);
@@ -1589,7 +1608,8 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("aksi", "ubah");
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("nopcp", str_nopcp);
-                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("anakpetak_id", str_anakpetak);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("tahunpcp", str_tahunpcp);
                         jsonParam.put("luasbaku", str_luasbaku);
                         jsonParam.put("luasblok", str_luasblok);
@@ -1684,6 +1704,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_awal_konflik = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.AWAL_KONFLIK);
                         final String str_pihak_terlibat = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.PIHAK_TERLIBAT);
                         final String str_status_penyelesaian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STATUS_PENYELESAIAN);
+                        final String str_hexa = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.CREATED_BY);
                         final String str_updated_at = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.UPDATED_AT);
@@ -1694,6 +1715,7 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("jenispermasalahan", str_jenis_permasalahan);
                         jsonParam.put("petak", str_petak);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("kelashutan", str_kelas_hutan);
                         jsonParam.put("tahun", str_tahun);
                         jsonParam.put("strata", str_strata);
@@ -1816,6 +1838,7 @@ public class ThreadSendToAPI extends Thread {
                         final String str_awal_konflik = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.AWAL_KONFLIK);
                         final String str_pihak_terlibat = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.PIHAK_TERLIBAT);
                         final String str_status_penyelesaian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STATUS_PENYELESAIAN);
+                        final String str_hexa = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.HEXA);
                         final String str_created_at = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.CREATED_AT);
                         final String str_created_by = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.CREATED_BY);
                         final String str_updated_at = db.getDataDetail_v2(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.UPDATED_AT);
@@ -1826,6 +1849,7 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("jenispermasalahan", str_jenis_permasalahan);
                         jsonParam.put("petak", str_petak);
+                        jsonParam.put("anakpetak", str_hexa);
                         jsonParam.put("kelashutan", str_kelas_hutan);
                         jsonParam.put("tahun", str_tahun);
                         jsonParam.put("strata", str_strata);

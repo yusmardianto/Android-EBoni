@@ -32,6 +32,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.registerpcp.ListRegisterpcpFragment;
 
@@ -68,7 +69,7 @@ public class TambahRegisterpcpFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME,
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID,
                         pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
                 anakpetak.setText(id_petak);
 
@@ -135,7 +136,7 @@ public class TambahRegisterpcpFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.spinner_anak_petak_pcp);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         anakpetak.setText(id_petak);
 
 
@@ -249,7 +250,7 @@ public class TambahRegisterpcpFragment extends Fragment {
                                             ContentValues values_aktifitas = new ContentValues();
                                             enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             values_aktifitas.put(TrnRegisterPcp.NO_PCP, nopcp.getText().toString());
-                                            values_aktifitas.put(TrnRegisterPcp.ANAK_PETAK_ID, enKata);
+                                            values_aktifitas.put(TrnRegisterPcp.ANAK_PETAK_ID, anakpetak.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.TAHUN_PCP, tahunpcp.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.LUAS_BAKU, luasbaku.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.LUAS_BLOK, luasblok.getText().toString());
@@ -264,6 +265,7 @@ public class TambahRegisterpcpFragment extends Fragment {
                                             values_aktifitas.put(TrnRegisterPcp.KETERANGAN, keterangan.getText().toString());
                                             values_aktifitas.put(TrnRegisterPcp.KET1, spin_anak_petak.getSelectedItem().toString());
                                             values_aktifitas.put(TrnRegisterPcp.KET9, "0");
+                                            values_aktifitas.put(TrnRegisterPcp.HEXA, enKata);
                                             db.create(TrnRegisterPcp.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();
 

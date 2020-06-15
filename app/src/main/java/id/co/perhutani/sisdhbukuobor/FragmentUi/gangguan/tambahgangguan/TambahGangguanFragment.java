@@ -109,7 +109,7 @@ public class TambahGangguanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 isipetak.setText(id_petak);
 
             }
@@ -234,7 +234,7 @@ public class TambahGangguanFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.spinner_anak_petak_gukamhut);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         isipetak.setText(id_petak);
         } catch (Exception e) {
             AjnClass.showAlert(getActivity(), "Master anak petak tidak ditemukan " + e.toString());
@@ -373,7 +373,7 @@ public class TambahGangguanFragment extends Fragment {
                                             ContentValues values_aktifitas = new ContentValues();
                                             enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             values_aktifitas.put(TrnGangguanKeamananHutan.TANGGAL_KEJADIAN, tgl_kejadian.getText().toString());
-                                            values_aktifitas.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, enKata);
+                                            values_aktifitas.put(TrnGangguanKeamananHutan.ANAK_PETAK_ID, isipetak.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.JENIS_TANAMAN, jenis_tanaman.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.TANGGAL, tanggal.getText().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.NOMOR_A, nomora.getText().toString());
@@ -389,6 +389,7 @@ public class TambahGangguanFragment extends Fragment {
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KET2, spin_jenis_tanaman.getSelectedItem().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KET3, spin_gangguan_hutan.getSelectedItem().toString());
                                             values_aktifitas.put(TrnGangguanKeamananHutan.KET9, "0");
+                                            values_aktifitas.put(TrnGangguanKeamananHutan.HEXA, enKata);
                                             db.create(TrnGangguanKeamananHutan.TABLE_NAME, values_aktifitas);
                                             Toast.makeText(getActivity(), "Data Berhasil Ditambah! ", Toast.LENGTH_SHORT).show();
 

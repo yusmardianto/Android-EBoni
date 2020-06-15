@@ -20,6 +20,7 @@ public class IdentifikasiTenurialModel {
     private String Ket5;
     private String Ket9;
     private String Ket10;
+    private String Ket11;
     private int ID_Tenurial;
 
     public IdentifikasiTenurialModel() {
@@ -29,7 +30,7 @@ public class IdentifikasiTenurialModel {
                                      String tanggal, String strata, String luasBaku, String luasTenurial,
                                      String kondisiPetakSaatIdentifikasi, String awalKonflik, String pihakTerlibat,
                                      String statusPenyelesaian, int idtenurial, String ket1, String ket2,
-                                     String ket3, String ket4, String ket5, String ket9, String ket10)
+                                     String ket3, String ket4, String ket5, String ket9, String ket10, String ket11)
     {
         this.Id = id;
         this.JenisPermasalahan = jenisPermasalahan;
@@ -52,6 +53,7 @@ public class IdentifikasiTenurialModel {
         this.Ket1 = ket1;
         this.Ket9 = ket9;
         this.Ket10 = ket10;
+        this.Ket11 = ket11;
     }
 
     public String getKet9() {
@@ -212,5 +214,13 @@ public class IdentifikasiTenurialModel {
 
     public void setKet5(String ket5) {
         Ket5 = ket5;
+    }
+
+    public String getKet11() {
+        return Ket11;
+    }
+
+    public void setKet11(String ket11) {
+        Ket11 = ket11;
     }
 }

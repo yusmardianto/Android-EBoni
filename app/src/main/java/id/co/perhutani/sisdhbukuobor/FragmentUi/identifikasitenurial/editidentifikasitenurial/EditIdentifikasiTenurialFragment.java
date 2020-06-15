@@ -47,7 +47,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
 
     private static String id, str_jenis_permasalahan, str_tahun, str_petak, str_strata, str_kelas_hutan,
                           str_luas_baku, str_luas_tenurial, str_kondisi_petak, str_awal_konflik,
-                          str_pihak_terlibat, str_status_penyelesaian;
+                          str_pihak_terlibat, str_status_penyelesaian, str_anakpetak;
 
     private Button btnSimpanTenurial;
     public static final String MSG_KEY = "id";
@@ -85,7 +85,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 petak.setText(id_petak);
 
             }
@@ -282,7 +282,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.edit_spinner_tenurial_anakpetak);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         petak.setText(id_petak);
 
         spin_kelas_hutan = root.findViewById(R.id.edit_spinner_tenurial_kelashutan);
@@ -314,6 +314,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         str_awal_konflik = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.AWAL_KONFLIK);
         str_pihak_terlibat = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.PIHAK_TERLIBAT);
         str_status_penyelesaian = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.STATUS_PENYELESAIAN);
+        str_anakpetak = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.HEXA);
 
         jenis_permasalahan.setText(str_jenis_permasalahan);
         petak.setText(str_petak);
@@ -439,7 +440,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                                             enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             Aktifitasnya.setID_Tenurial(Integer.parseInt(id));
                                             Aktifitasnya.setJenisPermasalahan(jenis_permasalahan.getText().toString());
-                                            Aktifitasnya.setAnakPetak(enKata);
+                                            Aktifitasnya.setAnakPetak(petak.getText().toString());
                                             Aktifitasnya.setKelasHutan(kelas_hutan.getText().toString());
                                             Aktifitasnya.setTanggal(tahun.getText().toString());
                                             Aktifitasnya.setStrata(strata.getText().toString());
@@ -454,6 +455,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                                             Aktifitasnya.setKet3(spin_kelas_hutan.getSelectedItem().toString());
                                             Aktifitasnya.setKet4(spin_strata.getSelectedItem().toString());
                                             Aktifitasnya.setKet5(spin_pihak_terlibat.getSelectedItem().toString());
+                                            Aktifitasnya.setKet11(enKata);
                                             Aktifitasnya.setKet9("2");
 
                                             db.EditDataIdentifikasiTenurial(Aktifitasnya);

@@ -46,7 +46,7 @@ public class EditPemantauanFragment extends Fragment {
     public static final String MSG_KEY = "id";
     private static SQLiteHandler db;
     private static String id, str_anakpetak, str_jenissatwa, str_jumlahsatwa, str_waktulihat,
-            str_caralihat, str_tanggal, str_keterangan;
+            str_caralihat, str_tanggal, str_keterangan, str_petak;
     private Button btnSimpanPemantauan;
     private Spinner spin_anak_petak;
     private Spinner spin_jenis_satwa;
@@ -109,7 +109,7 @@ public class EditPemantauanFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
-                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 anakpetak.setText(id_petak);
             }
 
@@ -242,7 +242,7 @@ public class EditPemantauanFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_satwa);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         anakpetak.setText(id_petak);
 
         spin_waktu_lihat = root.findViewById(R.id.edit_spinner_waktu_lihat);
@@ -264,6 +264,7 @@ public class EditPemantauanFragment extends Fragment {
         str_caralihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET4);
         str_tanggal = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.TANGGAL_PEMANTAUAN);
         str_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
+        str_petak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.HEXA);
 
         jenissatwa.setText(str_jenissatwa);
         anakpetak.setText(str_anakpetak);
@@ -364,7 +365,7 @@ public class EditPemantauanFragment extends Fragment {
                                             PemantauansatwaModel Aktifitasnya = new PemantauansatwaModel();
                                             enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             Aktifitasnya.setID_Pemantauan(Integer.parseInt(id));
-                                            Aktifitasnya.setAnakPetakId(enKata);
+                                            Aktifitasnya.setAnakPetakId(anakpetak.getText().toString());
                                             Aktifitasnya.setJenis(jenissatwa.getText().toString());
                                             Aktifitasnya.setJumlah(jumlahsatwa.getText().toString());
                                             Aktifitasnya.setWaktulihat(waktulihat.getText().toString());
@@ -376,6 +377,7 @@ public class EditPemantauanFragment extends Fragment {
                                             Aktifitasnya.setKet3(spin_waktu_lihat.getSelectedItem().toString());
                                             Aktifitasnya.setKet4(spin_cara_melihat.getSelectedItem().toString());
                                             Aktifitasnya.setKet9("2");
+                                            Aktifitasnya.setKet11(enKata);
                                             db.EditDataPemantauanSatwa(Aktifitasnya);
 
                                             Toast.makeText(getActivity(), "Data Berhasil Diubah! ", Toast.LENGTH_SHORT).show();

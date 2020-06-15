@@ -49,7 +49,7 @@ public class EditGangguanFragment extends Fragment {
     private static SQLiteHandler db;
     private static String id, str_tgl_kejadian,  str_isipetak, str_jenistanaman,  str_tanggal, str_nomora, str_isi_kejadian, str_luas_lahan,
             str_jumlah_pohon, str_kerugian_kyp, str_kerugian_kyb, str_kerugian_getah,
-            str_nilai_kerugian, str_keterangan;
+            str_nilai_kerugian, str_keterangan, str_anakpetak;
     private Button btnSimpanGangguan;
     private Spinner spin_jenis_tanaman;
     private Spinner spin_anak_petak;
@@ -107,7 +107,7 @@ public class EditGangguanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
                 isipetak.setText(id_petak);
 
             }
@@ -244,7 +244,7 @@ public class EditGangguanFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_gukamhut);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_NAME);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
         isipetak.setText(id_petak);
 
         spin_jenis_tanaman = root.findViewById(R.id.edit_spinner_jenis_tanaman);
@@ -266,6 +266,7 @@ public class EditGangguanFragment extends Fragment {
         str_kerugian_getah = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KERUGIAN_GETAH);
         str_nilai_kerugian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.NILAI_KERUGIAN);
         str_keterangan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KETERANGAN);
+        str_anakpetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.HEXA);
 
         tgl_kejadian.setText(str_tgl_kejadian);
         isipetak.setText(str_isipetak);
@@ -398,7 +399,7 @@ public class EditGangguanFragment extends Fragment {
                                             enKata = GenerateAESAdapter.encrypt(ambilKunci, ambilKata);
                                             Aktifitasnya.setID_gangguan(Integer.parseInt(id));
                                             Aktifitasnya.setTgl_Kejadian(tgl_kejadian.getText().toString());
-                                            Aktifitasnya.setPetak(enKata);
+                                            Aktifitasnya.setPetak(isipetak.getText().toString());
                                             Aktifitasnya.setJenisTanaman(jenistanaman.getText().toString());
                                             Aktifitasnya.setTanggal(tanggal.getText().toString());
                                             Aktifitasnya.setNoA(nomora.getText().toString());
@@ -413,6 +414,7 @@ public class EditGangguanFragment extends Fragment {
                                             Aktifitasnya.setKet1(spin_anak_petak.getSelectedItem().toString());
                                             Aktifitasnya.setKet2(spin_jenis_tanaman.getSelectedItem().toString());
                                             Aktifitasnya.setKet3(spin_gangguan_hutan.getSelectedItem().toString());
+                                            Aktifitasnya.setKet11(enKata);
                                             Aktifitasnya.setKet9("2");
                                             db.EditDataGangguanHutan(Aktifitasnya);
 

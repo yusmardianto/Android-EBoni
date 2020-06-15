@@ -313,6 +313,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnGangguanKeamananHutan.KERUGIAN_GETAH, g.getGetah());
         args.put(TrnGangguanKeamananHutan.NILAI_KERUGIAN, g.getNilai());
         args.put(TrnGangguanKeamananHutan.KETERANGAN, g.getKeterangan());
+        args.put(TrnGangguanKeamananHutan.HEXA, g.getKet11());
         args.put(TrnGangguanKeamananHutan.KET9, g.getKet9());
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
     }
@@ -351,6 +352,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPerubahanKelas.KET7, pk.getKet7());
         args.put(TrnPerubahanKelas.KETERANGAN_PERUBAHAN, pk.getKeteranganPerubahan());
         args.put(TrnPerubahanKelas.KET9, pk.getKet9());
+        args.put(TrnPerubahanKelas.HEXA, pk.getKet11());
         db.update(TrnPerubahanKelas.TABLE_NAME, args, strFilter, null);
     }
 
@@ -379,6 +381,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnInteraksimdh.KET5, imdh.getKet5());
         args.put(TrnInteraksimdh.KETERANGAN, imdh.getKeterangan());
         args.put(TrnInteraksimdh.KET9, imdh.getKet9());
+        args.put(TrnInteraksimdh.HEXA, imdh.getKet11());
         db.update(TrnInteraksimdh.TABLE_NAME, args, strFilter, null);
     }
 
@@ -407,6 +410,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPemantauanSatwa.TANGGAL_PEMANTAUAN, ps.getTanggal());
         args.put(TrnPemantauanSatwa.KETERANGAN, ps.getKeteranganSatwa());
         args.put(TrnPemantauanSatwa.KET9, ps.getKet9());
+        args.put(TrnPemantauanSatwa.HEXA, ps.getKet11());
         db.update(TrnPemantauanSatwa.TABLE_NAME, args, strFilter, null);
     }
 
@@ -465,6 +469,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnRegisterPcp.PENIGGI, rp.getPeninggi());
         args.put(TrnRegisterPcp.KETERANGAN, rp.getKeteranganPcp());
         args.put(TrnRegisterPcp.KET9, rp.getKet9());
+        args.put(TrnRegisterPcp.HEXA, rp.getKet11());
         db.update(TrnRegisterPcp.TABLE_NAME, args, strFilter, null);
     }
 
@@ -498,6 +503,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnIdentifikasiTenurial.KET5, it.getKet5());
         args.put(TrnIdentifikasiTenurial.STATUS_PENYELESAIAN, it.getStatusPenyelesaian());
         args.put(TrnIdentifikasiTenurial.KET9, it.getKet9());
+        args.put(TrnIdentifikasiTenurial.HEXA, it.getKet11());
         db.update(TrnIdentifikasiTenurial.TABLE_NAME, args, strFilter, null);
     }
 
