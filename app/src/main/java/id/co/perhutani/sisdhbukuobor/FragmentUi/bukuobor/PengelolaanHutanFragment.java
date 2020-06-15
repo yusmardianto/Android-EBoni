@@ -60,32 +60,6 @@ public class PengelolaanHutanFragment extends Fragment {
             }
         });
 
-        LinearLayout susunrisalah = view_pengelolaan_hutan.findViewById(R.id.susunrisalah);
-        susunrisalah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new SusunRisalahFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
-        LinearLayout monitoring_klshtn = view_pengelolaan_hutan.findViewById(R.id.monitoring_klshtn);
-        monitoring_klshtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new MonitoringKlsHtnFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
         return view_pengelolaan_hutan;
     }
 }
