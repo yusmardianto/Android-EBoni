@@ -153,7 +153,7 @@ public class ListInteraksiMDHFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    "ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID, KET1, KET2, KET3, KET4, KET5, ID, KET9, KET10" +
+                    "ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID, KET1, KET2, KET3, KET4, KET5, ID, KET9, KET10, ID" +
 //                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_INTERAKSI_MDH  " +
                     " WHERE PETAK_ID " + " LIKE  " + "'%" + imdh + "%'" +
@@ -177,7 +177,8 @@ public class ListInteraksiMDHFragment extends Fragment
                         cur.getString(11),
                         Integer.parseInt(cur.getString(0)),
                         cur.getString(12),
-                        cur.getString(13)
+                        cur.getString(13),
+                        cur.getString(14)
                 ));
                 cur.moveToNext();
             }
@@ -208,7 +209,7 @@ public class ListInteraksiMDHFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    "ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID, KET1, KET2, KET3, KET4, KET5, ID, KET9, KET10" +
+                    "ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID, KET1, KET2, KET3, KET4, KET5, ID, KET9, KET10, ID" +
 //                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_INTERAKSI_MDH " +
                     " ORDER BY ID DESC", null);
@@ -231,7 +232,8 @@ public class ListInteraksiMDHFragment extends Fragment
                         cur.getString(11),
                         Integer.parseInt(cur.getString(0)),
                         cur.getString(12),
-                        cur.getString(13)
+                        cur.getString(13),
+                        cur.getString(14)
                 ));
                 cur.moveToNext();
             }
@@ -251,7 +253,7 @@ public class ListInteraksiMDHFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    "ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID, KET1, KET2, KET3, KET4, KET5, ID, KET9, KET10" +
+                    "ID, ANAK_PETAK_ID, TAHUN, NAMA_DESA, BENTUK_INTERAKSI, STATUS, ID, KET1, KET2, KET3, KET4, KET5, ID, KET9, KET10, ID" +
 //                    " DISTINCT(ANAK_PETAK_ID)" +
                     " FROM TRN_INTERAKSI_MDH " +
                     " ORDER BY ID DESC", null);
@@ -274,7 +276,8 @@ public class ListInteraksiMDHFragment extends Fragment
                         cur.getString(11),
                         Integer.parseInt(cur.getString(0)),
                         cur.getString(12),
-                        cur.getString(13)
+                        cur.getString(13),
+                        cur.getString(14)
                 ));
                 cur.moveToNext();
             }

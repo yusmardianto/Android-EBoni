@@ -150,7 +150,7 @@ public class ListIdentifikasiTenurialFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, JENIS_PERMASALAHAN, ANAK_PETAK_ID, ID, TANGGAL, ID, ID, ID, ID, AWAL_KONFLIK, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID " +
+                    " ID, JENIS_PERMASALAHAN, ANAK_PETAK_ID, ID, TANGGAL, ID, ID, ID, ID, AWAL_KONFLIK, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID " +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_IDENTIFIKASI_KONFLIK_TENURIAL " +
                     " WHERE ANAK_PETAK_ID " + " LIKE  " + "'%" + tenurial + "%'" +
@@ -179,7 +179,8 @@ public class ListIdentifikasiTenurialFragment extends Fragment
                         cur.getString(15),
                         cur.getString(16),
                         cur.getString(17),
-                        cur.getString(18)));
+                        cur.getString(18),
+                        cur.getString(19)));
                 cur.moveToNext();
             }
 
@@ -209,7 +210,7 @@ public class ListIdentifikasiTenurialFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(getActivity());
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, JENIS_PERMASALAHAN, ANAK_PETAK_ID, ID, TANGGAL, ID, ID, ID, ID, AWAL_KONFLIK, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID " +
+                    " ID, JENIS_PERMASALAHAN, ANAK_PETAK_ID, ID, TANGGAL, ID, ID, ID, ID, AWAL_KONFLIK, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID " +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_IDENTIFIKASI_KONFLIK_TENURIAL " +
                     " ORDER BY ID DESC", null);
@@ -237,7 +238,8 @@ public class ListIdentifikasiTenurialFragment extends Fragment
                         cur.getString(15),
                         cur.getString(16),
                         cur.getString(17),
-                        cur.getString(18)));
+                        cur.getString(18),
+                        cur.getString(19)));
                 cur.moveToNext();
             }
 
@@ -256,7 +258,7 @@ public class ListIdentifikasiTenurialFragment extends Fragment
             SQLiteHandler DB_Helper = new SQLiteHandler(context);
             SQLiteDatabase db = DB_Helper.getReadableDatabase();
             final Cursor cur = db.rawQuery("SELECT " +
-                    " ID, JENIS_PERMASALAHAN, ANAK_PETAK_ID, ID, TANGGAL, ID, ID, ID, ID, AWAL_KONFLIK, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID " +
+                    " ID, JENIS_PERMASALAHAN, ANAK_PETAK_ID, ID, TANGGAL, ID, ID, ID, ID, AWAL_KONFLIK, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID, ID " +
 //                    " DISTINCT(ANAKPETAK_ID)" +
                     " FROM TRN_IDENTIFIKASI_KONFLIK_TENURIAL " +
                     " ORDER BY ID DESC", null);
@@ -284,7 +286,8 @@ public class ListIdentifikasiTenurialFragment extends Fragment
                         cur.getString(15),
                         cur.getString(16),
                         cur.getString(17),
-                        cur.getString(18)));
+                        cur.getString(18),
+                        cur.getString(19)));
                 cur.moveToNext();
             }
 
