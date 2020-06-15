@@ -302,7 +302,7 @@
                                     android:fontFamily="@font/font_aal_bold"
                                     android:maxLines="1"
                                     android:singleLine="true"
-                                    android:text="Susun Risalah"
+                                    android:text="Data Potensi"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                     android:textColor="@color/theme_orange"
                                     android:textStyle="bold" />
@@ -318,7 +318,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/font_aal_default"
-                                    android:text="Penyusunan Risalah"
+                                    android:text="Data Potensi Sumber daya Hutan"
                                     android:textColor="@color/material_grey_600" />
 
                             </LinearLayout>
