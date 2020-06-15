@@ -1,4 +1,4 @@
-package id.co.perhutani.sisdhbukuobor.Adapter.SusunRisalah;
+package id.co.perhutani.sisdhbukuobor.Adapter.MonitoringKlsHtn;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,57 +18,58 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.MonitoringKlsHtnPenampakan.DetailMonitoringFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.MonitoringKlsHtnPenampakan.MonitoringKlsHtnViewModel;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.susunrisalah.DetailSusunRisalahFragment;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.susunrisalah.SusunRisalahViewModel;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.workorder.WorkOrderViewModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnSusunRisalah;
 
-public class SusunRisalahAdapter extends RecyclerView.Adapter<SusunRisalahAdapter.SusunRisalahViewHolder> {
+public class MonitoringKlsHtnAdapter extends RecyclerView.Adapter<MonitoringKlsHtnAdapter.MonitoringViewHolder> {
 
     Context mContext;
-    List<SusunRisalahViewModel> mData;
+    List<MonitoringKlsHtnViewModel> mData;
     private int color = 0;
     SQLiteHandler db;
 
     public static final String MSG_KEY = "id_anakpetak";
 
-    public SusunRisalahAdapter(Context mContext, List<SusunRisalahViewModel> mData) {
+    public MonitoringKlsHtnAdapter(Context mContext, List<MonitoringKlsHtnViewModel> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
 
     @NonNull
     @Override
-    public SusunRisalahViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MonitoringViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        v = LayoutInflater.from(mContext).inflate(R.layout.row_list_risalah_blmacc,parent,false);
-        SusunRisalahViewHolder viewHolder = new SusunRisalahViewHolder(v);
+        v = LayoutInflater.from(mContext).inflate(R.layout.row_list_monitoring_klshtn,parent,false);
+        MonitoringKlsHtnAdapter.MonitoringViewHolder viewHolder = new MonitoringKlsHtnAdapter.MonitoringViewHolder(v);
         db = new SQLiteHandler(mContext);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SusunRisalahViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull MonitoringViewHolder holder, int position) {
         final String id = String.valueOf(mData.get(position).getId());
 
         final String get_anak_petakid = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah._ID,id,TrnSusunRisalah.ANAK_PETAK_ID);
-        final String get_kph = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.KODE_ANAKPETAK,get_anak_petakid,MstAnakPetakSchema.KPH);
+        final String get_luaspetak = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah._ID,id,TrnSusunRisalah.LUAS);
         final String get_anakpetak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.KODE_ANAKPETAK,get_anak_petakid,MstAnakPetakSchema.ANAK_PETAK_NAME);
+        final String get_jenistanaman = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.KODE_ANAKPETAK,get_anak_petakid,MstAnakPetakSchema.JENIS_TANAMAN);
 
-        holder.kph.setText(get_kph);
+        holder.luaspetak.setText(get_luaspetak);
         holder.anakpetak.setText(get_anakpetak);
-        holder.linear_risalah_blmacc.setOnClickListener(new View.OnClickListener() {
+        holder.jenistanaman.setText(get_jenistanaman);
+        holder.monitoring.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String message = get_anak_petakid;
                 Bundle data = new Bundle();
-                data.putString(SusunRisalahAdapter.MSG_KEY, message);
+                data.putString(MonitoringKlsHtnAdapter.MSG_KEY, message);
                 FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
-                Fragment fragment = new DetailSusunRisalahFragment();
+                Fragment fragment = new DetailMonitoringFragment();
                 fragment.setArguments(data);
                 FragmentTransaction ft = manager.beginTransaction();
                 ft.replace(R.id.nav_host_fragment, fragment);
@@ -76,7 +77,6 @@ public class SusunRisalahAdapter extends RecyclerView.Adapter<SusunRisalahAdapte
 
             }
         });
-
     }
 
     @Override
@@ -89,20 +89,19 @@ public class SusunRisalahAdapter extends RecyclerView.Adapter<SusunRisalahAdapte
         notifyDataSetChanged();
     }
 
-    public static class SusunRisalahViewHolder extends RecyclerView.ViewHolder{
+    public static class MonitoringViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView kph;
         private TextView anakpetak;
-        private LinearLayout linear_risalah_blmacc;
+        private TextView luaspetak;
+        private TextView jenistanaman;
+        private LinearLayout monitoring;
 
-
-        public SusunRisalahViewHolder(@NonNull View itemView) {
-
+        public MonitoringViewHolder(@NonNull View itemView) {
             super(itemView);
-            kph = itemView.findViewById(R.id.kph);
-            anakpetak = itemView.findViewById(R.id.anakpetak);
-            linear_risalah_blmacc = itemView.findViewById(R.id.linear_row_risalah_blmacc);
-
+            anakpetak = itemView.findViewById(R.id.monitoring_klshtn_anakpetak);
+            luaspetak = itemView.findViewById(R.id.monitoring_klshtn_luas);
+            jenistanaman = itemView.findViewById(R.id.monitoring_klshtn_jenistanaman);
+            monitoring = itemView.findViewById(R.id.linear_row_monitoring_klshtn);
         }
     }
 

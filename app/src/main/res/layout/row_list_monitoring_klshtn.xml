@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/linear_row_risalah_blmacc">
+            android:id="@+id/linear_row_monitoring_klshtn">
 
             <LinearLayout
                 android:layout_weight="0"
@@ -32,17 +32,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <TextView
-                    android:id="@+id/kph"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="marquee"
-                    android:fadingEdge="horizontal"
-                    android:textStyle="bold"
-                    android:paddingTop="11dp"
-                    android:singleLine="true"
-                    android:text="KPH"
-                    android:textSize="15sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_weight="1"
+                        android:id="@+id/monitoring_klshtn_anakpetak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:fadingEdge="horizontal"
+                        android:textStyle="bold"
+                        android:paddingTop="11dp"
+                        android:singleLine="true"
+                        android:text="Anak Petak"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:id="@+id/monitoring_klshtn_luas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:fadingEdge="horizontal"
+                        android:textStyle="bold"
+                        android:paddingTop="11dp"
+                        android:text="Luas Petak"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
                 <ImageView
                     android:id="@+id/img_gariss"
                     android:layout_width="match_parent"
@@ -58,12 +78,12 @@
                     <TextView
                         android:layout_weight="1"
                         android:layout_gravity="bottom"
-                        android:id="@+id/anakpetak"
+                        android:id="@+id/monitoring_klshtn_jenistanaman"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/font_aal_default"
                         android:paddingTop="2dp"
-                        android:text="Anak Petak" />
+                        android:text="Jenis Tanaman" />
                 </LinearLayout>
             </LinearLayout>
 
