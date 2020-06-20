@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -12,285 +12,146 @@
         android:background="#EAEAEA">
 
         <TextView
-            android:visibility="gone"
-            android:id="@+id/buat_test"
-            android:fontFamily="@font/font_aal_default"
-            android:textColor="@color/judulkontrak"
-            android:text="Risalah Tanaman Pokok"
-            android:textSize="18dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:gravity="right|center" />
+            android:fontFamily="@font/font_aal_bold"
+            android:text="Detail Risalah Tanaman Pokok"
+            android:textSize="18dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
-        android:id="@+id/layout_scrolldetail_andil"
+
+    <LinearLayout
+        android:layout_below="@id/top_navigation_detail_monitoring"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="50dp"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:background="#e0e0e0"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tv_infoandil"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/font_aal_bold"
-                        android:text="Risalah Tanaman Pokok"
-                        android:textSize="16dp" />
+                        android:text="Anak Petak"
+                        android:textSize="14dp" />
 
+                    <TextView
+                        android:id="@+id/detail_monitoring_anakpetak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:text="1b"
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Anak Petak"
-                            android:textSize="14dp" />
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/font_aal_bold"
+                        android:text="Luas"
+                        android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/detail_monitoring_anakpetak"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="1b"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/detail_monitoring_luas"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Luas"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_monitoring_luas"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="20"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:text="20"
+                        android:textSize="14dp" />
                 </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal">
+
                 <LinearLayout
-                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Jenis Tanaman"
-                            android:textSize="14dp" />
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/font_aal_bold"
+                        android:text="Jenis Tanaman"
+                        android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/detail_monitoring_jenistanaman"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="JPP"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/detail_monitoring_jenistanaman"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Tahun Tanam"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_monitoring_tahuntanam"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="2000"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:text="JPP"
+                        android:textSize="14dp" />
                 </LinearLayout>
+
                 <LinearLayout
-                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KBD"
-                            android:textSize="14dp" />
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/font_aal_bold"
+                        android:text="Tahun Tanam"
+                        android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/detail_monitoring_kbd"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="-"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/detail_monitoring_tahuntanam"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="DKN"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_monitoring_dkn"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="-"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Kelas Hutan"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_monitoring_kelashutan"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="-"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:visibility="invisible"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="DKN"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="-"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:text="2000"
+                        android:textSize="14dp" />
                 </LinearLayout>
 
 
@@ -298,665 +159,125 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="50dp"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:background="#e0e0e0"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
                         android:layout_marginLeft="16dp"
-                        android:gravity="left"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/font_aal_bold"
-                        android:text="Perkembangan Tegakan"
-                        android:textSize="16dp" />
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_marginRight="16dp"
-                        android:gravity="right"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_aal_bold"
-                        android:text="Tahun 2020"
+                        android:text="KBD"
                         android:textSize="14dp" />
 
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/detail_monitoring_kbd"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KBD"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th1_kbd"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="N/Ha"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th1_nha"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KelasHutan"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th1_kelashutan"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:visibility="invisible"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="N/HA"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_risalah_nha"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="850.00"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:text="-"
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="#e0e0e0"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_marginRight="16dp"
-                        android:gravity="right"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/font_aal_bold"
-                        android:text="Tahun 2021"
+                        android:text="DKN"
                         android:textSize="14dp" />
 
+                    <TextView
+                        android:id="@+id/detail_monitoring_dkn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:text="-"
+                        android:textSize="14dp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
+            </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KBD"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th2_kbd"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="N/Ha"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th2_nha"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KelasHutan"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th2_kelashutan"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:visibility="invisible"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="N/HA"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="850.00"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:background="#e0e0e0"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_marginRight="16dp"
-                        android:gravity="right"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/font_aal_bold"
-                        android:text="Tahun 2022"
+                        android:text="Kelas Hutan"
                         android:textSize="14dp" />
 
+                    <TextView
+                        android:id="@+id/detail_monitoring_kelashutan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:text="-"
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@color/colorWhite"
+                    android:visibility="invisible"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KBD"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th3_kbd"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="N/Ha"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th3_nha"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KelasHutan"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th3_kelashutan"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:visibility="invisible"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="N/HA"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="850.00"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:background="#e0e0e0"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_marginRight="16dp"
-                        android:gravity="right"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/font_aal_bold"
-                        android:text="Tahun 2023"
+                        android:text="Catatan Khusus"
                         android:textSize="14dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KBD"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th4_kbd"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="N/Ha"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th4_nha"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KelasHutan"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th4_kelashutan"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:visibility="invisible"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="N/HA"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="850.00"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:background="#e0e0e0"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_marginRight="16dp"
-                        android:gravity="right"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
+                        android:id="@+id/detail_monitoring_catatan_khusus"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/font_aal_bold"
-                        android:text="Tahun 2024"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/font_aal_default"
+                        android:text="-"
                         android:textSize="14dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KBD"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th5_kbd"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="N/Ha"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th5_nha"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KelasHutan"
-                            android:textSize="14dp" />
-
-                        <EditText
-                            android:background="@drawable/bg_item_popup"
-                            android:id="@+id/detail_monitoring_th5_kelashutan"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:visibility="invisible"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="N/HA"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="850.00"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
                 </LinearLayout>
 
             </LinearLayout>
@@ -964,6 +285,37 @@
 
         </LinearLayout>
 
-    </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#e0e0e0"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/font_aal_bold"
+                    android:gravity="left"
+                    android:text="Perkembangan Tegakan"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+
+            <include layout="@layout/content_list_monitoring" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

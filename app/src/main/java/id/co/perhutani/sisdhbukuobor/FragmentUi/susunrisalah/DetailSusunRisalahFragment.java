@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.BukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnSusunRisalah;
@@ -29,10 +30,10 @@ public class DetailSusunRisalahFragment extends Fragment {
 
     private static String get_kph, get_divisi, get_bkph, get_rph, get_petak, get_anakpetak,
                         get_luas, get_jenis_tanaman, get_peninggi, get_bonita, get_kbd,get_dkn,
-                        get_nha, get_tahun_tanam, get_kelas_hutan;
+                        get_nha, get_tahun_tanam, get_kelas_hutan, get_tahun_tanam_rata, get_keterangan;
 
     private TextView divisi, bkph, kph, rph, petak, anak_petak, luas, jenis_tanaman, peninggi,
-                    bonita, kbd, dkn, nha, tahun_tanam, kelas_hutan;
+                    bonita, kbd, dkn, nha, tahun_tanam, kelas_hutan, tahun_tanam_rata,keterangan;;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,15 +82,16 @@ public class DetailSusunRisalahFragment extends Fragment {
             get_rph = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.KODE_ANAKPETAK,id_anakpetak,MstAnakPetakSchema.RPH);
             get_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.KODE_ANAKPETAK,id_anakpetak,MstAnakPetakSchema.PETAK_NAME);
             get_anakpetak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.KODE_ANAKPETAK,id_anakpetak,MstAnakPetakSchema.ANAK_PETAK_NAME);
+            get_kelas_hutan = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.KODE_ANAKPETAK,id_anakpetak,MstAnakPetakSchema.KELAS_HUTAN);
+            get_jenis_tanaman = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.KODE_ANAKPETAK,id_anakpetak,MstAnakPetakSchema.JENIS_TANAMAN);
             get_luas = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah.ANAK_PETAK_ID,id_anakpetak,TrnSusunRisalah.LUAS);
-            get_jenis_tanaman = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah.ANAK_PETAK_ID,id_anakpetak,TrnSusunRisalah.JENIS_TANAMAM);
             get_peninggi = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah.ANAK_PETAK_ID,id_anakpetak,TrnSusunRisalah.PENINGGI);
             get_bonita = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah.ANAK_PETAK_ID,id_anakpetak,TrnSusunRisalah.BONITA);
             get_kbd = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah.ANAK_PETAK_ID,id_anakpetak,TrnSusunRisalah.KBD);
             get_dkn = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah.ANAK_PETAK_ID,id_anakpetak,TrnSusunRisalah.DKN);
             get_nha = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah.ANAK_PETAK_ID,id_anakpetak,TrnSusunRisalah.N_HA);
+            get_keterangan = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah.ANAK_PETAK_ID,id_anakpetak,TrnSusunRisalah.KETERANGAN);
             get_tahun_tanam = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah.ANAK_PETAK_ID,id_anakpetak,TrnSusunRisalah.TAHUN_TANAM);
-            get_kelas_hutan = db.getDataDetail(TrnSusunRisalah.TABLE_NAME, TrnSusunRisalah.ANAK_PETAK_ID,id_anakpetak,TrnSusunRisalah.KELAS_HUTAN);
         }
         catch (Exception ex) {
             ex.printStackTrace();
@@ -126,6 +128,8 @@ public class DetailSusunRisalahFragment extends Fragment {
         tahun_tanam.setText(get_tahun_tanam);
         kelas_hutan = detail_susun_risalah.findViewById(R.id.detail_risalah_kelashutan);
         kelas_hutan.setText(get_kelas_hutan);
+        keterangan = detail_susun_risalah.findViewById(R.id.detail_risalah_keterangan);
+        keterangan.setText(get_keterangan);
 
         return detail_susun_risalah;
     }

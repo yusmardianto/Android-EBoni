@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -31,6 +32,7 @@ import id.co.perhutani.sisdhbukuobor.Adapter.PerubahankelasAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.BukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas.tambahperubahan.TambahPerubahanFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.R;
@@ -141,6 +143,19 @@ public class ListPerubahanKelasFragment extends Fragment
             datakosong.setVisibility(View.GONE);
             dataada.setVisibility(View.VISIBLE);
         }
+
+        Toolbar toolbar = root.findViewById(R.id.toolbar_perubahankls);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new BukuOborFragment();
+                FragmentManager frgManager = getFragmentManager();
+                FragmentTransaction ft = frgManager.beginTransaction();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
+            }
+        });
 
 
         return root;

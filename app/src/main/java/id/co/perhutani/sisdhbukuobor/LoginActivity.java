@@ -61,6 +61,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStrataSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstSubPekerjaan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnMonitoringKlsHtn;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnSusunRisalah;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnWorkOrder;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
@@ -98,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_SUB_PEKERJAAN_V1 = address + "api/v1/get_master_sub_pekerjaan";
     private static final String URL_FOR_GET_WORKORDER_V1 = address + "api/v1/getWorkOrder";
     private static final String URL_FOR_GET_SUSUN_RISALAH_V1 = address + "api/v1/getSusunRisalah";
+    private static final String URL_FOR_GET_MONITORING_KLSHTN_V1 = address + "api/v1/getMonitoringKlsHtn";
 
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
     public static final String URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1 = address + "api/v1/postPerubahan";
@@ -204,7 +206,7 @@ public class LoginActivity extends AppCompatActivity {
         background.start();
         AjnClass.pasang_sentry(this.getApplicationContext());
 
-        username.setText("mandor_test");
+        username.setText("rphbanjarharjo");
         password.setText("perhutani");
 
         // Progress dialog
@@ -432,6 +434,8 @@ public class LoginActivity extends AppCompatActivity {
                         sync_get_workorder(myResponse.getString("access_token"), username.getText().toString());
                         //get data susun risalah
                         sync_get_susunrisalah(myResponse.getString("access_token"), username.getText().toString());
+                        //get data monitoring kh & penampakan
+                        sync_get_monitoring(myResponse.getString("access_token"), username.getText().toString());
 
                         session.setLogin(true);
                     } else if (myResponse.getString("status").equals("error")) {
@@ -1385,6 +1389,52 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(TrnSusunRisalah.CREATED_AT, json_projek.getString("created_at"));
                         values.put(TrnSusunRisalah.UPDATED_AT, json_projek.getString("updated_at"));
                         db.create(TrnSusunRisalah.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+    public void sync_get_monitoring(final String token,final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_MONITORING_KLSHTN_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET MASTER MONITORING KH PENAMPAKAN ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(TrnMonitoringKlsHtn._ID, i + 1);
+                        values.put(TrnMonitoringKlsHtn.SUSUN_RISALAH_ID, json_projek.getString("susun_risalah_id"));
+                        values.put(TrnMonitoringKlsHtn.KBD, json_projek.getString("kbd"));
+                        values.put(TrnMonitoringKlsHtn.N_HA, json_projek.getString("n_ha"));
+                        values.put(TrnMonitoringKlsHtn.KELAS_HUTAN_ID, json_projek.getString("kelashutan_id"));
+                        values.put(TrnMonitoringKlsHtn.TAHUN, json_projek.getString("tahun"));
+                        values.put(TrnMonitoringKlsHtn.CATATAN_KHUSUS, json_projek.getString("catatan_khusus"));
+                        values.put(TrnMonitoringKlsHtn.CREATED_AT, json_projek.getString("created_at"));
+                        values.put(TrnMonitoringKlsHtn.UPDATED_AT, json_projek.getString("updated_at"));
+                        db.create(TrnMonitoringKlsHtn.TABLE_NAME, values);
                     }
                     conn.disconnect();
                 } catch (Exception e) {

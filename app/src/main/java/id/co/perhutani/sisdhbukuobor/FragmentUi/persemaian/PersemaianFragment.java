@@ -24,6 +24,7 @@ import java.util.List;
 import id.co.perhutani.sisdhbukuobor.Adapter.Persemaian.PersemaianMenuAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.BukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.DashboardBukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.R;
 
@@ -95,18 +96,18 @@ public class PersemaianFragment extends Fragment {
             }
         });
 
-//        Toolbar toolbar = event.findViewById(R.id.toolbar);
-//        toolbar.setNavigationIcon(R.drawable.ic_back);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new DashboardBukuOborFragment();
-//                FragmentManager frgManager = getFragmentManager();
-//                FragmentTransaction ft = frgManager.beginTransaction();
-//                ft.replace(R.id.nav_host_fragment, fragment);
-//                ft.commit();
-//            }
-//        });
+        Toolbar toolbar = event.findViewById(R.id.toolbar_persemaian);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new BukuOborFragment();
+                FragmentManager frgManager = getFragmentManager();
+                FragmentTransaction ft = frgManager.beginTransaction();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
+            }
+        });
 
         lsschedule = new ArrayList<>();
         try {

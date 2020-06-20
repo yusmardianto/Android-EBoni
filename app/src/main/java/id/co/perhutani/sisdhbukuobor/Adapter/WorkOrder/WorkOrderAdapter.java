@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
-import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.GangguanFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.persemaian.PersemaianFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.workorder.WorkOrderViewModel;
 import id.co.perhutani.sisdhbukuobor.MainActivity;
@@ -56,23 +56,21 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
         holder.tanggal.setText(mData.get(position).getTanggal());
         holder.dari.setText(mData.get(position).getDari());
 
-        final String get_jeniskegiatan = db.getDataDetail(TrnWorkOrder.TABLE_NAME, TrnWorkOrder.JENISKEGIATAN,mData.get(position).getJeniskegiatan(),TrnWorkOrder.JENISKEGIATAN);
+        final String get_jeniskegiatan = db.getDataDetail(TrnWorkOrder.TABLE_NAME, TrnWorkOrder.JENISKEGIATAN, mData.get(position).getJeniskegiatan(), TrnWorkOrder.JENISKEGIATAN);
 
         holder.linear_workorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(get_jeniskegiatan.equals("Persemaian"))
-                {
+                if (get_jeniskegiatan.equals("Persemaian")) {
 
                     FragmentManager manager = ((MainActivity) mContext).getSupportFragmentManager();
                     Fragment fragment = new PersemaianFragment();
                     FragmentTransaction ft = manager.beginTransaction();
                     ft.replace(R.id.nav_host_fragment, fragment);
                     ft.commit();
-                }
-                else {
+                } else {
                     FragmentManager manager = ((MainActivity) mContext).getSupportFragmentManager();
-                    Fragment fragment = new GangguanFragment();
+                    Fragment fragment = new ListGangguanFragment();
                     FragmentTransaction ft = manager.beginTransaction();
                     ft.replace(R.id.nav_host_fragment, fragment);
                     ft.commit();
@@ -80,7 +78,8 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
 
             }
         });
-           }
+
+    }
 
     @Override
     public int getItemCount() {

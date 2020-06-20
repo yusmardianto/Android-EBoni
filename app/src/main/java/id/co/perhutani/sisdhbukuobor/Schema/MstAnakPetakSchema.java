@@ -14,6 +14,7 @@ public class MstAnakPetakSchema {
     public static final String JENIS_TANAMAN = "JENIS_TANAMAN";
     public static final String PETAK_ID = "PETAK_ID";
     public static final String PETAK_NAME = "PETAK_NAME";
+    public static final String PERMUDAAN = "PERMUDAAN";
     public static final String ANAK_PETAK_ID = "ANAK_PETAK_ID";
     public static final String ANAK_PETAK_NAME = "ANAK_PETAK_NAME";
     public static final String TAHUN = "TAHUN";
@@ -40,6 +41,7 @@ public class MstAnakPetakSchema {
             "" + JENIS_TANAMAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + PETAK_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + PETAK_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + PERMUDAAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + ANAK_PETAK_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + ANAK_PETAK_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + TAHUN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
