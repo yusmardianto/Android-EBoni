@@ -125,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
     Boolean cek_login_api = false;
     private int i = -1;
 
+    String str_rolename = "";
     String error_message = "";
     String feedback_error_message = "";
 
@@ -211,6 +212,7 @@ public class LoginActivity extends AppCompatActivity {
         AjnClass.pasang_sentry(this.getApplicationContext());
 
         username.setText("mandor_banjarharjo");
+//        username.setText("kphw_pekalongan");
         password.setText("perhutani");
 
         // Progress dialog
@@ -224,9 +226,28 @@ public class LoginActivity extends AppCompatActivity {
         // Check if user is already logged in or not
         if (session.isLoggedIn()) {
 //            Intent intent = new Intent(this, DashboardV2Activity.class);
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(this, MainActivity.class);
+//            startActivity(intent);
+//            finish();
+
+            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(i);
             finish();
+//
+//                                        if(str_rolename.equals("mobile_rph"))
+//                                        {
+//                                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+//                                            startActivity(i);
+//                                            finish();
+//
+//                                        } else if(str_rolename.equals("mobile_phw")){
+//                                            Intent i = new Intent(LoginActivity.this, RoleKphwActivity.class);
+//                                            startActivity(i);
+//                                            finish();
+//                                        }else{
+//                                            AjnClass.showAlert(LoginActivity.this,"Siapa lu ?");
+//
+//                                        }
         }
 
         // mengaktifkan service sentry io
@@ -323,10 +344,11 @@ public class LoginActivity extends AppCompatActivity {
                                         Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(i);
                                         finish();
+
                                         pDialog.cancel();
                                     }
 
-                                }, 1000);
+                                }, 5000);
                             } else {
                                 pDialog.setTitleText("Oops...!")
                                         .setContentText(error_message)
@@ -385,8 +407,8 @@ public class LoginActivity extends AppCompatActivity {
                     in.close();
                     //Read JSON response and print
                     JSONObject myResponse = new JSONObject(response.toString());
-                    Log.i("JSON_STATUS", myResponse.getString("status"));
-                    Log.i("JSON_MESSAGE", myResponse.getString("message"));
+//                    Log.i("JSON_STATUS", myResponse.getString("status"));
+//                    Log.i("JSON_MESSAGE", myResponse.getString("message"));
 //                    Log.i("JSON_STATUS", String.valueOf(conn.getResponseCode()));
 //                    Log.i("JSON_MESSAGE", conn.getResponseMessage());
 //                    Log.i("JSON_TOKEN", myResponse.getString("access_token"));
@@ -395,7 +417,7 @@ public class LoginActivity extends AppCompatActivity {
                         status_message = true;
 //                        Log.i("JSON_STATUS", String.valueOf(conn.getResponseCode()));
 //                        Log.i("JSON_MESSAGE", conn.getResponseMessage());
-                        Log.i("JSON_TOKEN", myResponse.getString("access_token"));
+//                        Log.i("JSON_TOKEN", myResponse.getString("access_token"));
 
 
 
@@ -403,51 +425,51 @@ public class LoginActivity extends AppCompatActivity {
                         // get data profil user
                         sync_profil_v1(myResponse.getString("access_token"), username.getText().toString());
                         // get data anak petak
-                        sync_get_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
-                        // get data kelas hutan
-                        sync_get_kelas_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-                        // get data fungsi hutan
-                        sync_get_fungsi_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-                        // get data Penggunaan hutan
-                        sync_get_penggunaan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-                        // get data jenis tanaman
-                        sync_get_jenis_tanaman_v1(myResponse.getString("access_token"), username.getText().toString());
-                        // get data jenis permasalahan
-                        sync_get_jenis_permasalahan_v1(myResponse.getString("access_token"), username.getText().toString());
-                        // get data jenis gangguan
-                        sync_get_jenis_gangguan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-                        // get data jenis pal
-                        sync_get_jenis_pal_v1(myResponse.getString("access_token"), username.getText().toString());
-                        //get data kondisi pal
-                        sync_get_kondisi_pal_v1(myResponse.getString("access_token"), username.getText().toString());
-                        // get data jenis satwa
-                        sync_get_jenis_satwa_v1(myResponse.getString("access_token"), username.getText().toString());
-                        // get data jenis temuan
-                        sync_get_jenis_temuan_v1(myResponse.getString("access_token"), username.getText().toString());
-                        // get data bagian hutan
-                        sync_get_bagian_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-                        //get data waktu lihat
-                        sync_get_waktu_terlihat_v1(myResponse.getString("access_token"), username.getText().toString());
-                        //get data desa
-                        sync_get_master_desa(myResponse.getString("access_token"), username.getText().toString());
-                        //get data interaksi
-                        sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
-                        //get data status interaksi
-                        sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
-                        // get data strata
-                        sync_get_strata(myResponse.getString("access_token"), username.getText().toString());
-                        //get data pihak terlibat
-                        sync_get_pihak_terlibat(myResponse.getString("access_token"), username.getText().toString());
-                        //get data pekerjaan
-                        sync_get_sub_pekerjaan(myResponse.getString("access_token"), username.getText().toString());
-                        //get data sub pekerjaan
-                        sync_get_pekerjaan(myResponse.getString("access_token"), username.getText().toString());
-                        //get data workorder
-                        sync_get_workorder(myResponse.getString("access_token"), username.getText().toString());
-                        //get data susun risalah
-                        sync_get_susunrisalah(myResponse.getString("access_token"), username.getText().toString());
-                        //get data monitoring kh & penampakan
-                        sync_get_monitoring(myResponse.getString("access_token"), username.getText().toString());
+//                        sync_get_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data kelas hutan
+//                        sync_get_kelas_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data fungsi hutan
+//                        sync_get_fungsi_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data Penggunaan hutan
+//                        sync_get_penggunaan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data jenis tanaman
+//                        sync_get_jenis_tanaman_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data jenis permasalahan
+//                        sync_get_jenis_permasalahan_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data jenis gangguan
+//                        sync_get_jenis_gangguan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data jenis pal
+//                        sync_get_jenis_pal_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data kondisi pal
+//                        sync_get_kondisi_pal_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data jenis satwa
+//                        sync_get_jenis_satwa_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data jenis temuan
+//                        sync_get_jenis_temuan_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data bagian hutan
+//                        sync_get_bagian_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data waktu lihat
+//                        sync_get_waktu_terlihat_v1(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data desa
+//                        sync_get_master_desa(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data interaksi
+//                        sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data status interaksi
+//                        sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
+//                        // get data strata
+//                        sync_get_strata(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data pihak terlibat
+//                        sync_get_pihak_terlibat(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data pekerjaan
+//                        sync_get_sub_pekerjaan(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data sub pekerjaan
+//                        sync_get_pekerjaan(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data workorder
+//                        sync_get_workorder(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data susun risalah
+//                        sync_get_susunrisalah(myResponse.getString("access_token"), username.getText().toString());
+//                        //get data monitoring kh & penampakan
+//                        sync_get_monitoring(myResponse.getString("access_token"), username.getText().toString());
 
                         session.setLogin(true);
                     } else if (myResponse.getString("status").equals("error")) {
@@ -502,18 +524,6 @@ public class LoginActivity extends AppCompatActivity {
                     Log.i("JSON_SEND_TOKEN", token);
                     Log.i("JSON_DATA", myResponse.getString("data"));
 
-//                    String str_role = null;
-//                    JSONObject result = new JSONObject(response.toString());
-//                    JSONArray jsonArray = result.getJSONArray("role");
-//                    for (int i = 0; i < jsonArray.length(); i++) {
-//                        JSONObject json_projek = jsonArray.getJSONObject(i);
-//                        ContentValues values = new ContentValues();
-//                        session.setPreferences(LoginActivity.this, "session_role",json_projek.getString("role"));
-//                        str_role = json_projek.getString("role");
-//
-//                    }
-
-
                     ContentValues values = new ContentValues();
                     values.put(UserSchema._ID, 1);
                     values.put(UserSchema.USER_ID, myResponse.getJSONObject("data").getString("id"));
@@ -534,6 +544,7 @@ public class LoginActivity extends AppCompatActivity {
                     values.put(UserSchema.KET10, myResponse.getJSONObject("data").getString("role_name"));
                     db.create(UserSchema.TABLE_NAME, values);
 
+                    str_rolename = myResponse.getJSONObject("data").getString("role_name");
                     conn.disconnect();
 
                 } catch (Exception e) {

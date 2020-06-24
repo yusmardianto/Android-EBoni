@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.TallySheetFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.BukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.home.HomeFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.profil.ProfilFragment;
@@ -37,7 +38,7 @@ public class RoleKphwActivity extends AppCompatActivity {
 //                            break;
 
                         case R.id.navigation_tallysheet:
-                            selectedFragment = new WorkOrderFragment();
+                            selectedFragment = new TallySheetFragment();
                             break;
 //                        case R.id.navigation_pengelolaan:
 //                            selectedFragment = new DashboardBukuOborFragment();

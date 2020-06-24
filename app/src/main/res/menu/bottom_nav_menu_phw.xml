@@ -6,15 +6,6 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
-    <item
-        android:id="@+id/navigation_bukuobor"
-        android:icon="@drawable/ic_whatshot_black_24dp"
-        android:title="@string/text_bukuobor" />
-
-    <item
-        android:id="@+id/navigation_workorder"
-        android:icon="@drawable/ic_workorder"
-        android:title="@string/workorder" />
 
     <item
         android:id="@+id/navigation_tallysheet"

@@ -37,6 +37,8 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
+import static id.co.perhutani.sisdhbukuobor.R.layout.fragment_home;
+
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
@@ -64,7 +66,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        View homeView = inflater.inflate(R.layout.fragment_home, container, false);
+        View homeView = inflater.inflate(fragment_home, container, false);
 
         db = new SQLiteHandler(getActivity().getApplicationContext());
         db.altertable_update_aplication();
@@ -98,8 +100,8 @@ public class HomeFragment extends Fragment {
         TextView txt_wo_complete = homeView.findViewById(R.id.count_wo_complete);
         TextView txt_wo_reject = homeView.findViewById(R.id.count_wo_reject);
 
-        TextView tes_view = homeView.findViewById(R.id.tes_view);
-        tes_view.setText(db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.KET10));
+//        TextView tes_view = homeView.findViewById(R.id.tes_view);
+//        tes_view.setText(db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.KET10));
 
         txt_wo_open.setText(count_wo_open);
         txt_wo_pending.setText(count_wo_pending);
