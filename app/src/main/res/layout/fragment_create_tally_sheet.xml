@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/md_grey_200"
+    tools:context=".FragmentUi.TallySheet.CreateTallySheetFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_create_tallysheet"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimary">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="Tambah Data Tally Sheet"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:background="@drawable/ic_background_tallysheet">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:background="@drawable/ic_background"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:fontFamily="@font/font_aal_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kelas Hutan"
+                    android:textColor="#424242"
+                    android:layout_marginBottom="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:fontFamily="@font/font_aal_default"
+                    android:id="@+id/spinner_kph"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/ts_kph"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="KPH" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/md_green_200" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_marginTop="10dp"
+                android:id="@+id/ts_bagianhutan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_background"
+                android:fontFamily="@font/font_aal_default"
+                android:hint="Bagian Hutan" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ts_bkph"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="BKPH" />
+
+                <EditText
+                    android:id="@+id/ts_rph"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="RPH" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ts_petak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Petak" />
+
+                <EditText
+                    android:id="@+id/ts_anak_petak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Anak Petak" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ts_desa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Desa" />
+
+                <EditText
+                    android:id="@+id/ts_jarak_desa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Jarak Dari Desa" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ts_kecamatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Kecamatan" />
+
+                <EditText
+                    android:id="@+id/ts_kabupaten"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Kabupaten" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/ts_tinggi_pdl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_background"
+                android:fontFamily="@font/font_aal_default"
+                android:hint="Tinggi PDL" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ts_iklim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Iklim" />
+
+                <EditText
+                    android:id="@+id/ts_curah_hujan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Curah Hujan" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/ic_background"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:fontFamily="@font/font_aal_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kelas Hutan"
+                    android:textColor="#424242"
+                    android:layout_marginBottom="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:fontFamily="@font/font_aal_default"
+                    android:id="@+id/spinner_kelashutan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/ts_kelas_hutan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Kelas Hutan" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/md_green_200" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/ic_background"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:fontFamily="@font/font_aal_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fungsi Hutan"
+                    android:textColor="#424242"
+                    android:layout_marginBottom="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:fontFamily="@font/font_aal_default"
+                    android:id="@+id/spinner_fungsihutan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/ts_fungsi_hutan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Fungsi Hutan" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/md_green_200" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/ic_background"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:fontFamily="@font/font_aal_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Penggunaan Hutan"
+                    android:textColor="#424242"
+                    android:layout_marginBottom="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:fontFamily="@font/font_aal_default"
+                    android:id="@+id/spinner_penggunaanhutan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/ts_penggunaan_hutan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Penggunaan Hutan" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/md_green_200" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/ts_tahun_tanam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_background"
+                android:fontFamily="@font/font_aal_default"
+                android:hint="Tahun Tanam" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ts_bonita_lama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Bonita Lama" />
+
+                <EditText
+                    android:id="@+id/ts_bonita_baru"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Bonita Baru" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ts_kbd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="KBD" />
+
+                <EditText
+                    android:id="@+id/ts_dkn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="DKN" />
+                <EditText
+                    android:id="@+id/ts_volume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Volume" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ts_intensitas_sampling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Intensitas Sampling" />
+
+                <EditText
+                    android:id="@+id/ts_cara_sampling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Cara Sampling" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/ts_tanggal_inventarisasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_background"
+                android:fontFamily="@font/font_aal_default"
+                android:hint="Tanggal Inventarisasi" />
+
+            <EditText
+                android:id="@+id/ts_pelaksana"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_background"
+                android:fontFamily="@font/font_aal_default"
+                android:hint="Pelaksana" />
+
+            <EditText
+                android:id="@+id/ts_kepala_seksi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_background"
+                android:fontFamily="@font/font_aal_default"
+                android:hint="Kepala Seksi" />
+
+            <EditText
+                android:id="@+id/ts_rak_dokumentasi_nomor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_background"
+                android:fontFamily="@font/font_aal_default"
+                android:hint="Rak Dokumentasi" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ts_laci_nomor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Laci Nomor" />
+
+                <EditText
+                    android:id="@+id/ts_tallysheet_plot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_background"
+                    android:fontFamily="@font/font_aal_default"
+                    android:hint="Tallysheet Plot" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/ts_keterangan"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_background"
+                android:fontFamily="@font/font_aal_default"
+                android:hint="Keterangan" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ts_btnsubmit"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/font_aal_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_btnlogin"
+                    android:text="Simpan"
+                    android:textColor="#F9F9F9" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

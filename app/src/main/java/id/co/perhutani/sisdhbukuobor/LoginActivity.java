@@ -47,6 +47,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBagianHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstDesaSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstFungsiHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
@@ -56,6 +57,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstPekerjaan;
+import id.co.perhutani.sisdhbukuobor.Schema.MstPenggunaanHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStrataSchema;
@@ -75,12 +77,14 @@ public class LoginActivity extends AppCompatActivity {
     // server local
     //private static final String address = "http://127.0.0.1:8000/";
     // link api
-    private static final String URL_FOR_LOGIN_V1 = address + "api/v1/login";
+    private static final String URL_FOR_LOGIN_V1 = address + "api/v1/loginv2";
     private static final String URL_FOR_PROFIL_V1 = address + "api/v1/get_user_details";
 
     private static final String URL_FOR_GET_ANAK_PETAK_V1 = address + "api/v1/getAnakPetak";
     private static final String URL_FOR_GET_BAGIAN_HUTAN_V1 = address + "api/v1/get_bagian_hutan";
     private static final String URL_FOR_GET_KELAS_HUTAN_V1 = address + "api/v1/getKelasHutan";
+    private static final String URL_FOR_GET_FUNGSI_HUTAN_V1 = address + "api/v1/getFungsiHutan";
+    private static final String URL_FOR_GET_PENGGUNAAN_HUTAN_V1 = address + "api/v1/getPenggunaanHutan";
     private static final String URL_FOR_GET_JENIS_TANAMAN_V1 = address + "api/v1/getJenisTanaman";
     private static final String URL_FOR_GET_JENIS_PERMASALAHAN_V1 = address + "api/v1/getJenisPermasalahan";
     private static final String URL_FOR_GET_JENIS_PALL_V1 = address + "api/v1/getJenisPal";
@@ -398,6 +402,10 @@ public class LoginActivity extends AppCompatActivity {
                         sync_get_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
                         // get data kelas hutan
                         sync_get_kelas_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data fungsi hutan
+                        sync_get_fungsi_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data Penggunaan hutan
+                        sync_get_penggunaan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
                         // get data jenis tanaman
                         sync_get_jenis_tanaman_v1(myResponse.getString("access_token"), username.getText().toString());
                         // get data jenis permasalahan
@@ -658,6 +666,94 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(MstKelasHutanSchema.KELAS_HUTAN_NAME, json_projek.getString("name"));
                         values.put(MstKelasHutanSchema.STRUKTUR_ID, json_projek.getString("struktur_id"));
                         db.create(MstKelasHutanSchema.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_fungsi_hutan_v1(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_FUNGSI_HUTAN_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET FUNGSI HUTAN ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+//                    Log.i("JSON_DATA", json_data.getString("data"));
+//                    Log.i("JSON_DATA_JUMLAH", String.valueOf(jsonArray.length()));
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstFungsiHutanSchema._ID, i + 1);
+                        values.put(MstFungsiHutanSchema.FUNGSI_HUTAN_ID, json_projek.getString("id"));
+                        values.put(MstFungsiHutanSchema.FUNGSI_HUTAN_KODE, json_projek.getString("kode"));
+                        values.put(MstFungsiHutanSchema.FUNGSI_HUTAN_NAME, json_projek.getString("name"));
+                        values.put(MstFungsiHutanSchema.KETERANGAN, json_projek.getString("keterangan"));
+                        db.create(MstFungsiHutanSchema.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_penggunaan_hutan_v1(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_PENGGUNAAN_HUTAN_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET PENGGUNAAN HUTAN ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+//                    Log.i("JSON_DATA", json_data.getString("data"));
+//                    Log.i("JSON_DATA_JUMLAH", String.valueOf(jsonArray.length()));
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstPenggunaanHutan._ID, i + 1);
+                        values.put(MstPenggunaanHutan.PENGGUNAAN_HUTAN_ID, json_projek.getString("id"));
+                        values.put(MstPenggunaanHutan.PENGGUNAAN_HUTAN_NAME, json_projek.getString("name"));
+                        db.create(MstFungsiHutanSchema.TABLE_NAME, values);
                     }
                     conn.disconnect();
                 } catch (Exception e) {

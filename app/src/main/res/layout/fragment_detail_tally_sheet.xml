@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_navigation_detail_tallysheet"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#EAEAEA">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_aal_bold"
+            android:text="Detail Data Tally Sheet"
+            android:textSize="18dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/layout_scrolldetail_andil"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="KPH"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kph"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="KPH Sekdut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Bagian Hutan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_bagianhutan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Majenang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="BKPH"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_bkph"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="BKPH MAJENANG"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="RPH"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_rph"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="RPH Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Petak"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_petak"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Petak 37"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Anak Petak"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_anakpetak"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Anak Petak 69B"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#e0e0e0" />
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Desa"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_desa"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Desa Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Jarak dari Desa"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_jarak_desa"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="0.97"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kecamatan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kecamatan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kecamatan Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kabupaten"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kabupaten"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kabupaten Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#e0e0e0" />
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Tinggi PDL"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_tinggipdl"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Tinggi Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Iklim"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_iklim"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Ikilm Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Curah Hujan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_curah_hujan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Curah Hujan Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="invisible"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#e0e0e0" />
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kelas Hutan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kelashutan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kelas Hutan Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Fungsi Hutan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_fungsihutan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Fungsi Hutan Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Penggunaan Hutan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_penggunaanhutan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Penggunaan Hutan Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="invisible"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#e0e0e0" />
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Bonita Lalu"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_bonitalalu"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Bonita lalu Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Bonita Baru"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_bonitabaru"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Bonita Baru Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Tahun Tanam"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_tahuntanam"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Tahun Tanam Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="KBD"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kbd"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="KBD Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="DKN"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_dkn"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="DKN Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Volume"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_volume"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Volume Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Intensitas Sampling"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_intensitas_sampling"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Intensitas Sampling Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Cara Sampling"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_cara_sampling"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Cara Sampling Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#e0e0e0" />
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Tanggal Inventarisasi"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_tgl_inven"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Tanggal Inven Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Pelaksana"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_pelaksana"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Pelaksana Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kepala Seksi"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kepala_seksi"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kepala Seksi Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Tally Sheet Plot"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_plot"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Plot Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="No Rak"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_no_rak"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="No Rak Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="No Laci"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_no_laci"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="No Laci Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Keterangan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_keterangan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Keterangan Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="invisible"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
