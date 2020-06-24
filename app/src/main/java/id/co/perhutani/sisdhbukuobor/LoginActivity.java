@@ -210,7 +210,7 @@ public class LoginActivity extends AppCompatActivity {
         background.start();
         AjnClass.pasang_sentry(this.getApplicationContext());
 
-        username.setText("rphbanjarharjo");
+        username.setText("mandor_banjarharjo");
         password.setText("perhutani");
 
         // Progress dialog
@@ -396,6 +396,10 @@ public class LoginActivity extends AppCompatActivity {
 //                        Log.i("JSON_STATUS", String.valueOf(conn.getResponseCode()));
 //                        Log.i("JSON_MESSAGE", conn.getResponseMessage());
                         Log.i("JSON_TOKEN", myResponse.getString("access_token"));
+
+
+
+
                         // get data profil user
                         sync_profil_v1(myResponse.getString("access_token"), username.getText().toString());
                         // get data anak petak
@@ -498,6 +502,18 @@ public class LoginActivity extends AppCompatActivity {
                     Log.i("JSON_SEND_TOKEN", token);
                     Log.i("JSON_DATA", myResponse.getString("data"));
 
+//                    String str_role = null;
+//                    JSONObject result = new JSONObject(response.toString());
+//                    JSONArray jsonArray = result.getJSONArray("role");
+//                    for (int i = 0; i < jsonArray.length(); i++) {
+//                        JSONObject json_projek = jsonArray.getJSONObject(i);
+//                        ContentValues values = new ContentValues();
+//                        session.setPreferences(LoginActivity.this, "session_role",json_projek.getString("role"));
+//                        str_role = json_projek.getString("role");
+//
+//                    }
+
+
                     ContentValues values = new ContentValues();
                     values.put(UserSchema._ID, 1);
                     values.put(UserSchema.USER_ID, myResponse.getJSONObject("data").getString("id"));
@@ -515,7 +531,7 @@ public class LoginActivity extends AppCompatActivity {
                     values.put(UserSchema.KET7, "");
                     values.put(UserSchema.KET8, "");
                     values.put(UserSchema.KET9, "");
-                    values.put(UserSchema.KET10, "");
+                    values.put(UserSchema.KET10, myResponse.getJSONObject("data").getString("role_name"));
                     db.create(UserSchema.TABLE_NAME, values);
 
                     conn.disconnect();

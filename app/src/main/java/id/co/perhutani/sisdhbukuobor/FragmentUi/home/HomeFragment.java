@@ -98,6 +98,9 @@ public class HomeFragment extends Fragment {
         TextView txt_wo_complete = homeView.findViewById(R.id.count_wo_complete);
         TextView txt_wo_reject = homeView.findViewById(R.id.count_wo_reject);
 
+        TextView tes_view = homeView.findViewById(R.id.tes_view);
+        tes_view.setText(db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.KET10));
+
         txt_wo_open.setText(count_wo_open);
         txt_wo_pending.setText(count_wo_pending);
         txt_wo_inprogress.setText(count_wo_inprogress);
