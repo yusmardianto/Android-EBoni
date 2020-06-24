@@ -17,11 +17,6 @@
         android:title="@string/workorder" />
 
     <item
-        android:id="@+id/navigation_tallysheet"
-        android:icon="@drawable/ic_workorder"
-        android:title="@string/tally_sheet" />
-
-    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="@string/text_profile" />

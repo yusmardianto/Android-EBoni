@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -17,10 +18,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.TallySheetFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.DashboardBukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.workorder.WorkOrderFragment;
+import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPalSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisSatwa;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
+import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstStrataSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnOverSpin;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPembuatanBedengSapih;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPengelolaanHutan;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanLahan;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 import id.co.perhutani.sisdhbukuobor.Service.MyBackgroundService;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.BukuOborFragment;
@@ -35,12 +61,45 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
     private SQLiteHandler db;
     public static String username, namedesc, token;
+    String str_rolename = "";
+    private SessionManager session;
+    BottomNavigationView navView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+
+        session = new SessionManager(MainActivity.this.getApplicationContext());
+
+        db = new SQLiteHandler(getApplicationContext());
+        db.altertable_update_aplication();
+        try {
+            username = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_NAME);
+            namedesc = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_NAME_DESCRIPTIONS);
+            token = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN);
+            str_rolename = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.KET10);
+        } catch (Exception e) {
+        }
+
+        if(str_rolename.equals("mobile_rph"))
+                                        {
+                                            setContentView(R.layout.activity_main_rph);
+                                            navView = findViewById(R.id.nav_view_rph);
+
+                                        } else if(str_rolename.equals("mobile_phw")){
+            setContentView(R.layout.activity_main_phw);
+            navView = findViewById(R.id.nav_view_phw);
+
+
+                                        }else{
+                                            AjnClass.showAlert(MainActivity.this,"Siapa lu ?");
+                                            actionDeleteData();
+                                        }
+
+
+//        setContentView(R.layout.activity_main);
+//        BottomNavigationView navView = findViewById(R.id.nav_view);
+
         navView.setOnNavigationItemSelectedListener(navListener);
 
         // mengaktifkan service sentry io
@@ -49,14 +108,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, MyBackgroundService.class);
         MainActivity.this.startService(i);
         // config
-        db = new SQLiteHandler(getApplicationContext());
-        db.altertable_update_aplication();
-        try {
-            username = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_NAME);
-            namedesc = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_NAME_DESCRIPTIONS);
-            token = db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN);
-        } catch (Exception e) {
-        }
+
         try {
             Sentry.getContext().recordBreadcrumb(
                     new BreadcrumbBuilder().setMessage(namedesc).build()
@@ -107,6 +159,39 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
     }
 
+    private void actionDeleteData() {
+        session.setLogin(false);
+        db.deleteAllRow(UserSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstAnakPetakSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisGangguanHutanSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisSatwa.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisTemuan.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstWaktuLihatSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisPalSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstKondisiPalSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisTanamanSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstJenisPermasalahanSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstStrataSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstPihakTerlibatSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnGangguanKeamananHutan.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnPerubahanKelas.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnPemantauanSatwa.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnRegisterPcp.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnInteraksimdh.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnIdentifikasiTenurial.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnLaporanPalBatas.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnPengelolaanHutan.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnPersiapanLahan.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnPembuatanBedengSapih.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(TrnOverSpin.SQL_DELETE_ALL_ROWS);
+
+        db.clear_database(db.getReadableDatabase());
+
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        MainActivity.this.finish();
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -127,9 +212,9 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.navigation_workorder:
                             selectedFragment = new WorkOrderFragment();
                             break;
-//                        case R.id.navigation_pengelolaan:
-//                            selectedFragment = new DashboardBukuOborFragment();
-//                            break;
+                        case R.id.navigation_tallysheet:
+                            selectedFragment = new TallySheetFragment();
+                            break;
                         case R.id.navigation_profile:
                             selectedFragment = new ProfilFragment();
                             break;
