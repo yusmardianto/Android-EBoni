@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -112,11 +113,16 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     Fragment selectedFragment = null;
                     switch (menuItem.getItemId()){
+
+//                        BottomNavigationView.getMenu().removeItem(R.id.navigation_home);
+//                        case R.id.navigation_home.rem(View.VISIBLE)
                         case R.id.navigation_home:
+
                             selectedFragment = new HomeFragment();
                         break;
                         case R.id.navigation_bukuobor:
-                            selectedFragment = new BukuOborFragment();
+//                            selectedFragment = new BukuOborFragment();
+                            selectedFragment.setMenuVisibility(true);
                             break;
                         case R.id.navigation_workorder:
                             selectedFragment = new WorkOrderFragment();
