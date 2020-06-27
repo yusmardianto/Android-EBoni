@@ -173,7 +173,7 @@ public class EditRegisterpcpFragment extends Fragment {
 
         nopcp.setText(str_nopcp);
         anakpetak.setText(str_anakpetak);
-        tahunpcp.setText(str_tahunjarangan);
+        tahunpcp.setText(str_tahunpcp);
         luasbaku.setText(str_luasbaku);
         luasblok.setText(str_luasblok);
         umur.setText(str_umur);
