@@ -79,7 +79,7 @@ public class TambahInteraksimdhFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
                 anakpetak.setText(id_petak);
             }
 
@@ -222,7 +222,7 @@ public class TambahInteraksimdhFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.spinner_anakpetak_interaksi);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
         anakpetak.setText(id_petak);
 
         spin_nama_desa = root.findViewById(R.id.spinner_namadesa);
@@ -281,7 +281,7 @@ public class TambahInteraksimdhFragment extends Fragment {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(nama_desa)
+                        .setContentText("")
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -290,7 +290,7 @@ public class TambahInteraksimdhFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText(nama_desa)
+                                        .setContentText("")
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -302,7 +302,7 @@ public class TambahInteraksimdhFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(nama_desa)
+                                        .setContentText("")
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -327,7 +327,7 @@ public class TambahInteraksimdhFragment extends Fragment {
                                             values_aktifitas.put(TrnInteraksimdh.NAMA_DESA, namadesa.getText().toString());
                                             values_aktifitas.put(TrnInteraksimdh.BENTUK_INTERAKSI, bentukinteraksi.getText().toString());
                                             values_aktifitas.put(TrnInteraksimdh.STATUS, status.getText().toString());
-                                            values_aktifitas.put(TrnInteraksimdh.KET1, anakpetak.getText().toString());
+                                            values_aktifitas.put(TrnInteraksimdh.KET1, spin_anak_petak.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KET2, tanggal.getText().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KET3, spin_nama_desa.getSelectedItem().toString());
                                             values_aktifitas.put(TrnInteraksimdh.KET4, spin_bentuk_interaksi.getSelectedItem().toString());

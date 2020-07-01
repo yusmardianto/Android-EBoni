@@ -84,7 +84,7 @@ public class EditPerubahanFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
                 petak_id.setText(id_petak);
 
             }
@@ -334,7 +334,7 @@ public class EditPerubahanFragment extends Fragment {
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_perubahan);
         load_spinner_anak_petak();
         String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
         petak_id.setText(id_petak);
 
         spin_jenis_tanaman = root.findViewById(R.id.edit_spinner_jenis_perubahan);
@@ -475,7 +475,7 @@ public class EditPerubahanFragment extends Fragment {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(jenistanaman)
+                        .setContentText("")
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -496,7 +496,7 @@ public class EditPerubahanFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(jenistanaman)
+                                        .setContentText("")
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
