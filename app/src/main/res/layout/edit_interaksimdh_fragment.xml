@@ -25,7 +25,7 @@
                 android:text="Edit Interaksi Manusia dan Hutan"
                 android:textSize="18dp" />
             <TextView
-                android:visibility="gone"
+                android:id="@+id/testing_data"
                 android:textColor="@color/colorWhite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,13 +72,13 @@
                         android:layout_height="wrap_content"/>
 
                     <EditText
+                        android:visibility="gone"
                         android:id="@+id/edit_interaksimdh_idpetak"
                         android:fontFamily="@font/font_aal_default"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background"
-                        android:hint="Anak Petak" />
+                        android:hint="Anak Petakiiiiii" />
 
                     <View
                         android:layout_width="match_parent"
@@ -130,9 +130,9 @@
                         android:layout_height="wrap_content"/>
 
                     <EditText
+                        android:visibility="gone"
                         android:id="@+id/edit_interaksimdh_namadesa"
                         android:fontFamily="@font/font_aal_default"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background"
@@ -167,9 +167,9 @@
                         android:layout_height="wrap_content"/>
 
                     <EditText
+                        android:visibility="gone"
                         android:id="@+id/edit_interaksimdh_bentukinteraksi"
                         android:fontFamily="@font/font_aal_default"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background"
@@ -204,9 +204,9 @@
                         android:layout_height="wrap_content"/>
 
                     <EditText
+                        android:visibility="gone"
                         android:id="@+id/edit_interaksimdh_statusinteraksi"
                         android:fontFamily="@font/font_aal_default"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ic_background"

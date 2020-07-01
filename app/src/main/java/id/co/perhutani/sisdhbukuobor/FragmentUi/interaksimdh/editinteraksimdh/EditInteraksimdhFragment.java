@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -63,6 +64,8 @@ public class EditInteraksimdhFragment extends Fragment {
         return new EditInteraksimdhFragment();
     }
 
+
+    public static String str_nama_petak, str_nama_desa;
     public void load_spinner_anak_petak() {
         List<String> listtpg = db.getAnakPetak();
         final int _tpg = listtpg.size();
@@ -88,13 +91,23 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_nama_petak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_anak_petak.setAdapter(adapter);
+        if (str_nama_petak != null) {
+            int spinnerPosition = adapter.getPosition(str_nama_petak);
+            spin_anak_petak.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_nama_desa() {
-        List<String> listtpg = db.getNamaDesa();
-        final int _tpg = listtpg.size();
+        List<String> listdesa = db.getNamaDesa();
+        final int _tpg = listdesa.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listtpg) {
+                android.R.layout.simple_spinner_item, listdesa) {
             @Override
             public int getCount() {
                 return (_tpg); // Truncate the list
@@ -115,6 +128,16 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_nama_desa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET3);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listdesa);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_nama_desa.setAdapter(adapter);
+        if (str_nama_desa != null) {
+            int spinnerPosition = adapter.getPosition(str_nama_desa);
+            spin_nama_desa.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_bentuk_interaksi() {
@@ -190,7 +213,10 @@ public class EditInteraksimdhFragment extends Fragment {
             ex.printStackTrace();
         }
 
-        anakpetak = root.findViewById(R.id.edit_interaksimdh_idpetak);
+
+        TextView testing_data = root.findViewById(R.id.testing_data);
+
+
 
         tahun = root.findViewById(R.id.edit_interaksimdh_tahun);
         SimpleDateFormat sdf_tglmulai = new SimpleDateFormat("dd-MM-yyyy");
@@ -221,35 +247,44 @@ public class EditInteraksimdhFragment extends Fragment {
             }
         });
 
+        anakpetak = root.findViewById(R.id.edit_interaksimdh_idpetak);
         namadesa = root.findViewById(R.id.edit_interaksimdh_namadesa);
         bentukinteraksi = root.findViewById(R.id.edit_interaksimdh_bentukinteraksi);
         status = root.findViewById(R.id.edit_interaksimdh_statusinteraksi);
         keterangan = root.findViewById(R.id.edit_interaksimdh_keterangan);
         btnSimpanInteraksi = root.findViewById(R.id.edit_interaksimdh_btnsimpan);
 
+
+
+
+
+
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anakpetak_interaksi);
         load_spinner_anak_petak();
-        String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
-        anakpetak.setText(id_petak);
+
+
+//        String pil_petak = spin_anak_petak.getSelectedItem().toString();
+//        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
+//        anakpetak.setText(id);
 
         spin_nama_desa = root.findViewById(R.id.edit_spinner_namadesa);
         load_spinner_nama_desa();
-        String pil_desa = spin_nama_desa.getSelectedItem().toString();
-        String id_desa = db.getDataDetail(MstDesaByRph.TABLE_NAME, MstDesaByRph.DESA_NAME, pil_desa, MstDesaByRph.DESA_ID);
-        namadesa.setText(id_desa);
+//        String pil_desa = spin_nama_desa.getSelectedItem().toString();
+//        String id_desa = db.getDataDetail(MstDesaByRph.TABLE_NAME, MstDesaByRph.DESA_NAME, pil_desa, MstDesaByRph.DESA_ID);
+//        namadesa.setText(id_desa);
 
         spin_bentuk_interaksi = root.findViewById(R.id.edit_spinner_bentukinteraksi);
         load_spinner_bentuk_interaksi();
-        String pil_interaksi = spin_bentuk_interaksi.getSelectedItem().toString();
-        String id_interaksi = db.getDataDetail(MstBentukInteraksiSchema.TABLE_NAME, MstBentukInteraksiSchema.NAMA_INTERAKSI, pil_interaksi, MstBentukInteraksiSchema.ID_INTERAKSI);
-        bentukinteraksi.setText(id_interaksi);
+//        String pil_interaksi = spin_bentuk_interaksi.getSelectedItem().toString();
+//        String id_interaksi = db.getDataDetail(MstBentukInteraksiSchema.TABLE_NAME, MstBentukInteraksiSchema.NAMA_INTERAKSI, pil_interaksi, MstBentukInteraksiSchema.ID_INTERAKSI);
+//        bentukinteraksi.setText(id_interaksi);
 
         spin_status = root.findViewById(R.id.edit_spinner_statusinteraksi);
         load_spinner_status_interaksi();
-        String pil_status = spin_status.getSelectedItem().toString();
-        String id_status = db.getDataDetail(MstStatusInteraksiSchema.TABLE_NAME, MstStatusInteraksiSchema.NAMA_STATUS, pil_status, MstStatusInteraksiSchema.ID_STATUS);
-        status.setText(id_status);
+//        String pil_status = spin_status.getSelectedItem().toString();
+//        String id_status = db.getDataDetail(MstStatusInteraksiSchema.TABLE_NAME, MstStatusInteraksiSchema.NAMA_STATUS, pil_status, MstStatusInteraksiSchema.ID_STATUS);
+//        status.setText(id_status);
+
 
         str_anakpetak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.ANAK_PETAK_ID);
         str_tahun = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.TAHUN);
@@ -258,6 +293,8 @@ public class EditInteraksimdhFragment extends Fragment {
         str_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.STATUS);
         str_keterangan = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KETERANGAN);
         str_petak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.HEXA);
+
+        testing_data.setText(str_anakpetak);
 
         anakpetak.setText(str_anakpetak);
         tahun.setText(str_tahun);
