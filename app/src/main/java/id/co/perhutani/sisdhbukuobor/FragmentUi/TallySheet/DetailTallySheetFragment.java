@@ -37,7 +37,7 @@ public class DetailTallySheetFragment extends Fragment {
             txt_kecamatan, txt_kabupaten, txt_tinggipdl, txt_iklim, txt_curah_hujan, txt_kelashutan, txt_fungsihutan,
             txt_penggunaanhutan, txt_tahuntanam, txt_bonitalalu, txt_bonitabaru, txt_kbd, txt_dkn, txt_volume,
             txt_intensitassampling, txt_carasampling, txt_tglinventarisasi, txt_pelaksana, txt_kepalaseksi, txt_no_rak,
-            txt_no_laci, txt_tallysheet_plot, txt_keterangan;;
+            txt_no_laci, txt_tallysheet_plot, txt_keterangan;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,6 @@ public class DetailTallySheetFragment extends Fragment {
         // Inflate the layout for this fragment
         view_detail_tallysheet = inflater.inflate(R.layout.fragment_detail_tally_sheet, container, false);
         db = new SQLiteHandler(getActivity());
-        context=getActivity();
         try {
             String message = getArguments().getString(MSG_KEY);
             if (message != null) {
@@ -78,22 +77,22 @@ public class DetailTallySheetFragment extends Fragment {
         });
 
         try {
-            ts_kph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KPH);
-            ts_bagian_hutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.BAGIAN_HUTAN);
-            ts_bkph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.BKPH);
-            ts_rph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.RPH);
-            ts_petak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.PETAK);
-            ts_anak_petak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.ANAK_PETAK);
-            ts_desa = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.DESA);
+            ts_kph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KPH_NAME);
+            ts_bagian_hutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.BAGIAN_HUTAN_NAME);
+            ts_bkph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.BKPH_NAME);
+            ts_rph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.RPH_NAME);
+            ts_petak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.PETAK_NAME);
+            ts_anak_petak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.ANAK_PETAK_NAME);
+            ts_desa = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.DESA_NAME);
             ts_jarakdesa = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.JARAK_DESA);
-            ts_kecamatan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KECAMATAN);
-            ts_kabupaten = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KABUPATEN);
+            ts_kecamatan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KECAMATAN_NAME);
+            ts_kabupaten = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KABUPATEN_NAME);
             ts_tinggipdl = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.TINGGI_PDL);
             ts_iklim = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.IKLIM);
             ts_curah_hujan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.CURAH_HUJAN);
-            ts_kelashutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KELAS_HUTAN);
-            ts_fungsihutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.FUNGSI_HUTAN);
-            ts_penggunaanhutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.PENGGUNAAN_HUTAN);
+            ts_kelashutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KELAS_HUTAN_NAME);
+            ts_fungsihutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.FUNGSI_HUTAN_NAME);
+            ts_penggunaanhutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.PENGGUNAAN_HUTAN_NAME);
             ts_tahuntanam = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.TAHUN_TANAM);
             ts_bonitalalu = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.BONITA_LALU);
             ts_bonitabaru = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.BONITA_BARU);

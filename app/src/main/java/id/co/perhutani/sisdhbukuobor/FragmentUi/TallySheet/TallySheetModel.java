@@ -6,13 +6,21 @@ public class TallySheetModel {
     ts_kecamatan, ts_kabupaten, ts_tinggipdl, ts_iklim, ts_curah_hujan, ts_kelashutan, ts_fungsihutan,
     ts_penggunaanhutan, ts_tahuntanam, ts_bonitalalu, ts_bonitabaru, ts_kbd, ts_dkn, ts_volume,
     ts_intensitassampling, ts_carasampling, ts_tglinventarisasi, ts_pelaksana, ts_kepalaseksi, ts_no_rak,
-    ts_no_laci, ts_tallysheet_plot, ts_keterangan;
+    ts_no_laci, ts_tallysheet_plot, ts_keterangan, ts_ket8, ts_ket9, ts_ket10;
 
     public TallySheetModel(String id) {
         this.id = id;
     }
 
     public TallySheetModel() {
+    }
+
+    public String getTs_ket10() {
+        return ts_ket10;
+    }
+
+    public void setTs_ket10(String ts_ket10) {
+        this.ts_ket10 = ts_ket10;
     }
 
     public String getId() {
@@ -269,5 +277,21 @@ public class TallySheetModel {
 
     public void setTs_keterangan(String ts_keterangan) {
         this.ts_keterangan = ts_keterangan;
+    }
+
+    public String getTs_ket8() {
+        return ts_ket8;
+    }
+
+    public void setTs_ket8(String ts_ket8) {
+        this.ts_ket8 = ts_ket8;
+    }
+
+    public String getTs_ket9() {
+        return ts_ket9;
+    }
+
+    public void setTs_ket9(String ts_ket9) {
+        this.ts_ket9 = ts_ket9;
     }
 }

@@ -14,6 +14,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.TallySheetModel;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
 import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
@@ -332,6 +333,53 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnGangguanKeamananHutan.HEXA, g.getKet11());
         args.put(TrnGangguanKeamananHutan.KET9, g.getKet9());
         db.update(TrnGangguanKeamananHutan.TABLE_NAME, args, strFilter, null);
+    }
+
+    public void EditDataTallySheetForAPI(TallySheetModel g) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + g.getId();
+        ContentValues args = new ContentValues();
+        args.put(TrnTallySheet.KET9, g.getTs_ket9());
+        args.put(TrnTallySheet.KET10, g.getTs_ket10());
+        db.update(TrnTallySheet.TABLE_NAME, args, strFilter, null);
+    }
+    public void EditDataTallySheet(TallySheetModel g) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + g.getId();
+        ContentValues args = new ContentValues();
+        args.put(TrnTallySheet.KPH, g.getTs_kph());
+        args.put(TrnTallySheet.BAGIAN_HUTAN, g.getTs_bagian_hutan());
+        args.put(TrnTallySheet.BKPH, g.getTs_bkph());
+        args.put(TrnTallySheet.RPH, g.getTs_rph());
+        args.put(TrnTallySheet.PETAK, g.getTs_petak());
+        args.put(TrnTallySheet.ANAK_PETAK, g.getTs_anak_petak());
+        args.put(TrnTallySheet.DESA, g.getTs_desa());
+        args.put(TrnTallySheet.JARAK_DESA, g.getTs_jarakdesa());
+        args.put(TrnTallySheet.KECAMATAN, g.getTs_kecamatan());
+        args.put(TrnTallySheet.KABUPATEN, g.getTs_kabupaten());
+        args.put(TrnTallySheet.TINGGI_PDL, g.getTs_tinggipdl());
+        args.put(TrnTallySheet.IKLIM, g.getTs_iklim());
+        args.put(TrnTallySheet.CURAH_HUJAN, g.getTs_curah_hujan());
+        args.put(TrnTallySheet.KELAS_HUTAN, g.getTs_kelashutan());
+        args.put(TrnTallySheet.FUNGSI_HUTAN, g.getTs_fungsihutan());
+        args.put(TrnTallySheet.PENGGUNAAN_HUTAN, g.getTs_penggunaanhutan());
+        args.put(TrnTallySheet.TAHUN_TANAM, g.getTs_tahuntanam());
+        args.put(TrnTallySheet.BONITA_LALU, g.getTs_bonitalalu());
+        args.put(TrnTallySheet.BONITA_BARU, g.getTs_bonitabaru());
+        args.put(TrnTallySheet.KBD, g.getTs_kbd());
+        args.put(TrnTallySheet.DKN, g.getTs_dkn());
+        args.put(TrnTallySheet.VOLUME, g.getTs_volume());
+        args.put(TrnTallySheet.INTENSITAS_SAMPLING, g.getTs_intensitassampling());
+        args.put(TrnTallySheet.CARA_SAMPLING, g.getTs_carasampling());
+        args.put(TrnTallySheet.TGL_INVENTARISASI, g.getTs_tglinventarisasi());
+        args.put(TrnTallySheet.PELAKSANA, g.getTs_pelaksana());
+        args.put(TrnTallySheet.KEPALA_SEKSI, g.getTs_kepalaseksi());
+        args.put(TrnTallySheet.NO_RAK, g.getTs_no_rak());
+        args.put(TrnTallySheet.NO_LACI, g.getTs_no_laci());
+        args.put(TrnTallySheet.TALLYSHEET_PLOT, g.getTs_tallysheet_plot());
+        args.put(TrnTallySheet.KETERANGAN, g.getTs_keterangan());
+        args.put(TrnTallySheet.KET9, g.getTs_ket9());
+        db.update(TrnTallySheet.TABLE_NAME, args, strFilter, null);
     }
 
     public void EditDataGangguanHutanfroApi(GangguanModel b) {

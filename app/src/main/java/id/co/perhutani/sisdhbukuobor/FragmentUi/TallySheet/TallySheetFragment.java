@@ -72,7 +72,7 @@ public class TallySheetFragment extends Fragment {
 
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new ListTallySheetFragment());
-        fragments.add(new SudahAccFragment());
+        fragments.add(new ListTallySheetFragment());
 
         mViewPager.setOffscreenPageLimit(2);
 

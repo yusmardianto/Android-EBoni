@@ -65,6 +65,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstSubPekerjaan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnMonitoringKlsHtn;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnSusunRisalah;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnTallySheet;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnWorkOrder;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
@@ -104,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_WORKORDER_V1 = address + "api/v1/getWorkOrder";
     private static final String URL_FOR_GET_SUSUN_RISALAH_V1 = address + "api/v1/getSusunRisalah";
     private static final String URL_FOR_GET_MONITORING_KLSHTN_V1 = address + "api/v1/getMonitoringKlsHtn";
+    private static final String URL_FOR_GET_TALLY_SHEET_V1 = address + "api/v1/getTallySheet";
 
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
     public static final String URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1 = address + "api/v1/postPerubahan";
@@ -112,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String URL_FOR_POST_LAPORAN_PAL_V1 = address + "api/v1/postPal";
     public static final String URL_FOR_POST_REGISTER_PCP_V1 = address + "api/v1/postPcp";
     public static final String URL_FOR_POST_IDENTIFIKASI_TENURIAL_V1 = address + "api/v1/postTenurial";
+    public static final String URL_FOR_POST_TALLYSHEET_V1 = address + "api/v1/postTallySheet";
 
     private FirebaseAnalytics mFirebaseAnalytics;
     private ProgressDialog progressDialog;
@@ -425,19 +428,19 @@ public class LoginActivity extends AppCompatActivity {
                         // get data profil user
                         sync_profil_v1(myResponse.getString("access_token"), username.getText().toString());
                         // get data anak petak
-//                        sync_get_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data kelas hutan
 //                        sync_get_kelas_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data fungsi hutan
 //                        sync_get_fungsi_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data Penggunaan hutan
 //                        sync_get_penggunaan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
-//                        // get data jenis tanaman
-//                        sync_get_jenis_tanaman_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data jenis tanaman
+                        sync_get_jenis_tanaman_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data jenis permasalahan
 //                        sync_get_jenis_permasalahan_v1(myResponse.getString("access_token"), username.getText().toString());
-//                        // get data jenis gangguan
-//                        sync_get_jenis_gangguan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get data jenis gangguan
+                        sync_get_jenis_gangguan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data jenis pal
 //                        sync_get_jenis_pal_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data kondisi pal
@@ -470,6 +473,8 @@ public class LoginActivity extends AppCompatActivity {
 //                        sync_get_susunrisalah(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data monitoring kh & penampakan
 //                        sync_get_monitoring(myResponse.getString("access_token"), username.getText().toString());
+                        //get data monitoring kh & penampakan
+                        sync_get_tallysheet(myResponse.getString("access_token"), username.getText().toString());
 
                         session.setLogin(true);
                     } else if (myResponse.getString("status").equals("error")) {
@@ -577,9 +582,11 @@ public class LoginActivity extends AppCompatActivity {
                     in.close();
                     Log.i("JSON_ACTION", "================ API GET ANAK PETAK ========================");
                     Log.i("JSON_SEND_TOKEN", token);
-//                    Log.i("JSON_DATA", json_data.getString("data"));
 //                    Log.i("JSON_DATA_JUMLAH", String.valueOf(jsonArray.length()));
                     JSONObject result = new JSONObject(response.toString());
+                    Log.i("JSON_DATA_PTK", result.getString("data"));
+
+
                     JSONArray jsonArray = result.getJSONArray("data");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject json_projek = jsonArray.getJSONObject(i);
@@ -1558,6 +1565,91 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(TrnMonitoringKlsHtn.CREATED_AT, json_projek.getString("created_at"));
                         values.put(TrnMonitoringKlsHtn.UPDATED_AT, json_projek.getString("updated_at"));
                         db.create(TrnMonitoringKlsHtn.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_tallysheet(final String token,final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_TALLY_SHEET_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET MASTER TALLY SHEET ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(TrnTallySheet._ID, i + 1);
+                        values.put(TrnTallySheet.ID_TALLYSHEET, json_projek.getString("id"));
+                        values.put(TrnTallySheet.BAGIAN_HUTAN, json_projek.getString("bh_id"));
+                        values.put(TrnTallySheet.BAGIAN_HUTAN_NAME, json_projek.getString("bagianhutan_name"));
+                        values.put(TrnTallySheet.KPH, json_projek.getString("kph_id"));
+                        values.put(TrnTallySheet.KPH_NAME, json_projek.getString("kph_name"));
+                        values.put(TrnTallySheet.BKPH, json_projek.getString("bkph_id"));
+                        values.put(TrnTallySheet.BKPH_NAME, json_projek.getString("bkph_name"));
+                        values.put(TrnTallySheet.RPH, json_projek.getString("rph_id"));
+                        values.put(TrnTallySheet.RPH_NAME, json_projek.getString("rph_name"));
+                        values.put(TrnTallySheet.PETAK, json_projek.getString("petak_id"));
+                        values.put(TrnTallySheet.PETAK_NAME, json_projek.getString("petak_name"));
+                        values.put(TrnTallySheet.ANAK_PETAK, json_projek.getString("anakpetak_id"));
+                        values.put(TrnTallySheet.ANAK_PETAK_NAME, json_projek.getString("anakpetak_name"));
+                        values.put(TrnTallySheet.DESA, json_projek.getString("desa_id"));
+                        values.put(TrnTallySheet.DESA_NAME, json_projek.getString("desa_name"));
+                        values.put(TrnTallySheet.JARAK_DESA, json_projek.getString("jarak"));
+                        values.put(TrnTallySheet.KECAMATAN, json_projek.getString("kecamatan_id"));
+                        values.put(TrnTallySheet.KECAMATAN_NAME, json_projek.getString("kecamatan_name"));
+                        values.put(TrnTallySheet.KABUPATEN, json_projek.getString("kabupaten_id"));
+                        values.put(TrnTallySheet.KABUPATEN_NAME, json_projek.getString("kabupaten_name"));
+                        values.put(TrnTallySheet.TINGGI_PDL, json_projek.getString("tinggidpl"));
+                        values.put(TrnTallySheet.IKLIM, json_projek.getString("iklim"));
+                        values.put(TrnTallySheet.CURAH_HUJAN, json_projek.getString("curahhujan"));
+                        values.put(TrnTallySheet.KELAS_HUTAN, json_projek.getString("kh_id"));
+                        values.put(TrnTallySheet.KELAS_HUTAN_NAME, json_projek.getString("kelashutan_name"));
+                        values.put(TrnTallySheet.FUNGSI_HUTAN, json_projek.getString("fh_id"));
+                        values.put(TrnTallySheet.FUNGSI_HUTAN_NAME, json_projek.getString("fungsihutan_name"));
+                        values.put(TrnTallySheet.PENGGUNAAN_HUTAN, json_projek.getString("ph_id"));
+                        values.put(TrnTallySheet.PENGGUNAAN_HUTAN_NAME, json_projek.getString("penggunaan_name"));
+                        values.put(TrnTallySheet.TAHUN_TANAM, json_projek.getString("tahuntanam"));
+                        values.put(TrnTallySheet.BONITA_LALU, json_projek.getString("bonitalalu"));
+                        values.put(TrnTallySheet.BONITA_BARU, json_projek.getString("bonita"));
+                        values.put(TrnTallySheet.KBD, json_projek.getString("kbd"));
+                        values.put(TrnTallySheet.DKN, json_projek.getString("dkn"));
+                        values.put(TrnTallySheet.VOLUME, json_projek.getString("volume"));
+                        values.put(TrnTallySheet.INTENSITAS_SAMPLING, json_projek.getString("intensitassampling"));
+                        values.put(TrnTallySheet.CARA_SAMPLING, json_projek.getString("carasampling"));
+                        values.put(TrnTallySheet.TGL_INVENTARISASI, json_projek.getString("tanggalinven"));
+                        values.put(TrnTallySheet.PELAKSANA, json_projek.getString("pelaksana"));
+                        values.put(TrnTallySheet.KEPALA_SEKSI, json_projek.getString("kepalaseksi"));
+                        values.put(TrnTallySheet.NO_RAK, json_projek.getString("no_rak"));
+                        values.put(TrnTallySheet.NO_LACI, json_projek.getString("no_laci"));
+                        values.put(TrnTallySheet.TALLYSHEET_PLOT, json_projek.getString("tallysheetplot"));
+                        values.put(TrnTallySheet.KETERANGAN, json_projek.getString("keterangan"));
+                        values.put(TrnTallySheet.KET8, "0");
+                        values.put(TrnTallySheet.KET9, "0");
+                        db.create(TrnTallySheet.TABLE_NAME, values);
                     }
                     conn.disconnect();
                 } catch (Exception e) {

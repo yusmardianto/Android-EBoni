@@ -17,6 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.TallySheetModel;
 import id.co.perhutani.sisdhbukuobor.LoginActivity;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
@@ -32,6 +33,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnLaporanPalBatas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnTallySheet;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
 
 
@@ -74,6 +76,7 @@ public class ThreadSendToAPI extends Thread {
                     sendToServerEditPAL();
                     sendToServerEditPCP();
                     sendToServerEditTenurial();
+                    sendToServerEditTallySheet();
 
                 }
                 Thread.sleep(10000);
@@ -1903,6 +1906,174 @@ public class ThreadSendToAPI extends Thread {
                     cek_feedback_api = false;
                     Log.i("JSON_MESSAGE", e.toString());
                     Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_IDENTIFIKASI_TENURIAL_V1);
+                    Log.i("JSON_ID", id);
+                    e.printStackTrace();
+                }
+                Log.i("JSON_TES", str_tes_data);
+            }
+        });
+        thread.start();
+    }
+
+    private void sendToServerEditTallySheet() {
+        try {
+            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            Cursor cur;
+            cur = db.rawQuery("SELECT *" +
+                    " FROM TRN_TALLY_SHEET " +
+                    " WHERE  KET9=2 "+
+                    " ORDER BY ID ASC", null);
+
+            cur.moveToPosition(0);
+            for (int i = 0; i < cur.getCount(); i++) {
+                try {
+                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+                    sync_data_edit_tallysheet_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+
+                } catch (Exception ex) {
+                    Log.i("JSON_ERROR", ex.toString());
+                }
+                cur.moveToNext();
+            }
+            cur.close();
+            db.close();
+
+        } catch (Exception ex) {
+            Log.i("JSON_ERROR", ex.toString());
+        }
+    }
+
+    public void sync_data_edit_tallysheet_v1(final String id) {
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String str_tes_data = "";
+                try {
+                    URL url = new URL(LoginActivity.URL_FOR_POST_TALLYSHEET_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Authorization", "Bearer " + db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept", "application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    try {
+                        final String ts_kph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KPH);
+                        final String ts_bagian_hutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.BAGIAN_HUTAN);
+                        final String ts_bkph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.BKPH);
+                        final String ts_rph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.RPH);
+                        final String ts_petak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.PETAK);
+                        final String ts_anak_petak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.ANAK_PETAK);
+                        final String ts_desa = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.DESA);
+                        final String ts_jarakdesa = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.JARAK_DESA);
+                        final String ts_kecamatan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KECAMATAN);
+                        final String ts_kabupaten = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KABUPATEN);
+                        final String ts_tinggipdl = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.TINGGI_PDL);
+                        final String ts_iklim = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.IKLIM);
+                        final String ts_curah_hujan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.CURAH_HUJAN);
+                        final String ts_kelashutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KELAS_HUTAN);
+                        final String ts_fungsihutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.FUNGSI_HUTAN);
+                        final String ts_penggunaanhutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.PENGGUNAAN_HUTAN);
+                        final String ts_tahuntanam = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.TAHUN_TANAM);
+                        final String ts_bonitalalu = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.BONITA_LALU);
+                        final String ts_bonitabaru = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.BONITA_BARU);
+                        final String ts_kbd = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KBD);
+                        final String ts_dkn = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.DKN);
+                        final String ts_volume = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.VOLUME);
+                        final String ts_intensitassampling = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.INTENSITAS_SAMPLING);
+                        final String ts_carasampling = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.CARA_SAMPLING);
+                        final String ts_tglinventarisasi = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.TGL_INVENTARISASI);
+                        final String ts_pelaksana = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.PELAKSANA);
+                        final String ts_kepalaseksi = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KEPALA_SEKSI);
+                        final String ts_no_rak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.NO_RAK);
+                        final String ts_no_laci = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.NO_LACI);
+                        final String ts_tallysheet_plot = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.TALLYSHEET_PLOT);
+                        final String ts_keterangan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KETERANGAN);
+                        final String ts_created_at = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.CREATED_AT);
+                        final String ts_updated_at = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.UPDATED_AT);
+
+                        final String id_tallysheet = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, id, TrnTallySheet.ID_TALLYSHEET);
+
+                        jsonParam.put("aksi", "ubah");
+                        jsonParam.put("id", id_tallysheet);
+                        jsonParam.put("kph_id", ts_kph);
+                        jsonParam.put("bh_id", ts_bagian_hutan);
+                        jsonParam.put("bkph_id", ts_bkph);
+                        jsonParam.put("rph_id", ts_rph);
+                        jsonParam.put("petak_id", ts_petak);
+                        jsonParam.put("anakpetak_id", ts_anak_petak);
+                        jsonParam.put("desa_id", ts_desa);
+                        jsonParam.put("jarak", ts_jarakdesa);
+                        jsonParam.put("kecamatan_id", ts_kecamatan);
+                        jsonParam.put("kabupaten_id", ts_kabupaten);
+                        jsonParam.put("tinggidpl", ts_tinggipdl);
+                        jsonParam.put("iklim", ts_iklim);
+                        jsonParam.put("curahhujan", ts_curah_hujan);
+                        jsonParam.put("kh_id", ts_kelashutan);
+                        jsonParam.put("fh_id", ts_fungsihutan);
+                        jsonParam.put("ph_id", ts_penggunaanhutan);
+                        jsonParam.put("tahuntanam", ts_tahuntanam);
+                        jsonParam.put("bonitalalu", ts_bonitalalu);
+                        jsonParam.put("bonita", ts_bonitabaru);
+                        jsonParam.put("kbd", ts_kbd);
+                        jsonParam.put("dkn", ts_dkn);
+                        jsonParam.put("volume", ts_volume);
+                        jsonParam.put("intensitassampling", ts_intensitassampling);
+                        jsonParam.put("carasampling", ts_carasampling);
+                        jsonParam.put("tanggalinven", ts_tglinventarisasi);
+                        jsonParam.put("pelaksana", ts_pelaksana);
+                        jsonParam.put("kepalaseksi", ts_kepalaseksi);
+                        jsonParam.put("no_rak", ts_no_rak);
+                        jsonParam.put("no_laci", ts_no_laci);
+                        jsonParam.put("tallysheetplot", ts_tallysheet_plot);
+                        jsonParam.put("keterangan", ts_keterangan);
+                        jsonParam.put("created_at", ts_created_at);
+                        jsonParam.put("updated_at", ts_updated_at);
+
+                    } catch (JSONException ex) {
+                        Log.i("JSON_ERROR", ex.toString());
+                        ex.printStackTrace();
+                    }
+
+                    Log.i("JSON_SEND", jsonParam.toString());
+
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    os.writeBytes(jsonParam.toString());
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    JSONObject myResponse = new JSONObject(response.toString());
+                    Log.i("JSON_BACKGROUND_SERVICE", "Sync to : " + LoginActivity.URL_FOR_POST_TALLYSHEET_V1);
+                    Log.i("JSON_FEEDBACK", myResponse.getString("status"));
+
+                    os.flush();
+                    os.close();
+                    conn.disconnect();
+
+                    if (myResponse.getString("status").equals("success")) {
+                        TallySheetModel Tallysheet = new TallySheetModel();
+                        Tallysheet.setId(id);
+                        Tallysheet.setTs_ket9("1");
+                        Tallysheet.setTs_ket10(myResponse.getString("id"));
+                        db.EditDataTallySheetForAPI(Tallysheet);
+                    }
+
+                    cek_feedback_api = true;
+
+                } catch (Exception e) {
+                    cek_feedback_api = false;
+                    Log.i("JSON_MESSAGE", e.toString());
+                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_TALLYSHEET_V1);
                     Log.i("JSON_ID", id);
                     e.printStackTrace();
                 }

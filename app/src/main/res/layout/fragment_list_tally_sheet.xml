@@ -28,15 +28,15 @@
             android:textColorHint="#B4B4B4"
             android:layout_marginBottom="10dp"/>
 
-        <ImageView
-            android:clickable="true"
-            android:id="@+id/create_tally_sheet"
-            android:layout_weight="4"
-            android:layout_width="match_parent"
-            android:src="@drawable/ic_add_black_24dp"
-            android:background="@color/colorPrimary"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"/>
+<!--        <ImageView-->
+<!--            android:clickable="true"-->
+<!--            android:id="@+id/create_tally_sheet"-->
+<!--            android:layout_weight="4"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:src="@drawable/ic_add_black_24dp"-->
+<!--            android:background="@color/colorPrimary"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginLeft="10dp"/>-->
 
     </LinearLayout>
 

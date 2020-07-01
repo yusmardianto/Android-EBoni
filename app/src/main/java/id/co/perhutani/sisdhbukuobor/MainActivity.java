@@ -206,8 +206,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new HomeFragment();
                         break;
                         case R.id.navigation_bukuobor:
-//                            selectedFragment = new BukuOborFragment();
-                            selectedFragment.setMenuVisibility(true);
+                            selectedFragment = new BukuOborFragment();
                             break;
                         case R.id.navigation_workorder:
                             selectedFragment = new WorkOrderFragment();

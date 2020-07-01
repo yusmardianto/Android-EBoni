@@ -1,0 +1,1087 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context=".FragmentUi.TallySheet.EditTallySheetFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_edit_tallysheet"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimary">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="Edit Data Tally Sheet"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_below="@id/toolbar_edit_tallysheet"
+        android:id="@+id/data_detailnya"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+<!--        <LinearLayout-->
+<!--            android:background="@color/colorWhite"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+<!--                <TextView-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:fontFamily="@font/font_aal_bold"-->
+<!--                    android:text="KPH"-->
+<!--                    android:textSize="14dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/detail_ts_kph"-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:fontFamily="@font/font_aal_default"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:text="KPH Sekdut"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+<!--                <TextView-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:fontFamily="@font/font_aal_bold"-->
+<!--                    android:text="Bagian Hutan"-->
+<!--                    android:textSize="14dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/detail_ts_bagianhutan"-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:fontFamily="@font/font_aal_default"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:text="Majenang"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:background="@color/colorWhite"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+<!--                <TextView-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:fontFamily="@font/font_aal_bold"-->
+<!--                    android:text="BKPH"-->
+<!--                    android:textSize="14dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/detail_ts_bkph"-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:fontFamily="@font/font_aal_default"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:text="BKPH MAJENANG"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+<!--                <TextView-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:fontFamily="@font/font_aal_bold"-->
+<!--                    android:text="RPH"-->
+<!--                    android:textSize="14dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/detail_ts_rph"-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:fontFamily="@font/font_aal_default"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:text="RPH Test"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:background="@color/colorWhite"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+<!--                <TextView-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:fontFamily="@font/font_aal_bold"-->
+<!--                    android:text="Petak"-->
+<!--                    android:textSize="14dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/detail_ts_petak"-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:fontFamily="@font/font_aal_default"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:text="Petak 37"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+<!--                <TextView-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="left"-->
+<!--                    android:fontFamily="@font/font_aal_bold"-->
+<!--                    android:text="Anak Petak"-->
+<!--                    android:textSize="14dp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/detail_ts_anakpetak"-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    android:fontFamily="@font/font_aal_default"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:text="Anak Petak 69B"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_edit_ts"
+        android:layout_below="@id/data_detailnya"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/ic_background_tallysheet">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="KPH"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:editable="false"-->
+<!--                        android:background="@drawable/background_tallysheet"-->
+<!--                        android:id="@+id/edit_ts_kph"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="KPH" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Bagian Hutan"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:editable="false"-->
+<!--                        android:background="@drawable/background_tallysheet"-->
+<!--                        android:id="@+id/edit_ts_bagianhutan"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Bagian Hutan" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="BKPH"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/edit_ts_bkph"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:editable="false"-->
+<!--                            android:background="@drawable/background_tallysheet"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="BKPH" />-->
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="RPH"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/edit_ts_rph"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:editable="false"-->
+<!--                            android:background="@drawable/background_tallysheet"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="RPH" />-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Petak"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_petak"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Petak" />-->
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Anak Petak"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_anak_petak"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Anak Petak" />-->
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Desa"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_desa"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Desa" />-->
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Jarak dari Desa"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_jarak_desa"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Jarak Dari Desa" />-->
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Kecamatan"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                        android:id="@+id/ts_kecamatan"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Kecamatan" />-->
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Kabupaten"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_kabupaten"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Kabupaten" />-->
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tinggi PDL"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/ts_tinggi_pdl"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Tinggi PDL" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Iklim"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_iklim"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Iklim" />-->
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Curah Hujan"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_curah_hujan"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Curah Hujan" />-->
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Kelas Hutan"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/ts_kelas_hutan"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Kelas Hutan" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Fungsi Hutan"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/ts_fungsi_hutan"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Fungsi Hutan" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Penggunaan Hutan"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/ts_penggunaan_hutan"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Penggunaan Hutan" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tahun Tanam"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/ts_tahun_tanam"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Tahun Tanam" />-->
+<!--                </LinearLayout>-->
+                </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_marginBottom="3dp"
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Bonita Lama"
+                                android:textColor="#424242" />
+
+                            <EditText
+                                android:id="@+id/edit_ts_bonita_lama"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_background"
+                                android:fontFamily="@font/font_aal_default"
+                                android:hint="Bonita Lama" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_marginBottom="3dp"
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Bonita Baru"
+                                android:textColor="#424242" />
+
+                            <EditText
+                                android:id="@+id/edit_ts_bonita_baru"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_background"
+                                android:fontFamily="@font/font_aal_default"
+                                android:hint="Bonita Baru" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_marginBottom="3dp"
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="KBD"
+                                android:textColor="#424242" />
+
+                            <EditText
+                                android:id="@+id/edit_ts_kbd"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_background"
+                                android:fontFamily="@font/font_aal_default"
+                                android:hint="KBD" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_marginBottom="3dp"
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="DKN"
+                                android:textColor="#424242" />
+
+                            <EditText
+                                android:id="@+id/edit_ts_dkn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_background"
+                                android:fontFamily="@font/font_aal_default"
+                                android:hint="DKN" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_marginBottom="3dp"
+                                android:fontFamily="@font/font_aal_default"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Volume"
+                                android:textColor="#424242" />
+
+                            <EditText
+                                android:id="@+id/edit_ts_volume"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_background"
+                                android:fontFamily="@font/font_aal_default"
+                                android:hint="Volume" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+               <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Intensitas Sampling"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_intensitas_sampling"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Intensitas" />-->
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Cara Sampling"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_cara_sampling"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Cara Sampling" />-->
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Tanggal Inventarisasi"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/ts_tanggal_inventarisasi"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Tanggal Inventarisasi" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Pelaksana"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/ts_pelaksana"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Pelaksana" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Kepala Seksi"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/ts_kepala_seksi"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Kepala Seksi" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Rak Dokumentasi"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/ts_rak_dokumentasi_nomor"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Rak Dokumentasi" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Laci Nomor"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_laci_nomor"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Laci Nomor" />-->
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Tallysheet Plot"-->
+<!--                            android:textColor="#424242" />-->
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/ts_tallysheet_plot"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/ic_background"-->
+<!--                            android:fontFamily="@font/font_aal_default"-->
+<!--                            android:hint="Tallysheet Plot" />-->
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_marginBottom="3dp"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Keterangan"-->
+<!--                        android:textColor="#424242" />-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/ts_keterangan"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="100dp"-->
+<!--                        android:background="@drawable/ic_background"-->
+<!--                        android:fontFamily="@font/font_aal_default"-->
+<!--                        android:hint="Keterangan" />-->
+
+<!--                </LinearLayout>-->
+                    </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:paddingBottom="20dp"
+        android:gravity="bottom"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_below="@+id/layout_edit_ts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/ts_btnsubmit"
+            android:textSize="20dp"
+            android:fontFamily="@font/font_aal_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_btnlogin"
+            android:text="Simpan"
+            android:textColor="#F9F9F9" />
+    </RelativeLayout>
+
+</RelativeLayout>

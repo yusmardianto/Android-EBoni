@@ -23,6 +23,7 @@ import java.util.List;
 import id.co.perhutani.sisdhbukuobor.Adapter.SusunRisalah.SusunRisalahAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.DetailTallySheetFragment;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.EditTallySheetFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.TallySheetModel;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.susunrisalah.DetailSusunRisalahFragment;
 import id.co.perhutani.sisdhbukuobor.R;
@@ -60,26 +61,50 @@ public class TallySheetAdapter extends RecyclerView.Adapter<TallySheetAdapter.Ta
 
         final String id = String.valueOf(mData.get(position).getId());
 
-        final String get_kph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KPH);
-        final String get_petak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.PETAK);
-        final String get_bagianhutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.BAGIAN_HUTAN);
+        final String get_kph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KPH_NAME);
+        final String get_petak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.PETAK_NAME);
+        final String get_bagianhutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.BAGIAN_HUTAN_NAME);
 
         holder.kph.setText(get_kph);
         holder.bagianhutan.setText(get_bagianhutan);
         holder.petak.setText(get_petak);
 
-        String status_sync = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id, TrnTallySheet.KET9);
-        if (status_sync.equals("1")) {
-            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
-            holder.name_data_sinkron.setText("Sudah terkirim keserver");
-            holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
-        }  else {
-            holder.name_data_sinkron.setText("Belum terkirim keserver");
-            holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
-            holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
+        try{
+            String sudah_update = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id, TrnTallySheet.KET9);
+            if (sudah_update.equals("2")||sudah_update.equals("1")){
+                holder.name_info_alert.setVisibility(View.VISIBLE);
+                holder.name_data_sinkron.setVisibility(View.VISIBLE);
+            }
+            else {
+                holder.name_info_alert.setVisibility(View.GONE);
+                holder.name_data_sinkron.setVisibility(View.GONE);
+            }
+        }
+        catch (Exception e){
+
         }
 
-        holder.linear_tallysheet.setOnClickListener(new View.OnClickListener() {
+
+        try {
+            String status_sync = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id, TrnTallySheet.KET9);
+            if (status_sync.equals("1")) {
+
+                holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
+                holder.name_data_sinkron.setText("Sudah terkirim keserver");
+                holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
+            }  else {
+
+                holder.name_data_sinkron.setText("Belum terkirim keserver");
+                holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
+                holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
+            }
+        }
+        catch (Exception e){
+
+        }
+
+
+        holder.linear_lihat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String message = id;
@@ -87,6 +112,21 @@ public class TallySheetAdapter extends RecyclerView.Adapter<TallySheetAdapter.Ta
                 data.putString(TallySheetAdapter.MSG_KEY, message);
                 FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
                 Fragment fragment = new DetailTallySheetFragment();
+                fragment.setArguments(data);
+                FragmentTransaction ft = manager.beginTransaction();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
+            }
+        });
+
+        holder.linear_ubah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = id;
+                Bundle data = new Bundle();
+                data.putString(TallySheetAdapter.MSG_KEY, message);
+                FragmentManager manager = ((AppCompatActivity)mContext).getSupportFragmentManager();
+                Fragment fragment = new EditTallySheetFragment();
                 fragment.setArguments(data);
                 FragmentTransaction ft = manager.beginTransaction();
                 ft.replace(R.id.nav_host_fragment, fragment);
@@ -113,7 +153,8 @@ public class TallySheetAdapter extends RecyclerView.Adapter<TallySheetAdapter.Ta
         private TextView bagianhutan;
         private TextView petak;
         private TextView name_data_sinkron;
-        private LinearLayout linear_tallysheet;
+        private LinearLayout linear_ubah;
+        private LinearLayout linear_lihat;
         private ImageView name_info_alert;
 
         public TallySheetViewHolder(@NonNull View itemView) {
@@ -121,7 +162,8 @@ public class TallySheetAdapter extends RecyclerView.Adapter<TallySheetAdapter.Ta
             kph = itemView.findViewById(R.id.list_ts_kph);
             bagianhutan = itemView.findViewById(R.id.list_ts_bagian_hutan);
             petak = itemView.findViewById(R.id.list_ts_petak);
-            linear_tallysheet = itemView.findViewById(R.id.list_tally_sheet);
+            linear_lihat = itemView.findViewById(R.id.linear_ts_show);
+            linear_ubah = itemView.findViewById(R.id.linear_ts_edit);
             name_info_alert = itemView.findViewById(R.id.name_info_alert_ts);
             name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_ts);
         }

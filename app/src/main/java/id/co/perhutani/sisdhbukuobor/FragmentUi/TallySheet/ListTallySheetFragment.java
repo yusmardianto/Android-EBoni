@@ -61,18 +61,18 @@ public class ListTallySheetFragment extends Fragment {
         list_tally_sheet = inflater.inflate(R.layout.fragment_list_tally_sheet, container, false);
         db = new SQLiteHandler(getActivity());
 
-        ImageView imgTambahGangguan = list_tally_sheet.findViewById(R.id.create_tally_sheet);
-        imgTambahGangguan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new CreateTallySheetFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
+//        ImageView imgTambahGangguan = list_tally_sheet.findViewById(R.id.create_tally_sheet);
+//        imgTambahGangguan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Fragment fragment = new CreateTallySheetFragment();
+//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//            }
+//        });
 
         rv_tallysheet = list_tally_sheet.findViewById(R.id.rv_tally_sheet);
         swipeRefreshLayout = list_tally_sheet.findViewById(R.id.swipe_refresh_layout_recycler_view_tallysheet);
@@ -100,7 +100,7 @@ public class ListTallySheetFragment extends Fragment {
                                 final Cursor cur = db.rawQuery("SELECT " +
                                         " ID" +
                                         " FROM TRN_TALLY_SHEET " +
-                                        " ORDER BY ID ASC", null);
+                                        " ORDER BY ID DESC", null);
 
                                 cur.moveToPosition(0);
                                 dataModels = new ArrayList<>();
@@ -234,7 +234,7 @@ public class ListTallySheetFragment extends Fragment {
                 final Cursor cur = db.rawQuery("SELECT " +
                         "ID" +
                         " FROM TRN_TALLY_SHEET " +
-                        " WHERE KPH " + " LIKE  " + "'%" + kph + "%'" +
+                        " WHERE KPH_NAME " + " LIKE  " + "'%" + kph + "%'" +
                         " ORDER BY ID DESC", null);
 
 
