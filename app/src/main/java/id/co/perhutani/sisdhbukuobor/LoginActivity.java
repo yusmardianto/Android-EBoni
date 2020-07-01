@@ -46,6 +46,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBagianHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstDesaAnakPetak;
 import id.co.perhutani.sisdhbukuobor.Schema.MstDesaSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstFungsiHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
@@ -82,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_PROFIL_V1 = address + "api/v1/get_user_details";
 
     private static final String URL_FOR_GET_ANAK_PETAK_V1 = address + "api/v1/getAnakPetak";
+    private static final String URL_FOR_GET_DESA_ANAK_PETAK_V1 = address + "api/v1/getDesaAnakPetak";
     private static final String URL_FOR_GET_BAGIAN_HUTAN_V1 = address + "api/v1/get_bagian_hutan";
     private static final String URL_FOR_GET_KELAS_HUTAN_V1 = address + "api/v1/getKelasHutan";
     private static final String URL_FOR_GET_FUNGSI_HUTAN_V1 = address + "api/v1/getFungsiHutan";
@@ -429,50 +431,52 @@ public class LoginActivity extends AppCompatActivity {
                         sync_profil_v1(myResponse.getString("access_token"), username.getText().toString());
                         // get data anak petak
                         sync_get_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
+                        // get desa anak petak
+                        sync_get_desa_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data kelas hutan
-//                        sync_get_kelas_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_kelas_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data fungsi hutan
-//                        sync_get_fungsi_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_fungsi_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data Penggunaan hutan
-//                        sync_get_penggunaan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_penggunaan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
                         // get data jenis tanaman
                         sync_get_jenis_tanaman_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data jenis permasalahan
-//                        sync_get_jenis_permasalahan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_jenis_permasalahan_v1(myResponse.getString("access_token"), username.getText().toString());
                         // get data jenis gangguan
                         sync_get_jenis_gangguan_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data jenis pal
-//                        sync_get_jenis_pal_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_jenis_pal_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data kondisi pal
-//                        sync_get_kondisi_pal_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_kondisi_pal_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data jenis satwa
-//                        sync_get_jenis_satwa_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_jenis_satwa_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data jenis temuan
-//                        sync_get_jenis_temuan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_jenis_temuan_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data bagian hutan
-//                        sync_get_bagian_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_bagian_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data waktu lihat
-//                        sync_get_waktu_terlihat_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_waktu_terlihat_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data desa
 //                        sync_get_master_desa(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data interaksi
-//                        sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_master_interaksi(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data status interaksi
-//                        sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_master_status_interaksi(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data strata
-//                        sync_get_strata(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_strata(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data pihak terlibat
-//                        sync_get_pihak_terlibat(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_pihak_terlibat(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data pekerjaan
-//                        sync_get_sub_pekerjaan(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_sub_pekerjaan(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data sub pekerjaan
-//                        sync_get_pekerjaan(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_pekerjaan(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data workorder
-//                        sync_get_workorder(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_workorder(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data susun risalah
-//                        sync_get_susunrisalah(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_susunrisalah(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data monitoring kh & penampakan
-//                        sync_get_monitoring(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_monitoring(myResponse.getString("access_token"), username.getText().toString());
                         //get data monitoring kh & penampakan
                         sync_get_tallysheet(myResponse.getString("access_token"), username.getText().toString());
 
@@ -607,6 +611,61 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(MstAnakPetakSchema.ANAK_PETAK_NAME, json_projek.getString("anakpetak"));
                         values.put(MstAnakPetakSchema.TAHUN, json_projek.getString("tahun"));
                         db.create(MstAnakPetakSchema.TABLE_NAME, values);
+
+                    }
+
+
+                    conn.disconnect();
+
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_desa_anak_petak_v1(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_DESA_ANAK_PETAK_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET ANAK PETAK ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+//                    Log.i("JSON_DATA", json_data.getString("data"));
+//                    Log.i("JSON_DATA_JUMLAH", String.valueOf(jsonArray.length()));
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstDesaAnakPetak._ID, i + 1);
+                        values.put(MstDesaAnakPetak.DESA_ID, json_projek.getString("desa_id"));
+                        values.put(MstDesaAnakPetak.DESA_NAME, json_projek.getString("nama_desa"));
+                        values.put(MstDesaAnakPetak.ANAK_PETAK_ID, json_projek.getString("id"));
+                        values.put(MstDesaAnakPetak.ANAK_PETAK_KODE, json_projek.getString("kode_data"));
+                        values.put(MstDesaAnakPetak.ANAK_PETAK_NAME, json_projek.getString("anakpetak_name"));
+                        values.put(MstDesaAnakPetak.PETAK_ID, json_projek.getString("petak_id"));
+                        values.put(MstDesaAnakPetak.BH_ID, json_projek.getString("bh_id"));
+                        values.put(MstDesaAnakPetak.RPH_ID, json_projek.getString("rph_id"));
+                        values.put(MstDesaAnakPetak.KPH_ID, json_projek.getString("kph_id"));
+                        values.put(MstDesaAnakPetak.BKPH_ID, json_projek.getString("bkph_id"));
+                        db.create(MstDesaAnakPetak.TABLE_NAME, values);
 
                     }
 

@@ -26,6 +26,7 @@ import id.co.perhutani.sisdhbukuobor.Model.RegisterpcpModel;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBagianHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstDesaAnakPetak;
 import id.co.perhutani.sisdhbukuobor.Schema.MstDesaSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstFungsiHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
@@ -76,6 +77,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstDesaAnakPetak.SQL_CREATE_ENTRIES);
         db.execSQL(MstBagianHutan.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTanamanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_CREATE_ENTRIES);
@@ -123,6 +125,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void clear_database(SQLiteDatabase db){
         db.execSQL(UserSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_DELETE_ENTRIES);
+        db.execSQL(MstDesaAnakPetak.SQL_DELETE_ENTRIES);
         db.execSQL(MstBagianHutan.SQL_DELETE_ENTRIES);
         db.execSQL(MstKelasHutanSchema.SQL_DELETE_ENTRIES);
         db.execSQL(MstFungsiHutanSchema.SQL_DELETE_ENTRIES);
@@ -167,6 +170,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         db.execSQL(UserSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstAnakPetakSchema.SQL_CREATE_ENTRIES);
+        db.execSQL(MstDesaAnakPetak.SQL_CREATE_ENTRIES);
         db.execSQL(MstBagianHutan.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisTanamanSchema.SQL_CREATE_ENTRIES);
         db.execSQL(MstJenisPermasalahanSchema.SQL_CREATE_ENTRIES);
@@ -823,8 +827,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public List<String> getNamaDesa() {
         List<String> labels = new ArrayList<String>();
-        String selectQuery = "SELECT a." + MstDesaSchema.NAMA_DESA + " FROM " + MstDesaSchema.TABLE_NAME +
-                " a ORDER BY a."+MstDesaSchema.NAMA_DESA+", a."+MstDesaSchema.ID_DESA+" ASC";
+        String selectQuery = "SELECT a." + MstDesaAnakPetak.DESA_NAME + " FROM " + MstDesaAnakPetak.TABLE_NAME +
+                " a GROUP BY a."+MstDesaAnakPetak.DESA_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         labels.add("- Pilih Nama Desa -");
