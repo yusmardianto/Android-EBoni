@@ -1,7 +1,7 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
 public class MstDesaByRph {
-    public static final String TABLE_NAME = "MST_DESA_ANAK_PETAK";
+    public static final String TABLE_NAME = "MST_DESA_BY_RPH";
     public static final String _ID = "ID";
     public static final String DESA_ID = "DESA_ID";
     public static final String DESA_NAME = "DESA_NAME";
