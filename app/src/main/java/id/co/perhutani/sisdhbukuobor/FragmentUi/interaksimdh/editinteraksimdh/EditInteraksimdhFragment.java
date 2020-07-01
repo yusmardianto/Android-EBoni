@@ -35,7 +35,7 @@ import id.co.perhutani.sisdhbukuobor.Model.InteraksimdhModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
-import id.co.perhutani.sisdhbukuobor.Schema.MstDesaSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstDesaByRph;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 
@@ -107,7 +107,7 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_desa = spin_nama_desa.getSelectedItem().toString();
-                String id_desa = db.getDataDetail(MstDesaSchema.TABLE_NAME, MstDesaSchema.NAMA_DESA, pil_desa, MstDesaSchema.ID_DESA);
+                String id_desa = db.getDataDetail(MstDesaByRph.TABLE_NAME, MstDesaByRph.DESA_NAME, pil_desa, MstDesaByRph.DESA_ID);
                 namadesa.setText(id_desa);
             }
 
@@ -236,7 +236,7 @@ public class EditInteraksimdhFragment extends Fragment {
         spin_nama_desa = root.findViewById(R.id.edit_spinner_namadesa);
         load_spinner_nama_desa();
         String pil_desa = spin_nama_desa.getSelectedItem().toString();
-        String id_desa = db.getDataDetail(MstDesaSchema.TABLE_NAME, MstDesaSchema.NAMA_DESA, pil_desa, MstDesaSchema.ID_DESA);
+        String id_desa = db.getDataDetail(MstDesaByRph.TABLE_NAME, MstDesaByRph.DESA_NAME, pil_desa, MstDesaByRph.DESA_ID);
         namadesa.setText(id_desa);
 
         spin_bentuk_interaksi = root.findViewById(R.id.edit_spinner_bentukinteraksi);

@@ -1,14 +1,10 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
-public class MstDesaAnakPetak {
+public class MstDesaByRph {
     public static final String TABLE_NAME = "MST_DESA_ANAK_PETAK";
     public static final String _ID = "ID";
     public static final String DESA_ID = "DESA_ID";
     public static final String DESA_NAME = "DESA_NAME";
-    public static final String ANAK_PETAK_ID = "ANAK_PETAK_ID";
-    public static final String ANAK_PETAK_KODE = "ANAK_PETAK_KODE";
-    public static final String ANAK_PETAK_NAME = "ANAK_PETAK_NAME";
-    public static final String PETAK_ID = "PETAK_ID";
     public static final String BH_ID = "BH_ID";
     public static final String RPH_ID = "RPH_ID";
     public static final String KPH_ID = "KPH_ID";
@@ -27,10 +23,6 @@ public class MstDesaAnakPetak {
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "" + DESA_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + DESA_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + ANAK_PETAK_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + ANAK_PETAK_KODE + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + ANAK_PETAK_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + PETAK_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + BH_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + RPH_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KPH_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +

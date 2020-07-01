@@ -34,7 +34,7 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.interaksimdh.ListInteraksiMDHFra
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
-import id.co.perhutani.sisdhbukuobor.Schema.MstDesaSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstDesaByRph;
 import id.co.perhutani.sisdhbukuobor.Schema.MstStatusInteraksiSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
@@ -106,7 +106,7 @@ public class TambahInteraksimdhFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // your code here
                 String pil_desa = spin_nama_desa.getSelectedItem().toString();
-                String id_desa = db.getDataDetail(MstDesaSchema.TABLE_NAME, MstDesaSchema.NAMA_DESA, pil_desa, MstDesaSchema.ID_DESA);
+                String id_desa = db.getDataDetail(MstDesaByRph.TABLE_NAME, MstDesaByRph.DESA_NAME, pil_desa, MstDesaByRph.DESA_ID);
                 namadesa.setText(id_desa);
             }
 
@@ -173,11 +173,11 @@ public class TambahInteraksimdhFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        }
+    }
 
-        @Override
-        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                                 @Nullable Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.tambah_interaksimdh_fragment, container, false);
 
         db = new SQLiteHandler(getActivity());
@@ -186,33 +186,33 @@ public class TambahInteraksimdhFragment extends Fragment {
         namadesa = root.findViewById(R.id.interaksimdh_namadesa);
 
         tanggal = root.findViewById(R.id.interaksimdh_tahun);
-            SimpleDateFormat sdf_tglmulai = new SimpleDateFormat("dd-MM-yyyy");
-            str_tgl = sdf_tglmulai.format(new Date());
-            tanggal.setFocusable(false);
-            final DatePickerDialog.OnDateSetListener date1 = new android.app.DatePickerDialog.OnDateSetListener() {
+        SimpleDateFormat sdf_tglmulai = new SimpleDateFormat("dd-MM-yyyy");
+        str_tgl = sdf_tglmulai.format(new Date());
+        tanggal.setFocusable(false);
+        final DatePickerDialog.OnDateSetListener date1 = new android.app.DatePickerDialog.OnDateSetListener() {
 
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                      int dayOfMonth) {
-                    // TODO Auto-generated method stub
-                    calendar.set(Calendar.YEAR, year);
-                    calendar.set(Calendar.MONTH, monthOfYear);
-                    calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                    SimpleDateFormat sdf_view = new SimpleDateFormat("yyyy-MM-dd");
-                    str_tgl = sdf_view.format(calendar.getTime());
+                SimpleDateFormat sdf_view = new SimpleDateFormat("yyyy-MM-dd");
+                str_tgl = sdf_view.format(calendar.getTime());
 
-                    tanggal.setText(str_tgl);
-                }
+                tanggal.setText(str_tgl);
+            }
 
-            };
-            tanggal.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new DatePickerDialog(getActivity(), date1, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-                            calendar.get(Calendar.DAY_OF_MONTH)).show();
-                }
-            });
+        };
+        tanggal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(getActivity(), date1, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
         bentukinteraksi = root.findViewById(R.id.interaksimdh_bentukinteraksi);
         status = root.findViewById(R.id.interaksimdh_statusinteraksi);
@@ -228,7 +228,7 @@ public class TambahInteraksimdhFragment extends Fragment {
         spin_nama_desa = root.findViewById(R.id.spinner_namadesa);
         load_spinner_nama_desa();
         String pil_desa = spin_nama_desa.getSelectedItem().toString();
-        String id_desa = db.getDataDetail(MstDesaSchema.TABLE_NAME, MstDesaSchema.NAMA_DESA, pil_desa, MstDesaSchema.ID_DESA);
+        String id_desa = db.getDataDetail(MstDesaByRph.TABLE_NAME, MstDesaByRph.DESA_NAME, pil_desa, MstDesaByRph.DESA_ID);
         namadesa.setText(id_desa);
 
         spin_bentuk_interaksi = root.findViewById(R.id.spinner_bentukinteraksi);

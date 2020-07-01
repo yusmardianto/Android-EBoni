@@ -30,7 +30,6 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.slf4j.event.LoggingEvent;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -46,7 +45,7 @@ import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBagianHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstBentukInteraksiSchema;
-import id.co.perhutani.sisdhbukuobor.Schema.MstDesaAnakPetak;
+import id.co.perhutani.sisdhbukuobor.Schema.MstDesaByRph;
 import id.co.perhutani.sisdhbukuobor.Schema.MstDesaSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstFungsiHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
@@ -83,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_PROFIL_V1 = address + "api/v1/get_user_details";
 
     private static final String URL_FOR_GET_ANAK_PETAK_V1 = address + "api/v1/getAnakPetak";
-    private static final String URL_FOR_GET_DESA_ANAK_PETAK_V1 = address + "api/v1/getDesaAnakPetak";
+    private static final String URL_FOR_GET_DESA_BY_RPH_V1 = address + "api/v1/getDesaByRph";
     private static final String URL_FOR_GET_BAGIAN_HUTAN_V1 = address + "api/v1/get_bagian_hutan";
     private static final String URL_FOR_GET_KELAS_HUTAN_V1 = address + "api/v1/getKelasHutan";
     private static final String URL_FOR_GET_FUNGSI_HUTAN_V1 = address + "api/v1/getFungsiHutan";
@@ -432,7 +431,7 @@ public class LoginActivity extends AppCompatActivity {
                         // get data anak petak
                         sync_get_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
                         // get desa anak petak
-                        sync_get_desa_anak_petak_v1(myResponse.getString("access_token"), username.getText().toString());
+                        sync_get_desa_by_rph_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data kelas hutan
                         sync_get_kelas_hutan_v1(myResponse.getString("access_token"), username.getText().toString());
 //                        // get data fungsi hutan
@@ -627,13 +626,13 @@ public class LoginActivity extends AppCompatActivity {
         thread.start();
     }
 
-    public void sync_get_desa_anak_petak_v1(final String token, final String username) {
+    public void sync_get_desa_by_rph_v1(final String token, final String username) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
 
                 try {
-                    URL url = new URL(URL_FOR_GET_DESA_ANAK_PETAK_V1);
+                    URL url = new URL(URL_FOR_GET_DESA_BY_RPH_V1);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("GET");
                     conn.setRequestProperty("Authorization", "Bearer " + token);
@@ -645,7 +644,7 @@ public class LoginActivity extends AppCompatActivity {
                         response.append(inputLine);
                     }
                     in.close();
-                    Log.i("JSON_ACTION", "================ API GET ANAK PETAK ========================");
+                    Log.i("JSON_ACTION", "================ API GET DESA BY RPH ========================");
                     Log.i("JSON_SEND_TOKEN", token);
 //                    Log.i("JSON_DATA", json_data.getString("data"));
 //                    Log.i("JSON_DATA_JUMLAH", String.valueOf(jsonArray.length()));
@@ -654,21 +653,15 @@ public class LoginActivity extends AppCompatActivity {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject json_projek = jsonArray.getJSONObject(i);
                         ContentValues values = new ContentValues();
-                        values.put(MstDesaAnakPetak._ID, i + 1);
-                        values.put(MstDesaAnakPetak.DESA_ID, json_projek.getString("desa_id"));
-                        values.put(MstDesaAnakPetak.DESA_NAME, json_projek.getString("nama_desa"));
-                        values.put(MstDesaAnakPetak.ANAK_PETAK_ID, json_projek.getString("id"));
-                        values.put(MstDesaAnakPetak.ANAK_PETAK_KODE, json_projek.getString("kode_data"));
-                        values.put(MstDesaAnakPetak.ANAK_PETAK_NAME, json_projek.getString("anakpetak_name"));
-                        values.put(MstDesaAnakPetak.PETAK_ID, json_projek.getString("petak_id"));
-                        values.put(MstDesaAnakPetak.BH_ID, json_projek.getString("bh_id"));
-                        values.put(MstDesaAnakPetak.RPH_ID, json_projek.getString("rph_id"));
-                        values.put(MstDesaAnakPetak.KPH_ID, json_projek.getString("kph_id"));
-                        values.put(MstDesaAnakPetak.BKPH_ID, json_projek.getString("bkph_id"));
-                        db.create(MstDesaAnakPetak.TABLE_NAME, values);
-
+                        values.put(MstDesaByRph._ID, i + 1);
+                        values.put(MstDesaByRph.DESA_ID, json_projek.getString("desa_id"));
+                        values.put(MstDesaByRph.DESA_NAME, json_projek.getString("nama_desa"));
+                        values.put(MstDesaByRph.BH_ID, json_projek.getString("bh_id"));
+                        values.put(MstDesaByRph.RPH_ID, json_projek.getString("rph_id"));
+                        values.put(MstDesaByRph.KPH_ID, json_projek.getString("kph_id"));
+                        values.put(MstDesaByRph.BKPH_ID, json_projek.getString("bkph_id"));
+                        db.create(MstDesaByRph.TABLE_NAME, values);
                     }
-
 
                     conn.disconnect();
 

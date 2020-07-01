@@ -26,6 +26,7 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.TallySheetFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.DashboardBukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.workorder.WorkOrderFragment;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstDesaByRph;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPalSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisPermasalahanSchema;
@@ -163,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
         session.setLogin(false);
         db.deleteAllRow(UserSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstAnakPetakSchema.SQL_DELETE_ALL_ROWS);
+        db.deleteAllRow(MstDesaByRph.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisGangguanHutanSchema.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisSatwa.SQL_DELETE_ALL_ROWS);
         db.deleteAllRow(MstJenisTemuan.SQL_DELETE_ALL_ROWS);
