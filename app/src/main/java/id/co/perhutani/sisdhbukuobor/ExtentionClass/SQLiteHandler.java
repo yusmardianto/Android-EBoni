@@ -524,6 +524,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         ContentValues args = new ContentValues();
         args.put(TrnRegisterPcp.NO_PCP, rp.getNoPcp());
         args.put(TrnRegisterPcp.ANAK_PETAK_ID, rp.getAnakPetakId());
+        args.put(TrnRegisterPcp.KET1, rp.getKet1());
         args.put(TrnRegisterPcp.TAHUN_PCP, rp.getTahun());
         args.put(TrnRegisterPcp.UMUR, rp.getUmur());
         args.put(TrnRegisterPcp.LUAS_BAKU, rp.getLuasBaku());

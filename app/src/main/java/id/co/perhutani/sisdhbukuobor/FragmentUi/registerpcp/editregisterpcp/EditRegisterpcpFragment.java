@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -57,6 +58,8 @@ public class EditRegisterpcpFragment extends Fragment {
         return new EditRegisterpcpFragment();
     }
 
+    private static String str_spin_anakpetak;
+
     public void load_spinner_anak_petak() {
         List<String> listtpg = db.getAnakPetak();
         final int _tpg = listtpg.size();
@@ -77,13 +80,22 @@ public class EditRegisterpcpFragment extends Fragment {
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
                         MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
                 anakpetak.setText(id_petak);
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_anakpetak = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KET1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_anak_petak.setAdapter(adapter);
+        if (str_spin_anakpetak != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_anakpetak);
+            spin_anak_petak.setSelection(spinnerPosition);
+        }
     }
 
     @Override
@@ -150,13 +162,9 @@ public class EditRegisterpcpFragment extends Fragment {
 
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_pcp);
         load_spinner_anak_petak();
-        String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
-        anakpetak.setText(id_petak);
-
 
         str_nopcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.NO_PCP);
-        str_anakpetak = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.KET1);
+        str_anakpetak = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.ANAK_PETAK_ID);
         str_tahunpcp = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.TAHUN_PCP);
         str_luasbaku = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.LUAS_BAKU);
         str_luasblok = db.getDataDetail(TrnRegisterPcp.TABLE_NAME, TrnRegisterPcp._ID, id, TrnRegisterPcp.LUAS_BLOK);
@@ -190,6 +198,19 @@ public class EditRegisterpcpFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 act_simpan();
+            }
+        });
+
+        Toolbar toolbar = root.findViewById(R.id.toolbar_editpcp);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new ListRegisterpcpFragment();
+                FragmentManager frgManager = getFragmentManager();
+                FragmentTransaction ft = frgManager.beginTransaction();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
             }
         });
 
@@ -263,7 +284,6 @@ public class EditRegisterpcpFragment extends Fragment {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(AnakPetak)
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -272,7 +292,6 @@ public class EditRegisterpcpFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText("")
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -284,7 +303,6 @@ public class EditRegisterpcpFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(AnakPetak)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)

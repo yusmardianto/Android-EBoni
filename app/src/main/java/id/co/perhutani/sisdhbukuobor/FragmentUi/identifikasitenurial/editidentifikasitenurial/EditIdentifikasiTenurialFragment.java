@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -43,11 +44,11 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnIdentifikasiTenurial;
 public class EditIdentifikasiTenurialFragment extends Fragment {
 
     private EditText jenis_permasalahan, tahun, petak, strata, kelas_hutan, luas_baku, luas_tenurial,
-                     kondisi_petak, awal_konflik, pihak_terlibat, status_penyelesaian;
+            kondisi_petak, awal_konflik, pihak_terlibat, status_penyelesaian;
 
     private static String id, str_jenis_permasalahan, str_tahun, str_petak, str_strata, str_kelas_hutan,
-                          str_luas_baku, str_luas_tenurial, str_kondisi_petak, str_awal_konflik,
-                          str_pihak_terlibat, str_status_penyelesaian, str_anakpetak;
+            str_luas_baku, str_luas_tenurial, str_kondisi_petak, str_awal_konflik,
+            str_pihak_terlibat, str_status_penyelesaian, str_anakpetak;
 
     private Button btnSimpanTenurial;
     public static final String MSG_KEY = "id";
@@ -67,6 +68,9 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
         return new EditIdentifikasiTenurialFragment();
     }
 
+    private static String str_spin_anakpetak, str_spin_jenispermasalahan, str_spin_kelashutan,
+            str_spin_strata, str_spin_pihakterlibat;
+
     public void load_spinner_anak_petak() {
         List<String> listtpg = db.getAnakPetak();
         final int _tpg = listtpg.size();
@@ -85,7 +89,7 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                 // your code here
                 String pil_petak = spin_anak_petak.getSelectedItem().toString();
                 String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME,
-                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
+                        MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
                 petak.setText(id_petak);
 
             }
@@ -94,6 +98,16 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_anakpetak = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_anak_petak.setAdapter(adapter);
+        if (str_spin_anakpetak != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_anakpetak);
+            spin_anak_petak.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_jenis_permasalahan() {
@@ -123,6 +137,16 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_jenispermasalahan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_permasalahan.setAdapter(adapter);
+        if (str_spin_jenispermasalahan != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_jenispermasalahan);
+            spin_jenis_permasalahan.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_kelas_hutan() {
@@ -152,6 +176,16 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_kelashutan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET3);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_kelas_hutan.setAdapter(adapter);
+        if (str_spin_kelashutan != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_kelashutan);
+            spin_kelas_hutan.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_strata() {
@@ -181,6 +215,16 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_strata = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET4);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_strata.setAdapter(adapter);
+        if (str_spin_strata != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_strata);
+            spin_strata.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_pihak_terlibat() {
@@ -210,6 +254,16 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_pihakterlibat = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.KET5);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_pihak_terlibat.setAdapter(adapter);
+        if (str_spin_pihakterlibat != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_pihakterlibat);
+            spin_pihak_terlibat.setSelection(spinnerPosition);
+        }
     }
 
     @Override
@@ -275,33 +329,18 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
 
         spin_jenis_permasalahan = root.findViewById(R.id.edit_spinner_jenis_permasalahan);
         load_spinner_jenis_permasalahan();
-        String pil_jenis_permasalahan = spin_jenis_permasalahan.getSelectedItem().toString();
-        String id_jenis_permasalahan = db.getDataDetail(MstJenisPermasalahanSchema.TABLE_NAME, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_NAME, pil_jenis_permasalahan, MstJenisPermasalahanSchema.JENIS_PERMASALAHAN_ID);
-        jenis_permasalahan.setText(id_jenis_permasalahan);
 
         spin_anak_petak = root.findViewById(R.id.edit_spinner_tenurial_anakpetak);
         load_spinner_anak_petak();
-        String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_ID, pil_petak, MstAnakPetakSchema.ANAK_PETAK_ID);
-        petak.setText(id_petak);
 
         spin_kelas_hutan = root.findViewById(R.id.edit_spinner_tenurial_kelashutan);
         load_spinner_kelas_hutan();
-        String pil_kelas_hutan = spin_anak_petak.getSelectedItem().toString();
-        String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
-        kelas_hutan.setText(id_kelas_hutan);
 
         spin_strata = root.findViewById(R.id.edit_spinner_tenurial_strata);
         load_spinner_strata();
-        String pil_strata = spin_strata.getSelectedItem().toString();
-        String id_strata = db.getDataDetail(MstStrataSchema.TABLE_NAME, MstStrataSchema.STRATA_NAME, pil_strata, MstStrataSchema.STRATA_ID);
-        strata.setText(id_strata);
 
         spin_pihak_terlibat = root.findViewById(R.id.edit_spinner_tenurial_pihakterlibat);
         load_spinner_pihak_terlibat();
-        String pil_pihak_terlibat = spin_pihak_terlibat.getSelectedItem().toString();
-        String id_pihak_terlibat = db.getDataDetail(MstPihakTerlibatSchema.TABLE_NAME, MstPihakTerlibatSchema.PIHAK_TERLIBAT_NAME, pil_pihak_terlibat, MstPihakTerlibatSchema.PIHAK_TERLIBAT_ID);
-        pihak_terlibat.setText(id_pihak_terlibat);
 
         str_jenis_permasalahan = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.JENIS_PERMASALAHAN);
         str_petak = db.getDataDetail(TrnIdentifikasiTenurial.TABLE_NAME, TrnIdentifikasiTenurial._ID, id, TrnIdentifikasiTenurial.ANAK_PETAK_ID);
@@ -332,6 +371,19 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 act_simpan();
+            }
+        });
+
+        Toolbar toolbar = root.findViewById(R.id.toolbar_edittenurial);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new ListIdentifikasiTenurialFragment();
+                FragmentManager frgManager = getFragmentManager();
+                FragmentTransaction ft = frgManager.beginTransaction();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
             }
         });
 
@@ -397,7 +449,6 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(jenispermasalahan)
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -406,7 +457,6 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText(jenispermasalahan)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -418,7 +468,6 @@ public class EditIdentifikasiTenurialFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(jenispermasalahan)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)

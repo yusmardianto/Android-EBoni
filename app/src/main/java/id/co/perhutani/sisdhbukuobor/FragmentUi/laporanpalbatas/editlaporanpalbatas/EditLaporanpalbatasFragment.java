@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -52,6 +53,8 @@ public class EditLaporanpalbatasFragment extends Fragment {
         return new EditLaporanpalbatasFragment();
     }
 
+    private static String str_spin_bagianhutan, str_spin_jenispal, str_spin_kondisi;
+
     public void load_spinner_bagian_hutan_pal() {
         List<String> listtpg = db.getBagianHutan();
         final int _tpg = listtpg.size();
@@ -79,6 +82,16 @@ public class EditLaporanpalbatasFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_bagianhutan = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_bagianhutan.setAdapter(adapter);
+        if (str_spin_bagianhutan != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_bagianhutan);
+            spin_bagianhutan.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_jenis_pal() {
@@ -108,6 +121,16 @@ public class EditLaporanpalbatasFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_jenispal = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_pal.setAdapter(adapter);
+        if (str_spin_jenispal != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_jenispal);
+            spin_jenis_pal.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_kondisi_pal() {
@@ -136,6 +159,16 @@ public class EditLaporanpalbatasFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_kondisi = db.getDataDetail(TrnLaporanPalBatas.TABLE_NAME, TrnLaporanPalBatas._ID, id, TrnLaporanPalBatas.KET3);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_kondisi.setAdapter(adapter);
+        if (str_spin_kondisi != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_kondisi);
+            spin_kondisi.setSelection(spinnerPosition);
+        }
     }
 
     @Override
@@ -208,6 +241,19 @@ public class EditLaporanpalbatasFragment extends Fragment {
             }
         });
 
+        Toolbar toolbar = root.findViewById(R.id.toolbar_editpal);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new ListPelaporanpalFragment();
+                FragmentManager frgManager = getFragmentManager();
+                FragmentTransaction ft = frgManager.beginTransaction();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
+            }
+        });
+
         return root;
     }
 
@@ -250,7 +296,6 @@ public class EditLaporanpalbatasFragment extends Fragment {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(jenis)
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -259,7 +304,6 @@ public class EditLaporanpalbatasFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText(jenis)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -271,7 +315,6 @@ public class EditLaporanpalbatasFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(jenis)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)

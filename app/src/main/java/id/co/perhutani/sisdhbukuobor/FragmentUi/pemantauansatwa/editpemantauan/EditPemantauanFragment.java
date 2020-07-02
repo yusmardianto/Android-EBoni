@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -63,11 +64,14 @@ public class EditPemantauanFragment extends Fragment {
         return new EditPemantauanFragment();
     }
 
+    private static String str_spin_anakpetak, str_spin_jenissatwa, str_spin_caramelihat,
+            str_spin_waktulihat;
+
     public void load_spinner_jenis_satwa() {
-        List<String> listjenissatwa = db.getJenisSatwa();
-        final int _tpg = listjenissatwa.size();
+        List<String> listtpg = db.getJenisSatwa();
+        final int _tpg = listtpg.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listjenissatwa) {
+                android.R.layout.simple_spinner_item, listtpg) {
             @Override
             public int getCount() {
                 return (_tpg); // Truncate the list
@@ -90,6 +94,16 @@ public class EditPemantauanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_satwa.setAdapter(adapter);
+        if (str_spin_jenissatwa != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_jenissatwa);
+            spin_jenis_satwa.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_anak_petak() {
@@ -117,13 +131,23 @@ public class EditPemantauanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_anak_petak.setAdapter(adapter);
+        if (str_spin_anakpetak != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_anakpetak);
+            spin_anak_petak.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_waktu_lihat() {
-        List<String> listwaktulihat = db.getWaktuLihat();
-        final int _tpg = listwaktulihat.size();
+        List<String> listtpg = db.getWaktuLihat();
+        final int _tpg = listtpg.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listwaktulihat) {
+                android.R.layout.simple_spinner_item, listtpg) {
             @Override
             public int getCount() {
                 return (_tpg); // Truncate the list
@@ -145,14 +169,24 @@ public class EditPemantauanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET3);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_waktu_lihat.setAdapter(adapter);
+        if (str_spin_waktulihat != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_waktulihat);
+            spin_waktu_lihat.setSelection(spinnerPosition);
+        }
     }
 
 
     public void load_spinner_cara_melihat() {
-        List<String> listcaramelihat = db.getCaraMelihat();
-        final int _tpg = listcaramelihat.size();
+        List<String> listtpg = db.getCaraMelihat();
+        final int _tpg = listtpg.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listcaramelihat) {
+                android.R.layout.simple_spinner_item, listtpg) {
             @Override
             public int getCount() {
                 return (_tpg); // Truncate the list
@@ -175,6 +209,16 @@ public class EditPemantauanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_spin_caramelihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET4);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listtpg);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_cara_melihat.setAdapter(adapter);
+        if (str_spin_caramelihat != null) {
+            int spinnerPosition = adapter.getPosition(str_spin_caramelihat);
+            spin_cara_melihat.setSelection(spinnerPosition);
+        }
     }
 
     @Override
@@ -235,27 +279,15 @@ public class EditPemantauanFragment extends Fragment {
 
         spin_jenis_satwa = root.findViewById(R.id.edit_spinner_jenissatwa);
         load_spinner_jenis_satwa();
-        String pil_jenis_satwa = spin_jenis_satwa.getSelectedItem().toString();
-        String id_jenis = db.getDataDetail(MstJenisSatwa.TABLE_NAME, MstJenisSatwa.JENIS_SATWA_NAME, pil_jenis_satwa, MstJenisSatwa.JENIS_SATWA_ID);
-        jenissatwa.setText(id_jenis);
 
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_satwa);
         load_spinner_anak_petak();
-        String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
-        anakpetak.setText(id_petak);
 
         spin_waktu_lihat = root.findViewById(R.id.edit_spinner_waktu_lihat);
         load_spinner_waktu_lihat();
-        String pil_waktu_lihat = spin_waktu_lihat.getSelectedItem().toString();
-        String id_waktu_lihat = db.getDataDetail(MstWaktuLihatSchema.TABLE_NAME, MstWaktuLihatSchema.WAKTU_LIHAT_NAME, pil_waktu_lihat, MstWaktuLihatSchema.WAKTU_LIHAT_ID);
-        waktulihat.setText(id_waktu_lihat);
 
         spin_cara_melihat = root.findViewById(R.id.edit_spinner_caramelihat);
         load_spinner_cara_melihat();
-        String pil_cara_melihat = spin_cara_melihat.getSelectedItem().toString();
-        String id_caramelihat = db.getDataDetail(MstJenisTemuan.TABLE_NAME, MstJenisTemuan.JENIS_TEMUAN_NAME, pil_cara_melihat, MstJenisTemuan.JENIS_TEMUAN_ID);
-        caralihat.setText(id_caramelihat);
 
         str_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET2);
         str_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET1);
@@ -278,6 +310,19 @@ public class EditPemantauanFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 act_simpan();
+            }
+        });
+
+        Toolbar toolbar = root.findViewById(R.id.toolbar_editpemantauan);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new ListPemantauansatwaFragment();
+                FragmentManager frgManager = getFragmentManager();
+                FragmentTransaction ft = frgManager.beginTransaction();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
             }
         });
 
@@ -323,7 +368,6 @@ public class EditPemantauanFragment extends Fragment {
 
                 new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Simpan ?")
-                        .setContentText(jenis_satwa)
                         .setCancelText("Batal")
                         .setConfirmText("Simpan")
                         .showCancelButton(true)
@@ -332,7 +376,6 @@ public class EditPemantauanFragment extends Fragment {
                             public void onClick(SweetAlertDialog sDialog) {
                                 // reuse previous dialog instance, keep widget user state, reset them if you need
                                 sDialog.setTitleText("Dibatalkan!")
-                                        .setContentText(jenis_satwa)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
@@ -344,7 +387,6 @@ public class EditPemantauanFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.setTitleText("Success!")
-                                        .setContentText(jenis_satwa)
                                         .setConfirmText("OK")
                                         .showCancelButton(false)
                                         .setCancelClickListener(null)
