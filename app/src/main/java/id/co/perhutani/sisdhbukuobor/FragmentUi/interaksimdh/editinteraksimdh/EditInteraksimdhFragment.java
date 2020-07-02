@@ -65,7 +65,7 @@ public class EditInteraksimdhFragment extends Fragment {
     }
 
 
-    public static String str_nama_petak, str_nama_desa;
+    private static String str_nama_petak, str_nama_desa, str_bentuk_interaksi, str_nama_status;
     public void load_spinner_anak_petak() {
         List<String> listtpg = db.getAnakPetak();
         final int _tpg = listtpg.size();
@@ -141,10 +141,10 @@ public class EditInteraksimdhFragment extends Fragment {
     }
 
     public void load_spinner_bentuk_interaksi() {
-        List<String> listtpg = db.getBentukInteraksi();
-        final int _tpg = listtpg.size();
+        List<String> listinteraksi = db.getBentukInteraksi();
+        final int _tpg = listinteraksi.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listtpg) {
+                android.R.layout.simple_spinner_item, listinteraksi) {
             @Override
             public int getCount() {
                 return (_tpg); // Truncate the list
@@ -165,13 +165,23 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_bentuk_interaksi = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET4);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listinteraksi);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_bentuk_interaksi.setAdapter(adapter);
+        if (str_bentuk_interaksi != null) {
+            int spinnerPosition = adapter.getPosition(str_bentuk_interaksi);
+            spin_bentuk_interaksi.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_status_interaksi() {
-        List<String> listtpg = db.getStatusInteraksi();
-        final int _tpg = listtpg.size();
+        List<String> liststatus = db.getStatusInteraksi();
+        final int _tpg = liststatus.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listtpg) {
+                android.R.layout.simple_spinner_item, liststatus) {
             @Override
             public int getCount() {
                 return (_tpg); // Truncate the list
@@ -192,6 +202,16 @@ public class EditInteraksimdhFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+
+        str_nama_status = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET5);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, liststatus);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_status.setAdapter(adapter);
+        if (str_nama_status != null) {
+            int spinnerPosition = adapter.getPosition(str_nama_status);
+            spin_status.setSelection(spinnerPosition);
+        }
     }
 
     @Override
