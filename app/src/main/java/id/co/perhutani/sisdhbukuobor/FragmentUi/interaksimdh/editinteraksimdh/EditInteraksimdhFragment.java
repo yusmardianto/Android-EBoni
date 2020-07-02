@@ -129,7 +129,7 @@ public class EditInteraksimdhFragment extends Fragment {
             }
         });
 
-        str_nama_desa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET3);
+        str_nama_desa = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.KET4);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, listdesa);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -213,10 +213,7 @@ public class EditInteraksimdhFragment extends Fragment {
             ex.printStackTrace();
         }
 
-
         TextView testing_data = root.findViewById(R.id.testing_data);
-
-
 
         tahun = root.findViewById(R.id.edit_interaksimdh_tahun);
         SimpleDateFormat sdf_tglmulai = new SimpleDateFormat("dd-MM-yyyy");
@@ -254,15 +251,8 @@ public class EditInteraksimdhFragment extends Fragment {
         keterangan = root.findViewById(R.id.edit_interaksimdh_keterangan);
         btnSimpanInteraksi = root.findViewById(R.id.edit_interaksimdh_btnsimpan);
 
-
-
-
-
-
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anakpetak_interaksi);
         load_spinner_anak_petak();
-
-
 //        String pil_petak = spin_anak_petak.getSelectedItem().toString();
 //        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
 //        anakpetak.setText(id);
@@ -284,7 +274,6 @@ public class EditInteraksimdhFragment extends Fragment {
 //        String pil_status = spin_status.getSelectedItem().toString();
 //        String id_status = db.getDataDetail(MstStatusInteraksiSchema.TABLE_NAME, MstStatusInteraksiSchema.NAMA_STATUS, pil_status, MstStatusInteraksiSchema.ID_STATUS);
 //        status.setText(id_status);
-
 
         str_anakpetak = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.ANAK_PETAK_ID);
         str_tahun = db.getDataDetail(TrnInteraksimdh.TABLE_NAME, TrnInteraksimdh._ID, id, TrnInteraksimdh.TAHUN);
