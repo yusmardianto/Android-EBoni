@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -29,6 +30,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.Adapter.GenerateAESAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.BukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
@@ -36,6 +38,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisGangguanHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.ListGangguanFragment;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnInteraksimdh;
 
 public class EditGangguanFragment extends Fragment {
 
@@ -61,11 +64,13 @@ public class EditGangguanFragment extends Fragment {
         return new EditGangguanFragment();
     }
 
+    private static String str_edit_gangguan_hutan, str_edit_anakpetak, str_edit_jenistanaman;
+
     public void load_spinner_gangguan_hutan() {
-        List<String> listtpg = db.getJenisGangguan();
-        final int _tpg = listtpg.size();
+        List<String> listgangguan = db.getJenisGangguan();
+        final int _tpg = listgangguan.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listtpg) {
+                android.R.layout.simple_spinner_item, listgangguan) {
             @Override
             public int getCount() {
                 return (_tpg); // Truncate the list
@@ -87,13 +92,23 @@ public class EditGangguanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+        str_edit_gangguan_hutan = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET3);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listgangguan);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_gangguan_hutan.setAdapter(adapter);
+        if (str_edit_gangguan_hutan != null) {
+            int spinnerPosition = adapter.getPosition(str_edit_gangguan_hutan);
+            spin_gangguan_hutan.setSelection(spinnerPosition);
+        }
+
     }
 
     public void load_spinner_anak_petak() {
-        List<String> listtpg = db.getAnakPetak();
-        final int _tpg = listtpg.size();
+        List<String> list_anakpetak = db.getAnakPetak();
+        final int _tpg = list_anakpetak.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listtpg) {
+                android.R.layout.simple_spinner_item, list_anakpetak) {
             @Override
             public int getCount() {
                 return (_tpg); // Truncate the list
@@ -116,13 +131,22 @@ public class EditGangguanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+        str_edit_anakpetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, list_anakpetak);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_anak_petak.setAdapter(adapter);
+        if (str_edit_anakpetak != null) {
+            int spinnerPosition = adapter.getPosition(str_edit_anakpetak);
+            spin_anak_petak.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_jenis_tanaman() {
-        List<String> listtpg = db.getJenisTanaman();
-        final int _tpg = listtpg.size();
+        List<String> list_tanaman = db.getJenisTanaman();
+        final int _tpg = list_tanaman.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listtpg) {
+                android.R.layout.simple_spinner_item, list_tanaman) {
             @Override
             public int getCount() {
                 return (_tpg); // Truncate the list
@@ -145,6 +169,15 @@ public class EditGangguanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+        str_edit_jenistanaman = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, list_tanaman);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_tanaman.setAdapter(adapter);
+        if (str_edit_jenistanaman != null) {
+            int spinnerPosition = adapter.getPosition(str_edit_jenistanaman);
+            spin_jenis_tanaman.setSelection(spinnerPosition);
+        }
     }
 
     @Override
@@ -166,6 +199,19 @@ public class EditGangguanFragment extends Fragment {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        Toolbar toolbar = root.findViewById(R.id.toolbar_editgukamhut);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new ListGangguanFragment();
+                FragmentManager frgManager = getFragmentManager();
+                FragmentTransaction ft = frgManager.beginTransaction();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
+            }
+        });
 
         tgl_kejadian = root.findViewById(R.id.edit_gangguan_tanggal);
         tgl_kejadian.setFocusable(false);
@@ -237,21 +283,21 @@ public class EditGangguanFragment extends Fragment {
 
         spin_gangguan_hutan = root.findViewById(R.id.edit_spinner_gangguan_hutan);
         load_spinner_gangguan_hutan();
-        String pil_gangguan = spin_gangguan_hutan.getSelectedItem().toString();
-        String id_gangguan = db.getDataDetail(MstJenisGangguanHutanSchema.TABLE_NAME, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME, pil_gangguan, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME);
-        isi_kejadian.setText(id_gangguan);
+//        String pil_gangguan = spin_gangguan_hutan.getSelectedItem().toString();
+//        String id_gangguan = db.getDataDetail(MstJenisGangguanHutanSchema.TABLE_NAME, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME, pil_gangguan, MstJenisGangguanHutanSchema.JENIS_GANGGUAN_HUTAN_NAME);
+//        isi_kejadian.setText(id_gangguan);
 
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_gukamhut);
         load_spinner_anak_petak();
-        String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
-        isipetak.setText(id_petak);
+//        String pil_petak = spin_anak_petak.getSelectedItem().toString();
+//        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
+//        isipetak.setText(id_petak);
 
         spin_jenis_tanaman = root.findViewById(R.id.edit_spinner_jenis_tanaman);
         load_spinner_jenis_tanaman();
-        String pil_jenis = spin_jenis_tanaman.getSelectedItem().toString();
-        String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
-        jenistanaman.setText(id_jenis);
+//        String pil_jenis = spin_jenis_tanaman.getSelectedItem().toString();
+//        String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
+//        jenistanaman.setText(id_jenis);
 
         str_tgl_kejadian = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.TANGGAL_KEJADIAN);
         str_isipetak = db.getDataDetail(TrnGangguanKeamananHutan.TABLE_NAME, TrnGangguanKeamananHutan._ID, id, TrnGangguanKeamananHutan.KET1);

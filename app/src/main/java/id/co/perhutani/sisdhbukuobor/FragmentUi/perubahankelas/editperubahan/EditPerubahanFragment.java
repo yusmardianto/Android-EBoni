@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -29,11 +30,13 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.Adapter.GenerateAESAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PerubahankelasModel;
 import id.co.perhutani.sisdhbukuobor.R;
 import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.perubahankelas.ListPerubahanKelasFragment;
 
@@ -66,11 +69,15 @@ public class EditPerubahanFragment extends Fragment {
         return new EditPerubahanFragment();
     }
 
+    private static String str_edit_anakpetak, str_edit_jenistanaman, str_edit_klshtn,
+            str_edit_tanamanperkiraan, str_edit_klshtn_perkiraan, str_edit_jenis_tanaman_definitif,
+    str_edit_klshtn_definitif;
+
     public void load_spinner_anak_petak() {
-        List<String> listtpg = db.getAnakPetak();
-        final int _tpg = listtpg.size();
+        List<String> list_anakpetak = db.getAnakPetak();
+        final int _tpg = list_anakpetak.size();
         ArrayAdapter<String> dataAdapter_tpg = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, listtpg) {
+                android.R.layout.simple_spinner_item, list_anakpetak) {
             @Override
             public int getCount() {
                 return (_tpg); // Truncate the list
@@ -93,6 +100,15 @@ public class EditPerubahanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+        str_edit_anakpetak = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, list_anakpetak);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_anak_petak.setAdapter(adapter);
+        if (str_edit_anakpetak != null) {
+            int spinnerPosition = adapter.getPosition(str_edit_anakpetak);
+            spin_anak_petak.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_jenis_tanaman() {
@@ -122,6 +138,15 @@ public class EditPerubahanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+        str_edit_jenistanaman = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listjenis);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_tanaman.setAdapter(adapter);
+        if (str_edit_jenistanaman != null) {
+            int spinnerPosition = adapter.getPosition(str_edit_jenistanaman);
+            spin_jenis_tanaman.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_kelas_hutan() {
@@ -151,6 +176,15 @@ public class EditPerubahanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+        str_edit_klshtn = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET3);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listkelas);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_kelas_hutan.setAdapter(adapter);
+        if (str_edit_klshtn != null) {
+            int spinnerPosition = adapter.getPosition(str_edit_klshtn);
+            spin_kelas_hutan.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_jenis_tanaman_perkiraan() {
@@ -180,6 +214,15 @@ public class EditPerubahanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+        str_edit_tanamanperkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET4);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listjenis_tanaman_perkiraan);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_tanaman_perkiraan.setAdapter(adapter);
+        if (str_edit_tanamanperkiraan != null) {
+            int spinnerPosition = adapter.getPosition(str_edit_tanamanperkiraan);
+            spin_jenis_tanaman_perkiraan.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_kelas_hutan_perkiraan() {
@@ -209,6 +252,15 @@ public class EditPerubahanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+        str_edit_klshtn_perkiraan = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET5);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, list_kelas_hutan_perkiraan);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_kelas_hutan_perkiraan.setAdapter(adapter);
+        if (str_edit_klshtn_perkiraan != null) {
+            int spinnerPosition = adapter.getPosition(str_edit_klshtn_perkiraan);
+            spin_kelas_hutan_perkiraan.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_jenis_tanaman_definitif() {
@@ -238,6 +290,15 @@ public class EditPerubahanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+        str_edit_jenis_tanaman_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET6);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, listjenis_tanaman_definitif);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_jenis_tanaman_definitif.setAdapter(adapter);
+        if (str_edit_jenis_tanaman_definitif != null) {
+            int spinnerPosition = adapter.getPosition(str_edit_jenis_tanaman_definitif);
+            spin_jenis_tanaman_definitif.setSelection(spinnerPosition);
+        }
     }
 
     public void load_spinner_kelas_hutan_definitif() {
@@ -267,6 +328,15 @@ public class EditPerubahanFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
+        str_edit_klshtn_definitif = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET7);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, list_kelas_hutan_definitif);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_kelas_hutan_definitif.setAdapter(adapter);
+        if (str_edit_klshtn_definitif != null) {
+            int spinnerPosition = adapter.getPosition(str_edit_klshtn_definitif);
+            spin_kelas_hutan_definitifg.setSelection(spinnerPosition);
+        }
     }
 
     @Nullable
@@ -289,6 +359,19 @@ public class EditPerubahanFragment extends Fragment {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        Toolbar toolbar = root.findViewById(R.id.toolbar_editperubahankls);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new ListPerubahanKelasFragment();
+                FragmentManager frgManager = getFragmentManager();
+                FragmentTransaction ft = frgManager.beginTransaction();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
+            }
+        });
 
         petak_id = root.findViewById(R.id.edit_perubahankls_idpetakperubahan);
         tahun = root.findViewById(R.id.edit_perubahankls_tahunperubahan);
@@ -333,45 +416,45 @@ public class EditPerubahanFragment extends Fragment {
 
         spin_anak_petak = root.findViewById(R.id.edit_spinner_anak_petak_perubahan);
         load_spinner_anak_petak();
-        String pil_petak = spin_anak_petak.getSelectedItem().toString();
-        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
-        petak_id.setText(id_petak);
+//        String pil_petak = spin_anak_petak.getSelectedItem().toString();
+//        String id_petak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.ANAK_PETAK_NAME, pil_petak, MstAnakPetakSchema.KODE_ANAKPETAK);
+//        petak_id.setText(id_petak);
 
         spin_jenis_tanaman = root.findViewById(R.id.edit_spinner_jenis_perubahan);
         load_spinner_jenis_tanaman();
-        String pil_jenis_tanaman = spin_jenis_tanaman.getSelectedItem().toString();
-        String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
-        jenis_tanaman.setText(id_jenis);
+//        String pil_jenis_tanaman = spin_jenis_tanaman.getSelectedItem().toString();
+//        String id_jenis = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
+//        jenis_tanaman.setText(id_jenis);
 
         spin_jenis_tanaman_perkiraan = root.findViewById(R.id.edit_spinner_jenis_perkiraan);
         load_spinner_jenis_tanaman_perkiraan();
-        String pil_jenis_tanaman_perkiraan = spin_jenis_tanaman_perkiraan.getSelectedItem().toString();
-        String id_jenis_perkiraan = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_perkiraan, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
-        jenis_perkiraan.setText(id_jenis_perkiraan);
+//        String pil_jenis_tanaman_perkiraan = spin_jenis_tanaman_perkiraan.getSelectedItem().toString();
+//        String id_jenis_perkiraan = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_perkiraan, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
+//        jenis_perkiraan.setText(id_jenis_perkiraan);
 
         spin_kelas_hutan = root.findViewById(R.id.edit_spinner_kelas_hutan);
         load_spinner_kelas_hutan();
-        String pil_kelas_hutan = spin_kelas_hutan.getSelectedItem().toString();
-        String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
-        kelas_hutan.setText(id_kelas_hutan);
+//        String pil_kelas_hutan = spin_kelas_hutan.getSelectedItem().toString();
+//        String id_kelas_hutan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan, MstKelasHutanSchema.KELAS_HUTAN_ID);
+//        kelas_hutan.setText(id_kelas_hutan);
 
         spin_kelas_hutan_perkiraan = root.findViewById(R.id.edit_spinner_kelas_hutan_perkiraan);
         load_spinner_kelas_hutan_perkiraan();
-        String pil_kelas_hutan_perkiraan = spin_kelas_hutan_perkiraan.getSelectedItem().toString();
-        String id_kelas_hutan_perkiraan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_perkiraan, MstKelasHutanSchema.KELAS_HUTAN_ID);
-        kelas_perkiraan.setText(id_kelas_hutan_perkiraan);
+//        String pil_kelas_hutan_perkiraan = spin_kelas_hutan_perkiraan.getSelectedItem().toString();
+//        String id_kelas_hutan_perkiraan = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_perkiraan, MstKelasHutanSchema.KELAS_HUTAN_ID);
+//        kelas_perkiraan.setText(id_kelas_hutan_perkiraan);
 
         spin_jenis_tanaman_definitif = root.findViewById(R.id.edit_spinner_jenis_tanaman_definitif);
         load_spinner_jenis_tanaman_definitif();
-        String pil_jenis_tanaman_definitif = spin_jenis_tanaman_definitif.getSelectedItem().toString();
-        String id_jenis_tanaman_definitif = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_definitif, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
-        jenis_definitif.setText(id_jenis_tanaman_definitif);
+//        String pil_jenis_tanaman_definitif = spin_jenis_tanaman_definitif.getSelectedItem().toString();
+//        String id_jenis_tanaman_definitif = db.getDataDetail(MstJenisTanamanSchema.TABLE_NAME, MstJenisTanamanSchema.JENIS_TANAMAN_NAME, pil_jenis_tanaman_definitif, MstJenisTanamanSchema.JENIS_TANAMAN_ID);
+//        jenis_definitif.setText(id_jenis_tanaman_definitif);
 
         spin_kelas_hutan_definitif = root.findViewById(R.id.edit_spinner_perubahan_kelas_definitif);
         load_spinner_kelas_hutan_definitif();
-        String pil_kelas_hutan_definitif = spin_kelas_hutan_definitif.getSelectedItem().toString();
-        String id_kelas_hutan_definitif = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_definitif, MstKelasHutanSchema.KELAS_HUTAN_ID);
-        kelas_definitif.setText(id_kelas_hutan_definitif);
+//        String pil_kelas_hutan_definitif = spin_kelas_hutan_definitif.getSelectedItem().toString();
+//        String id_kelas_hutan_definitif = db.getDataDetail(MstKelasHutanSchema.TABLE_NAME, MstKelasHutanSchema.KELAS_HUTAN_NAME, pil_kelas_hutan_definitif, MstKelasHutanSchema.KELAS_HUTAN_ID);
+//        kelas_definitif.setText(id_kelas_hutan_definitif);
 
         str_petak_id = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.KET1);
         str_tahun = db.getDataDetail(TrnPerubahanKelas.TABLE_NAME, TrnPerubahanKelas._ID, id, TrnPerubahanKelas.TAHUN_PERUBAHAN);
