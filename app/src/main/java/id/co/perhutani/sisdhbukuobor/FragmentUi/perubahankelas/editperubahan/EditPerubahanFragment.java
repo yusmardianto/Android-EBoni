@@ -335,7 +335,7 @@ public class EditPerubahanFragment extends Fragment {
         spin_kelas_hutan_definitif.setAdapter(adapter);
         if (str_edit_klshtn_definitif != null) {
             int spinnerPosition = adapter.getPosition(str_edit_klshtn_definitif);
-            spin_kelas_hutan_definitifg.setSelection(spinnerPosition);
+            spin_kelas_hutan_definitif.setSelection(spinnerPosition);
         }
     }
 
