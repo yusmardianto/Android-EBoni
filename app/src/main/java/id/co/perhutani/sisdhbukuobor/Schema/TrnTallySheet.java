@@ -23,29 +23,69 @@ public class TrnTallySheet {
         public static final String KECAMATAN_NAME = "KECAMATAN_NAME";
         public static final String KABUPATEN = "KABUPATEN";
         public static final String KABUPATEN_NAME = "KABUPATEN_NAME";
-        public static final String TINGGI_PDL = "TINGGI_PDL";
-        public static final String IKLIM = "IKLIM";
-        public static final String CURAH_HUJAN = "CURAH_HUJAN";
+
         public static final String KELAS_HUTAN = "KELAS_HUTAN";
         public static final String KELAS_HUTAN_NAME = "KELAS_HUTAN_NAME";
-        public static final String FUNGSI_HUTAN = "FUNGSI_HUTAN";
-        public static final String FUNGSI_HUTAN_NAME = "FUNGSI_HUTAN_NAME";
-        public static final String PENGGUNAAN_HUTAN = "PENGGUNAAN_HUTAN";
-        public static final String PENGGUNAAN_HUTAN_NAME = "PENGGUNAAN_HUTAN_NAME";
         public static final String TAHUN_TANAM = "TAHUN_TANAM";
-        public static final String BONITA_LALU = "BONITA_LALU";
-        public static final String BONITA_BARU = "BONITA_BARU";
+        public static final String BONITA = "BONITA";
         public static final String KBD = "KBD";
         public static final String DKN = "DKN";
         public static final String VOLUME = "VOLUME";
-        public static final String INTENSITAS_SAMPLING = "INTENSITAS_SAMPLING";
-        public static final String CARA_SAMPLING = "CARA_SAMPLING";
         public static final String TGL_INVENTARISASI = "TGL_INVENTARISASI";
-        public static final String PELAKSANA = "PELAKSANA";
-        public static final String KEPALA_SEKSI = "KEPALA_SEKSI";
-        public static final String NO_RAK = "NO_RAK";
-        public static final String NO_LACI = "NO_LACI";
-        public static final String TALLYSHEET_PLOT = "TALLYSHEET_PLOT";
+
+        public static final String LUAS_PU = "LUAS_PU";
+        public static final String LUAS_PU_NAME = "LUAS_PU_NAME";
+        public static final String LUAS_BAKU = "LUAS_BAKU";
+        public static final String SDH_KAYU_PENINGGI = "SDH_KAYU_PENINGGI";
+        public static final String UMUR = "UMUR";
+        public static final String KH_AWAL = "KH_AWAL";
+        public static final String KH_AWAL_NAME = "KH_AWAL_NAME";
+        public static final String JENIS_TANAMAN_POKOK = "JENIS_TANAMAN_POKOK";
+        public static final String JENIS_TANAMAN_POKOK_NAME = "JENIS_TANAMAN_POKOK_NAME";
+        public static final String JENIS_TANAMAN_PENCAMPUR = "JENIS_TANAMAN_PENCAMPUR";
+        public static final String JENIS_TANAMAN_PENCAMPUR_NAME = "JENIS_TANAMAN_PENCAMPUR_NAME";
+        public static final String JENIS_TANAMAN_SELA = "JENIS_TANAMAN_SELA";
+        public static final String JENIS_TANAMAN_SELA_NAME = "JENIS_TANAMAN_SELA_NAME";
+        public static final String JARAK_TANAM = "JARAK_TANAM";
+        public static final String PERTUMBUHAN_TEGAKAN = "PERTUMBUHAN_TEGAKAN";
+        public static final String PERTUMBUHAN_TEGAKAN_NAME = "PERTUMBUHAN_TEGAKAN_NAME";
+        public static final String KERATAAN_TEGAKAN = "KERATAAN_TEGAKAN";
+        public static final String KERATAAN_TEGAKAN_NAME = "KERATAAN_TEGAKAN_NAME";
+        public static final String KEMURNIAN_TEGAKAN = "KEMURNIAN_TEGAKAN";
+        public static final String KEMURNIAN_TEGAKAN_NAME = "KEMURNIAN_TEGAKAN_NAME";
+        public static final String JENIS_PENCAMPUR_KEMURNIAN = "JENIS_PENCAMPUR_KEMURNIAN";
+        public static final String JML_PHN_KEMURNIAN = "JML_PHN_KEMURNIAN";
+        public static final String DIAMETER_KEMURNIAN = "DIAMETER_KEMURNIAN";
+        public static final String KETERANGAN_KEMURNIAN = "KETERANGAN_KEMURNIAN";
+        public static final String BENTUK_LAPANGAN = "BENTUK_LAPANGAN";
+        public static final String BENTUK_LAPANGAN_NAME = "BENTUK_LAPANGAN_NAME";
+        public static final String KEMIRINGAN_LAPANGAN = "KEMIRINGAN_LAPANGAN";
+        public static final String KEMIRINGAN_LAPANGAN_NAME = "KEMIRINGAN_LAPANGAN_NAME";
+        public static final String ARAH_LERENG = "ARAH_LERENG";
+        public static final String ARAH_LERENG_NAME = "ARAH_LERENG_NAME";
+        public static final String JENIS_TANAH = "JENIS_TANAH";
+        public static final String JENIS_TANAH_NAME = "JENIS_TANAH_NAME";
+        public static final String WARNA_TANAH = "WARNA_TANAH";
+        public static final String WARNA_TANAH_NAME = "WARNA_TANAH_NAME";
+        public static final String KEDALAMAN_TANAH = "KEDALAMAN_TANAH";
+        public static final String KEDALAMAN_TANAH_NAME = "KEDALAMAN_TANAH_NAME";
+        public static final String KESARANGAN_TANAH = "KESARANGAN_TANAH";
+        public static final String KESARANGAN_TANAH_NAME = "KESARANGAN_TANAH_NAME";
+        public static final String KEMANTAPAN_TANAH = "KEMANTAPAN_TANAH";
+        public static final String KEMANTAPAN_TANAH_NAME = "KEMANTAPAN_TANAH_NAME";
+        public static final String BATUAN_TANAH = "BATUAN_TANAH";
+        public static final String BATUAN_TANAH_NAME = "BATUAN_TANAH_NAME";
+        public static final String KANDUNGAN_HUMUS = "KANDUNGAN_HUMUS";
+        public static final String KANDUNGAN_HUMUS_NAME = "KANDUNGAN_HUMUS_NAME";
+        public static final String KEMASAMAN = "KEMASAMAN";
+        public static final String KEMASAMAN_NAME = "KEMASAMAN_NAME";
+        public static final String TINGKAT_EROSI = "TINGKAT_EROSI";
+        public static final String TINGKAT_EROSI_NAME = "TINGKAT_EROSI_NAME";
+        public static final String TUMBUHAN_BWH_JENIS = "TUMBUHAN_BWH_JENIS";
+        public static final String TUMBUHAN_BWH_JENIS_NAME = "TUMBUHAN_BWH_JENIS_NAME";
+        public static final String TUMBUHAN_BWH_INTENSITAS = "TUMBUHAN_BWH_INTENSITAS";
+        public static final String TUMBUHAN_BWH_INTENSITAS_NAME = "TUMBUHAN_BWH_INTENSITAS_NAME";
+
         public static final String KETERANGAN = "KETERANGAN";
         public static final String KET1 = "KET1";
         public static final String KET2 = "KET2";
@@ -83,29 +123,68 @@ public class TrnTallySheet {
                 "" + KECAMATAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KABUPATEN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KABUPATEN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + TINGGI_PDL + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + IKLIM + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + CURAH_HUJAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KELAS_HUTAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KELAS_HUTAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + FUNGSI_HUTAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + FUNGSI_HUTAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + PENGGUNAAN_HUTAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + PENGGUNAAN_HUTAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + TAHUN_TANAM + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + BONITA_LALU + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + BONITA_BARU + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + BONITA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KBD + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + DKN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + VOLUME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + INTENSITAS_SAMPLING + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + CARA_SAMPLING + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + TGL_INVENTARISASI + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + PELAKSANA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + KEPALA_SEKSI + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + NO_RAK + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + NO_LACI + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + TALLYSHEET_PLOT + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+
+                "" + LUAS_PU + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + LUAS_PU_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + LUAS_BAKU + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + SDH_KAYU_PENINGGI + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + UMUR + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KH_AWAL + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KH_AWAL_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JENIS_TANAMAN_POKOK + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JENIS_TANAMAN_POKOK_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JENIS_TANAMAN_PENCAMPUR + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JENIS_TANAMAN_PENCAMPUR_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JENIS_TANAMAN_SELA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JENIS_TANAMAN_SELA_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JARAK_TANAM + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + PERTUMBUHAN_TEGAKAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + PERTUMBUHAN_TEGAKAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KERATAAN_TEGAKAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KERATAAN_TEGAKAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KEMURNIAN_TEGAKAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KEMURNIAN_TEGAKAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JENIS_PENCAMPUR_KEMURNIAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JML_PHN_KEMURNIAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + DIAMETER_KEMURNIAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KETERANGAN_KEMURNIAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + BENTUK_LAPANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + BENTUK_LAPANGAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KEMIRINGAN_LAPANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KEMIRINGAN_LAPANGAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + ARAH_LERENG + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + ARAH_LERENG_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JENIS_TANAH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + JENIS_TANAH_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + WARNA_TANAH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + WARNA_TANAH_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KEDALAMAN_TANAH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KEDALAMAN_TANAH_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KESARANGAN_TANAH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KESARANGAN_TANAH_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KEMANTAPAN_TANAH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KEMANTAPAN_TANAH_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + BATUAN_TANAH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + BATUAN_TANAH_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KANDUNGAN_HUMUS + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KANDUNGAN_HUMUS_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KEMASAMAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KEMASAMAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + TINGKAT_EROSI + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + TINGKAT_EROSI_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + TUMBUHAN_BWH_JENIS + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + TUMBUHAN_BWH_JENIS_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + TUMBUHAN_BWH_INTENSITAS + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + TUMBUHAN_BWH_INTENSITAS_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+
                 "" + KETERANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +

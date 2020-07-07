@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.Toolbar
+        android:visibility="gone"
         android:id="@+id/top_navigation_detail_tallysheet"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -21,6 +22,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
+        android:layout_below="@id/top_navigation_detail_tallysheet"
         android:id="@+id/layout_scrolldetail_andil"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -35,7 +37,64 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
 
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="No PU"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_no_pu"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="PU 01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Desa"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_desa"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Desa Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
                 <LinearLayout
                     android:background="@color/colorWhite"
                     android:layout_width="match_parent"
@@ -211,76 +270,6 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#e0e0e0" />
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Desa"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_desa"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Desa Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Jarak dari Desa"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_jarak_desa"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="0.97"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
                 <LinearLayout
                     android:background="@color/colorWhite"
                     android:layout_width="match_parent"
@@ -308,7 +297,7 @@
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="Kecamatan Test"
+                            android:text="Kecamatan Tembalang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -333,7 +322,7 @@
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="Kabupaten Test"
+                            android:text="Kabupaten Semarang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -369,16 +358,16 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="Tinggi PDL"
+                            android:text="Luas Baku"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_tinggipdl"
+                            android:id="@+id/detail_ts_luasbaku"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="Tinggi Test"
+                            android:text="4 Ha"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -394,16 +383,16 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="Iklim"
+                            android:text="Luas Petak Ukur"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_iklim"
+                            android:id="@+id/detail_ts_luaspu"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="Ikilm Test"
+                            android:text="11.28/0.04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -427,47 +416,19 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="Curah Hujan"
+                            android:text="Kelas Hutan (Awal Jangka)"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_curah_hujan"
+                            android:id="@+id/detail_ts_kh_awal"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="Curah Hujan Test"
+                            android:text="KTn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
-                    <LinearLayout
-                        android:visibility="invisible"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#e0e0e0" />
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
                     <LinearLayout
                         android:layout_weight="1"
                         android:layout_width="match_parent"
@@ -484,323 +445,12 @@
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_kelashutan"
+                            android:id="@+id/detail_ts_kh"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="Kelas Hutan Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Fungsi Hutan"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_fungsihutan"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Fungsi Hutan Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Penggunaan Hutan"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_penggunaanhutan"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Penggunaan Hutan Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:visibility="invisible"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#e0e0e0" />
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Bonita Lalu"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_bonitalalu"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Bonita lalu Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Bonita Baru"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_bonitabaru"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Bonita Baru Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Tahun Tanam"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_tahuntanam"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Tahun Tanam Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="KBD"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_kbd"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="KBD Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="DKN"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_dkn"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="DKN Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Volume"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_volume"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Volume Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Intensitas Sampling"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_intensitas_sampling"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Intensitas Sampling Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Cara Sampling"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_cara_sampling"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Cara Sampling Test"
+                            android:text="HAS"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -862,16 +512,16 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="Pelaksana"
+                            android:text="Peninggi SDH Kayu"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_pelaksana"
+                            android:id="@+id/detail_ts_peninggi_sdhkayu"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="Pelaksana Test"
+                            android:text="Peninggi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -895,16 +545,16 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="Kepala Seksi"
+                            android:text="Bonita"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_kepala_seksi"
+                            android:id="@+id/detail_ts_bonita"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="Kepala Seksi Test"
+                            android:text="Bonita"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -920,16 +570,16 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="Tally Sheet Plot"
+                            android:text="Tahun Tanam"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_plot"
+                            android:id="@+id/detail_ts_tahuntanam"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="Plot Test"
+                            android:text="2000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -953,18 +603,65 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="No Rak"
+                            android:text="Umur"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_no_rak"
+                            android:id="@+id/detail_ts_no_umur"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="No Rak Test"
+                            android:text="2000"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#e0e0e0" />
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Jenis Tanaman Pokok"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_jns_tanaman_pokok"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Tanaman pokok"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
                     </LinearLayout>
                     <LinearLayout
                         android:layout_weight="1"
@@ -978,16 +675,16 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="No Laci"
+                            android:text="Jenis Tanaman Pencampur"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_no_laci"
+                            android:id="@+id/detail_ts_jns_tanaman_pencampur"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="No Laci Test"
+                            android:text="Tanaman Pencampur"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -1011,21 +708,136 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="Keterangan"
+                            android:text="Jenis Tanaman Sela"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_keterangan"
+                            android:id="@+id/detail_ts_jsn_tanaman_sela"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="Keterangan Test"
+                            android:text="Tanaman Sela"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
                     <LinearLayout
-                        android:visibility="invisible"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Jarak Tanam"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_jrk_tanam"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Jarak Tanam"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Pertumbuhan Tegakan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_pertumbuhan_tegakan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Pertumbuhan Tegakan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kerataan Tegakan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kerataan_tegakan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kerataan Tegakan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kemurnian Tegakan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kemurnian_tegakan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kemurnian Tegakan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1034,6 +846,482 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#e0e0e0" />
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Bentuk Lapangan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_btk_lapangan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:text="Bentuk Lapangan"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kemiringan Lapangan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kemiringan_lapangan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kemiringan Lapangan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Arah Lereng"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_arah_lereng"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Arah Lereng"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Jenis Tanah"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_jns_tnh"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Jenis Tanah"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Warna Tanah"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_warna_tanah"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Warna Tanah"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kedalaman Tanah"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kedalaman_tanah"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kedalaman Tanah"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kesarangan Tanah"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kesarangan_tanah"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kesarangan Tanah"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kemantapan Tanah"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kemantapan_tanah"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kemantapan Tanah"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Batuan Tanah"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_batuan_tanah"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kesarangan Tanah"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#e0e0e0" />
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kandungan Humus"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_humus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:text="Humus"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Kemasaman"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kemasaman"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kemasaman"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Tingkat Erosi"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_tingkat_erosi"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Erosi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Intensitas Tumbuhan Bawah"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_intensitas_tumbuhan_bwh"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Intensitas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Jenis Tumbuhan Bawah"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_jns_tumbuhan_bwh"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Tumbuhan Bawah"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
+                            android:text="Perawatan Kelak"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_perawatan_kelak"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Perawatan Kelak"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
 
             </LinearLayout>
 
@@ -1042,4 +1330,4 @@
 
     </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>

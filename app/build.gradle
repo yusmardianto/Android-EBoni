@@ -45,4 +45,7 @@ dependencies {
     // menu dinamis
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.balysv:material-ripple:1.0.2'
+
+    //floatingaction button
+//    implementation 'com.github.clans:fab:1.6.4'
 }

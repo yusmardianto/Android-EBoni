@@ -55,4 +55,5 @@
             android:textSize="25sp"
             android:hint="Tidak ada data"/>
     </LinearLayout>
+
 </LinearLayout>

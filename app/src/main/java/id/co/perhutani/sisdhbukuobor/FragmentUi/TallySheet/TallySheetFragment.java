@@ -42,18 +42,18 @@ public class TallySheetFragment extends Fragment {
         // Inflate the layout for this fragment
         view_tally_sheet = inflater.inflate(R.layout.fragment_tally_sheet, container, false);
 
-        Toolbar toolbar = view_tally_sheet.findViewById(R.id.toolbar_tallysheet);
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new BukuOborFragment();
-                FragmentManager frgManager = getFragmentManager();
-                FragmentTransaction ft = frgManager.beginTransaction();
-                ft.replace(R.id.nav_host_fragment, fragment);
-                ft.commit();
-            }
-        });
+//        Toolbar toolbar = view_tally_sheet.findViewById(R.id.toolbar_tallysheet);
+//        toolbar.setNavigationIcon(R.drawable.ic_back);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Fragment fragment = new BukuOborFragment();
+//                FragmentManager frgManager = getFragmentManager();
+//                FragmentTransaction ft = frgManager.beginTransaction();
+//                ft.replace(R.id.nav_host_fragment, fragment);
+//                ft.commit();
+//            }
+//        });
 
         initViewPager();
 

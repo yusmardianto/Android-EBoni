@@ -30,6 +30,7 @@ import id.co.perhutani.sisdhbukuobor.Adapter.TallySheet.TallySheetAdapter;
 import id.co.perhutani.sisdhbukuobor.Adapter.WorkOrder.WorkOrderAdapter;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
+import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.VerticalSpaceItemDecoration;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.tambahgangguan.TambahGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.susunrisalah.SusunRisalahViewModel;
@@ -48,6 +49,7 @@ public class ListTallySheetFragment extends Fragment {
     ArrayList<TallySheetModel> dataModels;
     private TallySheetAdapter tallySheetAdapter;
     private static final int VERTICAL_ITEM_SPACE = 0;
+    private SessionManager session;
 
     private int color = 0;
     private SQLiteHandler db;
@@ -60,6 +62,9 @@ public class ListTallySheetFragment extends Fragment {
         // Inflate the layout for this fragment
         list_tally_sheet = inflater.inflate(R.layout.fragment_list_tally_sheet, container, false);
         db = new SQLiteHandler(getActivity());
+        session = new SessionManager(getActivity());
+//        session.setPreferences(getActivity(), "ses_id_tallysheet", null);
+//
 
 //        ImageView imgTambahGangguan = list_tally_sheet.findViewById(R.id.create_tally_sheet);
 //        imgTambahGangguan.setOnClickListener(new View.OnClickListener() {

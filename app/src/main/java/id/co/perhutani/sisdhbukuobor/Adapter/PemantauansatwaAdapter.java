@@ -29,6 +29,7 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.ListPemantauansa
 import id.co.perhutani.sisdhbukuobor.FragmentUi.pemantauansatwa.editpemantauan.EditPemantauanFragment;
 import id.co.perhutani.sisdhbukuobor.Model.PemantauansatwaModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.MstAnakPetakSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPemantauanSatwa;
 
 public class PemantauansatwaAdapter extends RecyclerView.Adapter<PemantauansatwaAdapter.PemantauanViewHolder> {
@@ -62,11 +63,12 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
         db = new SQLiteHandler(mContext);
 
         String getAnakPetakId = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.ANAK_PETAK_ID);
+        String getNamaAnakPetakId = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.KODE_ANAKPETAK, getAnakPetakId, MstAnakPetakSchema.ANAK_PETAK_NAME);
         String getJenis = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.KET2);
         String getWaktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, mData.get(position).getID(), TrnPemantauanSatwa.KET3);
 
         holder.tv_jenisatwa.setText(getJenis);
-        holder.tv_anakpetakid.setText(getAnakPetakId);
+        holder.tv_anakpetakid.setText(getNamaAnakPetakId);
         holder.tv_jumlahsatwa.setText(mData.get(position).getJumlah());
         holder.tv_waktulihat.setText(getWaktulihat);
         holder.tv_tanggal.setText(mData.get(position).getTanggal());
@@ -132,6 +134,7 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             alertDialogBuilder.setView(viewas);
 
             String get_anakpetak = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.ANAK_PETAK_ID);
+            String getNamaAnakPetak = db.getDataDetail(MstAnakPetakSchema.TABLE_NAME, MstAnakPetakSchema.KODE_ANAKPETAK, get_anakpetak, MstAnakPetakSchema.ANAK_PETAK_NAME);
             final String get_jenissatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET2);
             String get_jumlahsatwa = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.JUMLAH_SATWA);
             String get_waktulihat = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KET3);
@@ -140,7 +143,7 @@ public class PemantauansatwaAdapter extends RecyclerView.Adapter<Pemantauansatwa
             String get_keterangan = db.getDataDetail(TrnPemantauanSatwa.TABLE_NAME, TrnPemantauanSatwa._ID, id, TrnPemantauanSatwa.KETERANGAN);
 
             TextView anakpetak = viewas.findViewById(R.id.pemantauan_petakiddetail);
-            anakpetak.setText(get_anakpetak);
+            anakpetak.setText(getNamaAnakPetak);
 
             TextView jenissatwa = viewas.findViewById(R.id.pemantauan_jenissatwadetail);
             jenissatwa.setText(get_jenissatwa);

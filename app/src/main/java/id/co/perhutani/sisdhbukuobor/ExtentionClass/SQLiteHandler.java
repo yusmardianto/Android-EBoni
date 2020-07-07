@@ -14,6 +14,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.PU_Pohon.PuPohonModel;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.TallySheetModel;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.Model.IdentifikasiTenurialModel;
@@ -57,11 +58,14 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnPembuatanBedengSapih;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPengelolaanHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPersiapanLahan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPerubahanKelas;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPuPohon;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnRegisterPcp;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnSusunRisalah;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnTallySheet;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnWorkOrder;
 import id.co.perhutani.sisdhbukuobor.Schema.UserSchema;
+
+import static id.co.perhutani.sisdhbukuobor.Schema.TrnPuPohon.TS_ID;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
 
@@ -114,6 +118,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnSusunRisalah.SQL_CREATE_ENTRIES);
         db.execSQL(TrnMonitoringKlsHtn.SQL_CREATE_ENTRIES);
         db.execSQL(TrnTallySheet.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPuPohon.SQL_CREATE_ENTRIES);
     }
 
     @Override
@@ -162,6 +167,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnSusunRisalah.SQL_DELETE_ENTRIES);
         db.execSQL(TrnMonitoringKlsHtn.SQL_DELETE_ENTRIES);
         db.execSQL(TrnTallySheet.SQL_DELETE_ENTRIES);
+        db.execSQL(TrnPuPohon.SQL_DELETE_ENTRIES);
         onCreate(db);
     }
 
@@ -206,6 +212,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.execSQL(TrnSusunRisalah.SQL_CREATE_ENTRIES);
         db.execSQL(TrnMonitoringKlsHtn.SQL_CREATE_ENTRIES);
         db.execSQL(TrnTallySheet.SQL_CREATE_ENTRIES);
+        db.execSQL(TrnPuPohon.SQL_CREATE_ENTRIES);
     }
 
     public void query_builder() {
@@ -242,6 +249,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         cursor.close();
         return cnt;
     }
+
+    public void insert_manual(String ts_id) {
+        SQLiteDatabase db = getReadableDatabase();
+        db.execSQL("INSERT INTO TRN_PU_POHON (TS_ID) values (\"" + ts_id + "\")");
+    }
+
 
     public boolean deleteAllRow(String Sql) {
         SQLiteDatabase db = getReadableDatabase();
@@ -361,29 +374,29 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnTallySheet.JARAK_DESA, g.getTs_jarakdesa());
         args.put(TrnTallySheet.KECAMATAN, g.getTs_kecamatan());
         args.put(TrnTallySheet.KABUPATEN, g.getTs_kabupaten());
-        args.put(TrnTallySheet.TINGGI_PDL, g.getTs_tinggipdl());
-        args.put(TrnTallySheet.IKLIM, g.getTs_iklim());
-        args.put(TrnTallySheet.CURAH_HUJAN, g.getTs_curah_hujan());
         args.put(TrnTallySheet.KELAS_HUTAN, g.getTs_kelashutan());
-        args.put(TrnTallySheet.FUNGSI_HUTAN, g.getTs_fungsihutan());
-        args.put(TrnTallySheet.PENGGUNAAN_HUTAN, g.getTs_penggunaanhutan());
         args.put(TrnTallySheet.TAHUN_TANAM, g.getTs_tahuntanam());
-        args.put(TrnTallySheet.BONITA_LALU, g.getTs_bonitalalu());
-        args.put(TrnTallySheet.BONITA_BARU, g.getTs_bonitabaru());
+        args.put(TrnTallySheet.BONITA, g.getTs_bonitalalu());
         args.put(TrnTallySheet.KBD, g.getTs_kbd());
         args.put(TrnTallySheet.DKN, g.getTs_dkn());
         args.put(TrnTallySheet.VOLUME, g.getTs_volume());
-        args.put(TrnTallySheet.INTENSITAS_SAMPLING, g.getTs_intensitassampling());
-        args.put(TrnTallySheet.CARA_SAMPLING, g.getTs_carasampling());
         args.put(TrnTallySheet.TGL_INVENTARISASI, g.getTs_tglinventarisasi());
-        args.put(TrnTallySheet.PELAKSANA, g.getTs_pelaksana());
-        args.put(TrnTallySheet.KEPALA_SEKSI, g.getTs_kepalaseksi());
-        args.put(TrnTallySheet.NO_RAK, g.getTs_no_rak());
-        args.put(TrnTallySheet.NO_LACI, g.getTs_no_laci());
-        args.put(TrnTallySheet.TALLYSHEET_PLOT, g.getTs_tallysheet_plot());
         args.put(TrnTallySheet.KETERANGAN, g.getTs_keterangan());
         args.put(TrnTallySheet.KET9, g.getTs_ket9());
         db.update(TrnTallySheet.TABLE_NAME, args, strFilter, null);
+    }
+
+    public void EditDataPengukuranPohon(PuPohonModel g) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + g.getId();
+        ContentValues args = new ContentValues();
+        args.put(TS_ID, g.getTs_id());
+        args.put(TrnPuPohon.NO_POHON, g.getNo_pohon());
+        args.put(TrnPuPohon.KELILING_POHON, g.getKeliling_pohon());
+        args.put(TrnPuPohon.PENINGGI_POHON, g.getPeninggi_pohon());
+        args.put(TrnPuPohon.KUALITAS_BATANG, g.getKualitas_batang());
+        args.put(TrnPuPohon.KET9, g.getKet9());
+        db.update(TrnPuPohon.TABLE_NAME, args, strFilter, null);
     }
 
     public void EditDataGangguanHutanfroApi(GangguanModel b) {
@@ -599,6 +612,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         args.put(TrnPengelolaanHutan.KETERANGAN, ph.getKeterangan());
         args.put(TrnPengelolaanHutan.KET9, ph.getKet9());
         db.update(TrnPengelolaanHutan.TABLE_NAME, args, strFilter, null);
+    }
+
+    public void EditDataPengukuranPohonforApi(PuPohonModel b) {
+        SQLiteDatabase db = getReadableDatabase();
+        String strFilter = "ID=" + b.getPu_pohon_id();
+        ContentValues args = new ContentValues();
+        args.put(TrnPuPohon.KET9, b.getKet9());
+        args.put(TrnPuPohon.KET10, b.getKet10());
+        db.update(TrnPuPohon.TABLE_NAME, args, strFilter, null);
     }
 
     public List<String> getJenisPal() {
