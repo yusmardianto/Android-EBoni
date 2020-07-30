@@ -73,7 +73,7 @@ public class EditLaporanpalbatasFragment extends Fragment {
                 // your code here
                 String pil_bh = spin_bagianhutan.getSelectedItem().toString();
                 String bagian_hutan = db.getDataDetail(MstBagianHutan.TABLE_NAME, MstBagianHutan.BAGIAN_HUTAN_NAME,
-                        pil_bh, MstBagianHutan.BAGIAN_HUTAN_ID);
+                        pil_bh, MstBagianHutan.BAGIAN_HUTAN_KODE);
                 bagianhutanpal.setText(bagian_hutan);
 
             }
