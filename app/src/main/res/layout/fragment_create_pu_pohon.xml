@@ -87,6 +87,7 @@
                         android:textColor="#424242" />
 
                     <EditText
+                        android:inputType="number"
                         android:id="@+id/pu_no_pohon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -110,13 +111,39 @@
                         android:textColor="#424242" />
 
                     <EditText
+                        android:inputType="number"
                         android:id="@+id/pu_keliling_pohon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/ic_background"
                         android:fontFamily="@font/font_aal_default"
-                        android:hint="Nomor Pohon" />
+                        android:hint="Keliling Pohon" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_bidang_dasar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_aal_default"
+                        android:text="Bidang Dasar"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/pu_bidang_dasar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/ic_background"
+                        android:fontFamily="@font/font_aal_default"
+                        android:hint="Bidang Dasar" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -133,16 +160,49 @@
                         android:textColor="#424242" />
 
                     <EditText
+                        android:inputType="number"
                         android:id="@+id/pu_peninggi_pohon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/ic_background"
                         android:fontFamily="@font/font_aal_default"
-                        android:hint="Nomor Pohon" />
+                        android:hint="Peninggi Pohon" />
                 </LinearLayout>
 
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/linear_photo_selfie"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_aal_default"
+                    android:text="Photo Data Pohon"
+                    android:textColor="#424242" />
+
                 <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bgr_upload_photo"
+                    android:padding="5dp"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:src="@drawable/ic_upload_image"
+                        android:id="@+id/iv_photo_pohon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -162,7 +222,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/ic_background"
                         android:fontFamily="@font/font_aal_default"
-                        android:hint="Nomor Pohon" />
+                        android:hint="Kualitas Pohon" />
                 </LinearLayout>
 
             </LinearLayout>

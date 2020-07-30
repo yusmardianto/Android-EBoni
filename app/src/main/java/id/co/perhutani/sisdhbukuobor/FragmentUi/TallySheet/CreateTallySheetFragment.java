@@ -345,7 +345,6 @@ public class CreateTallySheetFragment extends Fragment {
                                             values_aktifitas.put(TrnTallySheet.JARAK_DESA, save_jarakdesa);
                                             values_aktifitas.put(TrnTallySheet.KECAMATAN, save_kecamatan);
                                             values_aktifitas.put(TrnTallySheet.KABUPATEN, save_kabupaten);
-                                            values_aktifitas.put(TrnTallySheet.KELAS_HUTAN, save_kelas_hutan);
                                             values_aktifitas.put(TrnTallySheet.TAHUN_TANAM, save_tahun_tanam);
                                             values_aktifitas.put(TrnTallySheet.BONITA, save_bonita_lalu);
                                             values_aktifitas.put(TrnTallySheet.KBD, save_kbd);

@@ -116,7 +116,31 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/ic_background"
                         android:fontFamily="@font/font_aal_default"
-                        android:hint="Nomor Pohon" />
+                        android:hint="Keliling Pohon" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_aal_default"
+                        android:text="Bidang Dasar"
+                        android:textColor="#424242" />
+
+                    <EditText
+                        android:id="@+id/edit_pu_bidang_dasar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/ic_background"
+                        android:fontFamily="@font/font_aal_default"
+                        android:hint="Bidang Dasar" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -139,10 +163,11 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/ic_background"
                         android:fontFamily="@font/font_aal_default"
-                        android:hint="Nomor Pohon" />
+                        android:hint="Peninggi Pohon" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -162,7 +187,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/ic_background"
                         android:fontFamily="@font/font_aal_default"
-                        android:hint="Nomor Pohon" />
+                        android:hint="Kualitas Batang" />
                 </LinearLayout>
 
             </LinearLayout>

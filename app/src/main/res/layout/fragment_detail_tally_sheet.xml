@@ -44,6 +44,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -55,52 +56,19 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="No PU"
+                            android:text="Divisi"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_no_pu"
+                            android:id="@+id/detail_ts_divisi"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="PU 01"
+                            android:text="Divreg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Desa"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_desa"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Desa Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
                     <LinearLayout
                         android:layout_weight="1"
                         android:layout_width="match_parent"
@@ -138,6 +106,40 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
+                            android:text="Kelas Perusahaan"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/detail_ts_kls_perusahaan"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/font_aal_default"
+                            android:textSize="14dp"
+                            android:text="Kelas Perusahaan Test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:background="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:fontFamily="@font/font_aal_bold"
                             android:text="Bagian Hutan"
                             android:textSize="14dp" />
 
@@ -151,14 +153,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
                     <LinearLayout
                         android:layout_weight="1"
                         android:layout_width="match_parent"
@@ -171,47 +165,22 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="BKPH"
+                            android:text="Luas Baku"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_bkph"
+                            android:id="@+id/detail_ts_luasbaku"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="BKPH MAJENANG"
+                            android:text="X Ha"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="RPH"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_rph"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="RPH Test"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:background="@color/colorWhite"
                     android:layout_width="match_parent"
@@ -244,90 +213,15 @@
                             android:layout_height="wrap_content" />
                     </LinearLayout>
                     <LinearLayout
+                        android:visibility="invisible"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Anak Petak"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_anakpetak"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Anak Petak 69B"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                 </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Kecamatan"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_kecamatan"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Kecamatan Tembalang"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Kabupaten"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_kabupaten"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Kabupaten Semarang"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -358,16 +252,16 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="Luas Baku"
+                            android:text="Anak Petak"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_luasbaku"
+                            android:id="@+id/detail_ts_anakpetak"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="4 Ha"
+                            android:text="Anak Petak 13B"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -383,7 +277,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="Luas Petak Ukur"
+                            android:text="Luas Petak Ukur (ha)"
                             android:textSize="14dp" />
 
                         <TextView
@@ -416,11 +310,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left"
                             android:fontFamily="@font/font_aal_bold"
-                            android:text="Kelas Hutan (Awal Jangka)"
+                            android:text="No PU"
                             android:textSize="14dp" />
 
                         <TextView
-                            android:id="@+id/detail_ts_kh_awal"
+                            android:id="@+id/detail_ts_no_pu"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
@@ -429,51 +323,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Kelas Hutan"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_kh"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="HAS"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#e0e0e0" />
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
                     <LinearLayout
                         android:layout_weight="1"
                         android:layout_width="match_parent"
@@ -500,31 +349,6 @@
                             android:layout_height="wrap_content" />
 
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Peninggi SDH Kayu"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_peninggi_sdhkayu"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Peninggi"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
 
                 </LinearLayout>
                 <LinearLayout
@@ -533,31 +357,6 @@
                     android:layout_height="50dp"
                     android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Bonita"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/detail_ts_bonita"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="Bonita"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
                     <LinearLayout
                         android:layout_weight="1"
                         android:layout_width="match_parent"
@@ -579,48 +378,23 @@
                             android:layout_marginRight="5dp"
                             android:fontFamily="@font/font_aal_default"
                             android:textSize="14dp"
-                            android:text="2000"
+                            android:text="97"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:background="@color/colorWhite"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
                     <LinearLayout
+                        android:visibility="invisible"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <TextView
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:fontFamily="@font/font_aal_bold"
-                            android:text="Umur"
-                            android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/detail_ts_no_umur"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/font_aal_default"
-                            android:textSize="14dp"
-                            android:text="2000"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                 </LinearLayout>
 
-
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"

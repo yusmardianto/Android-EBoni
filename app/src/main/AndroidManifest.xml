@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="id.co.perhutani.sisdhbukuobor">
     <!-- untuk koneksi internet -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -15,6 +17,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo_eboni"
         android:supportsRtl="true"
+        android:hardwareAccelerated="false"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
@@ -27,6 +30,16 @@
             android:name=".Service.MyBackgroundService"
             android:enabled="true"
             android:exported="true" />
+
+<!--        <provider-->
+<!--            android:name="android.support.v4.content.FileProvider"-->
+<!--            android:authorities="${applicationId}.provider"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/provider_paths"/>-->
+<!--        </provider>-->
 
         <activity
             android:name=".LoginActivity"

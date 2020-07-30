@@ -56,6 +56,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTanamanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstJenisTemuan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKelasHutanSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstKondisiPalSchema;
+import id.co.perhutani.sisdhbukuobor.Schema.MstKonversiKeliling;
 import id.co.perhutani.sisdhbukuobor.Schema.MstPekerjaan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstPenggunaanHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstPihakTerlibatSchema;
@@ -107,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_SUSUN_RISALAH_V1 = address + "api/v1/getSusunRisalah";
     private static final String URL_FOR_GET_MONITORING_KLSHTN_V1 = address + "api/v1/getMonitoringKlsHtn";
     private static final String URL_FOR_GET_TALLY_SHEET_V1 = address + "api/v1/getTallySheet";
+    private static final String URL_FOR_GET_KONVERSI_KELILING_V1 = address + "api/v1/getTblKonversiKeliling";
 
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
     public static final String URL_FOR_POST_PERUBAHAN_KELAS_PAL_V1 = address + "api/v1/postPerubahan";
@@ -205,19 +207,19 @@ public class LoginActivity extends AppCompatActivity {
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, String.valueOf(pass));
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
-        Thread background = new Thread() {
-            public void run() {
-                try {
-                    askForPermission();
-                } catch (Exception e) {
-                }
-            }
-        };
-        background.start();
+//        Thread background = new Thread() {
+//            public void run() {
+//                try {
+//                    askForPermission();
+//                } catch (Exception e) {
+//                }
+//            }
+//        };
+//        background.start();
         AjnClass.pasang_sentry(this.getApplicationContext());
 
-        username.setText("mandor_banjarharjo");
-//        username.setText("kphw_pekalongan");
+//        username.setText("mandor_banjarharjo");
+        username.setText("kphw_pekalongan");
         password.setText("perhutani");
 
         // Progress dialog
@@ -477,8 +479,10 @@ public class LoginActivity extends AppCompatActivity {
                         sync_get_susunrisalah(myResponse.getString("access_token"), username.getText().toString());
 //                        //get data monitoring kh & penampakan
                         sync_get_monitoring(myResponse.getString("access_token"), username.getText().toString());
-                        //get data monitoring kh & penampakan
+                        //get data tallysheet
                         sync_get_tallysheet(myResponse.getString("access_token"), username.getText().toString());
+                        //get data konversi keliling
+                        sync_get_konversi_keliling_v1(myResponse.getString("access_token"), username.getText().toString());
 
                         session.setLogin(true);
                     } else if (myResponse.getString("status").equals("error")) {
@@ -1667,17 +1671,17 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(TrnTallySheet.RPH_NAME, json_projek.getString("rph_name"));
                         values.put(TrnTallySheet.PETAK, json_projek.getString("petak_id"));
                         values.put(TrnTallySheet.PETAK_NAME, json_projek.getString("petak_name"));
+                        values.put(TrnTallySheet.KODE_PU, json_projek.getString("kode_pu"));
                         values.put(TrnTallySheet.ANAK_PETAK, json_projek.getString("anakpetak_id"));
-                        values.put(TrnTallySheet.ANAK_PETAK_NAME, json_projek.getString("anakpetak_name"));
+                        values.put(TrnTallySheet.ANAK_PETAK_NAME, json_projek.getString("anakpetak"));
                         values.put(TrnTallySheet.DESA, json_projek.getString("desa_id"));
                         values.put(TrnTallySheet.DESA_NAME, json_projek.getString("desa_name"));
                         values.put(TrnTallySheet.JARAK_DESA, json_projek.getString("jarak"));
                         values.put(TrnTallySheet.KECAMATAN, json_projek.getString("kecamatan_id"));
                         values.put(TrnTallySheet.KECAMATAN_NAME, json_projek.getString("kecamatan_name"));
                         values.put(TrnTallySheet.KABUPATEN, json_projek.getString("kabupaten_id"));
-                        values.put(TrnTallySheet.KABUPATEN_NAME, json_projek.getString("kabupaten_name"));
-                        values.put(TrnTallySheet.KELAS_HUTAN, json_projek.getString("kh_id"));
-                        values.put(TrnTallySheet.KELAS_HUTAN_NAME, json_projek.getString("kelashutan_name"));
+                        values.put(TrnTallySheet.KELAS_PERUSAHAAN, json_projek.getString("kp_id"));
+                        values.put(TrnTallySheet.KELAS_PERUSAHAAN_NAME, json_projek.getString("kelasperusahaan_name"));
                         values.put(TrnTallySheet.TAHUN_TANAM, json_projek.getString("tahuntanam"));
                         values.put(TrnTallySheet.BONITA, json_projek.getString("bonitalalu"));
                         values.put(TrnTallySheet.KBD, json_projek.getString("kbd"));
@@ -1686,7 +1690,7 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(TrnTallySheet.TGL_INVENTARISASI, json_projek.getString("tanggalinven"));
                         values.put(TrnTallySheet.KETERANGAN, json_projek.getString("keterangan"));
                         values.put(TrnTallySheet.SDH_KAYU_PENINGGI, json_projek.getString("peninggi"));
-                        values.put(TrnTallySheet.LUAS_BAKU, json_projek.getString("luas_baku"));
+                        values.put(TrnTallySheet.LUAS_BAKU, json_projek.getString("luas_baku_petak"));
                         values.put(TrnTallySheet.LUAS_PU, json_projek.getString("luas_petakukur"));
                         values.put(TrnTallySheet.LUAS_PU_NAME, json_projek.getString("luas_petakukur_name"));
                         values.put(TrnTallySheet.UMUR, json_projek.getString("umur"));
@@ -1737,9 +1741,57 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(TrnTallySheet.TUMBUHAN_BWH_JENIS_NAME, json_projek.getString("tumbuhan_bwh_name"));
                         values.put(TrnTallySheet.TUMBUHAN_BWH_INTENSITAS, json_projek.getString("intensitas_tumbuhan_bwh"));
                         values.put(TrnTallySheet.TUMBUHAN_BWH_INTENSITAS_NAME, json_projek.getString("intensitas_tumbuhan_bwh_name"));
+                        values.put(TrnTallySheet.LATTITUDE, json_projek.getString("latitude"));
+                        values.put(TrnTallySheet.LONGITUDE, json_projek.getString("longitude"));
+                        values.put(TrnTallySheet.CEK_PHOTO, "0");
+                        values.put(TrnTallySheet.CEK_LATLNG, "0");
                         values.put(TrnTallySheet.KET8, "0");
                         values.put(TrnTallySheet.KET9, "0");
                         db.create(TrnTallySheet.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_konversi_keliling_v1(final String token, final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_KONVERSI_KELILING_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET FUNGSI HUTAN ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+//                    Log.i("JSON_DATA", json_data.getString("data"));
+//                    Log.i("JSON_DATA_JUMLAH", String.valueOf(jsonArray.length()));
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(MstKonversiKeliling._ID, i + 1);
+                        values.put(MstKonversiKeliling.KELILING, json_projek.getString("keliling"));
+                        values.put(MstKonversiKeliling.BIDANG_DASAR, json_projek.getString("bidang_dasar"));
+                        values.put(MstKonversiKeliling.GARIS_TENGAH, json_projek.getString("garis_tengah"));
+                        db.create(MstKonversiKeliling.TABLE_NAME, values);
                     }
                     conn.disconnect();
                 } catch (Exception e) {

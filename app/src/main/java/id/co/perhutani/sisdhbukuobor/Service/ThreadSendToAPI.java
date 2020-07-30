@@ -81,6 +81,7 @@ public class ThreadSendToAPI extends Thread {
                     sendToServerEditTenurial();
                     sendToServerEditTallySheet();
                     sendToServerEditPengukuranPohon();
+                    sendToServerEditHeaderTallysheet();
 
                 }
                 Thread.sleep(10000);
@@ -1933,7 +1934,7 @@ public class ThreadSendToAPI extends Thread {
             cur.moveToPosition(0);
             for (int i = 0; i < cur.getCount(); i++) {
                 try {
-                    Log.i("JSON_BACKGROUND_SERVICE", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+                    Log.i("JSON_BACKGROUND_TTS", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
                     sync_data_edit_tallysheet_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
 
                 } catch (Exception ex) {
@@ -1977,7 +1978,6 @@ public class ThreadSendToAPI extends Thread {
                         final String ts_jarakdesa = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.JARAK_DESA);
                         final String ts_kecamatan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KECAMATAN);
                         final String ts_kabupaten = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KABUPATEN);
-                        final String ts_kelashutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KELAS_HUTAN);
                         final String ts_tahuntanam = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.TAHUN_TANAM);
                         final String ts_bonitalalu = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.BONITA);
                         final String ts_kbd = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KBD);
@@ -2002,7 +2002,6 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("jarak", ts_jarakdesa);
                         jsonParam.put("kecamatan_id", ts_kecamatan);
                         jsonParam.put("kabupaten_id", ts_kabupaten);
-                        jsonParam.put("kh_id", ts_kelashutan);
                         jsonParam.put("tahuntanam", ts_tahuntanam);
                         jsonParam.put("bonitalalu", ts_bonitalalu);
                         jsonParam.put("kbd", ts_kbd);
@@ -2108,24 +2107,34 @@ public class ThreadSendToAPI extends Thread {
                     JSONObject jsonParam = new JSONObject();
                     try {
                         final String str_ts_id = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.TS_ID);
+                        final String str_uuid = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.UUID);
                         final String str_no_pohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.NO_POHON);
                         final String str_keliling_pohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.KELILING_POHON);
                         final String str_peninggi_pohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.PENINGGI_POHON);
-                        final String str_kualitas_batang = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.KUALITAS_BATANG);
+                        final String str_bidang_dasar = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.BIDANG_DASAR);
                         final String str_created_at = db.getDataDetail_v2(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.CREATED_AT);
                         final String str_updated_at = db.getDataDetail_v2(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.UPDATED_AT);
                         final String str_ket10 = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.KET10);
 
+                        final String str_latitude = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, str_ts_id, TrnTallySheet.LATTITUDE);
+                        final String str_longitude = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, str_ts_id, TrnTallySheet.LONGITUDE);
+                        final String str_photopohon = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, str_ts_id, TrnTallySheet.PHOTO_POHON);
+                        final String str_tglinven = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, str_ts_id, TrnTallySheet.TGL_INVENTARISASI);
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
+                        jsonParam.put("uuid", str_uuid);
                         jsonParam.put("ts_id", str_ts_id);
                         jsonParam.put("no_phn", str_no_pohon);
                         jsonParam.put("keliling_phn", str_keliling_pohon);
+                        jsonParam.put("bidang_dasar", str_bidang_dasar);
                         jsonParam.put("peninggi_phn", str_peninggi_pohon);
-                        jsonParam.put("kualitas_btg", str_kualitas_batang);
                         jsonParam.put("created_at", str_created_at);
                         jsonParam.put("updated_at", str_updated_at);
+                        jsonParam.put("latitude", str_latitude);
+                        jsonParam.put("longitude", str_longitude);
+                        jsonParam.put("foto", str_photopohon);
+                        jsonParam.put("tanggalinven", str_tglinven);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());
@@ -2226,8 +2235,8 @@ public class ThreadSendToAPI extends Thread {
                     try {
                         final String no_pohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.NO_POHON);
                         final String keliling_pohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.KELILING_POHON);
+                        final String bidang_dasar = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.BIDANG_DASAR);
                         final String peninggi_pohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.PENINGGI_POHON);
-                        final String kualitas_btg = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.KUALITAS_BATANG);
                         final String ts_id = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.TS_ID);
                         final String created_at = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.CREATED_AT);
                         final String updated_at = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.UPDATED_AT);
@@ -2238,9 +2247,9 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("id", str_ket10);
                         jsonParam.put("ts_id", ts_id);
                         jsonParam.put("keliling_phn", keliling_pohon);
+                        jsonParam.put("bidang_dasar", bidang_dasar);
                         jsonParam.put("no_phn", no_pohon);
                         jsonParam.put("peninggi_phn", peninggi_pohon);
-                        jsonParam.put("kualitas_btg", kualitas_btg);
                         jsonParam.put("created_at", created_at);
                         jsonParam.put("updated_at", updated_at);
 
@@ -2286,6 +2295,131 @@ public class ThreadSendToAPI extends Thread {
                     Log.i("JSON_ID", id);
                     e.printStackTrace();
                 }
+                Log.i("JSON_TES", str_tes_data);
+            }
+        });
+        thread.start();
+    }
+
+    private void sendToServerEditHeaderTallysheet() {
+        try {
+            Log.i("JSON_BACKGROUND_SERVICE", "Try Send to server");
+            SQLiteHandler DB_Helper = new SQLiteHandler(myContext);
+            SQLiteDatabase db = DB_Helper.getReadableDatabase();
+            Cursor cur;
+            cur = db.rawQuery("SELECT *" +
+                    " FROM TRN_TALLY_SHEET " +
+                    " WHERE  KET9=2 "+
+                    " ORDER BY ID ASC", null);
+
+            cur.moveToPosition(0);
+            for (int i = 0; i < cur.getCount(); i++) {
+                try {
+                    Log.i("JSON_BACKGROUND_PPP", "Try Sync ID : " +String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+                    sync_data_edit_header_ts_v1(String.valueOf(cur.getInt(cur.getColumnIndex("ID"))));
+
+                } catch (Exception ex) {
+                    Log.i("JSON_ERROR", ex.toString());
+                }
+                cur.moveToNext();
+            }
+            cur.close();
+            db.close();
+
+        } catch (Exception ex) {
+            Log.i("JSON_ERROR", ex.toString());
+        }
+    }
+    public void sync_data_edit_header_ts_v1(final String id) {
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("JSON_SEND_TTS", "AWAL");
+
+                String str_tes_data = "";
+                try {
+                    Log.i("JSON_SEND_TTS", "AWAL_TRY");
+                    Log.i("JSON_SEND_TTS", "LINK : "+LoginActivity.URL_FOR_POST_TALLYSHEET_V1);
+
+                    URL url = new URL(LoginActivity.URL_FOR_POST_TALLYSHEET_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Authorization", "Bearer " + db.getDataProfil(UserSchema.TABLE_NAME, UserSchema.USER_TOKEN));
+                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                    conn.setRequestProperty("Accept", "application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    try {
+                        Log.i("JSON_SEND_TTS", "AWAL_TRY KE2");
+
+                        // ID : 3
+
+                        final String str_created_at = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.CREATED_AT);
+                        final String str_updated_at = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.UPDATED_AT);
+                        final String str_kodepu = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, id, TrnTallySheet.KODE_PU);
+                        final String str_luaspu = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, id, TrnTallySheet.LUAS_PU);
+                        final String str_anakpetak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, id, TrnTallySheet.ANAK_PETAK_NAME);
+//                        final String id_tallysheet = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, id, TrnTallySheet.ID_TALLYSHEET);
+
+                        jsonParam.put("aksi", "ubah");
+                        jsonParam.put("ts_id", id);
+                        jsonParam.put("luas_pu", str_luaspu);
+                        jsonParam.put("kode_pu", str_kodepu);
+                        jsonParam.put("anakpetak", str_anakpetak);
+                        jsonParam.put("created_at", str_created_at);
+                        jsonParam.put("updated_at", str_updated_at);
+
+                    } catch (JSONException ex) {
+                        Log.i("JSON_SEND_TTS", "ERROR");
+
+                        Log.i("JSON_ERROR", ex.toString());
+                        ex.printStackTrace();
+                    }
+
+
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    os.writeBytes(jsonParam.toString());
+                    Log.i("JSON_SEND_TTS", "DATA_JSON1 : "+jsonParam.toString());
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    JSONObject myResponse = new JSONObject(response.toString());
+                    Log.i("JSON_BACKGROUND_SERVICE", "Sync to : " + LoginActivity.URL_FOR_POST_TALLYSHEET_V1);
+                    Log.i("JSON_FEEDBACK", myResponse.getString("status"));
+
+                    os.flush();
+                    os.close();
+                    conn.disconnect();
+
+                    if (myResponse.getString("status").equals("success")) {
+                        TallySheetModel Tallysheet = new TallySheetModel();
+                        Tallysheet.setId(id);
+                        Tallysheet.setTs_ket9("1");
+                        Tallysheet.setTs_ket10(myResponse.getString("id"));
+                        db.EditHeaderTallySheetForAPI(Tallysheet);
+                    }
+
+                    cek_feedback_api = true;
+
+                } catch (Exception e) {
+                    cek_feedback_api = false;
+                    Log.i("JSON_SEND_TTS", "ERROR KE2");
+
+                    Log.i("JSON_MESSAGE", e.toString());
+                    Log.i("JSON_LINK", LoginActivity.URL_FOR_POST_TALLYSHEET_V1);
+                    Log.i("JSON_ID", id);
+                    e.printStackTrace();
+                }
+                Log.i("JSON_SEND_TTS", "DATA : "+str_tes_data);
+
                 Log.i("JSON_TES", str_tes_data);
             }
         });

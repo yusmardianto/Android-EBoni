@@ -92,7 +92,6 @@ public class EditTallySheetFragment extends Fragment {
             ts_jarakdesa = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.JARAK_DESA);
             ts_kecamatan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KECAMATAN);
             ts_kabupaten = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KABUPATEN);
-            ts_kelashutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KELAS_HUTAN);
             ts_tahuntanam = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.TAHUN_TANAM);
             ts_bonitalalu = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.BONITA);
             ts_kbd = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id_tallysheet,TrnTallySheet.KBD);

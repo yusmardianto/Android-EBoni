@@ -38,6 +38,7 @@ import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.ListGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.gangguan.editgangguan.EditGangguanFragment;
 import id.co.perhutani.sisdhbukuobor.Model.GangguanModel;
 import id.co.perhutani.sisdhbukuobor.R;
+import id.co.perhutani.sisdhbukuobor.Schema.MstKonversiKeliling;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPuPohon;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnTallySheet;
@@ -50,7 +51,7 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
     SQLiteHandler db;
     private int color = 0;
     private AlertDialog.Builder builder;
-    private TextView edt_no_pohon, edt_no_pu, edt_kwb,edt_peninggi_pohon,edt_keliling_pohon;
+    private TextView edt_no_pohon, edt_no_pu, edt_kwb,edt_peninggi_pohon,edt_keliling_pohon, edt_bidang_dasar;
 
     public PengukuranPohonAdapter(Context mContext, List<PuPohonModel> mData) {
         this.mContext = mContext;
@@ -79,13 +80,15 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
         final String get_nopohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.NO_POHON);
         final String get_kelpohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.KELILING_POHON);
         final String get_pngpohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.PENINGGI_POHON);
-        final String get_kwb = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.KUALITAS_BATANG);
+        final String get_bdg_dsr = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.BIDANG_DASAR);
+        final String get_ts_id = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.TS_ID);
+
 
 
         holder.nopohon.setText(get_nopohon);
         holder.kelpohon.setText(get_kelpohon);
         holder.peninggipohon.setText(get_pngpohon);
-        holder.kualitasbtg.setText(get_kwb);
+        holder.bidangdasar.setText(get_bdg_dsr);
         holder.edit_pengukuran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,7 +131,7 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
         private TextView nopohon;
         private TextView kelpohon;
         private TextView peninggipohon;
-        private TextView kualitasbtg;
+        private TextView bidangdasar;
         private TextView name_data_sinkron;
         private ImageView name_info_alert;
         private LinearLayout edit_pengukuran;
@@ -138,7 +141,7 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
             nopohon = itemView.findViewById(R.id.list_pu_nopohon);
             kelpohon = itemView.findViewById(R.id.list_pu_kelilingpohon);
             peninggipohon = itemView.findViewById(R.id.list_pu_peninggipohon);
-            kualitasbtg = itemView.findViewById(R.id.list_pu_kualitasbtg);
+            bidangdasar = itemView.findViewById(R.id.list_pu_bdgdsr);
             name_data_sinkron = itemView.findViewById(R.id.name_data_sinkron_pohon);
             name_info_alert = itemView.findViewById(R.id.name_info_alert_pohon);
             edit_pengukuran = itemView.findViewById(R.id.linear_edit_pengukuran);
@@ -153,9 +156,9 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
 
             String get_no_pohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.NO_POHON);
             String get_keliling_pohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.KELILING_POHON);
+            String get_bidang_dasar = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.BIDANG_DASAR);
             final String get_ts_id = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.TS_ID);
             String get_peninggi_pohon = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.PENINGGI_POHON);
-            String get_kualitas_batang = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID, id, TrnPuPohon.KUALITAS_BATANG);
 
             edt_no_pu = viewas.findViewById(R.id.edit_no_petak_ukur);
             edt_no_pu.setText(get_ts_id);
@@ -166,11 +169,13 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
             edt_keliling_pohon = viewas.findViewById(R.id.edit_pu_keliling_pohon);
             edt_keliling_pohon.setText(get_keliling_pohon);
 
+            edt_bidang_dasar = viewas.findViewById(R.id.edit_pu_bidang_dasar);
+            edt_bidang_dasar.setText(get_bidang_dasar);
+
             edt_peninggi_pohon = viewas.findViewById(R.id.edit_pu_peninggi_pohon);
             edt_peninggi_pohon.setText(get_peninggi_pohon);
 
             edt_kwb = viewas.findViewById(R.id.edit_pu_kualitas_batang);
-            edt_kwb.setText(get_kualitas_batang);
 
             alertDialogBuilder.setView(viewas);
 //           final android.app.AlertDialog alert = alertDialogBuilder.create();
@@ -186,13 +191,14 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
                         }
 
                         PuPohonModel ubah = new PuPohonModel();
-
+                        String get_keliling = edt_keliling_pohon.getText().toString();
+                        final String get_bidang_dasar = db.getDataDetail(MstKonversiKeliling.TABLE_NAME, MstKonversiKeliling.KELILING,get_keliling,MstKonversiKeliling.BIDANG_DASAR);
                         ubah.setId(id);
                         ubah.setTs_id(get_ts_id);
                         ubah.setNo_pohon(edt_no_pohon.getText().toString());
-                        ubah.setKeliling_pohon(edt_keliling_pohon.getText().toString());
+                        ubah.setKeliling_pohon(get_keliling);
+                        ubah.setBidang_dasar(get_bidang_dasar);
                         ubah.setPeninggi_pohon(edt_peninggi_pohon.getText().toString());
-                        ubah.setKualitas_batang(edt_kwb.getText().toString());
                         ubah.setKet9("2");
 
                         db.EditDataPengukuranPohon(ubah);
@@ -237,10 +243,6 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
 
         }else if (edt_peninggi_pohon.getText().toString().equals("") || edt_peninggi_pohon.getText().toString().equals("0") || edt_peninggi_pohon.getText().toString().equals(" ") || edt_peninggi_pohon.getText().toString().equals(null)) {
             AjnClass.showAlert(mContext, "Peninggi Pohon harus diisi");
-            return false;
-
-        }else if (edt_kwb.getText().toString().equals("") || edt_kwb.getText().toString().equals("0") || edt_kwb.getText().toString().equals(" ") || edt_kwb.getText().toString().equals(null)) {
-            AjnClass.showAlert(mContext, "Kualitas Batang harus diisi");
             return false;
 
         }

@@ -1,6 +1,10 @@
 package id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.PU_Pohon;
 
 import android.content.ContentValues;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
@@ -8,14 +12,22 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Environment;
 import android.os.Handler;
+import android.os.StrictMode;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
@@ -30,6 +42,8 @@ import id.co.perhutani.sisdhbukuobor.Schema.TrnGangguanKeamananHutan;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnPuPohon;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnTallySheet;
 
+import static android.app.Activity.RESULT_OK;
+
 public class CreatePuPohonFragment extends Fragment {
 
     View create_pu_pohon;
@@ -39,6 +53,10 @@ public class CreatePuPohonFragment extends Fragment {
     private Button btn_simpan_pu;
     private SessionManager session;
     private static int data_jmlPengukuranpohon;
+
+    ImageView photoPohon;
+    Bitmap bitmap;
+    private String Document_img1 = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,23 +72,35 @@ public class CreatePuPohonFragment extends Fragment {
 
         db = new SQLiteHandler(getActivity());
         session = new SessionManager(getActivity());
+//        try {
+//            String message = session.getPreferences(getActivity(),"ses_id_tallysheet");
+//            if (message != null) {
+//                pu_id_tallysheet=message;
+//            } else {
+//                pu_id_tallysheet="null";
+//                AjnClass.showAlert(getActivity(), "Terjadi kesalahan dalam pengambilan data");
+//                Fragment fragment = new ListTallySheetFragment();
+//                FragmentManager frgManager = getFragmentManager();
+//                FragmentTransaction ft = frgManager.beginTransaction();
+//                ft.replace(R.id.nav_host_fragment, fragment);
+//                ft.commit();
+//            }
+//
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
         try {
-            String message = session.getPreferences(getActivity(),"ses_id_tallysheet");
+            String message = getArguments().getString("message");
             if (message != null) {
-                pu_id_tallysheet=message;
+                pu_id_tallysheet = message;
             } else {
-                pu_id_tallysheet="null";
-                AjnClass.showAlert(getActivity(), "Terjadi kesalahan dalam pengambilan data");
-                Fragment fragment = new ListTallySheetFragment();
-                FragmentManager frgManager = getFragmentManager();
-                FragmentTransaction ft = frgManager.beginTransaction();
-                ft.replace(R.id.nav_host_fragment, fragment);
-                ft.commit();
+                pu_id_tallysheet = "null";
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
 
 
         Toolbar toolbar = create_pu_pohon.findViewById(R.id.toolbar_create_petakukur);
@@ -88,6 +118,27 @@ public class CreatePuPohonFragment extends Fragment {
 
         TextView no_pu = create_pu_pohon.findViewById(R.id.no_petak_ukur);
         no_pu.setText(pu_id_tallysheet);
+
+        photoPohon = create_pu_pohon.findViewById(R.id.iv_photo_pohon);
+                final String cek_photo = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,pu_id_tallysheet,TrnTallySheet.CEK_PHOTO);
+                if (cek_photo.equals("1")){
+                    photoPohon.setVisibility(View.GONE);
+                }
+                else {
+                    photoPohon.setVisibility(View.VISIBLE);
+                }
+                photoPohon.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                        StrictMode.setVmPolicy(builder.build());
+
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        File g = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(g));
+                        startActivityForResult(intent, 2);
+                    }
+                });
 
         no_pohon = create_pu_pohon.findViewById(R.id.pu_no_pohon);
         keliling_pohon = create_pu_pohon.findViewById(R.id.pu_keliling_pohon);
@@ -176,7 +227,6 @@ public class CreatePuPohonFragment extends Fragment {
                                             values_petakukur.put(TrnPuPohon.NO_POHON, save_no_pohon);
                                             values_petakukur.put(TrnPuPohon.KELILING_POHON, save_keliling_pohon);
                                             values_petakukur.put(TrnPuPohon.PENINGGI_POHON, save_peninggi_pohon);
-                                            values_petakukur.put(TrnPuPohon.KUALITAS_BATANG, save_kualitas_batang);
                                             values_petakukur.put(TrnPuPohon.KET9, "0");
                                             db.create(TrnPuPohon.TABLE_NAME, values_petakukur);
 //                                        }
@@ -203,4 +253,60 @@ public class CreatePuPohonFragment extends Fragment {
         }
 
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            File g = new File(Environment.getExternalStorageDirectory().toString());
+            for (File temp : g.listFiles()) {
+                if (temp.getName().equals("temp.jpg")) {
+                    g = temp;
+                    break;
+                }
+            }
+
+            if (requestCode == 1) {
+                try {
+                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+                    bitmap = BitmapFactory.decodeFile(g.getAbsolutePath(), bitmapOptions);
+                    bitmap = getResizedBitmap(bitmap, 800);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    photoPohon.setImageBitmap(bitmap);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public String BitMapToString(Bitmap userImage1) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        userImage1.compress(Bitmap.CompressFormat.PNG, 30, baos);
+        byte[] b = baos.toByteArray();
+        Document_img1 = Base64.encodeToString(b, Base64.DEFAULT);
+        return Document_img1;
+    }
+
+
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
 }

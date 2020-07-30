@@ -1,19 +1,12 @@
 package id.co.perhutani.sisdhbukuobor.Schema;
 
-public class TrnPuPohon {
+public class MstKonversiKeliling {
 
-    public static final String TABLE_NAME = "TRN_PU_POHON";
+    public static final String TABLE_NAME = "MST_KONVERSI_KELILING";
     public static final String _ID = "ID";
-    public static final String UUID = "UUID";
-    public static final String TS_ID = "TS_ID";
-    public static final String PU_POHON_ID = "PU_POHON_ID";
-    public static final String NO_POHON = "NO_POHON";
-    public static final String KELILING_POHON = "KELILING_POHON";
+    public static final String KELILING = "KELILING";
     public static final String BIDANG_DASAR = "BIDANG_DASAR";
-    public static final String PENINGGI_POHON = "PENINGGI_POHON";
-//    public static final String KUALITAS_BATANG =  "KUALITAS_BATANG";
-    public static final String LATTITUDE =  "LATTITUDE";
-    public static final String LONGITUDE =  "LONGITUDE";
+    public static final String GARIS_TENGAH = "GARIS_TENGAH";
     public static final String KET1 = "KET1";
     public static final String KET2 = "KET2";
     public static final String KET3 = "KET3";
@@ -24,22 +17,11 @@ public class TrnPuPohon {
     public static final String KET8 = "KET8";
     public static final String KET9 = "KET9";
     public static final String KET10 = "KET10";
-    public static final String CREATED_AT = "CREATED_AT";
-    public static final String CREATED_BY = "CREATED_BY";
-    public static final String UPDATED_AT = "UPDATED_AT";
-    public static final String UPDATED_BY = "UPDATED_BY";
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
             "IF NOT EXISTS "+ TABLE_NAME +" ( "+ _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "" + UUID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + TS_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + PU_POHON_ID + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + NO_POHON + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + KELILING_POHON + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + KELILING + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + BIDANG_DASAR + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + PENINGGI_POHON + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-//            "" + KUALITAS_BATANG + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + LATTITUDE + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + LONGITUDE + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+            "" + GARIS_TENGAH + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET3 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
@@ -50,8 +32,6 @@ public class TrnPuPohon {
             "" + KET8 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET9 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
             "" + KET10 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-            "" + Type.CREATED_BY + ", " +
-            "" + Type.UPDATED_BY + ", " +
             "" + Type.CREATED_AT_CURRENT_DATE + ", " +
             "" + Type.UPDATED_AT_CURRENT_DATE + " )";
     public static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;

@@ -2,7 +2,8 @@ package id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.PU_Pohon;
 
 public class PuPohonModel {
 
-    private String id, ts_id,  no_pohon, keliling_pohon, peninggi_pohon, kualitas_batang, ket9, ket10;
+    private String id, ts_id,  no_pohon, keliling_pohon, peninggi_pohon, kualitas_batang,
+            ket9, ket10, bidang_dasar;
     private int pu_pohon_id;
 
     public PuPohonModel(String id) {
@@ -10,6 +11,14 @@ public class PuPohonModel {
     }
 
     public PuPohonModel() {
+    }
+
+    public String getBidang_dasar() {
+        return bidang_dasar;
+    }
+
+    public void setBidang_dasar(String bidang_dasar) {
+        this.bidang_dasar = bidang_dasar;
     }
 
     public int getPu_pohon_id() {

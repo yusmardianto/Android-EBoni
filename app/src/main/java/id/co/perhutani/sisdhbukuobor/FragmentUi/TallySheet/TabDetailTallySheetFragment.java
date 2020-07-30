@@ -57,7 +57,7 @@ public class TabDetailTallySheetFragment extends Fragment {
             public void onClick(View v) {
                 session.setPreferences(getActivity(), "ses_id_tallysheet", null);
 
-                Fragment fragment = new TallySheetFragment();
+                Fragment fragment = new ListTallySheetFragment();
                 FragmentManager frgManager = getFragmentManager();
                 FragmentTransaction ft = frgManager.beginTransaction();
                 ft.replace(R.id.nav_host_fragment, fragment);

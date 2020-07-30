@@ -24,8 +24,8 @@ public class TrnTallySheet {
         public static final String KABUPATEN = "KABUPATEN";
         public static final String KABUPATEN_NAME = "KABUPATEN_NAME";
 
-        public static final String KELAS_HUTAN = "KELAS_HUTAN";
-        public static final String KELAS_HUTAN_NAME = "KELAS_HUTAN_NAME";
+        public static final String KELAS_PERUSAHAAN = "KELAS_PERUSAHAAN";
+        public static final String KELAS_PERUSAHAAN_NAME = "KELAS_PERUSAHAAN_NAME";
         public static final String TAHUN_TANAM = "TAHUN_TANAM";
         public static final String BONITA = "BONITA";
         public static final String KBD = "KBD";
@@ -86,7 +86,14 @@ public class TrnTallySheet {
         public static final String TUMBUHAN_BWH_INTENSITAS = "TUMBUHAN_BWH_INTENSITAS";
         public static final String TUMBUHAN_BWH_INTENSITAS_NAME = "TUMBUHAN_BWH_INTENSITAS_NAME";
 
+        public static final String KODE_PU = "KODE_PU";
+        public static final String LATTITUDE = "LATTITUDE";
+        public static final String LONGITUDE = "LONGITUDE";
+
         public static final String KETERANGAN = "KETERANGAN";
+        public static final String PHOTO_POHON = "PHOTO_POHON";
+        public static final String CEK_PHOTO = "CEK_PHOTO";
+        public static final String CEK_LATLNG = "CEK_LATLNG";
         public static final String KET1 = "KET1";
         public static final String KET2 = "KET2";
         public static final String KET3 = "KET3";
@@ -123,8 +130,8 @@ public class TrnTallySheet {
                 "" + KECAMATAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KABUPATEN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KABUPATEN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + KELAS_HUTAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
-                "" + KELAS_HUTAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KELAS_PERUSAHAAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KELAS_PERUSAHAAN_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + TAHUN_TANAM + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + BONITA + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KBD + " " + Type.VARCHAR_NULLABLE_100 + ", " +
@@ -184,8 +191,14 @@ public class TrnTallySheet {
                 "" + TUMBUHAN_BWH_JENIS_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + TUMBUHAN_BWH_INTENSITAS + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + TUMBUHAN_BWH_INTENSITAS_NAME + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + LATTITUDE + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + LONGITUDE + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + KODE_PU + " " + Type.VARCHAR_NULLABLE_100 + ", " +
 
                 "" + KETERANGAN + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + CEK_PHOTO + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + CEK_LATLNG + " " + Type.VARCHAR_NULLABLE_100 + ", " +
+                "" + PHOTO_POHON + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KET1 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KET2 + " " + Type.VARCHAR_NULLABLE_100 + ", " +
                 "" + KET3 + " " + Type.VARCHAR_NULLABLE_100 + ", " +

@@ -6,13 +6,86 @@ public class TallySheetModel {
     ts_kecamatan, ts_kabupaten, ts_tinggipdl, ts_iklim, ts_curah_hujan, ts_kelashutan, ts_fungsihutan,
     ts_penggunaanhutan, ts_tahuntanam, ts_bonitalalu, ts_bonitabaru, ts_kbd, ts_dkn, ts_volume,
     ts_intensitassampling, ts_carasampling, ts_tglinventarisasi, ts_pelaksana, ts_kepalaseksi, ts_no_rak,
-    ts_no_laci, ts_tallysheet_plot, ts_keterangan, ts_ket8, ts_ket9, ts_ket10;
+    ts_no_laci, ts_tallysheet_plot, ts_keterangan, ts_ket8, ts_ket9, ts_ket10, ts_kode_pu, ts_lattitude, ts_longitude,
+    ts_id, ts_luaspu, ts_photopohon, cek_photo, cek_latlng, tglinven;
 
     public TallySheetModel(String id) {
         this.id = id;
     }
 
     public TallySheetModel() {
+    }
+
+    public String getTglinven() {
+        return tglinven;
+    }
+
+    public void setTglinven(String tglinven) {
+        this.tglinven = tglinven;
+    }
+
+    public String getTs_id() {
+        return ts_id;
+    }
+
+    public void setTs_id(String ts_id) {
+        this.ts_id = ts_id;
+    }
+
+    public String getTs_luaspu() {
+        return ts_luaspu;
+    }
+
+    public void setTs_luaspu(String ts_luaspu) {
+        this.ts_luaspu = ts_luaspu;
+    }
+
+    public String getCek_photo() {
+        return cek_photo;
+    }
+
+    public void setCek_photo(String cek_photo) {
+        this.cek_photo = cek_photo;
+    }
+
+    public String getCek_latlng() {
+        return cek_latlng;
+    }
+
+    public void setCek_latlng(String cek_latlng) {
+        this.cek_latlng = cek_latlng;
+    }
+
+    public String getTs_photopohon() {
+        return ts_photopohon;
+    }
+
+    public void setTs_photopohon(String ts_photopohon) {
+        this.ts_photopohon = ts_photopohon;
+    }
+
+    public String getTs_lattitude() {
+        return ts_lattitude;
+    }
+
+    public void setTs_lattitude(String ts_lattitude) {
+        this.ts_lattitude = ts_lattitude;
+    }
+
+    public String getTs_longitude() {
+        return ts_longitude;
+    }
+
+    public void setTs_longitude(String ts_longitude) {
+        this.ts_longitude = ts_longitude;
+    }
+
+    public String getTs_kode_pu() {
+        return ts_kode_pu;
+    }
+
+    public void setTs_kode_pu(String ts_kode_pu) {
+        this.ts_kode_pu = ts_kode_pu;
     }
 
     public String getTs_ket10() {

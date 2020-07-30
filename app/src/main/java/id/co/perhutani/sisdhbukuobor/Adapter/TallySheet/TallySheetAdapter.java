@@ -69,6 +69,7 @@ public class TallySheetAdapter extends RecyclerView.Adapter<TallySheetAdapter.Ta
 
         final String id = String.valueOf(mData.get(position).getId());
 
+        final String get_id_ts = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.ID_TALLYSHEET);
         final String get_kph = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.KPH_NAME);
         final String get_petak = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.PETAK_NAME);
         final String get_bagianhutan = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id,TrnTallySheet.BAGIAN_HUTAN_NAME);
@@ -77,46 +78,46 @@ public class TallySheetAdapter extends RecyclerView.Adapter<TallySheetAdapter.Ta
         holder.bagianhutan.setText(get_bagianhutan);
         holder.petak.setText(get_petak);
 
-        try{
-            String sudah_update = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id, TrnTallySheet.KET9);
-            if (sudah_update.equals("2")||sudah_update.equals("1")){
-                holder.name_info_alert.setVisibility(View.VISIBLE);
-                holder.name_data_sinkron.setVisibility(View.VISIBLE);
-            }
-            else {
-                holder.name_info_alert.setVisibility(View.GONE);
-                holder.name_data_sinkron.setVisibility(View.GONE);
-            }
-        }
-        catch (Exception e){
+//        try{
+//            String sudah_update = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id, TrnTallySheet.KET9);
+//            if (sudah_update.equals("2")||sudah_update.equals("1")){
+//                holder.name_info_alert.setVisibility(View.VISIBLE);
+//                holder.name_data_sinkron.setVisibility(View.VISIBLE);
+//            }
+//            else {
+//                holder.name_info_alert.setVisibility(View.GONE);
+//                holder.name_data_sinkron.setVisibility(View.GONE);
+//            }
+//        }
+//        catch (Exception e){
+//
+//        }
 
-        }
 
-
-        try {
-            String status_sync = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id, TrnTallySheet.KET9);
-            if (status_sync.equals("1")) {
-
-                holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
-                holder.name_data_sinkron.setText("Sudah terkirim keserver");
-                holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
-            }  else {
-
-                holder.name_data_sinkron.setText("Belum terkirim keserver");
-                holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
-                holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
-            }
-        }
-        catch (Exception e){
-
-        }
+//        try {
+//            String status_sync = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID,id, TrnTallySheet.KET9);
+//            if (status_sync.equals("1")) {
+//
+//                holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_check_circle_green_24dp));
+//                holder.name_data_sinkron.setText("Sudah terkirim keserver");
+//                holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
+//            }  else {
+//
+//                holder.name_data_sinkron.setText("Belum terkirim keserver");
+//                holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
+//                holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
+//            }
+//        }
+//        catch (Exception e){
+//
+//        }
 
 
         holder.linear_lihat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                session.setPreferences(mContext, "ses_id_tallysheet", id);
+                session.setPreferences(mContext, "ses_id_tallysheet", get_id_ts);
 //                String message = id;
 //                Bundle data = new Bundle();
 //                data.putString(TallySheetAdapter.MSG_KEY_TALLYSHEET, message);

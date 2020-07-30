@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.co.perhutani.sisdhbukuobor.Adapter.SusunRisalah.FragmentAdapter;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.RekapTS.RekapTSFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.BukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.susunrisalah.BelumAccFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.susunrisalah.SudahAccFragment;
@@ -72,7 +73,7 @@ public class TallySheetFragment extends Fragment {
 
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new ListTallySheetFragment());
-        fragments.add(new ListTallySheetFragment());
+        fragments.add(new RekapTSFragment());
 
         mViewPager.setOffscreenPageLimit(2);
 

@@ -8,27 +8,100 @@
     tools:context=".FragmentUi.TallySheet.PU_Pohon.ListPengukuranPohonFragment">
 
     <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/linear_pu_pohon"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="16dp"
+        android:padding="10dp"
         android:layout_marginLeft="16dp"
-        android:orientation="horizontal"
+        android:layout_marginRight="16dp"
+        android:id="@+id/header_data_ts"
+        android:background="@drawable/ic_background_list_home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <EditText
+        <LinearLayout
             android:layout_weight="1"
-            android:drawableRight="@drawable/ic_search"
-            android:id="@+id/txt_search_pu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shapesearch"
-            android:hint="Cari berdasarkan No PU"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:textColorHint="#B4B4B4"
-            android:layout_marginBottom="10dp"/>
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="Anak Petak" />
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/header_ts_anakpetak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="001" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="Luas PU" />
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/header_ts_luaspu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="001" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="Kode Nomor" />
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/header_ts_kode_nomor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_default"
+                android:text="001" />
+        </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:id="@+id/linear_edit_header_ts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="5">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit_black_24dp" />
+            <TextView
+                android:fontFamily="@font/font_aal_bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ubah"
+                android:layout_marginBottom="5dp"/>
+        </LinearLayout>
 
     </LinearLayout>
     <include

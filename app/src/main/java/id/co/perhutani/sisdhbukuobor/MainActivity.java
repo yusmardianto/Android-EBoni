@@ -1,5 +1,6 @@
 package id.co.perhutani.sisdhbukuobor;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -7,9 +8,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.DexterError;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.PermissionRequestErrorListener;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -18,10 +27,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.util.List;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.AjnClass;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SQLiteHandler;
 import id.co.perhutani.sisdhbukuobor.ExtentionClass.SessionManager;
+import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.ListTallySheetFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.TallySheet.TallySheetFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.bukuobor.DashboardBukuOborFragment;
 import id.co.perhutani.sisdhbukuobor.FragmentUi.workorder.WorkOrderFragment;
@@ -66,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private SessionManager session;
     BottomNavigationView navView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +116,15 @@ public class MainActivity extends AppCompatActivity {
 
         navView.setOnNavigationItemSelectedListener(navListener);
 
+        Thread background = new Thread() {
+            public void run() {
+                try {
+                    askForPermission();
+                } catch (Exception e) {
+                }
+            }
+        };
+        background.start();
         // mengaktifkan service sentry io
         AjnClass.pasang_sentry(this.getApplicationContext());
         // Start service
@@ -194,6 +216,43 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.finish();
     }
 
+    private void askForPermission() {
+        Dexter.withActivity(this)
+                .withPermissions(
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        // check if all permissions are granted
+                        if (report.areAllPermissionsGranted()) {
+                            Toast.makeText(getApplicationContext(), "All permissions are granted by user!", Toast.LENGTH_SHORT).show();
+                        }
+
+                        // check for permanent denial of any permission
+                        if (report.isAnyPermissionPermanentlyDenied()) {
+                            // show alert dialog navigating to Settings
+                            //openSettingsDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                }).
+                withErrorListener(new PermissionRequestErrorListener() {
+                    @Override
+                    public void onError(DexterError error) {
+                        Toast.makeText(getApplicationContext(), "Some Error! ", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .onSameThread()
+                .check();
+
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -214,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new WorkOrderFragment();
                             break;
                         case R.id.navigation_tallysheet:
-                            selectedFragment = new TallySheetFragment();
+                            selectedFragment = new ListTallySheetFragment();
                             break;
                         case R.id.navigation_profile:
                             selectedFragment = new ProfilFragment();
@@ -233,5 +292,6 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
+
 
 }

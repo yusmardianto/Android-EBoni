@@ -91,4 +91,11 @@
         <item>Sekop</item>
     </string-array>
 
+    <string-array name="array_luas_pu">
+        <item>- Pilih Luas PU -</item>
+        <item>0.020</item>
+        <item>0.040</item>
+        <item>0.100</item>
+    </string-array>
+
 </resources>

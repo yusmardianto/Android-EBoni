@@ -6,6 +6,27 @@
     android:background="@color/md_grey_200"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_daftar_tallysheet"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimary">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_aal_bold"
+                android:text="Daftar Tally Sheet"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_marginRight="16dp"
@@ -22,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shapesearch"
-            android:hint="Cari berdasarkan KPH"
+            android:hint="Cari berdasarkan Petak"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
             android:textColorHint="#B4B4B4"
