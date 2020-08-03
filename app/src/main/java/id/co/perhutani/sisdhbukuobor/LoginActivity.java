@@ -207,15 +207,15 @@ public class LoginActivity extends AppCompatActivity {
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, String.valueOf(pass));
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
-//        Thread background = new Thread() {
-//            public void run() {
-//                try {
-//                    askForPermission();
-//                } catch (Exception e) {
-//                }
-//            }
-//        };
-//        background.start();
+        Thread background = new Thread() {
+            public void run() {
+                try {
+                    askForPermission();
+                } catch (Exception e) {
+                }
+            }
+        };
+        background.start();
         AjnClass.pasang_sentry(this.getApplicationContext());
 
 //        username.setText("mandor_banjarharjo");
