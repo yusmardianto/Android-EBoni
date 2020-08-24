@@ -2120,6 +2120,8 @@ public class ThreadSendToAPI extends Thread {
                         final String str_longitude = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, str_ts_id, TrnTallySheet.LONGITUDE);
                         final String str_photopohon = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, str_ts_id, TrnTallySheet.PHOTO_POHON);
                         final String str_tglinven = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, str_ts_id, TrnTallySheet.TGL_INVENTARISASI);
+                        final String str_cek_photo = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, str_ts_id, TrnTallySheet.CEK_PHOTO);
+                        final String str_cek_latlng = db.getDataDetail(TrnTallySheet.TABLE_NAME, TrnTallySheet._ID, str_ts_id, TrnTallySheet.CEK_LATLNG);
 
                         jsonParam.put("aksi", "tambah");
                         jsonParam.put("id", str_ket10);
@@ -2135,6 +2137,8 @@ public class ThreadSendToAPI extends Thread {
                         jsonParam.put("longitude", str_longitude);
                         jsonParam.put("foto", str_photopohon);
                         jsonParam.put("tanggalinven", str_tglinven);
+                        jsonParam.put("cek_photo", str_cek_photo);
+                        jsonParam.put("cek_latlng", str_cek_latlng);
 
                     } catch (JSONException ex) {
                         Log.i("JSON_ERROR", ex.toString());

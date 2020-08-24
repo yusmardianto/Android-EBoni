@@ -96,19 +96,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(str_rolename.equals("mobile_rph"))
-                                        {
-                                            setContentView(R.layout.activity_main_rph);
-                                            navView = findViewById(R.id.nav_view_rph);
+        {
+            setContentView(R.layout.activity_main_rph);
+            navView = findViewById(R.id.nav_view_rph);
 
-                                        } else if(str_rolename.equals("mobile_phw")){
+        }else if(str_rolename.equals("mobile_phw")){
             setContentView(R.layout.activity_main_phw);
             navView = findViewById(R.id.nav_view_phw);
 
-
-                                        }else{
-                                            AjnClass.showAlert(MainActivity.this,"Siapa lu ?");
-                                            actionDeleteData();
-                                        }
+        }else{
+            AjnClass.showAlert(MainActivity.this,"Siapa lu ?");
+            actionDeleteData();
+        }
 
 
 //        setContentView(R.layout.activity_main);
@@ -263,9 +262,11 @@ public class MainActivity extends AppCompatActivity {
 //                        BottomNavigationView.getMenu().removeItem(R.id.navigation_home);
 //                        case R.id.navigation_home.rem(View.VISIBLE)
                         case R.id.navigation_home:
-
                             selectedFragment = new HomeFragment();
                         break;
+                        case R.id.navigation_home_phw:
+                            selectedFragment = new HomeFragment();
+                            break;
                         case R.id.navigation_bukuobor:
                             selectedFragment = new BukuOborFragment();
                             break;

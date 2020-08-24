@@ -83,8 +83,6 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
         final String get_bdg_dsr = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.BIDANG_DASAR);
         final String get_ts_id = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id,TrnPuPohon.TS_ID);
 
-
-
         holder.nopohon.setText(get_nopohon);
         holder.kelpohon.setText(get_kelpohon);
         holder.peninggipohon.setText(get_pngpohon);
@@ -96,6 +94,21 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
             }
         });
 
+//        try {
+//            String status_sync = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id, TrnPuPohon.KET9);
+//            if (status_sync.equals("3")) {
+//                holder.name_data_sinkron.setVisibility(View.INVISIBLE);
+//                holder.name_info_alert.setVisibility(View.INVISIBLE);
+//
+//            }  else {
+//                holder.name_data_sinkron.setVisibility(View.VISIBLE);
+//                holder.name_info_alert.setVisibility(View.VISIBLE);
+//            }
+//        }
+//        catch (Exception e){
+//
+//        }
+
         try {
             String status_sync = db.getDataDetail(TrnPuPohon.TABLE_NAME, TrnPuPohon._ID,id, TrnPuPohon.KET9);
             if (status_sync.equals("1")) {
@@ -104,7 +117,6 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
                 holder.name_data_sinkron.setText("Sudah terkirim keserver");
                 holder.name_data_sinkron.setTextColor(Color.rgb(146,198,91));
             }  else {
-
                 holder.name_data_sinkron.setText("Belum terkirim keserver");
                 holder.name_data_sinkron.setTextColor(Color.rgb(228,0,4));
                 holder.name_info_alert.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_info_outline_red_24dp));
@@ -239,10 +251,6 @@ public class PengukuranPohonAdapter extends RecyclerView.Adapter<PengukuranPohon
 
         }else if (edt_keliling_pohon.getText().toString().equals("") || edt_keliling_pohon.getText().toString().equals("0") || edt_keliling_pohon.getText().toString().equals(" ") || edt_keliling_pohon.getText().toString().equals(null)) {
             AjnClass.showAlert(mContext, "Keliling Pohon harus diisi");
-            return false;
-
-        }else if (edt_peninggi_pohon.getText().toString().equals("") || edt_peninggi_pohon.getText().toString().equals("0") || edt_peninggi_pohon.getText().toString().equals(" ") || edt_peninggi_pohon.getText().toString().equals(null)) {
-            AjnClass.showAlert(mContext, "Peninggi Pohon harus diisi");
             return false;
 
         }

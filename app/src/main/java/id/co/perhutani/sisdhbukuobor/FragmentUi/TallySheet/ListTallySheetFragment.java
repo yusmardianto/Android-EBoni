@@ -239,8 +239,8 @@ public class ListTallySheetFragment extends Fragment {
                 final Cursor cur = db.rawQuery("SELECT " +
                         "ID" +
                         " FROM TRN_TALLY_SHEET " +
-                        " WHERE PETAK_NAME " + " LIKE  " + "'%" + kph + "%'" +
-                        " ORDER BY ID DESC", null);
+                        " WHERE BAGIAN_HUTAN_NAME " + " LIKE  " + "'%" + kph + "%'" +
+                        " ORDER BY ID ASC", null);
 
 
                 cur.moveToPosition(0);

@@ -65,6 +65,7 @@ import id.co.perhutani.sisdhbukuobor.Schema.MstStrataSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.MstSubPekerjaan;
 import id.co.perhutani.sisdhbukuobor.Schema.MstWaktuLihatSchema;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnMonitoringKlsHtn;
+import id.co.perhutani.sisdhbukuobor.Schema.TrnPuPohon;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnSusunRisalah;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnTallySheet;
 import id.co.perhutani.sisdhbukuobor.Schema.TrnWorkOrder;
@@ -108,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String URL_FOR_GET_SUSUN_RISALAH_V1 = address + "api/v1/getSusunRisalah";
     private static final String URL_FOR_GET_MONITORING_KLSHTN_V1 = address + "api/v1/getMonitoringKlsHtn";
     private static final String URL_FOR_GET_TALLY_SHEET_V1 = address + "api/v1/getTallySheet";
+    private static final String URL_FOR_GET_POHONPU_V1 = address + "api/v1/getPohonTs";
     private static final String URL_FOR_GET_KONVERSI_KELILING_V1 = address + "api/v1/getTblKonversiKeliling";
 
     public static final String URL_FOR_POST_GANGGUAN_HUTAN_V1 = address + "api/v1/postGukamhut";
@@ -481,6 +483,8 @@ public class LoginActivity extends AppCompatActivity {
                         sync_get_monitoring(myResponse.getString("access_token"), username.getText().toString());
                         //get data tallysheet
                         sync_get_tallysheet(myResponse.getString("access_token"), username.getText().toString());
+                        //get data pohonpu
+                        sync_get_pohonpu(myResponse.getString("access_token"), username.getText().toString());
                         //get data konversi keliling
                         sync_get_konversi_keliling_v1(myResponse.getString("access_token"), username.getText().toString());
 
@@ -1743,11 +1747,58 @@ public class LoginActivity extends AppCompatActivity {
                         values.put(TrnTallySheet.TUMBUHAN_BWH_INTENSITAS_NAME, json_projek.getString("intensitas_tumbuhan_bwh_name"));
                         values.put(TrnTallySheet.LATTITUDE, json_projek.getString("latitude"));
                         values.put(TrnTallySheet.LONGITUDE, json_projek.getString("longitude"));
-                        values.put(TrnTallySheet.CEK_PHOTO, "0");
-                        values.put(TrnTallySheet.CEK_LATLNG, "0");
+                        values.put(TrnTallySheet.CEK_PHOTO, json_projek.getString("cek_photo"));
+                        values.put(TrnTallySheet.CEK_LATLNG, json_projek.getString("cek_latlng"));
                         values.put(TrnTallySheet.KET8, "0");
                         values.put(TrnTallySheet.KET9, "0");
                         db.create(TrnTallySheet.TABLE_NAME, values);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.i("JSON_ERROR", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+    }
+
+    public void sync_get_pohonpu(final String token,final String username) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(URL_FOR_GET_POHONPU_V1);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Authorization", "Bearer " + token);
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    Log.i("JSON_ACTION", "================ API GET MASTER TALLY SHEET ========================");
+                    Log.i("JSON_SEND_TOKEN", token);
+                    JSONObject result = new JSONObject(response.toString());
+                    JSONArray jsonArray = result.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject json_projek = jsonArray.getJSONObject(i);
+                        ContentValues values = new ContentValues();
+                        values.put(TrnPuPohon._ID, i + 1);
+                        values.put(TrnPuPohon.UUID, json_projek.getString("uuid"));
+                        values.put(TrnPuPohon.TS_ID, json_projek.getString("ts_id"));
+                        values.put(TrnPuPohon.NO_POHON, json_projek.getString("no_phn"));
+                        values.put(TrnPuPohon.KELILING_POHON, json_projek.getString("keliling_phn"));
+                        values.put(TrnPuPohon.PENINGGI_POHON, json_projek.getString("peninggi_phn"));
+                        values.put(TrnPuPohon.BIDANG_DASAR, json_projek.getString("bidang_dasar"));
+                        values.put(TrnPuPohon.KET10, json_projek.getString("id"));
+                        values.put(TrnPuPohon.KET9, "1");
+                        db.create(TrnPuPohon.TABLE_NAME, values);
                     }
                     conn.disconnect();
                 } catch (Exception e) {
